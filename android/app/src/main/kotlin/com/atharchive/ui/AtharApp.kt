@@ -44,17 +44,12 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -68,7 +63,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
@@ -77,29 +71,10 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
-import com.atharchive.feature.articles.ArticlesScreen
-import com.atharchive.feature.downloads.CacheBudget
-import com.atharchive.feature.downloads.DownloadsScreen
-import com.atharchive.feature.downloads.DownloadsListScreen
-import com.atharchive.feature.adhkar.AdhkarContent
-import com.atharchive.feature.adhkar.AdhkarScreen
-import com.atharchive.feature.downloads.StorageUi
-import com.atharchive.feature.downloads.DownloadsUiState
-import com.atharchive.feature.issues.IssuesScreen
 import com.atharchive.feature.audio.AudioProgressBar
 import com.atharchive.feature.audio.AudioUi
-import com.atharchive.feature.audio.NowPlayingUi
-import com.atharchive.feature.audio.PlayerScreen
-import com.atharchive.feature.books.BooksScreen
-import com.atharchive.feature.books.BookDownloadUi
 import com.atharchive.feature.kannashah.ExcerptUi
-import com.atharchive.feature.kannashah.KannashahScreen
-import com.atharchive.feature.reader.ReaderScreen
-import com.atharchive.feature.poemreader.PoemReaderScreen
-import com.atharchive.feature.poetry.PoetryScreen
-import com.atharchive.feature.reader.ReaderSearchTarget
 import com.atharchive.feature.sections.AtharSection
-import com.atharchive.feature.search.SearchScreen
 import com.atharchive.ui.components.AtharMenu
 import com.atharchive.ui.components.AtharMenuItem
 import com.atharchive.ui.components.AtharTailPopover
@@ -112,64 +87,18 @@ import com.atharchive.ui.components.AtharBottomBar
 import com.atharchive.ui.components.AtharTopBar
 import com.atharchive.ui.icons.AtharIcons
 import com.atharchive.ui.navigation.AtharDestination
-import com.atharchive.feature.books.asBook
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
 import com.atharchive.ui.theme.AtharEditorialFontFamily
 import com.atharchive.feature.reader.ReaderSettings
-import com.atharchive.ui.settings.AppearanceScreen
 import com.atharchive.ui.theme.AtharTheme
 import com.atharchive.ui.theme.ThemeMode
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import kotlinx.serialization.Serializable
 import com.atharchive.data.AtharContentViewModel
 import androidx.core.content.ContextCompat
-
-@Serializable
-private data object BooksCatalogRoute : NavKey
-
-@Serializable
-private data class SectionRoute(val destination: String) : NavKey
-
-@Serializable
-private data object SettingsRoute : NavKey
-
-@Serializable
-private data object PlayerRoute : NavKey
-
-@Serializable
-private data class PoemReaderRoute(val poemId: String, val targetOrdinal: Int? = null, val match: String? = null) : NavKey
-
-@Serializable
-private data class ReaderRoute(
-    val bookId: String,
-    val targetOrdinal: Int? = null,
-    val matchStart: Int? = null,
-    val matchEnd: Int? = null,
-) : NavKey
-
-@Serializable
-private data class SubSectionRoute(val section: String) : NavKey
-
-@Serializable
-private data object DownloadsRoute : NavKey
-@Serializable
-private data class DownloadsListRoute(val targetId: String? = null) : NavKey
-
-@Serializable
-private data object AdhkarRoute : NavKey
-
-@Serializable
-private data class PersonsRoute(val personId: String? = null) : NavKey
-
-@Serializable
-private data object AppearanceRoute : NavKey
-
-@Serializable
-private data object MutoonRoute : NavKey
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
@@ -200,45 +129,58 @@ fun AtharApp(
     )
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
-    var scrollToTopRequest by rememberSaveable { mutableIntStateOf(0) }
-    val audioState by contentViewModel.audio.collectAsStateWithLifecycle()
+    val scrollToTopRequestHolder = rememberSaveable { mutableIntStateOf(0) }
+    var scrollToTopRequest by scrollToTopRequestHolder
+    val audioStateHolder = contentViewModel.audio.collectAsStateWithLifecycle()
+    val audioState by audioStateHolder
     LaunchedEffect(Unit) {
         // One-time fold: old adhkar prefs ids become favourites, then the key is dropped.
         val prefs = context.getSharedPreferences("adhkar", Context.MODE_PRIVATE)
         val old = prefs.getStringSet("saved", null).orEmpty().map { "dhikr:$it" }
         if (contentViewModel.foldFavourites(old)) prefs.edit().remove("saved").apply()
     }
-    val playbackState by contentViewModel.playback.state.collectAsStateWithLifecycle()
-    val syncState by contentViewModel.syncState.collectAsStateWithLifecycle()
+    val playbackStateHolder = contentViewModel.playback.state.collectAsStateWithLifecycle()
+    val playbackState by playbackStateHolder
+    val syncStateHolder = contentViewModel.syncState.collectAsStateWithLifecycle()
+    val syncState by syncStateHolder
     // Playback ticks twice a second: these are read where they are drawn, or through derived
     // states that change only when the value does, so the whole app no longer recomposes per tick.
-    val nowPlaying by remember { derivedStateOf { audioState.nowPlaying } }
+    val nowPlayingHolder = remember { derivedStateOf { audioState.nowPlaying } }
+    val nowPlaying by nowPlayingHolder
     val hasRecordings by remember { derivedStateOf { audioState.recordings.isNotEmpty() } }
     val playbackError by remember { derivedStateOf { playbackState.error } }
     LaunchedEffect(hasRecordings) {
         if (hasRecordings) contentViewModel.foldAudioFavourites(audioState.recordings)
     }
     val actionAnchor = remember { mutableStateOf(Rect.Zero) }
-    var editorAnchor by remember { mutableStateOf(Rect.Zero) }
-    var editingExcerpt by remember { mutableStateOf<ExcerptUi?>(null) }
+    val editorAnchorHolder = remember { mutableStateOf(Rect.Zero) }
+    var editorAnchor by editorAnchorHolder
+    val editingExcerptHolder = remember { mutableStateOf<ExcerptUi?>(null) }
+    var editingExcerpt by editingExcerptHolder
     // An excerpt for الكناشة to scroll to once it opens (from a note's «في الكناشة»).
-    var kannashahFocus by remember { mutableStateOf<String?>(null) }
+    val kannashahFocusHolder = remember { mutableStateOf<String?>(null) }
+    var kannashahFocus by kannashahFocusHolder
     // One's own dhikr being added or edited (from الأذكار, or from a selection in a reader).
     val userAdhkar = remember { com.atharchive.data.UserAdhkarStore.get(context) }
-    var adhkarReminders by remember { mutableStateOf(com.atharchive.data.AdhkarReminders.all(context)) }
-    var adhkarOpen by remember { mutableStateOf<String?>(null) }
-    val userAdhkarState by userAdhkar.state.collectAsStateWithLifecycle()
-    var editingDhikr by remember { mutableStateOf<com.atharchive.data.UserDhikr?>(null) }
+    val adhkarRemindersHolder = remember { mutableStateOf(com.atharchive.data.AdhkarReminders.all(context)) }
+    val adhkarOpenHolder = remember { mutableStateOf<String?>(null) }
+    var adhkarOpen by adhkarOpenHolder
+    val userAdhkarStateHolder = userAdhkar.state.collectAsStateWithLifecycle()
+    val userAdhkarState by userAdhkarStateHolder
+    val editingDhikrHolder = remember { mutableStateOf<com.atharchive.data.UserDhikr?>(null) }
+    var editingDhikr by editingDhikrHolder
     val windowSize = androidx.compose.ui.platform.LocalWindowInfo.current.containerSize
     // From a selection there is no tapped control to point at: the popover sits high in the middle.
     fun addDhikr(text: String, source: String, lists: Set<String> = emptySet(), anchor: Rect? = null) {
         editorAnchor = anchor ?: Rect(androidx.compose.ui.geometry.Offset(windowSize.width / 2f, windowSize.height * 0.22f), Size(1f, 1f))
         editingDhikr = com.atharchive.data.UserDhikr(com.atharchive.data.UserAdhkarStore.newId(), text, 1, source.ifBlank { null }, lists)
     }
-    var deletingExcerpt by remember { mutableStateOf<ExcerptUi?>(null) }
+    val deletingExcerptHolder = remember { mutableStateOf<ExcerptUi?>(null) }
+    var deletingExcerpt by deletingExcerptHolder
     // Each screen collects its own state inside its entry: a flow collected here runs from
     // launch, and every write to `entity` re-reads the whole catalog once per running flow.
-    val booksState by contentViewModel.books.collectAsStateWithLifecycle()
+    val booksStateHolder = contentViewModel.books.collectAsStateWithLifecycle()
+    val booksState by booksStateHolder
     LaunchedEffect(contentViewModel) {
         contentViewModel.errors.collect { snackbarHostState.showSnackbar(it) }
     }
@@ -263,11 +205,15 @@ fun AtharApp(
         }
     }
     val storageStatus by contentViewModel.storageStatus.collectAsStateWithLifecycle()
-    val retainedIds by contentViewModel.retainedEntityIds.collectAsStateWithLifecycle()
-    val recentQueries by contentViewModel.recentQueries.collectAsStateWithLifecycle()
-    val cacheBytes by contentViewModel.cacheBytes.collectAsStateWithLifecycle()
-    val cacheBudgetBytes by contentViewModel.cacheBudgetBytes.collectAsStateWithLifecycle()
-    val pinnedCount by contentViewModel.pinnedCount.collectAsStateWithLifecycle()
+    val retainedIdsHolder = contentViewModel.retainedEntityIds.collectAsStateWithLifecycle()
+    val recentQueriesHolder = contentViewModel.recentQueries.collectAsStateWithLifecycle()
+    val recentQueries by recentQueriesHolder
+    val cacheBytesHolder = contentViewModel.cacheBytes.collectAsStateWithLifecycle()
+    val cacheBytes by cacheBytesHolder
+    val cacheBudgetBytesHolder = contentViewModel.cacheBudgetBytes.collectAsStateWithLifecycle()
+    val cacheBudgetBytes by cacheBudgetBytesHolder
+    val pinnedCountHolder = contentViewModel.pinnedCount.collectAsStateWithLifecycle()
+    val pinnedCount by pinnedCountHolder
 
     fun announce(message: String) {
         scope.launch {
@@ -405,20 +351,8 @@ fun AtharApp(
 
     // One path for every row. A finished download asks first (it deletes the offline copy);
     // a running one cancels (a second tap on the same button); a paused/failed one resumes; only a fresh start asks for notifications.
-    var pendingRemoval by remember { mutableStateOf<DownloadRemoval?>(null) }
-    /** Books, poems and articles as one list of rows ([ids] only, or all): an author's page and المتون show every kind alike. */
-    @Composable
-    fun rememberWorks(ids: Set<String>?): List<com.atharchive.feature.books.BookUi> {
-        val poems = contentViewModel.poetry.collectAsStateWithLifecycle().value.poems
-        val articles = contentViewModel.articles.collectAsStateWithLifecycle().value.articles
-        val issues = contentViewModel.issues.collectAsStateWithLifecycle().value.issues
-        return remember(ids, booksState.books, poems, articles, issues) {
-            fun <T> List<T>.mine(id: (T) -> String) = if (ids == null) this else filter { id(it) in ids }
-            booksState.books.mine { it.id } + poems.mine { it.id }.map { it.asBook() } + articles.mine { it.id }.map { it.asBook() } +
-                issues.mine { it.id }.map { it.asBook() }
-        }
-    }
-
+    val pendingRemovalHolder = remember { mutableStateOf<DownloadRemoval?>(null) }
+    var pendingRemoval by pendingRemovalHolder
     fun onDownloadTap(id: String, title: String, sizeLabel: String, downloaded: Boolean, transfer: com.atharchive.feature.downloads.TransferUi?) {
         if (downloaded) {
             pendingRemoval = DownloadRemoval(id, title, sizeLabel)
@@ -557,6 +491,21 @@ fun AtharApp(
         }
     }
 
+    val app = AppNav(
+        contentViewModel, context, scope, backStack, tabState, actionAnchor, userAdhkar,
+        notificationPermission, exportUserData, importUserData, receiveBooks,
+        themeMode, onThemeModeChange, style, onStyleChange, accent, onAccentChange, startPlace, onStartPlaceChange,
+        readerSettings, onReaderSettingsChange, bar, onBarChange, onResetSettings,
+        goBack = ::goBack, openSettings = ::openSettings, replaceRoute = ::replaceRoute, navigateTo = ::navigateTo,
+        openHit = ::openHit, sectionSearch = ::sectionSearch, onDownloadTap = ::onDownloadTap, announce = ::announce,
+        openExcerptNote = ::openExcerptNote, openAudioSource = ::openAudioSource,
+        addDhikr = { text, source, lists, anchor -> addDhikr(text, source, lists, anchor) }, sendBooks = ::sendBooks,
+        booksStateHolder, scrollToTopRequestHolder, retainedIdsHolder, recentQueriesHolder, playbackStateHolder, audioStateHolder,
+        nowPlayingHolder, cacheBytesHolder, cacheBudgetBytesHolder, pinnedCountHolder, syncStateHolder, userAdhkarStateHolder,
+        kannashahFocusHolder, editorAnchorHolder, editingExcerptHolder, editingDhikrHolder, deletingExcerptHolder,
+        pendingRemovalHolder, adhkarOpenHolder, adhkarRemindersHolder,
+    )
+
     Scaffold(
         // One imePadding for the whole app. Applied per-screen it lifted the content but
         // not the bottom bar, leaving a canvas-coloured band above the keyboard.
@@ -641,507 +590,11 @@ fun AtharApp(
                 .padding(contentPadding),
             entryDecorators = listOf(rememberSaveableStateHolderNavEntryDecorator()),
             entryProvider = entryProvider {
-                entry<BooksCatalogRoute> {
-                    BooksScreen(
-                        state = booksState,
-                        onSettings = { openSettings() },
-                        onBookClick = { backStack.add(ReaderRoute(it.id)) },
-                        onDownloadClick = {
-                            onDownloadTap(
-                                it.id, it.title, it.download.sizeLabel,
-                                it.download is BookDownloadUi.Downloaded,
-                                (it.download as? BookDownloadUi.Downloading)?.transfer,
-                            )
-                        },
-                        onSaveClick = { contentViewModel.toggleFavourite(it.id) },
-                        scrollToTopRequest = scrollToTopRequest,
-                    )
-                }
-                entry<SettingsRoute> {
-                    LaunchedEffect(Unit) { contentViewModel.refreshCacheBytes() }
-                    SettingsScreen(
-                        cacheBytes = cacheBytes,
-                        cacheBudgetBytes = cacheBudgetBytes,
-                        pinnedCount = pinnedCount,
-                        themeModeLabel = themeMode.label,
-                        onAppearance = { backStack.add(AppearanceRoute) },
-                        onDownloads = { backStack.add(DownloadsRoute) },
-                        onSync = { contentViewModel.sync(manual = true) },
-                        syncLabel = when (val sync = syncState) {
-                            com.atharchive.data.ContentSyncUiState.Checking -> "جارٍ التحديث…"
-                            com.atharchive.data.ContentSyncUiState.UpToDate -> "المحتوى محدّث"
-                            is com.atharchive.data.ContentSyncUiState.Failed -> "${sync.message}؛ اضغط لإعادة المحاولة"
-                            else -> "تحقّق من المحتوى الجديد"
-                        },
-                        onExportUserData = { exportUserData.launch("athar-user-data.jsonl") },
-                        onImportUserData = { importUserData.launch(arrayOf("application/json", "text/plain")) },
-                        onReceiveBooks = { receiveBooks.launch(arrayOf("application/zip", "application/octet-stream")) },
-                        onResetSettings = {
-                            onResetSettings()
-                            com.atharchive.ui.components.resetListState(context)
-                            announce("أُعيدت الإعدادات الافتراضية")
-                        },
-                        onBack = ::goBack,
-                    )
-                }
-                // The reader owns the whole screen: no bottom navigation inside a book.
-                entry<ReaderRoute> { route ->
-                    val quoteColors = com.atharchive.feature.reader.rememberReaderColors()
-                    val readerEmitted = collectEmitted(route.bookId) { contentViewModel.readerState(route.bookId) }
-                    val readerState = readerEmitted?.value
-                    val readerWindow = remember(route.bookId) { contentViewModel.readerWindow(route.bookId) }
-                    val openProgress by contentViewModel.openProgress.collectAsStateWithLifecycle()
-                    val loadProgress = openProgress?.takeIf { it.first == route.bookId }?.second
-                    LaunchedEffect(route.bookId, route.targetOrdinal) {
-                        // Any path that opens a poem as a book (links, meanings, lists) lands in the poem reader instead.
-                        if (contentViewModel.isPoem(route.bookId)) return@LaunchedEffect replaceRoute(route, PoemReaderRoute(route.bookId, route.targetOrdinal))
-                        // A work opens in the edition last chosen for it; a jump to a place opens as asked.
-                        val edition = if (route.targetOrdinal == null) contentViewModel.editionToOpen(route.bookId) else route.bookId
-                        if (edition != route.bookId) replaceRoute(route, ReaderRoute(edition))
-                        else contentViewModel.openReader(route.bookId, route.targetOrdinal)
-                    }
-                    DisposableEffect(route.bookId) {
-                        onDispose { contentViewModel.closeReader(route.bookId) }
-                    }
-                    // "Not emitted yet" is loading, not missing: the flow's first value can wait
-                    // behind a write, and «غير متاح» used to flash on every slow open.
-                    if (readerEmitted == null) Column(Modifier.fillMaxSize()) {
-                        IconButton(onClick = ::goBack) { Icon(AtharIcons.Back, "رجوع") }
-                        com.atharchive.ui.components.AtharLoading(
-                            "جارٍ تحميل النص…", Modifier.padding(top = 120.dp), tag = "reader_loading", progress = loadProgress,
-                        )
-                    } else if (readerState == null) Column(Modifier.fillMaxSize()) {
-                        IconButton(onClick = ::goBack) { Icon(AtharIcons.Back, "رجوع") }
-                        com.atharchive.ui.components.AtharEmptyState(
-                            "المصدر غير متاح بعد", "جارٍ تحميل الفهرس؛ إن استمر ذلك فتحقّق من الاتصال وحدّث المحتوى.",
-                            "reader_source_unavailable", 24.dp,
-                        )
-                        TextButton(onClick = { contentViewModel.sync(); contentViewModel.openReader(route.bookId, route.targetOrdinal) }) { Text("إعادة المحاولة") }
-                    }
-                    val authorId by androidx.compose.runtime.produceState<String?>(null, route.bookId) { value = contentViewModel.authorOf(route.bookId) }
-                    val updated by androidx.compose.runtime.produceState(false, route.bookId) { value = updatedSinceSeen(context, route.bookId, contentViewModel.textVersion(route.bookId)) }
-                    val downloadTransfer by remember(route.bookId) { contentViewModel.transferOf(route.bookId) }.collectAsStateWithLifecycle(null)
-                    readerState?.let { state ->
-                      androidx.compose.foundation.layout.Box(Modifier.fillMaxSize()) {
-                        ReaderScreen(
-                            state = state,
-                            window = readerWindow,
-                            loadProgress = loadProgress,
-                            initialOrdinal = route.targetOrdinal,
-                            onSearch = { query, mode, partial -> contentViewModel.searchInBook(route.bookId, query, mode, partial) },
-                            bookSaved = route.bookId in retainedIds,
-                            onDownloadForSearch = { contentViewModel.downloadForSearch(route.bookId) },
-                            downloadTransfer = downloadTransfer,
-                            updatedSinceLastRead = updated,
-                            onOpenAuthor = authorId?.let { id -> { backStack.add(PersonsRoute(id)) } },
-                            onShareBook = { shareText(context, listOf(state.bookTitle, state.author, state.sourceUrl).filter(String::isNotBlank).joinToString("\n")) },
-                            onLocateOnline = { hit, q -> contentViewModel.locateOnline(route.bookId, hit.url, q, hit.excerpt, hit.pg) },
-                            onLoadPassage = { hit -> contentViewModel.inBookPassage(route.bookId, hit) },
-                            onLoadFootnotes = { ids -> contentViewModel.footnoteBodies(route.bookId, ids) },
-                            recentQueries = recentQueries,
-                            onRememberSearch = contentViewModel::rememberSearch,
-                            onPageJump = { page, volume -> contentViewModel.findPrintedPage(route.bookId, page, volume) },
-                            onAnchorJump = { contentViewModel.findHeadingAnchor(route.bookId, it) },
-                            onLoadSelectionBlocks = { contentViewModel.selectionBlocks(route.bookId, it) },
-                            onRemoveHighlight = contentViewModel::deleteAnnotation,
-                            onEditHighlightNote = { openExcerptNote(it) },
-                            onOpenInKannashah = { kannashahFocus = it; navigateTo(AtharDestination.Kannashah) },
-                            onCopyCited = { selection ->
-                                val (vol, page) = contentViewModel.printedPlace(route.bookId, minOf(selection.start.ordinal, selection.end.ordinal))
-                                copyText(context, citedText(selection.quotedText, state.bookTitle, state.author,
-                                    vol.takeIf { state.volumeStarts.isNotEmpty() }, page, state.sourceUrl, state.volumeUnit))
-                            },
-                            onPlayAudio = { contentViewModel.playWorkAudio(route.bookId, it.id) },
-                            playback = { playbackState },
-                            onToggleAudio = contentViewModel.playback::toggle,
-                            onSpeed = contentViewModel.playback::speed,
-                            onRepeat = contentViewModel.playback::repeat,
-                            onSeekMs = contentViewModel.playback::seekTo,
-                            onOpenEntity = { backStack.add(ReaderRoute(it)) },
-                            onEdition = { id ->
-                                state.editions.firstOrNull { it.primary }?.let { contentViewModel.chooseEdition(it.id, id) }
-                                replaceRoute(route, ReaderRoute(id))
-                            },
-                            onBack = ::goBack,
-                            onCopySelection = { selection ->
-                                copyText(context, selection.quotedText)
-                            },
-                            onShareSelection = { selection, asImage ->
-                                // Same source line as «نسخ مع التذييل»: the volume and page say where in the book it is.
-                                val (vol, page) = contentViewModel.printedPlace(route.bookId, minOf(selection.start.ordinal, selection.end.ordinal))
-                                val cited = citedText(selection.quotedText, state.bookTitle, state.author,
-                                    vol.takeIf { state.volumeStarts.isNotEmpty() }, page, state.sourceUrl, state.volumeUnit)
-                                if (asImage) shareQuoteImage(context, selection.quotedText, cited, quoteColors, selection.verses) else shareText(context, cited)
-                            },
-                            onSaveSelection = { selection ->
-                                contentViewModel.saveSelection(route.bookId, selection)
-                            },
-                            onToggleBookmark = { ordinal ->
-                                contentViewModel.toggleBookmark(route.bookId, ordinal)
-                            },
-                            onPositionChange = { contentViewModel.onReaderPosition(route.bookId, it) },
-                            onPositionWithOffset = { ordinal, offset -> contentViewModel.onReaderPosition(route.bookId, ordinal, offset) },
-                            settings = readerSettings,
-                            onSettingsChange = onReaderSettingsChange,
-                            themeMode = themeMode,
-                            onThemeModeChange = onThemeModeChange,
-                            initialSearchTarget = if (
-                                route.targetOrdinal != null && route.matchStart != null && route.matchEnd != null
-                            ) {
-                                ReaderSearchTarget(route.targetOrdinal, route.matchStart, route.matchEnd)
-                            } else {
-                                null
-                            },
-                        )
-                      }
-                    }
-                }
-                entry<PoemReaderRoute> { route ->
-                    val poemEmitted = collectEmitted(route.poemId) { contentViewModel.poemReaderState(route.poemId) }
-                    val openProgress by contentViewModel.openProgress.collectAsStateWithLifecycle()
-                    val loadProgress = openProgress?.takeIf { it.first == route.poemId }?.second
-                    val poemState = poemEmitted?.value
-                    LaunchedEffect(route.poemId) { contentViewModel.openReader(route.poemId, route.targetOrdinal) }
-                    DisposableEffect(route.poemId) {
-                        onDispose { contentViewModel.closeReader(route.poemId) }
-                    }
-                    if (poemEmitted == null) Column(Modifier.fillMaxSize()) {
-                        IconButton(onClick = ::goBack) { Icon(AtharIcons.Back, "رجوع") }
-                        com.atharchive.ui.components.AtharLoading("جارٍ تحميل القصيدة…", Modifier.padding(top = 120.dp), tag = "poem_loading", progress = loadProgress)
-                    } else if (poemState == null) UnavailableRoute("القصيدة غير متاحة بعد", ::goBack) { contentViewModel.sync(); contentViewModel.openReader(route.poemId, route.targetOrdinal) }
-                    val poetId by androidx.compose.runtime.produceState<String?>(null, route.poemId) { value = contentViewModel.authorOf(route.poemId) }
-                    val updated by androidx.compose.runtime.produceState(false, route.poemId) { value = updatedSinceSeen(context, route.poemId, contentViewModel.textVersion(route.poemId)) }
-                    val downloadTransfer by remember(route.poemId) { contentViewModel.transferOf(route.poemId) }.collectAsStateWithLifecycle(null)
-                    poemState?.let { state -> PoemReaderScreen(
-                            state = state,
-                            loadProgress = loadProgress,
-                            onBack = ::goBack,
-                            onOpenAuthor = poetId?.let { id -> { backStack.add(PersonsRoute(id)) } },
-                            onDownload = { contentViewModel.downloadForSearch(route.poemId) }.takeUnless { route.poemId in retainedIds },
-                            downloadTransfer = downloadTransfer,
-                            updatedSinceLastRead = updated,
-                            settings = readerSettings,
-                            onSettingsChange = onReaderSettingsChange,
-                            themeMode = themeMode,
-                            onThemeModeChange = onThemeModeChange,
-                            playback = playbackState,
-                            onPlayAudio = { contentViewModel.playWorkAudio(route.poemId, it.id) },
-                            onToggleAudio = contentViewModel.playback::toggle,
-                            onSpeed = contentViewModel.playback::speed,
-                            onRepeat = contentViewModel.playback::repeat,
-                            onSeekMs = contentViewModel.playback::seekTo,
-                            onToggleBookmark = { contentViewModel.toggleBookmark(route.poemId, it) },
-                            onSaveVerse = { contentViewModel.saveBlock(route.poemId, it) },
-                            onRemoveVerse = { contentViewModel.removeSavedBlock(route.poemId, it) },
-                            onVerseNote = { scope.launch { openExcerptNote(contentViewModel.savedBlockId(route.poemId, it)) } },
-                            onVerseInKannashah = { scope.launch {
-                                contentViewModel.savedBlockId(route.poemId, it)?.let { id -> kannashahFocus = id; navigateTo(AtharDestination.Kannashah) }
-                            } },
-                            initialOrdinal = route.targetOrdinal,
-                            match = route.match,
-                            onPositionChange = { contentViewModel.onReaderPosition(route.poemId, it) },
-                            onRetry = { contentViewModel.openReader(route.poemId, route.targetOrdinal) },
-                        ) }
-                }
-                entry<PlayerRoute> {
-                    if (nowPlaying == null) UnavailableRoute("لا يوجد تسجيل متاح في المشغّل", ::goBack) { contentViewModel.sync() }
-                    val recordings = audioState.recordings
-                    val byId = remember(recordings) { recordings.associateBy { it.id } }
-                    val queue = remember(playbackState.queueIds, byId) { playbackState.queueIds.mapNotNull(byId::get) }
-                    nowPlaying?.let { playing ->
-                        PlayerScreen(
-                            nowPlaying = playing,
-                            queue = queue,
-                            onCollapse = ::goBack,
-                            onToggle = contentViewModel.playback::toggle,
-                            onSelect = { contentViewModel.playAudio(it.id, queue) },
-                            onSkipPrevious = contentViewModel.playback::previous,
-                            onSkipNext = contentViewModel.playback::next,
-                            onSeek = contentViewModel.playback::seekBy,
-                            onSeekFraction = { contentViewModel.playback.seekTo((it * playbackState.durationMs).toLong()) },
-                            speed = playbackState.speed,
-                            repeat = playbackState.repeat,
-                            onSpeed = contentViewModel.playback::speed,
-                            onRepeat = contentViewModel.playback::repeat,
-                            onSleep = contentViewModel.playback::sleep,
-                            sleepMinutes = playbackState.sleepMinutes,
-                            onMore = { openAudioSource(playing.audio) },
-                            onSave = { contentViewModel.toggleFavourite(playing.audio.sourceEntityId) },
-                        )
-                    }
-                }
-                entry<SubSectionRoute> { route ->
-                    when (AtharSection.entries.first { it.route == route.section }) {
-                        AtharSection.Articles -> ArticlesScreen(
-                            state = contentViewModel.articles.collectAsStateWithLifecycle().value,
-                            onSettings = ::openSettings,
-                            onArticleClick = { backStack.add(ReaderRoute(it.id)) },
-                            textSearch = remember { sectionSearch(com.atharchive.feature.search.SearchResultType.Article) },
-                            onSaveClick = { contentViewModel.toggleFavourite(it.id) },
-                            onDownloadClick = { onDownloadTap(it.id, it.title, it.sizeLabel, it.downloaded, it.transfer) },
-                            onBack = null,
-                        )
-
-                        AtharSection.Issues -> IssuesScreen(
-                            state = contentViewModel.issues.collectAsStateWithLifecycle().value,
-                            onSettings = ::openSettings,
-                            onIssueClick = { backStack.add(ReaderRoute(it.id)) },
-                            textSearch = remember { sectionSearch(com.atharchive.feature.search.SearchResultType.Issue) },
-                            onSaveClick = { contentViewModel.toggleFavourite(it.id) },
-                            onDownloadClick = { onDownloadTap(it.id, it.question, it.sizeLabel, it.downloaded, it.transfer) },
-                            onBack = null,
-                        )
-
-
-                    }
-                }
-                entry<PersonsRoute> { route ->
-                    val persons by contentViewModel.persons.collectAsStateWithLifecycle()
-                    val works by contentViewModel.personWorks.collectAsStateWithLifecycle()
-                    val person = persons.firstOrNull { it.id == route.personId }
-                    if (route.personId == null) com.atharchive.feature.persons.PersonsScreen(persons, works, { backStack.add(PersonsRoute(it.id)) }, ::openSettings, null)
-                    else if (person != null) {
-                        val ids = remember(person) { person.works.toSet() }
-                        val label = "مؤلفات ${person.name}"
-                        val row by remember(person) { contentViewModel.worksRow(label, ids) }.collectAsStateWithLifecycle(null)
-                        com.atharchive.feature.persons.PersonScreen(
-                            person = person,
-                            works = rememberWorks(ids),
-                            loaded = booksState.loaded,
-                            downloadAll = row,
-                            onDownloadAll = { r, mobileData -> contentViewModel.downloadRemaining(r, mobileData) },
-                            onPauseAll = { contentViewModel.pauseResumeMany(it.running, pause = true) },
-                            onWork = { backStack.add(ReaderRoute(it.id)) },
-                            onDownload = { onDownloadTap(it.id, it.title, it.download.sizeLabel, it.download is com.atharchive.feature.books.BookDownloadUi.Downloaded, (it.download as? com.atharchive.feature.books.BookDownloadUi.Downloading)?.transfer) },
-                            onSave = { contentViewModel.toggleFavourite(it.id) },
-                            onSettings = ::openSettings,
-                            onBack = ::goBack,
-                        )
-                    }
-                    else UnavailableRoute("العَلَم غير متاح", ::goBack) { contentViewModel.sync() }
-                }
-                entry<MutoonRoute> {
-                    val all = rememberWorks(null)
-                    val mutoon = remember(all) { all.filter { it.kind == "متن" || it.kind == "منظومة" } }
-                    val mutoonIds = remember(mutoon) { mutoon.map { it.id }.toSet() }
-                    val row by remember(mutoonIds) { contentViewModel.worksRow("كل المتون", mutoonIds) }.collectAsStateWithLifecycle(null)
-                    com.atharchive.feature.books.BooksScreen(
-                        state = com.atharchive.feature.books.BooksUiState(
-                            com.atharchive.data.arabicCount(mutoon.size, "المتون", "متن واحد", "متنين", "متون", "متنًا"), mutoon, booksState.loaded,
-                        ),
-                        onSettings = ::openSettings,
-                        onBookClick = { backStack.add(ReaderRoute(it.id)) },
-                        onDownloadClick = { onDownloadTap(it.id, it.title, it.download.sizeLabel, it.download is com.atharchive.feature.books.BookDownloadUi.Downloaded, (it.download as? com.atharchive.feature.books.BookDownloadUi.Downloading)?.transfer) },
-                        onSaveClick = { contentViewModel.toggleFavourite(it.id) },
-                        scrollToTopRequest = scrollToTopRequest,
-                        onBack = null,
-                        title = "المتون والمنظومات",
-                        keyPrefix = "mutoon",
-                        listHeader = {
-                            row?.takeIf { it.items.size > 1 }?.let { r ->
-                                com.atharchive.feature.downloads.BulkRow(r, 20.dp, { contentViewModel.downloadRemaining(r, it) }, { contentViewModel.pauseResumeMany(r.running, pause = true) })
-                                com.atharchive.ui.components.AtharRowDivider(Modifier.padding(horizontal = 20.dp), 0.7.dp, com.atharchive.ui.theme.AtharTheme.colors.divider.copy(alpha = 0.42f))
-                            }
-                        },
-                    )
-                }
-                entry<AppearanceRoute> {
-                    AppearanceScreen(
-                        themeMode = themeMode,
-                        onThemeModeChange = onThemeModeChange,
-                        style = style,
-                        onStyleChange = onStyleChange,
-                        accent = accent,
-                        onAccentChange = onAccentChange,
-                        readerSettings = readerSettings,
-                        onReaderSettingsChange = onReaderSettingsChange,
-                        startPlace = startPlace,
-                        onStartPlaceChange = onStartPlaceChange,
-                        bar = bar,
-                        onBarChange = onBarChange,
-                        onBack = ::goBack,
-                    )
-                }
-                entry<AdhkarRoute> {
-                    val favourites by contentViewModel.favouriteIds.collectAsStateWithLifecycle()
-                    val adhkar = remember(favourites, userAdhkarState) {
-                        val own = userAdhkarState.items.map { com.atharchive.feature.adhkar.DhikrUi(it.id, it.text, it.repeat, it.source, custom = true) }
-                        val inList = { list: String -> userAdhkarState.items.zip(own).filter { list in it.first.lists }.map { it.second } }
-                        AdhkarContent.copy(
-                            babs = AdhkarContent.babs + userAdhkarState.lists.map { com.atharchive.feature.adhkar.AdhkarBabUi(it.id, it.label) },
-                            entries = (AdhkarContent.entries.mapValues { (bab, list) -> list + inList(bab) } +
-                                userAdhkarState.lists.associate { it.id to inList(it.id) })
-                                .mapValues { (_, list) -> list.map { it.copy(saved = "dhikr:${it.id}" in favourites) } },
-                        )
-                    }
-                    AdhkarScreen(
-                        state = adhkar,
-                        onSettings = ::openSettings,
-                        onAdd = { list -> addDhikr("", "", setOf(list), actionAnchor.value) },
-                        onEdit = { dhikr -> userAdhkarState.items.firstOrNull { it.id == dhikr.id }?.let { editorAnchor = actionAnchor.value; editingDhikr = it } },
-                        onDeleteList = { id ->
-                            com.atharchive.data.AdhkarReminders.set(context, id, "", null)
-                            adhkarReminders = com.atharchive.data.AdhkarReminders.all(context)
-                            userAdhkar.deleteList(id)
-                        },
-                        reminders = adhkarReminders,
-                        onReminder = { id, label, minutes ->
-                            if (minutes != null && android.os.Build.VERSION.SDK_INT >= 33 &&
-                                androidx.core.content.ContextCompat.checkSelfPermission(context, android.Manifest.permission.POST_NOTIFICATIONS) !=
-                                android.content.pm.PackageManager.PERMISSION_GRANTED
-                            ) notificationPermission.launch(android.Manifest.permission.POST_NOTIFICATIONS)
-                            com.atharchive.data.AdhkarReminders.set(context, id, label, minutes)
-                            adhkarReminders = com.atharchive.data.AdhkarReminders.all(context)
-                            announce(if (minutes == null) "أُوقف التذكير" else "سيُذكّرك كل يوم")
-                        },
-                        openList = adhkarOpen,
-                        onOpened = { adhkarOpen = null },
-                        onCopy = { copyText(context, it.text); announce("نُسخ الذكر") },
-                        onSave = { contentViewModel.toggleFavourite("dhikr:${it.id}") },
-                        onBack = null,
-                        readerSettings = readerSettings,
-                    )
-                }
-                entry<DownloadsRoute> {
-                    LaunchedEffect(Unit) { contentViewModel.refreshCacheBytes() }
-                    val downloadItems by contentViewModel.downloads.collectAsStateWithLifecycle()
-                    val bulkRows by contentViewModel.bulkDownloads.collectAsStateWithLifecycle()
-                    DownloadsScreen(
-                        state = DownloadsUiState(
-                            transfers = downloadItems.filter { it.transfer != null },
-                            downloaded = downloadItems.filter { it.transfer == null },
-                            bulk = bulkRows,
-                            storage = StorageUi(
-                                pinnedCountLabel = com.atharchive.data.arabicCount(pinnedCount, "لا عناصر", "عنصر واحد", "عنصران", "عناصر", "عنصرًا"),
-                                cacheLabel = com.atharchive.data.byteSize(cacheBytes),
-                                budget = CacheBudget.fromBytes(cacheBudgetBytes),
-                                cacheFraction = if (cacheBudgetBytes <= 0 ||
-                                    cacheBudgetBytes == Long.MAX_VALUE
-                                ) {
-                                    0f
-                                } else {
-                                    (cacheBytes.toFloat() / cacheBudgetBytes).coerceIn(0f, 1f)
-                                },
-                            ),
-                        ),
-                        onBack = ::goBack,
-                        onBudgetChange = { contentViewModel.setCacheBudget(it.bytes) },
-                        onClearCache = {
-                            scope.launch {
-                                runCatching { contentViewModel.clearCache() }
-                                    .onSuccess { announce("مُسح المؤقّت وبقيت التنزيلات المثبّتة") }
-                                    .onFailure { announce("تعذّر مسح المؤقّت") }
-                            }
-                        },
-                        onDownloadAll = { row, mobileData -> contentViewModel.downloadRemaining(row, mobileData) },
-                        onPauseAll = { contentViewModel.pauseResumeMany(it.running, pause = true) },
-                        onManage = { backStack.add(DownloadsListRoute()) },
-                    )
-                }
-                entry<DownloadsListRoute> { route ->
-                    val downloadItems by contentViewModel.downloads.collectAsStateWithLifecycle()
-                    val state = remember(downloadItems) {
-                        DownloadsUiState(
-                            transfers = downloadItems.filter { it.transfer != null },
-                            downloaded = downloadItems.filter { it.transfer == null },
-                            storage = StorageUi("", "", CacheBudget.Gb2, 0f),
-                        )
-                    }
-                    DownloadsListScreen(
-                        targetId = route.targetId,
-                        state = state,
-                        onBack = ::goBack,
-                        onPauseResume = { contentViewModel.pauseResumeDownload(it.id) },
-                        onCancel = { contentViewModel.removeDownload(it.id) },
-                        onRemove = {
-                            // A finished download asks first; cancelling a running one loses nothing.
-                            if (it.transfer == null) pendingRemoval = DownloadRemoval(it.id, it.title, it.sizeLabel)
-                            else contentViewModel.removeDownload(it.id)
-                        },
-                        onRemoveMany = { items -> contentViewModel.removeDownloads(items.map { it.id }) },
-                        onSend = { items -> sendBooks(items.map { it.id }) },
-                    )
-                }
-                entry<SectionRoute> { route ->
-                    tabState.SaveableStateProvider(route.destination) {
-                    when (AtharDestination.fromRoute(route.destination)) {
-                        AtharDestination.Poetry -> PoetryScreen(
-                            state = contentViewModel.poetry.collectAsStateWithLifecycle().value,
-                            onSettings = ::openSettings,
-                            onPoemClick = { backStack.add(PoemReaderRoute(it.id)) },
-                            textSearch = remember { sectionSearch(com.atharchive.feature.search.SearchResultType.Poem) },
-                            onDownloadClick = { onDownloadTap(it.id, it.title, it.sizeLabel, it.downloaded, it.transfer) },
-                            onSaveClick = { contentViewModel.toggleFavourite(it.id) },
-                            scrollToTopRequest = scrollToTopRequest,
-                        )
-
-                        AtharDestination.Articles -> ArticlesScreen(
-                            state = contentViewModel.articles.collectAsStateWithLifecycle().value,
-                            onSettings = ::openSettings,
-                            onArticleClick = { backStack.add(ReaderRoute(it.id)) },
-                            onSaveClick = { contentViewModel.toggleFavourite(it.id) },
-                            onDownloadClick = { onDownloadTap(it.id, it.title, it.sizeLabel, it.downloaded, it.transfer) },
-                            scrollToTopRequest = scrollToTopRequest,
-                            textSearch = remember { sectionSearch(com.atharchive.feature.search.SearchResultType.Article) },
-                        )
-
-                        AtharDestination.Search -> SearchScreen(
-                            state = contentViewModel.search.collectAsStateWithLifecycle().value,
-                            onSettings = ::openSettings,
-                            onQueryChange = contentViewModel::setSearchQuery,
-                            onResultsDrawn = contentViewModel::reportSearchResultsDrawn,
-                            inputQuery = contentViewModel.searchQuery.collectAsStateWithLifecycle().value,
-                            onLoadMore = contentViewModel::loadMoreSearch,
-                            onFiltersChange = contentViewModel::setSearchFilters,
-                            loadPassage = contentViewModel::onlinePassage,
-                            onOpenResult = { hit ->
-                                contentViewModel.rememberCurrentSearch()
-                                openHit(hit, contentViewModel.searchQuery.value.trim())
-                            },
-                            onOpenDirectMatch = { match ->
-                                contentViewModel.rememberCurrentSearch()
-                                if (match.type == com.atharchive.feature.search.SearchResultType.Poem) {
-                                    backStack.add(PoemReaderRoute(match.id))
-                                } else {
-                                    backStack.add(ReaderRoute(match.id))
-                                }
-                            },
-                            onClearRecent = contentViewModel::clearRecentSearches,
-                            presets = contentViewModel.searchPresets.collectAsStateWithLifecycle().value,
-                            onSavePreset = contentViewModel::saveSearchPreset,
-                            onDeletePreset = contentViewModel::deleteSearchPreset,
-                        )
-
-                        AtharDestination.Kannashah -> KannashahScreen(
-                            state = contentViewModel.kannashahState.collectAsStateWithLifecycle().value,
-                            onSettings = ::openSettings,
-                            onCopy = {
-                                copyText(context, it.text)
-                                announce("نُسخ المقتطف")
-                            },
-                            onShare = {
-                                shareText(context, it.shareText())
-                            },
-                            onMore = { editorAnchor = actionAnchor.value; editingExcerpt = it },
-                            onDelete = { deletingExcerpt = it },
-                            focusId = kannashahFocus,
-                            onFocused = { kannashahFocus = null },
-                            onOpenSource = { excerpt ->
-                                if (excerpt.sourceColl == "poem") scope.launch {
-                                    try {
-                                        val ordinal = contentViewModel.savedPoemOrdinal(excerpt.entityId, excerpt.id)
-                                        backStack.add(PoemReaderRoute(excerpt.entityId, ordinal))
-                                    } catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled }
-                                    catch (_: Exception) { announce("تعذّر فتح مصدر البيت") }
-                                } else backStack.add(ReaderRoute(excerpt.entityId, targetOrdinal = excerpt.sourceOrdinal))
-                            },
-                        )
-
-                        // Books is the root entry, never pushed as a section; the rest open their own routes.
-                        else -> Unit
-                    }
-                }
-                }
+                readerEntries(app)
+                audioEntries(app)
+                libraryEntries(app)
+                adhkarEntries(app)
+                settingsEntries(app)
             },
         )
         }
@@ -1276,16 +729,16 @@ fun AtharApp(
     }
 }
 
-private data class DownloadRemoval(val id: String, val title: String, val sizeLabel: String)
+internal data class DownloadRemoval(val id: String, val title: String, val sizeLabel: String)
 
 /** A flow's first value, told apart from "nothing yet": [Emitted] wraps it so a null value still counts. */
-private class Emitted<T>(val value: T)
+internal class Emitted<T>(val value: T)
 
 /**
  * True once when [entityId]'s text is not the one last opened here, then the new one is
  * remembered. The first opening only remembers: there is nothing to compare it with.
  */
-private fun updatedSinceSeen(context: Context, entityId: String, version: String?): Boolean {
+internal fun updatedSinceSeen(context: Context, entityId: String, version: String?): Boolean {
     if (version == null) return false
     val prefs = context.getSharedPreferences("seen_versions", Context.MODE_PRIVATE)
     val seen = prefs.getString(entityId, null)
@@ -1294,13 +747,13 @@ private fun updatedSinceSeen(context: Context, entityId: String, version: String
 }
 
 @Composable
-private fun <T> collectEmitted(key: Any, flow: () -> kotlinx.coroutines.flow.Flow<T>): Emitted<T>? {
+internal fun <T> collectEmitted(key: Any, flow: () -> kotlinx.coroutines.flow.Flow<T>): Emitted<T>? {
     val wrapped = remember(key) { flow().map { Emitted(it) } }
     return wrapped.collectAsStateWithLifecycle(initialValue = null).value
 }
 
 @Composable
-private fun UnavailableRoute(title: String, onBack: () -> Unit, onRetry: () -> Unit) {
+internal fun UnavailableRoute(title: String, onBack: () -> Unit, onRetry: () -> Unit) {
     Column(Modifier.fillMaxSize().padding(24.dp)) {
         IconButton(onClick = onBack) { Icon(AtharIcons.Back, "رجوع") }
         Text(title)
@@ -1422,176 +875,6 @@ private fun MiniPlayer(
     }
 }
 
-@Composable
-private fun SettingsScreen(
-    cacheBytes: Long,
-    cacheBudgetBytes: Long,
-    pinnedCount: Int,
-    themeModeLabel: String,
-    onAppearance: () -> Unit,
-    onDownloads: () -> Unit,
-    onSync: () -> Unit,
-    syncLabel: String,
-    onExportUserData: () -> Unit,
-    onImportUserData: () -> Unit,
-    onReceiveBooks: () -> Unit,
-    onResetSettings: () -> Unit,
-    onBack: () -> Unit,
-) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(AtharTheme.colors.canvas)
-            .testTag("section_settings"),
-    ) {
-        AtharTopBar(
-            title = "الإعدادات",
-            onSettings = {},
-            showAppIcon = true,
-            onBack = onBack,
-        )
-        Column(modifier = Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(horizontal = 20.dp)) {
-            // One row: the page palette follows the app theme now, so appearance and
-            // reading are one subject rather than two dead entries.
-            SettingsRow(
-                AtharIcons.Palette,
-                "المظهر والقراءة",
-                themeModeLabel,
-                onClick = onAppearance,
-                tag = "settings_appearance",
-            )
-            // Content: what is on the phone, how it comes and goes.
-            SettingsGroupTitle("المحتوى")
-            // Storage lives on its own screen now: the budget, the transfers in flight
-            // and what is pinned are one subject, and a sheet could only hold the first.
-            SettingsRow(
-                AtharIcons.Download,
-                "التنزيلات والتخزين",
-                "المحفوظ: ${arabicDigits(pinnedCount)} · المؤقّت: ${com.atharchive.data.byteSize(cacheBytes)} · الحد: ${cacheBudgetLabel(cacheBudgetBytes)}",
-                onClick = onDownloads,
-            )
-            HorizontalDivider(color = AtharTheme.colors.divider)
-            SettingsRow(AtharIcons.Repeat, "تحديث المحتوى", syncLabel, onClick = onSync, tag = "settings_sync_content")
-            HorizontalDivider(color = AtharTheme.colors.divider)
-            SettingsRow(
-                AtharIcons.Download,
-                "استقبال كتب",
-                "من ملف أرسله جهاز آخر (مشاركة سريعة أو بلوتوث)، بلا إنترنت",
-                onClick = onReceiveBooks,
-                tag = "settings_receive_books",
-            )
-            SettingsGroupTitle("بياناتي")
-            // Export and import are one subject: one row, its two ways in a small popup.
-            Box {
-                var open by remember { mutableStateOf(false) }
-                SettingsRow(
-                    AtharIcons.Share,
-                    "تصدير واستيراد",
-                    "المقتطفات ومواضع القراءة والمفضّلة، في ملف",
-                    onClick = { open = true },
-                    tag = "settings_user_data",
-                )
-                AtharMenu(expanded = open, onDismiss = { open = false }, width = 260.dp) {
-                    AtharMenuItem("تصدير بياناتي", icon = AtharIcons.Share, onClick = { open = false; onExportUserData() }, modifier = Modifier.testTag("settings_export_user_data"))
-                    AtharMenuItem("استيراد بياناتي", icon = AtharIcons.Download, subtitle = "يدمج الملف ويحافظ على التعديلات المحلية الأحدث",
-                        onClick = { open = false; onImportUserData() }, modifier = Modifier.testTag("settings_import_user_data"))
-                }
-            }
-            SettingsGroupTitle("")
-            Box {
-                var confirm by remember { mutableStateOf(false) }
-                SettingsRow(
-                    AtharIcons.Repeat,
-                    "إعادة الإعدادات الافتراضية",
-                    "المظهر والقراءة والشريط السفلي وترتيب القوائم؛ لا تُمسّ المقتطفات والتنزيلات والأذكار",
-                    onClick = { confirm = true },
-                    tag = "settings_reset",
-                )
-                AtharMenu(expanded = confirm, onDismiss = { confirm = false }, width = 260.dp) {
-                    Text("إعادة كل الإعدادات إلى الافتراضي؟", Modifier.padding(14.dp))
-                    AtharMenuItem("إعادة", destructive = true, onClick = { confirm = false; onResetSettings() })
-                    AtharMenuItem("إلغاء", onClick = { confirm = false })
-                }
-            }
-            HorizontalDivider(color = AtharTheme.colors.divider)
-            // Legal contact is an app-wide matter, not a reading preference.
-            val context = androidx.compose.ui.platform.LocalContext.current
-            SettingsRow(
-                AtharIcons.Info,
-                "حقوق النشر",
-                com.atharchive.data.CopyrightNotice + "\n" + com.atharchive.data.CopyrightEmail,
-                onClick = { com.atharchive.data.emailCopyright(context) },
-                tag = "settings_copyright",
-            )
-        }
-    }
-}
-
-/** A quiet label over a group of settings rows; blank for a plain gap. */
-@Composable
-private fun SettingsGroupTitle(title: String) {
-    Text(title, Modifier.padding(top = 22.dp, bottom = 4.dp), color = AtharTheme.colors.secondaryText,
-        fontSize = com.atharchive.ui.theme.AtharTextSize.Small, fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold)
-}
-
-@Composable
-private fun SettingsRow(
-    icon: ImageVector,
-    title: String,
-    subtitle: String? = null,
-    onClick: (() -> Unit)? = null,
-    tag: String? = null,
-) {
-    Surface(
-        modifier = Modifier
-            .fillMaxWidth()
-            .then(if (tag == null) Modifier else Modifier.testTag(tag))
-            .then(if (onClick == null) Modifier else Modifier.clickable(onClick = onClick)),
-        color = AtharTheme.colors.canvas,
-        // canvas is not a scheme colour, so without this the content falls back to black (unreadable in dark).
-        contentColor = MaterialTheme.colorScheme.onBackground,
-    ) {
-        Row(
-            modifier = Modifier.padding(vertical = 15.dp, horizontal = 2.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(14.dp),
-        ) {
-            Icon(icon, contentDescription = null, modifier = Modifier.size(22.dp))
-            Column(modifier = Modifier.weight(1f)) {
-                Text(title, style = MaterialTheme.typography.bodyLarge)
-                subtitle?.let {
-                    Text(
-                        text = it,
-                        color = AtharTheme.colors.secondaryText,
-                        style = MaterialTheme.typography.bodySmall,
-                    )
-                }
-            }
-            Icon(
-                AtharIcons.Forward,
-                contentDescription = null,
-                modifier = Modifier.size(18.dp),
-                tint = AtharTheme.colors.secondaryText,
-            )
-        }
-    }
-}
-
-
-
-private val CacheBudgetOptions = listOf(
-    500L * 1024 * 1024,
-    2L * 1024 * 1024 * 1024,
-    5L * 1024 * 1024 * 1024,
-    10L * 1024 * 1024 * 1024,
-    20L * 1024 * 1024 * 1024,
-    Long.MAX_VALUE,
-)
-
-private fun cacheBudgetLabel(bytes: Long): String =
-    if (bytes == Long.MAX_VALUE) "بلا حد" else com.atharchive.data.byteSize(bytes)
-
-/** «النص» then «— الكتاب، المؤلف، ج٢، ص٧٨» and the link: what «نسخ مع التذييل» copies. */
 internal fun citedText(
     text: String, title: String, author: String, volume: Int?, page: Int?, url: String,
     volumeUnit: String? = null,
@@ -1610,12 +893,12 @@ internal fun citedText(
     return if (tail.isEmpty()) text else "$text\n\n$tail"
 }
 
-private fun copyText(context: Context, text: String) {
+internal fun copyText(context: Context, text: String) {
     val clipboard = context.getSystemService(ClipboardManager::class.java)
     clipboard.setPrimaryClip(ClipData.newPlainText("Athar", text))
 }
 
-private fun shareText(context: Context, text: String) {
+internal fun shareText(context: Context, text: String) {
     context.startActivity(
         Intent.createChooser(
             Intent(Intent.ACTION_SEND).apply {
@@ -1627,7 +910,7 @@ private fun shareText(context: Context, text: String) {
     )
 }
 
-private fun ExcerptUi.shareText(): String = buildString {
+internal fun ExcerptUi.shareText(): String = buildString {
     append(text)
     append("\n\n— ")
     append(sourceTitle)
