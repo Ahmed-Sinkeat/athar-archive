@@ -254,7 +254,7 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
 - [x] 8.9 (2026-11-10, local: a page answers `next` = tier.skip and `after=` resumes there, rebuilding only the title-tier exclusions; the site and the app send it and fall back to `offset` on an old Worker; a test walks 100 rows both ways and gets the same rows once each; the in-book panel shows the site's first page as it lands; Worker and site deploy held) Page 2 and later read on from where page 1 stopped instead of rerunning the tiers; in-book
       search shows the first page at once. (#77)
 - [ ] 8.10 The 15 large books get real chapters (part of 9.4). (#78)
-- [ ] 8.11 Offline ranking after 6.9 decides the phone index format; a `detail=full` index costs
+- [~] 8.11 (2026-11-10, measured: every 50th book by size, 50 books, 181k blocks, 27.1M letters; the phone's `block_fts` as built today (detail=none) 9.4 MB, with word positions (detail=full, needed for phrase and NEAR offline) 19.2 MB: 2.0× the index, +9.8 MB ≈ +8% on the 116 MB that 6.9 leaves for the same sample; switching is the owner's call, then 8.3's Kotlin tier) Offline ranking after 6.9 decides the phone index format; a `detail=full` index costs
       space, so measure it on the same 50 books first. (#79)
 
 ## Phase 9 — works, editions, pages
