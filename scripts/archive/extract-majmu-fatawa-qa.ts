@@ -23,7 +23,7 @@
 
 import * as fs from "fs";
 import * as path from "path";
-import { slugify } from "./lib/slugify";
+import { slugify } from "../lib/slugify";
 
 const SRC = "src/content/book-lg/majmu-al-fatawa.md";
 const OUT_DIR = "src/content/question";

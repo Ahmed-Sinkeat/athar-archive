@@ -3,7 +3,7 @@
 // what gets marked. Markup only: scripts/format-verify.ts proves no text changed.
 //   tsx scripts/wrap-verses.ts src/content/book/<id>.md [...]
 import { readFileSync, writeFileSync } from "node:fs";
-import { verseHalves } from "../src/lib/app-v2/parser.js";
+import { verseHalves } from "../../src/lib/app-v2/parser.js";
 
 const isVerse = (paragraph: string) => {
   const lines = paragraph.split("\n");

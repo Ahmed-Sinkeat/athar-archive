@@ -108,7 +108,7 @@ Rule for every step: fix the cause, not the symptom. No shortcut comments, no "f
 - [ ] 5.2 Per-book hashing so `app:gen` and uploads only touch changed books. (#25)
 - [ ] 5.3 One publish step writing and verifying both the site's R2 and the app's R2. (#26)
 - [x] 5.4 (answered by finding 66: served from R2, no Worker in the path) Check how app downloads are served; if through a Worker, serve from R2 directly. (#41)
-- [ ] 5.5 One-off scripts moved to `scripts/archive/`; `import:epub` removed. (#24)
+- [x] 5.5 (2026-11-11: 10 scripts nothing imported moved to scripts/archive/, import:epub removed from package.json) One-off scripts moved to `scripts/archive/`; `import:epub` removed. (#24)
 - [ ] 5.6 Content out of the git repo (P5); `git gc` the leftover temp packs; build outputs cleaned after publish. (#23, #43)
 - [ ] 5.7 Encrypted offline backup of `~/.config/athar` keys and a written key-rotation procedure. (#42)
 

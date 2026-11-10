@@ -36,7 +36,7 @@ import {
   existsSync, mkdirSync, readdirSync, statSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
-import { normalizeArabic } from "../src/lib/ar-normalize.js";
+import { normalizeArabic } from "../../src/lib/ar-normalize.js";
 import { join, dirname, basename } from "node:path";
 
 // ─────────────────────────────────────────────

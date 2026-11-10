@@ -5,7 +5,7 @@
 // title from the first real sentence of the السؤال body instead.
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { y } from "./lib/slugify.ts";
+import { y } from "../lib/slugify.ts";
 
 const DIR = "src/content/question";
 const CHROME_LINE = /^\s*(\[.*\]|https?:\/\/\S+|السؤال\s*:?\s*$|-?\s*مقدمة المجلس.*|السؤال\s+(الأول|الثاني|الثالث|الرابع|الخامس|السادس|السابع|الثامن|التاسع|العاشر)\s*:?\s*)\s*$/;
