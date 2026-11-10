@@ -256,6 +256,12 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
 - [ ] 8.10 The 15 large books get real chapters (part of 9.4). (#78)
 - [x] 8.11 (2026-11-10, owner chose word positions; commit 6687bb29: new installs and the bundled catalog get detail=full, old installs copy their index in the background in 2k-block chunks and swap; measured: every 50th book by size, 50 books, 181k blocks, 27.1M letters; the phone's `block_fts` as built today (detail=none) 9.4 MB, with word positions (detail=full, needed for phrase and NEAR offline) 19.2 MB: 2.0× the index, +9.8 MB ≈ +8% on the 116 MB that 6.9 leaves for the same sample; switching is the owner's call, then 8.3's Kotlin tier) Offline ranking after 6.9 decides the phone index format; a `detail=full` index costs
       space, so measure it on the same 50 books first. (#79)
+- [ ] 8.12 (owner, phone, 2026-11-11) Opening a hit: the tap still jumps and waits, and back lands at the top of
+      the results instead of where the reader was. Keep the list's scroll on return; the wait on online hits is
+      the walk that 8.1's `pg` removes (held deploy). Phone log: each request 250–620 ms, Worker 200–480 ms.
+- [ ] 8.13 (owner) «مواضع أخرى من الكتاب» do not read as the same book: show them under their book's hit.
+- [ ] 8.14 (owner) The counts (how many works mention it, how many times) come late and pop in: they are a
+      separate request after the results; show them with the results or keep their space from the start.
 
 ## Phase 9 — works, editions, pages
 
@@ -292,6 +298,11 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
 - [ ] 12.3 Poem titles: every معلقة shows and its title carries «معلقة».
 - [ ] 12.4 Poetry by era (جاهلي، صدر الإسلام، أموي، عباسي…) instead of centuries: a filter that shows
       only the poets of one era and their poems.
+- [ ] 12.5 (owner, 2026-11-11) شرح ابن تيمية على عمدة الفقه is split wrongly: five part-books
+      (`shrh-amda-al-fqh-abn-tymya-*`) beside a full copy (`…-t-ataat-al-alm`); decide one work with its parts
+      (with 9.1/9.2).
+- [ ] 12.6 (owner) A «يحتاج مراجعة» notice on lessons that need review, first case الدرس ٣٢ of عمدة الفقه
+      شرح الخليفي (`umdat-al-fiqh-sharh-al-khalifi-taharah`).
 
 ## Phase 11 — later, by decision
 
