@@ -76,7 +76,7 @@ class ContentTransferRunner(
     private val mutationMutex: ContentWriteLock = ContentWriteLock(),
     private val nowMillis: () -> Long = System::currentTimeMillis,
 ) {
-    private val transferLocks = java.util.concurrent.ConcurrentHashMap<String, Mutex>()
+    private val transferLocks = KeyedLock<String>()
 
     suspend fun requestPin(entityId: String) = mutationMutex.withLock {
         val entry = requireNotNull(contentDatabase.catalogDao().entity(entityId)) {
@@ -110,7 +110,7 @@ class ContentTransferRunner(
     }
 
     private suspend fun removeUnpinnedFiles(entityId: String) {
-        transferLocks.getOrPut(entityId) { Mutex() }.withLock {
+        transferLocks.withLock(entityId) {
             val removed = mutationMutex.withLock {
                 // Pinned again while this waited: the new download owns the files now.
                 if (userDatabase.userDataDao().pinnedDownload(entityId) != null) return@withLock false
@@ -133,7 +133,7 @@ class ContentTransferRunner(
     suspend fun downloadPinned(
         entityId: String,
         onProgress: (downloadedBytes: Long, totalBytes: Long) -> Unit = { _, _ -> },
-    ): ContentTransferResult = transferLocks.getOrPut(entityId) { Mutex() }.withLock {
+    ): ContentTransferResult = transferLocks.withLock(entityId) {
         val dao = contentDatabase.importDao()
         val entity = requireNotNull(dao.entity(entityId)) { "catalog entity $entityId is missing" }
         val entry = entity.toCatalogEntry()

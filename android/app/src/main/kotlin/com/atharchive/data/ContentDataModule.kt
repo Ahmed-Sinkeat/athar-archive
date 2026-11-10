@@ -492,10 +492,10 @@ class ContentAccess @Inject constructor(
 
     // One open per work at a time: opening the reader asks for the same first frame twice
     // (route + reader window). The second caller waits, then finds the frame already cached.
-    private val openLocks = java.util.concurrent.ConcurrentHashMap<String, kotlinx.coroutines.sync.Mutex>()
+    private val openLocks = com.atharchive.core.data.repository.KeyedLock<String>()
 
     suspend fun open(entityId: String, ordinal: Int): ReadThroughResult? =
-        openLocks.getOrPut(entityId) { kotlinx.coroutines.sync.Mutex() }.withLock { openLocked(entityId, ordinal) }
+        openLocks.withLock(entityId) { openLocked(entityId, ordinal) }
 
     private suspend fun openLocked(entityId: String, ordinal: Int): ReadThroughResult? {
         val source = repository ?: return null
