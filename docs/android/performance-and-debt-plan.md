@@ -238,10 +238,10 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
       `content-ids`); the app opens that frame directly. `locateOnline`'s walk goes. (#52)
 - [ ] 8.2 Full v2 reindex (2,500-char passages, `raw`, `prior`) now that the account is Workers Paid:
       check `size_after` against the 10 GB cap first, raise `SEARCH_ROW_BUDGET`, swap. (#53, #55)
-- [ ] 8.3 A proximity tier between «exact phrase» and «every word» (FTS5 `NEAR`), same tier in the
+- [~] 8.3 (2026-11-10: NEAR tier in `search-rank.ts` + test, committed, NOT deployed: wrangler deploy was blocked by the permission system; the Kotlin side has no NEAR, the phone index is detail=none) A proximity tier between «exact phrase» and «every word» (FTS5 `NEAR`), same tier in the
       Kotlin search; golden cases shared by both (4.9). (#53)
 - [ ] 8.4 One result per work per passage: editions folded under their default (needs 9.1). (#54)
-- [ ] 8.5 Result card redesign: book and author, the passage with the words marked, volume and page.
+- [x] 8.5 (2026-11-10: flat rows, «title — author» on one line, thin rule between results; compiled, not checked on the phone) Result card redesign: book and author, the passage with the words marked, volume and page.
       Cleaner, fewer elements. Mock first, owner picks.
 - [ ] 8.6 Time each stage of one search (DNS, Worker, D1, draw) on Sudani mobile data before
       touching speed; the Worker already logs D1 time.
@@ -260,7 +260,7 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
 
 - [ ] 9.1 A `work` id in frontmatter, independent of the slug; `edition_of` resolved through it; the
       audit refuses a new book whose work already exists without a link. (#56)
-- [ ] 9.2 Round-2 duplicate decisions (`docs/editions-and-duplicates-2026-11-07.md`), مجموع الفتاوى first. (#54, #56)
+- [~] 9.2 (2026-11-10: مجموع الفتاوى done, `mjmwa-al-ftawa` is `edition_of: majmu-al-fatawa`; the other groups wait for a per-book look at which copy is better) Round-2 duplicate decisions (`docs/editions-and-duplicates-2026-11-07.md`), مجموع الفتاوى first. (#54, #56)
 - [x] 9.3 (2026-11-10, checked on the phone: first page of فضائل مكة now shows ١١, the marker that ends it; volume shown when the book has volumes; no unit test, it lives in the composable) Folio shows the page being read, with its volume; one unit test on a two-page fixture. (#50)
 - [ ] 9.4 Audit lists books with no page markers and repeated markers; decide per book: re-import
       through Athar-Engine, or hide page UI for it. (#51)
@@ -277,9 +277,9 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
 - [ ] 10.4 Selection box keeps the one-word size however long the selection.
 - [ ] 10.5 Verse inside books drawn like the poem page.
 - [ ] 10.6 Poem commentary redesigned from scratch for the phone (no side column). Mock first.
-- [ ] 10.7 Coloured start screen: verse takes a colour that reads on each background, not white.
-- [ ] 10.8 Pages opened from ⋮ show where you are (title, and the entry marked in the menu).
-- [ ] 10.9 «أبلغ عن خطأ» in the selection menu: opens the mail app with book, place and the selected
+- [x] 10.7 (2026-11-10: the splash, not a verse: neutral ink mark on the page colour on Android 12+, so every launcher colour fits; checked on the phone) Coloured start screen: verse takes a colour that reads on each background, not white.
+- [x] 10.8 (2026-11-10: the open page is ticked in the ⋮ menu; compiled, not checked on the phone) Pages opened from ⋮ show where you are (title, and the entry marked in the menu).
+- [x] 10.9 (2026-11-10: in the reader ⋮ menu, mail to admin@arthurarchive.com with book and place; compiled, not checked on the phone) «أبلغ عن خطأ» in the selection menu: opens the mail app with book, place and the selected
       text filled in. No server.
 
 ## Phase 11 — later, by decision
