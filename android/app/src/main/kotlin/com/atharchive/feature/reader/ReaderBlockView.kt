@@ -258,9 +258,20 @@ internal fun BlockView(
                     .testTag("block_${block.id}"),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
+                val verse = marked(listOfNotNull(block.sadr, block.ajuz).joinToString("\n"), searchMatch)
+                // صدر at the reading start, عجز at the far end: the two halves are staggered, as on the poem page.
+                // The text is unchanged (a paragraph style only), so selection and search offsets still map.
+                val staggered = remember(verse) {
+                    val nl = verse.text.indexOf('\n')
+                    if (nl < 0) verse else androidx.compose.ui.text.buildAnnotatedString {
+                        append(verse)
+                        addStyle(androidx.compose.ui.text.ParagraphStyle(textAlign = TextAlign.Start), 0, nl + 1)
+                        addStyle(androidx.compose.ui.text.ParagraphStyle(textAlign = TextAlign.End), nl + 1, verse.text.length)
+                    }
+                }
                 Text(
-                    text = marked(listOfNotNull(block.sadr, block.ajuz).joinToString("\n"), searchMatch),
-                    modifier = selectable.fillMaxWidth(), color = colors.poetry,
+                    text = staggered,
+                    modifier = selectable.fillMaxWidth().padding(horizontal = 12.dp), color = colors.poetry,
                     onTextLayout = ::onLayout,
                     fontFamily = colors.poetryFont ?: if (settings.font == com.atharchive.ui.theme.ReaderFont.Kitab) AtharEditorialFontFamily else com.atharchive.ui.theme.LocalReaderFont.current,
                     fontSize = body,
