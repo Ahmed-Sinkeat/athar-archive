@@ -76,7 +76,7 @@ Rule for every step: fix the cause, not the symptom. No shortcut comments, no "f
 
 ## Phase 3 — structure
 
-- [~] 3.1 (2026-11-10, commit 327fc145: downloads moved to `DownloadsModel` (built on the ViewModel's scope; the library lists still lay its state over their rows), 1,960 → 1,650 lines, no behaviour change, compiled and unit-tested, not run on the phone; next: search (tangled with the reader's frame walk), then reader, audio) One ViewModel per feature, split out of `AtharContentViewModel` one feature at a time. (#2)
+- [~] 3.1 (2026-11-10, commit 327fc145: downloads moved to `DownloadsModel` (built on the ViewModel's scope; the library lists still lay its state over their rows), 1,960 → 1,650 lines; commit 5cf67864: search moved to `SearchModel` (it never used the reader's frame walk after all), 1,650 → 1,160 lines; no behaviour change, compiled and unit-tested, not run on the phone; next: reader, then audio) One ViewModel per feature, split out of `AtharContentViewModel` one feature at a time. (#2)
 - [ ] 3.2 `AtharApp.kt` split by feature; each feature owns its route entry. (#3)
 - [ ] 3.3 Feature Gradle modules; drop `:m0` if nothing uses it. (#16, #17)
 - [x] 3.4 (2026-11-10, commit 151df9a0: `KeyedLock` drops a book's lock once nobody holds or waits; transfer and open locks use it; test) Keyed mutex that releases unused locks. (#19)
