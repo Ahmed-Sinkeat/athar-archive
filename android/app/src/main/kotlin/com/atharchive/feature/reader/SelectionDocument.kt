@@ -67,7 +67,13 @@ internal data class SelectionDocument(
             }
         }
         if (selectedText.isEmpty()) return null
-        return ReaderSelection(start, end, selectedText)
+        val verses = if (picked.any { it.block !is ReaderBlock.Verse }) emptyList() else picked.mapIndexed { index, segment ->
+            val from = if (index == 0) start.offset else 0
+            val to = if (index == picked.lastIndex) end.offset else segment.value.source.length
+            val halves = segment.value.source.substring(from, to).split("\n", limit = 2).map(String::trim)
+            halves[0] to halves.getOrNull(1)?.ifBlank { null }
+        }.filter { it.first.isNotBlank() || it.second != null }
+        return ReaderSelection(start, end, selectedText, verses)
     }
 
     companion object {

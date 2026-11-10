@@ -140,6 +140,8 @@ data class ReaderSelection(
     val start: ReaderSelectionEndpoint,
     val end: ReaderSelectionEndpoint,
     val quotedText: String,
+    /** (صدر, عجز) when only verses are selected, for the staggered share image; empty otherwise. */
+    val verses: List<Pair<String, String?>> = emptyList(),
 )
 
 data class InBookHit(

@@ -669,6 +669,13 @@ fun ReaderScreen(
                 onCopyCited = onCopyCited?.let { copy -> { act("نُسخ مع التذييل") { copy(it) } } },
                 onShare = { shareMenu = true },
                 onHighlight = { act("حُفظ في الكناشة") { onSaveSelection(it) } },
+                onReport = {
+                    val place = listOfNotNull(
+                        chapterTitle.takeIf { it.isNotBlank() },
+                        folio?.let { (volume, page) -> listOfNotNull(volume?.let { volumeLabel(it, state.volumeUnit) }, "ص $page").joinToString(" · ") },
+                    ).joinToString(" — ")
+                    act("") { com.atharchive.data.emailErrorReport(reportContext, state.bookTitle, place, it.quotedText) }
+                },
                 // One word is no dhikr: «إلى الأذكار» shows once the selection holds more.
                 onAddDhikr = LocalAddToAdhkar.current?.takeIf { selection.singleWord() == null }?.let { add ->
                     { act("") { add(it.quotedText, listOf(state.bookTitle, state.author).filter(String::isNotBlank).joinToString(" — ")) } }
@@ -797,13 +804,6 @@ fun ReaderScreen(
                 },
                 onMore = { introOpen = true },
                 onOpenAuthor = onOpenAuthor,
-                onReport = {
-                    val place = listOfNotNull(
-                        chapterTitle.takeIf { it.isNotBlank() },
-                        folio?.let { (volume, page) -> listOfNotNull(volume?.let { volumeLabel(it, state.volumeUnit) }, "ص $page").joinToString(" · ") },
-                    ).joinToString(" — ")
-                    com.atharchive.data.emailErrorReport(reportContext, state.bookTitle, place)
-                },
                 onDownload = onDownloadForSearch.takeUnless { bookSaved },
                 downloadTransfer = downloadTransfer,
                 onShare = onShareBook,
@@ -937,8 +937,6 @@ private fun ReaderTopBar(
     onDownload: (() -> Unit)? = null,
     downloadTransfer: com.atharchive.feature.downloads.TransferUi? = null,
     onShare: (() -> Unit)? = null,
-    /** «أبلغ عن خطأ»: a mail to the archive with the book and place. */
-    onReport: (() -> Unit)? = null,
 ) {
   Column {
     Row(
@@ -1000,7 +998,6 @@ private fun ReaderTopBar(
                 if (downloadTransfer != null) AtharMenuItem(downloadLabel(downloadTransfer), icon = AtharIcons.Download, onClick = { menu = false })
                 else if (onDownload != null) AtharMenuItem("تحميل الكتاب كاملًا", icon = AtharIcons.Download, onClick = { menu = false; onDownload() })
                 if (onShare != null) AtharMenuItem("مشاركة الكتاب", icon = AtharIcons.Share, onClick = { menu = false; onShare() })
-                if (onReport != null) AtharMenuItem("أبلغ عن خطأ", icon = AtharIcons.Info, onClick = { menu = false; onReport() })
             }
             AtharMenu(expanded = editionsOpen, onDismiss = { editionsOpen = false }, colors = com.atharchive.ui.components.AtharMenuColors(colors.page, colors.text, colors.secondary, colors.accent)) {
                 editions.forEach { edition ->
@@ -1303,6 +1300,8 @@ internal fun SelectionToolbar(
     onAddDhikr: (() -> Unit)? = null,
     /** «معنى»; non-null only while one word is selected. */
     onMeaning: (() -> Unit)? = null,
+    /** «أبلغ عن خطأ»: a mail with the book, place and the selected text; null hides it. */
+    onReport: (() -> Unit)? = null,
     /** The copy icon is a ✓ for a moment after copying. */
     copied: Boolean = false,
     /** The نص/صورة choice, anchored to the share button itself. */
@@ -1337,6 +1336,10 @@ internal fun SelectionToolbar(
             ToolbarSeparator(colors)
             // Icon only: five labels overflow a 360dp phone.
             SelectionAction(AtharIcons.Adhkar, "", colors, false, "reader_sel_dhikr", onAddDhikr, "إلى الأذكار")
+        }
+        if (onReport != null) {
+            ToolbarSeparator(colors)
+            SelectionAction(AtharIcons.Info, "", colors, false, "reader_sel_report", onReport, "أبلغ عن خطأ")
         }
     }
 }

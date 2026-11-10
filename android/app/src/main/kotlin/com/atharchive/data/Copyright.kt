@@ -19,10 +19,10 @@ fun emailCopyright(context: Context) {
 /** The link a copy or share carries: the app on Google Play, not the website. */
 const val PlayStoreUrl = "https://play.google.com/store/apps/details?id=com.atharchive"
 
-/** «أبلغ عن خطأ»: opens the mail app with the book and the place being read; nothing happens without one installed. */
-fun emailErrorReport(context: Context, book: String, place: String) {
+/** «أبلغ عن خطأ»: opens the mail app with the book, the place and the selected text; nothing happens without one installed. */
+fun emailErrorReport(context: Context, book: String, place: String, selected: String) {
     val intent = Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:$CopyrightEmail"))
         .putExtra(Intent.EXTRA_SUBJECT, "خطأ في كتاب: $book")
-        .putExtra(Intent.EXTRA_TEXT, "الكتاب: $book\nالموضع: $place\n\nالخطأ:\n")
+        .putExtra(Intent.EXTRA_TEXT, "الكتاب: $book\nالموضع: $place\nالنص: «$selected»\n\nالخطأ:\n")
     runCatching { context.startActivity(intent) }
 }

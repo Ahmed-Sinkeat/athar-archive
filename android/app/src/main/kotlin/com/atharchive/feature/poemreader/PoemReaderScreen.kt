@@ -145,6 +145,8 @@ fun PoemReaderScreen(
 
     var panelMode by remember { mutableStateOf<PanelMode?>(null) }
     var sharhVerse by remember { mutableStateOf<VerseUi?>(null) }
+    // The verse whose شرح is open in the bottom sheet (a tap beside the verse).
+    var sheetVerse by remember { mutableStateOf<VerseUi?>(null) }
     var query by remember { mutableStateOf("") }
     var toast by remember { mutableStateOf<String?>(null) }
     var returnTo by remember { mutableStateOf<Pair<Int, Int>?>(null) }
@@ -332,6 +334,7 @@ fun PoemReaderScreen(
                                 marks = if (verse.id == matchVerse?.id) matchWords else emptyList(),
                                 onTapText = toggleBars,
                                 onSharh = { openSharh(verse) },
+                                onSharhSheet = { sheetVerse = verse },
                                 onNote = { onVerseNote(verse.ordinal) },
                                 onKannashah = { onVerseInKannashah(verse.ordinal) },
                                 onSave = {
@@ -376,6 +379,12 @@ fun PoemReaderScreen(
                             toast = "نُسخ مع التذييل"; clearSelection()
                         },
                         onShare = { shareMenu = true },
+                        onReport = {
+                            val verses = chosen()
+                            val place = if (verses.size == 1) "البيت ${arabicDigits(verses.first().number)}"
+                                else "الأبيات ${arabicDigits(verses.first().number)}–${arabicDigits(verses.last().number)}"
+                            com.atharchive.data.emailErrorReport(context, state.title, place, text()); clearSelection()
+                        },
                         onAddDhikr = com.atharchive.feature.reader.LocalAddToAdhkar.current?.let { add ->
                             { add(text(), listOf(state.title, state.poet).filter(String::isNotBlank).joinToString(" — ")); clearSelection() }
                         },
@@ -400,7 +409,7 @@ fun PoemReaderScreen(
                             shareMenu = false
                             val verses = chosen()
                             com.atharchive.ui.shareQuoteImage(context, text(), com.atharchive.ui.citedText(text(), state.title, state.poet, null, null, state.sourceUrl,
-                                verses = verses.first().number..verses.last().number), colors)
+                                verses = verses.first().number..verses.last().number), colors, verses.map { it.sadr to it.ajz.ifBlank { null } })
                             clearSelection()
                         })
                     }
@@ -447,6 +456,10 @@ fun PoemReaderScreen(
                         onDismiss = { panelMode = null },
                     )
                     }
+                }
+
+                sheetVerse?.let { verse ->
+                    VerseSharhSheet(verse, colors, onAll = { sheetVerse = null; openSharh(verse) }, onDismiss = { sheetVerse = null })
                 }
 
                 returnTo?.let { (item, offset) ->
@@ -643,6 +656,8 @@ private fun VerseRow(
     marks: List<String> = emptyList(),
     onTapText: () -> Unit,
     onSharh: () -> Unit,
+    /** A tap on the شرح rule beside the verse: the شرح in a bottom sheet. */
+    onSharhSheet: () -> Unit,
     onNote: () -> Unit,
     onKannashah: () -> Unit,
     onSave: () -> Unit,
@@ -690,14 +705,14 @@ private fun VerseRow(
     }
         // The outer margin carries the marks — a short rule for شرح, the bookmark — in space the
         // margin already has, so a verse with commentary lines up with one without. A tap on
-        // the rule opens the شرح; copy and save are the long-press selection bar's.
+        // the rule opens the شرح in a bottom sheet; copy and save are the long-press selection bar's.
         if (verse.commentary.isNotEmpty() || bookmarked) Row(Modifier.matchParentSize()) {
             Column(
                 Modifier
                     .width(settings.margin.dp.coerceAtLeast(14.dp))
                     .fillMaxHeight()
                     .then(if (verse.commentary.isEmpty()) Modifier else Modifier
-                        .clickable(role = Role.Button, onClickLabel = "شرح البيت", onClick = onSharh)
+                        .clickable(role = Role.Button, onClickLabel = "شرح البيت", onClick = onSharhSheet)
                         .semantics { contentDescription = "للبيت ${arabicDigits(verse.number)} شرح" })
                     .testTag("verse_indicator_${verse.id}"),
                 horizontalAlignment = Alignment.CenterHorizontally,

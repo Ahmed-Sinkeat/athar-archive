@@ -19,9 +19,16 @@ private const val ImageTextLimit = 900
 
 /**
  * «مشاركة صورة»: the passage on a page-coloured card with its source line under it, as a PNG,
- * and the cited text beside it for apps that take both.
+ * and the cited text beside it for apps that take both. [verses] is (صدر, عجز) per verse: drawn
+ * staggered like the poem page, صدر at the start and عجز at the far end, instead of [text].
  */
-internal fun shareQuoteImage(context: Context, text: String, citedText: String, colors: com.atharchive.feature.reader.ReaderColors? = null) {
+internal fun shareQuoteImage(
+    context: Context,
+    text: String,
+    citedText: String,
+    colors: com.atharchive.feature.reader.ReaderColors? = null,
+    verses: List<Pair<String, String?>> = emptyList(),
+) {
     // The «— الكتاب، المؤلف، ص…» line of the cited text, without its link.
     val source = citedText.removePrefix(text).lines().map(String::trim).filter { it.isNotEmpty() && !it.startsWith("http") }.joinToString("\n")
     val width = 1080
@@ -43,23 +50,34 @@ internal fun shareQuoteImage(context: Context, text: String, citedText: String, 
         textSize = 32f
         color = muted
     }
-    fun layout(s: String, paint: TextPaint) = StaticLayout.Builder.obtain(s, 0, s.length, paint, width - 2 * margin)
-        .setAlignment(Layout.Alignment.ALIGN_NORMAL)
+    fun layout(s: String, paint: TextPaint, align: Layout.Alignment = Layout.Alignment.ALIGN_NORMAL) = StaticLayout.Builder.obtain(s, 0, s.length, paint, width - 2 * margin)
+        .setAlignment(align)
         .setBreakStrategy(LineBreaker.BREAK_STRATEGY_HIGH_QUALITY)
         .setLineSpacing(0f, 1.25f)
         .build()
-    val bodyLayout = layout(body, textPaint)
+    // (layout, space above it): verses cut whole at the limit, never mid-verse.
+    val bodyParts = if (verses.isEmpty()) listOf(layout(body, textPaint) to 0) else {
+        var used = 0
+        val kept = verses.takeWhile { (sadr, ajuz) -> (used == 0 || used + sadr.length + (ajuz?.length ?: 0) <= ImageTextLimit).also { used += sadr.length + (ajuz?.length ?: 0) } }
+        kept.flatMapIndexed { i, (sadr, ajuz) ->
+            val gap = if (i == 0) 0 else 36
+            if (ajuz == null) listOf(layout(sadr, textPaint, Layout.Alignment.ALIGN_CENTER) to gap)
+            else listOf(layout(sadr, textPaint) to gap, layout(ajuz, textPaint, Layout.Alignment.ALIGN_OPPOSITE) to 0)
+        } + (if (kept.size < verses.size) listOf(layout("…", textPaint, Layout.Alignment.ALIGN_CENTER) to 36) else emptyList())
+    }
+    val bodyHeight = bodyParts.sumOf { (l, gap) -> l.height + gap }
     val footer = listOf(source, "أثر — تطبيق المكتبة").filter(String::isNotBlank).joinToString("\n")
     val footerLayout = layout(footer, sourcePaint)
-    val height = margin + bodyLayout.height + 60 + footerLayout.height + margin
+    val height = margin + bodyHeight + 60 + footerLayout.height + margin
     val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
     Canvas(bitmap).apply {
         drawColor(paper)
         drawRect(margin / 2f, margin / 2f, width - margin / 2f, height - margin / 2f, Paint(Paint.ANTI_ALIAS_FLAG).apply {
             style = Paint.Style.STROKE; strokeWidth = 3f; color = rule
         })
-        save(); translate(margin.toFloat(), margin.toFloat()); bodyLayout.draw(this); restore()
-        save(); translate(margin.toFloat(), (margin + bodyLayout.height + 60).toFloat()); footerLayout.draw(this); restore()
+        var y = margin
+        bodyParts.forEach { (l, gap) -> y += gap; save(); translate(margin.toFloat(), y.toFloat()); l.draw(this); restore(); y += l.height }
+        save(); translate(margin.toFloat(), (margin + bodyHeight + 60).toFloat()); footerLayout.draw(this); restore()
     }
     val file = File(context.cacheDir, "shared/quote.png").apply { parentFile?.mkdirs() }
     file.outputStream().use { bitmap.compress(Bitmap.CompressFormat.PNG, 100, it) }

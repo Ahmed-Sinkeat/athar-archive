@@ -770,7 +770,7 @@ fun AtharApp(
                                 val (vol, page) = contentViewModel.printedPlace(route.bookId, minOf(selection.start.ordinal, selection.end.ordinal))
                                 val cited = citedText(selection.quotedText, state.bookTitle, state.author,
                                     vol.takeIf { state.volumeStarts.isNotEmpty() }, page, state.sourceUrl, state.volumeUnit)
-                                if (asImage) shareQuoteImage(context, selection.quotedText, cited, quoteColors) else shareText(context, cited)
+                                if (asImage) shareQuoteImage(context, selection.quotedText, cited, quoteColors, selection.verses) else shareText(context, cited)
                             },
                             onSaveSelection = { selection ->
                                 contentViewModel.saveSelection(route.bookId, selection)

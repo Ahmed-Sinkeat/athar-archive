@@ -212,41 +212,7 @@ private fun SharhBody(
                         .padding(horizontal = 14.dp, vertical = 11.dp)
                         .testTag("poem_sharh_${verse.id}"),
                 ) {
-                    Text(
-                        text = "البيت ${arabicDigits(verse.number)}",
-                        color = colors.accent,
-                        style = MaterialTheme.typography.labelSmall,
-                        fontWeight = FontWeight.SemiBold,
-                    )
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 6.dp)
-                            .clip(AtharCorners.Control)
-                            .background(colors.accent.copy(alpha = 0.06f))
-                            .padding(10.dp),
-                    ) {
-                        Text(verse.sadr, color = colors.text, fontFamily = AtharEditorialFontFamily, fontSize = AtharTextSize.Body, lineHeight = 26.sp)
-                        Text(verse.ajz, color = colors.text, fontFamily = AtharEditorialFontFamily, fontSize = AtharTextSize.Body, lineHeight = 26.sp)
-                    }
-                    // Every commentator at once: with only one or two per verse a picker
-                    // would hide half the content behind a tap.
-                    verse.commentary.forEach { source ->
-                        Text(
-                            text = source.sourceLabel,
-                            modifier = Modifier.padding(top = 10.dp),
-                            color = colors.accent,
-                            style = MaterialTheme.typography.labelSmall,
-                            fontWeight = FontWeight.SemiBold,
-                        )
-                        Text(
-                            text = source.text,
-                            modifier = Modifier.padding(top = 4.dp),
-                            color = colors.text.copy(alpha = 0.9f),
-                            style = MaterialTheme.typography.bodySmall,
-                            lineHeight = 26.sp,
-                        )
-                    }
+                    VerseSharh(verse, colors)
                 }
                 HorizontalDivider(
                     modifier = Modifier.padding(horizontal = 14.dp),
@@ -638,3 +604,72 @@ private fun clock(totalSeconds: Int): String {
     return "${arabicDigits(m.toString())}:${arabicDigits(s.toString().padStart(2, '0'))}"
 }
 
+/** One verse and every commentator's شرح of it: the side panel's entry and the bottom sheet's body. */
+@Composable
+internal fun VerseSharh(verse: VerseUi, colors: ReaderColors) {
+    Text(
+        text = "البيت ${arabicDigits(verse.number)}",
+        color = colors.accent,
+        style = MaterialTheme.typography.labelSmall,
+        fontWeight = FontWeight.SemiBold,
+    )
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 6.dp)
+            .clip(AtharCorners.Control)
+            .background(colors.accent.copy(alpha = 0.06f))
+            .padding(10.dp),
+    ) {
+        Text(verse.sadr, Modifier.fillMaxWidth(), color = colors.text, fontFamily = AtharEditorialFontFamily, fontSize = AtharTextSize.Body, lineHeight = 26.sp)
+        Text(verse.ajz, Modifier.fillMaxWidth(), textAlign = androidx.compose.ui.text.style.TextAlign.End, color = colors.text, fontFamily = AtharEditorialFontFamily, fontSize = AtharTextSize.Body, lineHeight = 26.sp)
+    }
+    // Every commentator at once: with only one or two per verse a picker
+    // would hide half the content behind a tap.
+    verse.commentary.forEach { source ->
+        Text(
+            text = source.sourceLabel,
+            modifier = Modifier.padding(top = 10.dp),
+            color = colors.accent,
+            style = MaterialTheme.typography.labelSmall,
+            fontWeight = FontWeight.SemiBold,
+        )
+        Text(
+            text = source.text,
+            modifier = Modifier.padding(top = 4.dp),
+            color = colors.text.copy(alpha = 0.9f),
+            style = MaterialTheme.typography.bodySmall,
+            lineHeight = 26.sp,
+        )
+    }
+}
+
+/** A tap beside a verse: its شرح from below; «كل الشروح» opens the side panel to walk the rest. */
+@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+@Composable
+internal fun VerseSharhSheet(verse: VerseUi, colors: ReaderColors, onAll: () -> Unit, onDismiss: () -> Unit) {
+    androidx.compose.material3.ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        containerColor = colors.page,
+        contentColor = colors.text,
+        modifier = Modifier.testTag("poem_sharh_sheet"),
+    ) {
+        Column(
+            Modifier.fillMaxWidth().verticalScroll(rememberScrollState())
+                .padding(start = 18.dp, end = 18.dp, bottom = 24.dp),
+        ) {
+            VerseSharh(verse, colors)
+            Text(
+                text = "كل الشروح",
+                modifier = Modifier.align(Alignment.End).padding(top = 14.dp)
+                    .clip(AtharCorners.Control)
+                    .clickable(role = Role.Button, onClick = onAll)
+                    .padding(horizontal = 10.dp, vertical = 8.dp)
+                    .testTag("poem_sharh_sheet_all"),
+                color = colors.accent,
+                style = MaterialTheme.typography.labelMedium,
+                fontWeight = FontWeight.SemiBold,
+            )
+        }
+    }
+}

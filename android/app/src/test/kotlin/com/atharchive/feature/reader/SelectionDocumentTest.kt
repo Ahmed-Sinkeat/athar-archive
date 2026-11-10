@@ -20,6 +20,21 @@ class SelectionDocumentTest {
     }
 
     @Test
+    fun onlyVersesSelectedCarryTheirHalvesForTheShareImage() {
+        val verses = listOf(
+            ReaderBlock.Verse("v1", "sadr one", "ajuz one", ordinal = 1),
+            ReaderBlock.Verse("v2", "sadr two", "ajuz two", ordinal = 2),
+        )
+        val doc = SelectionDocument.create(verses)
+        val all = doc.selection(0, doc.text.length)
+        assertEquals(listOf("sadr one" to "ajuz one", "sadr two" to "ajuz two"), all?.verses)
+        // A cut inside the second verse keeps only the part selected.
+        assertEquals("sadr" to null, doc.selection(0, doc.text.indexOf("sadr two") + 4)?.verses?.last())
+        val mixed = SelectionDocument.create(verses + ReaderBlock.Paragraph("p", "prose", ordinal = 3))
+        assertEquals(emptyList<Pair<String, String?>>(), mixed.selection(0, mixed.text.length)?.verses)
+    }
+
+    @Test
     fun aPressOnPunctuationOrPastTheLineEndPicksTheWordBeforeIt() {
         val text = "amma baad: then"
         // Letters group into words; anything else is a one-character "word", like ICU.
