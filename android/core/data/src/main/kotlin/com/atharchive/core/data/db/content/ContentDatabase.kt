@@ -230,6 +230,18 @@ abstract class ContentCatalogDao {
     @Query("SELECT * FROM entity WHERE coll = :coll AND catalogPresent = 1 AND editionOf IS NULL ORDER BY titleNorm, id")
     abstract fun observeCollection(coll: String): Flow<List<ContentEntity>>
 
+    /**
+     * [observeCollection] without the three heavy JSON columns (card fields, first lines, editions):
+     * a book row draws none of them, and they were most of the 10 MB each list pass loaded.
+     */
+    @Query(
+        "SELECT id, coll, v, hash, title, titleNorm, person, personName, died, kind, authoredYear, publishedAt, description, excerpt, " +
+            "openingVersesJson, topicsCsv, pkgPath, pkgHash, pkgSize, pkgUncompressed, idxPath, idxHash, idxSize, pkgBlocks, pkgChapters, " +
+            "audioJson, editionOf, edition, NULL AS editionsJson, verseCount, pageFrom, pageTo, volumes, volumeUnit, NULL AS f0Json, " +
+            "NULL AS cardJson, catalogPresent FROM entity WHERE coll = :coll AND catalogPresent = 1 AND editionOf IS NULL ORDER BY titleNorm, id",
+    )
+    abstract fun observeCollectionLean(coll: String): Flow<List<ContentEntity>>
+
     @Query("SELECT * FROM entity WHERE catalogPresent = 1 AND (id = :primaryId OR editionOf = :primaryId) ORDER BY id")
     abstract suspend fun editionsFor(primaryId: String): List<ContentEntity>
 

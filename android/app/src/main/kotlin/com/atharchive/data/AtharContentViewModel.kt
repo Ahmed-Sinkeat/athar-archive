@@ -648,7 +648,8 @@ class AtharContentViewModel @Inject constructor(
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
 
     val books: StateFlow<BooksUiState> = combine(
-        catalogDao.observeCollection("book").pausedDuringUpdate(), pinIds, retainedPins, library, combine(positions, localStates, ::Pair),
+        // positions change at every scroll stop in the reader: the 2,465-row list follows them at most every 3 s
+        catalogDao.observeCollectionLean("book").pausedDuringUpdate(), pinIds, retainedPins, library, combine(positions.throttled(3_000), localStates, ::Pair),
     ) { entities, pinnedIds, retainedIds, shelves, (savedPositions, states) ->
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         val positionById = savedPositions.associateBy(ReadingPositionEntity::entityId)
@@ -675,7 +676,7 @@ class AtharContentViewModel @Inject constructor(
     )
 
     val articles: StateFlow<ArticlesUiState> = combine(
-        catalogDao.observeCollection("article").pausedDuringUpdate(), pinIds, retainedPins, library, combine(recentRanks, localStates, ::Pair),
+        catalogDao.observeCollectionLean("article").pausedDuringUpdate(), pinIds, retainedPins, library, combine(recentRanks, localStates, ::Pair),
     ) { entities, pinnedIds, retainedIds, shelves, (ranks, states) ->
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         ArticlesUiState(
@@ -918,7 +919,7 @@ class AtharContentViewModel @Inject constructor(
     }
 
     val issues: StateFlow<IssuesUiState> = combine(
-        catalogDao.observeCollection("question").pausedDuringUpdate(), retainedPins, library, combine(recentRanks, localStates, ::Pair),
+        catalogDao.observeCollectionLean("question").pausedDuringUpdate(), retainedPins, library, combine(recentRanks, localStates, ::Pair),
     ) { entities, retainedIds, shelves, (ranks, states) ->
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         IssuesUiState(
