@@ -189,17 +189,17 @@ Steps, in order. 6.1 and 6.2 are the bulk of the win and need no format change.
 - [x] 6.3 (2026-11-10: `ContentDownloadWorker.bulk()` + `ContentDownloadScheduler.enqueueBulk`; «تنزيل الكل», resume and launch recovery (>8 pending) use it; audio and single downloads keep one job each. Phone, same local-server method, no UI polling: 953 مسائل 188 s → 34.6 s, first item 9 s → 2.2 s, 127 core-s, janky 93% → 29%; 109 poems 30 s → 10.4 s, 28 core-s; pause stops within the 3 in flight, resume completes exactly 953 of 953) One worker runs a queue instead of one job per item: bulk download is a single unique
       work that takes items from the pins table, three at a time, one foreground notification. A
       single book stays one job. Removes the enqueue wait and the 200-worker start-up. (#63, #64, #69)
-- [ ] 6.4 Small kinds ship as one bundle per kind (poems, articles, مسائل): one request, one import
+- [x] 6.4 (2026-11-10, commit 1cb999bf: ≤256 KB items in 8 MiB parts, same rule in TS and Kotlin; phone, local server: مسائل 10.6 s, articles 42.5 s, poems 5.4 s; needs a publish to reach R2) Small kinds ship as one bundle per kind (poems, articles, مسائل): one request, one import
       transaction per commit budget. Per-item packages stay for single downloads and updates. (#65)
-- [ ] 6.5 Cache Rule on `app-content.arthurarchive.com`: cache everything under `app/v2/content/`
+- [ ] 6.5 (owner, in the Cloudflare dashboard) Cache Rule on `app-content.arthurarchive.com`: cache everything under `app/v2/content/`
       (immutable, content-addressed). Owner applies it or approves it; it is account configuration. (#66)
-- [~] 6.6 (launch already recovers pinned downloads before it syncs; the 23 s catalog apply and its heap are untouched) Catalog sync does not hold downloads: resume pinned work from the stored catalog at
+- [~] 6.6 (launch already recovers pinned downloads before it syncs. 2026-11-10: of the 23 s only the apply (2.3 s) was logged; desktop JVM over 5,550 entries: decode 1.0 s cold / 0.3 s warm, entity mapping 0.3 s, diff 15 ms; the protect step decoded every entry twice, now reads audio rows only; sync logs fetch+decode / wait / apply+protect for the next real generation. Shipping the catalog as a prebuilt DB file is open, decide after those logs) Catalog sync does not hold downloads: resume pinned work from the stored catalog at
       launch, apply a new catalog after. Catalog parsed as a stream. (#64)
 - [ ] 6.7 Book import cost: prototype a per-book prebuilt SQLite file (text and its search rows built
       in the pipeline, attached on the phone) against today's row-by-row import, on one large book.
       Decide from the numbers; this is the main-plan guardrail case. (#67)
 - [x] 6.8 (2026-11-10: diskBytes = package + 1.5× text; row and menu say «تأخذ N على الهاتف») Bulk rows show the space the download will take on the phone. (#68)
-- [ ] 6.9 Smaller books on the phone, cheapest first: (a) drop the indexes no query uses, a
+- [~] 6.9 (2026-11-10, (a) done plus per-block deflate of the text, content DB v12, commit 19b06b40: simulated 50 books 201 → 116 MB (1.73×), 1.56× with packages; checked on the phone: migration, a new download renders, in-book search 39 hits. Books already downloaded stay unpacked until re-downloaded; (b), (c) not started) Smaller books on the phone, cheapest first: (a) drop the indexes no query uses, a
       migration and no format change (≈18%); (b) integer book and chapter keys instead of slugs in
       every row; (c) text stays in the downloaded frames, SQLite keeps lookup and search rows only
       (≈2.5× less). (c) is decided together with 6.7, from the same one-book prototype. (#70, #71)
@@ -277,7 +277,7 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
 - [ ] 10.4 Selection box keeps the one-word size however long the selection.
 - [ ] 10.5 Verse inside books drawn like the poem page.
 - [ ] 10.6 Poem commentary redesigned from scratch for the phone (no side column). Mock first.
-- [x] 10.7 (2026-11-10: the splash, not a verse: neutral ink mark on the page colour on Android 12+, so every launcher colour fits; checked on the phone) Coloured start screen: verse takes a colour that reads on each background, not white.
+- [ ] 10.7 (2026-11-10: a neutral splash and an icon intro were tried and reverted at the owner's request; the system default splash is back. Do not touch again unless asked) Coloured start screen: verse takes a colour that reads on each background, not white.
 - [x] 10.8 (2026-11-10: the open page is ticked in the ⋮ menu; compiled, not checked on the phone) Pages opened from ⋮ show where you are (title, and the entry marked in the menu).
 - [x] 10.9 (2026-11-10: in the reader ⋮ menu, mail to admin@arthurarchive.com with book and place; compiled, not checked on the phone) «أبلغ عن خطأ» in the selection menu: opens the mail app with book, place and the selected
       text filled in. No server.
