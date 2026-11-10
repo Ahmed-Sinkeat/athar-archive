@@ -520,6 +520,9 @@ class AtharContentViewModel @Inject constructor(
         return targets.size
     }
 
+    /** Whether there is anything of the reader's own (a note or highlight) to lose with the phone. */
+    suspend fun hasNotes(): Boolean = annotations.first().isNotEmpty()
+
     suspend fun exportUserData(output: OutputStream, extras: Map<String, String> = emptyMap()) {
         kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { userDataArchive.exportTo(output, extras) }
     }

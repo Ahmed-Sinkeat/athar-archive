@@ -62,6 +62,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.compose.ui.Alignment
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
@@ -257,6 +258,7 @@ fun AtharApp(
     val notificationPermission = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission(),
     ) { }
+    val backupPrefs = remember { context.getSharedPreferences("backup", android.content.Context.MODE_PRIVATE) }
     val exportUserData = rememberLauncherForActivityResult(
         ActivityResultContracts.CreateDocument("application/json"),
     ) { uri ->
@@ -267,10 +269,27 @@ fun AtharApp(
                     contentViewModel.exportUserData(output, mapOf("adhkar" to userAdhkar.exportJson()))
                 }
             }.onSuccess {
+                backupPrefs.edit().putLong("exported", System.currentTimeMillis()).apply()
                 announce("اكتمل تصدير بياناتك")
             }.onFailure {
                 announce("تعذّر تصدير البيانات")
             }
+        }
+    }
+    // 4.13: notes live only on this phone; remind to export them after a month without one (then weekly). ponytail: no per-note "unsaved" count.
+    LaunchedEffect(Unit) {
+        kotlinx.coroutines.delay(8_000)
+        val now = System.currentTimeMillis()
+        val day = 24L * 60 * 60 * 1000
+        // The month starts when the reminder first sees notes, not at install.
+        val since = backupPrefs.getLong("exported", 0L).takeIf { it > 0 }
+            ?: backupPrefs.getLong("seen", 0L).takeIf { it > 0 }
+            ?: now.also { backupPrefs.edit().putLong("seen", it).apply() }
+        if (now - since < 30 * day || now - backupPrefs.getLong("nagged", 0L) < 7 * day || !contentViewModel.hasNotes()) return@LaunchedEffect
+        backupPrefs.edit().putLong("nagged", now).apply()
+        if (snackbarHostState.showSnackbar("ملاحظاتك محفوظة على هذا الهاتف فقط. صدّر نسخة منها.", "تصدير", withDismissAction = true,
+                duration = androidx.compose.material3.SnackbarDuration.Long) == androidx.compose.material3.SnackbarResult.ActionPerformed) {
+            exportUserData.launch("athar-user-data.jsonl")
         }
     }
     val importUserData = rememberLauncherForActivityResult(
@@ -582,12 +601,14 @@ fun AtharApp(
             com.atharchive.feature.reader.LocalDictionary provides contentViewModel.dictionary,
             com.atharchive.ui.components.LocalCatalogSearch provides contentViewModel::catalogMatches,
             com.atharchive.feature.reader.LocalOpenBookAt provides { id, ordinal -> backStack.add(ReaderRoute(id, targetOrdinal = ordinal)) }) {
+        // 4.5: a tablet gets a centred column, not lines running the whole screen. ponytail: one cap for every screen; per-screen two-pane layouts if tablets matter.
+        androidx.compose.foundation.layout.Box(Modifier.fillMaxSize().padding(contentPadding), contentAlignment = Alignment.TopCenter) {
         NavDisplay(
             backStack = backStack,
             onBack = { if (backStack.size > 1) backStack.removeLastOrNull() },
             modifier = Modifier
-                .fillMaxSize()
-                .padding(contentPadding),
+                .widthIn(max = 1000.dp)
+                .fillMaxSize(),
             entryDecorators = listOf(rememberSaveableStateHolderNavEntryDecorator()),
             entryProvider = entryProvider {
                 readerEntries(app)
@@ -597,6 +618,7 @@ fun AtharApp(
                 settingsEntries(app)
             },
         )
+        }
         }
     }
 
