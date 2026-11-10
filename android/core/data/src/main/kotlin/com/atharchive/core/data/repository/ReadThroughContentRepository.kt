@@ -1,5 +1,7 @@
 package com.atharchive.core.data.repository
 
+import com.atharchive.core.data.content.AppContentJson
+import com.atharchive.core.data.content.AudioReference
 import com.atharchive.core.data.content.CatalogEntry
 import com.atharchive.core.data.content.FramedPackageDecoder
 import com.atharchive.core.data.content.FrameIndexEntry
@@ -64,9 +66,12 @@ class ReadThroughContentRepository(
 
         importer.applyProgress.value = 0f // the update is visible from the catalog download on
         try {
+        val started = System.nanoTime()
         val generation = client.fetchGeneration(root)
+        val fetched = System.nanoTime()
         return mutationMutex.withLock {
         if (database.catalogDao().generation()?.generationId != current?.generationId) return@withLock CatalogSyncResult.UpToDate(database.catalogDao().generation()?.generationId ?: root.generationId)
+        val locked = System.nanoTime()
         val protectedBefore = protectedIds(requestedAudioIds())
         importer.applyGeneration(
             generationId = root.generationId,
@@ -80,6 +85,9 @@ class ReadThroughContentRepository(
         // that transaction, so a concurrent user action cannot lose its content metadata.
         val protectedAfter = protectedIds(requestedAudioIds())
         database.catalogDao().purgeUnprotectedTombstones(protectedAfter)
+        val ms = { from: Long, to: Long -> (to - from) / 1_000_000 }
+        android.util.Log.i("AtharContent", "catalog sync: fetch+decode ${ms(started, fetched)} ms, " +
+            "wait ${ms(fetched, locked)} ms, apply+protect ${ms(locked, System.nanoTime())} ms")
         CatalogSyncResult.Applied(generation)
         }
         } finally {
@@ -87,9 +95,11 @@ class ReadThroughContentRepository(
         }
     }
 
+    // Only the entries with audio, and only their audio: decoding every whole entry twice per sync
+    // cost ~0.2 s each time on a desktop JVM (several times that on the phone).
     private suspend fun protectedIds(audioIds: Set<String>): Set<String> = retainedMetadataIds(
         userDatabase.userDataDao().protectedEntityIds().toSet(), audioIds,
-        database.catalogDao().allEntities().map { it.toCatalogEntry() },
+        database.catalogDao().audioRows().map { it.id to AppContentJson.decodeFromString<List<AudioReference>>(it.audioJson) },
     )
 
     suspend fun openFrame(entityId: String, targetOrdinal: Int, onProgress: (Float) -> Unit = {}): ReadThroughResult {
@@ -283,10 +293,15 @@ class ContentCacheManager(
     }
 }
 
-internal fun retainedMetadataIds(userIds: Set<String>, requestedAudioIds: Set<String>, catalog: List<CatalogEntry>): Set<String> =
-    userIds + catalog.filter { source ->
-        source.audio.any { it.id in requestedAudioIds || "audio:${it.id}" in userIds }
-    }.map { it.id }
+/** [audioBySource]: each catalog entry's id and audio. */
+internal fun retainedMetadataIds(
+    userIds: Set<String>,
+    requestedAudioIds: Set<String>,
+    audioBySource: List<Pair<String, List<AudioReference>>>,
+): Set<String> =
+    userIds + audioBySource.filter { (_, audio) ->
+        audio.any { it.id in requestedAudioIds || "audio:${it.id}" in userIds }
+    }.map { it.first }
 
 private fun FrameImportResult.toReadThrough(frameNumber: Int): ReadThroughResult =
     ReadThroughResult(
