@@ -79,9 +79,9 @@ Rule for every step: fix the cause, not the symptom. No shortcut comments, no "f
 - [ ] 3.1 One ViewModel per feature, split out of `AtharContentViewModel` one feature at a time. (#2)
 - [ ] 3.2 `AtharApp.kt` split by feature; each feature owns its route entry. (#3)
 - [ ] 3.3 Feature Gradle modules; drop `:m0` if nothing uses it. (#16, #17)
-- [ ] 3.4 Keyed mutex that releases unused locks. (#19)
-- [ ] 3.5 One font registry; one font source (res or assets, not both). (#13b)
-- [ ] 3.6 Search-table SQL in one place. (#12b)
+- [x] 3.4 (2026-11-10, commit 151df9a0: `KeyedLock` drops a book's lock once nobody holds or waits; transfer and open locks use it; test) Keyed mutex that releases unused locks. (#19)
+- [x] 3.5 (2026-11-10, nothing to change: every family is in `AtharTheme.kt` and no file ships twice (checked by hash); assets/fonts stays because the Elgharib terms require the original file names, which res/font cannot hold) One font registry; one font source (res or assets, not both). (#13b)
+- [x] 3.6 (2026-11-10, commit da5826cd: the tables, delete trigger and catalog insert are written once in `ContentSearch.kt`; `bundle-app-catalog.mjs` keeps its own copy, noted beside the list) Search-table SQL in one place. (#12b)
 - [x] 3.7 (2026-11-10, not done on purpose: the audio service's `runBlocking` runs on ExoPlayer's loading thread, which the Media3 resolver requires to be synchronous, so it cannot freeze the app; a comment says so. Moving adhkar and the audio queue to Room would migrate the owner's saved adhkar for no user gain; reopen if those stores need queries) Remaining SharedPreferences state (adhkar, audio queue) moved to Room; audio service resolves
       URIs without `runBlocking`. (#6b, #7b)
 
@@ -239,7 +239,7 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
       `content-ids`); the app opens that frame directly. `locateOnline`'s walk goes. (#52)
 - [ ] 8.2 Full v2 reindex (2,500-char passages, `raw`, `prior`) now that the account is Workers Paid:
       check `size_after` against the 10 GB cap first, raise `SEARCH_ROW_BUDGET`, swap. (#53, #55)
-- [~] 8.3 (2026-11-10: NEAR tier in `search-rank.ts` + test, committed, NOT deployed: wrangler deploy was blocked by the permission system; the Kotlin side has no NEAR, the phone index is detail=none) A proximity tier between «exact phrase» and «every word» (FTS5 `NEAR`), same tier in the
+- [~] 8.3 (2026-11-10, phone side commit 6687bb29: with positions the site's tiers (phrase, NEAR 12, every word, prefix; long queries drop particles) run in SQL over the whole library, test in FtsQueryBuilderSqliteM0Test (run with PATH=/usr/bin first: platform-tools' sqlite3 has no FTS5); not checked on the phone. Earlier: NEAR tier in `search-rank.ts` + test, committed, NOT deployed: wrangler deploy was blocked by the permission system; the Kotlin side has no NEAR, the phone index is detail=none) A proximity tier between «exact phrase» and «every word» (FTS5 `NEAR`), same tier in the
       Kotlin search; golden cases shared by both (4.9). (#53)
 - [~] 8.4 (2026-11-10, commit 18b9c5c8: `work_edition` table from `edition_of` in person-meta.sql; the Worker folds editions into their work for the per-work cap and shows one passage once across copies; test; needs the person-meta.sql load and the held deploy) One result per work per passage: editions folded under their default (needs 9.1). (#54)
 - [x] 8.5 (2026-11-10: flat rows, «title — author» on one line, thin rule between results; compiled, not checked on the phone) Result card redesign: book and author, the passage with the words marked, volume and page.
@@ -254,7 +254,7 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
 - [x] 8.9 (2026-11-10, local: a page answers `next` = tier.skip and `after=` resumes there, rebuilding only the title-tier exclusions; the site and the app send it and fall back to `offset` on an old Worker; a test walks 100 rows both ways and gets the same rows once each; the in-book panel shows the site's first page as it lands; Worker and site deploy held) Page 2 and later read on from where page 1 stopped instead of rerunning the tiers; in-book
       search shows the first page at once. (#77)
 - [ ] 8.10 The 15 large books get real chapters (part of 9.4). (#78)
-- [~] 8.11 (2026-11-10, measured: every 50th book by size, 50 books, 181k blocks, 27.1M letters; the phone's `block_fts` as built today (detail=none) 9.4 MB, with word positions (detail=full, needed for phrase and NEAR offline) 19.2 MB: 2.0× the index, +9.8 MB ≈ +8% on the 116 MB that 6.9 leaves for the same sample; switching is the owner's call, then 8.3's Kotlin tier) Offline ranking after 6.9 decides the phone index format; a `detail=full` index costs
+- [x] 8.11 (2026-11-10, owner chose word positions; commit 6687bb29: new installs and the bundled catalog get detail=full, old installs copy their index in the background in 2k-block chunks and swap; measured: every 50th book by size, 50 books, 181k blocks, 27.1M letters; the phone's `block_fts` as built today (detail=none) 9.4 MB, with word positions (detail=full, needed for phrase and NEAR offline) 19.2 MB: 2.0× the index, +9.8 MB ≈ +8% on the 116 MB that 6.9 leaves for the same sample; switching is the owner's call, then 8.3's Kotlin tier) Offline ranking after 6.9 decides the phone index format; a `detail=full` index costs
       space, so measure it on the same 50 books first. (#79)
 
 ## Phase 9 — works, editions, pages
