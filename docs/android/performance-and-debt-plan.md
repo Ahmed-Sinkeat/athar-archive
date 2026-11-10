@@ -245,7 +245,7 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
       Cleaner, fewer elements. Mock first, owner picks.
 - [ ] 8.6 Time each stage of one search (DNS, Worker, D1, draw) on Sudani mobile data before
       touching speed; the Worker already logs D1 time.
-- [~] 8.7 (2026-11-10, local only, not deployed: long queries drop particles from the every-word tiers, `requiredWords` in `search-rank.ts` + test; the 503 cause and retry still open) First in this phase: a heavy query must not fail the rest. Read the Worker log for the
+- [~] 8.7 (2026-11-10: the app retries once on a 503, commit 6a08dc50; Worker side local only, not deployed: long queries drop particles from the every-word tiers, `requiredWords` in `search-rank.ts` + test; the 503 cause and retry still open) First in this phase: a heavy query must not fail the rest. Read the Worker log for the
       503 reason; then a long query runs as phrase/NEAR only (not every-word over 9+ words), and
       one retry on overload. (#72)
 - [ ] 8.8 The 20 queries above become the golden list with the expected top three (Bukhari for
@@ -273,9 +273,9 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
 
 - [x] 10.1 (2026-11-10, checked on the phone: the menu opens right above the share button) Share: the نص/صورة choice is a small AtharMenu at the share button.
 - [x] 10.2 (2026-11-10, checked on the phone: «نُسخ ✓» for 1.2 s, then the selection clears) Copy: the icon turns into ✓ for a moment.
-- [ ] 10.3 Share image follows the theme; better layout; verse as صدر then عجز on two lines, staggered.
+- [~] 10.3 (2026-11-10, commit 0db0c5eb: the card follows the reader theme, not checked on the phone; the staggered verse layout is still open, it needs a verse flag from the callers) Share image follows the theme; better layout; verse as صدر then عجز on two lines, staggered.
 - [ ] 10.4 Selection box keeps the one-word size however long the selection.
-- [~] 10.5 (2026-11-10: صدر at the start, عجز at the far end, in `ReaderBlockView`; uncommitted, not checked on the phone) Verse inside books drawn like the poem page.
+- [~] 10.5 (2026-11-10, commit 3886ea64: صدر at the start, عجز at the far end, in `ReaderBlockView`; not checked on the phone) Verse inside books drawn like the poem page.
 - [ ] 10.6 Poem commentary redesigned from scratch for the phone (no side column). Mock first.
 - [ ] 10.7 (2026-11-10: a neutral splash and an icon intro were tried and reverted at the owner's request; the system default splash is back. Do not touch again unless asked) Coloured start screen: verse takes a colour that reads on each background, not white.
 - [x] 10.8 (2026-11-10: the open page is ticked in the ⋮ menu; compiled, not checked on the phone) Pages opened from ⋮ show where you are (title, and the entry marked in the menu).
