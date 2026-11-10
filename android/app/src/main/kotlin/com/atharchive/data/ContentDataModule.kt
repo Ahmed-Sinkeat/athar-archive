@@ -582,6 +582,16 @@ class ContentAccess @Inject constructor(
         setRetained(_retainedEntityIds.value - entityId)
     }
 
+    /** Pinned, not yet on the phone and not paused: what the bulk worker still has to fetch. */
+    suspend fun pendingTextDownloads(): List<ContentDownloadTarget> {
+        val retained = _retainedEntityIds.value
+        val paused = _pausedDownloads.value
+        val catalog = contentDatabase.catalogDao()
+        return userDatabase.userDataDao().pinnedEntityIds()
+            .filter { it !in retained && it !in paused }
+            .mapNotNull { id -> catalog.entity(id)?.let { ContentDownloadTarget(id, it.coll) } }
+    }
+
     suspend fun isPinned(entityId: String): Boolean =
         userDatabase.userDataDao().pinnedDownload(entityId) != null
 

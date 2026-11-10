@@ -533,6 +533,7 @@ internal fun BulkRow(row: BulkRowUi, horizontalPadding: Dp, onDownload: (mobileD
             }
             Text(
                 text = "${arabicDigits(row.done)} من ${arabicDigits(row.items.size)} · ${byteSize(row.doneBytes)} من ${byteSize(row.bytes)}" +
+                    (if (row.diskBytes > row.bytes * 3 / 2) " · تأخذ ${byteSize(row.diskBytes)} على الهاتف" else "") +
                     when {
                         row.complete -> " · مكتمل"
                         running && row.waitingWifi -> " · في انتظار Wi-Fi"
@@ -565,7 +566,7 @@ internal fun BulkRow(row: BulkRowUi, horizontalPadding: Dp, onDownload: (mobileD
                 )
             }
             if (remaining.isNotEmpty()) {
-                val size = "${arabicDigits(remaining.size)} عنصر · ${byteSize(remaining.sumOf { it.bytes - it.partialBytes })}"
+                val size = "${arabicDigits(remaining.size)} عنصر · ${byteSize(remaining.sumOf { it.bytes - it.partialBytes })} · تأخذ ${byteSize(remaining.sumOf { it.diskBytes })}"
                 AtharMenuItem(
                     if (row.done > 0 || row.busy) "تنزيل المتبقي" else "تنزيل الكل",
                     subtitle = "$size · عبر Wi-Fi",

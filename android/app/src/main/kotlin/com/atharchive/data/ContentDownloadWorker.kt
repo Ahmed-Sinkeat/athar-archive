@@ -38,6 +38,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.sync.Semaphore
@@ -45,6 +46,7 @@ import kotlinx.coroutines.sync.withPermit
 
 private const val EntityIdKey = "entity_id"
 private const val CollectionKey = "collection"
+private const val BulkKey = "bulk"
 
 /**
  * Transfers that run at once, across all workers. WorkManager starts up to 20 workers; all 20
@@ -132,14 +134,13 @@ class ContentDownloadWorker(
             // briefly backgrounded by the permission dialog, or Android 15's daily data-sync
             // limit used up, promoting to foreground throws. The transfer runs regardless; if
             // the system stops it in the background, WorkManager runs it again.
-            try { setForeground(getForegroundInfo()) }
-            catch (cancelled: CancellationException) { throw cancelled }
-            catch (_: Exception) { }
             var lastProgressPercent = -1
+            var lastNotified = 0L
             val progress: (Long, Long) -> Unit = { downloaded, total ->
                 val percent = if (total <= 0) 0 else (downloaded * 100 / total).toInt()
                 if (percent != lastProgressPercent) {
                     lastProgressPercent = percent
+                    val now = android.os.SystemClock.elapsedRealtime()
                     scheduler.report(identity, TransferProgress(downloaded, total))
                     // A batch counts items, which only change when one finishes. A text package
                     // reports its bytes as the first half and its import as the second.
@@ -149,11 +150,19 @@ class ContentDownloadWorker(
                         downloaded < half -> "${byteSize(downloaded)} من ${byteSize(half)}"
                         else -> "تجهيز النص للقراءة والبحث"
                     }
-                    if (batches.isEmpty()) runCatching { setForegroundAsync(foregroundInfo(percent, detail)) }
+                    // the notification at most once a second: a 650-byte item used to promote four times
+                    if (batches.isEmpty() && now - lastNotified >= 1_000) {
+                        lastNotified = now
+                        runCatching { setForegroundAsync(foregroundInfo(percent, detail)) }
+                    }
                 }
             }
             scheduler.report(identity, TransferProgress(0, 0, queued = true))
             transferSlots.withPermit {
+                // Promoted only once it has a slot: 200 queued workers each promoted before waiting.
+                try { setForeground(getForegroundInfo()) }
+                catch (cancelled: CancellationException) { throw cancelled }
+                catch (_: Exception) { }
                 if (isAudio) content.runAudioDownload(entityId, progress) else content.runDownload(entityId, progress)
             }
             Analytics.hit("download", pauseKey)
@@ -191,7 +200,68 @@ class ContentDownloadWorker(
         }
     }
 
-    override suspend fun doWork(): Result = try {
+    /**
+     * «تنزيل الكل»: one worker takes the pinned, unfinished items itself, three at a time, instead of
+     * one WorkManager job per item. A 953-item run spent 60% of its CPU in WorkManager bookkeeping
+     * (job rows, constraint checks, foreground promotion) rather than in the transfers (2026-11-10).
+     */
+    private suspend fun bulk(): Result {
+        val entry = EntryPoints.get(applicationContext, ContentWorkerEntryPoint::class.java)
+        val content = entry.contentAccess()
+        val scheduler = entry.downloadScheduler()
+        content.awaitDownloadState()
+        try { setForeground(getForegroundInfo()) }
+        catch (cancelled: CancellationException) { throw cancelled }
+        catch (_: Exception) { }
+        var transient = false
+        var stop = false
+        var lastNotified = 0L
+        while (!stop) {
+            val todo = content.pendingTextDownloads()
+            if (todo.isEmpty()) break
+            var progressed = false
+            kotlinx.coroutines.coroutineScope {
+                for (target in todo) launch {
+                    transferSlots.withPermit {
+                        val id = target.entityId
+                        if (stop || id in content.pausedDownloads.value || !content.isPinned(id)) return@withPermit
+                        val identity = "content:${target.collection}:$id"
+                        try {
+                            content.runDownload(id) { downloaded, total -> scheduler.report(identity, TransferProgress(downloaded, total)) }
+                            progressed = true
+                            val batches = content.finishBatchItem(id)
+                            batches.filter { it.left.isEmpty() }.forEach {
+                                ContentDownloadNotifications.batchCompleted(applicationContext, it.label, it.total)
+                            }
+                            val now = android.os.SystemClock.elapsedRealtime()
+                            if (now - lastNotified >= 1_000) {
+                                lastNotified = now
+                                runCatching { setForegroundAsync(foregroundInfo(-1)) }
+                            }
+                        } catch (cancelled: CancellationException) {
+                            throw cancelled
+                        } catch (_: InsufficientContentStorageException) {
+                            // no room for any item: stop the run, the rows show the failure
+                            stop = true
+                        } catch (_: ContentTransportException) {
+                            transient = true
+                        } catch (_: ContentIntegrityException) {
+                            transient = true
+                        } catch (_: Throwable) {
+                            // this item stays failed in its row; the rest go on
+                        } finally {
+                            scheduler.report(identity, null)
+                        }
+                    }
+                }
+            }
+            // ponytail: an item that fails every time is skipped for this run and shows as failed; nothing loops on it
+            if (!progressed) break
+        }
+        return if (transient && runAttemptCount < 4) Result.retry() else Result.success()
+    }
+
+    override suspend fun doWork(): Result = if (inputData.getBoolean(BulkKey, false)) bulk() else try {
         transfer()
     } finally {
         val collection = inputData.getString(CollectionKey)
@@ -254,6 +324,21 @@ class ContentDownloadScheduler @Inject constructor(
             .addTag(identity)
             .build()
         workManager.enqueueUniqueWork(identity, if (replace) ExistingWorkPolicy.REPLACE else ExistingWorkPolicy.KEEP, request)
+    }
+
+    /**
+     * The one queue worker of «تنزيل الكل» (see [ContentDownloadWorker.bulk]): it reads the pins
+     * itself, so this is a single enqueue whatever the count. Mobile data replaces a Wi-Fi-only
+     * run so the new choice applies; a Wi-Fi-only request never tightens a running one.
+     */
+    fun enqueueBulk(wifiOnly: Boolean) {
+        val request = OneTimeWorkRequestBuilder<ContentDownloadWorker>()
+            .setInputData(workDataOf(BulkKey to true))
+            .setConstraints(Constraints.Builder().setRequiredNetworkType(if (wifiOnly) NetworkType.UNMETERED else NetworkType.CONNECTED).build())
+            .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 30, TimeUnit.SECONDS)
+            .addTag(ContentTag)
+            .build()
+        workManager.enqueueUniqueWork("content:bulk", if (wifiOnly) ExistingWorkPolicy.KEEP else ExistingWorkPolicy.REPLACE, request)
     }
 
     /** For bulk pause: fire the cancel without waiting on each one in turn. */

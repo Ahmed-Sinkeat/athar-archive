@@ -192,6 +192,8 @@ data class BulkRowUi(
     val tracked: Boolean = false,
 ) {
     val bytes: Long = items.sumOf { it.bytes }
+    /** What the row takes on the phone once imported (text is several times its download). */
+    val diskBytes: Long = items.sumOf { it.diskBytes }
     val done: Int = items.count { it.state == BulkState.Done }
     val doneBytes: Long = items.sumOf { if (it.state == BulkState.Done) it.bytes else it.partialBytes }
     val idle: List<BulkCandidate> get() = items.filter { it.state == BulkState.Idle }

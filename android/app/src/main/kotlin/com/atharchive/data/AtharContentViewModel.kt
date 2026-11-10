@@ -117,6 +117,8 @@ import com.atharchive.feature.search.SearchMode
 import com.atharchive.core.ArNormalize
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.transformLatest
+import kotlinx.coroutines.flow.conflate
+import kotlinx.coroutines.flow.transform
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
@@ -188,7 +190,13 @@ class AtharContentViewModel @Inject constructor(
         downloads.asSequence()
             .map(PinnedDownloadEntity::entityId)
             .filterTo(hashSetOf()) { it in retained }
-    }
+    }.throttled(1_000)
+    /**
+     * First value at once, then at most one per [ms]: a bulk download finishes several items a second,
+     * and every value rebuilt the whole-catalog lists (≈1 core-second per item, measured 2026-11-10).
+     */
+    private fun <T> Flow<T>.throttled(ms: Long): Flow<T> = conflate().transform { emit(it); delay(ms) }
+
     private val library = userDao.observeLibraryEntries()
     private val positions = userDao.observeReadingPositions()
     private val personalLibrary = PersonalLibraryRepository(content.userDatabase)
@@ -580,7 +588,7 @@ class AtharContentViewModel @Inject constructor(
      */
     private val localStates: StateFlow<LocalStates> = combine(catalogDao.observeCompleteIds(), catalogDao.observeFailedIds()) { complete, failed ->
         LocalStates(complete.toHashSet(), failed.toHashSet())
-    }.distinctUntilChanged().stateIn(viewModelScope, SharingStarted.Eagerly, LocalStates(emptySet(), emptySet()))
+    }.distinctUntilChanged().throttled(1_000).stateIn(viewModelScope, SharingStarted.Eagerly, LocalStates(emptySet(), emptySet()))
 
     private val textDownloads: StateFlow<List<DownloadUi>> = combine(
         catalogDao.observeAllEntities().pausedDuringUpdate(), pinIds, retainedPins, jobIndex, combine(content.pausedDownloads, localStates, ::Pair),
@@ -827,7 +835,8 @@ class AtharContentViewModel @Inject constructor(
                     entity.coll, audio = false, entity.id, entity.pkgSize,
                     state(entity.id in pinned, entity.id in retained, entity.id, job, job == null && entity.id in states.failed),
                     job.partial(),
-                    diskBytes = entity.pkgSize + entity.pkgUncompressed,
+                    // measured 2026-11-10: the text table, its indexes and search index come to ≈1.5× the unzipped text
+                    diskBytes = entity.pkgSize + entity.pkgUncompressed * 3 / 2,
                     waitingWifi = job.waitingWifi(),
                 )
             } + sources.flatMap { (source, refs) ->
@@ -892,7 +901,7 @@ class AtharContentViewModel @Inject constructor(
             if (text.isNotEmpty()) {
                 try { content.requestDownloads(textIds) } catch (error: Throwable) { requested.update { it - textIds.toSet() }; throw error }
             }
-            text.forEach { downloadScheduler.enqueue(it.id, it.coll, wifiOnly = wifiOnly) }
+            if (text.isNotEmpty()) downloadScheduler.enqueueBulk(wifiOnly)
         }
     }
 
@@ -902,8 +911,10 @@ class AtharContentViewModel @Inject constructor(
         content.setDownloadsPaused(items.map(BulkCandidate::pauseKey), pause)
         items.forEach {
             val coll = if (it.audio) "audio" else it.coll
-            if (pause) downloadScheduler.cancelQuietly(it.id, coll) else downloadScheduler.enqueue(it.id, coll, replace = true, wifiOnly = wifiOnly)
+            if (pause) downloadScheduler.cancelQuietly(it.id, coll)
+            else if (it.audio) downloadScheduler.enqueue(it.id, coll, replace = true, wifiOnly = wifiOnly)
         }
+        if (!pause && items.any { !it.audio }) downloadScheduler.enqueueBulk(wifiOnly)
     }
 
     val issues: StateFlow<IssuesUiState> = combine(
@@ -1590,9 +1601,10 @@ class AtharContentViewModel @Inject constructor(
         (content.requestedAudio.value - content.downloadedAudio.value).forEach { id ->
             if ("audio:$id" !in content.pausedDownloads.value) downloadScheduler.enqueue(id, "audio")
         }
-        content.reconcilePinnedDownloads().forEach { target ->
-            if (target.entityId !in content.pausedDownloads.value) downloadScheduler.enqueue(target.entityId, target.collection)
-        }
+        val pending = content.reconcilePinnedDownloads().filter { it.entityId !in content.pausedDownloads.value }
+        // many at once is a «تنزيل الكل» cut short: one queue worker, not a job each
+        if (pending.size > 8) downloadScheduler.enqueueBulk(wifiOnly = false)
+        else pending.forEach { downloadScheduler.enqueue(it.entityId, it.collection) }
     }
 
     private fun ContentEntity.toBookUi(
