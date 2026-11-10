@@ -191,7 +191,7 @@ Steps, in order. 6.1 and 6.2 are the bulk of the win and need no format change.
       single book stays one job. Removes the enqueue wait and the 200-worker start-up. (#63, #64, #69)
 - [x] 6.4 (2026-11-10, commit 1cb999bf: ≤256 KB items in 8 MiB parts, same rule in TS and Kotlin; phone, local server: مسائل 10.6 s, articles 42.5 s, poems 5.4 s; needs a publish to reach R2) Small kinds ship as one bundle per kind (poems, articles, مسائل): one request, one import
       transaction per commit budget. Per-item packages stay for single downloads and updates. (#65)
-- [ ] 6.5 (owner, in the Cloudflare dashboard) Cache Rule on `app-content.arthurarchive.com`: cache everything under `app/v2/content/`
+- [x] 6.5 (2026-11-10: already in place since 11-03, rule «book files»; live files answer HIT with `max-age=31536000, immutable`, age 37 h) (owner, in the Cloudflare dashboard) Cache Rule on `app-content.arthurarchive.com`: cache everything under `app/v2/content/`
       (immutable, content-addressed). Owner applies it or approves it; it is account configuration. (#66)
 - [~] 6.6 (launch already recovers pinned downloads before it syncs. 2026-11-10: of the 23 s only the apply (2.3 s) was logged; desktop JVM over 5,550 entries: decode 1.0 s cold / 0.3 s warm, entity mapping 0.3 s, diff 15 ms; the protect step decoded every entry twice, now reads audio rows only; sync logs fetch+decode / wait / apply+protect for the next real generation. Shipping the catalog as a prebuilt DB file is open, decide after those logs) Catalog sync does not hold downloads: resume pinned work from the stored catalog at
       launch, apply a new catalog after. Catalog parsed as a stream. (#64)
@@ -245,7 +245,7 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
       Cleaner, fewer elements. Mock first, owner picks.
 - [ ] 8.6 Time each stage of one search (DNS, Worker, D1, draw) on Sudani mobile data before
       touching speed; the Worker already logs D1 time.
-- [~] 8.7 (2026-11-10: the app retries once on a 503, commit 6a08dc50; Worker side local only, not deployed: long queries drop particles from the every-word tiers, `requiredWords` in `search-rank.ts` + test; the 503 cause and retry still open) First in this phase: a heavy query must not fail the rest. Read the Worker log for the
+- [~] 8.7 (2026-11-10: 503 cause from the Worker log: every one is D1 «DB is overloaded. Too many resources consumed within a 10 second window»; one heavy query (3–8 s wall: «الله», 10-word phrases) uses the DB up and the searches in the next ~10 s are refused; the schema probe threw 500 outside the try, now 503. The app retries once on a 503, commit 6a08dc50; Worker side local only, not deployed: long queries drop particles from the every-word tiers, `requiredWords` in `search-rank.ts` + test; the 503 cause and retry still open) First in this phase: a heavy query must not fail the rest. Read the Worker log for the
       503 reason; then a long query runs as phrase/NEAR only (not every-word over 9+ words), and
       one retry on overload. (#72)
 - [ ] 8.8 The 20 queries above become the golden list with the expected top three (Bukhari for
@@ -281,6 +281,16 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
 - [x] 10.8 (2026-11-10: the open page is ticked in the ⋮ menu; compiled, not checked on the phone) Pages opened from ⋮ show where you are (title, and the entry marked in the menu).
 - [x] 10.9 (2026-11-10: moved from the ⋮ menu to the selection bar (icon only, book and poem readers), mail to admin@arthurarchive.com with book, place and the selected text; compiled, not checked on the phone; check the bar still fits a 360dp phone with six actions) «أبلغ عن خطأ» in the selection menu: opens the mail app with book, place and the selected
       text filled in. No server.
+
+## Phase 12 — content fixes (owner, 2026-11-10)
+
+- [ ] 12.1 Poems set inside books (منظومات, e.g. ملحة الإعراب) drawn as verse everywhere: find every
+      book whose text holds a poem as prose lines and mark its verses (صدر/عجز) in the source.
+- [ ] 12.2 Books with stray formatting, first case: English «quote» markers showing as plain text in
+      the reader. Audit for leftovers like it and fix in the source.
+- [ ] 12.3 Poem titles: every معلقة shows and its title carries «معلقة».
+- [ ] 12.4 Poetry by era (جاهلي، صدر الإسلام، أموي، عباسي…) instead of centuries: a filter that shows
+      only the poets of one era and their poems.
 
 ## Phase 11 — later, by decision
 

@@ -60,9 +60,15 @@ export async function searchResponse(url: URL): Promise<Response> {
   const db = (env as unknown as { SEARCH?: D1Like }).SEARCH;
   if (!db) return json({ hits: [], hasMore: false, error: "search unavailable" }, 503);
   if (!schema) {
-    const [cols] = (await db.prepare(`SELECT (SELECT count(*) FROM pragma_table_info('docs') WHERE name = 'raw') AS raw,
-      (SELECT count(*) FROM pragma_table_info('doc_meta') WHERE name = 'prior') AS prior`).bind().all()).results as { raw: number; prior: number }[];
-    schema = { raw: cols.raw > 0, prior: cols.prior > 0 };
+    // An overloaded D1 fails this too: answer 503 (the app retries), not an uncaught 500.
+    try {
+      const [cols] = (await db.prepare(`SELECT (SELECT count(*) FROM pragma_table_info('docs') WHERE name = 'raw') AS raw,
+        (SELECT count(*) FROM pragma_table_info('doc_meta') WHERE name = 'prior') AS prior`).bind().all()).results as { raw: number; prior: number }[];
+      schema = { raw: cols.raw > 0, prior: cols.prior > 0 };
+    } catch (err) {
+      console.error("search schema probe failed", { message: String(err) });
+      return json({ hits: [], hasMore: false, error: "search unavailable" }, 503);
+    }
   }
   const rawCol = schema.raw ? "docs.raw" : "NULL";
   const priorK = schema.prior ? " * m.prior" : "";
