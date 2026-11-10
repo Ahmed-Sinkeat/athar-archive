@@ -12,6 +12,7 @@ import androidx.room3.Query
 import androidx.room3.RoomDatabase
 import androidx.room3.Transaction
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 object ContentAvailability {
     const val ABSENT = "absent"
@@ -125,8 +126,6 @@ data class EntityFrameEntity(
     indices = [
         Index(value = ["entityId", "ordinal"], unique = true),
         Index(value = ["blockIdHi", "blockIdLo"]),
-        Index(value = ["entityId", "chapterAnchor"]),
-        Index(value = ["fp64"]),
     ],
 )
 data class ContentBlockEntity(
@@ -140,10 +139,78 @@ data class ContentBlockEntity(
     val type: String,
     val printedPage: Int?,
     val vol: Int?,
+    /** Empty while the text is in [packed]; the DAO's readers hand out rows with it filled in. */
     val text: String,
     val attrs: ByteArray,
     val inlineSpans: ByteArray,
+    /** [text] deflated (see [BlockText]), when that is smaller; null on rows stored before v12. */
+    val packed: ByteArray? = null,
 )
+
+/**
+ * Block text is most of a downloaded book's rows (~54%); deflated one block at a time it is about
+ * half the size (2.1x on a sample of 150k blocks) and unpacks in microseconds, so pages and search
+ * stay as fast. ponytail: plain deflate; a shared dictionary measured 2.9x, as format byte 2.
+ */
+object BlockText {
+    private const val DEFLATE: Byte = 1
+
+    /** [rows] with each text moved into [ContentBlockEntity.packed] where that saves space. */
+    fun pack(rows: List<ContentBlockEntity>): List<ContentBlockEntity> {
+        val deflater = java.util.zip.Deflater(6, true)
+        try {
+            val buffer = ByteArray(64 * 1024)
+            return rows.map { row ->
+                val raw = row.text.encodeToByteArray()
+                if (raw.size < 64) return@map row
+                deflater.reset()
+                deflater.setInput(raw)
+                deflater.finish()
+                val out = java.io.ByteArrayOutputStream(raw.size / 2 + 16)
+                out.write(DEFLATE.toInt())
+                while (!deflater.finished()) out.write(buffer, 0, deflater.deflate(buffer))
+                if (out.size() >= raw.size) row else row.copy(text = "", packed = out.toByteArray())
+            }
+        } finally {
+            deflater.end() // native memory: never left to the finalizer
+        }
+    }
+
+    fun unpack(rows: List<ContentBlockEntity>): List<ContentBlockEntity> {
+        if (rows.none { it.packed != null }) return rows
+        val inflater = java.util.zip.Inflater(true)
+        try {
+            return rows.map { if (it.packed == null) it else it.copy(text = unpack(it.packed, inflater), packed = null) }
+        } finally {
+            inflater.end()
+        }
+    }
+
+    fun unpack(row: ContentBlockEntity?): ContentBlockEntity? = row?.let { unpack(listOf(it)).single() }
+
+    fun unpack(packed: ByteArray): String {
+        val inflater = java.util.zip.Inflater(true)
+        try {
+            return unpack(packed, inflater)
+        } finally {
+            inflater.end()
+        }
+    }
+
+    private fun unpack(packed: ByteArray, inflater: java.util.zip.Inflater): String {
+        check(packed.isNotEmpty() && packed[0] == DEFLATE) { "unknown block text format" }
+        inflater.reset()
+        inflater.setInput(packed, 1, packed.size - 1)
+        val out = java.io.ByteArrayOutputStream(packed.size * 3)
+        val buffer = ByteArray(16 * 1024)
+        while (!inflater.finished()) {
+            val n = inflater.inflate(buffer)
+            check(n > 0 || !inflater.needsInput()) { "truncated block text" }
+            out.write(buffer, 0, n)
+        }
+        return out.toString(Charsets.UTF_8.name())
+    }
+}
 
 @Entity(
     tableName = "chapter",
@@ -206,6 +273,9 @@ private const val CatalogSlice = 250
 abstract class ContentCatalogDao {
     @Query("SELECT * FROM entity")
     abstract suspend fun allEntities(): List<ContentEntity>
+
+    @Query("SELECT id, audioJson FROM entity WHERE audioJson != '[]'")
+    abstract suspend fun audioRows(): List<EntityAudioRow>
 
     @Query("SELECT EXISTS(SELECT 1 FROM entity)")
     abstract suspend fun hasEntities(): Boolean
@@ -413,6 +483,8 @@ abstract class ContentCatalogDao {
 
 data class PinRow(val id: String, val coll: String, val pkgHash: String)
 
+data class EntityAudioRow(val id: String, val audioJson: String)
+
 data class BundleRow(val id: String, val pkgHash: String, val pkgSize: Long, val idxSize: Long)
 
 @Dao
@@ -458,26 +530,38 @@ abstract class ContentImportDao {
     )
     protected abstract suspend fun finishImport(entityId: String, availability: String)
 
+    // Every reader below gets rows with their text unpacked (BlockText); only the import's
+    // search indexing reads them as stored.
     @Query("SELECT * FROM block WHERE entityId = :entityId ORDER BY ordinal")
-    abstract suspend fun blocks(entityId: String): List<ContentBlockEntity>
+    protected abstract suspend fun storedBlocks(entityId: String): List<ContentBlockEntity>
+    suspend fun blocks(entityId: String): List<ContentBlockEntity> = BlockText.unpack(storedBlocks(entityId))
 
     @Query("SELECT * FROM block WHERE entityId = :entityId ORDER BY ordinal")
-    abstract fun observeBlocks(entityId: String): Flow<List<ContentBlockEntity>>
+    protected abstract fun storedObserveBlocks(entityId: String): Flow<List<ContentBlockEntity>>
+    fun observeBlocks(entityId: String): Flow<List<ContentBlockEntity>> = storedObserveBlocks(entityId).map(BlockText::unpack)
+
+    /** Rows as stored, text possibly still packed. */
+    @Query("SELECT * FROM block WHERE entityId = :entityId AND ordinal BETWEEN :first AND :last ORDER BY ordinal")
+    abstract suspend fun storedBlockWindow(entityId: String, first: Int, last: Int): List<ContentBlockEntity>
+    suspend fun blockWindow(entityId: String, first: Int, last: Int): List<ContentBlockEntity> =
+        BlockText.unpack(storedBlockWindow(entityId, first, last))
 
     @Query("SELECT * FROM block WHERE entityId = :entityId AND ordinal BETWEEN :first AND :last ORDER BY ordinal")
-    abstract suspend fun blockWindow(entityId: String, first: Int, last: Int): List<ContentBlockEntity>
-
-    @Query("SELECT * FROM block WHERE entityId = :entityId AND ordinal BETWEEN :first AND :last ORDER BY ordinal")
-    abstract fun observeBlockWindow(entityId: String, first: Int, last: Int): Flow<List<ContentBlockEntity>>
+    protected abstract fun storedObserveBlockWindow(entityId: String, first: Int, last: Int): Flow<List<ContentBlockEntity>>
+    fun observeBlockWindow(entityId: String, first: Int, last: Int): Flow<List<ContentBlockEntity>> =
+        storedObserveBlockWindow(entityId, first, last).map(BlockText::unpack)
 
     @Query("SELECT * FROM block WHERE entityId = :entityId AND ordinal = :ordinal LIMIT 1")
-    abstract suspend fun blockAt(entityId: String, ordinal: Int): ContentBlockEntity?
+    protected abstract suspend fun storedBlockAt(entityId: String, ordinal: Int): ContentBlockEntity?
+    suspend fun blockAt(entityId: String, ordinal: Int): ContentBlockEntity? = BlockText.unpack(storedBlockAt(entityId, ordinal))
 
     @Query("SELECT ordinal FROM block WHERE entityId = :entityId AND printedPage = :page AND (:volume IS NULL OR vol = :volume) ORDER BY ordinal LIMIT 1")
     abstract suspend fun printedPageOrdinal(entityId: String, page: Int, volume: Int?): Int?
 
     @Query("SELECT * FROM block WHERE entityId = :entityId AND blockIdHi = :hi AND blockIdLo = :lo LIMIT 1")
-    abstract suspend fun blockByStableId(entityId: String, hi: Long, lo: Long): ContentBlockEntity?
+    protected abstract suspend fun storedBlockByStableId(entityId: String, hi: Long, lo: Long): ContentBlockEntity?
+    suspend fun blockByStableId(entityId: String, hi: Long, lo: Long): ContentBlockEntity? =
+        BlockText.unpack(storedBlockByStableId(entityId, hi, lo))
 
     @Query("SELECT ordinal FROM block WHERE entityId = :entityId AND type IN ('h1','h2','h3','h4','h5','h6') " +
         "AND ((type = 'h2' AND chapterAnchor = :anchor) OR json_extract(CAST(attrs AS TEXT), '$.ha') = :anchor) ORDER BY ordinal LIMIT 1")
@@ -667,7 +751,7 @@ abstract class ContentImportDao {
         ChapterEntity::class,
         FootnoteEntity::class,
     ],
-    version = 11,
+    version = 12,
     exportSchema = true,
 )
 abstract class AtharContentDatabase : RoomDatabase() {

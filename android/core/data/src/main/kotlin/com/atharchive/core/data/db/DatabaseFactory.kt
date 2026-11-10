@@ -92,7 +92,17 @@ internal val ContentMigrations = arrayOf(
             connection.prepare("ALTER TABLE entity ADD COLUMN volumeUnit TEXT").use { it.step() }
             connection.prepare("UPDATE contentGeneration SET generationId = ''").use { it.step() }
         }
-    }, ContentMigration10To11,
+    }, ContentMigration10To11, object : androidx.room3.migration.Migration(11, 12) {
+        // Packed block text (BlockText) for frames imported from now on; rows already stored keep
+        // theirs as plain text. Two indexes no query used: 11% and ~4% of a downloaded book.
+        override suspend fun migrate(connection: androidx.sqlite.SQLiteConnection) {
+            for (sql in listOf(
+                "ALTER TABLE block ADD COLUMN packed BLOB",
+                "DROP INDEX IF EXISTS index_block_entityId_chapterAnchor",
+                "DROP INDEX IF EXISTS index_block_fp64",
+            )) connection.prepare(sql).use { it.step() }
+        }
+    },
 )
 
 /**

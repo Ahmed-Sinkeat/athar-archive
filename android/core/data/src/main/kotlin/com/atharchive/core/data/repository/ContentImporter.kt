@@ -11,6 +11,7 @@ import com.atharchive.core.data.content.FramedPackageDecoder
 import com.atharchive.core.data.content.InlineSpan
 import com.atharchive.core.data.content.PackageBlock
 import com.atharchive.core.data.db.content.AtharContentDatabase
+import com.atharchive.core.data.db.content.BlockText
 import com.atharchive.core.data.db.content.ChapterEntity
 import com.atharchive.core.data.db.content.ContentBlockEntity
 import com.atharchive.core.data.db.content.ContentEntity
@@ -118,7 +119,7 @@ class ContentImporter(
                 compressedBytes = compressedBytes.size.toLong(),
                 lastOpenedAt = nowMillis(),
             ),
-            blocks = entities,
+            blocks = BlockText.pack(entities),
             chapters = decoded.chapterEntities(into),
             footnotes = decoded.footnotes.map {
                 FootnoteEntity(entityId = into, fnId = it.id, text = it.x, inlineSpans = encodeSpans(it.sp), marker = it.n)
@@ -149,7 +150,7 @@ class ContentImporter(
                 val first = prepared.frame.firstBlockOrdinal
                 ContentSearchSchema.indexBlocks(
                     this,
-                    dao.blockWindow(prepared.into, first, first + prepared.frame.blockCount - 1),
+                    dao.storedBlockWindow(prepared.into, first, first + prepared.frame.blockCount - 1),
                     prepared.searchText,
                 )
                 result

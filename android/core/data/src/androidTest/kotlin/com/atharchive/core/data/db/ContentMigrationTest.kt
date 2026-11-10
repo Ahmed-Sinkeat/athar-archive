@@ -63,10 +63,10 @@ class ContentMigrationTest {
     /** With no destructive fallback, every version a phone may hold must reach the current one. */
     @Test
     fun everyOldVersionMigratesToTheCurrentSchema() = runBlocking {
-        for (version in 1..10) {
+        for (version in 1..11) {
             file.delete()
             helper.createDatabase(version).close()
-            helper.runMigrationsAndValidate(11, ContentMigrations.toList()).close()
+            helper.runMigrationsAndValidate(12, ContentMigrations.toList()).close()
         }
     }
 }

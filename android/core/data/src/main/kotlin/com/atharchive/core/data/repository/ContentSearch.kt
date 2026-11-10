@@ -11,6 +11,7 @@ import com.atharchive.core.ArNormalize
 import com.atharchive.core.CompactFtsPlan
 import com.atharchive.core.FtsQueryBuilder
 import com.atharchive.core.data.db.content.AtharContentDatabase
+import com.atharchive.core.data.db.content.BlockText
 import com.atharchive.core.data.db.content.ContentAvailability
 import com.atharchive.core.data.db.content.ContentBlockEntity
 import com.atharchive.core.data.db.content.ContentEntity
@@ -152,11 +153,11 @@ object ContentSearchSchema {
     }
 
     private fun rebuild(connection: SQLiteConnection) {
-        connection.prepare("SELECT rowid, text FROM block ORDER BY rowid").use { blocks ->
+        connection.prepare("SELECT rowid, text, packed FROM block ORDER BY rowid").use { blocks ->
             connection.prepare("INSERT INTO block_fts(rowid, norm) VALUES (?, ?)").use { insert ->
                 while (blocks.step()) {
                     insert.bindLong(1, blocks.getLong(0))
-                    insert.bindText(2, ArNormalize.normalize(blocks.getText(1)))
+                    insert.bindText(2, ArNormalize.normalize(blocks.blockText(1)))
                     insert.step()
                     insert.reset()
                     insert.clearBindings()
@@ -379,7 +380,7 @@ class ContentSearchRepository(private val database: AtharContentDatabase) {
         val where = "WHERE block_fts MATCH ?${if (bookRowids == null) "" else " AND block_fts.rowid BETWEEN ? AND ?"} " +
             "AND e.catalogPresent = 1${filter.sql}${if (range == null) "" else " AND b.ordinal BETWEEN ? AND ?"}"
         val columns = "b.rowid, b.entityId, b.ordinal, b.chapterAnchor, c.title, b.printedPage, " +
-            "b.type, b.text, e.title, e.personName, e.coll "
+            "b.type, b.text, e.title, e.personName, e.coll, b.packed "
         val joins = "JOIN entity e ON e.id = b.entityId " +
             "LEFT JOIN chapter c ON c.entityId = b.entityId AND c.anchor = b.chapterAnchor "
         val sql = if (ranked) {
@@ -419,9 +420,10 @@ class ContentSearchRepository(private val database: AtharContentDatabase) {
                 query.bindLong(bind, offset.toLong())
                 while (query.step()) {
                     candidates++
-                    query.toBlockHit(plan, exact)?.let { hit ->
+                    val source = query.blockText(7)
+                    query.toBlockHit(source, plan, exact)?.let { hit ->
                         result += hit
-                        if (tiers != null) scores[hit.rowid] = tiers.score(query.getText(7))
+                        if (tiers != null) scores[hit.rowid] = tiers.score(source)
                     }
                     if (result.size == want) break
                 }
@@ -513,8 +515,13 @@ private fun lettersWithMarks(text: String): List<Pair<Char, Set<Char>>> {
 fun isTashkeel(c: Char): Boolean =
     c.code in 0x0610..0x061A || c.code == 0x0640 || c.code in 0x064B..0x065F || c.code == 0x0670 || c.code in 0x06D6..0x06ED
 
-private fun SQLiteStatement.toBlockHit(plan: CompactFtsPlan, exact: String? = null): BlockSearchHit? {
-    val source = getText(7)
+/** The block text at [column], or its packed form in the column after the last selected one. */
+private fun SQLiteStatement.blockText(column: Int): String {
+    val packed = getColumnCount() - 1
+    return if (isNull(packed)) getText(column) else BlockText.unpack(getBlob(packed))
+}
+
+private fun SQLiteStatement.toBlockHit(source: String, plan: CompactFtsPlan, exact: String? = null): BlockSearchHit? {
     val mapped = ArNormalize.normalizeWithMap(source)
     if (plan.exactPhrases.any { !mapped.text.contains(it) }) return null
     val terms = if (plan.exactPhrases.isNotEmpty()) plan.exactPhrases else plan.highlightTerms
