@@ -4,6 +4,7 @@ import androidx.room3.PooledConnection
 import androidx.room3.RoomDatabase
 import androidx.room3.useReaderConnection
 import androidx.room3.useWriterConnection
+import androidx.room3.withWriteTransaction
 import androidx.sqlite.SQLiteConnection
 import androidx.sqlite.SQLiteStatement
 import androidx.sqlite.execSQL
@@ -21,6 +22,8 @@ import kotlinx.coroutines.ensureActive
 private const val SearchSchemaVersion = 1L
 private const val CandidateBatchSize = 80
 private const val RankCap = 20_000
+private const val PositionsChunk = 2_000
+private const val BlockFtsDdl = "norm, tokenize='unicode61', content='', contentless_delete=1, detail=full"
 
 /** Raw DDL selected by M0/R2b. Room deliberately does not model these virtual tables. */
 object ContentSearchSchema {
@@ -49,7 +52,104 @@ object ContentSearchSchema {
             } else {
                 create(connection)
                 indexMissingCatalog(connection)
+                startPositions(connection)
             }
+        }
+    }
+
+    /**
+     * Whether `block_fts` keeps word positions (detail=full): phrase and NEAR then run in SQL and
+     * search ranks with the site's tiers. Installs from before 8.11 have a detail=none index and
+     * gain one through [addPositions], in the background; until it swaps in they search as before.
+     */
+    @Volatile var positions = false
+        private set
+    @Volatile private var copying = false
+
+    /** An old index: make the new one beside it; [addPositions] fills it up to today's last block. */
+    private fun startPositions(connection: SQLiteConnection) {
+        val meta = meta(connection)
+        if (meta["positions"] == 1L) { positions = true; return }
+        connection.execSQL("CREATE VIRTUAL TABLE IF NOT EXISTS block_fts_full USING fts5($BlockFtsDdl)")
+        connection.execSQL(
+            "CREATE TRIGGER IF NOT EXISTS block_fts_full_before_delete BEFORE DELETE ON block BEGIN " +
+                "DELETE FROM block_fts_full WHERE rowid = OLD.rowid; END",
+        )
+        // Rowids only grow (autoGenerate), so blocks imported from now on are above this mark and
+        // [indexBlocks] writes them to both indexes; the copy walks the ones below it.
+        if (meta["positionsTo"] == null) {
+            val last = connection.prepare("SELECT coalesce(max(rowid), 0) FROM block").use { it.step(); it.getLong(0) }
+            setMeta(connection, "positionsTo", last)
+            setMeta(connection, "positionsAt", 0)
+        }
+        copying = true
+    }
+
+    /**
+     * Copies the old index's blocks into the one with positions, [PositionsChunk] per write
+     * transaction so downloads and catalog updates interleave, then swaps it in. Resumes where a
+     * killed process stopped. ~2 s of a writer per 10k blocks on a desktop; a whole library is minutes.
+     */
+    suspend fun addPositions(database: AtharContentDatabase) {
+        ensure(database) // opens the database, which decides whether there is anything to copy
+        if (!copying) return
+        while (true) {
+            currentCoroutineContext().ensureActive()
+            if (database.withWriteTransaction { copyPositions(this) }) break
+        }
+        copying = false
+        positions = true
+        android.util.Log.i("AtharContent", "search index now keeps word positions")
+    }
+
+    /** One chunk; true once the copy is done and swapped in. */
+    private suspend fun copyPositions(connection: PooledConnection): Boolean {
+        val meta = connection.usePrepared("SELECT key, value FROM athar_search_meta") { q ->
+            buildMap { while (q.step()) put(q.getText(0), q.getLong(1)) }
+        }
+        val at = meta["positionsAt"] ?: 0
+        val to = meta["positionsTo"] ?: 0
+        // Read first, then write: no insert into an FTS table while a select over block is open.
+        val rows = connection.usePrepared("SELECT rowid, text, packed FROM block WHERE rowid > ? AND rowid <= ? ORDER BY rowid LIMIT ?") { q ->
+            q.bindLong(1, at); q.bindLong(2, to); q.bindLong(3, PositionsChunk.toLong())
+            buildList { while (q.step()) add(q.getLong(0) to ArNormalize.normalize(q.blockText(1))) }
+        }
+        if (rows.isNotEmpty()) {
+            connection.usePrepared("INSERT INTO block_fts_full(rowid, norm) VALUES (?, ?)") { insert ->
+                rows.forEach { (rowid, norm) ->
+                    insert.bindLong(1, rowid)
+                    insert.bindText(2, norm)
+                    insert.step()
+                    insert.reset()
+                    insert.clearBindings()
+                }
+            }
+            connection.usePrepared("INSERT OR REPLACE INTO athar_search_meta(key, value) VALUES ('positionsAt', ?)") {
+                it.bindLong(1, rows.last().first); it.step()
+            }
+            return false
+        }
+        listOf(
+            "DROP TRIGGER IF EXISTS block_fts_before_delete",
+            "DROP TRIGGER IF EXISTS block_fts_full_before_delete",
+            "DROP TABLE IF EXISTS block_fts",
+            "ALTER TABLE block_fts_full RENAME TO block_fts",
+            "CREATE TRIGGER IF NOT EXISTS block_fts_before_delete BEFORE DELETE ON block BEGIN " +
+                "DELETE FROM block_fts WHERE rowid = OLD.rowid; END",
+            "DELETE FROM athar_search_meta WHERE key IN ('positionsAt', 'positionsTo')",
+            "INSERT OR REPLACE INTO athar_search_meta(key, value) VALUES ('positions', 1)",
+        ).forEach { connection.execute(it) }
+        return true
+    }
+
+    private fun meta(connection: SQLiteConnection): Map<String, Long> =
+        connection.prepare("SELECT key, value FROM athar_search_meta").use { q ->
+            buildMap { while (q.step()) put(q.getText(0), q.getLong(1)) }
+        }
+
+    private fun setMeta(connection: SQLiteConnection, key: String, value: Long) {
+        connection.prepare("INSERT OR REPLACE INTO athar_search_meta(key, value) VALUES (?, ?)").use {
+            it.bindText(1, key); it.bindLong(2, value); it.step()
         }
     }
 
@@ -96,13 +196,15 @@ object ContentSearchSchema {
         blocks: List<ContentBlockEntity>,
         searchText: Map<Int, String>,
     ) {
-        connection.usePrepared("INSERT INTO block_fts(rowid, norm) VALUES (?, ?)") { insert ->
-            blocks.forEach { block ->
-                insert.bindLong(1, block.rowid)
-                insert.bindText(2, searchText[block.ordinal] ?: ArNormalize.normalize(block.text))
-                insert.step()
-                insert.reset()
-                insert.clearBindings()
+        for (table in if (copying) listOf("block_fts", "block_fts_full") else listOf("block_fts")) {
+            connection.usePrepared("INSERT INTO $table(rowid, norm) VALUES (?, ?)") { insert ->
+                blocks.forEach { block ->
+                    insert.bindLong(1, block.rowid)
+                    insert.bindText(2, searchText[block.ordinal] ?: ArNormalize.normalize(block.text))
+                    insert.step()
+                    insert.reset()
+                    insert.clearBindings()
+                }
             }
         }
     }
@@ -110,7 +212,7 @@ object ContentSearchSchema {
     private suspend fun create(connection: PooledConnection) {
         connection.execute(
             "CREATE VIRTUAL TABLE IF NOT EXISTS block_fts USING fts5(" +
-                "norm, tokenize='unicode61', content='', contentless_delete=1, detail=none)",
+                "$BlockFtsDdl)",
         )
         connection.execute(
             "CREATE VIRTUAL TABLE IF NOT EXISTS catalog_fts USING fts5(" +
@@ -126,7 +228,7 @@ object ContentSearchSchema {
         createMetadata(connection)
         connection.execSQL(
             "CREATE VIRTUAL TABLE IF NOT EXISTS block_fts USING fts5(" +
-                "norm, tokenize='unicode61', content='', contentless_delete=1, detail=none)",
+                "$BlockFtsDdl)",
         )
         connection.execSQL(
             "CREATE VIRTUAL TABLE IF NOT EXISTS catalog_fts USING fts5(" +
@@ -147,7 +249,9 @@ object ContentSearchSchema {
 
     private fun reset(connection: SQLiteConnection) {
         connection.execSQL("DROP TRIGGER IF EXISTS block_fts_before_delete")
+        connection.execSQL("DROP TRIGGER IF EXISTS block_fts_full_before_delete")
         connection.execSQL("DROP TABLE IF EXISTS block_fts")
+        connection.execSQL("DROP TABLE IF EXISTS block_fts_full")
         connection.execSQL("DROP TABLE IF EXISTS catalog_fts")
         connection.execSQL("DROP TABLE IF EXISTS athar_search_meta")
     }
@@ -217,13 +321,11 @@ object ContentSearchSchema {
         android.util.Log.w("AtharContent", "indexed ${missing.size} catalog entries the search had lost")
     }
 
+    /** A fresh or rebuilt index: created with positions. */
     private fun writeVersion(connection: SQLiteConnection) {
-        connection.prepare(
-            "INSERT OR REPLACE INTO athar_search_meta(key, value) VALUES ('schema', ?)",
-        ).use { statement ->
-            statement.bindLong(1, SearchSchemaVersion)
-            statement.step()
-        }
+        setMeta(connection, "schema", SearchSchemaVersion)
+        setMeta(connection, "positions", 1)
+        positions = true
     }
 }
 
@@ -404,32 +506,41 @@ class ContentSearchRepository(private val database: AtharContentDatabase) {
         val want = if (tiers != null) maxOf(limit * 4, CandidateBatchSize) else limit
         // Ranked candidates come in one read: each OFFSET page would rank the capped set again.
         val batch = if (ranked) want else CandidateBatchSize
+        // With word positions the site's tiers run in SQL, each over the whole library: every
+        // passage with the phrase comes before one with the words apart, not only those in the
+        // first RankCap matches. An index without positions (before its copy finishes) does one pass.
+        val matches = if (ranked && ContentSearchSchema.positions && !request.anyWord && exact == null) {
+            FtsQueryBuilder.tiers(request.query).ifEmpty { listOf(plan.matchExpression) }
+        } else listOf(plan.matchExpression)
         val result = mutableListOf<BlockSearchHit>()
         val scores = HashMap<Long, Int>()
-        var offset = 0
-        while (result.size < want) {
-            currentCoroutineContext().ensureActive()
-            var candidates = 0
-            connection.usePrepared(sql) { query ->
-                var bind = 1
-                query.bindText(bind++, plan.matchExpression)
-                if (bookRowids != null) { query.bindLong(bind++, bookRowids.first); query.bindLong(bind++, bookRowids.last) }
-                bind = query.bindAll(bind, filter.values)
-                if (range != null) { query.bindLong(bind++, range.first.toLong()); query.bindLong(bind++, range.last.toLong()) }
-                query.bindLong(bind++, batch.toLong())
-                query.bindLong(bind, offset.toLong())
-                while (query.step()) {
-                    candidates++
-                    val source = query.blockText(7)
-                    query.toBlockHit(source, plan, exact)?.let { hit ->
-                        result += hit
-                        if (tiers != null) scores[hit.rowid] = tiers.score(source)
+        for ((tierIndex, match) in matches.withIndex()) {
+            if (result.size >= want) break
+            var offset = 0
+            while (result.size < want) {
+                currentCoroutineContext().ensureActive()
+                var candidates = 0
+                connection.usePrepared(sql) { query ->
+                    var bind = 1
+                    query.bindText(bind++, match)
+                    if (bookRowids != null) { query.bindLong(bind++, bookRowids.first); query.bindLong(bind++, bookRowids.last) }
+                    bind = query.bindAll(bind, filter.values)
+                    if (range != null) { query.bindLong(bind++, range.first.toLong()); query.bindLong(bind++, range.last.toLong()) }
+                    query.bindLong(bind++, batch.toLong())
+                    query.bindLong(bind, offset.toLong())
+                    while (query.step()) {
+                        candidates++
+                        val source = query.blockText(7)
+                        query.toBlockHit(source, plan, exact)?.let { hit ->
+                            result += hit
+                            if (tiers != null) scores[hit.rowid] = tierIndex * 10 + tiers.score(source)
+                        }
+                        if (result.size == want) break
                     }
-                    if (result.size == want) break
                 }
+                if (candidates < batch || result.size == want) break
+                offset += batch
             }
-            if (candidates < batch || result.size == want) break
-            offset += batch
         }
         return if (tiers == null) result else result.sortedBy { scores[it.rowid] ?: 0 }.take(limit)
     }

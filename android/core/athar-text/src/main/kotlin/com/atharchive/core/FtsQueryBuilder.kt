@@ -59,6 +59,34 @@ object FtsQueryBuilder {
         return CompactFtsPlan(match, if (anyWord) emptyList() else phrases, highlights)
     }
 
+    /**
+     * The site's tiers (src/lib/search-rank.ts) for an index with word positions, best first: the
+     * phrase, every word within [NearWindow] tokens, every word whole, then [build]'s own match
+     * (the last word as a prefix, ال dropped). Each excludes the ones before it. A quoted query or
+     * a single word is one tier. A long query's word tiers leave out [Particles], as the site's do.
+     */
+    fun tiers(raw: String): List<String> {
+        val widest = build(raw) ?: return emptyList()
+        val words = tokens(raw.take(MAX_INPUT_CHARS)).take(MAX_TOKENS)
+        if ('"' in raw || words.size < 2) return listOf(widest)
+        val required = if (words.size < LONG_QUERY) words else words.filterNot(Particles::contains).takeIf { it.size >= 2 } ?: words
+        val base = listOf(
+            quote(words.joinToString(" ")),
+            "NEAR(${required.joinToString(" ", transform = ::quote)}, $NEAR_WINDOW)",
+            required.joinToString(" AND ", transform = ::quote),
+            widest,
+        ).distinct()
+        return base.mapIndexed { i, e -> if (i == 0) e else "($e) NOT (${base.take(i).joinToString(" OR ")})" }
+    }
+
+    private const val LONG_QUERY = 4
+    private const val NEAR_WINDOW = 12
+    // Folded spelling, as the index stores it; same list as search-rank.ts PARTICLES.
+    private val Particles = setOf(
+        "من", "في", "على", "الي", "عن", "ان", "ثم", "لا", "ما", "هو", "هي", "هذا", "هذه", "ذلك",
+        "الذي", "التي", "كان", "قد", "او", "كل", "به", "بها", "له", "لها", "فيه", "فيها", "الله",
+    )
+
     private fun build(raw: String, compactCandidates: Boolean, anyWord: Boolean = false): String? {
         if (raw.isBlank()) return null
         val input = raw.take(MAX_INPUT_CHARS)

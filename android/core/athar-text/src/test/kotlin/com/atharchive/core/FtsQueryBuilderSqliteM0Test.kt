@@ -53,6 +53,49 @@ class FtsQueryBuilderSqliteM0Test {
         }
     }
 
+    /**
+     * 8.3/8.11: on an index with word positions each tier finds only its own passage, best first,
+     * and the old→new index swap of ContentSearchSchema.copyPositions (same statements) keeps
+     * the delete trigger working on the renamed table.
+     */
+    @Test
+    fun tiersRankPhraseThenNearThenEveryWordThenPrefixAndTheSwapKeepsDeletes() {
+        val filler = (1..20).joinToString(" ") { "كلمه" }
+        val rows = listOf(
+            1 to "باب طلب العلم فريضه",
+            2 to "باب طلب شيء من العلم",
+            3 to "باب طلب $filler العلم",
+            4 to "باب طلب العلمية",
+        )
+        val tiers = FtsQueryBuilder.tiers("طلب العلم")
+        assertEquals(4, tiers.size)
+        val ddl = "norm, tokenize='unicode61', content='', contentless_delete=1"
+        val output = runSql(buildString {
+            appendLine(".bail on")
+            appendLine("CREATE TABLE block(rowid INTEGER PRIMARY KEY AUTOINCREMENT, text TEXT);")
+            appendLine("CREATE VIRTUAL TABLE block_fts USING fts5($ddl, detail=none);")
+            appendLine("CREATE TRIGGER block_fts_before_delete BEFORE DELETE ON block BEGIN DELETE FROM block_fts WHERE rowid = OLD.rowid; END;")
+            appendLine("CREATE VIRTUAL TABLE block_fts_full USING fts5($ddl, detail=full);")
+            appendLine("CREATE TRIGGER block_fts_full_before_delete BEFORE DELETE ON block BEGIN DELETE FROM block_fts_full WHERE rowid = OLD.rowid; END;")
+            rows.forEach { (id, text) ->
+                appendLine("INSERT INTO block(rowid, text) VALUES ($id, '$text');")
+                appendLine("INSERT INTO block_fts(rowid, norm) VALUES ($id, '$text');")
+                appendLine("INSERT INTO block_fts_full(rowid, norm) VALUES ($id, '$text');")
+            }
+            appendLine("BEGIN;")
+            appendLine("DROP TRIGGER IF EXISTS block_fts_before_delete;")
+            appendLine("DROP TRIGGER IF EXISTS block_fts_full_before_delete;")
+            appendLine("DROP TABLE IF EXISTS block_fts;")
+            appendLine("ALTER TABLE block_fts_full RENAME TO block_fts;")
+            appendLine("CREATE TRIGGER IF NOT EXISTS block_fts_before_delete BEFORE DELETE ON block BEGIN DELETE FROM block_fts WHERE rowid = OLD.rowid; END;")
+            appendLine("COMMIT;")
+            tiers.forEach { appendLine("SELECT group_concat(rowid) FROM block_fts WHERE block_fts MATCH '${it.sqlLiteral()}';") }
+            appendLine("DELETE FROM block WHERE rowid = 1;")
+            appendLine("SELECT count(*) FROM block_fts WHERE block_fts MATCH '${tiers[0].sqlLiteral()}';")
+        }).lines().filter(String::isNotBlank)
+        assertEquals(listOf("1", "2", "3", "4", "0"), output)
+    }
+
     @Test
     fun articleAndCompoundExpansionsRecallExpectedRowsFromFiftyRealBooks() {
         val repository = Path.of(requireNotNull(System.getProperty("athar.repoRoot")))

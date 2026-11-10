@@ -83,11 +83,11 @@ for (const e of catalog.entries) {
 db.prepare("INSERT INTO contentGeneration (singleton, generationId, catalogHash, tombstonesHash, appliedAt, personsJson) VALUES (0, ?, ?, ?, ?, ?)")
   .run(root.generationId, root.catalog.hash, root.tombstones.hash, Date.now(), personsJson(catalog.persons ?? []));
 // Search tables as ContentSearchSchema creates them; the schema row tells the app not to rebuild.
-db.exec("CREATE VIRTUAL TABLE IF NOT EXISTS block_fts USING fts5(norm, tokenize='unicode61', content='', contentless_delete=1, detail=none)");
+db.exec("CREATE VIRTUAL TABLE IF NOT EXISTS block_fts USING fts5(norm, tokenize='unicode61', content='', contentless_delete=1, detail=full)");
 db.exec("CREATE VIRTUAL TABLE IF NOT EXISTS catalog_fts USING fts5(titleNorm, personNorm, topicsNorm, id UNINDEXED, tokenize='unicode61')");
 db.exec("CREATE TRIGGER IF NOT EXISTS block_fts_before_delete BEFORE DELETE ON block BEGIN DELETE FROM block_fts WHERE rowid = OLD.rowid; END");
 db.exec("CREATE TABLE IF NOT EXISTS athar_search_meta(key TEXT PRIMARY KEY NOT NULL, value INTEGER NOT NULL)");
-db.exec("INSERT OR REPLACE INTO athar_search_meta(key, value) VALUES ('schema', 1)");
+db.exec("INSERT OR REPLACE INTO athar_search_meta(key, value) VALUES ('schema', 1), ('positions', 1)");
 const insertSearch = db.prepare("INSERT INTO catalog_fts(titleNorm, personNorm, topicsNorm, id) VALUES (?, ?, ?, ?)");
 for (const e of catalog.entries) {
   if (e.editionOf != null) continue;

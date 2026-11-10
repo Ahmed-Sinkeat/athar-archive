@@ -51,6 +51,7 @@ import com.atharchive.core.data.repository.ContentSearchField
 import com.atharchive.core.data.repository.ContentStoragePolicy
 import com.atharchive.core.data.repository.ContentSearchFilter
 import com.atharchive.core.data.repository.ContentSearchRepository
+import com.atharchive.core.data.repository.ContentSearchSchema
 import com.atharchive.core.data.repository.ContentSearchRequest
 import com.atharchive.core.data.repository.ContentSearchSort
 import com.atharchive.core.data.repository.PersonalLibraryRepository
@@ -1011,6 +1012,8 @@ class AtharContentViewModel @Inject constructor(
             refreshCacheBytes()
             sync()
         }
+        // Installs from before 8.11: give the search index word positions, a chunk at a time.
+        viewModelScope.launch(errorHandler) { ContentSearchSchema.addPositions(content.contentDatabase) }
     }
 
     private var syncJob: kotlinx.coroutines.Job? = null
