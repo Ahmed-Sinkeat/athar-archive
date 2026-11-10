@@ -1,7 +1,7 @@
 // How /api/search orders and shows passages (src/pages/api/search.ts uses it; the app's offline
 // search follows the same order). Best first:
 //   0. a work whose title starts with what was typed (the متن before its شروح)
-//   1. the exact phrase   2. every exact word   3. words that only start the same
+//   1. the exact phrase   1b. every exact word within NEAR_WINDOW tokens   2. every exact word   3. words that only start the same
 //   (any mode: 4. some exact word   5. some word that starts the same)
 // Each tier excludes the tiers before it, so pages never repeat a passage. Inside a page, a
 // passage with the spelling as typed (إنما over انما) comes first. The words are shown as written.
@@ -24,17 +24,33 @@ export function widestExpr(tokens: string[], mode: Mode): string {
   return baseTiers(tokens, mode).at(-1) ?? '""';
 }
 
+// Particles that sit in most passages. In a long query they only widen the every-word tiers (a
+// 9-word query took 7 s and took the index down for a minute, 2026-11-10); the phrase tier still
+// carries them. Folded spelling, as the index stores it.
+const PARTICLES = new Set(["من", "في", "على", "الي", "عن", "ان", "ثم", "لا", "ما", "هو", "هي", "هذا", "هذه", "ذلك", "الذي", "التي", "كان", "قد", "او", "كل", "به", "بها", "له", "لها", "فيه", "فيها", "الله"]);
+const LONG_QUERY = 4;
+// Words within this many tokens of each other come before the same words anywhere in a passage.
+const NEAR_WINDOW = 12;
+
+/** The words the every-word tiers require: a long query drops particles, keeping at least two words. */
+export function requiredWords(t: string[]): string[] {
+  if (t.length < LONG_QUERY) return t;
+  const kept = t.filter((x) => !PARTICLES.has(x));
+  return kept.length >= 2 ? kept : t;
+}
+
 function baseTiers(tokens: string[], mode: Mode): string[] {
   const t = tokens.map((x) => x.replaceAll('"', "")).filter(Boolean);
   if (!t.length) return [];
   const exact = (x: string) => `"${x}"`;
   const prefix = (x: string) => (x.length >= MIN_PREFIX_LEN ? `"${x}"*` : `"${x}"`);
   const phrase = `"${t.join(" ")}"`;
+  const req = requiredWords(t);
   if (mode === "root") return [...new Set([t.map(exact).join(" OR "), t.map(prefix).join(" OR ")])];
   const tiers = mode === "phrase"
     // a phrase whose last word is still being typed
     ? [phrase, t[t.length - 1].length >= MIN_PREFIX_LEN ? `${phrase} *` : phrase]
-    : [phrase, t.map(exact).join(" AND "), t.map(prefix).join(" AND "),
+    : [phrase, ...(req.length >= 2 ? [`NEAR(${req.map(exact).join(" ")}, ${NEAR_WINDOW})`] : []), req.map(exact).join(" AND "), req.map(prefix).join(" AND "),
       ...(mode === "any" ? [t.map(exact).join(" OR "), t.map(prefix).join(" OR ")] : [])];
   return [...new Set(tiers)];
 }

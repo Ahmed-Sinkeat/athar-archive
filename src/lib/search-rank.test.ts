@@ -18,11 +18,28 @@ describe("search tiers", () => {
 
   it("puts the exact phrase first and prefix-only matches last, never twice", () => {
     const tiers = tierExprs(["يقول", "راجي"], "all").map(ids);
-    expect(tiers).toEqual([[2], [3], [4]]);
+    expect(tiers).toEqual([[2], [3], [], [4]]); // phrase, near (row 3 is exact-word AND, 5 apart… caught by near), all-words, prefix
     expect(tiers.flat()).not.toContain(1); // راجينا alone: no يقول at all
   });
   it("any mode adds single words after every all-words tier", () => {
     expect(tierExprs(["يقول", "راجي"], "any").map(ids).flat()).toEqual([2, 3, 4, 1]);
+  });
+  it("a long query's every-word tiers skip particles, the phrase keeps them", () => {
+    const [phrase, near, all] = tierExprs(["من", "ارتد", "ثم", "تاب", "حبط"], "all");
+    expect(near).toContain('NEAR("ارتد" "تاب" "حبط"');
+    expect(phrase).toBe('"من ارتد ثم تاب حبط"');
+    expect(all).toContain('"ارتد" AND "تاب" AND "حبط"');
+    expect(all).not.toContain('"من" AND');
+    expect(tierExprs(["من", "ثم"], "all")[2]).toContain('"من" AND "ثم"'); // short query: unchanged
+  });
+  it("words close together come before the same words far apart", () => {
+    const d = new DatabaseSync(":memory:");
+    d.exec("CREATE VIRTUAL TABLE docs USING fts5(title, text)");
+    const far = "ارتد " + "كلمه ".repeat(40) + "تاب " + "كلمه ".repeat(40) + "حبط";
+    d.prepare("INSERT INTO docs (title, text) VALUES (?, ?)").run("a", far);
+    d.prepare("INSERT INTO docs (title, text) VALUES (?, ?)").run("b", "من كان مومنا ثم ارتد ثم تاب حبط عمله");
+    const tiers = tierExprs(["ارتد", "تاب", "حبط"], "all").map((e) => d.prepare("SELECT rowid FROM docs WHERE docs MATCH ?").all(e).map((r) => Number(r.rowid)));
+    expect(tiers.flat()).toEqual([2, 1]); // near first, far after, never twice
   });
   it("finds a title that starts with the words", () => {
     db.prepare("INSERT INTO docs (title, text) VALUES (?, ?)").run("زاد المستقنع في اختصار المقنع", "");
