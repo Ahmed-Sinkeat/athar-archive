@@ -314,6 +314,10 @@ interface UserDataDao {
     @Query("SELECT * FROM readingPosition ORDER BY entityId")
     suspend fun readingPositions(): List<ReadingPositionEntity>
 
+    /** «آخر ما قرأت»: the one work read last. */
+    @Query("SELECT entityId FROM readingPosition ORDER BY updatedAt DESC LIMIT 1")
+    suspend fun lastReadId(): String?
+
     @Query(
         "SELECT entityId FROM pinnedDownload " +
             "UNION SELECT entityId FROM annotation " +

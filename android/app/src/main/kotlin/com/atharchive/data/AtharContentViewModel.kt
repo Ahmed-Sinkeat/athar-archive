@@ -107,6 +107,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.sample
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlin.math.roundToInt
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.map
@@ -198,7 +199,13 @@ class AtharContentViewModel @Inject constructor(
     private fun <T> Flow<T>.throttled(ms: Long): Flow<T> = conflate().transform { emit(it); delay(ms) }
 
     private val library = userDao.observeLibraryEntries()
-    private val positions = userDao.observeReadingPositions()
+    /**
+     * What the books list draws from positions: whole-percent progress and recent order. A scroll
+     * stop that moves neither (almost all of them) rebuilds nothing.
+     */
+    private val listPositions = userDao.observeReadingPositions().map { rows ->
+        rows.sortedByDescending { it.updatedAt }.mapIndexed { rank, p -> p.entityId to ((p.progressPct * 100).roundToInt() to rank) }.toMap()
+    }.distinctUntilChanged()
     private val personalLibrary = PersonalLibraryRepository(content.userDatabase)
     private val annotationRepository = AnnotationRepository(content.userDatabase, content.contentDatabase)
     private val annotations = annotationRepository.observe()
@@ -648,12 +655,10 @@ class AtharContentViewModel @Inject constructor(
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
 
     val books: StateFlow<BooksUiState> = combine(
-        // positions change at every scroll stop in the reader: the 2,465-row list follows them at most every 3 s
-        catalogDao.observeCollectionLean("book").pausedDuringUpdate(), pinIds, retainedPins, library, combine(positions.throttled(3_000), localStates, ::Pair),
-    ) { entities, pinnedIds, retainedIds, shelves, (savedPositions, states) ->
+        // the 2,465-row list follows a position only when its percent or the recent order moves, at most every 3 s
+        catalogDao.observeCollectionLean("book").pausedDuringUpdate(), pinIds, retainedPins, library, combine(listPositions.throttled(3_000), localStates, ::Pair),
+    ) { entities, pinnedIds, retainedIds, shelves, (placed, states) ->
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
-        val positionById = savedPositions.associateBy(ReadingPositionEntity::entityId)
-        val recentRanks = savedPositions.sortedByDescending { it.updatedAt }.mapIndexed { index, position -> position.entityId to index }.toMap()
         BooksUiState(
             archiveCountLabel = arabicCount(entities.size, "الكتب", "كتاب واحد", "كتابين", "كتب", "كتابًا"),
             books = entities.map {
@@ -662,8 +667,8 @@ class AtharContentViewModel @Inject constructor(
                     retained = it.id in retainedIds,
                     complete = it.id in states.complete,
                     saved = it.id in shelfIds,
-                    position = positionById[it.id],
-                    recentRank = recentRanks[it.id],
+                    progressPercent = placed[it.id]?.first,
+                    recentRank = placed[it.id]?.second,
                 )
             },
         )
@@ -1312,8 +1317,7 @@ class AtharContentViewModel @Inject constructor(
 
     /** The work read most recently as (id, collection), or null on a fresh install. */
     suspend fun lastReadWork(): Pair<String, String>? {
-        val latest = userDao.readingPositions().maxByOrNull { it.updatedAt } ?: return null
-        val entity = catalogDao.entity(latest.entityId) ?: return null
+        val entity = catalogDao.entity(userDao.lastReadId() ?: return null) ?: return null
         return entity.id to entity.coll
     }
 
@@ -1613,10 +1617,10 @@ class AtharContentViewModel @Inject constructor(
         retained: Boolean,
         complete: Boolean,
         saved: Boolean,
-        position: ReadingPositionEntity?,
+        progressPercent: Int?,
         recentRank: Int?,
     ): BookUi {
-        val progress = position?.progressPct?.toFloat()?.coerceIn(0f, 1f)
+        val progress = progressPercent?.let { (it / 100f).coerceIn(0f, 1f) }
         val download = when {
             pinned && !retained ->
                 BookDownloadUi.Downloading(
@@ -1642,8 +1646,6 @@ class AtharContentViewModel @Inject constructor(
             volumes = volumes,
             volumeUnit = volumeUnit,
             recentRank = recentRank,
-            // ponytail: chapterAnchor is a slug, not a title; the title lives in the content DB per book. Show the place only.
-            readingPosition = position?.let { "الموضع ${arabicNumber(it.ordinalHint + 1)}" },
             readingProgress = progress,
             readingProgressLabel = progress?.let { "${arabicNumber((it * 100).toInt())}٪" },
         )
