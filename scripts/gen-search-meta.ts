@@ -25,17 +25,24 @@ function main() {
   const workTopics = all
     .filter((e) => e.collection === "book" && e.data.status === "published" && Array.isArray(e.data.topics))
     .flatMap((b) => (b.data.topics as unknown[]).map((t) => topicTitle.get(String(t))).filter((t): t is string => !!t).map((t) => `(${q(b.id)},${q(t)})`));
+  // edition → its primary, so search counts a work once however many copies it has (8.4).
+  const editions = all
+    .filter((e) => (e.collection === "book" || e.collection === "poem") && e.data.status === "published" && e.data.edition_of)
+    .map((e) => `(${q(e.id)},${q(String(e.data.edition_of))})`);
   const sql =
     "DROP TABLE IF EXISTS person_meta;\n" +
     "CREATE TABLE person_meta (slug TEXT PRIMARY KEY, name TEXT, death_year INTEGER);\n" +
     (rows.length ? `INSERT INTO person_meta (slug,name,death_year) VALUES ${rows.join(",\n")};\n` : "") +
     "DROP TABLE IF EXISTS work_topic;\n" +
     "CREATE TABLE work_topic (book TEXT NOT NULL, topic TEXT NOT NULL, PRIMARY KEY (topic, book));\n" +
-    (workTopics.length ? `INSERT OR IGNORE INTO work_topic (book,topic) VALUES ${workTopics.join(",\n")};\n` : "");
+    (workTopics.length ? `INSERT OR IGNORE INTO work_topic (book,topic) VALUES ${workTopics.join(",\n")};\n` : "") +
+    "DROP TABLE IF EXISTS work_edition;\n" +
+    "CREATE TABLE work_edition (book TEXT PRIMARY KEY, work TEXT NOT NULL);\n" +
+    (editions.length ? `INSERT OR IGNORE INTO work_edition (book,work) VALUES ${editions.join(",\n")};\n` : "");
 
   const outDir = path.resolve("dist/search-index");
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, "person-meta.sql"), sql, "utf-8");
-  console.log(`search meta: ${rows.length} person(s), ${workTopics.length} book topic(s) → person-meta.sql`);
+  console.log(`search meta: ${rows.length} person(s), ${workTopics.length} book topic(s), ${editions.length} edition(s) → person-meta.sql`);
 }
 main();

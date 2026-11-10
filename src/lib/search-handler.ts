@@ -51,12 +51,12 @@ const WORK_CAP = 2;
 const TIER_BUDGET_MS = 1500;
 type Cursor = { tier: number; skip: number };
 
-type Row = { row: number; type: string; url: string; title: string; book: string; raw: string | null; pg?: string | null; snippet: string; person_name: string | null; death_year: number | null };
+type Row = { row: number; type: string; url: string; title: string; book: string; raw: string | null; pg?: string | null; work?: string; snippet: string; person_name: string | null; death_year: number | null };
 
 // ponytail: the passage as written (docs.raw) arrives with a full reindex, which takes days on
 // D1's free write quota; until then the folded text is shown. doc_meta.prior (source priority)
 // arrives with the same reindex; until then every source weighs 1. Checked once per isolate.
-let schema: { raw: boolean; prior: boolean; pg: boolean } | undefined;
+let schema: { raw: boolean; prior: boolean; pg: boolean; editions: boolean } | undefined;
 
 export async function searchResponse(url: URL): Promise<Response> {
   const { env } = await import("cloudflare:workers");
@@ -67,8 +67,9 @@ export async function searchResponse(url: URL): Promise<Response> {
     try {
       const [cols] = (await db.prepare(`SELECT (SELECT count(*) FROM pragma_table_info('docs') WHERE name = 'raw') AS raw,
         (SELECT count(*) FROM pragma_table_info('doc_meta') WHERE name = 'prior') AS prior,
-        (SELECT count(*) FROM pragma_table_info('docs') WHERE name = 'pg') AS pg`).bind().all()).results as { raw: number; prior: number; pg: number }[];
-      schema = { raw: cols.raw > 0, prior: cols.prior > 0, pg: cols.pg > 0 };
+        (SELECT count(*) FROM pragma_table_info('docs') WHERE name = 'pg') AS pg,
+        (SELECT count(*) FROM sqlite_master WHERE name = 'work_edition') AS editions`).bind().all()).results as { raw: number; prior: number; pg: number; editions: number }[];
+      schema = { raw: cols.raw > 0, prior: cols.prior > 0, pg: cols.pg > 0, editions: cols.editions > 0 };
     } catch (err) {
       console.error("search schema probe failed", { message: String(err) });
       return json({ hits: [], hasMore: false, error: "search unavailable" }, 503);
@@ -131,7 +132,10 @@ export async function searchResponse(url: URL): Promise<Response> {
   // all): a poem filter on a common word read 108k rows in 7.5 s. doc_meta holds the same four
   // per rowid (gen-search-index.ts keeps it in step), ~100 ms for the same filter.
   const fromMeta = "FROM docs CROSS JOIN doc_meta m ON m.rowid = docs.rowid";
-  const work = "COALESCE(NULLIF(m.book, ''), m.url)";
+  // A work is its primary edition (work_edition, gen-search-meta.ts): its copies share one cap.
+  const work = schema.editions
+    ? "COALESCE((SELECT we.work FROM work_edition we WHERE we.book = m.book), NULLIF(m.book, ''), m.url)"
+    : "COALESCE(NULLIF(m.book, ''), m.url)";
 
   const offset = Math.max(0, Math.min(2000, parseInt(url.searchParams.get("offset") ?? "0", 10) || 0));
   // `after=<tier>.<rows>`: the `next` of the page before; replaces offset for the relevance order.
@@ -228,7 +232,7 @@ export async function searchResponse(url: URL): Promise<Response> {
       for (const r of rows) r.snippet = exactSnippet(r.snippet, r.raw);
       // within a tier, the spelling as typed first (stable: rank order otherwise)
       if (spelling) rows.sort((a, b) => Number(hasTypedSpelling(b.snippet, spelling)) - Number(hasTypedSpelling(a.snippet, spelling)));
-      out.push(...rows.map(({ work: _work, ...r }) => r));
+      out.push(...rows);
     }
     return { rows: out, more, next };
   };
@@ -288,11 +292,12 @@ export async function searchResponse(url: URL): Promise<Response> {
         approximate = results.length > 0;
       }
     }
-    // ponytail: a passage indexed twice (left over by an interrupted index update) shows once
+    // One passage shows once: indexed twice (an interrupted index update), or in two editions of a work.
     const seen = new Set<string>();
+    const key = (r: Row) => (r.work ?? r.url) + r.snippet.replace(/<\/?mark>|[^\p{L}]/gu, "");
     const hits = results.slice(0, PAGE_SIZE)
-      .filter((r) => !seen.has(r.url + r.snippet) && seen.add(r.url + r.snippet))
-      .map(({ raw: _raw, ...hit }) => hit);
+      .filter((r) => !seen.has(key(r)) && seen.add(key(r)))
+      .map(({ raw: _raw, work: _work, ...hit }) => hit);
     // `next` resumes the walk (`after=`); an «approximate» page came from «any», which a later page
     // with mode=all would not walk, so it pages by offset as before.
     return json({ hits, hasMore: more, approximate, ...(next && !approximate ? { next: `${next.tier}.${next.skip}` } : {}) });
