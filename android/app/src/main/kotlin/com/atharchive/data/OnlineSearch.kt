@@ -81,7 +81,16 @@ internal class OnlineSearch(private val http: OkHttpClient) {
         .apply { if (query.centuries.isNotEmpty()) addQueryParameter("century", query.centuries.joinToString(",")) }
         .apply { if (query.topics.isNotEmpty()) addQueryParameter("topic", query.topics.joinToString(",")) }
 
-    private suspend fun get(url: HttpUrl): JSONObject = suspendCancellableCoroutine { cont ->
+    /** One retry after a short pause: the Worker answers 503 while a heavy query holds its database, and that passes. */
+    private suspend fun get(url: HttpUrl): JSONObject = try {
+        getOnce(url)
+    } catch (e: IOException) {
+        if (e.message != "search HTTP 503") throw e // offline falls back to the phone's search at once
+        kotlinx.coroutines.delay(700)
+        getOnce(url)
+    }
+
+    private suspend fun getOnce(url: HttpUrl): JSONObject = suspendCancellableCoroutine { cont ->
         val call = http.newCall(Request.Builder().url(url).build())
         cont.invokeOnCancellation { call.cancel() }
         call.enqueue(object : Callback {
