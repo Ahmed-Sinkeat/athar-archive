@@ -107,7 +107,7 @@ Rule for every step: fix the cause, not the symptom. No shortcut comments, no "f
 - [ ] 5.1 Chapters generated in the content pipeline; Astro builds ~5.4k pages; build heap back to a sane size (P6). (#22)
 - [ ] 5.2 Per-book hashing so `app:gen` and uploads only touch changed books. (#25)
 - [ ] 5.3 One publish step writing and verifying both the site's R2 and the app's R2. (#26)
-- [ ] 5.4 Check how app downloads are served; if through a Worker, serve from R2 directly. (#41)
+- [x] 5.4 (answered by finding 66: served from R2, no Worker in the path) Check how app downloads are served; if through a Worker, serve from R2 directly. (#41)
 - [ ] 5.5 One-off scripts moved to `scripts/archive/`; `import:epub` removed. (#24)
 - [ ] 5.6 Content out of the git repo (P5); `git gc` the leftover temp packs; build outputs cleaned after publish. (#23, #43)
 - [ ] 5.7 Encrypted offline backup of `~/.config/athar` keys and a written key-rotation procedure. (#42)
@@ -256,12 +256,17 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
 - [ ] 8.10 The 15 large books get real chapters (part of 9.4). (#78)
 - [x] 8.11 (2026-11-10, owner chose word positions; commit 6687bb29: new installs and the bundled catalog get detail=full, old installs copy their index in the background in 2k-block chunks and swap; measured: every 50th book by size, 50 books, 181k blocks, 27.1M letters; the phone's `block_fts` as built today (detail=none) 9.4 MB, with word positions (detail=full, needed for phrase and NEAR offline) 19.2 MB: 2.0× the index, +9.8 MB ≈ +8% on the 116 MB that 6.9 leaves for the same sample; switching is the owner's call, then 8.3's Kotlin tier) Offline ranking after 6.9 decides the phone index format; a `detail=full` index costs
       space, so measure it on the same 50 books first. (#79)
-- [ ] 8.12 (owner, phone, 2026-11-11) Opening a hit: the tap still jumps and waits, and back lands at the top of
+- [x] 8.12 (2026-11-11, app: cause found, saving the query to recents on tap was a search input and re-ran the whole search under the reader; recents now join after it. The online wait stays until 8.1's deploy; unchecked on the phone) (owner, phone, 2026-11-11) Opening a hit: the tap still jumps and waits, and back lands at the top of
       the results instead of where the reader was. Keep the list's scroll on return; the wait on online hits is
       the walk that 8.1's `pg` removes (held deploy). Phone log: each request 250–620 ms, Worker 200–480 ms.
-- [ ] 8.13 (owner) «مواضع أخرى من الكتاب» do not read as the same book: show them under their book's hit.
-- [ ] 8.14 (owner) The counts (how many works mention it, how many times) come late and pop in: they are a
+- [x] 8.13 (2026-11-11: the other places hang under their book, indented on a rule in the book's tint, place only, one rule under the whole group; unchecked on the phone) (owner) «مواضع أخرى من الكتاب» do not read as the same book: show them under their book's hit.
+- [x] 8.14 (2026-11-11: the counts are asked for beside the passages, not after; shown with them when they arrive first, else right after; unchecked on the phone) (owner) The counts (how many works mention it, how many times) come late and pop in: they are a
       separate request after the results; show them with the results or keep their space from the start.
+- [ ] 8.15 (owner, 2026-11-11) Poem hits read like books and some are the poem's «المقدمة» or prose. App, done: poem
+      hits on the phone come from verse blocks only (not inside one poem), and the card draws them as a poem
+      (centred hemistichs on a faint panel). Site index, done in code: a poem is indexed by its verses only
+      (`numberedVerses`, «...»/«---»/numbered lines; checked on all 110 poems, 19,509 verses, none under 3). Needs the
+      held D1 reindex to reach online search.
 
 ## Phase 9 — works, editions, pages
 
