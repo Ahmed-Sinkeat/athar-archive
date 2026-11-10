@@ -28,6 +28,7 @@
     "search:gen": "tsx scripts/gen-search-index.ts && tsx scripts/gen-search-meta.ts",
     "search:hashes": "wrangler d1 execute athar-search --remote -y --command \"SELECT url, hash FROM doc_hash\" --json > .search-hashes.json || (rm -f .search-hashes.json && echo '::warning::search:hashes failed (auth/quota/D1 outage/no doc_hash table) — snapshot NOT written. gen-search-index will refuse rather than silently DROP the live index; use SEARCH_ALLOW_FULL_REBUILD=1 if a rebuild is genuinely intended.')",
     "search:index": "pnpm search:hashes && pnpm search:gen && for f in dist/search-index/*.sql; do wrangler d1 execute athar-search --remote -y --file \"$f\" || exit 1; done",
+    "search:golden": "node scripts/search-golden.mjs",
     "search:index:local": "SEARCH_ALLOW_FULL_REBUILD=1 pnpm search:gen && for f in dist/search-index/*.sql; do wrangler d1 execute athar-search --local -y --file \"$f\" || exit 1; done",
     "app:vectors": "tsx scripts/gen-ar-vectors.ts",
     "app:gen": "tsx scripts/gen-app-content.ts",
