@@ -95,7 +95,7 @@ Rule for every step: fix the cause, not the symptom. No shortcut comments, no "f
 - [x] 4.6 (2026-11-11: shared client, batched every 30 s or 20 events; the Worker takes a body of lines and still the old query form; needs the Worker deploy, until then the new app's batches get 400 and drop) Analytics on the shared client, batched (P2). (#14b)
 - [x] 4.7 (2026-11-11: rules written; the minified-build check is the release build at the end) R8 keep rules made explicit; one minified-build check. (#15b)
 - [x] 4.8 (2026-11-11: OFL-IBMPlex.txt added; a «الخطوط والتراخيص» row in settings, a fixed list, not generated from the dependencies) Licenses: add IBM Plex Sans Arabic OFL text and a credits screen generated from dependencies. (#44)
-- [ ] 4.9 Shared ranking golden cases for the TS and Kotlin search. (#21)
+- [x] 4.9 (2026-11-11: the 20 golden queries moved to scripts/search-golden.json, read by the TS script and by a Kotlin test that builds their tiers; ranking itself is still judged on the Worker and the M0 SQLite test; Kotlin RankCap 20,000 vs the Worker's 10,000 left as it is on purpose) Shared ranking golden cases for the TS and Kotlin search. (#21)
 - [x] 4.10 Text selection: kept; why-comment in `PageSelection.kt`; `JustifiedLineHitTest` added
       (compiles; run on a device). TalkBack check on the phone still open. (#38)
 - [ ] 4.11 TalkBack and touch-target pass on the main screens. (#37)
