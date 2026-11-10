@@ -466,7 +466,10 @@ class ContentSearchRepository(private val database: AtharContentDatabase) {
             ContentSearchSort.Relevance -> "f.score, b.rowid"
         }
         val where = "WHERE block_fts MATCH ?${if (bookRowids == null) "" else " AND block_fts.rowid BETWEEN ? AND ?"} " +
-            "AND e.catalogPresent = 1${filter.sql}${if (range == null) "" else " AND b.ordinal BETWEEN ? AND ?"}"
+            "AND e.catalogPresent = 1${filter.sql}${if (range == null) "" else " AND b.ordinal BETWEEN ? AND ?"}" +
+            // A poem is found by its verses: its «المقدمة» card and prose came up as hits that read like a book's.
+            // Searching inside one poem still finds every block.
+            (if (bookRowids == null) " AND (e.coll <> 'poem' OR b.type = 'verse')" else "")
         val columns = "b.rowid, b.entityId, b.ordinal, b.chapterAnchor, c.title, b.printedPage, " +
             "b.type, b.text, e.title, e.personName, e.coll, b.packed "
         val joins = "JOIN entity e ON e.id = b.entityId " +

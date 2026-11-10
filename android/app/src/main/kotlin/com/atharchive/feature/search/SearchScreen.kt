@@ -317,18 +317,20 @@ fun SearchScreen(
             itemsIndexed(bookGroups, key = { _, group -> group.first().id }) { index, group ->
                 val entityId = group.first().entityId
                 val open = entityId in openBooks
-                @Composable fun card(hit: SearchHitUi) = SearchHitCard(
+                @Composable fun card(hit: SearchHitUi, inBook: Boolean = false) = SearchHitCard(
                     hit = hit,
                     horizontalPadding = horizontalPadding,
                     plain = filters.plain,
                     onClick = { onOpenResult(hit) },
                     loadPassage = loadPassage,
+                    inBook = inBook,
+                    divider = group.size == 1,
                 )
                 card(group.first())
                 // The toggle stays under the best hit, so closing the book's other passages needs no scroll down.
                 if (group.size > 1) TextButton(
                     onClick = { openBooks = if (open) openBooks - entityId else openBooks + entityId },
-                    modifier = Modifier.padding(horizontal = horizontalPadding - 12.dp).testTag("search_more_in_book"),
+                    modifier = Modifier.padding(start = horizontalPadding + 6.dp, end = horizontalPadding).testTag("search_more_in_book"),
                 ) {
                     Text(
                         if (open) "إخفاء المواضع الأخرى"
@@ -337,7 +339,9 @@ fun SearchScreen(
                         style = MaterialTheme.typography.labelLarge,
                     )
                 }
-                if (open) group.drop(1).forEach { card(it) }
+                // 8.13: the other places hang under their book (indented, on its rule, no title again), not as more books.
+                if (open) group.drop(1).forEach { card(it, inBook = true) }
+                if (group.size > 1) HorizontalDivider(Modifier.padding(horizontal = horizontalPadding), thickness = 0.6.dp, color = AtharTheme.colors.divider.copy(alpha = 0.6f))
             }
             if (state.hasMore) {
                 item(key = "search-more") {
@@ -601,6 +605,9 @@ fun SearchHitCard(
     onClick: () -> Unit,
     loadPassage: suspend (SearchHitUi) -> String?,
     plain: Boolean = false,
+    /** Another place in the book of the card above: its title and kind aren't said again. */
+    inBook: Boolean = false,
+    divider: Boolean = true,
 ) {
     // The source first (which book, whose, where), then the passage with every match marked.
     val accent = AtharTheme.colors.accent
@@ -628,10 +635,15 @@ fun SearchHitCard(
     val tint = hit.type.tint()
     // Flat rows with a thin rule between them (owner, 2026-11-10), not raised cards.
     Column(Modifier.fillMaxWidth()) {
+    val rule = tint.copy(alpha = 0.45f)
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = horizontalPadding)
+            .then(if (!inBook) Modifier else Modifier.padding(start = 14.dp).drawBehind {
+                val x = if (layoutDirection == androidx.compose.ui.unit.LayoutDirection.Rtl) size.width else 0f
+                drawLine(rule, androidx.compose.ui.geometry.Offset(x, 8.dp.toPx()), androidx.compose.ui.geometry.Offset(x, size.height - 8.dp.toPx()), 2.dp.toPx())
+            })
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = LocalIndication.current,
@@ -656,7 +668,14 @@ fun SearchHitCard(
                     }
                 }
             }
-            Text(
+            if (inBook) Text(
+                text = hit.locationLabel ?: "",
+                modifier = Modifier.weight(1f).padding(start = 8.dp),
+                color = AtharTheme.colors.secondaryText,
+                style = MaterialTheme.typography.bodySmall,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            ) else Text(
                 text = titleLine,
                 modifier = Modifier.weight(1f),
                 color = MaterialTheme.colorScheme.onSurface,
@@ -678,7 +697,7 @@ fun SearchHitCard(
                 Icon(AtharIcons.Copy, contentDescription = "نسخ النص مع مصدره", tint = AtharTheme.colors.secondaryText, modifier = Modifier.size(16.dp))
             }
         }
-        Row(Modifier.padding(end = 8.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+        if (!inBook) Row(Modifier.padding(end = 8.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
             TypeChip(hit.type.label, tint)
             Text(
                 text = hit.locationLabel.orEmpty(),
@@ -690,17 +709,19 @@ fun SearchHitCard(
         }
         Text(
             text = highlighted,
-            modifier = Modifier.padding(top = 5.dp, end = 8.dp),
+            // A poem's verses sit as a poem does: centred hemistichs on a faint panel of the poem tint, not a prose line.
+            modifier = Modifier.padding(top = 5.dp, end = 8.dp, start = if (inBook) 8.dp else 0.dp)
+                .then(if (poem) Modifier.fillMaxWidth().clip(AtharCorners.Control).background(tint.copy(alpha = 0.07f)).padding(vertical = 8.dp, horizontal = 10.dp) else Modifier),
             color = MaterialTheme.colorScheme.onSurface,
             fontFamily = AtharEditorialFontFamily,
-            fontSize = AtharTextSize.Ui,
-            lineHeight = 25.sp,
+            fontSize = if (poem) AtharTextSize.Ui * 1.05f else AtharTextSize.Ui,
+            lineHeight = if (poem) 28.sp else 25.sp,
             maxLines = if (expanded) Int.MAX_VALUE else if (poem) 4 else 2,
             overflow = TextOverflow.Ellipsis,
             textAlign = if (poem) androidx.compose.ui.text.style.TextAlign.Center else null,
         )
     }
-    HorizontalDivider(Modifier.padding(horizontal = horizontalPadding), thickness = 0.6.dp, color = AtharTheme.colors.divider.copy(alpha = 0.6f))
+    if (divider && !inBook) HorizontalDivider(Modifier.padding(horizontal = horizontalPadding), thickness = 0.6.dp, color = AtharTheme.colors.divider.copy(alpha = 0.6f))
     }
 }
 

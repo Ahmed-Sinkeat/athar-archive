@@ -37,6 +37,8 @@ import com.atharchive.feature.search.SearchScope
 import com.atharchive.feature.search.SearchMode
 import com.atharchive.core.ArNormalize
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.transformLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.CoroutineScope
@@ -54,7 +56,6 @@ private const val SearchLatencyTraceName = "AtharSearchKeystrokeToResults"
 private data class SearchInput(
     val query: String,
     val filters: SearchFilters,
-    val recent: List<String>,
     val catalog: SearchCatalog,
 )
 
@@ -146,17 +147,16 @@ internal class SearchModel(
         _searchQuery.debounce(SearchDebounceMs),
         // «إخفاء التشكيل» is display only: toggling it must not search again.
         _searchFilters.map { it.copy(plain = false) }.distinctUntilChanged(),
-        recentSearches,
         // The filter lists are built once per catalog change, not on every keystroke.
         catalogDao.observeCatalog().pausedDuringUpdate().map { SearchCatalog(it) },
-    ) { query, filters, recent, catalog ->
-        SearchInput(query, filters, recent.map { it.q }, catalog)
+    ) { query, filters, catalog ->
+        SearchInput(query, filters, catalog)
     }.combine(_searchLimit) { input, limit -> input to limit }.transformLatest { (input, limit) ->
         val clean = input.query.trim()
         val base = SearchUiState(
             query = input.query,
             filters = input.filters,
-            recentQueries = input.recent,
+            recentQueries = emptyList(),
             directMatches = emptyList(),
             hits = emptyList(),
             availableAuthors = input.catalog.authors,
@@ -228,37 +228,56 @@ internal class SearchModel(
         val exact = if (filters.mode == SearchMode.Exact) clean.replace("\"", "") else null
         // ponytail: the site has no exact mode; its phrase hits are kept when their snippet has the letters as typed (a hit whose snippet cut the phrase is dropped).
         fun exactOnly(hits: List<OnlineSearch.Hit>) = if (exact == null) hits else hits.filter { exactMatch(unmark(it.snippet).first, exact) != null }
-        val online = try {
-            onlineSearch.hits(query, limit) { partial, more ->
-                // «المزيد» refetches from the top; showing its first page would shrink the list.
-                if (limit == SearchPageSize) emit(base.copy(scope = SearchScope.Online, roots = roots, directMatches = direct, hasMore = more, searching = true,
-                    hits = exactOnly(partial).mapIndexedNotNull { index, hit -> hit.toHitUi(index, catalog) }))
+        coroutineScope {
+            // The counts are asked for beside the passages, not after them: they used to pop in a
+            // request later (8.14). Same query, more pages: the counts don't change, so not asked again.
+            val facetsAsync = async {
+                lastFacets?.takeIf { it.first == query }?.second
+                    ?: runCatching { onlineSearch.facets(query) }.getOrNull()?.also { lastFacets = query to it }
             }
-        } catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled
-        } catch (offline: Exception) { null }
-        if (online == null) { Analytics.hit("search", "offline"); return@transformLatest emit(localState(SearchScope.Offline)) }
-        val (hits, more) = online.let { (h, m) -> exactOnly(h) to m }
-        Analytics.hit("search", if (hits.isEmpty()) "none" else "online")
-        val state = base.copy(
-            scope = SearchScope.Online,
-            roots = roots,
-            directMatches = direct,
-            hasMore = more,
-            // A work the site has and this app's catalog doesn't can't be opened: leave it out.
-            hits = hits.mapIndexedNotNull { index, hit -> hit.toHitUi(index, catalog) },
-        )
-        emit(state)
-        // Same query, more pages: the counts don't change, so don't ask again.
-        val facets = lastFacets?.takeIf { it.first == query }?.second
-            ?: runCatching { onlineSearch.facets(query) }.getOrNull()?.also { lastFacets = query to it }
-        if (facets != null) {
-            emit(state.copy(
-                total = facets.total,
-                totalCapped = facets.capped,
-                topAuthors = facets.persons.mapNotNull { p -> catalog.nameBySlug[p.slug]?.let { AuthorCountUi(it, p.count) } }.take(8),
-            ))
+            suspend fun counted(state: SearchUiState): SearchUiState {
+                val facets = if (facetsAsync.isCompleted) facetsAsync.await() else null
+                return if (facets == null) state else state.copy(
+                    total = facets.total,
+                    totalCapped = facets.capped,
+                    topAuthors = facets.persons.mapNotNull { p -> catalog.nameBySlug[p.slug]?.let { AuthorCountUi(it, p.count) } }.take(8),
+                )
+            }
+            val online = try {
+                onlineSearch.hits(query, limit) { partial, more ->
+                    // «المزيد» refetches from the top; showing its first page would shrink the list.
+                    if (limit == SearchPageSize) emit(counted(base.copy(scope = SearchScope.Online, roots = roots, directMatches = direct, hasMore = more, searching = true,
+                        hits = exactOnly(partial).mapIndexedNotNull { index, hit -> hit.toHitUi(index, catalog) })))
+                }
+            } catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled
+            } catch (offline: Exception) { null }
+            if (online == null) {
+                facetsAsync.cancel()
+                Analytics.hit("search", "offline")
+                emit(localState(SearchScope.Offline))
+                return@coroutineScope
+            }
+            val (hits, more) = online.let { (h, m) -> exactOnly(h) to m }
+            Analytics.hit("search", if (hits.isEmpty()) "none" else "online")
+            val state = base.copy(
+                scope = SearchScope.Online,
+                roots = roots,
+                directMatches = direct,
+                hasMore = more,
+                // A work the site has and this app's catalog doesn't can't be opened: leave it out.
+                hits = hits.mapIndexedNotNull { index, hit -> hit.toHitUi(index, catalog) },
+            )
+            // The counts usually come first (a small answer): passages and counts show together.
+            if (!facetsAsync.isCompleted) {
+                emit(state)
+                facetsAsync.await()
+            }
+            emit(counted(state))
         }
-    }.combine(_searchFilters) { state, filters -> state.copy(filters = filters) }.stateIn(
+    }.combine(_searchFilters) { state, filters -> state.copy(filters = filters) }
+        // Recents join after the search: opening a result saves its query, and as an input that re-ran
+        // the whole search under the reader, emptying the list (back landed at its top, 8.12).
+        .combine(recentSearches) { state, recent -> state.copy(recentQueries = recent.map { it.q }) }.stateIn(
         scope,
         // Kept while a result is open in the reader: on WhileSubscribed the way back re-ran the search
         // and the list rebuilt page by page under the reader. Stops only with the view model.
