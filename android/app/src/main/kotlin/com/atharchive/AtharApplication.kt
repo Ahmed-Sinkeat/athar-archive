@@ -13,9 +13,11 @@ import dagger.hilt.android.HiltAndroidApp
  */
 @HiltAndroidApp
 class AtharApplication : Application() {
+    @javax.inject.Inject lateinit var http: dagger.Lazy<okhttp3.OkHttpClient>
+
     override fun onCreate() {
         super.onCreate()
         ContentDownloadNotifications.createChannel(this)
-        com.atharchive.data.Analytics.init(this)
+        com.atharchive.data.Analytics.init(this, http)
     }
 }

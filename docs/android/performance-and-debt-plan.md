@@ -92,9 +92,9 @@ Rule for every step: fix the cause, not the symptom. No shortcut comments, no "f
 - [x] 4.3 (2026-11-10, `BuildConfig.BUILD_TYPE == "benchmark"`) `testTagsAsResourceId` only in the benchmark build. (#34)
 - [x] 4.4 (2026-11-10, local: the window's items are keyed by index, so a chunk that lands fills its placeholders in place; not checked on the phone) Reader list keyed by ordinal so loaded chunks update in place. (#35)
 - [ ] 4.5 Large screens: cap content width; check one tablet/foldable emulator. (#33)
-- [ ] 4.6 Analytics on the shared client, batched (P2). (#14b)
+- [x] 4.6 (2026-11-11: shared client, batched every 30 s or 20 events; the Worker takes a body of lines and still the old query form; needs the Worker deploy, until then the new app's batches get 400 and drop) Analytics on the shared client, batched (P2). (#14b)
 - [ ] 4.7 R8 keep rules made explicit; one minified-build check. (#15b)
-- [ ] 4.8 Licenses: add IBM Plex Sans Arabic OFL text and a credits screen generated from dependencies. (#44)
+- [x] 4.8 (2026-11-11: OFL-IBMPlex.txt added; a «الخطوط والتراخيص» row in settings, a fixed list, not generated from the dependencies) Licenses: add IBM Plex Sans Arabic OFL text and a credits screen generated from dependencies. (#44)
 - [ ] 4.9 Shared ranking golden cases for the TS and Kotlin search. (#21)
 - [x] 4.10 Text selection: kept; why-comment in `PageSelection.kt`; `JustifiedLineHitTest` added
       (compiles; run on a device). TalkBack check on the phone still open. (#38)

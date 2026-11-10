@@ -10,9 +10,12 @@ export default {
   async fetch(request: Request, env: Env, ctx: { waitUntil(p: Promise<unknown>): void }): Promise<Response> {
     const url = new URL(request.url);
     if (request.method === "POST" && url.pathname === "/api/hit") {
-      const [e, d, v] = ["e", "d", "v"].map((k) => url.searchParams.get(k) ?? "");
-      if (!EVENTS.has(e) || !ok(d) || !ok(v)) return new Response(null, { status: 400 });
-      env.HITS?.writeDataPoint({ blobs: [e, d, v], indexes: [e] });
+      // One event in the query (older apps) or a batch of «e\td\tv» lines in the body, at most 50.
+      const rows = url.searchParams.has("e")
+        ? [["e", "d", "v"].map((k) => url.searchParams.get(k) ?? "")]
+        : (await request.text()).split("\n").slice(0, 50).map((line) => line.split("\t"));
+      if (!rows.length || rows.some(([e, d = "", v = ""]) => !EVENTS.has(e) || !ok(d) || !ok(v))) return new Response(null, { status: 400 });
+      for (const [e, d, v] of rows) env.HITS?.writeDataPoint({ blobs: [e, d, v], indexes: [e] });
       return new Response(null, { status: 204 });
     }
     if (request.method !== "GET") return new Response(null, { status: 405 });
