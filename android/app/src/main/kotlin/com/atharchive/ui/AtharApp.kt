@@ -735,7 +735,7 @@ fun AtharApp(
                             updatedSinceLastRead = updated,
                             onOpenAuthor = authorId?.let { id -> { backStack.add(PersonsRoute(id)) } },
                             onShareBook = { shareText(context, listOf(state.bookTitle, state.author, state.sourceUrl).filter(String::isNotBlank).joinToString("\n")) },
-                            onLocateOnline = { hit, q -> contentViewModel.locateOnline(route.bookId, hit.url, q, hit.excerpt) },
+                            onLocateOnline = { hit, q -> contentViewModel.locateOnline(route.bookId, hit.url, q, hit.excerpt, hit.pg) },
                             onLoadPassage = { hit -> contentViewModel.inBookPassage(route.bookId, hit) },
                             onLoadFootnotes = { ids -> contentViewModel.footnoteBodies(route.bookId, ids) },
                             recentQueries = recentQueries,

@@ -160,6 +160,8 @@ data class InBookHit(
     val matches: List<IntRange> = if (matchEnd > matchStart) listOf(matchStart until matchEnd) else emptyList(),
     /** The site's row for an online hit: its whole passage in one request. */
     val row: Long = 0,
+    /** An online hit's app blocks "first-last", from the index. */
+    val pg: String? = null,
 )
 
 /** In-book search over what is on the phone; [complete] once every block of the book is saved. */

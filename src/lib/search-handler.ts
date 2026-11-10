@@ -51,12 +51,12 @@ const WORK_CAP = 2;
 const TIER_BUDGET_MS = 1500;
 type Cursor = { tier: number; skip: number };
 
-type Row = { row: number; type: string; url: string; title: string; book: string; raw: string | null; snippet: string; person_name: string | null; death_year: number | null };
+type Row = { row: number; type: string; url: string; title: string; book: string; raw: string | null; pg?: string | null; snippet: string; person_name: string | null; death_year: number | null };
 
 // ponytail: the passage as written (docs.raw) arrives with a full reindex, which takes days on
 // D1's free write quota; until then the folded text is shown. doc_meta.prior (source priority)
 // arrives with the same reindex; until then every source weighs 1. Checked once per isolate.
-let schema: { raw: boolean; prior: boolean } | undefined;
+let schema: { raw: boolean; prior: boolean; pg: boolean } | undefined;
 
 export async function searchResponse(url: URL): Promise<Response> {
   const { env } = await import("cloudflare:workers");
@@ -66,8 +66,9 @@ export async function searchResponse(url: URL): Promise<Response> {
     // An overloaded D1 fails this too: answer 503 (the app retries), not an uncaught 500.
     try {
       const [cols] = (await db.prepare(`SELECT (SELECT count(*) FROM pragma_table_info('docs') WHERE name = 'raw') AS raw,
-        (SELECT count(*) FROM pragma_table_info('doc_meta') WHERE name = 'prior') AS prior`).bind().all()).results as { raw: number; prior: number }[];
-      schema = { raw: cols.raw > 0, prior: cols.prior > 0 };
+        (SELECT count(*) FROM pragma_table_info('doc_meta') WHERE name = 'prior') AS prior,
+        (SELECT count(*) FROM pragma_table_info('docs') WHERE name = 'pg') AS pg`).bind().all()).results as { raw: number; prior: number; pg: number }[];
+      schema = { raw: cols.raw > 0, prior: cols.prior > 0, pg: cols.pg > 0 };
     } catch (err) {
       console.error("search schema probe failed", { message: String(err) });
       return json({ hits: [], hasMore: false, error: "search unavailable" }, 503);
@@ -144,7 +145,7 @@ export async function searchResponse(url: URL): Promise<Response> {
 
   // snippet() takes a column INDEX: 0 = title, 1 = text (gen-search-index.ts column order).
   const snip = Math.max(16, Math.min(64, parseInt(url.searchParams.get("snip") ?? "16", 10) || 16));
-  const rowSelect = `docs.rowid AS row, docs.type AS type, docs.url AS url, docs.display_title AS title, docs.book AS book, ${rawCol} AS raw,
+  const rowSelect = `docs.rowid AS row, docs.type AS type, docs.url AS url, docs.display_title AS title, docs.book AS book, ${rawCol} AS raw,${schema.pg ? " docs.pg AS pg," : ""}
     snippet(docs, ${field === "title" ? 0 : 1}, '<mark>', '</mark>', '…', ${snip}) AS snippet,
     pm.name AS person_name, pm.death_year AS death_year`;
   const fromJoin = "FROM docs LEFT JOIN person_meta pm ON pm.slug = docs.person";

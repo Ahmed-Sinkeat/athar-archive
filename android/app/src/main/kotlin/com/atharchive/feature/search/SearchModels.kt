@@ -85,6 +85,8 @@ data class SearchHitUi(
     val url: String? = null,
     /** The online index row behind it, for fetching the whole passage. */
     val row: Long = 0,
+    /** An online hit's app blocks "first-last", from the index: opened directly instead of walking its chapter. */
+    val pg: String? = null,
 )
 
 data class SearchFilters(

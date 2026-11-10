@@ -18,12 +18,14 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { execSync } from "node:child_process";
+import { pathToFileURL } from "node:url";
 import { loadContentMetaFromDisk } from "../src/lib/load.js";
 import { readBody } from "../src/lib/read-body.js";
 import { analyzeBook } from "../src/lib/chunk.js";
 import { normalizeArabic } from "../src/lib/ar-normalize.js";
 import { stripMdRaw as strip } from "../src/lib/strip-md.js";
 import { DICTS } from "./gen-app-dict.js";
+import { parseReadableDocument } from "../src/lib/app-v2/parser.js";
 
 interface Doc {
   type: string;
@@ -33,6 +35,7 @@ interface Doc {
   displayTitle: string;
   title: string;  // normalized, searchable
   text: string;   // as written; normalized into the searchable column per row, kept as-is in `raw`
+  pg?: string;    // the app's block range "first-last" of this passage (books, v2 only): a tap opens it directly
 }
 
 async function main() {
@@ -120,7 +123,7 @@ async function main() {
   // (SEARCH_REBUILD_NEXT) is swapped in; inserting it before then would fail every file.
   // SEARCH_NO_RAW=1: leave `raw` out (measured ~35% of the DB); snippets then show without tashkeel for those rows.
   const withRaw = process.env.SEARCH_NO_RAW !== "1" && (!incremental || liveHasRaw());
-  const row = (d: Doc) => `(${q(normalizeArabic(d.title))},${q(normalizeArabic(d.text))},${q(d.type)},${q(d.book)},${q(d.person)},${q(d.url)},${q(d.displayTitle)}${withRaw ? "," + q(d.text.normalize("NFC")) : ""})`;
+  const row = (d: Doc) => `(${q(normalizeArabic(d.title))},${q(normalizeArabic(d.text))},${q(d.type)},${q(d.book)},${q(d.person)},${q(d.url)},${q(d.displayTitle)}${withRaw ? "," + q(d.text.normalize("NFC")) : ""}${v2 ? "," + (d.pg ? q(d.pg) : "NULL") : ""})`;
 
   const outDir = path.resolve("dist/search-index");
   fs.rmSync(outDir, { recursive: true, force: true });
@@ -133,7 +136,7 @@ async function main() {
   // type/book/person/url per rowid, so search filters never read the (huge) docs rows — see search-handler.ts.
   const META = rebuildNext ? "doc_meta_next" : "doc_meta";
   const syncMeta = (prior: number) => `INSERT INTO ${META} (rowid, type, book, person, url${v2 ? ", prior" : ""}) SELECT rowid, type, book, person, url${v2 ? `, ${prior}` : ""} FROM ${DOCS} WHERE rowid > (SELECT coalesce(max(rowid), 0) FROM ${META});\n`;
-  const SCHEMA = `USING fts5(title, text, type UNINDEXED, book UNINDEXED, person UNINDEXED, url UNINDEXED, display_title UNINDEXED, raw UNINDEXED, tokenize='unicode61 remove_diacritics 2', prefix='3 4')`;
+  const SCHEMA = `USING fts5(title, text, type UNINDEXED, book UNINDEXED, person UNINDEXED, url UNINDEXED, display_title UNINDEXED, raw UNINDEXED${v2 ? ", pg UNINDEXED" : ""}, tokenize='unicode61 remove_diacritics 2', prefix='3 4')`;
   const HASH_TABLE = `CREATE TABLE IF NOT EXISTS ${HASHES} (url TEXT PRIMARY KEY, hash TEXT);\n` +
     `CREATE TABLE IF NOT EXISTS ${META} (rowid INTEGER PRIMARY KEY, type TEXT, book TEXT, person TEXT, url TEXT, prior REAL NOT NULL DEFAULT 1);\n` +
     `CREATE INDEX IF NOT EXISTS ${META}_url ON ${META}(url);\n`;
@@ -160,7 +163,7 @@ async function main() {
   let stmtBytes = 0;
   const flushStmt = () => {
     if (!stmt) return;
-    const line = `INSERT INTO ${DOCS} (title,text,type,book,person,url,display_title${withRaw ? ",raw" : ""}) VALUES ${stmt};\n`;
+    const line = `INSERT INTO ${DOCS} (title,text,type,book,person,url,display_title${withRaw ? ",raw" : ""}${v2 ? ",pg" : ""}) VALUES ${stmt};\n`;
     buf += line; bufBytes += blen(line);
     stmt = ""; stmtBytes = 0;
   };
@@ -207,7 +210,9 @@ async function main() {
   // where there is one. bm25 favours short rows, so rows of one size let a hadith's source compete
   // with a two-line fatwa quoting it (15k-char chunks ranked صحيح البخاري #161 for بالنيات). Also
   // keeps every INSERT under D1's 100 KB statement cap (Arabic ≈ 2 bytes/char).
-  const splitDoc = (d: Doc): Doc[] => (v2 ? passages(d.text) : chunks(d.text, 15_000)).map((text) => ({ ...d, text }));
+  const splitDoc = (d: Doc, place?: Place): Doc[] =>
+    (v2 && place ? placedPassages(d.text, place) : (v2 ? passages(d.text) : chunks(d.text, 15_000)).map((text) => ({ text })))
+      .map((p) => ({ ...d, ...p }));
 
   let spent = 0;
   let emitted = 0;
@@ -240,15 +245,17 @@ async function main() {
   // strings, tens of MB at most for ~200k docs) — everything text-shaped is
   // scoped to processDoc's single call.
   const currentHashes = new Map<string, string>();
-  const processDoc = (d: Doc) => {
+  const processDoc = (d: Doc, place?: Place) => {
     if (!(d.text || d.title)) return; // matches the old liveDocs filter
     const hash = hashOf(d);
     currentHashes.set(d.url, hash);
     if (incremental && remoteHashes[d.url] === hash) return; // unchanged, nothing to do
     candidates++;
-    emitUnit(d.url, splitDoc(d), hash);
+    emitUnit(d.url, splitDoc(d, place), hash);
   };
 
+  let placedRows = 0; // book passages with an app block range; the rest (`pg` NULL) fall back to the app's walk
+  let unplacedRows = 0;
   for (const e of metaEntries) {
     const title = String(e.data.title ?? "");
     const person = String(e.data.person ?? "");
@@ -263,6 +270,8 @@ async function main() {
       case "book": {
         const body = await readBody(e);
         const a = analyzeBook(body);
+        // v2: each passage is found in the app's own blocks, so a tap opens the right frame directly.
+        const place = v2 ? appPlace(e.id, body) : undefined;
         if (a.chunked) {
           for (const c of a.chapters) {
             processDoc({
@@ -270,11 +279,12 @@ async function main() {
               url: `/book/${e.id}/${c.slug}`,
               displayTitle: `${title} — ${c.title}`,
               title: `${searchTitle} ${c.title}`, text: strip(c.content),
-            });
+            }, place);
           }
         } else {
-          processDoc({ type: "book", book: e.id, person, url: `/book/${e.id}`, displayTitle: title, title: searchTitle, text: strip(body) });
+          processDoc({ type: "book", book: e.id, person, url: `/book/${e.id}`, displayTitle: title, title: searchTitle, text: strip(body) }, place);
         }
+        if (place) { placedRows += place.placed; unplacedRows += place.missed; }
         break;
       }
       case "poem":
@@ -324,6 +334,7 @@ async function main() {
     emitUnit(url, [], null);
   }
   flushFile();
+  if (v2) console.log(`app places: ${placedRows} book passage(s) placed, ${unplacedRows} not found in the app's blocks`);
 
   const deferred = candidates - done;
   const bytes = fs.readdirSync(outDir).reduce((n, f) => n + fs.statSync(path.join(outDir, f)).size, 0);
@@ -344,6 +355,73 @@ async function main() {
   if (!incremental && emitted === 0) throw new Error("search index came out empty — refusing to write a DROP-only script");
 }
 
+
+/** Letters only, normalized: what both the site text and the app blocks agree on. */
+const letters = (s: string) => normalizeArabic(s).replace(/[^\p{L}]/gu, "");
+const PROBE = 40;
+const WINDOW = 400_000;
+
+/**
+ * A book's app text as one string of letters, with each block's start in it. [cursor] moves
+ * forward through the book as its passages are placed (chapters come in order).
+ */
+export interface Place { text: string; starts: number[]; cursor: number; placed: number; missed: number }
+
+/** The app's blocks of one book, or undefined when its parser cannot read it. */
+export function appPlace(id: string, body: string): Place | undefined {
+  try {
+    const blocks = parseReadableDocument({ coll: "book", id, body, sourcePath: `${id}.md` }).blocks;
+    const starts: number[] = [];
+    let text = "";
+    for (const b of blocks) {
+      starts.push(text.length);
+      text += letters([b.x, b.s, b.j].filter(Boolean).join(" "));
+    }
+    return { text, starts, cursor: 0, placed: 0, missed: 0 };
+  } catch {
+    return undefined;
+  }
+}
+
+/** The block holding letter [at]. */
+function blockAt(starts: number[], at: number): number {
+  let lo = 0, hi = starts.length - 1;
+  while (lo < hi) {
+    const mid = (lo + hi + 1) >> 1;
+    if (starts[mid] <= at) lo = mid; else hi = mid - 1;
+  }
+  return lo;
+}
+
+/** [text] as passages, each with the app blocks "first-last" it covers when they can be found. */
+export function placedPassages(text: string, place: Place): { text: string; pg?: string }[] {
+  // Near the cursor first, then the whole book (a chapter the site orders differently).
+  const find = (probe: string, from: number) => {
+    if (probe.length < PROBE / 2) return -1;
+    const near = place.text.slice(from, from + WINDOW).indexOf(probe);
+    return near >= 0 ? from + near : place.text.indexOf(probe);
+  };
+  return passages(text).map((p) => {
+    const l = letters(p);
+    // Notes and markers the app keeps elsewhere can sit at a passage's edge: try a few probes in.
+    let start = -1;
+    for (const skip of [0, 120, 400]) {
+      const at = find(l.slice(skip, skip + PROBE), place.cursor);
+      if (at >= 0) { start = at - Math.min(skip, at); break; }
+    }
+    if (start < 0) { place.missed++; return { text: p }; }
+    let end = -1;
+    for (const back of [0, 120, 400]) {
+      const probe = l.slice(Math.max(0, l.length - back - PROBE), l.length - back);
+      const at = probe.length >= PROBE / 2 ? place.text.slice(start, start + l.length * 2 + 2000).indexOf(probe) : -1;
+      if (at >= 0) { end = start + at + probe.length - 1 + back; break; }
+    }
+    if (end < 0) end = start + l.length;
+    place.cursor = start;
+    place.placed++;
+    return { text: p, pg: `${blockAt(place.starts, start)}-${blockAt(place.starts, Math.min(end, place.text.length - 1))}` };
+  });
+}
 
 /** The live format: ~[size]-char rows cut at a space. */
 function chunks(text: string, size: number): string[] {
@@ -403,4 +481,5 @@ function liveHasRaw(): boolean {
   }
 }
 
-await main();
+// Run, unless imported by its test.
+if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) await main();

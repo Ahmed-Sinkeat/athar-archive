@@ -507,6 +507,7 @@ class AtharContentViewModel @Inject constructor(
             died = entity.died,
             url = url,
             row = row,
+            pg = pg,
         )
     }
 
@@ -519,7 +520,7 @@ class AtharContentViewModel @Inject constructor(
      * anchor), then the first match of [query] in that chapter's loaded frame; an article, poem or
      * مسألة is searched from its start. Null ordinal: open it as usual.
      */
-    suspend fun locateOnlineHit(hit: SearchHitUi, query: String): Triple<Int?, Int, Int> = locateOnline(hit.entityId, hit.url, query, hit.excerpt)
+    suspend fun locateOnlineHit(hit: SearchHitUi, query: String): Triple<Int?, Int, Int> = locateOnline(hit.entityId, hit.url, query, hit.excerpt, hit.pg)
 
     /**
      * The block behind an online hit: its chapter (or the site's «--pages-85-124» piece of it) is
@@ -527,9 +528,15 @@ class AtharContentViewModel @Inject constructor(
      * hit's own snippet wins. It used to take the chapter's first match: a tap on the fifth hit in
      * a 40-page piece landed on the first.
      */
-    suspend fun locateOnline(entityId: String, url: String?, query: String, snippet: String = ""): Triple<Int?, Int, Int> {
+    suspend fun locateOnline(entityId: String, url: String?, query: String, snippet: String = "", pg: String? = null): Triple<Int?, Int, Int> {
         val slug = url?.substringAfter("/$entityId/", "")?.let(android.net.Uri::decode).orEmpty()
         if (query.length < 2) return Triple(null, 0, 0)
+        // The index knows the passage's blocks: only their frames are opened (online too), no chapter walk.
+        pg?.split('-')?.mapNotNull(String::toIntOrNull)?.takeIf { it.size == 2 && it[0] <= it[1] }?.let { (from, to) ->
+            runCatching { bestMatch(entityId, from..to, query, snippetWords(snippet), frameLimit = 4) }
+                .getOrElse { if (it is kotlinx.coroutines.CancellationException) throw it else null }
+                ?.let { return Triple(it.ordinal, it.sourceMatchStart, it.sourceMatchEnd) }
+        }
         return runCatching {
             content.open(entityId, 0) // the first frame carries the chapter list
             val chapters = if (slug.isEmpty()) emptyList() else importDao.observeChapters(entityId).first()
@@ -538,29 +545,39 @@ class AtharContentViewModel @Inject constructor(
             val from = chapters.getOrNull(index)?.firstOrdinal ?: 0
             val to = chapters.getOrNull(index + 1)?.firstOrdinal?.minus(1)
                 ?: ((catalogDao.entity(entityId)?.pkgBlocks ?: Int.MAX_VALUE) - 1)
-            val words = snippetWords(snippet)
-            var best: Pair<Int, com.atharchive.core.data.repository.BlockSearchHit>? = null
-            var at = from
-            var frames = 0
             // ponytail: at most 40 frames of one chapter walked; a longer chapter falls back to its best match so far.
-            while (at <= to && frames++ < 40) {
-                content.open(entityId, at)
-                val frame = importDao.frames(entityId).firstOrNull { at in it.firstBlockOrdinal until it.firstBlockOrdinal + it.blockCount } ?: break
-                val end = minOf(frame.firstBlockOrdinal + frame.blockCount - 1, to)
-                contentSearch.search(
-                    ContentSearchRequest(query = query, sort = ContentSearchSort.BookOrder,
-                        filter = ContentSearchFilter(entityIds = setOf(entityId)), ordinals = at..end),
-                    limit = 200,
-                ).blocks.forEach { hit ->
-                    val text = importDao.blockAt(entityId, hit.ordinal)?.text.orEmpty()
-                    val score = snippetWords(text).let { have -> words.count { it in have } }
-                    if (best == null || score > best!!.first) best = score to hit
-                }
-                if (best != null && (words.isEmpty() || best!!.first * 5 >= words.size * 4)) break
-                at = end + 1
-            }
-            best?.second?.let { Triple(it.ordinal, it.sourceMatchStart, it.sourceMatchEnd) } ?: Triple(from, 0, 0)
+            val best = bestMatch(entityId, from..to, query, snippetWords(snippet), frameLimit = 40)
+            best?.let { Triple(it.ordinal, it.sourceMatchStart, it.sourceMatchEnd) } ?: Triple(from, 0, 0)
         }.getOrElse { if (it is kotlinx.coroutines.CancellationException) throw it else Triple(null, 0, 0) }
+    }
+
+    /**
+     * Of the blocks in [range] that match [query], the one sharing most of [words] (the hit's own
+     * snippet), opening at most [frameLimit] frames in order and stopping once one shares 80%.
+     */
+    private suspend fun bestMatch(
+        entityId: String, range: IntRange, query: String, words: Set<String>, frameLimit: Int,
+    ): com.atharchive.core.data.repository.BlockSearchHit? {
+        var best: Pair<Int, com.atharchive.core.data.repository.BlockSearchHit>? = null
+        var at = range.first
+        var frames = 0
+        while (at <= range.last && frames++ < frameLimit) {
+            content.open(entityId, at)
+            val frame = importDao.frames(entityId).firstOrNull { at in it.firstBlockOrdinal until it.firstBlockOrdinal + it.blockCount } ?: break
+            val end = minOf(frame.firstBlockOrdinal + frame.blockCount - 1, range.last)
+            contentSearch.search(
+                ContentSearchRequest(query = query, sort = ContentSearchSort.BookOrder,
+                    filter = ContentSearchFilter(entityIds = setOf(entityId)), ordinals = at..end),
+                limit = 200,
+            ).blocks.forEach { hit ->
+                val text = importDao.blockAt(entityId, hit.ordinal)?.text.orEmpty()
+                val score = snippetWords(text).let { have -> words.count { it in have } }
+                if (best == null || score > best!!.first) best = score to hit
+            }
+            if (best != null && (words.isEmpty() || best!!.first * 5 >= words.size * 4)) break
+            at = end + 1
+        }
+        return best?.second
     }
 
     private fun snippetWords(text: String): Set<String> =
@@ -1235,7 +1252,7 @@ class AtharContentViewModel @Inject constructor(
                     chapterTitle = if (pages == null) place else android.net.Uri.decode(hit.url.substringAfterLast('/').substringBefore("--pages-")).replace('-', ' '),
                     excerpt = text, matchStart = first.first, matchEnd = first.last + 1,
                     pageLabel = pages?.let { arabicDigits(it.replace(Regex("""(\d)-(\d)"""), "$1–$2")) },
-                    url = hit.url, matches = marks, row = hit.row,
+                    url = hit.url, matches = marks, row = hit.row, pg = hit.pg,
                 )
             }
 

@@ -18,7 +18,9 @@ import kotlin.coroutines.resumeWithException
  * what is on the phone. Any failure throws [IOException]; the caller falls back to local search.
  */
 internal class OnlineSearch(private val http: OkHttpClient) {
-    data class Hit(val type: String, val url: String, val title: String, val book: String, val snippet: String, val row: Long = 0)
+    data class Hit(val type: String, val url: String, val title: String, val book: String, val snippet: String, val row: Long = 0,
+        /** The app blocks "first-last" this passage covers, from the index; null on older rows. */
+        val pg: String? = null)
     data class Person(val slug: String, val count: Int)
     data class Facets(val total: Int, val capped: Boolean, val persons: List<Person>)
     data class Query(
@@ -50,7 +52,8 @@ internal class OnlineSearch(private val http: OkHttpClient) {
             next = body.optString("next").ifEmpty { null }
             val page = body.getJSONArray("hits")
             for (i in 0 until page.length()) page.getJSONObject(i).run {
-                hits += Hit(optString("type"), optString("url"), optString("title"), optString("book"), optString("snippet"), optLong("row"))
+                hits += Hit(optString("type"), optString("url"), optString("title"), optString("book"), optString("snippet"), optLong("row"),
+                    optString("pg").takeIf { it.matches(Regex("""\d+-\d+""")) })
             }
             more = body.optBoolean("hasMore") && page.length() > 0
             // Each page shows as it lands: the server takes ~1.4 s a page, so waiting for all of them doubled the wait.
