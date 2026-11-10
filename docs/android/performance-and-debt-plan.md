@@ -90,7 +90,7 @@ Rule for every step: fix the cause, not the symptom. No shortcut comments, no "f
 - [ ] 4.1 Adhkar reminders scheduled one at a time at a fixed clock time (no drift). (#28)
 - [ ] 4.2 `FallbackDns`: DNS over HTTPS with the zone IPs as bootstrap; remember last good addresses. (#31)
 - [x] 4.3 (2026-11-10, `BuildConfig.BUILD_TYPE == "benchmark"`) `testTagsAsResourceId` only in the benchmark build. (#34)
-- [ ] 4.4 Reader list keyed by ordinal so loaded chunks update in place. (#35)
+- [x] 4.4 (2026-11-10, local: the window's items are keyed by index, so a chunk that lands fills its placeholders in place; not checked on the phone) Reader list keyed by ordinal so loaded chunks update in place. (#35)
 - [ ] 4.5 Large screens: cap content width; check one tablet/foldable emulator. (#33)
 - [ ] 4.6 Analytics on the shared client, batched (P2). (#14b)
 - [ ] 4.7 R8 keep rules made explicit; one minified-build check. (#15b)
@@ -208,7 +208,7 @@ Steps, in order. 6.1 and 6.2 are the bulk of the win and need no format change.
 
 - [ ] 7.1 `bookOpen` macrobenchmark (tap a row → first page drawn) for a small book and مجموع الفتاوى,
       warm and cold cache; a trace section around open. Record 1.2.2 against 1.2.3 to name the regression. (#48)
-- [ ] 7.2 Reader state in two parts: the book (title, card, TOC, footnotes, editions; loaded once) and
+- [x] 7.2 (2026-11-10, local: the book (entity, contents, editions) is built once per change of those, a saved position or annotation only copies it; the ±24 block window and the whole-book footnote list are gone, footnotes are read by id for the loaded chunk and for the marker callout; the page box shows on `pageTo`; heap and open time not measured, a footnote without a marker is numbered within its chunk now) Reader state in two parts: the book (title, card, TOC, footnotes, editions; loaded once) and
       the place (position, annotations). Footnotes read per page, not per book. Drop the ±24 window
       once nothing reads `state.blocks`. First slice of 3.1. (#45, #47, #60)
 - [x] 7.3 (2026-11-10, commit def7d1cf: the books list follows positions every 3 s instead of every change; then: it follows only whole-percent progress and recent order (distinct), the unused «الموضع N» label is gone, «آخر ما قرأت» is a one-row query; heap not measured) Library lists do not depend on every position: «آخر ما قرأت» from its own small query. (#46)
@@ -245,12 +245,12 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
       Cleaner, fewer elements. Mock first, owner picks.
 - [ ] 8.6 Time each stage of one search (DNS, Worker, D1, draw) on Sudani mobile data before
       touching speed; the Worker already logs D1 time.
-- [~] 8.7 (2026-11-10: 503 cause from the Worker log: every one is D1 «DB is overloaded. Too many resources consumed within a 10 second window»; one heavy query (3–8 s wall: «الله», 10-word phrases) uses the DB up and the searches in the next ~10 s are refused; the schema probe threw 500 outside the try, now 503. The app retries once on a 503, commit 6a08dc50; Worker side local only, not deployed: long queries drop particles from the every-word tiers, `requiredWords` in `search-rank.ts` + test; the 503 cause and retry still open) First in this phase: a heavy query must not fail the rest. Read the Worker log for the
+- [~] 8.7 (2026-11-10: 503 cause from the Worker log: every one is D1 «DB is overloaded. Too many resources consumed within a 10 second window»; one heavy query (3–8 s wall: «الله», 10-word phrases) uses the DB up and the searches in the next ~10 s are refused; the schema probe threw 500 outside the try, now 503. The app retries once on a 503, commit 6a08dc50; Worker side local only, not deployed: long queries drop particles from the every-word tiers, `requiredWords` in `search-rank.ts` + test; the 503 cause and retry still open; then: each tier after the first starts only within a 1.5 s budget, a spent budget ends the page early and `next` carries on; test with a stepped clock; deploy held to the end) First in this phase: a heavy query must not fail the rest. Read the Worker log for the
       503 reason; then a long query runs as phrase/NEAR only (not every-word over 9+ words), and
       one retry on overload. (#72)
-- [ ] 8.8 The 20 queries above become the golden list with the expected top three (Bukhari for
+- [x] 8.8 (2026-11-10: `pnpm search:golden [base] [--fresh]`, `scripts/search-golden.mjs`; against the live (old) Worker 6 of 20 miss: «من أرتد ثم تاب حبط» at 6, «إنما الأعمال بالنيات» in all three spellings without Bukhari or النووية, «الأصول الثلاثة» absent, «البربهاري» at 4; that is ranking work for 8.2–8.4) The 20 queries above become the golden list with the expected top three (Bukhari for
       «إنما الأعمال بالنيات», his books for «ابن تيمية», …); 8.2–8.4 are judged against it. (#73, #74, #76)
-- [ ] 8.9 Page 2 and later read on from where page 1 stopped instead of rerunning the tiers; in-book
+- [x] 8.9 (2026-11-10, local: a page answers `next` = tier.skip and `after=` resumes there, rebuilding only the title-tier exclusions; the site and the app send it and fall back to `offset` on an old Worker; a test walks 100 rows both ways and gets the same rows once each; the in-book panel shows the site's first page as it lands; Worker and site deploy held) Page 2 and later read on from where page 1 stopped instead of rerunning the tiers; in-book
       search shows the first page at once. (#77)
 - [ ] 8.10 The 15 large books get real chapters (part of 9.4). (#78)
 - [ ] 8.11 Offline ranking after 6.9 decides the phone index format; a `detail=full` index costs
