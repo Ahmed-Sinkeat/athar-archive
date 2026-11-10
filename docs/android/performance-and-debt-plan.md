@@ -206,7 +206,7 @@ Steps, in order. 6.1 and 6.2 are the bulk of the win and need no format change.
 
 ## Phase 7 — measure, then the reader
 
-- [ ] 7.1 `bookOpen` macrobenchmark (tap a row → first page drawn) for a small book and مجموع الفتاوى,
+- [~] 7.1 (2026-11-10, commit 31c069e5: `AtharBookOpen` async trace section, `BookOpenBenchmark`; on the phone (1.2.3) مجموع الفتاوى warm open median 245 ms; small book, cold runs and 1.2.2 not measured: the bench package install is refused by the phone, `INSTALL_FAILED_USER_RESTRICTED`) `bookOpen` macrobenchmark (tap a row → first page drawn) for a small book and مجموع الفتاوى,
       warm and cold cache; a trace section around open. Record 1.2.2 against 1.2.3 to name the regression. (#48)
 - [x] 7.2 (2026-11-10, local: the book (entity, contents, editions) is built once per change of those, a saved position or annotation only copies it; the ±24 block window and the whole-book footnote list are gone, footnotes are read by id for the loaded chunk and for the marker callout; the page box shows on `pageTo`; heap and open time not measured, a footnote without a marker is numbered within its chunk now) Reader state in two parts: the book (title, card, TOC, footnotes, editions; loaded once) and
       the place (position, annotations). Footnotes read per page, not per book. Drop the ±24 window
@@ -235,16 +235,16 @@ deep pages and in-book search (`searchtest.py`, scratch). Times are from the PC,
 | 79 | Offline search cannot match a phrase in SQL: the phone index is `detail=none` («phrase queries are not supported»), so phrases are checked in Kotlin over candidates, and bm25 ranks only the first `RankCap` matches in index order (the server does the same with `RANK_CAP` = 10,000). For a common word the order is a sample of the books imported first | `ContentSearch.kt:111`, `:386`; `search-handler.ts:45` |
 | 80 | Smaller: Latin «tawhid» finds nothing; an ayah («قل هو الله أحد») finds hadith books, as the index has no Quran (types: book, poem, article, question, term, person) | run 1 |
 
-- [ ] 8.1 Each index row carries the app's place (first block ordinal, or the stable block id from
+- [~] 8.1 (2026-11-10, commit 4c150e1b: v2 rows carry `pg` = the app block range, found by aligning each passage's letters with the app parser's blocks; 97.6% placed on every 10th book, 0.4% wrong on every 40th (both fall back to the walk); the Worker returns it, the app opens only those frames (≤4), online or downloaded; test `src/lib/gen-search-index.test.ts`; live only after the 8.2 reindex and the held Worker deploy, not checked on the phone; incremental runs must keep SEARCH_FORMAT=v2) Each index row carries the app's place (first block ordinal, or the stable block id from
       `content-ids`); the app opens that frame directly. `locateOnline`'s walk goes. (#52)
 - [ ] 8.2 Full v2 reindex (2,500-char passages, `raw`, `prior`) now that the account is Workers Paid:
       check `size_after` against the 10 GB cap first, raise `SEARCH_ROW_BUDGET`, swap. (#53, #55)
 - [~] 8.3 (2026-11-10: NEAR tier in `search-rank.ts` + test, committed, NOT deployed: wrangler deploy was blocked by the permission system; the Kotlin side has no NEAR, the phone index is detail=none) A proximity tier between «exact phrase» and «every word» (FTS5 `NEAR`), same tier in the
       Kotlin search; golden cases shared by both (4.9). (#53)
-- [ ] 8.4 One result per work per passage: editions folded under their default (needs 9.1). (#54)
+- [~] 8.4 (2026-11-10, commit 18b9c5c8: `work_edition` table from `edition_of` in person-meta.sql; the Worker folds editions into their work for the per-work cap and shows one passage once across copies; test; needs the person-meta.sql load and the held deploy) One result per work per passage: editions folded under their default (needs 9.1). (#54)
 - [x] 8.5 (2026-11-10: flat rows, «title — author» on one line, thin rule between results; compiled, not checked on the phone) Result card redesign: book and author, the passage with the words marked, volume and page.
       Cleaner, fewer elements. Mock first, owner picks.
-- [ ] 8.6 Time each stage of one search (DNS, Worker, D1, draw) on Sudani mobile data before
+- [~] 8.6 (2026-11-10, commit 1055c856: the Worker sends `Server-Timing: d1, worker` (cache hits marked), the app logs dns/tcp/tls/send/wait/body and parse per request, `adb logcat -s AtharSearch`; needs the held deploy for the server half, then one run on Sudani data by the owner) Time each stage of one search (DNS, Worker, D1, draw) on Sudani mobile data before
       touching speed; the Worker already logs D1 time.
 - [~] 8.7 (2026-11-10: 503 cause from the Worker log: every one is D1 «DB is overloaded. Too many resources consumed within a 10 second window»; one heavy query (3–8 s wall: «الله», 10-word phrases) uses the DB up and the searches in the next ~10 s are refused; the schema probe threw 500 outside the try, now 503. The app retries once on a 503, commit 6a08dc50; Worker side local only, not deployed: long queries drop particles from the every-word tiers, `requiredWords` in `search-rank.ts` + test; the 503 cause and retry still open; then: each tier after the first starts only within a 1.5 s budget, a spent budget ends the page early and `next` carries on; test with a stepped clock; deploy held to the end) First in this phase: a heavy query must not fail the rest. Read the Worker log for the
       503 reason; then a long query runs as phrase/NEAR only (not every-word over 9+ words), and
