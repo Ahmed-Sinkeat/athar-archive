@@ -253,14 +253,15 @@ internal fun SettingsScreen(
                 }
             }
             HorizontalDivider(color = AtharTheme.colors.divider)
-            // 4.8: the fonts' licences (full texts ship in assets/licenses). ponytail: a fixed list, not generated from the dependencies.
+            // 4.8: the fonts' and sources' licences (full texts ship in assets/licenses). ponytail: a fixed list, not generated from the dependencies.
             Box {
                 var open by remember { mutableStateOf(false) }
-                SettingsRow(AtharIcons.Info, "الخطوط والتراخيص", "كتاب، أميري، IBM Plex Sans Arabic، خطوط المصحف", onClick = { open = true }, tag = "settings_licenses")
+                SettingsRow(AtharIcons.Info, "المصادر والتراخيص", "الخطوط، وقافية لنصوص الشعر", onClick = { open = true }, tag = "settings_licenses")
                 AtharMenu(expanded = open, onDismiss = { open = false }, width = 300.dp) {
                     Text(
                         "كتاب (Katib) وأميري وIBM Plex Sans Arabic: رخصة الخطوط المفتوحة SIL OFL 1.1.\n" +
                             "خطوط المصحف لأحمد الغريب: بشروطها المرفقة.\n" +
+                            "نصوص كثير من القصائد من مشروع قافية (qafiyah.com)، جزى الله القائمين عليه خيرًا: رخصة MIT.\n" +
                             "نصوص التراخيص كاملة في ملفات التطبيق (assets/licenses).",
                         Modifier.padding(14.dp),
                         style = MaterialTheme.typography.bodySmall,
