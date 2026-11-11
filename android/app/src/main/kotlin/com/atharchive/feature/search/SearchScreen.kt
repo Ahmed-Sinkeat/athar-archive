@@ -60,6 +60,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -504,7 +505,7 @@ private fun TopAuthors(authors: List<AuthorCountUi>, selected: Set<String>, hori
                 Modifier
                     .clip(AtharCorners.Control)
                     .then(if (on) Modifier.background(AtharTheme.colors.accent.copy(alpha = 0.18f)) else Modifier.atharControl(AtharTheme.colors.divider.copy(alpha = 0.28f), AtharCorners.Control))
-                    .clickable(role = Role.Button) { onToggle(author.name) }
+                    .toggleable(value = on, role = Role.Checkbox) { onToggle(author.name) }
                     .padding(horizontal = 10.dp, vertical = 6.dp),
                 color = if (on) AtharTheme.colors.accent else MaterialTheme.colorScheme.onSurface,
                 style = MaterialTheme.typography.bodySmall,

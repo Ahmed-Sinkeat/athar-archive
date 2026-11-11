@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.heading
@@ -109,7 +110,9 @@ fun AtharTopBar(
                 modifier = Modifier.size(48.dp).testTag("athar_app_icon")
                     .clickable(interactionSource = null, indication = null) {
                         scope.launch { reveal.snapTo(0f); reveal.animateTo(1f, com.atharchive.ui.icons.AtharMarkMotion) }
-                    },
+                    }
+                    // Only replays the mark's drawing: nothing for TalkBack to announce.
+                    .clearAndSetSemantics {},
                 contentAlignment = Alignment.Center,
             ) {
                 AtharMark(modifier = Modifier.size(30.dp), contentDescription = null, reveal = { reveal.value })
