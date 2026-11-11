@@ -253,30 +253,25 @@ internal fun SettingsScreen(
                 }
             }
             HorizontalDivider(color = AtharTheme.colors.divider)
-            // 4.8: the fonts' and sources' licences (full texts ship in assets/licenses). ponytail: a fixed list, not generated from the dependencies.
+            // 4.8: the fonts' and sources' licences (full texts ship in assets/licenses) and the copyright contact,
+            // one app-wide legal row. ponytail: a fixed list, not generated from the dependencies.
             Box {
                 var open by remember { mutableStateOf(false) }
-                SettingsRow(AtharIcons.Info, "المصادر والتراخيص", "الخطوط، وقافية لنصوص الشعر", onClick = { open = true }, tag = "settings_licenses")
+                val context = androidx.compose.ui.platform.LocalContext.current
+                SettingsRow(AtharIcons.Info, "التراخيص وحقوق النشر", "الخطوط، ومصادر الشعر، وطلب حذف كتاب", onClick = { open = true }, tag = "settings_licenses")
                 AtharMenu(expanded = open, onDismiss = { open = false }, width = 300.dp) {
                     Text(
                         "كتاب (Katib) وأميري وIBM Plex Sans Arabic: رخصة الخطوط المفتوحة SIL OFL 1.1.\n" +
                             "خطوط المصحف لأحمد الغريب: بشروطها المرفقة.\n" +
-                            "نصوص كثير من القصائد من مشروع قافية (qafiyah.com)، جزى الله القائمين عليه خيرًا: رخصة MIT.\n" +
-                            "نصوص التراخيص كاملة في ملفات التطبيق (assets/licenses).",
+                            "نصوص من القصائد من مشروع قافية (qafiyah.com)، جزى الله القائمين عليه خيرًا: رخصة MIT.\n" +
+                            "نصوص التراخيص كاملة في ملفات التطبيق (assets/licenses).\n\n" +
+                            com.atharchive.data.CopyrightNotice + "\n" + com.atharchive.data.CopyrightEmail,
                         Modifier.padding(14.dp),
                         style = MaterialTheme.typography.bodySmall,
                     )
+                    AtharMenuItem("مراسلة لحقوق النشر", onClick = { open = false; com.atharchive.data.emailCopyright(context) })
                 }
             }
-            // Legal contact is an app-wide matter, not a reading preference.
-            val context = androidx.compose.ui.platform.LocalContext.current
-            SettingsRow(
-                AtharIcons.Info,
-                "حقوق النشر",
-                com.atharchive.data.CopyrightNotice + "\n" + com.atharchive.data.CopyrightEmail,
-                onClick = { com.atharchive.data.emailCopyright(context) },
-                tag = "settings_copyright",
-            )
         }
     }
 }

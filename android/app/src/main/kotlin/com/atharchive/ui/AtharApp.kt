@@ -240,7 +240,7 @@ fun AtharApp(
     // StartupTimingMetric can only measure "interactive library" when Compose tells the
     // platform that the asynchronous Room-backed catalogue has reached the screen.
     ReportDrawnWhen { booksState.loaded }
-    // Once, on first opening; the same words stay in الإعدادات › حقوق النشر (main settings).
+    // Once, on first opening; the same words stay in الإعدادات › التراخيص وحقوق النشر.
     var copyrightSeen by com.atharchive.ui.components.rememberPersisted("copyright.notice.seen", "")
     if (copyrightSeen.isEmpty()) {
         val context = androidx.compose.ui.platform.LocalContext.current
