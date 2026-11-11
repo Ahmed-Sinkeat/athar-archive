@@ -11,8 +11,8 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.content.ContextCompat
 import androidx.work.CoroutineWorker
-import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.ExistingWorkPolicy
+import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
@@ -24,7 +24,9 @@ import java.util.concurrent.TimeUnit
 
 /**
  * One daily reminder per adhkar list, at a time of day the reader picks (minutes after midnight).
- * ponytail: WorkManager periodic work, so Doze can make it a few minutes late; move to
+ * Each reminder is one-time work that schedules the next from the clock when it fires, so a late
+ * run never shifts the following days (periodic work counted 24 h from the last run and drifted).
+ * ponytail: WorkManager, so Doze can make one run a few minutes late; move to
  * AlarmManager.setAndAllowWhileIdle if people need it on the minute.
  */
 object AdhkarReminders {
@@ -44,11 +46,16 @@ object AdhkarReminders {
             return
         }
         prefs.putInt(listId, minutes).apply()
-        val request = PeriodicWorkRequestBuilder<AdhkarReminderWorker>(1, TimeUnit.DAYS)
+        schedule(context, listId, label, minutes)
+    }
+
+    /** The next run at [minutes]; REPLACE also retires the periodic work older versions enqueued under this name. */
+    internal fun schedule(context: Context, listId: String, label: String, minutes: Int) {
+        val request = OneTimeWorkRequestBuilder<AdhkarReminderWorker>()
             .setInitialDelay(delayUntil(LocalDateTime.now(), minutes).toMillis(), TimeUnit.MILLISECONDS)
             .setInputData(workDataOf("list" to listId, "label" to label))
             .build()
-        work.enqueueUniquePeriodicWork(name(listId), ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE, request)
+        WorkManager.getInstance(context).enqueueUniqueWork(name(listId), ExistingWorkPolicy.REPLACE, request)
     }
 
     /** Time until the next [minutes]-after-midnight; a time already past today means tomorrow. */
@@ -88,7 +95,10 @@ object AdhkarReminders {
 class AdhkarReminderWorker(context: Context, parameters: WorkerParameters) : CoroutineWorker(context, parameters) {
     override suspend fun doWork(): Result {
         val list = inputData.getString("list") ?: return Result.success()
-        AdhkarReminders.notify(applicationContext, list, inputData.getString("label").orEmpty())
+        val label = inputData.getString("label").orEmpty()
+        AdhkarReminders.notify(applicationContext, list, label)
+        // Next one from today's clock; a reminder turned off since has no time left in prefs.
+        AdhkarReminders.all(applicationContext)[list]?.let { AdhkarReminders.schedule(applicationContext, list, label, it) }
         return Result.success()
     }
 }
