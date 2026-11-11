@@ -252,6 +252,8 @@ class BulkDownloadBenchmark {
         setupBlock = {
             device.executeShellCommand("pm clear $TargetPackage")
             startActivityAndWait()
+            // A cleared install opens on the one-time «حقوق النشر» notice.
+            device.wait(Until.findObject(By.text("حسنًا")), 15_000L)?.click()
             device.requireObject("books_screen")
             // A cleared install syncs the whole catalog first.
             checkNotNull(device.wait(Until.findObject(By.res(Pattern.compile("book_row_.*"))), 120_000L)) { "catalog never synced" }
