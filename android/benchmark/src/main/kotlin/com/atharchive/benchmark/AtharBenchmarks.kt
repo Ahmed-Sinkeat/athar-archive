@@ -31,6 +31,7 @@ import org.junit.runner.RunWith
  *   readerFling      reader scroll, the §17 10 s fling    0 dropped  (fail > 1%)
  *   searchTyping     keystroke → results                  < 120 ms   (fail 300 ms)
  *   bookOpen         tap a row → first page shown          AtharBookOpen trace section
+ *   bulkDownload     «تنزيل الكل» on المسائل, local server   cpuCoreMs (÷ items) + janky frames
  *
  * Frame timing is reported as P50/P90/P99 frame duration by the harness; the dropped-frame
  * budget is read off P99 against the device's frame deadline rather than asserted here, so
@@ -227,6 +228,58 @@ class SearchBenchmark {
             device.waitForIdle()
         }
         device.requireObject(searchResultsReadyTag(SearchTerm))
+    }
+}
+
+@RunWith(AndroidJUnit4::class)
+@OptIn(ExperimentalMetricApi::class)
+class BulkDownloadBenchmark {
+
+    @get:Rule
+    val rule = MacrobenchmarkRule()
+
+    /**
+     * The 953 مسائل in one tap, from a fresh install's catalog (the build must point at the local
+     * server, see android/README.md). One iteration: each one re-downloads everything.
+     * Limits read off the report, as for frames: 6.3 measured 127 core-s for the run.
+     */
+    @Test
+    fun bulkDownload() = rule.measureRepeated(
+        packageName = TargetPackage,
+        metrics = listOf(FrameTimingMetric(), ProcessCpuMetric()),
+        iterations = 1,
+        startupMode = StartupMode.COLD,
+        setupBlock = {
+            device.executeShellCommand("pm clear $TargetPackage")
+            startActivityAndWait()
+            device.requireObject("books_screen")
+            // A cleared install syncs the whole catalog first.
+            checkNotNull(device.wait(Until.findObject(By.res(Pattern.compile("book_row_.*"))), 120_000L)) { "catalog never synced" }
+            device.requireObject("settings_action").click()
+            device.requireObject("settings_downloads").click()
+            device.requireObject("downloads_screen")
+        },
+    ) {
+        val row = By.res(Pattern.compile("bulk_المسائل( · نصوص)?"))
+        device.requireObject(row, "المسائل bulk row").click()
+        device.requireObject(By.res(Pattern.compile("bulk_confirm(_mobile)?_المسائل.*")), "download confirm").click()
+        // A finished row stops being clickable.
+        checkNotNull(device.wait(Until.findObject(row.enabled(false)), 600_000L)) { "مسائل download never finished" }
+    }
+}
+
+/** CPU time the app's threads spent on a core during the measured block, from the trace's scheduler slices. */
+@OptIn(ExperimentalMetricApi::class)
+private class ProcessCpuMetric : androidx.benchmark.macro.TraceMetric() {
+    override fun getMeasurements(
+        captureInfo: CaptureInfo,
+        traceSession: androidx.benchmark.traceprocessor.TraceProcessor.Session,
+    ): List<Measurement> {
+        val ns = traceSession.query(
+            "SELECT SUM(s.dur) AS d FROM sched s JOIN thread USING(utid) JOIN process p USING(upid) " +
+                "WHERE p.name LIKE '${captureInfo.targetPackageName}%'",
+        ).firstOrNull()?.double("d") ?: 0.0
+        return listOf(Measurement("cpuCoreMs", ns / 1e6))
     }
 }
 

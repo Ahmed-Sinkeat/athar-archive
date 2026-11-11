@@ -207,6 +207,7 @@ internal fun SettingsScreen(
                 "التنزيلات والتخزين",
                 "المحفوظ: ${arabicDigits(pinnedCount)} · المؤقّت: ${com.atharchive.data.byteSize(cacheBytes)} · الحد: ${cacheBudgetLabel(cacheBudgetBytes)}",
                 onClick = onDownloads,
+                tag = "settings_downloads",
             )
             HorizontalDivider(color = AtharTheme.colors.divider)
             SettingsRow(AtharIcons.Repeat, "تحديث المحتوى", syncLabel, onClick = onSync, tag = "settings_sync_content")

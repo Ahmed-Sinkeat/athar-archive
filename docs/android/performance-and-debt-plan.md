@@ -87,8 +87,8 @@ Rule for every step: fix the cause, not the symptom. No shortcut comments, no "f
 
 ## Phase 4 — correctness and safety
 
-- [ ] 4.1 Adhkar reminders scheduled one at a time at a fixed clock time (no drift). (#28)
-- [ ] 4.2 `FallbackDns`: DNS over HTTPS with the zone IPs as bootstrap; remember last good addresses. (#31)
+- [x] 4.1 (2026-11-11: one-time work per reminder; the worker schedules the next from the clock, REPLACE retires old periodic work) Adhkar reminders scheduled one at a time at a fixed clock time (no drift). (#28)
+- [x] 4.2 (2026-11-11: order = last address that connected (network interceptor, `noBackupFilesDir/last-good-dns`), then system answer interleaved with zone IPs; DoH 1.1.1.1 → 8.8.8.8 by IP only when the system resolver fails; 3 JVM tests) `FallbackDns`: DNS over HTTPS with the zone IPs as bootstrap; remember last good addresses. (#31)
 - [x] 4.3 (2026-11-10, `BuildConfig.BUILD_TYPE == "benchmark"`) `testTagsAsResourceId` only in the benchmark build. (#34)
 - [x] 4.4 (2026-11-10, local: the window's items are keyed by index, so a chunk that lands fills its placeholders in place; not checked on the phone) Reader list keyed by ordinal so loaded chunks update in place. (#35)
 - [x] 4.5 (2026-11-11: content column capped at 1000 dp and centred; no tablet or foldable emulator run) Large screens: cap content width; check one tablet/foldable emulator. (#33)
@@ -98,7 +98,7 @@ Rule for every step: fix the cause, not the symptom. No shortcut comments, no "f
 - [x] 4.9 (2026-11-11: the 20 golden queries moved to scripts/search-golden.json, read by the TS script and by a Kotlin test that builds their tiers; ranking itself is still judged on the Worker and the M0 SQLite test; Kotlin RankCap 20,000 vs the Worker's 10,000 left as it is on purpose) Shared ranking golden cases for the TS and Kotlin search. (#21)
 - [x] 4.10 Text selection: kept; why-comment in `PageSelection.kt`; `JustifiedLineHitTest` added
       (compiles; run on a device). TalkBack check on the phone still open. (#38)
-- [ ] 4.11 TalkBack and touch-target pass on the main screens. (#37)
+- [x] 4.11 (2026-11-11: panel scrims labelled «إغلاق اللوحة», app mark hidden from TalkBack, author filter chips are checkboxes with state. Targets under 48 dp (24–36 dp, five) left: Compose already extends their touch area to 48 dp, and growing the layout changes the look) TalkBack and touch-target pass on the main screens. (#37)
 - [ ] 4.12 Launcher-icon alias test on common launchers (P4). (#32)
 - [x] 4.13 (2026-11-11: a snackbar with «تصدير» after 30 days of notes without an export, then weekly) Backup reminder for notes (P3). (#30)
 
@@ -180,7 +180,7 @@ network and the database import are not the cost; the app's own bookkeeping per 
 
 Steps, in order. 6.1 and 6.2 are the bulk of the win and need no format change.
 
-- [ ] 6.1 Method trace of the مسائل run on a profileable build; name the flows behind #62. Add
+- [~] 6.1 (2026-11-11: `BulkDownloadBenchmark.bulkDownload` added: pm clear, sync, «تنزيل الكل» on المسائل, FrameTimingMetric + `cpuCoreMs` from the trace's sched slices; settings row tagged `settings_downloads`. Not run: the phone refused the USB install (MIUI prompt). Trace still to take) Method trace of the مسائل run on a profileable build; name the flows behind #62. Add
       `bulkDownload` to the benchmarks: N small items from the local server, limits on core-seconds
       per item and janky frames. (#61, #62)
 - [~] 6.2 (2026-11-10, quick form: `localStates` and `retainedPins` throttled to 1/s in `AtharContentViewModel`; not measured on the phone yet, the real fix below still open) Lists do not rebuild per item: completed/retained ids applied to the rows already built
