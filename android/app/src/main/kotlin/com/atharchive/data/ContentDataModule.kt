@@ -78,16 +78,20 @@ object ContentDataModule {
 
     @Provides
     @Singleton
-    fun contentHttpClient(): OkHttpClient = OkHttpClient.Builder()
+    fun contentHttpClient(@ApplicationContext context: Context): OkHttpClient {
+        val dns = com.atharchive.core.data.network.FallbackDns(store = java.io.File(context.noBackupFilesDir, "last-good-dns"))
+        return OkHttpClient.Builder()
         .followRedirects(false)
         .followSslRedirects(false)
         .retryOnConnectionFailure(true)
         // Sudanese carriers blackhole some Cloudflare IPs: fall back to ours, and give up on a dead one fast.
-        .dns(com.atharchive.core.data.network.FallbackDns())
+        .dns(dns)
+        .addNetworkInterceptor(dns.remember)
         .connectTimeout(6, java.util.concurrent.TimeUnit.SECONDS)
         // Default 10 s read timeout drops a slow mobile link mid-catalog; a stall this long is a real outage.
         .readTimeout(30, java.util.concurrent.TimeUnit.SECONDS)
         .build()
+    }
 
     @Provides
     @Singleton

@@ -22,8 +22,19 @@ class FallbackDnsTest {
 
     @Test
     fun unresolvableOwnHostStillGetsFallbackButOtherHostsDoNot() {
-        assertEquals(fallback, FallbackDns(fallback, unresolvable).lookup("app-content.arthurarchive.com"))
-        assertThrows(UnknownHostException::class.java) { FallbackDns(fallback, unresolvable).lookup("example.com") }
+        assertEquals(fallback, FallbackDns(fallback, unresolvable, doh = { emptyList() }).lookup("app-content.arthurarchive.com"))
+        assertThrows(UnknownHostException::class.java) { FallbackDns(fallback, unresolvable, doh = { emptyList() }).lookup("example.com") }
         assertEquals(ips("93.184.216.34"), FallbackDns(fallback, answers("93.184.216.34")).lookup("example.com"))
+    }
+
+    @Test
+    fun dohAnswersWhenSystemFailsAndLastGoodComesFirstAcrossLaunches() {
+        val doh = FallbackDns(fallback, unresolvable, doh = { ips("188.114.96.6") })
+        assertEquals(ips("188.114.96.6", "104.21.84.124", "172.67.193.3"), doh.lookup("app-content.arthurarchive.com"))
+
+        val store = java.io.File.createTempFile("dns", ".txt").apply { writeText("app-content.arthurarchive.com 172.67.193.3\njunk\n"); deleteOnExit() }
+        val dns = FallbackDns(fallback, answers("188.114.96.6"), store)
+        assertEquals(ips("172.67.193.3", "188.114.96.6", "104.21.84.124"), dns.lookup("app-content.arthurarchive.com"))
+        assertEquals(ips("188.114.96.6", "104.21.84.124", "172.67.193.3"), dns.lookup("search.arthurarchive.com"))
     }
 }
