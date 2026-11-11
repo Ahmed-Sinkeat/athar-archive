@@ -255,7 +255,9 @@ class BulkDownloadBenchmark {
             device.requireObject("books_screen")
             // A cleared install syncs the whole catalog first.
             checkNotNull(device.wait(Until.findObject(By.res(Pattern.compile("book_row_.*"))), 120_000L)) { "catalog never synced" }
+            // ⋮ opens the app menu; settings is one of its entries.
             device.requireObject("settings_action").click()
+            device.requireObject(By.text("الإعدادات"), "settings menu entry").click()
             device.requireObject("settings_downloads").click()
             device.requireObject("downloads_screen")
         },
