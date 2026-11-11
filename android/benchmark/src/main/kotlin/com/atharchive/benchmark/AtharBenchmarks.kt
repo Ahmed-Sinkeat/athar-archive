@@ -266,7 +266,8 @@ class BulkDownloadBenchmark {
     ) {
         val row = By.res(Pattern.compile("bulk_المسائل( · نصوص)?"))
         device.requireObject(row, "المسائل bulk row").click()
-        device.requireObject(By.res(Pattern.compile("bulk_confirm(_mobile)?_المسائل.*")), "download confirm").click()
+        // Popup windows expose no test tags; «any network» so a Wi-Fi wait never enters the timing.
+        device.requireObject(By.text("تنزيل عبر بيانات الجوال"), "download confirm").click()
         // A finished row stops being clickable.
         checkNotNull(device.wait(Until.findObject(row.enabled(false)), 600_000L)) { "مسائل download never finished" }
     }
