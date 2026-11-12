@@ -286,9 +286,13 @@ fun ReaderScreen(
         }
         positionReady = true
     }
+    // The collector outlives recompositions: it reads the latest book state and callbacks, never the first ones.
+    val positionInputs by androidx.compose.runtime.rememberUpdatedState(Triple(state, window, onPositionWithOffset to onPositionChange))
     LaunchedEffect(restored, positionReady, listState) {
         snapshotFlow { if (listState.isScrollInProgress) null else listState.firstVisibleItemIndex to listState.firstVisibleItemScrollOffset }
             .collect { location ->
+                val (state, window, callbacks) = positionInputs
+                val (onPositionWithOffset, onPositionChange) = callbacks
                 if (location == null || !restored || !positionReady) return@collect
                 val displayIndex = (location.first - 1).coerceAtLeast(0)
                 val ordinal = if (window != null) displayIndex else state.blocks.getOrNull(displayIndex)?.ordinal ?: displayIndex
@@ -1249,6 +1253,8 @@ internal fun ReaderProgressStrip(
     label: (index: Int, percent: String) -> Pair<String, String>,
 ) {
     var scrub by remember { mutableStateOf<Float?>(null) }
+    // The drag detector is keyed on count and rtl only: it must call the latest onJump (the book's jumpTo reads the current search hits).
+    val jump by androidx.compose.runtime.rememberUpdatedState(onJump)
     val haptics = LocalHapticFeedback.current
     val rtl = androidx.compose.ui.platform.LocalLayoutDirection.current == androidx.compose.ui.unit.LayoutDirection.Rtl
     fun scrubIndex(fraction: Float) = (fraction * (count - 1)).roundToInt().coerceAtLeast(0)
@@ -1260,7 +1266,7 @@ internal fun ReaderProgressStrip(
                 fun at(x: Float) = (if (rtl) 1f - x / size.width else x / size.width).coerceIn(0f, 1f)
                 detectHorizontalDragGestures(
                     onDragStart = { scrub = at(it.x); haptics.performHapticFeedback(androidx.compose.ui.hapticfeedback.HapticFeedbackType.LongPress) },
-                    onDragEnd = { scrub?.let { onJump(scrubIndex(it)) }; scrub = null },
+                    onDragEnd = { scrub?.let { jump(scrubIndex(it)) }; scrub = null },
                     onDragCancel = { scrub = null },
                 ) { change, _ -> change.consume(); scrub = at(change.position.x) }
             }

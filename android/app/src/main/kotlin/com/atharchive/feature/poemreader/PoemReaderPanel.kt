@@ -1,5 +1,7 @@
 package com.atharchive.feature.poemreader
 
+import androidx.compose.ui.graphics.graphicsLayer
+import com.atharchive.ui.components.swipeToClosePanel
 import com.atharchive.ui.components.SoapLayer
 import com.atharchive.ui.components.rememberSoapTargets
 import com.atharchive.ui.components.soapTarget
@@ -87,11 +89,13 @@ internal fun PoemSidePanel(
     onJump: (Int) -> Unit,
     onDismiss: () -> Unit,
 ) {
+    val swipe = com.atharchive.ui.components.rememberPanelSwipe()
     Row(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
                 .weight(0.78f)
                 .fillMaxHeight()
+                .swipeToClosePanel(swipe, onClose = onDismiss)
                 .background(colors.page)
                 .testTag("poem_panel"),
         ) {
@@ -127,6 +131,7 @@ internal fun PoemSidePanel(
             modifier = Modifier
                 .weight(0.22f)
                 .fillMaxHeight()
+                .graphicsLayer { alpha = 1f - swipe.progress } // fades as the panel is swiped shut
                 .background(colors.text.copy(alpha = 0.25f))
                 .clickable(
                     interactionSource = remember { MutableInteractionSource() },

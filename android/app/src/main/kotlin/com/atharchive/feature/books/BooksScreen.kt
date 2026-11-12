@@ -1,5 +1,6 @@
 package com.atharchive.feature.books
 
+import com.atharchive.ui.components.swipeTabs
 import com.atharchive.ui.components.AtharFastScroller
 import com.atharchive.ui.components.directed
 import com.atharchive.ui.components.AtharDirectionGroup
@@ -222,7 +223,10 @@ fun BooksScreen(
         val horizontalPadding = if (maxWidth >= 720.dp) 32.dp else 20.dp
         val compactTitles = maxWidth < 360.dp || LocalDensity.current.fontScale >= 1.3f
 
-        Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
+        Box(modifier = Modifier.fillMaxSize().clipToBounds().then(
+            if (kindTabs != null) Modifier.swipeTabs(kindTabs.map { it.key }, kind.orEmpty()) { kindStored = it }
+            else Modifier.swipeTabs(SectionTab.tabs.map { it.key }, selectedTab.key) { selectedTab = SectionTab.fromKey(it) },
+        )) {
             val header = rememberAtharCollapsingHeader()
             header.ShowOnChange(listState, selectedTab, kind, query, topic, century, author, sort, section)
             AtharFloatingHeader(header) {

@@ -834,6 +834,15 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
         return;
       }
       case "paragraph": {
+        // A paragraph of only images (Telegram photos) becomes image blocks; an image inside text still fails.
+        const content = (node.children ?? []).filter((child) => !(child.type === "text" && !child.value?.trim()));
+        if (content.length && content.every((child) => child.type === "image")) {
+          for (const child of content) {
+            if (!/^https:\/\/\S+$/.test(child.url ?? "")) fail(input.sourcePath, child, "image needs an https URL");
+            add({ t: "img", src: child.url });
+          }
+          return;
+        }
         // Refs alone (split off a page-number line above): the notes join this page's footer,
         // like a printed note whose mark was lost; no empty paragraph with a stray number.
         if ((node.children ?? []).every((child) => child.type === "footnoteReference" || (child.type === "text" && !child.value?.trim()))) {

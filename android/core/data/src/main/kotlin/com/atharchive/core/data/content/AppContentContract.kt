@@ -217,6 +217,7 @@ data class PackageBlock(
     val continuation: Boolean? = null,
     val quoted: Boolean? = null,
     val ha: String? = null,
+    val src: String? = null,
 )
 
 @Serializable

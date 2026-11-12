@@ -324,6 +324,8 @@ internal fun BlockView(
             Box(Modifier.width(52.dp).height(1.dp).background(colors.divider))
         }
 
+        is ReaderBlock.Image -> ReaderImage(block.src, colors, Modifier.padding(vertical = 12.dp).testTag("block_${block.id}"))
+
         // Printed-book style: a short rule, then the page's notes in small type.
         is ReaderBlock.PageNotes -> if (!settings.continuous && settings.footnoteMode == FootnoteMode.Footer && block.notes.isNotEmpty()) {
             Column(

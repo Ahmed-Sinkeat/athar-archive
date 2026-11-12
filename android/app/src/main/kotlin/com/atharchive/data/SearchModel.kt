@@ -48,6 +48,7 @@ import kotlinx.coroutines.launch
 
 private const val SearchDebounceMs = 60L
 private const val OnlineSearchPauseMs = 150L
+private const val FacetsWaitMs = 1_500L
 private const val SearchPageSize = 40
 // ponytail: a list search keeps the best 3000; the largest list (المقالات) is ~2000, raise it with the catalog.
 private const val CatalogMatchLimit = 3000
@@ -210,8 +211,10 @@ internal class SearchModel(
         )
         if (filters.downloadedOnly || filters.field != SearchField.FullText) // Titles/authors/topics: the catalog on the phone already covers the whole library.
             return@transformLatest emit(localState(if (filters.downloadedOnly) SearchScope.Downloaded else SearchScope.Online))
-        // Passages in downloaded texts show at once; the whole library's replace them when they arrive.
-        emit(localState(SearchScope.Online).copy(searching = true, hasMore = false))
+        // Titles show at once; passages wait for the whole library's answer and land in one go. Showing the
+        // phone's own passages first, then swapping them for the library's, moved the list under the reader.
+        // «المزيد» keeps the current list up until the longer one arrives.
+        if (limit == SearchPageSize) emit(localState(SearchScope.Online).copy(searching = true, hasMore = false, hits = emptyList()))
         // ponytail: a fixed pause before the network call; cancelled by the next keystroke
         delay(OnlineSearchPauseMs)
         val query = OnlineSearch.Query(
@@ -244,11 +247,7 @@ internal class SearchModel(
                 )
             }
             val online = try {
-                onlineSearch.hits(query, limit) { partial, more ->
-                    // «المزيد» refetches from the top; showing its first page would shrink the list.
-                    if (limit == SearchPageSize) emit(counted(base.copy(scope = SearchScope.Online, roots = roots, directMatches = direct, hasMore = more, searching = true,
-                        hits = exactOnly(partial).mapIndexedNotNull { index, hit -> hit.toHitUi(index, catalog) })))
-                }
+                onlineSearch.hits(query, limit) // whole, not page by page: each partial list moved the results again
             } catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled
             } catch (offline: Exception) { null }
             if (online == null) {
@@ -267,8 +266,9 @@ internal class SearchModel(
                 // A work the site has and this app's catalog doesn't can't be opened: leave it out.
                 hits = hits.mapIndexedNotNull { index, hit -> hit.toHitUi(index, catalog) },
             )
-            // The counts usually come first (a small answer): passages and counts show together.
-            if (!facetsAsync.isCompleted) {
+            // Passages, counts and top authors land together (the authors row used to push the list down
+            // a moment later); only counts slower than this follow on their own.
+            if (kotlinx.coroutines.withTimeoutOrNull(FacetsWaitMs) { facetsAsync.await() } == null) {
                 emit(state)
                 facetsAsync.await()
             }

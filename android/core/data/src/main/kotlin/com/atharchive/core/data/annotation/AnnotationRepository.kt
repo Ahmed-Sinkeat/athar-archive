@@ -302,7 +302,7 @@ private class RoomAnnotationContentSource(database: AtharContentDatabase) : Anno
 
     private fun com.atharchive.core.data.db.content.ContentBlockEntity.annotationBlock() = AnnotationTextBlock(
         id = AnnotationBlockId(blockIdHi, blockIdLo), ordinal = ordinal,
-        semanticText = text.takeUnless { type == "page" || type == "break" },
+        semanticText = text.takeUnless { type == "page" || type == "break" || type == "img" },
         fingerprint = fp64, chapterAnchor = chapterAnchor, printedPage = printedPage,
         copyStyle = if (type == "verse") AnnotationCopyStyle.Verse else AnnotationCopyStyle.Prose,
     )

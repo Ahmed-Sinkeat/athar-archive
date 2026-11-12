@@ -293,6 +293,7 @@ private fun PackageBlock.toEntity(entityId: String): ContentBlockEntity {
                 quoted = quoted,
                 ha = ha,
                 footnotes = f,
+                src = src,
             ),
         ).encodeToByteArray(),
         inlineSpans = encodeSpans(sp),
@@ -319,6 +320,7 @@ data class StoredBlockAttributes(
     val quoted: Boolean? = null,
     val ha: String? = null,
     val footnotes: List<String> = emptyList(),
+    val src: String? = null,
 )
 
 fun ContentBlockEntity.attributes(): StoredBlockAttributes =

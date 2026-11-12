@@ -27,6 +27,13 @@ describe("app/v2 semantic parser", () => {
     expect(whole.blocks.map(block => [block.t, block.n, block.x])).toEqual([["verse", 1, "بيت أول"], ["verse", 2, "بيت ثان"]]);
   });
 
+  it("turns a paragraph of only images into image blocks, above the text that follows", () => {
+    const parsed = parseReadableDocument({ coll: "article", id: "photo", sourcePath: "photo.md",
+      body: "![](https://x.test/a.jpg)\n\nتعليق على الصورة" });
+    expect(parsed.blocks.map(block => [block.t, block.src ?? block.x])).toEqual([["img", "https://x.test/a.jpg"], ["p", "تعليق على الصورة"]]);
+    expect(() => parseReadableDocument({ coll: "article", id: "bad", sourcePath: "bad.md", body: "![](http://x.test/a.jpg)" })).toThrow();
+  });
+
   it("keeps an introduction paragraph inside a poem file as prose", () => {
     const prose = "وقد شرح ألفية ابن مالك كثيرون من أئمة علماء النحو، ".repeat(4);
     const doc = parseReadableDocument({ coll: "poem", id: "intro", sourcePath: "intro.md", body: `شرّاح الألفية:\n${prose}\n\nصدر بيت ... عجز بيت` });

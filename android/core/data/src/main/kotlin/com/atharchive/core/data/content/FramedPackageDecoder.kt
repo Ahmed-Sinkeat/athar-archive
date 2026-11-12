@@ -109,7 +109,7 @@ object AppContentDocuments {
 }
 
 object FramedPackageDecoder {
-    private val BlockTypes = setOf("h1", "h2", "h3", "h4", "h5", "h6", "p", "li", "quote", "verse", "page", "notes", "break")
+    private val BlockTypes = setOf("h1", "h2", "h3", "h4", "h5", "h6", "p", "li", "quote", "verse", "page", "notes", "break", "img")
     private val BlockId = Regex("^[0-9a-f]{32}$")
     private val Fingerprint = Regex("^[0-9a-f]{16}$")
 
@@ -215,6 +215,7 @@ object FramedPackageDecoder {
                 fail("verse block $expectedOrdinal has no verse text")
             }
             "page" -> if (block.p == null) fail("page block $expectedOrdinal has no page number")
+            "img" -> if (block.src?.startsWith("https://") != true) fail("image block $expectedOrdinal has no https source")
         }
         if (block.commentary.isNotEmpty() && (block.t != "verse" || block.commentary.any { it.sourceLabel.isBlank() || it.text.isBlank() })) fail("invalid verse commentary")
         block.x?.let { validateSpans(it, block.sp) }

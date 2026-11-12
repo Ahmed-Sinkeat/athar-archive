@@ -1,5 +1,6 @@
 package com.atharchive.feature.issues
 
+import com.atharchive.ui.components.swipeTabs
 import com.atharchive.ui.components.AtharFastScroller
 import com.atharchive.ui.components.directed
 import com.atharchive.ui.components.AtharDirectionGroup
@@ -152,7 +153,8 @@ fun IssuesScreen(
         val horizontalPadding = if (maxWidth >= 720.dp) 32.dp else 20.dp
         val compactTitle = maxWidth < 360.dp || LocalDensity.current.fontScale >= 1.3f
 
-        Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
+        Box(modifier = Modifier.fillMaxSize().clipToBounds()
+            .swipeTabs(SectionTab.tabs.map { it.key }, selectedTab.key) { selectedTab = SectionTab.fromKey(it) }) {
             val header = rememberAtharCollapsingHeader()
             header.ShowOnChange(listState, selectedTab, query, topic, sort, section)
             AtharFloatingHeader(header) {

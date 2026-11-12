@@ -268,7 +268,7 @@ fun PoemReaderScreen(
     }
     // Read through derived state: the first visible index changes verse by verse, and reading
     // it in the body recomposed the whole screen each time.
-    val topVerse by remember { derivedStateOf { state.verses.getOrNull(listState.firstVisibleItemIndex) } }
+    val topVerse by remember(state.verses) { derivedStateOf { state.verses.getOrNull(listState.firstVisibleItemIndex) } }
     val saved = remember(state.saved) { state.saved.toHashSet() }
     val bookmarks = remember(state.bookmarks) { state.bookmarks.toHashSet() }
     fun progress(): Float = when {
@@ -762,6 +762,7 @@ private fun Hemistich(
     saved: Boolean = false,
 ) {
     val tapText by androidx.compose.runtime.rememberUpdatedState(onTapText)
+    val isSaved by androidx.compose.runtime.rememberUpdatedState(saved) // the tap detector is keyed on the text only
     val line = if (settings.showTashkeel) sourceLine else com.atharchive.feature.reader.SelectionText(sourceLine, false).text
     // Keyed on the glossary, not the whole state: comparing the state compared every verse.
     val spans = remember(line, glossary) {
@@ -833,7 +834,7 @@ private fun Hemistich(
                         // its menu, and a tap off the words (the row's margins) still toggles the bars.
                         val from = line.lastIndexOf(' ', (offset - 1).coerceAtLeast(0)).let { if (it < 0 || offset == 0) 0 else it + 1 }
                         val to = line.indexOf(' ', offset).let { if (it < 0) line.length else it }
-                        if (dict == null || saved || to <= from || line.substring(from, to).none(Char::isLetter)) { tapText(); return@detectTapGestures }
+                        if (dict == null || isSaved || to <= from || line.substring(from, to).none(Char::isLetter)) { tapText(); return@detectTapGestures }
                         val span = WordSpan(from, to, line.substring(from, to), "")
                         meaning = span.word to result.boundsOf(span)
                     }

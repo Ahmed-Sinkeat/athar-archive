@@ -72,6 +72,13 @@ sealed interface ReaderBlock {
         override val spans: List<InlineSpan> = emptyList(),
     ) : ReaderBlock
 
+    /** A picture carried by the text (a Telegram post's photo), loaded from [src] and cached on disk. */
+    data class Image(
+        override val id: String,
+        val src: String,
+        override val ordinal: Int? = null,
+    ) : ReaderBlock
+
     /** The notes printed at the foot of one page, just above its «ص N» divider. */
     data class PageNotes(
         override val id: String,

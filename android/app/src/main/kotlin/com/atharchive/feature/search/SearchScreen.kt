@@ -1,5 +1,6 @@
 package com.atharchive.feature.search
 
+import com.atharchive.ui.components.swipeTabs
 import com.atharchive.ui.components.AtharFastScroller
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.ui.draw.clipToBounds
@@ -138,7 +139,8 @@ fun SearchScreen(
 
         // The same frame as every section: bar, field and tabs float over the results and
         // slide away as they scroll.
-        Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
+        Box(modifier = Modifier.fillMaxSize().clipToBounds()
+            .swipeTabs(searchTabKeys, searchTabSelected(filters, lexicon)) { selectSearchTab(it, filters, { lexicon = it }, ::changeFilters) }) {
             val header = rememberAtharCollapsingHeader()
             header.ShowOnChange(listState, query, filters, lexicon)
             AtharFloatingHeader(header) {
@@ -368,12 +370,20 @@ private fun SearchTypeTabs(
     val tabs = listOf(com.atharchive.ui.components.AtharTab("all", "الكل")) +
         SearchResultType.entries.map { com.atharchive.ui.components.AtharTab(it.key, it.plural) } +
         com.atharchive.ui.components.AtharTab("lexicon", "معجم")
-    // Several kinds picked in the filter menu: no single tab is the selection.
-    val selected = if (lexicon) "lexicon" else when (filters.types.size) { 0 -> "all"; 1 -> filters.types.first().key; else -> "" }
-    com.atharchive.ui.components.AtharTabRow(tabs, selected, { key ->
-        onLexicon(key == "lexicon")
-        if (key != "lexicon") onChange(filters.copy(types = SearchResultType.entries.filter { it.key == key }.toSet()))
+    com.atharchive.ui.components.AtharTabRow(tabs, searchTabSelected(filters, lexicon), { key ->
+        selectSearchTab(key, filters, onLexicon, onChange)
     }, tagPrefix = "search_type", modifier = modifier)
+}
+
+private val searchTabKeys = listOf("all") + SearchResultType.entries.map { it.key } + "lexicon"
+
+// Several kinds picked in the filter menu: no single tab is the selection.
+private fun searchTabSelected(filters: SearchFilters, lexicon: Boolean) =
+    if (lexicon) "lexicon" else when (filters.types.size) { 0 -> "all"; 1 -> filters.types.first().key; else -> "" }
+
+private fun selectSearchTab(key: String, filters: SearchFilters, onLexicon: (Boolean) -> Unit, onChange: (SearchFilters) -> Unit) {
+    onLexicon(key == "lexicon")
+    if (key != "lexicon") onChange(filters.copy(types = SearchResultType.entries.filter { it.key == key }.toSet()))
 }
 
 /**
@@ -614,10 +624,10 @@ fun SearchHitCard(
     val accent = AtharTheme.colors.accent
     var expanded by rememberSaveable(hit.id) { mutableStateOf(false) }
     var passage by remember(hit.id) { mutableStateOf<String?>(null) }
-    LaunchedEffect(expanded) {
-        if (expanded && passage == null && hit.url != null) passage = loadPassage(hit)?.let { around(it, hit) }
-    }
     val poem = hit.type == SearchResultType.Poem
+    LaunchedEffect(expanded) {
+        if (expanded && passage == null && hit.url != null) passage = loadPassage(hit)?.let { if (poem) aroundVerses(it, hit.excerpt, hit.matches) else around(it, hit) }
+    }
     val text = (passage ?: hit.excerpt).let { if (poem) verseLines(it) else it }
     val highlighted = remember(text, hit, accent, plain) {
         val marked = if (passage == null) hit.matches else wordRanges(text, hit)
@@ -733,7 +743,7 @@ private val VerseStart = Regex(" (?=[\u0660-\u0669]+ - )")
  * A poem's passage («١ - صدر … عجز ٢ - …») as one hemistich to a line. Same length as [text],
  * so the match offsets still fall on the right words.
  */
-internal fun verseLines(text: String) = text.replace(" … ", " \n ").replace(" --- ", "  \n  ").replace(VerseStart, "\n")
+internal fun verseLines(text: String) = text.replace(" … ", " \n ").replace(" ... ", "  \n  ").replace(" --- ", "  \n  ").replace(VerseStart, "\n")
 
 /**
  * About 900 characters of [full] around this hit: where its own snippet sits in the passage (not
@@ -742,14 +752,44 @@ internal fun verseLines(text: String) = text.replace(" … ", " \n ").replace(" 
 internal fun around(full: String, hit: SearchHitUi): String = around(full, hit.excerpt, hit.matches)
 
 internal fun around(full: String, excerpt: String, matches: List<IntRange>): String {
+    val at = hitAt(full, excerpt, matches)
+    return cut(full, (at - 400).coerceAtLeast(0), (at + 500).coerceAtMost(full.length))
+}
+
+/**
+ * A poem's hit: its verse with [n] verses before and after, one verse to a line, not a block of
+ * characters (a dozen verses). Verses are «١ - صدر … عجز» or, in older imports, «صدر ... عجز» run on
+ * with nothing between one verse's عجز and the next's صدر: there the break is the space nearest the
+ * middle, the two halves of a verse being about as long.
+ */
+internal fun aroundVerses(full: String, excerpt: String, matches: List<IntRange>, n: Int = 2): String {
+    val at = hitAt(full, excerpt, matches)
+    val seps = HemistichSep.findAll(full).map { it.range }.toList()
+    if (seps.isEmpty()) return around(full, excerpt, matches)
+    val starts = listOf(0) + seps.zipWithNext { a, b ->
+        val gap = full.substring(a.last + 1, b.first)
+        a.last + 1 + (VerseStart.find(gap)?.range?.first
+            ?: gap.indices.filter { gap[it] == ' ' }.minByOrNull { kotlin.math.abs(it - gap.length / 2) } ?: (gap.length / 2))
+    }
+    val verse = starts.indexOfLast { it <= at }.coerceAtLeast(0)
+    val from = (verse - n).coerceAtLeast(0)
+    val to = (verse + n).coerceAtMost(starts.lastIndex)
+    val lines = (from..to).map { full.substring(starts[it], starts.getOrNull(it + 1) ?: full.length).trim() }
+    return (if (from > 0) "…" else "") + lines.joinToString("\n") + (if (to < starts.lastIndex) "…" else "")
+}
+
+private val HemistichSep = Regex(" (?:…|\\.\\.\\.) ")
+
+/** Where this hit sits in the passage: its own snippet (not the first time its word appears, which every hit in the chapter shares), else its first word. */
+private fun hitAt(full: String, excerpt: String, matches: List<IntRange>): Int {
     val snippet = excerpt.trim('…', ' ')
     val word = matches.firstOrNull()?.takeIf { it.last < excerpt.length }?.let { excerpt.substring(it.first, it.last + 1) }
-    val at = full.indexOf(snippet).takeIf { it >= 0 && snippet.isNotEmpty() }?.let { it + snippet.length / 2 }
+    return full.indexOf(snippet).takeIf { it >= 0 && snippet.isNotEmpty() }?.let { it + snippet.length / 2 }
         ?: word?.let { full.indexOf(it) }?.takeIf { it >= 0 } ?: 0
-    val start = (at - 400).coerceAtLeast(0)
-    val end = (at + 500).coerceAtMost(full.length)
-    return (if (start > 0) "…" else "") + full.substring(start, end) + (if (end < full.length) "…" else "")
 }
+
+private fun cut(full: String, start: Int, end: Int) =
+    (if (start > 0) "…" else "") + full.substring(start, end).trim() + (if (end < full.length) "…" else "")
 
 /** [text] without its tashkeel, with [ranges] moved onto the same letters. */
 internal fun withoutTashkeel(text: String, ranges: List<IntRange>): Pair<String, List<IntRange>> {

@@ -1,5 +1,6 @@
 package com.atharchive.feature.reader
 
+import com.atharchive.ui.components.swipeToClosePanel
 import com.atharchive.ui.components.atharControl
 import com.atharchive.ui.components.SoapLayer
 import com.atharchive.ui.components.rememberSoapTargets
@@ -110,11 +111,13 @@ fun ReaderPanel(
 ) {
     var tab by remember(initialTab) { mutableStateOf(initialTab) }
 
+    val swipe = com.atharchive.ui.components.rememberPanelSwipe()
     Row(modifier = modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
                 .weight(if (docked) 1f else 0.78f)
                 .fillMaxHeight()
+                .swipeToClosePanel(swipe, enabled = !docked, onClose = onDismiss)
                 .background(colors.page)
                 .testTag("reader_panel"),
         ) {
@@ -166,6 +169,7 @@ fun ReaderPanel(
             modifier = Modifier
                 .weight(0.22f)
                 .fillMaxHeight()
+                .graphicsLayer { alpha = 1f - swipe.progress } // fades as the panel is swiped shut
                 .background(Color.Black.copy(alpha = 0.32f))
                 .clickable(role = Role.Button, onClickLabel = "إغلاق", onClick = onDismiss)
                 .semantics { contentDescription = "إغلاق اللوحة" }

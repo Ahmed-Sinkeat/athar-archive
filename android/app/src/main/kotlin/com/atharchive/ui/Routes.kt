@@ -76,17 +76,17 @@ internal class AppNav(
     val exportUserData: androidx.activity.result.ActivityResultLauncher<String>,
     val importUserData: androidx.activity.result.ActivityResultLauncher<Array<String>>,
     val receiveBooks: androidx.activity.result.ActivityResultLauncher<Array<String>>,
-    val themeMode: ThemeMode,
+    themeMode: androidx.compose.runtime.State<ThemeMode>,
     val onThemeModeChange: (ThemeMode) -> Unit,
-    val style: com.atharchive.ui.theme.AtharStyle,
+    style: androidx.compose.runtime.State<com.atharchive.ui.theme.AtharStyle>,
     val onStyleChange: (com.atharchive.ui.theme.AtharStyle) -> Unit,
-    val accent: com.atharchive.ui.theme.AccentChoice,
+    accent: androidx.compose.runtime.State<com.atharchive.ui.theme.AccentChoice>,
     val onAccentChange: (com.atharchive.ui.theme.AccentChoice) -> Unit,
-    val startPlace: com.atharchive.data.StartPlace,
+    startPlace: androidx.compose.runtime.State<com.atharchive.data.StartPlace>,
     val onStartPlaceChange: (com.atharchive.data.StartPlace) -> Unit,
-    val readerSettings: ReaderSettings,
+    readerSettings: androidx.compose.runtime.State<ReaderSettings>,
     val onReaderSettingsChange: (ReaderSettings) -> Unit,
-    val bar: List<AtharDestination>,
+    bar: androidx.compose.runtime.State<List<AtharDestination>>,
     val onBarChange: (List<AtharDestination>) -> Unit,
     val onResetSettings: () -> Unit,
     val goBack: () -> Unit,
@@ -122,6 +122,13 @@ internal class AppNav(
     adhkarOpen: androidx.compose.runtime.MutableState<String?>,
     adhkarReminders: androidx.compose.runtime.MutableState<Map<String, Int>>,
 ) {
+    // Nav3 keeps each entry's content once built: plain values here froze at the first frame (settings taps did nothing).
+    val themeMode by themeMode
+    val style by style
+    val accent by accent
+    val startPlace by startPlace
+    val readerSettings by readerSettings
+    val bar by bar
     val booksState by booksState
     val scrollToTopRequest by scrollToTopRequest
     val retainedIds by retainedIds

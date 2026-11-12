@@ -36,7 +36,7 @@ export interface PageRange {
 
 export interface DraftBlock {
   /** "notes" closes a printed page (or the document) and lists that page's notes in `f`. */
-  t: `h${1 | 2 | 3 | 4 | 5 | 6}` | "p" | "li" | "quote" | "verse" | "page" | "break" | "notes";
+  t: `h${1 | 2 | 3 | 4 | 5 | 6}` | "p" | "li" | "quote" | "verse" | "page" | "break" | "notes" | "img";
   a: string;
   p?: number;
   vol?: number;
@@ -53,6 +53,8 @@ export interface DraftBlock {
   continuation?: boolean;
   quoted?: boolean;
   ha?: string;
+  /** "img": the picture's https URL (a paragraph holding only `![](url)`). */
+  src?: string;
 }
 
 export interface PackageBlock extends DraftBlock {

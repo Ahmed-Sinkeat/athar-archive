@@ -472,6 +472,7 @@ private fun ContentBlockEntity.toReaderBlock(): ReaderBlock {
         type == "verse" -> ReaderBlock.Verse(id, attrs.s ?: text, attrs.j, ordinal, spans, attrs.footnotes)
         type == "notes" -> ReaderBlock.PageNotes(id, attrs.footnotes, ordinal)
         type == "break" -> ReaderBlock.Divider(id, ordinal)
+        type == "img" && attrs.src != null -> ReaderBlock.Image(id, attrs.src!!, ordinal)
         type == "page" -> ReaderBlock.PageBreak(id, printedPage ?: 0, vol, ordinal, footnotes = attrs.footnotes)
         else -> ReaderBlock.Paragraph(id, text, attrs.footnotes, ordinal, spans,
             if (type == "li" && attrs.continuation != true) if (attrs.ordered == true) "${attrs.start ?: 1}." else "•" else null,
@@ -483,7 +484,7 @@ private fun ContentBlockEntity.toAnnotationTextBlock(): AnnotationTextBlock = An
     id = AnnotationBlockId(blockIdHi, blockIdLo),
     ordinal = ordinal,
     // The reader leaves page markers, rules and the page-foot notes out of a selection; so does this.
-    semanticText = text.takeUnless { type == "page" || type == "break" || type == "notes" },
+    semanticText = text.takeUnless { type == "page" || type == "break" || type == "notes" || type == "img" },
     fingerprint = fp64,
     chapterAnchor = chapterAnchor,
     printedPage = printedPage,
@@ -496,7 +497,7 @@ private fun ReaderBlock?.readableText(): String? = when (this) {
     is ReaderBlock.Quote -> text
     is ReaderBlock.Verse -> listOfNotNull(sadr, ajuz).joinToString(" … ")
     is ReaderBlock.FootnoteBody -> text
-    is ReaderBlock.PageBreak, is ReaderBlock.PageNotes, is ReaderBlock.Divider, null -> null
+    is ReaderBlock.PageBreak, is ReaderBlock.PageNotes, is ReaderBlock.Divider, is ReaderBlock.Image, null -> null
 }
 
 internal fun ContentBlockEntity.safeAttributes(): StoredBlockAttributes =

@@ -1,5 +1,6 @@
 package com.atharchive.feature.downloads
 
+import com.atharchive.ui.components.swipeTabs
 import com.atharchive.ui.theme.AtharCorners
 import com.atharchive.ui.components.AtharMenuItem
 import com.atharchive.ui.components.AtharMenu
@@ -145,7 +146,7 @@ fun DownloadsListScreen(
     }
 
     DownloadsFrame("إدارة التنزيلات", onBack, modifier) { horizontalPadding ->
-        Column(Modifier.fillMaxSize()) {
+        Column(Modifier.fillMaxSize().swipeTabs(listOf("running", "done"), tab) { tab = it; selected = emptySet() }) {
             com.atharchive.ui.components.AtharTabRow(
                 tabs = listOf(
                     com.atharchive.ui.components.AtharTab("running", "جارٍ (${arabicDigits(state.transfers.size)})"),

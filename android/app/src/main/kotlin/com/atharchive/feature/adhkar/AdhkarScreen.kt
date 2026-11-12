@@ -1,5 +1,6 @@
 package com.atharchive.feature.adhkar
 
+import com.atharchive.ui.components.swipeTabs
 import com.atharchive.ui.components.AtharFastScroller
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.ui.draw.clipToBounds
@@ -162,7 +163,8 @@ fun AdhkarScreen(
 
         // The same frame as every section: bar, search and tabs float over the list and slide
         // away as it scrolls; what is adhkar-only (own list, progress) heads the list.
-        Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
+        Box(modifier = Modifier.fillMaxSize().clipToBounds()
+            .then(if (bab == null) Modifier.swipeTabs(tabs.map { it.key }, selectedKey) { storedKey = it } else Modifier)) {
             val header = rememberAtharCollapsingHeader()
             header.ShowOnChange(listState, selectedKey, query)
             AtharFloatingHeader(header) {

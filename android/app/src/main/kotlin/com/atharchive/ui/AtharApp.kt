@@ -55,6 +55,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -170,9 +171,11 @@ fun AtharApp(
     val userAdhkarState by userAdhkarStateHolder
     val editingDhikrHolder = remember { mutableStateOf<com.atharchive.data.UserDhikr?>(null) }
     var editingDhikr by editingDhikrHolder
-    val windowSize = androidx.compose.ui.platform.LocalWindowInfo.current.containerSize
+    // Read at the call, not here: route entries keep the first composition's closures (Nav3).
+    val windowInfo = androidx.compose.ui.platform.LocalWindowInfo.current
     // From a selection there is no tapped control to point at: the popover sits high in the middle.
     fun addDhikr(text: String, source: String, lists: Set<String> = emptySet(), anchor: Rect? = null) {
+        val windowSize = windowInfo.containerSize
         editorAnchor = anchor ?: Rect(androidx.compose.ui.geometry.Offset(windowSize.width / 2f, windowSize.height * 0.22f), Size(1f, 1f))
         editingDhikr = com.atharchive.data.UserDhikr(com.atharchive.data.UserAdhkarStore.newId(), text, 1, source.ifBlank { null }, lists)
     }
@@ -434,11 +437,13 @@ fun AtharApp(
         AtharDestination.Settings -> SettingsRoute
         else -> SectionRoute(destination.route)
     }
-    val currentDestination = when (val current = backStack.lastOrNull()) {
+    // A function so navigateTo, called from route entries that keep their first closures, reads the live stack.
+    fun destinationNow(): AtharDestination? = when (val current = backStack.lastOrNull()) {
         is SectionRoute -> AtharDestination.fromRoute(current.destination)
         BooksCatalogRoute -> AtharDestination.Books
         else -> AtharDestination.entries.firstOrNull { it != AtharDestination.Books && routeOf(it) == current }
     }
+    val currentDestination = destinationNow()
 
     // A recited poem opens in the poem reader, never as prose.
     fun openAudioSource(audio: com.atharchive.feature.audio.AudioUi) {
@@ -494,7 +499,7 @@ fun AtharApp(
 
     fun navigateTo(destination: AtharDestination) {
         // Tapping the section you're on scrolls it to the top (the pill wobbles) instead of rebuilding it.
-        if (destination == currentDestination) {
+        if (destination == destinationNow()) {
             scrollToTopRequest++
         } else if (destination == AtharDestination.Books) {
             navigateToBooksRoot()
@@ -513,8 +518,8 @@ fun AtharApp(
     val app = AppNav(
         contentViewModel, context, scope, backStack, tabState, actionAnchor, userAdhkar,
         notificationPermission, exportUserData, importUserData, receiveBooks,
-        themeMode, onThemeModeChange, style, onStyleChange, accent, onAccentChange, startPlace, onStartPlaceChange,
-        readerSettings, onReaderSettingsChange, bar, onBarChange, onResetSettings,
+        rememberUpdatedState(themeMode), onThemeModeChange, rememberUpdatedState(style), onStyleChange, rememberUpdatedState(accent), onAccentChange,
+        rememberUpdatedState(startPlace), onStartPlaceChange, rememberUpdatedState(readerSettings), onReaderSettingsChange, rememberUpdatedState(bar), onBarChange, onResetSettings,
         goBack = ::goBack, openSettings = ::openSettings, replaceRoute = ::replaceRoute, navigateTo = ::navigateTo,
         openHit = ::openHit, sectionSearch = ::sectionSearch, onDownloadTap = ::onDownloadTap, announce = ::announce,
         openExcerptNote = ::openExcerptNote, openAudioSource = ::openAudioSource,
