@@ -45,6 +45,16 @@ const LAST = ["علي بن أبي طالب", "الإمام الشافعي", "ا�
   "آمنة بنت وهب", "برة بنت عبد المطلب", "أميمة بنت عبد المطلب", "هارون الرشيد", "المأمون", "الأمين العباسي",
   "ابن تيمية", "ابن قيم الجوزية", "قيس بن الملوح", "ليلى العامرية"];
 const SKIP_ERAS = new Set(["متأخر"]); // modern poets: not now
+// Poets whose poems we already carry in our own edition (diwan-ilbiri--N covers all of Qafiyah's الإلبيري).
+const OURS = new Set(["أبو إسحاق الإلبيري"].map(norm));
+// Flagged poems read and released (the word is incidental: مدح/رثاء/زهد, «نهد» a horse, «زنا» in «وزنا»…).
+// ponytail: ids inline; move to a file if the review of docs/qafiyah-review.tsv releases many.
+const ALLOW = new Set([
+  "43220", "43357", "42885", // أبو العتاهية
+  "43585", "43621", "43654", "44014", // أبو الفتح البستي
+  "46195", "46208", "46170", "46220", "46230", "46231", "46274", "46286", "46363", "46335", "46642", "46348", "46173",
+  "46190", "46344", // أبو تمام
+]);
 const ERA: Record<string, string> = { "جاهلي": "الجاهلي", "مخضرم": "صدر الإسلام", "إسلامي": "صدر الإسلام", "أموي": "الأموي",
   "عباسي": "العباسي", "أندلسي": "الأندلسي", "أيوبي": "المتأخّر", "مملوكي": "المتأخّر", "عثماني": "المتأخّر" };
 // خمر، فحش، غزل بالمذكر، أوثان: a hit holds the poem for review, it does not condemn it.
@@ -95,11 +105,11 @@ const diwans = new Map<string, { poet: string; era: string; bio: string; poems: 
 for (const row of rows) {
   const list = lists.get(norm(row.poet));
   if (list) { count[list as "exclude"]++; continue; }
-  if (SKIP_ERAS.has(row.era)) { count.era++; continue; }
+  if (SKIP_ERAS.has(row.era) || OURS.has(norm(row.poet))) { count.era++; continue; }
   const vs = verses(row.content);
   if (!vs.length) continue;
   const hit = norm(row.content.replace(/\*/g, " ")).match(FLAG);
-  if (hit) { count.flagged++; review.push([row.poet, row.id, hit[1], row.title, vs[0]].join("\t")); continue; }
+  if (hit && !ALLOW.has(String(row.id))) { count.flagged++; review.push([row.poet, row.id, hit[1], row.title, vs[0]].join("\t")); continue; }
   if (ours.has(opening(vs[0]))) { count.ours++; continue; }
   const key = norm(row.poet); // qafiyah lists a few poets twice (أبو الحسن السلامي، صاعد البغدادي…): one ديوان each
   const diwan = diwans.get(key) ?? { poet: row.poet, era: row.era, bio: row.bio ?? "", poems: [], seen: new Set<string>() };
