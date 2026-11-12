@@ -4,7 +4,7 @@ status: published
 published_at: 2021-07-09
 source_type: question
 source_id: asyla-al-bwt--v11
-url: "https://r2.arthurarchive.com/audio/swteat--asyla-al-bwt--v11.opus"
+url: https://app-content.arthurarchive.com/app/v2/audio/swteat--asyla-al-bwt--v11/016be3c42f7fa66aea0753a9a4d857890b94533bf4b16b566b275a11c491d957.opus
 format: opus
 duration: "18:00"
 size_bytes: 2164692

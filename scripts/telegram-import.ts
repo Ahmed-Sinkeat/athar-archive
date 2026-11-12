@@ -15,10 +15,14 @@
 //   --status <s>      draft|review|published|archived (default: draft — review before publish)
 //   --limit <n>       write at most n articles (default: unlimited — walks full history)
 //   --since <id>      only import posts newer than this post id (incremental re-runs)
+//   --threads         channels without the template: one article per post, replies
+//                     and a photo's commentary joined in; photos kept (see groupThreads)
+//   --posts <json>    use posts already crawled (JSON array of RawPost) instead of crawling;
+//                     run soon after — Telegram's photo links expire
 //   --dry-run         print what would be written, write nothing
 //   --selftest        run built-in assertions and exit
 
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, existsSync, readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { slugify, uniqueArticleSlug, y } from "./lib/slugify.ts";
 import { normText, findByBody, loadArticleIndex, type ArticleIndexEntry } from "./lib/dedup.ts";
@@ -28,6 +32,7 @@ import { normText, findByBody, loadArticleIndex, type ArticleIndexEntry } from "
 // ─────────────────────────────────────────────
 function decode(s: string): string {
   return s
+    .replace(/&[rl]rm;/g, "") // direction marks Telegram puts inside "(٢/‏٢٥٧)"; invisible, and they break search
     .replace(/&quot;/g, '"').replace(/&nbsp;/g, " ").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
     .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(+d))
     .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
@@ -59,6 +64,7 @@ function toText(inner: string, channel: string): string {
     const cleanLabel = decode(stripTags(label)).trim();
     const cleanHref = decode(href);
     if (cleanHref === selfUrl && cleanLabel === selfUrl) return "";
+    if (cleanHref.startsWith("?q=")) return cleanLabel; // a #hashtag: Telegram's in-channel search, plain text here
     return `[${cleanLabel}](${cleanHref})`;
   });
   s = s.replace(/(?:<br\s*\/?>\s*){2,}/gi, "\n\n").replace(/<br\s*\/?>/gi, "\n");
@@ -77,7 +83,7 @@ const AFTER_OPENER_RE = new RegExp("^" + escapeRe(OPENER) + "\\s*\\n*\\s*(?:أم
 // ─────────────────────────────────────────────
 // Parse t.me/s/<channel> HTML → per-post records
 // ─────────────────────────────────────────────
-interface RawPost { id: number; dateIso: string; isForward: boolean; text: string }
+interface RawPost { id: number; dateIso: string; isForward: boolean; text: string; photos: string[]; replyTo?: number }
 
 function parseMessages(html: string, channel: string): RawPost[] {
   const blocks = html.split(/(?=<div class="tgme_widget_message_wrap)/);
@@ -89,11 +95,14 @@ function parseMessages(html: string, channel: string): RawPost[] {
     const dateMatch = b.match(/<time\s+datetime="([^"]+)"/);
     const isForward = /class="tgme_widget_message_forwarded_from\b/.test(b);
     const inner = extractBalancedDiv(b, /<div class="tgme_widget_message_text js-message_text"[^>]*>/);
+    const reply = b.match(new RegExp(`class="tgme_widget_message_reply[^"]*" href="https://t\\.me/${channel}/(\\d+)"`));
     posts.push({
       id: +idMatch[1],
       dateIso: dateMatch?.[1] ?? "",
       isForward,
       text: inner ? toText(inner, channel) : "",
+      photos: [...b.matchAll(/class="tgme_widget_message_photo_wrap[^"]*"[^>]*background-image:url\('([^']+)'\)/g)].map((m) => m[1]),
+      ...(reply ? { replyTo: +reply[1] } : {}),
     });
   }
   return posts;
@@ -163,6 +172,115 @@ function groupArticles(posts: RawPost[], warnings: string[]): ArticleDraft[] {
     closeCur();
   }
   return articles;
+}
+
+// ─────────────────────────────────────────────
+// --threads: channels with no template. A post opens an article; a post that
+// replies to an earlier post joins that post's article. A photo-only post goes
+// with the text post right after it (the commentary on it) — unless that post
+// opens with a 『title』, which marks the photo as a title card: dropped, and the
+// bracketed text becomes the title. Short leftovers (greetings, ads) are dropped.
+// ─────────────────────────────────────────────
+const TITLE_CARD_RE = /^『\s*([^』]+?)\s*』\s*/;
+// Openings that are never a title: greetings/formulas, and lead-ins ending in ":".
+const GREETING_RE = /^(?:(?:و)?عليكم السلام|السلام عليكم|بسم الله|الحمد لله|إن الحمد لله|إنا لله)/;
+const NOT_TITLE_RE = new RegExp(GREETING_RE.source + "|[:：]-?$|^[^ء-ي]*$"); // also a lead-in "…:" and a bare "=====" rule
+const TITLE_TRIM_RE = /^[\s\[«•▪▫️~*\-–—]+|[\s\]»:：\-–—]+$/gu;
+// A post opening with "و…" minutes after the previous one continues it (split for length).
+// So does one opening with a "=====" rule or a "~ إضافة" (an addition to the post above).
+const CONTINUES_RE = /^(?:و\S|={3,}|~\s*إضافة)/;
+const CONTINUE_WINDOW_MS = 10 * 60_000;
+// Short benefits (a quote, a du'a) are kept from 150; below that it is chatter. A short post
+// with a link is a promo for a video/voice note, and "X pinned «…»" is a service notice.
+const MIN_TEXT = 150, MIN_PHOTO_TEXT = 100, PROMO_UNDER = 300;
+const SERVICE_RE = / pinned «/;
+export interface ThreadDraft extends ArticleDraft { photos: Array<{ postId: number; url: string }>; titleLine?: boolean }
+
+function groupThreads(posts: RawPost[], dropped: string[]): ThreadDraft[] {
+  const own = posts.filter((p) => !p.isForward && (p.text || p.photos.length)).sort((a, b) => a.id - b.id);
+  const groupOf = new Map<number, RawPost[]>();
+  const groups: RawPost[][] = [];
+  const lone = (id?: number) => { const g = id === undefined ? undefined : groupOf.get(id); return g?.length === 1 && !g[0].text && g[0].photos.length ? g : undefined; };
+  for (let i = 0; i < own.length; i++) {
+    const p = own[i];
+    const prev = own[i - 1];
+    if (TITLE_CARD_RE.test(p.text)) {
+      // a 『title』 always opens its own article; the photo it follows or answers is its title card,
+      // and later replies to that card are this article's continuation
+      const g = [p];
+      groups.push(g);
+      groupOf.set(p.id, g);
+      for (const card of new Set([lone(p.replyTo), lone(prev?.id)])) {
+        if (!card) continue;
+        groups.splice(groups.indexOf(card), 1);
+        dropped.push(`${card[0].id}: title card`);
+        groupOf.set(card[0].id, g);
+      }
+      continue;
+    }
+    let g = p.replyTo !== undefined ? groupOf.get(p.replyTo) : undefined;
+    if (p.text) g ??= lone(prev?.id); // a photo after a photo is not its commentary
+    const lastText = own.slice(0, i).findLast((q) => q.text);
+    if (!g && CONTINUES_RE.test(p.text) && lastText && Date.parse(p.dateIso) - Date.parse(lastText.dateIso) <= CONTINUE_WINDOW_MS) g = groupOf.get(lastText.id);
+    if (!g) { g = []; groups.push(g); }
+    g.push(p);
+    groupOf.set(p.id, g);
+  }
+  const out: ThreadDraft[] = [];
+  for (const g of groups) {
+    const text = g.map((p) => p.text).filter(Boolean).join("\n\n");
+    const photos = g.flatMap((p) => p.photos.map((url) => ({ postId: p.id, url })));
+    const titled = TITLE_CARD_RE.test(text);
+    if (SERVICE_RE.test(text) || (!titled && (text.length < (photos.length ? MIN_PHOTO_TEXT : MIN_TEXT) || (text.length < PROMO_UNDER && /\]\(https?:/.test(text))))) {
+      dropped.push(`${g.map((p) => p.id).join(",")}: ${text.length} chars${photos.length ? " + photo" : ""}`);
+      continue;
+    }
+    let title: string, body: string, titleLine = false;
+    const card = text.match(TITLE_CARD_RE);
+    const firstLine = text.split("\n")[0].trim();
+    if (card) { title = card[1].replace(/\s+/g, " "); body = text.slice(card[0].length); }
+    else if (firstLine.length <= 80 && !NOT_TITLE_RE.test(firstLine) && /\n\s*\n/.test(text.slice(firstLine.length, firstLine.length + 3))) { title = firstLine; body = text.slice(firstLine.length).trim(); titleLine = true; }
+    else {
+      // first line that says something: no greeting, no bare rule, not a two-word "قلتُ:"
+      const lead = text.split("\n").map((x) => x.replace(TITLE_TRIM_RE, "").slice(0, 80).split(/[.؟!:،]/)[0].trim())
+        .find((x) => x.length >= 12 && !GREETING_RE.test(x) && /[ء-ي]/.test(x)) ?? firstLine;
+      title = lead;
+      body = text;
+    }
+    title = title.replace(TITLE_TRIM_RE, "");
+    out.push({ title: title || `منشور ${g[0].id}`, dateIso: g[0].dateIso, postIds: g.map((p) => p.id), body, photos, titleLine });
+  }
+  return out;
+}
+
+/** Each photo goes above the text of the post that carried it. */
+function threadBody(t: ThreadDraft, posts: RawPost[], image: (postId: number, k: number) => string): string {
+  const byId = new Map(posts.map((p) => [p.id, p]));
+  let first = true; // the title comes off the first post that has text
+  return t.postIds.map((id) => {
+    const p = byId.get(id)!;
+    let text = p.text;
+    if (text && first) {
+      first = false;
+      const card = text.match(TITLE_CARD_RE);
+      if (card) text = text.slice(card[0].length);
+      else if (t.titleLine) text = text.slice(text.indexOf("\n") + 1);
+    }
+    return [...p.photos.map((_, k) => image(id, k)), text.trim()].filter(Boolean).join("\n\n");
+  }).filter(Boolean).join("\n\n");
+}
+
+// ponytail: Telegram's CDN links expire, so photos are fetched at import time into
+// /media/ (gitignored, staging for scripts/upload-media.sh → R2), like /audio/.
+const MEDIA_DIR = "media/telegram";
+const MEDIA_URL = "https://app-content.arthurarchive.com/media/telegram";
+
+async function savePhoto(url: string, file: string): Promise<void> {
+  if (existsSync(file)) return;
+  const res = await fetch(url, { headers: { "User-Agent": UA } });
+  if (!res.ok) throw new Error(`photo ${url} → ${res.status}`);
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, Buffer.from(await res.arrayBuffer()));
 }
 
 // ─────────────────────────────────────────────
@@ -246,7 +364,7 @@ function classifyTopics(text: string): string[] {
 // ─────────────────────────────────────────────
 interface Opt {
   out: string; person: string; status: string;
-  limit?: number; since?: number; dryRun: boolean; channel: string; today: string;
+  limit?: number; since?: number; dryRun: boolean; threads: boolean; channel: string; today: string;
 }
 
 function buildArticle(a: ArticleDraft, opt: Opt): { path: string; text: string } {
@@ -327,6 +445,33 @@ function selftest() {
   a(classifyTopics("رد على الملحد في إنكاره").includes("al-firaq-war-rudud"), "topic classify: atheism refutation");
   a(classifyTopics("نص عادي لا شيء مميز فيه").length === 0, "topic classify: no false positive on plain text");
 
+  // ── --threads: title card dropped, photo joined to its commentary, reply joined, short post dropped ──
+  const photo = (id: number, replyTo?: number) => `
+    <div class="tgme_widget_message_wrap js-widget_message_wrap"><div class="tgme_widget_message js-widget_message" data-post="${CH}/${id}">
+    ${replyTo ? `<a class="tgme_widget_message_reply user-color-default" href="https://t.me/${CH}/${replyTo}"><div class="tgme_widget_message_text js-message_reply_text">q</div></a>` : ""}
+    <a class="tgme_widget_message_photo_wrap 1 2" href="https://t.me/${CH}/${id}" style="width:1px;background-image:url('https://cdn/p${id}.jpg')"></a>
+    <time datetime="2026-03-01T00:00:00+00:00"></time></div></div>`;
+  const long = "نص ".repeat(120);
+  const posts3 = parseMessages(
+    photo(20) + wrap(21, "2026-03-01T00:00:00+00:00", `『 عنوان البطاقة 』<br/><br/>${long}`) +
+    photo(22) + wrap(23, "2026-03-01T00:00:00+00:00", `تعليق على الصورة وهو كاف ليبقى مع الصورة في المقال نفسه بلا شك ولا ريب أبدا ههنا`) +
+    wrap(24, "2026-03-01T00:00:00+00:00", "سلام عليكم") +
+    wrap(25, "2026-03-01T00:00:00+00:00", `تكملة ${long}`).replace('data-post="TestChan/25">', `data-post="TestChan/25"><a class="tgme_widget_message_reply x" href="https://t.me/${CH}/22"></a>`),
+    CH);
+  a(posts3.find((p) => p.id === 25)!.replyTo === 22, "reply parsed");
+  a(posts3.find((p) => p.id === 22)!.photos[0] === "https://cdn/p22.jpg", "photo parsed");
+  const d3: string[] = [];
+  const t3 = groupThreads(posts3, d3);
+  a(t3.length === 2, "2 thread articles: " + JSON.stringify(t3.map((t) => t.postIds)));
+  a(t3[0].title === "عنوان البطاقة" && t3[0].photos.length === 0, "title card dropped, title taken: " + t3[0].title);
+  const t4 = groupThreads(parseMessages(photo(30) + photo(31, 30).replace(/<a class="tgme_widget_message_photo_wrap[^]*?<\/a>/, `<div class="tgme_widget_message_text js-message_text">『 ع 』<br/>${long}</div>`) + photo(32, 30).replace(/<a class="tgme_widget_message_photo_wrap[^]*?<\/a>/, `<div class="tgme_widget_message_text js-message_text">${long}</div>`), CH), []);
+  a(t4.length === 1 && t4[0].postIds.join(",") === "31,32" && !t4[0].photos.length, "reply to a title card continues the titled article: " + JSON.stringify(t4.map((t) => t.postIds)));
+  a(t3[1].postIds.join(",") === "22,23,25" && t3[1].photos.length === 1, "photo+comment+reply joined: " + t3[1].postIds);
+  a(d3.some((d) => d.startsWith("20:")) && d3.some((d) => d.startsWith("24:")), "card + short post reported: " + d3);
+  const b3 = threadBody(t3[1], posts3, (id, k) => `IMG${id}-${k}`);
+  a(b3.startsWith("IMG22-0\n\n") && b3.includes("تكملة"), "photo above its text: " + b3.slice(0, 40));
+  a(!threadBody(t3[0], posts3, () => "").includes("『"), "card title not repeated in body");
+
   console.log("✓ selftest passed (all assertions)");
 }
 
@@ -338,7 +483,7 @@ async function main() {
   if (argv.includes("--selftest")) return selftest();
 
   const flag = (name: string) => { const i = argv.indexOf(name); return i >= 0 ? argv[i + 1] : undefined; };
-  const valued = new Set(["--out", "--person", "--status", "--limit", "--since"]);
+  const valued = new Set(["--out", "--person", "--status", "--limit", "--since", "--posts"]);
   const positional = argv.filter((v, i) => !v.startsWith("--") && !valued.has(argv[i - 1]));
   const channel = positional[0];
 
@@ -362,17 +507,21 @@ async function main() {
     limit: flag("--limit") ? +flag("--limit")! : undefined,
     since: flag("--since") ? +flag("--since")! : undefined,
     dryRun: argv.includes("--dry-run"),
+    threads: argv.includes("--threads"),
     channel,
     today: new Date().toISOString().slice(0, 10),
   };
 
-  const posts = await crawl(opt);
+  const postsFile = flag("--posts");
+  const posts: RawPost[] = postsFile ? JSON.parse(readFileSync(postsFile, "utf8")) : await crawl(opt);
   const warnings: string[] = [];
-  const grouped = groupArticles(posts, warnings);
+  const dropped: string[] = [];
+  const grouped = opt.threads ? groupThreads(posts, dropped) : groupArticles(posts, warnings);
   const articles = opt.limit ? grouped.slice(0, opt.limit) : grouped;
 
   console.log(`fetched ${posts.length} posts (${posts.filter((p) => p.isForward).length} forwards skipped) → ${grouped.length} articles` + (articles.length < grouped.length ? ` (writing first ${articles.length} per --limit)` : ""));
   for (const w of warnings) console.warn("⚠ " + w);
+  if (dropped.length) console.log(`dropped ${dropped.length} short/title-card group(s): ` + dropped.join(" | "));
 
   // Same-source repost dedup: the shaykh sometimes re-posts old text as a
   // fresh (non-forward) message, which carries no structural "forwarded"
@@ -382,8 +531,21 @@ async function main() {
   let skipped = 0;
 
   for (const draft of articles) {
+    if (opt.threads) {
+      const t = draft as ThreadDraft;
+      t.body = threadBody(t, posts, (id, k) => `![](${MEDIA_URL}/${opt.channel}/${id}-${k}.jpg)`);
+    }
     const bodyNorm = normText(draft.body);
-    const dup = findByBody(bodyNorm, index);
+    // --threads channels repost each other (a student copying his shaykh's post, the shaykh's two
+    // channels): the same opening 200 letters, images aside, is the same text — the first kept wins.
+    // Unless this one runs longer: a short quote and the full post that opens with it are both kept.
+    const plain = normText(draft.body.replace(/!\[\]\([^)]*\)/g, ""));
+    const start = plain.slice(0, 200);
+    const dup = findByBody(bodyNorm, index)
+      ?? (opt.threads && start.length >= 120 ? index.find((e) => {
+        const kept = e.bodyNorm.replace(/!https?\S+/g, "").trimStart();
+        return kept.startsWith(start) && plain.length <= kept.length * 1.05 + 20;
+      }) : undefined);
     if (dup) {
       skipped++;
       console.log(`⏭  skipped (duplicate of ${dup.file}): ${draft.title}  (posts ${draft.postIds.join(",")})`);
@@ -394,6 +556,10 @@ async function main() {
     if (opt.dryRun) {
       console.log("   [dry-run] " + file.text.split("\n").slice(0, 8).join("\n   "));
       continue;
+    }
+    for (const ph of (draft as ThreadDraft).photos ?? []) {
+      const k = (draft as ThreadDraft).photos.filter((x) => x.postId === ph.postId).indexOf(ph);
+      await savePhoto(ph.url, join(MEDIA_DIR, opt.channel, `${ph.postId}-${k}.jpg`));
     }
     mkdirSync(dirname(file.path), { recursive: true });
     writeFileSync(file.path, file.text);
@@ -406,4 +572,5 @@ async function main() {
   else console.log(`\nNext: pnpm validate:content, then review drafts before flipping status: published.\nResume later with --since ${maxId}`);
 }
 
-main();
+if (process.argv[1]?.endsWith("telegram-import.ts")) main();
+export { parseMessages, groupThreads, threadBody, crawl };

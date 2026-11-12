@@ -60,14 +60,14 @@ const csp = [
   // in production. Styles-only, script-src stays hash-locked.
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
-  `img-src 'self' data: ${GA_IMG}`,
-  "media-src 'self' https://r2.arthurarchive.com",
-  // r2 MUST be in connect-src too: this same CSP is served with /sw.js, and a
+  `img-src 'self' data: https://app-content.arthurarchive.com ${GA_IMG}`, // Telegram article photos
+  "media-src 'self' https://app-content.arthurarchive.com",
+  // the audio host MUST be in connect-src too: this same CSP is served with /sw.js, and a
   // worker's fetch() is governed by its script's CSP — with bare 'self' the
   // service worker could not fetch audio at all, which killed playback on
   // every SW-controlled page (only the very first page a visitor ever opened
   // played, via media-src). downloads.ts audio caching needs it as well.
-  `connect-src 'self' https://r2.arthurarchive.com ${GA_CONNECT}`,
+  `connect-src 'self' https://app-content.arthurarchive.com ${GA_CONNECT}`,
   "base-uri 'self'",
   "form-action 'self'",
   "frame-ancestors 'none'",
