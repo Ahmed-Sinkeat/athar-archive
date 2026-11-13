@@ -109,12 +109,6 @@ internal val ContentMigrations = arrayOf(
             // 12.4: a poet's era, for the poetry filter.
             connection.prepare("ALTER TABLE entity ADD COLUMN era TEXT").use { it.step() }
         }
-    }, object : androidx.room3.migration.Migration(13, 14) {
-        // A ديوان's poems, listed one row each in الشعر. The next sync re-applies the catalog to fill them in.
-        override suspend fun migrate(connection: androidx.sqlite.SQLiteConnection) {
-            connection.prepare("ALTER TABLE entity ADD COLUMN poemsJson TEXT").use { it.step() }
-            connection.prepare("UPDATE contentGeneration SET generationId = ''").use { it.step() }
-        }
     },
 )
 

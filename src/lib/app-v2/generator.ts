@@ -240,10 +240,11 @@ function catalogBase(source: SourceEntry, version: number, parsed: ReturnType<ty
       .slice(0, 2)
       .map((block) => block.x ?? `${block.s} … ${block.j}`)
     : undefined;
-  // A ديوان is one package; its poems (each a heading) are listed so the app shows every poem as a row.
-  const poems = source.target.coll === "poem" && kind === "ديوان"
-    ? parsed.blocks.flatMap((block, o) => block.t.startsWith("h") && block.x ? [{ t: block.x, o }] : [])
-    : undefined;
+  // A poem titled by its own opening (the 52k Qafiyah poems) carries no openingVerses: the row would
+  // repeat its title, and they were ~40% of each card.
+  const letters = (text: string) => text.replace(/[\u064B-\u0652\u0670\u0640]/g, "").replace(/[^\u0621-\u064A]/g, "");
+  const firstHalf = openingVerses?.[0]?.split(/\s(?:…|\.\.\.)\s/)[0] ?? "";
+  const titledByOpening = !description && firstHalf !== "" && letters(firstHalf).startsWith(letters(String(source.data.title)));
   return {
     id: source.target.id,
     ...(typeof source.data.edition_of === "string" ? { editionOf: source.data.edition_of } : {}),
@@ -259,8 +260,7 @@ function catalogBase(source: SourceEntry, version: number, parsed: ReturnType<ty
     ...(publishedAt ? { publishedAt } : {}),
     ...(description ? { description } : {}),
     ...(excerpt ? { excerpt } : {}),
-    ...(openingVerses?.length ? { openingVerses } : {}),
-    ...(poems?.length ? { poems } : {}),
+    ...(openingVerses?.length && !titledByOpening ? { openingVerses } : {}),
     ...(parsed.card?.length ? { card: parsed.card } : {}),
     ...(source.target.coll === "poem" ? { verseCount: parsed.blocks.filter(block => block.t === "verse").length } : {}),
   };
@@ -426,7 +426,9 @@ async function generate(options: GenerateAppContentOptions, stagingRoot: string)
       if (kind === "catalog") {
         for (const entry of (document as CatalogDocument).entries) {
           if (unique.has(entry.id)) continue;
-          if (options.keepOthers) catalogEntries.push(entry);
+          // --only keeps the rest, but not an entry whose source file is gone: phones must drop it too.
+          const sourceGone = options.keepOthers && await sourcePath(options.repositoryRoot, entry).then(() => false, () => true);
+          if (options.keepOthers && !sourceGone) catalogEntries.push(entry);
           else tombstones.deleted.push({ id: entry.id, coll: entry.coll, at: TOMBSTONE_EPOCH });
         }
         catalogEntries.sort((a, b) => compareText(a.coll, b.coll) || compareText(a.id, b.id));

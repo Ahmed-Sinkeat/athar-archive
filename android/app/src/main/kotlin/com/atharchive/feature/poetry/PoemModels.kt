@@ -40,9 +40,6 @@ data class PoemUi(
     val hasAudio: Boolean = false,
     /** قصيدة · منظومة (the catalog's work type). */
     val kind: String = "قصيدة",
-    /** A poem inside a ديوان: the diwan's id (what downloads, saves and opens) and its heading's ordinal. */
-    val entityId: String = id,
-    val ordinal: Int? = null,
 )
 
 data class PoetryUiState(

@@ -417,7 +417,7 @@ private fun ContentEntity.toPoemReaderUi(blocks: List<ContentBlockEntity>): Poem
     val verses = mutableListOf<VerseUi>()
     blocks.forEach { block ->
         if (block.type.startsWith('h')) { heading = listOfNotNull(heading, block.text).joinToString(" — "); return@forEach }
-        if (!prose && block.type == "p" && heading != null) { headingNote = listOfNotNull(headingNote, block.text).joinToString("\n"); return@forEach }
+        if (!prose && block.type == "p" && (heading != null || verses.isEmpty())) { headingNote = listOfNotNull(headingNote, block.text).joinToString("\n"); return@forEach }
         if (block.type != "verse" && !(prose && block.type == "p")) return@forEach
         val attrs = block.safeAttributes()
         // A verse carrying a footnote mark or emphasis comes as one line (x), separator and all.

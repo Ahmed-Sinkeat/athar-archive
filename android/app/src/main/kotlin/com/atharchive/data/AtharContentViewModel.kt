@@ -368,8 +368,8 @@ class AtharContentViewModel @Inject constructor(
     ) { decoded, pinnedIds, retainedIds, shelves, (ranks, states) ->
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         PoetryUiState(
-            countLabel = arabicCount(decoded.sumOf { (_, entry) -> entry.poems.size.coerceAtLeast(1) }, "القصائد", "قصيدة واحدة", "قصيدتين", "قصائد", "قصيدة"),
-            poems = decoded.flatMap { (entity, entry) ->
+            countLabel = arabicCount(decoded.size, "القصائد", "قصيدة واحدة", "قصيدتين", "قصائد", "قصيدة"),
+            poems = decoded.map { (entity, entry) ->
                 PoemUi(
                     id = entity.id,
                     title = entity.title,
@@ -389,14 +389,7 @@ class AtharContentViewModel @Inject constructor(
                     era = entity.era.orEmpty(),
                     hasAudio = entity.audioJson != "[]",
                     kind = entity.kind ?: "قصيدة",
-                ).let { diwan ->
-                    // A ديوان's poems follow it, one row each, opening the diwan at that poem.
-                    // ponytail: ~53k rows rebuilt per catalog/pin change; cache per diwan if the tab stutters.
-                    listOf(diwan) + entry.poems.map { poem ->
-                        diwan.copy(id = "${entity.id}#${poem.o}", title = poem.t, openingVerses = emptyList(), verseCountLabel = null,
-                            kind = "قصيدة", entityId = entity.id, ordinal = poem.o)
-                    }
-                }
+                )
             },
         )
     }.withTransfers("قصيدة", PoetryUiState::poems, PoemUi::id, { state, rows -> state.copy(poems = rows) }) { row, transfer ->

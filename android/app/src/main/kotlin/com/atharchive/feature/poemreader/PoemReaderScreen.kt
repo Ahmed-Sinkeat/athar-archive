@@ -320,7 +320,7 @@ fun PoemReaderScreen(
                             }
                         }
                         itemsIndexed(state.verses, key = { _, v -> v.id }) { index, verse ->
-                            verse.heading?.let { PoemHeading(it, verse.headingNote, colors, settings) }
+                            if (verse.heading != null || verse.headingNote != null) PoemHeading(verse.heading, verse.headingNote, colors, settings)
                             val isSaved = verse.ordinal in saved
                             VerseRow(
                                 verse = verse,
@@ -894,8 +894,8 @@ private fun WordCallout(
 
 /** A باب heading, in the flow where the poem prints it. */
 @Composable
-private fun PoemHeading(text: String, note: String?, colors: ReaderColors, settings: ReaderSettings) {
-    Text(
+private fun PoemHeading(text: String?, note: String?, colors: ReaderColors, settings: ReaderSettings) {
+    if (text != null) Text(
         text = text,
         modifier = Modifier.fillMaxWidth().padding(horizontal = settings.margin.dp).padding(top = 18.dp, bottom = if (note == null) 6.dp else 0.dp),
         textAlign = TextAlign.Center,
@@ -907,7 +907,7 @@ private fun PoemHeading(text: String, note: String?, colors: ReaderColors, setti
     note?.let {
         Text(
             text = it,
-            modifier = Modifier.fillMaxWidth().padding(horizontal = settings.margin.dp).padding(bottom = 6.dp),
+            modifier = Modifier.fillMaxWidth().padding(horizontal = settings.margin.dp).padding(top = if (text == null) 12.dp else 0.dp, bottom = 6.dp),
             textAlign = TextAlign.Center,
             color = colors.text.copy(alpha = 0.7f),
             fontSize = (settings.fontSize - 3).sp,

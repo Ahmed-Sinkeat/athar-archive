@@ -213,6 +213,27 @@ describe("app/v2 content generator", () => {
     await expect(generateAppContent({ ...options, loadAudio: async () => audio })).rejects.toThrow("cues must be sequential");
   });
 
+  it("--only keeps other entries but tombstones those whose source is gone", async () => {
+    const root = fixtureRoot();
+    writeFileSync(path.join(root, "src/content/book/kept.md"), "---\nstatus: published\ntitle: Kept\n---\nText");
+    writeFileSync(path.join(root, "src/content/book/gone.md"), "---\nstatus: published\ntitle: Gone\n---\nText");
+    const options = { repositoryRoot: root, outputRoot: path.join(root, "out"), sidecarRoot: path.join(root, "ids") };
+    await generateAppContent({ ...options, targets: ["fixture", "kept", "gone"].map((id) => ({ coll: "book" as const, id })) });
+    rmSync(path.join(root, "src/content/book/gone.md"));
+    const only = await generateAppContent({ ...options, targets: [{ coll: "book", id: "fixture" }], keepOthers: true });
+    expect(only.catalog.entries.map((entry) => entry.id).sort()).toEqual(["fixture", "kept"]);
+    const deleted = JSON.parse(readFileSync(path.join(only.outputDirectory, only.rootPayload.tombstones.path), "utf8")).deleted;
+    expect(deleted.map((entry: { id: string }) => entry.id)).toEqual(["gone"]);
+  });
+
+  it("drops opening verses from a poem titled by its own opening", async () => {
+    const root = fixtureRoot();
+    mkdirSync(path.join(root, "src/content/poem"), { recursive: true });
+    writeFileSync(path.join(root, "src/content/poem/titled.md"), "---\ntitle: \"صَدر أول\"\nstatus: published\n---\n\nصدر أول … عجز أول\n");
+    const result = await generateAppContent({ repositoryRoot: root, outputRoot: path.join(root, "out"), sidecarRoot: path.join(root, "ids"), targets: [{ coll: "poem", id: "titled" }] });
+    expect(result.catalog.entries[0].openingVerses).toBeUndefined();
+  });
+
   it("derives list excerpts and opening verses at build time", async () => {
     const root = fixtureRoot();
     mkdirSync(path.join(root, "src/content/article"), { recursive: true });

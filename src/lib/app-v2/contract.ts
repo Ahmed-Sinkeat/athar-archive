@@ -176,8 +176,6 @@ export interface CatalogEntry {
   excerpt?: string;
   /** Exact authored verse text, normally the first two lines of a poem. */
   openingVerses?: string[];
-  /** A ديوان's poems: heading text and the block ordinal it opens at. */
-  poems?: { t: string; o: number }[];
   verseCount?: number;
   /** Shown in the reader's «المصدر» dialog instead of opening the book. */
   card?: CardField[];

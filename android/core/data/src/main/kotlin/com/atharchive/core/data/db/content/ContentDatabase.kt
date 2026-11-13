@@ -79,8 +79,6 @@ data class ContentEntity(
     val cardJson: String? = null,
     @ColumnInfo(defaultValue = "0") val review: Boolean = false,
     val era: String? = null,
-    /** Serialized [com.atharchive.core.data.content.DiwanPoem] list; null for anything but a ديوان. */
-    val poemsJson: String? = null,
     /** False for a protected local work removed by a signed tombstone. */
     val catalogPresent: Boolean = true,
 )
@@ -750,7 +748,7 @@ abstract class ContentImportDao {
         ChapterEntity::class,
         FootnoteEntity::class,
     ],
-    version = 14,
+    version = 13,
     exportSchema = true,
 )
 abstract class AtharContentDatabase : RoomDatabase() {
