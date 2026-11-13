@@ -1,4 +1,4 @@
-// Qafiyah (github.com/WTFoss/qafiyah, MIT) → one poem per file, `diwan-<poet>--<n>` as ديوان الإلبيري's.
+// Qafiyah (github.com/WTFoss/qafiyah, MIT) → one ديوان book per poet.
 //   tsx scripts/import-qafiyah.ts --db q.db [--write] [--review docs/qafiyah-review.tsv]
 // q.db: the project's Postgres dump loaded into SQLite (tables poems, poets, eras, meters, rhymes).
 // Dry-run by default: prints what would be written. Poets on the lists below are skipped whole;
@@ -137,17 +137,17 @@ for (const diwan of diwans.values()) {
     if (WRITE) fs.writeFileSync(path.join(personDir, `${slug}.md`),
       `---\ntitle: ${y(diwan.poet)}\nstatus: published\npublished_at: ${today}\nera: ${y(ERA[diwan.era])}\n---\n${diwan.bio.trim()}\n`);
   }
-  // No description: 52k catalog cards stay light (the title is the poem's opening).
-  diwan.poems.forEach((p, i) => {
-    const meter = p.meter ? `من ${/^بحر|^مشطور|^مجزوء|^مخلع|^أحذ|^موشح/.test(p.meter) ? p.meter : `البحر ${p.meter}`}\n\n` : "";
-    const id = `diwan-${person}--${i + 1}`;
-    const file = `---\ntitle: ${y(p.title.trim())}\nstatus: published\npublished_at: ${today}\nperson: ${person}\n` +
-      `work_type: "قصيدة"\ntopics: ["al-adab"]\n---\n\n${meter}${verses(p.content).join("\n")}\n`;
-    bytes += Buffer.byteLength(file);
-    const target = path.join(root, "src/content/poem", `${id}.md`);
-    if (fs.existsSync(target)) throw new Error(`${id} already exists — refusing to overwrite`);
-    if (WRITE) fs.writeFileSync(target, file);
-  });
+  const body = diwan.poems.map((p) =>
+    `## ${p.title.trim()}\n\n${p.meter ? `من ${/^بحر|^مشطور|^مجزوء|^مخلع|^أحذ|^موشح/.test(p.meter) ? p.meter : `البحر ${p.meter}`}\n\n` : ""}${verses(p.content).join("\n")}\n`).join("\n");
+  const id = `diwan-${person}`;
+  const file = `---\ntitle: ${y(`ديوان ${diwan.poet}`)}\nstatus: published\npublished_at: ${today}\nperson: ${person}\n` +
+    `work_type: "ديوان"\ntopics: ["al-adab"]\ndescription: ${y(`ديوان ${diwan.poet}: ${diwan.poems.length} قصيدة ومقطوعة، من مشروع قافية`)}\n---\n\n${body}`;
+  bytes += Buffer.byteLength(file);
+  const dir = Buffer.byteLength(file) >= 100 * 1024 ? "book-lg" : "book";
+  const target = path.join(root, "src/content", dir, `${id}.md`);
+  if (fs.existsSync(path.join(root, "src/content/book", `${id}.md`)) || fs.existsSync(path.join(root, "src/content/book-lg", `${id}.md`)))
+    throw new Error(`${id} already exists — refusing to overwrite`);
+  if (WRITE) fs.writeFileSync(target, file);
 }
 if (REVIEW) fs.writeFileSync(REVIEW, review.join("\n") + "\n");
 
