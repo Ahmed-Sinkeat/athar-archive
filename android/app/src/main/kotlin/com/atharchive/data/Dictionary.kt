@@ -66,7 +66,7 @@ class Dictionary @Inject constructor(
         download = scope.launch {
             val part = File(file.path + ".part")
             try {
-                // ponytail: unsigned (plain HTTPS), checked only by opening it; sign it like the catalog if it ever carries more than text
+                // unsigned (plain HTTPS), checked only by opening it; sign it like the catalog if it ever carries more than text
                 val url = BuildConfig.ATHAR_CONTENT_BASE_URL.trim().toHttpUrl().resolve("dict/dict.zip")!!
                 httpClient.newCall(Request.Builder().url(url).build()).execute().use { response ->
                     check(response.isSuccessful) { "HTTP ${response.code}" }
@@ -121,7 +121,7 @@ class Dictionary @Inject constructor(
         if (!_installed.value) return@withContext null
         val index = index() ?: return@withContext null
         val roots = DictionaryLookup.roots(word, index).takeIf { it.isNotEmpty() } ?: return@withContext null
-        // ponytail: a scan of every listed form (~100k) per search; an inverse map if it shows in traces
+        // a scan of every listed form (~100k) per search; an inverse map if it shows in traces
         val forms = index.forms.entries.filter { (_, rs) -> rs.any { it in roots } }.map { it.key }
         roots to (forms + roots).distinct()
     }
@@ -130,7 +130,7 @@ class Dictionary @Inject constructor(
         index.get() ?: read("index.json")?.let { DictionaryLookup.parseIndex(JSONObject(it)) }?.also { index = SoftReference(it) }
     }
 
-    // ponytail: the zip stays open for the process (one descriptor); close it if that ever matters
+    // the zip stays open for the process (one descriptor); close it if that ever matters
     private suspend fun read(name: String): String? = zipLock.withLock {
         val z = zip ?: ZipFile(file).also { zip = it }
         z.getEntry(name)?.let { e -> z.getInputStream(e).bufferedReader().use { it.readText() } }

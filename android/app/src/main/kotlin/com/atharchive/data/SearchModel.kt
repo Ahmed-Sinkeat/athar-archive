@@ -50,7 +50,7 @@ private const val SearchDebounceMs = 60L
 private const val OnlineSearchPauseMs = 150L
 private const val FacetsWaitMs = 1_500L
 private const val SearchPageSize = 40
-// ponytail: a list search keeps the best 3000; the largest list (المقالات) is ~2000, raise it with the catalog.
+// a list search keeps the best 3000; the largest list (المقالات) is ~2000, raise it with the catalog.
 private const val CatalogMatchLimit = 3000
 private const val SearchLatencyTraceName = "AtharSearchKeystrokeToResults"
 
@@ -184,7 +184,7 @@ internal class SearchModel(
                     authors = filters.authors,
                     entityIds = filters.books.takeIf { it.isNotEmpty() }?.flatMapTo(hashSetOf()) { catalog.idsByTitle[it].orEmpty() },
                     topics = topicsIn(filters.sections),
-                    // ponytail: several centuries search their whole span (٣ and ٨ → ٣ to ٨); per-century ranges if anyone asks
+                    // several centuries search their whole span (٣ and ٨ → ٣ to ٨); per-century ranges if anyone asks
                     diedFrom = filters.centuries.minOfOrNull(::centuryNumber)?.let { (it - 1) * 100 + 1 },
                     diedTo = filters.centuries.maxOfOrNull(::centuryNumber)?.let { it * 100 },
                 ),
@@ -215,7 +215,7 @@ internal class SearchModel(
         // phone's own passages first, then swapping them for the library's, moved the list under the reader.
         // «المزيد» keeps the current list up until the longer one arrives.
         if (limit == SearchPageSize) emit(localState(SearchScope.Online).copy(searching = true, hasMore = false, hits = emptyList()))
-        // ponytail: a fixed pause before the network call; cancelled by the next keystroke
+        // a fixed pause before the network call; cancelled by the next keystroke
         delay(OnlineSearchPauseMs)
         val query = OnlineSearch.Query(
             q = rootForms?.second?.joinToString(" ") ?: clean,
@@ -229,7 +229,7 @@ internal class SearchModel(
             topics = topicsIn(filters.sections),
         )
         val exact = if (filters.mode == SearchMode.Exact) clean.replace("\"", "") else null
-        // ponytail: the site has no exact mode; its phrase hits are kept when their snippet has the letters as typed (a hit whose snippet cut the phrase is dropped).
+        // the site has no exact mode; its phrase hits are kept when their snippet has the letters as typed (a hit whose snippet cut the phrase is dropped).
         fun exactOnly(hits: List<OnlineSearch.Hit>) = if (exact == null) hits else hits.filter { exactMatch(unmark(it.snippet).first, exact) != null }
         coroutineScope {
             // The counts are asked for beside the passages, not after them: they used to pop in a
@@ -403,7 +403,7 @@ internal class SearchModel(
             val from = chapters.getOrNull(index)?.firstOrdinal ?: 0
             val to = chapters.getOrNull(index + 1)?.firstOrdinal?.minus(1)
                 ?: ((catalogDao.entity(entityId)?.pkgBlocks ?: Int.MAX_VALUE) - 1)
-            // ponytail: at most 40 frames of one chapter walked; a longer chapter falls back to its best match so far.
+            // at most 40 frames of one chapter walked; a longer chapter falls back to its best match so far.
             val best = bestMatch(entityId, from..to, query, snippetWords(snippet), frameLimit = 40)
             best?.let { Triple(it.ordinal, it.sourceMatchStart, it.sourceMatchEnd) } ?: Triple(from, 0, 0)
         }.getOrElse { if (it is kotlinx.coroutines.CancellationException) throw it else Triple(null, 0, 0) }
@@ -457,7 +457,7 @@ internal class SearchModel(
         if (query.trim().length < 2) return InBookSearch(emptyList())
         val total = catalogDao.entity(entityId)?.pkgBlocks ?: 0
         val saved = importDao.frames(entityId).sumOf { it.blockCount }
-        // ponytail: first 200 source-order hits; paginate if more results are needed.
+        // first 200 source-order hits; paginate if more results are needed.
         val hits = contentSearch.search(
             ContentSearchRequest(
                 // As on the search screen: a phrase is the query quoted, «بعض الكلمات» joins with OR.

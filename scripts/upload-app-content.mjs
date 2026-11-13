@@ -197,7 +197,7 @@ async function main() {
   const remote = new Map();
   await listPrefix(s3, PREFIX, (object) => remote.set(object.key, object.etag));
   const changed = generation.immutable.filter((artifact) => remote.get(artifact.key) !== artifact.md5);
-  // ponytail: pool of 8 workers by default; R2_CONCURRENCY=64 for tens of thousands of ~1 KB files,
+  // pool of 8 workers by default; R2_CONCURRENCY=64 for tens of thousands of ~1 KB files,
   // which are latency-bound (~8 files/s at 8 workers).
   const queue = changed.slice();
   await Promise.all(Array.from({ length: Number(process.env.R2_CONCURRENCY ?? 8) }, async () => { for (let artifact; (artifact = queue.shift()); ) await upload(s3, artifact, IMMUTABLE_CACHE); }));
@@ -214,7 +214,7 @@ async function main() {
 }
 
 // «معنى»: one zip the app downloads on demand (gen-app-dict.ts). Outside the signed catalog; a stable
-// key, so a day's cache. ponytail: unsigned (plain HTTPS); sign it like the catalog if it ever carries more than text.
+// key, so a day's cache. unsigned (plain HTTPS); sign it like the catalog if it ever carries more than text.
 async function uploadDict(s3, remote) {
   const file = path.resolve(process.env.ATHAR_DICT_ZIP ?? "dist/app-dict/dict.zip");
   if (!fs.existsSync(file)) return;

@@ -77,7 +77,7 @@ function htmlBlocks(value: string, sourcePath: string): MarkdownNode[] {
     const children = (node.children ?? []).flatMap(convert);
     const tag = node.tagName;
     if (!tag || tag === "div" || tag === "span") return children;
-    // ponytail: the app has no image or table block; images are dropped (the site keeps them) and each row reads as one line.
+    // the app has no image or table block; images are dropped (the site keeps them) and each row reads as one line.
     if (tag === "img") return [];
     if (tag === "table" || tag === "thead" || tag === "tbody") return children.filter((child) => child.type === "paragraph");
     if (tag === "tr") return [{ type: "paragraph", children: children.flatMap((cell, i) => (i ? [{ type: "text", value: " · " }, cell] : [cell])) }];
@@ -165,7 +165,7 @@ function renderInline(
   const references: { id: string; offset: number }[] = [];
   const note = (id: string, offset = output.text.length) => { footnotes.add(id); references.push({ id, offset }); };
   const openSup: { start: number; key?: string; node: MarkdownNode }[] = [];
-  // ponytail: data-fn refs come only from epub-import.ts, whose notes are often cut and renumbered
+  // data-fn refs come only from epub-import.ts, whose notes are often cut and renumbered
   // (EPUB audit: 1 tap in 4 opened the wrong note). They stay plain superscripts over the printed
   // footer until those books are re-imported through Athar-Engine, whose [^fn] refs stay tappable.
   const supKey = (_fn: string | undefined): string | undefined => undefined;
@@ -318,7 +318,7 @@ const HALF_SEPARATOR_RE = /\s+(?:\.\.\.|…)\s+/;
 
 /**
  * Where a prose line splits into two hemistichs, or undefined when it is not verse.
- * ponytail: halves within 0.6 of each other's length; across the corpus that keeps ~95k
+ * halves within 0.6 of each other's length; across the corpus that keeps ~95k
  * verses and leaves ~1.2k prose ellipses and quoted half-lines as prose. Tighten if prose slips in.
  */
 export function verseHalves(line: string): { start: number; end: number } | undefined {
@@ -755,7 +755,7 @@ export function parseReadableDocument(input: ParseReadableInput): ParsedDocument
     }
     // epub-import.ts cut notes at every "(N)" inside them, leaving tails that open with
     // punctuation; fold each back so the refs after it line up again.
-    // ponytail: the cut-out number itself is lost; re-importing the book restores it.
+    // the cut-out number itself is lost; re-importing the book restores it.
     // Some imports retain a closing parenthesis as every note's label, including the first.
     const cutTail = /^\s*\)\s*[\p{L}\p{N}]/u.test(pageNotes[0] ?? "")
       ? /^\s*[،؛,:]|^[\s\p{P}]*$/u

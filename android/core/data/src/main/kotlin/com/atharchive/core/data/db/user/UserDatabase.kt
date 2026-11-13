@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.serialization.Serializable
 
 object LibraryStatus {
-    // ponytail: stored value stays "readLater" so old backups round-trip; any row now means favourite.
+    // stored value stays "readLater" so old backups round-trip; any row now means favourite.
     const val READ_LATER = "readLater"
     const val READING = "reading"
     const val FINISHED = "finished"

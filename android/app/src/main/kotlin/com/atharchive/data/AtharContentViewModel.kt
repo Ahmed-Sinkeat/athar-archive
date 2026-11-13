@@ -391,7 +391,7 @@ class AtharContentViewModel @Inject constructor(
                     kind = entity.kind ?: "قصيدة",
                 ).let { diwan ->
                     // A ديوان is never a row of its own: each of its poems is, and opens alone (PoemReader).
-                    // ponytail: ~53k rows rebuilt per catalog/pin change; cache per diwan if the tab stutters.
+                    // ~53k rows rebuilt per catalog/pin change; cache per diwan if the tab stutters.
                     if (entry.poems.isEmpty()) listOf(diwan) else entry.poems.map { poem ->
                         diwan.copy(id = "${entity.id}#${poem.o}", title = poem.t, openingVerses = emptyList(), verseCountLabel = null,
                             kind = "قصيدة", entityId = entity.id, ordinal = poem.o)

@@ -1,7 +1,7 @@
 // Writes the site's أذكار الصباح والمساء (src/lib/adhkar-data.ts) into the Android app as
 // Kotlin data, so both read the same list. Re-run after editing adhkar-data.ts:
 //   node_modules/.bin/tsx scripts/gen-android-adhkar.ts
-// ponytail: generated source, not pipeline content — move into app/v2 if more أبواب arrive.
+// generated source, not pipeline content — move into app/v2 if more أبواب arrive.
 import { writeFileSync } from "node:fs";
 import { MORNING, EVENING, type AdhkarItem } from "../src/lib/adhkar-data.js";
 

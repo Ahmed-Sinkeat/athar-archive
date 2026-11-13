@@ -131,7 +131,7 @@ class ReaderWindow(
     private fun chunkOf(index: Int) = index / Chunk
 
     companion object {
-        // ponytail: fixed 50-block chunks, ±3 kept (~350 blocks); size them by frame bounds if the catalog ever carries them.
+        // fixed 50-block chunks, ±3 kept (~350 blocks); size them by frame bounds if the catalog ever carries them.
         const val Chunk = 50
         const val Keep = 3
     }

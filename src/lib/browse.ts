@@ -11,7 +11,7 @@ const isPub = (e: { data: { status?: unknown; edition_of?: unknown } }) => e.dat
 const ar = (a: string, b: string) => a.localeCompare(b, "ar");
 
 // Default item order: by سنة التصنيف ascending (undated entries last), then title.
-// ponytail: one global rule for now; per-subject sort + most-viewed are deferred.
+// one global rule for now; per-subject sort + most-viewed are deferred.
 const year = (e: ContentEntry) => Number((e.data as { authored_year?: number }).authored_year ?? Number.POSITIVE_INFINITY);
 const byYearThenTitle = (a: ContentEntry, b: ContentEntry) =>
   year(a) - year(b) || ar(a.data.title as string, b.data.title as string);

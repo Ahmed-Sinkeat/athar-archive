@@ -295,7 +295,7 @@ class ContentDownloadWorker(
                     }
                 }
             }
-            // ponytail: an item that fails every time is skipped for this run and shows as failed; nothing loops on it
+            // an item that fails every time is skipped for this run and shows as failed; nothing loops on it
             if (!progressed) break
         }
         return if (transient && runAttemptCount < 4) Result.retry() else Result.success()

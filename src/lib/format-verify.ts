@@ -23,7 +23,7 @@ function notesText(tag: string): string {
 function text(body: string, importFix = false): string {
   // import-fix: merging a split page renumbers its anchors; the anchor digits are not the author's text
   // and neither is a Shamela note label «(١٢) - », which becomes the note's place in data-notes.
-  // ponytail: this also leaves any parenthesised number in import-fix unchecked; the mode is a
+  // this also leaves any parenthesised number in import-fix unchecked; the mode is a
   // character-multiset check anyway.
   const unmarked = (importFix ? body.replace(/\((?:\^)?[0-9\u0660-\u0669]+\)(?: - )?/g, "") : body)
     .replace(PAGE_MARKS, (tag) => `\u0001${notesText(tag)}\u0001`)
@@ -40,7 +40,7 @@ function text(body: string, importFix = false): string {
     .replace(/\*\*|\{#[\w-]+\}/g, "")
     // «= كتاب الطهارة =» is how some imports drew a heading; the «=» pair is markup, not the book's
     .replace(/^[ \t]*=[ \t]+(.+?)[ \t]+=[ \t]*$/gm, "$1")
-    // ponytail: «...»/«…» is how imports draw the gap between two hemistichs, i.e. layout; a prose
+    // «...»/«…» is how imports draw the gap between two hemistichs, i.e. layout; a prose
     // ellipsis added or dropped slips through. Count only spaced ones if that ever matters.
     .replace(/\.\.\.|…/g, "")
     // a footnote anchor may be bare «1», «(1)» or a caret «(^1)»: all the same printed number

@@ -120,7 +120,7 @@ private fun Recital(text: TasmeeText, engine: TasmeeEngine) {
                 // The tracker is touched only on the main thread; the model runs off it.
                 withContext(Dispatchers.Main) {
                     if (tracker.feed(frames)) shown = tracker.progress
-                    // ponytail: tuning log, drop once تسميع is judged on the phone
+                    // tuning log, drop once تسميع is judged on the phone
                     android.util.Log.i("Tasmee", "heard «${engine.vocab.greedy(frames)}» → word ${tracker.progress.cursor}/${words.size}, expected «${words.drop(tracker.progress.cursor).take(5).joinToString(" ")}»")
                     if (tracker.done) listening = false
                 }

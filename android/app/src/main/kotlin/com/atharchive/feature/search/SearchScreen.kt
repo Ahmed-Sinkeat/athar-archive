@@ -397,7 +397,7 @@ private fun LexiconResults(query: String, horizontalPadding: Dp) {
     val installed by dict.installed.collectAsState()
     val progress by dict.progress.collectAsState()
     val failed by dict.failed.collectAsState()
-    // ponytail: the first word only; the lexicons hold single words, a phrase has no entry.
+    // the first word only; the lexicons hold single words, a phrase has no entry.
     // An emptied box (or only spaces) recomposes this once more before the tab goes: no word, nothing shown.
     val word = query.split(' ').firstOrNull { it.isNotBlank() } ?: return
     val found by androidx.compose.runtime.produceState<Pair<Boolean, com.atharchive.data.Meaning?>>(false to null, word, installed) {

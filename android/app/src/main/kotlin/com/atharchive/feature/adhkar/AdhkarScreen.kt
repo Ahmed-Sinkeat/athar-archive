@@ -97,7 +97,7 @@ fun AdhkarScreen(
     /** The reader's font, size and text colours, so a dhikr reads like the books. */
     readerSettings: com.atharchive.feature.reader.ReaderSettings = com.atharchive.feature.reader.ReaderSettings(),
 ) {
-    // ponytail: المساء from 15:00 until 04:00, near enough to العصر and الفجر without prayer times; real times when the app has them.
+    // المساء from 15:00 until 04:00, near enough to العصر and الفجر without prayer times; real times when the app has them.
     var storedKey by rememberSaveable {
         mutableStateOf(java.time.LocalTime.now().hour.let { if (it >= 15 || it < 4) AdhkarTab.Evening else AdhkarTab.Morning }.key)
     }

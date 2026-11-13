@@ -475,7 +475,7 @@ class ContentSearchRepository(private val database: AtharContentDatabase) {
         val joins = "JOIN entity e ON e.id = b.entityId " +
             "LEFT JOIN chapter c ON c.entityId = b.entityId AND c.anchor = b.chapterAnchor "
         val sql = if (ranked) {
-            // ponytail: bm25 ranks the first RankCap matches in index order only, as the site does
+            // bm25 ranks the first RankCap matches in index order only, as the site does
             // (src/lib/search-handler.ts RANK_CAP). Ranking and sorting all 260k «الله» blocks took
             // 3.5 s on a desktop CPU (≈10+ s on a phone); capped it is 0.3 s. Raise the cap if a
             // common word misses passages that matter.

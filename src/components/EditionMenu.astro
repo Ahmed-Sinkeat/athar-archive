@@ -1,6 +1,6 @@
 ---
 // «الطبعات»: one book, several printings (edition_of). The open one is checked and says so.
-// ponytail: native <details> popup, no JS; closes on navigation, which every choice is.
+// native <details> popup, no JS; closes on navigation, which every choice is.
 interface Props { editions: { href: string; label: string; current: boolean; primary: boolean }[] }
 const { editions } = Astro.props;
 const current = editions.find((e) => e.current);

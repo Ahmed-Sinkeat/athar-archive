@@ -103,7 +103,7 @@ async function main() {
   const metaEntries = loadContentMetaFromDisk().filter((e) => e.data.status === "published" && !(e.collection === "book" && dicts.has(e.id)));
   // Source priority (doc_meta.prior, multiplies bm25 in search-handler.ts): an early author and a
   // متن rank above the later works that quote them — بالنيات found صحيح البخاري at #161 without it.
-  // ponytail: two hand-set weights; tune them (and re-run) if results lean too old or too متن.
+  // two hand-set weights; tune them (and re-run) if results lean too old or too متن.
   const deathOf = new Map(metaEntries.filter((e) => e.collection === "person")
     .map((e) => [e.id, Number(String(e.data.died ?? "").match(/\d+/)?.[0] ?? NaN)]));
   const kindOf = new Map(metaEntries.filter((e) => e.collection === "book").map((e) => [e.id, String(e.data.kind ?? "")]));
@@ -152,7 +152,7 @@ async function main() {
   const FILE_MAX = 5_000_000;
   const blen = (s: string) => Buffer.byteLength(s, "utf-8");
 
-  // ponytail: track byte sizes incrementally (running counters) instead of
+  // track byte sizes incrementally (running counters) instead of
   // re-running Buffer.byteLength over the whole accumulated buf/stmt on every
   // doc — that was O(total output size) per iteration, i.e. O(n²) overall,
   // and is what made this take 15+ minutes on the real ~22k-doc corpus.

@@ -42,12 +42,12 @@ class TasmeeEngine private constructor(private val session: OrtSession, val voca
      */
     @SuppressLint("MissingPermission") // the screen asks for RECORD_AUDIO before listening
     suspend fun listen(onFrames: suspend (List<FloatArray>) -> Unit) = coroutineScope {
-        // ponytail: unbounded queue — on a phone slower than realtime it grows ~64 KB/s behind; drop or shorten hops if seen
+        // unbounded queue — on a phone slower than realtime it grows ~64 KB/s behind; drop or shorten hops if seen
         val hops = Channel<FloatArray>(Channel.UNLIMITED)
         val rate = 16_000
         val record = AudioRecord(MediaRecorder.AudioSource.VOICE_RECOGNITION, rate, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_FLOAT,
             maxOf(AudioRecord.getMinBufferSize(rate, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_FLOAT), rate * 4))
-        // ponytail: tuning aid, keeps the last listening's audio (16 kHz float) to check on the PC; drop with the log
+        // tuning aid, keeps the last listening's audio (16 kHz float) to check on the PC; drop with the log
         val dump = java.io.File(dir, "last.pcm").outputStream().buffered()
         try {
             record.startRecording()

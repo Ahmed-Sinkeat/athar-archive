@@ -75,7 +75,7 @@ export function splitChapters(body: string): ChapterSplit {
   }
   if (current) rawChapters.push(current);
 
-  // ponytail: drop chapters whose content has 0 real paragraphs/verses
+  // drop chapters whose content has 0 real paragraphs/verses
   // fixes القحطاني "empty ## القصيدة النونية" → 2 junk chapters bug
   const nonEmpty = rawChapters.filter((c) =>
     c.lines.some((l) => l.trim() && !l.trim().startsWith("#")),

@@ -55,7 +55,7 @@ async function main() {
   console.log(`${remote.size} objects in R2, ${live.length} live, ${dead.length} unreferenced (${(bytes / 1048576).toFixed(1)} MiB)`);
   if (!confirm) return console.log("dry run: nothing deleted. --confirm to delete.");
   const liveSet = new Set(live);
-  // ponytail: fixed pool of 16 workers; sequential DELETEs ran ~1/s. Raise if R2 keeps up.
+  // fixed pool of 16 workers; sequential DELETEs ran ~1/s. Raise if R2 keeps up.
   const queue = dead.slice();
   await Promise.all(Array.from({ length: 16 }, async () => {
     for (let key; (key = queue.shift()); ) {

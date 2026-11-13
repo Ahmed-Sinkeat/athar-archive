@@ -3,7 +3,7 @@
 // q.db: the project's Postgres dump loaded into SQLite (tables poems, poets, eras, meters, rhymes).
 // Dry-run by default: prints what would be written. Poets on the lists below are skipped whole;
 // poems hitting FLAG words are held back and listed in --review for the owner to judge.
-// ponytail: decisions live in the constants here; once reviewed poems need restoring, add an --allow file.
+// decisions live in the constants here; once reviewed poems need restoring, add an --allow file.
 import { DatabaseSync } from "node:sqlite";
 import fs from "node:fs";
 import path from "node:path";
@@ -48,7 +48,7 @@ const SKIP_ERAS = new Set(["متأخر"]); // modern poets: not now
 // Poets whose poems we already carry in our own edition (diwan-ilbiri--N covers all of Qafiyah's الإلبيري).
 const OURS = new Set(["أبو إسحاق الإلبيري"].map(norm));
 // Flagged poems read and released (the word is incidental: مدح/رثاء/زهد, «نهد» a horse, «زنا» in «وزنا»…).
-// ponytail: ids inline; move to a file if the review of docs/qafiyah-review.tsv releases many.
+// ids inline; move to a file if the review of docs/qafiyah-review.tsv releases many.
 const ALLOW = new Set([
   "43220", "43357", "42885", // أبو العتاهية
   "43585", "43621", "43654", "44014", // أبو الفتح البستي

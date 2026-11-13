@@ -266,7 +266,7 @@ const jsonLd = bookLd({
       // server for a chunked book. Find the chapter whose page range covers N
       // and redirect there, same hash intact.
       //
-      // ponytail: walk chapters in source order (NOT sorted by firstPage) and
+      // walk chapters in source order (NOT sorted by firstPage) and
       // keep the last one whose firstPage <= N — some multi-volume books
       // reset page numbering per volume/juz, so a global sort would scramble
       // volumes together. Source order at least keeps each volume's own

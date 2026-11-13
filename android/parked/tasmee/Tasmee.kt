@@ -94,7 +94,7 @@ class TasmeeTracker(private val vocab: TasmeeVocab, words: List<String>) {
             // silence, someone else talking) the path's guesses reveal nothing.
             .let { s -> s.take(s.indexOfLast { scores[it] >= Cutoff } + 1) }
         if (settled.isEmpty()) {
-            // ponytail: 30 s with nothing recognised drops the oldest audio; a pause past that never resyncs mid-word
+            // 30 s with nothing recognised drops the oldest audio; a pause past that never resyncs mid-word
             if (frames.size > MaxFrames) frames.subList(0, frames.size - MaxFrames / 3).clear()
             return false
         }

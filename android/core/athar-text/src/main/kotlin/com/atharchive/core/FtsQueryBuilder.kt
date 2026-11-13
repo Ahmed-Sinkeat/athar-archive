@@ -54,7 +54,7 @@ object FtsQueryBuilder {
                 if (first == "عبد") add(first + second)
             }
         }.distinct()
-        // ponytail: with anyWord a quoted phrase is only a candidate term, not verified for adjacency;
+        // with anyWord a quoted phrase is only a candidate term, not verified for adjacency;
         // the screen's «عبارة متتالية» sends one quoted phrase with anyWord off, which is verified.
         return CompactFtsPlan(match, if (anyWord) emptyList() else phrases, highlights)
     }

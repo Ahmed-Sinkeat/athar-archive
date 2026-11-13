@@ -8,7 +8,7 @@
 // never fight reader.ts's tashkeel/annotation surgery and inherit every theme).
 // Anchors are character offsets into <main>'s text, re-verified against the
 // stored quote on paint.
-// ponytail: offset anchoring breaks only if a published book's text is edited
+// offset anchoring breaks only if a published book's text is edited
 // after a highlight is made; the stored quote is then re-found by text search.
 // Upgrade path: per-block (heading/verse id) anchoring if drift becomes common.
 

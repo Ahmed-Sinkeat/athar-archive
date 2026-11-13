@@ -19,7 +19,7 @@ import java.io.IOException
  * Anonymous usage counts (workers/search/index.ts → Analytics Engine): an event name, a short
  * detail (a slug, never search words) and the app version. No id, nothing stored on the phone.
  * Events are batched (one POST of «event\tdetail\tversion» lines every [FlushMs], or at [FlushAt]) on the app's
- * shared client. ponytail: the queue is in memory and offline or killed-process events are dropped; persist it
+ * shared client. the queue is in memory and offline or killed-process events are dropped; persist it
  * if the counts look thin.
  */
 object Analytics {

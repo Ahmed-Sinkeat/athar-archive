@@ -1016,7 +1016,7 @@ function enhanceProse() {
   });
 
   // whole-paragraph notes (no phrase): anchor ann-p{n} → the n-th <p> in the prose,
-  // made tappable (opens the sheet). ponytail: n-th <p> heuristic — fine for plain
+  // made tappable (opens the sheet). n-th <p> heuristic — fine for plain
   // prose; if a matn mixes lists/quotes the index could drift, then add an explicit phrase.
   const paras = proseEls.flatMap((pr) => [...pr.querySelectorAll<HTMLElement>("p")]);
   allPacks.forEach((pack) => {
@@ -1375,7 +1375,7 @@ function enhanceProse() {
       pin.addEventListener("click", () => {
         let p = getPinned();
         if (p.includes(label)) p = p.filter((x) => x !== label);
-        else { p.push(label); if (p.length > 5) p.shift(); } // ponytail: oldest pin drops; no "unpin something first" dialog
+        else { p.push(label); if (p.length > 5) p.shift(); } // oldest pin drops; no "unpin something first" dialog
         localStorage.setItem(LS.annPinned, JSON.stringify(p));
         srcDD.menu.querySelectorAll<HTMLElement>(".ann-pin").forEach((el, j) =>
           el.setAttribute("aria-pressed", String(p.includes(sourceLabel(entries[j], j)))));

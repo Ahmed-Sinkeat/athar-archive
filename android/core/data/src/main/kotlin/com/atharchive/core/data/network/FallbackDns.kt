@@ -24,7 +24,7 @@ import okhttp3.Request
  *     DNS over HTTPS (Cloudflare, then Google, both reached by IP so no lookup is needed) interleaved
  *     with the zone's own IPs.
  * OkHttp tries the next address when one fails to connect, so a dead first entry costs one connect timeout.
- * ponytail: fixed zone IPs; if Cloudflare ever moves the zone, refresh them from `dig app-content.arthurarchive.com`.
+ * fixed zone IPs; if Cloudflare ever moves the zone, refresh them from `dig app-content.arthurarchive.com`.
  */
 class FallbackDns(
     private val fallback: List<InetAddress> = listOf("104.21.84.124", "172.67.193.3").map { InetAddress.getByName(it) },

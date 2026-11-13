@@ -34,7 +34,7 @@ export const ENTITY: Record<
   topic: { one: "موضوع", many: "الموضوعات", index: "/topics" },
   book: { one: "كتاب", many: "الكتب", index: "/books" },
   poem: { one: "منظومة", many: "المنظومات", index: "/poems" },
-  // ponytail: series + lesson retired; درس is a book; سلسلة شرح is book.sharh_of
+  // series + lesson retired; درس is a book; سلسلة شرح is book.sharh_of
   question: { one: "مسائل", many: "المسائل", index: "/questions" },
   benefit: { one: "فائدة", many: "الفوائد", index: "/benefits" },
   article: { one: "مقالة", many: "مقالات ومحاضرات", index: "/articles" },

@@ -21,7 +21,7 @@ const [people, books, poems, articles, announcements, highlights, questions, sub
 ]);
 
 // مختارات الأسبوع: one حديث (curated highlight) + one whole كتاب/منظومة/مقال
-// entry each, rotating by week index. ponytail: build-time pick (stable
+// entry each, rotating by week index. build-time pick (stable
 // within a week); refreshes on each rebuild/deploy. آية dropped per request —
 // كتاب/منظومة/مقال aren't curated highlight excerpts (no content for that
 // kind exists), so they're picked straight from their own collections instead.
@@ -87,7 +87,7 @@ const personName = new Map(people.map((p) => [p.id, p.data.title]));
 const stats = [
   { num: pub(books).length, label: "كتابًا" },
   { num: pub(poems).length, label: "منظومة" },
-  // ponytail: lesson count removed — دروس are now books with audio
+  // lesson count removed — دروس are now books with audio
   { num: pub(articles).length, label: "مقالة" },
   { num: pub(questions).length, label: "مسألة" },
   { num: pub(people).length, label: "من الأعلام" },

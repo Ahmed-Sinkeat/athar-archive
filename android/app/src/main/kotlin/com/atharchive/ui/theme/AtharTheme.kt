@@ -106,7 +106,7 @@ enum class ReaderFont(val label: String) {
     Khatt("الخط الرقمي"), Madina("المدينة الرقمي"), Uthman("عثمان طه");
 
     companion object {
-        // ponytail: one imported file shared by every role; a file per role if readers ask for two of their own.
+        // one imported file shared by every role; a file per role if readers ask for two of their own.
         fun userFile(context: android.content.Context) = java.io.File(context.filesDir, "fonts/user.ttf")
         val reading = listOf(Kitab, Amiri, Plex, Uthman, Khatt, Madina, Custom)
         val quranRoles = listOf(Mushaf, NoonHafs, Tharwat, Uthman, Khatt, Madina, Same, Kitab, Amiri, Plex, Custom)

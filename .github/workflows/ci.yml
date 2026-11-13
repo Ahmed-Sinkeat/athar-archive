@@ -380,7 +380,7 @@ jobs:
         continue-on-error: true
         run: pnpm search:gen
 
-      # ponytail: deploy inline instead of a separate job — the old artifact
+      # deploy inline instead of a separate job — the old artifact
       # upload/download step was hitting the repo's Actions storage quota
       # (16.7k files per run). Same job already holds CLOUDFLARE_API_TOKEN
       # for the R2 binding above, so no security separation is lost.

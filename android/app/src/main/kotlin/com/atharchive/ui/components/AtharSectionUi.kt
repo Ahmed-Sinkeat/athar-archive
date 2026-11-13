@@ -1064,7 +1064,7 @@ private val normKeys = java.util.concurrent.ConcurrentHashMap<String, String>()
  * screens filter and sort on: a list re-emits on every ★, download tick or reading position, and
  * renormalising a thousand titles each time was a visible pause.
  */
-// ponytail: unbounded, but keys are catalog strings (a few thousand); swap for an LRU if free text lands here.
+// unbounded, but keys are catalog strings (a few thousand); swap for an LRU if free text lands here.
 fun normKey(text: String): String = normKeys.getOrPut(text) { com.atharchive.core.ArNormalize.normalize(text) }
 
 /** The main search's catalog engine, handed to every section list (see [rememberCatalogRanks]). */

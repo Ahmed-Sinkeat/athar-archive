@@ -144,7 +144,7 @@ internal fun BlockView(
         { target: String ->
             if (!target.startsWith(NOTE_LINK)) onLinkState(target) else {
                 val id = target.removePrefix(NOTE_LINK)
-                // ponytail: a ref inside a page note has no main text here; its popover opens at the top.
+                // a ref inside a page note has no main text here; its popover opens at the top.
                 val rect = noteRect(textLayout, placed[0], valueState, blockState.spans.firstOrNull { it.k == "sup" && it.target == id })
                 onFootnotesState(listOf(id), rect)
             }
@@ -432,7 +432,7 @@ private fun markerStroke(left: Float, right: Float, top: Float, bottom: Float, s
 /** Prefix that routes a tapped footnote number to the note popover instead of [onLink]. */
 private const val NOTE_LINK = "\u0000note:"
 
-/** ﴿ayah﴾, «quote» and ((hadith)). ponytail: length caps keep a stray opener from colouring a page. */
+/** ﴿ayah﴾, «quote» and ((hadith)). length caps keep a stray opener from colouring a page. */
 private val CitationRe = Regex("\uFD3F[^\uFD3E]{1,1500}\uFD3E|\u00AB[^\u00BB]{1,1500}\u00BB|\\(\\([^)]{1,300}\\)\\)")
 
 private fun markedText(

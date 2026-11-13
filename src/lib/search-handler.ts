@@ -39,7 +39,7 @@ const json = (body: unknown, status = 200) =>
 // phrase, every exact word, words that only start the same (and in any mode, single words).
 // Each tier is its own query, run only while the page still needs rows, and excludes the
 // tiers before it, so a passage never shows twice and a common phrase usually costs one query.
-// ponytail: rank (bm25) is computed for the first RANK_CAP matches in index order only — ranking
+// rank (bm25) is computed for the first RANK_CAP matches in index order only — ranking
 // all 176k rows of «الله» took ~1 s, the first 10k ~50 ms. A word that common ranks within a sample;
 // raise the cap if results for very common words look arbitrary.
 const RANK_CAP = 10000;
@@ -53,7 +53,7 @@ type Cursor = { tier: number; skip: number };
 
 type Row = { row: number; type: string; url: string; title: string; book: string; raw: string | null; pg?: string | null; work?: string; snippet: string; person_name: string | null; death_year: number | null };
 
-// ponytail: the passage as written (docs.raw) arrives with a full reindex, which takes days on
+// the passage as written (docs.raw) arrives with a full reindex, which takes days on
 // D1's free write quota; until then the folded text is shown. doc_meta.prior (source priority)
 // arrives with the same reindex; until then every source weighs 1. Checked once per isolate.
 let schema: { raw: boolean; prior: boolean; pg: boolean; editions: boolean } | undefined;
@@ -148,7 +148,7 @@ async function answer(url: URL, db: D1Like | undefined): Promise<Response> {
   const bind = (v: string) => { filterBinds.push(v); return `?${filterBinds.length + 1}`; };
   const centuries = (url.searchParams.get("century") ?? "").split(",").map((s) => parseInt(s, 10)).filter((n) => n >= 1 && n <= 15);
   if (centuries.length) filters += ` AND m.person IN (SELECT slug FROM person_meta WHERE (death_year - 1) / 100 + 1 IN (${centuries.join(",")}))`;
-  // ponytail: a section filter keeps books only (work_topic maps book → topic title); poems and articles join it if asked
+  // a section filter keeps books only (work_topic maps book → topic title); poems and articles join it if asked
   const topics = (url.searchParams.get("topic") ?? "").split(",").map((s) => s.trim()).filter((s) => s && s.length <= 60).slice(0, 40);
   if (topics.length) filters += ` AND m.book IN (SELECT book FROM work_topic WHERE topic IN (${topics.map(bind).join(",")}))`;
   // type/book/person/url are UNINDEXED in docs, so reading them loads the whole row (text and
@@ -182,14 +182,14 @@ async function answer(url: URL, db: D1Like | undefined): Promise<Response> {
   // (its first row). bm25 is negative (lower = better), so a larger m.prior (earlier author, a
   // متن) pulls a row up; [names] puts the author's page first when the words are a name. The
   // snippet marks what [shown] matched (a superset of [expr]).
-  // ponytail: rows skipped by a later page's offset get snippets too; cheap next to a round trip.
+  // rows skipped by a later page's offset get snippets too; cheap next to a round trip.
   const pick = async (expr: string, shown: string, grouped: boolean, limit: number, exclude: { rows: number[]; works: string[] }, names = false) => {
     const binds: (string | number)[] = [expr, ...filterBinds];
     let not = exclude.rows.length ? ` AND docs.rowid NOT IN (${exclude.rows.join(",")})` : "";
     if (exclude.works.length) not += ` AND ${work} NOT IN (${exclude.works.map((w) => { binds.push(w); return `?${binds.length}`; }).join(",")})`;
     const k = `rank${priorK}${names ? " * (CASE WHEN m.type = 'person' THEN 2 ELSE 1 END)" : ""}`;
     const inner = `SELECT docs.rowid AS r, ${work} AS w, ${k} AS k ${fromMeta} WHERE docs MATCH ?1${filters}${not} LIMIT ${RANK_CAP}`;
-    // ponytail: at most WORK_CAP rows per work within one tier; a work can still recur in a later tier
+    // at most WORK_CAP rows per work within one tier; a work can still recur in a later tier
     const best = grouped
       ? `SELECT min(r) AS row, w AS work, min(k) AS k FROM (${inner}) GROUP BY w ORDER BY min(k) LIMIT ${limit}`
       : `SELECT r AS row, w AS work, k FROM (SELECT r, w, k, row_number() OVER (PARTITION BY w ORDER BY k) AS n FROM (${inner})) WHERE n <= ${workCap} ORDER BY k LIMIT ${limit}`;
@@ -263,7 +263,7 @@ async function answer(url: URL, db: D1Like | undefined): Promise<Response> {
   const widest = scoped(widestExpr(tokens, mode));
   // Facets read the whole match set once more, without snippet(): only for the app's count and
   // author chips, on their own call. Capped so a common word answers «أكثر من ١٠٠٠» in under a
-  // second (20k took ~10 s). ponytail: past the cap the author chips come from the first 1000
+  // second (20k took ~10 s). past the cap the author chips come from the first 1000
   // matches in index order; a per-word facet table if they look skewed.
   const FACET_CAP = 1000;
   const facetSql = `SELECT d.type AS type, d.person AS person, pm.name AS person_name, pm.death_year AS death_year, count(*) AS n

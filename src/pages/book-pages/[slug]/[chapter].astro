@@ -75,7 +75,7 @@ export async function getStaticPaths() {
       });
     }
   }
-  // ponytail: every shard still computes the full chapter list for every book
+  // every shard still computes the full chapter list for every book
   // (buildBookChapters' own chunking cost isn't split) — only the actual page
   // RENDER is divided, which is where the wall-clock time is. Split chunking
   // too if that computation itself ever becomes the bottleneck.

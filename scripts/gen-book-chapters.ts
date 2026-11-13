@@ -150,7 +150,7 @@ for (const slug of fs.existsSync(SRC) ? fs.readdirSync(SRC) : []) {
 // single-threaded vs 22+ MB/s here, which is the difference between ~40 and
 // ~18 minutes over the whole corpus. build:finish raises UV_THREADPOOL_SIZE to
 // match; without that this silently caps at libuv's default of 4.
-// ponytail: a fixed pool over a flat list, not a work-stealing scheduler —
+// a fixed pool over a flat list, not a work-stealing scheduler —
 // pages vary ~50× in size, so the tail is ragged; only worth fixing if the
 // last few percent of the run ever shows up as real wall-clock time.
 const CONCURRENCY = Math.max(4, os.availableParallelism?.() ?? 4);

@@ -154,7 +154,7 @@ data class ContentBlockEntity(
 /**
  * Block text is most of a downloaded book's rows (~54%); deflated one block at a time it is about
  * half the size (2.1x on a sample of 150k blocks) and unpacks in microseconds, so pages and search
- * stay as fast. ponytail: plain deflate; a shared dictionary measured 2.9x, as format byte 2.
+ * stay as fast. plain deflate; a shared dictionary measured 2.9x, as format byte 2.
  */
 object BlockText {
     private const val DEFLATE: Byte = 1

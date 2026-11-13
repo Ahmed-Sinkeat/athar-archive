@@ -487,7 +487,7 @@ fun ReaderScreen(
       fun isBreak(item: Int) = blockAtItem(item) is ReaderBlock.PageBreak
       // A marker ENDS its page (src/lib/app-v2/parser.ts): the page in view is named by the first marker at or
       // after the top line, and the last page of a book, which has no marker after it, is the previous marker + 1.
-      // ponytail: scans at most 2000 blocks each way; a longer unmarked run is one "page".
+      // scans at most 2000 blocks each way; a longer unmarked run is one "page".
       fun folioAtOrAfter(item: Int): Pair<Int?, Int>? {
           (item..item + 2000).firstOrNull(::isBreak)?.let { (blockAtItem(it) as? ReaderBlock.PageBreak)?.let { b -> return b.volume to b.page } }
           (item downTo maxOf(1, item - 2000)).firstOrNull(::isBreak)?.let { (blockAtItem(it) as? ReaderBlock.PageBreak)?.let { b -> return b.volume to b.page + 1 } }
@@ -834,7 +834,7 @@ fun ReaderScreen(
                 hasIntro = state.card.isNotEmpty(),
                 editions = state.editions,
                 onEdition = onEdition,
-                // ponytail: loads the whole text; fine for articles and مسائل, never offered in books.
+                // loads the whole text; fine for articles and مسائل, never offered in books.
                 onCopyAll = if (state.isBook) null else ({
                     scope.launch {
                         toast = try {

@@ -99,7 +99,7 @@ object ContentDataModule {
         androidx.work.WorkManager.getInstance(context)
 }
 
-/** Frames kept ready ahead of the reader (250 blocks each); ponytail: tune on a slow link. */
+/** Frames kept ready ahead of the reader (250 blocks each); tune on a slow link. */
 private const val PrefetchAheadFrames = 3
 
 @Singleton

@@ -279,7 +279,7 @@ fun AtharApp(
             }
         }
     }
-    // 4.13: notes live only on this phone; remind to export them after a month without one (then weekly). ponytail: no per-note "unsaved" count.
+    // 4.13: notes live only on this phone; remind to export them after a month without one (then weekly). no per-note "unsaved" count.
     LaunchedEffect(Unit) {
         kotlinx.coroutines.delay(8_000)
         val now = System.currentTimeMillis()
@@ -406,7 +406,7 @@ fun AtharApp(
     }
 
     LaunchedEffect(downloadTarget) {
-        // ponytail: "book:<id>[:<ordinal>]" opens the reader, for adb phone checks
+        // "book:<id>[:<ordinal>]" opens the reader, for adb phone checks
         // (`am start -e athar_download book:<id>:<n>`); a real deep link replaces it if one is ever needed.
         val book = downloadTarget?.removePrefix("book:")?.takeIf { it != downloadTarget }?.split(":")
         if (book != null) { backStack.add(ReaderRoute(book[0], targetOrdinal = book.getOrNull(1)?.toIntOrNull())); onDownloadTargetHandled() }
@@ -606,7 +606,7 @@ fun AtharApp(
             com.atharchive.feature.reader.LocalDictionary provides contentViewModel.dictionary,
             com.atharchive.ui.components.LocalCatalogSearch provides contentViewModel::catalogMatches,
             com.atharchive.feature.reader.LocalOpenBookAt provides { id, ordinal -> backStack.add(ReaderRoute(id, targetOrdinal = ordinal)) }) {
-        // 4.5: a tablet gets a centred column, not lines running the whole screen. ponytail: one cap for every screen; per-screen two-pane layouts if tablets matter.
+        // 4.5: a tablet gets a centred column, not lines running the whole screen. one cap for every screen; per-screen two-pane layouts if tablets matter.
         androidx.compose.foundation.layout.Box(Modifier.fillMaxSize().padding(contentPadding), contentAlignment = Alignment.TopCenter) {
         NavDisplay(
             backStack = backStack,

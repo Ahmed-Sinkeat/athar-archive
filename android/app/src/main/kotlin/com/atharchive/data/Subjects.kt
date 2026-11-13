@@ -5,7 +5,7 @@ import com.atharchive.ui.components.arabicDigits
 /** «الأقسام»: the site's subjects (src/content/subject), short names, in display order. */
 val SubjectOrder = listOf("علوم القرآن", "الحديث", "العقيدة", "الفقه", "اللغة", "التزكية", "السيرة والتاريخ")
 
-// ponytail: copied from src/content/topic/*.md `subject:`; a topic added there needs a line here
+// copied from src/content/topic/*.md `subject:`; a topic added there needs a line here
 // (unknown topics, and «عام», belong to no section). Ship subject in the app catalog if this drifts.
 private val topicSubject = mapOf(
     "تفسير القرآن" to "علوم القرآن", "علوم القرآن" to "علوم القرآن", "القراءات" to "علوم القرآن", "التجويد" to "علوم القرآن",

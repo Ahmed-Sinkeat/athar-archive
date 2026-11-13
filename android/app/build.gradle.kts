@@ -169,7 +169,7 @@ val verifyReleaseConfiguration by tasks.registering {
         require(bundledCatalog.isFile) { "Missing app-content/catalog.db; run `pnpm app:bundle-catalog`." }
         // The bundled catalog must be the generation the origin serves: an unpublished one points
         // at packages that 404, and every book in the shipped app fails to open.
-        // ponytail: needs the network at release time; that is when the origin matters anyway.
+        // needs the network at release time; that is when the origin matters anyway.
         if (baseUrl.isNotBlank()) {
             val live = URI(baseUrl + "index.json").toURL().readBytes()
             require(bundledIndex.isFile && bundledIndex.readBytes().contentEquals(live)) {

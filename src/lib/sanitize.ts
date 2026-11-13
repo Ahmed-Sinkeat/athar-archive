@@ -28,7 +28,7 @@ function collectText(node: any): string {
 // Quotes «…» / “…” all get ONE colour (tok-quote, blue) — «…» is used almost
 // exclusively for hadith/matn citations across the corpus.
 // Runs AFTER sanitize. Skips code/pre. First matching opener wins.
-// ponytail: \u escapes — esbuild rejects raw Arabic chars in regex literals
+// \u escapes — esbuild rejects raw Arabic chars in regex literals
 const TOK_RE = new RegExp(
   "(﴿[^﴾]*﴾)" +
   "|(\\{[^}]{1,300}\\})" +  // ayah cited with plain braces instead of ﴿﴾ — same kind, different author convention
@@ -39,7 +39,7 @@ const TOK_RE = new RegExp(
   "|([“”][^“”]*[“”])" +
   '|("[^"]*")' +
   "|(\\(\\([^)]{1,200}\\)\\))" +  // (( hadith )) — must precede the single-paren pattern below, or it eats only one side
-  "|(\\([^)]{1,200}\\))" +  // ponytail: cap 200 chars to avoid backtracking
+  "|(\\([^)]{1,200}\\))" +  // cap 200 chars to avoid backtracking
   "|(\\[\\.{2,}\\])" +  // isnad-elision marker, e.g. "[.....]" — see tok-elision
   // Athar-Engine's EPUB→Markdown pass flattens the source's bulleted/numbered
   // enumerations ("• الموضع الأول: …", "الثاني: …") into one running paragraph,

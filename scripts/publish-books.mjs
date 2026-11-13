@@ -6,7 +6,7 @@
 //   pnpm publish:books --go --search   # also refresh those books' rows in D1 (incremental by doc_hash)
 //   pnpm publish:books --selftest
 //
-// ponytail: --only keeps the previous catalog from dist/app-content, so run it on the machine that last published.
+// --only keeps the previous catalog from dist/app-content, so run it on the machine that last published.
 // A deleted book needs a full `pnpm app:gen` (tombstone); this refuses instead of silently leaving it live.
 import assert from "node:assert";
 import { execFileSync, spawnSync } from "node:child_process";

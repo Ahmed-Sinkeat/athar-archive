@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit
  * One daily reminder per adhkar list, at a time of day the reader picks (minutes after midnight).
  * Each reminder is one-time work that schedules the next from the clock when it fires, so a late
  * run never shifts the following days (periodic work counted 24 h from the last run and drifted).
- * ponytail: WorkManager, so Doze can make one run a few minutes late; move to
+ * WorkManager, so Doze can make one run a few minutes late; move to
  * AlarmManager.setAndAllowWhileIdle if people need it on the minute.
  */
 object AdhkarReminders {

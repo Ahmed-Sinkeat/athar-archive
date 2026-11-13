@@ -198,7 +198,7 @@ fun PoetryScreen(
                     query = query,
                     resultCount = visiblePoems.size,
                     filtered = (topic + poet + era + audio).isNotEmpty() || section != com.atharchive.ui.components.SectionAll,
-                    placeholder = "ابحث عن قصيدة، بيت أو شاعر…",
+                    placeholder = "ابحث في ${state.countLabel}…",
                     onQueryChange = { query = it },
                     tagPrefix = "poetry",
                     trailing = {

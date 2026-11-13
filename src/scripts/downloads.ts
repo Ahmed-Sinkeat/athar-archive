@@ -109,10 +109,10 @@ async function startDownload(btn: HTMLElement) {
   // hashed JS/CSS the downloaded pages reference — without them an offline
   // page renders but no script boots (no audio player, no TOC). Scraped from
   // each page's HTML as it's downloaded.
-  // ponytail: misses fonts and dynamically-imported chunks; add if offline
+  // misses fonts and dynamically-imported chunks; add if offline
   // pages visibly break without them.
   const assets = new Set<string>();
-  // ponytail: sequential fetch — simple and gentle on the Worker for big
+  // sequential fetch — simple and gentle on the Worker for big
   // books; parallelize with a concurrency cap if downloads feel too slow.
   for (const url of urls) {
     try {

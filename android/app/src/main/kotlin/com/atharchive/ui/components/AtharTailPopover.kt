@@ -57,7 +57,7 @@ fun AtharTailPopover(
     val density = LocalDensity.current
     val margin = with(density) { 12.dp.roundToPx() }
 
-    // ponytail: the provider owns the x, and the tail has to point back at the spot from
+    // the provider owns the x, and the tail has to point back at the spot from
     // wherever that landed, so it writes the offset back for the content to read.
     // No cycle: the tail never changes the card's size, so this settles in one frame.
     val tailCentre = remember { mutableFloatStateOf(Float.NaN) }

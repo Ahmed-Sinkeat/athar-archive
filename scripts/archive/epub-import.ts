@@ -89,7 +89,7 @@ const cleanInline = (s: string) => decode(stripTags(s)).replace(/[ \t]+/g, " ").
 // ─────────────────────────────────────────────
 // Poem titles that Shamela exports as books but are actually منظومات.
 // Signal: title contains نونية، منظومة، ألفية، قصيدة، أرجوزة، لامية، دالية، بائية، رائية، ميمية
-// ponytail: use Unicode-aware word boundaries (?<=^|\P{L}) to handle prefixes like الـ/للـ and avoid substrings like الإسلامية.
+// use Unicode-aware word boundaries (?<=^|\P{L}) to handle prefixes like الـ/للـ and avoid substrings like الإسلامية.
 const POEM_TITLE_RE = /(?<=^|\P{L})(?:ال|لل)?(?:منظومة|نونية|[أا]لفية|قصيدة|[أا]رجوزة|لامية|دالية|بائية|رائية|ميمية|مقصورة|حائية|تائية|عينية|سينية|هائية|همزية|لؤلؤية|نظم|ملحة|الكافية\s+الشافية)(?=$|\P{L})/u;
 const COMMENTARY_RE = /(?<=^|\P{L})(?:شرح|توضيح|حاشية|تفسير|تعليق|تخريج|مختصر)(?=$|\P{L})/iu;
 // Fraction of body lines that must look like verses to auto-classify as poem
@@ -902,7 +902,7 @@ function buildBookBody(pages: { id: string; xhtml: string }[]): string {
 }
 
 // Matches Shamela hadith-number span: <span class="red">9 - </span> or <span class="red">9/ 2 - </span>
-// ponytail: canonical N is the first number (volume/sequence prefix ignored)
+// canonical N is the first number (volume/sequence prefix ignored)
 const HADITH_NUM_RE = /<span\s+class=["']red["']>\s*(\d+)(?:\/\s*\d+)?\s*-\s*<\/span>/gi;
 // Also matches Muwatta footer: الحديث: N (used in selftest to verify footer anchor)
 const HADITH_FOOTER_RE = /الحديث:\s*(\d+)/;

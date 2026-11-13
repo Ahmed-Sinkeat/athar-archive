@@ -48,7 +48,7 @@ export const DICTS: { id: string; title: string; mark?: "colon" | "word" }[] = [
 const HAMZA_SEATS = /[\u0621\u0624\u0626]/g;
 export const dictKey = (s: string) => normalizeArabic(s).replace(HAMZA_SEATS, "ا");
 const LETTERS = /^[\u0621-\u064A]+$/;
-// ponytail: an entry's text is capped; the popup shows a clause of it, «المزيد» the whole entry in the book
+// an entry's text is capped; the popup shows a clause of it, «المزيد» the whole entry in the book
 const ENTRY_MAX = 4000;
 
 /** A heading that names a root: «أج ر:», «(ء ب ب)», «باب الهمزة» is not one. */
@@ -88,7 +88,7 @@ const AUG = new Set(dictKey("سالتمونيه"));
 /**
  * The known root(s) a headword belongs to — for lexicons that mark entries «• جَبَأَ:» instead
  * of heading them by root. Listed forms first, else the fewest augment letters dropped.
- * ponytail: same rules as the app's DictionaryLookup.roots, duplicated; keep the two in step.
+ * same rules as the app's DictionaryLookup.roots, duplicated; keep the two in step.
  */
 export function resolveRoot(word: string, roots: Set<string>, forms: Map<string, Set<string>>): string[] {
   const w = dictKey(word).replace(/[^\u0621-\u064A]/g, "");

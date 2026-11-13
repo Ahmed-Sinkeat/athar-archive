@@ -114,7 +114,7 @@ internal class PageSelection {
         var best: TextGeometry? = null
         var bestDistance = Float.MAX_VALUE
         var bestLocal = Offset.Zero
-        // ponytail: linear scan over the ~10 placed blocks; index by top if the page ever holds hundreds.
+        // linear scan over the ~10 placed blocks; index by top if the page ever holds hundreds.
         for (g in geometry.values) {
             if (!g.coords.isAttached || g.layout.layoutInput.text.isEmpty()) continue
             val local = g.coords.localPositionOf(page, point)
@@ -132,7 +132,7 @@ internal class PageSelection {
     }
 
     /** The ordinal and source offset of the text exactly under [point], for every placed block there; empty in a gap. */
-    // ponytail: every match, not the first — a block scrolled off can keep stale coordinates over the tapped one.
+    // every match, not the first — a block scrolled off can keep stale coordinates over the tapped one.
     fun sourcesAt(point: Offset): List<Pair<Int, Int>> {
         val page = page?.takeIf { it.isAttached } ?: return emptyList()
         return geometry.values.filter { g ->
@@ -325,7 +325,7 @@ internal fun DrawScope.drawSelectionBand(g: TextGeometry, range: IntRange, color
 /**
  * One line's band, measured from the glyphs (see [boxAt]); not getPathForRange, which on a
  * justified line stopped a word short of the first line's end (أشرف، آله).
- * ponytail: one span per line, so a Latin run inside an Arabic end line is covered whole.
+ * one span per line, so a Latin run inside an Arabic end line is covered whole.
  */
 internal fun selectionBandSpan(layout: androidx.compose.ui.text.TextLayoutResult, line: Int, from: Int, to: Int, first: Int, last: Int, width: Float): Pair<Float, Float> {
     val lineStart = layout.getLineStart(line)
@@ -487,7 +487,7 @@ internal fun TextLayoutResult.boxAt(offset: Int): Rect {
 internal fun TextLayoutResult.offsetAt(point: Offset): Int {
     val line = getLineForVerticalPosition(point.y)
     val st = stretch(line) ?: return getOffsetForPosition(point)
-    // ponytail: a scan of the line's ~60 characters per touch; cache per line if it ever shows in a trace.
+    // a scan of the line's ~60 characters per touch; cache per line if it ever shows in a trace.
     var best = st.start
     var bestDistance = Float.MAX_VALUE
     for (i in st.start until st.end) {

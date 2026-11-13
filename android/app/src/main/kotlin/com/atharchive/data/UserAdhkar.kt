@@ -16,7 +16,7 @@ data class UserAdhkarState(val lists: List<UserAdhkarList> = emptyList(), val it
 
 /**
  * The reader's own adhkar, kept on the phone only.
- * ponytail: one JSON string in SharedPreferences, rewritten whole on every change; fine for
+ * one JSON string in SharedPreferences, rewritten whole on every change; fine for
  * hundreds of entries. Move to the app database if people keep thousands or want sync.
  */
 class UserAdhkarStore private constructor(context: Context) {

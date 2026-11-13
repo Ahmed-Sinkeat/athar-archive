@@ -1,7 +1,7 @@
 // أذكار الصباح والمساء — the standard Hisn al-Muslim set. Fixed, closed content
 // that essentially never changes, so it lives here as data rather than as a
 // content collection.
-// ponytail: hardcoded list, not a CMS collection — move to a content
+// hardcoded list, not a CMS collection — move to a content
 // collection if per-occasion adhkar (beyond morning/evening) get added later.
 //
 // `source` is intentionally left blank on several items: this site is a

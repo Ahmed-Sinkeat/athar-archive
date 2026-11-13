@@ -41,7 +41,7 @@ function decode(s: string): string {
 const stripTags = (s: string) => s.replace(/<[^>]+>/g, "");
 const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-// ponytail: assumes message text has no nested <div> (true for this channel's
+// assumes message text has no nested <div> (true for this channel's
 // plain-text template) — a manual depth scan since we don't have an HTML parser dep.
 function extractBalancedDiv(html: string, openMarker: RegExp): string | null {
   const m = html.match(openMarker);
@@ -274,7 +274,7 @@ function threadBody(t: ThreadDraft, posts: RawPost[], image: (postId: number, k:
   }).filter(Boolean).join("\n\n");
 }
 
-// ponytail: Telegram's CDN links expire, so photos are fetched at import time into
+// Telegram's CDN links expire, so photos are fetched at import time into
 // /media/ (gitignored, staging for scripts/upload-media.sh → R2), like /audio/.
 const MEDIA_DIR = "media/telegram";
 const MEDIA_URL = "https://app-content.arthurarchive.com/media/telegram";
@@ -293,7 +293,7 @@ async function savePhoto(url: string, file: string): Promise<void> {
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36";
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-// ponytail: plain retry+backoff, not a circuit breaker — a multi-minute crawl over
+// plain retry+backoff, not a circuit breaker — a multi-minute crawl over
 // hundreds of requests will hit occasional ECONNRESET; that's the only case this covers.
 async function fetchPage(url: string, attempts = 4): Promise<string> {
   for (let i = 1; i <= attempts; i++) {
@@ -336,7 +336,7 @@ async function crawl(opt: Opt): Promise<RawPost[]> {
 // Best-effort topic tagging — keyword match against EXISTING topic slugs
 // (src/content/topic/*.md). Heuristic, no قسم field to key off like the epub
 // importer has; status stays draft so misses/misfires get caught on review.
-// ponytail: conservative distinctive phrases only, not bare religious terms
+// conservative distinctive phrases only, not bare religious terms
 // (e.g. not "النبي") — those would match nearly every post and tag nothing.
 // ─────────────────────────────────────────────
 const TOPIC_KEYWORDS: Array<{ pattern: RegExp; topic: string }> = [

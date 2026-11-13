@@ -254,7 +254,7 @@ internal fun SettingsScreen(
             }
             HorizontalDivider(color = AtharTheme.colors.divider)
             // 4.8: the fonts' and sources' licences (full texts ship in assets/licenses) and the copyright contact,
-            // one app-wide legal row. ponytail: a fixed list, not generated from the dependencies.
+            // one app-wide legal row. a fixed list, not generated from the dependencies.
             Box {
                 var open by remember { mutableStateOf(false) }
                 val context = androidx.compose.ui.platform.LocalContext.current

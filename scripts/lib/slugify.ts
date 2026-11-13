@@ -22,7 +22,7 @@ function translitWord(w: string): string {
   if (w.startsWith("ال") && w.length > 2) return "al-" + translitWord(w.slice(2));
   return [...w].map((c) => TR[c] ?? "").join("");
 }
-// ponytail: hard length cap — a source title can run to a whole paragraph (an
+// hard length cap — a source title can run to a whole paragraph (an
 // isnad chain with no short title line); an uncapped slug blows past the
 // filesystem filename limit (observed: ENAMETOOLONG on a 200+ char slug).
 const MAX_SLUG_LEN = 100;

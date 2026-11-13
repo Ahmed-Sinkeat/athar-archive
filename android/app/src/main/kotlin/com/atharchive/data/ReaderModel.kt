@@ -373,7 +373,7 @@ private fun ContentEntity.toReaderUi(chapters: List<ChapterEntity>): ReaderUiSta
         benefits = emptyList(),
         audio = audioReferences().map { BookAudioUi(it.id, it.title ?: title, "", "", duration(it.seconds), it.seconds) },
         blockCount = pkgBlocks,
-        // ponytail: volumes come from the contents' chapters; a book whose chapters carry no vol shows no volume menu.
+        // volumes come from the contents' chapters; a book whose chapters carry no vol shows no volume menu.
         volumeStarts = chapters.filter { it.vol != null }.groupBy { it.vol!! }
             .map { (vol, list) -> vol to list.minOf { it.firstOrdinal } }.sortedBy { it.first }.takeIf { it.size > 1 }.orEmpty(),
         volumeUnit = volumeUnit,

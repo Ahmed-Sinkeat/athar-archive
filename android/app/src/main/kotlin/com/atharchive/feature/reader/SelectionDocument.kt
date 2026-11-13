@@ -99,7 +99,7 @@ internal data class SelectionDocument(
 
 /**
  * A paragraph the page break cut mid-sentence carries on with a space, not a blank line.
- * ponytail: "ends a sentence" is the last mark only; a closing bracket after a stop reads as mid-sentence.
+ * "ends a sentence" is the last mark only; a closing bracket after a stop reads as mid-sentence.
  */
 private fun runsOnAcrossPage(previous: SelectionSegment, next: SelectionSegment, sofar: CharSequence): Boolean =
     next.pageLabel != null &&

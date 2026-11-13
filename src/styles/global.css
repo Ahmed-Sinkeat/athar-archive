@@ -133,7 +133,7 @@ a { color: inherit; }
 img { max-width: 100%; }
 
 /* keyboard focus visibility — soft, rounded accent ring (not a hard red box).
-   ponytail: one muted ring for everything; search keeps its own ring below. */
+   one muted ring for everything; search keeps its own ring below. */
 :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
   outline: 2px solid color-mix(in srgb, var(--accent) 42%, transparent);
   outline-offset: 2px;
@@ -160,7 +160,7 @@ img { max-width: 100%; }
 /* Phase 4: narrower reading measure — 880→740px for Arabic prose */
 .wrap-read { max-width: min(1150px, max(740px, 39vw)); margin: 0 auto; padding-inline: 28px; }
 .wrap-matn { max-width: min(1050px, max(660px, 35vw)); margin: 0 auto; padding-inline: 28px; }
-/* ponytail: was 130px bottom — no fixed bottom toolbar needs that much
+/* was 130px bottom — no fixed bottom toolbar needs that much
    clearance (aa-findbtn etc. are all position:fixed, viewport-relative, not
    affected by page padding), it just left a dead gap before the footer. */
 .reading-pad { padding-block: 30px 50px; }
@@ -283,7 +283,7 @@ img { max-width: 100%; }
   font-family: var(--font-ui); color: var(--ink-soft); background: var(--surface);
   border: 1px solid var(--rule-strong); border-radius: var(--radius); width: 32px; height: 32px;
   cursor: pointer; display: grid; place-items: center; font-size: 13px;
-  touch-action: manipulation; /* ponytail: kills 300ms tap delay without JS */
+  touch-action: manipulation; /* kills 300ms tap delay without JS */
 }
 .icon-btn[hidden] { display: none; } /* [hidden]'s UA display:none loses to .icon-btn's display:grid without this */
 /* topbar sidebar toggle: reader.ts only shows this on pages with a
@@ -1174,7 +1174,7 @@ html.hide-vnums .vnum { display: none; }
 [data-width="wide"] .wrap-read { max-width: min(1400px, max(900px, 46vw)); }
 .chap-grid { display: grid; grid-template-columns: 232px 1fr; gap: 52px; align-items: start; } /* HANDOFF.md §5 */
 .chap-grid > .reading-pad { grid-column: 2; grid-row: 1; min-width: 0; }
-/* ponytail: previously pinned to position:fixed past 1300px to avoid a "dead
+/* previously pinned to position:fixed past 1300px to avoid a "dead
    gap" to the true viewport edge on very wide screens — dropped after it
    caused a real layout break (overlapping sidebar/content) crossing that
    breakpoint under browser zoom. position:sticky at every desktop width is

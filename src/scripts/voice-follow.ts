@@ -1,6 +1,6 @@
 // Voice follow-along (poem page prototype) — Chrome's built-in SpeechRecognition,
 // no server round-trip. As the reader recites, each bayt lights up once its words
-// show up in the running transcript. ponytail: word-overlap match, not phoneme-level
+// show up in the running transcript. word-overlap match, not phoneme-level
 // tajweed scoring — good enough for plain poem Arabic, revisit if false-advances happen.
 import { stripTashkeel } from "../lib/display";
 

@@ -11,7 +11,7 @@ import { hrefFor } from "../lib/display";
 
 // Marks only carry {path, title} (set client-side when highlighted) — no
 // person/topics — so "organize by topic/person" needs a lookup from path to
-// that metadata. Built at build time (ponytail: inline data island, same
+// that metadata. Built at build time (inline data island, same
 // pattern as compose.astro's index — this page is noindex + perf-exempt).
 const graph = await loadGraph();
 const names = await personNameMap();

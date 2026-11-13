@@ -35,7 +35,7 @@ class AudioPlaybackService : MediaSessionService() {
             androidx.media3.datasource.DefaultDataSource.Factory(this, androidx.media3.datasource.okhttp.OkHttpDataSource.Factory(content.httpClient)),
         ) { spec ->
             val id = spec.key
-            // ponytail: runBlocking here is fine: ExoPlayer calls the resolver on its loading thread,
+            // runBlocking here is fine: ExoPlayer calls the resolver on its loading thread,
             // never the main one, and the resolver has no async form. It waits for one disk lookup
             // (and a hash check the first time a downloaded file plays), which the load waits on anyway.
             if (id == null) spec else spec.withUri(android.net.Uri.parse(kotlinx.coroutines.runBlocking { content.audioUri(id) }))

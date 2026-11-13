@@ -1,4 +1,4 @@
-// ponytail: stores frontmatter + filePath only — body is NOT in the data store.
+// stores frontmatter + filePath only — body is NOT in the data store.
 // Cuts the store from ~3 GB to ~10 MB for large content collections.
 // Pages call readBody(entry) to load body from disk on demand.
 import type { Loader } from "astro/loaders";

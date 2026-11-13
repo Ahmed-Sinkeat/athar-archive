@@ -58,7 +58,7 @@ interface ReaderImageEntryPoint {
 private object ReaderImages {
     @Volatile private var client: OkHttpClient? = null
 
-    // ponytail: 64 MB LRU on disk, no memory cache (a bitmap lives while its block is on screen); raise if articles grow image-heavy.
+    // 64 MB LRU on disk, no memory cache (a bitmap lives while its block is on screen); raise if articles grow image-heavy.
     private fun client(context: Context): OkHttpClient = client ?: synchronized(this) {
         client ?: EntryPoints.get(context.applicationContext, ReaderImageEntryPoint::class.java).http().newBuilder()
             .cache(Cache(File(context.cacheDir, "reader-images"), 64L * 1024 * 1024))
