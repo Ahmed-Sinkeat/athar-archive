@@ -2,7 +2,7 @@
 // (epub-import.ts keeps its own inline copy — it calls main() unconditionally
 // at module scope, so importing from it isn't safe.)
 import { existsSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 
 const TASHKEEL = /[ً-ْٰـ]/g;
 const stripTashkeel = (s: string) => s.replace(TASHKEEL, "");
@@ -38,10 +38,14 @@ export function slugify(ar: string, fallbackPrefix = "manshoor"): string {
   return /^[a-z0-9]+(-[a-z0-9]+)*$/.test(s) ? s : `${fallbackPrefix}-` + Math.random().toString(36).slice(2, 8);
 }
 
+// The app keys entities by bare ID across these collections, so a name must be free in all of them.
+const APP_COLLECTIONS = ["article", "book", "book-lg", "question", "poem"];
+
 export function uniqueArticleSlug(base: string, articleDir: string): string {
-  if (!existsSync(join(articleDir, base + ".md"))) return base;
+  const taken = (name: string) => APP_COLLECTIONS.some((c) => existsSync(join(dirname(articleDir), c, name + ".md")));
+  if (!taken(base)) return base;
   let v = 2;
-  while (existsSync(join(articleDir, `${base}--v${v}.md`))) v++;
+  while (taken(`${base}--v${v}`)) v++;
   return `${base}--v${v}`;
 }
 

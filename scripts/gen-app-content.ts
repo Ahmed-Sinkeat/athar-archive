@@ -30,8 +30,11 @@ const signing = signingKeyFile && signingKeyId
   ? { keyId: signingKeyId, privateKey: await readFile(path.resolve(signingKeyFile), "utf8") }
   : undefined;
 
-// --only=coll/id,coll/id: regenerate just those and keep the rest of the previous catalog
-const only = option("--only")?.split(",").map((pair) => {
+// --only=coll/id,coll/id: regenerate just those and keep the rest of the previous catalog.
+// --only-file=path: the same list, one per line (thousands of ids overflow one argument).
+const onlyFile = option("--only-file");
+const onlyList = onlyFile ? (await readFile(onlyFile, "utf8")).split(/\s+/).filter(Boolean).join(",") : option("--only");
+const only = onlyList?.split(",").map((pair) => {
   const [coll, id] = pair.split("/");
   // The app rejects other collections (a `person/…` target once blocked every phone's sync).
   if (!["article", "book", "question", "poem"].includes(coll) || !id) throw new Error(`--only: unsupported target ${pair}`);

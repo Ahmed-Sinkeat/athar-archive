@@ -69,7 +69,8 @@ function toText(inner: string, channel: string): string {
   });
   s = s.replace(/(?:<br\s*\/?>\s*){2,}/gi, "\n\n").replace(/<br\s*\/?>/gi, "\n");
   s = decode(stripTags(s));
-  s = s.split("\n").map((l) => l.replace(/[ \t]+/g, " ").trim()).join("\n");
+  // A "~~~~" or "````" decoration line opens a Markdown code fence that swallows the rest of the post.
+  s = s.split("\n").map((l) => l.replace(/[ \t]+/g, " ").trim()).filter((l) => !/^(?:~{3,}|`{3,})$/.test(l)).join("\n");
   return s.replace(/\n{3,}/g, "\n\n").trim();
 }
 
@@ -231,7 +232,9 @@ function groupThreads(posts: RawPost[], dropped: string[]): ThreadDraft[] {
     const text = g.map((p) => p.text).filter(Boolean).join("\n\n");
     const photos = g.flatMap((p) => p.photos.map((url) => ({ postId: p.id, url })));
     const titled = TITLE_CARD_RE.test(text);
-    if (SERVICE_RE.test(text) || (!titled && (text.length < (photos.length ? MIN_PHOTO_TEXT : MIN_TEXT) || (text.length < PROMO_UNDER && /\]\(https?:/.test(text))))) {
+    // Long URLs pass the length bar, so a post of just a title and links is measured without them.
+    const linkOnly = !photos.length && text.replace(TITLE_CARD_RE, "").replace(/\S*https?:\/\/\S*/g, "").trim().length < 20;
+    if (SERVICE_RE.test(text) || linkOnly || (!titled && (text.length < (photos.length ? MIN_PHOTO_TEXT : MIN_TEXT) || (text.length < PROMO_UNDER && /\]\(https?:/.test(text))))) {
       dropped.push(`${g.map((p) => p.id).join(",")}: ${text.length} chars${photos.length ? " + photo" : ""}`);
       continue;
     }
@@ -247,7 +250,8 @@ function groupThreads(posts: RawPost[], dropped: string[]): ThreadDraft[] {
       title = lead;
       body = text;
     }
-    title = title.replace(TITLE_TRIM_RE, "");
+    // A title line can carry a link ("[label](url)", or one cut short at 80 chars): keep the words only.
+    title = title.replace(/\[([^\]]*)\]\([^)]*\)?/g, "$1").replace(/\]\(https?\S*/g, "").replace(/[[\]]/g, "").replace(TITLE_TRIM_RE, "");
     out.push({ title: title || `منشور ${g[0].id}`, dateIso: g[0].dateIso, postIds: g.map((p) => p.id), body, photos, titleLine });
   }
   return out;
