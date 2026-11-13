@@ -115,6 +115,11 @@ internal val ContentMigrations = arrayOf(
             connection.prepare("ALTER TABLE entity ADD COLUMN poemsJson TEXT").use { it.step() }
             connection.prepare("UPDATE contentGeneration SET generationId = ''").use { it.step() }
         }
+    }, object : androidx.room3.migration.Migration(14, 15) {
+        // Each entity's catalog line hash; empty, so the next sync reads every line once and fills it.
+        override suspend fun migrate(connection: androidx.sqlite.SQLiteConnection) {
+            connection.prepare("CREATE TABLE IF NOT EXISTS `catalogLine` (`id` TEXT NOT NULL, `sha` TEXT NOT NULL, PRIMARY KEY(`id`))").use { it.step() }
+        }
     },
 )
 

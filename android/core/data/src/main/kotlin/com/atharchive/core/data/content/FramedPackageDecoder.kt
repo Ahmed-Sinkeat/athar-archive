@@ -32,13 +32,25 @@ object AppContentDocuments {
      * from the hashes, f0 = [len, n, sha256]) and whose personName/died, when left out, are its person's.
      * The caller checks the bytes' size and SHA-256 before using what this returns.
      */
-    fun decodeLightCatalog(input: InputStream): CatalogDocument = try {
+    fun decodeLightCatalog(input: InputStream): CatalogDocument = decodeLightCatalog(input, emptySet(), null)
+
+    /**
+     * As above, but a line whose [lineHash] is in [known] (what the device already applied) is skipped
+     * unread: a new generation changes a few entries, and decoding all ~16k took ~0.6 s and 43 MB on a
+     * PC each time. [hashes] gets each decoded entry's line hash. With lines skipped, only per-entry
+     * checks run (the signed root has already vouched for the bytes).
+     */
+    fun decodeLightCatalog(input: InputStream, known: Set<String>, hashes: MutableMap<String, String>?): CatalogDocument = try {
         val reader = input.bufferedReader(Charsets.UTF_8)
         val header = AppContentJson.decodeFromString<LightCatalogHeader>(reader.readLine() ?: fail("light catalog is empty"))
         val persons = header.persons.associateBy { it.id }
         val entries = ArrayList<CatalogEntry>()
+        val digest = java.security.MessageDigest.getInstance("SHA-256")
+        var skipped = false
         while (true) {
             val line = reader.readLine() ?: break
+            val hash = lineHash(digest, line, persons)
+            if (hash in known) { skipped = true; continue }
             val light = AppContentJson.parseToJsonElement(line).jsonObject
             val p = light.getValue("pkg").jsonObject
             fun text(key: String) = p.getValue(key).jsonPrimitive.content
@@ -57,9 +69,9 @@ object AppContentDocuments {
                     }
                 })
             }
-            entries += AppContentJson.decodeFromJsonElement<CatalogEntry>(entry)
+            entries += AppContentJson.decodeFromJsonElement<CatalogEntry>(entry).also { hashes?.put(it.id, hash) }
         }
-        checked(CatalogDocument(header.schema, entries, header.persons))
+        checked(CatalogDocument(header.schema, entries, header.persons), whole = !skipped)
     } catch (error: SerializationException) {
         throw ContentIntegrityException("malformed light catalog", error)
     } catch (error: IllegalArgumentException) {
@@ -68,7 +80,16 @@ object AppContentDocuments {
         throw ContentIntegrityException("malformed light catalog", error)
     }
 
-    private fun checked(decoded: CatalogDocument): CatalogDocument {
+    /** Content DB version (so a schema change re-applies every line once), the line, and its person (whose name/died a line may leave out). */
+    private fun lineHash(digest: java.security.MessageDigest, line: String, persons: Map<String, CatalogPerson>): String {
+        // `"person":"` cannot occur inside a JSON string (its quotes would be escaped); entries have no nested person.
+        val at = line.indexOf("\"person\":\"")
+        val person = if (at < 0) null else persons[line.substring(at + 10, line.indexOf('"', at + 10))]
+        val text = "${com.atharchive.core.data.db.content.ContentDbVersion}\n$line" + (person?.let { "\n${it.name}\n${it.died ?: ""}" } ?: "")
+        return digest.digest(text.toByteArray(Charsets.UTF_8)).take(16).joinToString("") { "%02x".format(it) }
+    }
+
+    private fun checked(decoded: CatalogDocument, whole: Boolean = true): CatalogDocument {
         if (decoded.schema != APP_CONTENT_SCHEMA) {
             throw UnsupportedContentSchemaException(decoded.schema, decoded.schema)
         }
@@ -85,6 +106,7 @@ object AppContentDocuments {
             validateEntry(entry)
             if (!identities.add(entry.id)) fail("catalog contains a duplicate ${entry.coll}/${entry.id}")
         }
+        if (!whole) return catalog
         val byId = catalog.entries.associateBy { it.id }
         catalog.entries.forEach { entry ->
             entry.editionOf?.let { primaryId ->

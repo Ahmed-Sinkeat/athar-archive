@@ -33,6 +33,8 @@ data class VerifiedGeneration(
     val root: RootPayload,
     val catalog: CatalogDocument,
     val tombstones: TombstoneDocument,
+    /** Line hash of each decoded light-catalog entry (none from the legacy catalog). */
+    val lineHashes: Map<String, String> = emptyMap(),
 )
 
 data class VerifiedRoot(val root: RootPayload)
@@ -57,14 +59,17 @@ class AppContentHttpClient(
         VerifiedRoot(SignedRootVerifier.verify(envelope, trustedKeys))
     }
 
-    suspend fun fetchGeneration(root: RootPayload): VerifiedGeneration = withContext(Dispatchers.IO) {
-        val catalog = root.light?.let { light -> stream(light, "light catalog", AppContentDocuments::decodeLightCatalog) }
+    /** [knownLines]: line hashes already applied on this device; those entries are left out of the catalog. */
+    suspend fun fetchGeneration(root: RootPayload, knownLines: Set<String> = emptySet()): VerifiedGeneration = withContext(Dispatchers.IO) {
+        val lineHashes = HashMap<String, String>()
+        val catalog = root.light?.let { light -> stream(light, "light catalog") { AppContentDocuments.decodeLightCatalog(it, knownLines, lineHashes) } }
             ?: AppContentDocuments.decodeCatalog(get(root.catalog.path, root.catalog.size.checkedSize("catalog")), root.catalog)
         val tombstoneBytes = get(root.tombstones.path, root.tombstones.size.checkedSize("tombstones"))
         VerifiedGeneration(
             root = root,
             catalog = catalog,
             tombstones = AppContentDocuments.decodeTombstones(tombstoneBytes, root.tombstones),
+            lineHashes = lineHashes,
         )
     }
 

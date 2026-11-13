@@ -52,6 +52,7 @@ class ContentImporter(
         catalog: CatalogDocument,
         tombstonedIds: Set<String>,
         protectedIds: Set<String>,
+        lineHashes: Map<String, String> = emptyMap(),
     ) {
         apply(
             catalog,
@@ -63,23 +64,24 @@ class ContentImporter(
                 appliedAt = nowMillis(),
                 personsJson = AppContentJson.encodeToString(catalog.persons),
             ),
+            lineHashes,
         )
     }
 
     // Catalog rows commit slice by slice; only the search index and the generation row (written
     // last, so an interrupted apply runs again) share one small transaction.
-    private suspend fun apply(catalog: CatalogDocument, tombstonedIds: Set<String>, generation: ContentGenerationEntity) {
+    private suspend fun apply(catalog: CatalogDocument, tombstonedIds: Set<String>, generation: ContentGenerationEntity, lineHashes: Map<String, String> = emptyMap()) {
         val started = System.nanoTime()
         ContentSearchSchema.ensure(database)
         val dao = database.catalogDao()
         try {
             applyProgress.value = 0.05f
-            val changed = dao.applyCatalogSlices(catalog.entries.map(CatalogEntry::toEntity)) { applyProgress.value = 0.05f + 0.85f * it }
+            val changed = dao.applyCatalogSlices(catalog.entries.map(CatalogEntry::toEntity), lineHashes) { applyProgress.value = 0.05f + 0.85f * it }
             database.withWriteTransaction {
                 dao.finishGeneration(tombstonedIds, generation)
                 ContentSearchSchema.updateCatalog(this, changed, removedIds = tombstonedIds)
             }
-            android.util.Log.i("AtharContent", "catalog applied: ${changed.size} of ${catalog.entries.size} entries changed in ${(System.nanoTime() - started) / 1_000_000} ms")
+            android.util.Log.i("AtharContent", "catalog applied: ${changed.size} of ${catalog.entries.size} read entries changed in ${(System.nanoTime() - started) / 1_000_000} ms")
         } finally {
             applyProgress.value = null
         }

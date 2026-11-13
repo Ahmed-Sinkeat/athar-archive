@@ -11,6 +11,7 @@
 // `ContentSearchSchema` in ContentSearch.kt (the normalizer is the site's, which ArNormalize.kt
 // is tested against). PrebuiltCatalogTest checks rows and table definitions against the app's
 // own apply on a device: run it after changing either side.
+import { createHash } from "node:crypto";
 import { copyFileSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync } from "node:fs";
 import { DatabaseSync } from "node:sqlite";
 import path from "node:path";
@@ -120,6 +121,19 @@ for (const e of catalog.entries) {
   else row(null, e.title, JSON.stringify(e.openingVerses ?? []), e.openingVerses ?? [], e.verseCount > 0 ? e.verseCount : null);
 }
 console.log(`poem_row: ${poemRows} poems`);
+// Each entry's line hash as AppContentDocuments.lineHash makes it, so the first sync reads only changed lines.
+if (root.light) {
+  const lines = readFileSync(path.join(source, root.light.path), "utf8").split("\n").filter(Boolean);
+  const people = new Map((JSON.parse(lines[0]).persons ?? []).map((p) => [p.id, p]));
+  const insertLine = db.prepare("INSERT OR REPLACE INTO catalogLine(id, sha) VALUES (?, ?)");
+  for (const line of lines.slice(1)) {
+    const at = line.indexOf('"person":"');
+    const person = at < 0 ? undefined : people.get(line.slice(at + 10, line.indexOf('"', at + 10)));
+    const text = `${version}\n${line}` + (person ? `\n${person.name}\n${person.died ?? ""}` : "");
+    insertLine.run(JSON.parse(line).id, createHash("sha256").update(text, "utf8").digest("hex").slice(0, 32));
+  }
+  console.log(`catalogLine: ${lines.length - 1} lines`);
+}
 db.exec("COMMIT");
 db.exec("VACUUM");
 db.close();

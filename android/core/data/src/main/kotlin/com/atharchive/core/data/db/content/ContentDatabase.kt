@@ -101,6 +101,16 @@ data class EntityStateEntity(
 
 data class EntityPackage(val id: String, val pkgHash: String)
 
+/**
+ * The light-catalog line each entity was last applied from (its hash, see
+ * [com.atharchive.core.data.content.AppContentDocuments.decodeLightCatalog]): a sync decodes only lines not here.
+ */
+@Entity(tableName = "catalogLine")
+data class CatalogLineEntity(@PrimaryKey val id: String, val sha: String)
+
+/** The content DB's version; also part of each catalog line's hash, so a schema change re-applies every line once. */
+const val ContentDbVersion = 15
+
 @Entity(tableName = "contentGeneration")
 data class ContentGenerationEntity(
     @PrimaryKey val singleton: Int = 0,
@@ -275,8 +285,34 @@ private const val CatalogSlice = 250
 
 @Dao
 abstract class ContentCatalogDao {
+    /** The whole table: tests and one-off repairs only, never a sync (~16k rows). */
     @Query("SELECT * FROM entity")
     abstract suspend fun allEntities(): List<ContentEntity>
+
+    @Query("SELECT * FROM entity WHERE id IN (:ids)")
+    abstract suspend fun entitiesById(ids: List<String>): List<ContentEntity>
+
+    @Query("SELECT id FROM entity WHERE catalogPresent = 0")
+    abstract suspend fun absentIds(): List<String>
+
+    /** Line hashes whose entity is listed; a hash left without one (removed, retained absent) is dropped, so its line is read again. */
+    @Transaction
+    open suspend fun knownLines(): Set<String> {
+        dropOrphanLines()
+        return lineShas().toHashSet()
+    }
+
+    @Query("DELETE FROM catalogLine WHERE id NOT IN (SELECT id FROM entity WHERE catalogPresent = 1)")
+    protected abstract suspend fun dropOrphanLines()
+
+    @Query("SELECT sha FROM catalogLine")
+    protected abstract suspend fun lineShas(): List<String>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    protected abstract suspend fun putLines(lines: List<CatalogLineEntity>)
+
+    @Query("DELETE FROM catalogLine WHERE id IN (:ids)")
+    protected abstract suspend fun deleteLines(ids: List<String>)
 
     @Query("SELECT id, audioJson FROM entity WHERE audioJson != '[]'")
     abstract suspend fun audioRows(): List<EntityAudioRow>
@@ -420,12 +456,20 @@ abstract class ContentCatalogDao {
      * old package hash, so an interrupted apply finds them again), and the generation row is
      * written last by [finishGeneration], so the next sync re-applies an unfinished generation.
      */
-    suspend fun applyCatalogSlices(incoming: List<ContentEntity>, onProgress: (Float) -> Unit = {}): List<ContentEntity> {
+    suspend fun applyCatalogSlices(
+        incoming: List<ContentEntity>,
+        lineHashes: Map<String, String> = emptyMap(),
+        onProgress: (Float) -> Unit = {},
+    ): List<ContentEntity> {
         // Only rows that differ from what is stored are written. Rewriting all ~4k rows (and
         // their search rows) on every new generation was the 8-minute «تحديث المكتبة» on the
-        // phone; a generation usually changes a handful of entries.
-        val stored = allEntities().associateBy(ContentEntity::id)
+        // phone; a generation usually changes a handful of entries. Only the incoming ids are
+        // read back: the whole table (~16k rows) took tens of MB at each sync.
+        val stored = incoming.map(ContentEntity::id).chunked(DeleteSlice).flatMap { entitiesById(it) }.associateBy(ContentEntity::id)
         val changed = incoming.map { it.copy(catalogPresent = true) }.filter { stored[it.id] != it }
+        // A line read but not changed (an install from before these hashes) is known from now on.
+        val changedIds = changed.mapTo(HashSet(), ContentEntity::id)
+        lineHashes.filterKeys { it !in changedIds }.map { (id, sha) -> CatalogLineEntity(id, sha) }.chunked(DeleteSlice).forEach { putLines(it) }
         val noLocalCopy = packagesWithoutLocalCopy().associate { it.id to it.pkgHash }
         // Read-through pages carry no package version, so pages cached from an older package
         // would be served forever; drop them and the reader fetches the new ones. A download
@@ -442,7 +486,7 @@ abstract class ContentCatalogDao {
         }
         val slices = changed.chunked(CatalogSlice)
         slices.forEachIndexed { index, slice ->
-            applyCatalogSlice(slice)
+            applyCatalogSlice(slice, slice.mapNotNull { e -> lineHashes[e.id]?.let { CatalogLineEntity(e.id, it) } })
             onProgress((index + 1f) / slices.size)
         }
         return changed
@@ -450,9 +494,10 @@ abstract class ContentCatalogDao {
 
     /** Catalog rows only: a download's state lives in `entityState`, which a catalog row never overwrites. */
     @Transaction
-    protected open suspend fun applyCatalogSlice(incoming: List<ContentEntity>) {
+    protected open suspend fun applyCatalogSlice(incoming: List<ContentEntity>, lines: List<CatalogLineEntity> = emptyList()) {
         val ids = incoming.map(ContentEntity::id)
         replaceEntities(incoming)
+        putLines(lines) // with its rows, so an interrupted apply never knows a line it did not write
         insertMissingStates(ids.map(::EntityStateEntity))
         resetTransfers(ids)
     }
@@ -462,16 +507,14 @@ abstract class ContentCatalogDao {
         // Mark first, then let the repository re-snapshot the user DB before purge. This closes
         // the cross-database race without pretending both files share a transaction.
         for (entityId in tombstonedIds) retainTombstonedEntity(entityId)
+        tombstonedIds.toList().chunked(DeleteSlice).forEach { deleteLines(it) }
         resetTransfers(tombstonedIds.toList())
         replaceGeneration(generation)
     }
 
     @Transaction
     open suspend fun purgeUnprotectedTombstones(protectedIds: Set<String>) {
-        allEntities()
-            .asSequence()
-            .filter { !it.catalogPresent && it.id !in protectedIds }
-            .forEach { removeEntity(it.id) }
+        absentIds().filter { it !in protectedIds }.forEach { removeEntity(it) }
     }
 
     @Transaction
@@ -749,8 +792,9 @@ abstract class ContentImportDao {
         ContentBlockEntity::class,
         ChapterEntity::class,
         FootnoteEntity::class,
+        CatalogLineEntity::class,
     ],
-    version = 14,
+    version = ContentDbVersion,
     exportSchema = true,
 )
 abstract class AtharContentDatabase : RoomDatabase() {

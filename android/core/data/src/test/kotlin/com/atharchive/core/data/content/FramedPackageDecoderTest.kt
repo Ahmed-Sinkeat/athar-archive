@@ -107,6 +107,20 @@ class FramedPackageDecoderTest {
     }
 
     @Test
+    fun aKnownLineIsSkippedUnlessItsPersonChanged() {
+        val line = AppContentJson.encodeToString(CatalogEntry.serializer(), ARTICLE.copy(person = "author", personName = "Author"))
+            .replace(Regex(""""pkg":\{.*\}\}$"""), """"pkg":{"h":"${ARTICLE.pkg.hash}","s":590,"u":974,"b":3,"c":1,"ih":"${ARTICLE.pkg.idxHash}","is":252}}""")
+        fun catalog(name: String) = AppContentJson.encodeToString(LightCatalogHeader.serializer(),
+            LightCatalogHeader(2, listOf(CatalogPerson("author", name, works = listOf(ARTICLE_ID))))) + "\n$line\n"
+        val hashes = HashMap<String, String>()
+        assertEquals(1, AppContentDocuments.decodeLightCatalog(catalog("Author").byteInputStream(), emptySet(), hashes).entries.size)
+        val known = hashes.values.toSet()
+        assertEquals(0, AppContentDocuments.decodeLightCatalog(catalog("Author").byteInputStream(), known, null).entries.size)
+        // A renamed person changes what the line expands to, so it is read again.
+        assertEquals(1, AppContentDocuments.decodeLightCatalog(catalog("Renamed").byteInputStream(), known, null).entries.size)
+    }
+
+    @Test
     fun unknownCollectionsAreSkippedNotFatal() {
         val page = ARTICLE.copy(id = "adel-al-hamdan", coll = "person")
         val catalog = CatalogDocument(2, listOf(ARTICLE, page), listOf(CatalogPerson("author", "Author", works = listOf(ARTICLE_ID, page.id))))

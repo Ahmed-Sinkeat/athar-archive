@@ -67,7 +67,7 @@ class ReadThroughContentRepository(
         importer.applyProgress.value = 0f // the update is visible from the catalog download on
         try {
         val started = System.nanoTime()
-        val generation = client.fetchGeneration(root)
+        val generation = client.fetchGeneration(root, database.catalogDao().knownLines())
         val fetched = System.nanoTime()
         return mutationMutex.withLock {
         if (database.catalogDao().generation()?.generationId != current?.generationId) return@withLock CatalogSyncResult.UpToDate(database.catalogDao().generation()?.generationId ?: root.generationId)
@@ -80,6 +80,7 @@ class ReadThroughContentRepository(
             catalog = generation.catalog,
             tombstonedIds = generation.tombstones.deleted.mapTo(mutableSetOf()) { it.id },
             protectedIds = protectedBefore,
+            lineHashes = generation.lineHashes,
         )
         // Re-snapshot after the content transaction. Tombstoned rows were only marked in
         // that transaction, so a concurrent user action cannot lose its content metadata.
