@@ -31,7 +31,10 @@ internal fun EntryProviderScope<NavKey>.readerEntries(app: AppNav) = with(app) {
         // The reader owns the whole screen: no bottom navigation inside a book.
         entry<ReaderRoute> { route ->
             val quoteColors = com.atharchive.feature.reader.rememberReaderColors()
-            val readerEmitted = collectEmitted(route.bookId) { contentViewModel.readerState(route.bookId) }
+            // Known before the book reader draws: a poem's cached text drew here as prose for a moment
+            // before the swap to the poem reader below.
+            val isPoem by androidx.compose.runtime.produceState<Boolean?>(null, route.bookId) { value = contentViewModel.isPoem(route.bookId) }
+            val readerEmitted = collectEmitted(route.bookId) { contentViewModel.readerState(route.bookId) }.takeIf { isPoem == false }
             val readerState = readerEmitted?.value
             val readerWindow = remember(route.bookId) { contentViewModel.readerWindow(route.bookId) }
             val openProgress by contentViewModel.openProgress.collectAsStateWithLifecycle()

@@ -439,7 +439,9 @@ private fun ContentEntity.diwanPoem(ordinal: Int): Pair<IntRange, String>? {
 }
 
 private fun ContentEntity.toPoemReaderUi(blocks: List<ContentBlockEntity>, title: String = this.title, expectedBlocks: Int = pkgBlocks): PoemReaderUiState {
-    val prose = blocks.none { it.type == "verse" }
+    // Prose only once the whole poem is in: a ديوان's poem opens with its heading and «من البحر …»,
+    // and with no verse loaded yet it was laid out as text for a moment, then as verses.
+    val prose = blocks.size >= expectedBlocks && blocks.none { it.type == "verse" }
     // A باب heading rides on the verse after it, so the list stays one row per verse
     // (indices are what the panel and audio jump to).
     var heading: String? = null

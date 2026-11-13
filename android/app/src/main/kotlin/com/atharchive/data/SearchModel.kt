@@ -157,7 +157,10 @@ internal class SearchModel(
         // «إخفاء التشكيل» is display only: toggling it must not search again.
         _searchFilters.map { it.copy(plain = false) }.distinctUntilChanged(),
         // The filter lists are built once per catalog change, not on every keystroke.
-        catalogDao.observeCatalogLean().pausedDuringUpdate().map { SearchCatalog(it) },
+        // Room emits the catalog again after every update (and any entity write) though nothing a search
+        // reads changed: each emission re-ran the search, emptied the passages and refilled them, the
+        // list jumping back to its top under the reader.
+        catalogDao.observeCatalogLean().pausedDuringUpdate().distinctUntilChanged().map { SearchCatalog(it) },
     ) { query, filters, catalog ->
         SearchInput(query, filters, catalog)
     }.combine(_searchLimit) { input, limit -> input to limit }.transformLatest { (input, limit) ->
