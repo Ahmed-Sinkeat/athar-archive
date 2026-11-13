@@ -187,6 +187,8 @@ fun ReaderScreen(
     onOpenInKannashah: ((String) -> Unit)? = null,
     /** «نسخ مع التذييل»: the text with its source line (book, author, volume, page) and link. */
     onCopyCited: (suspend (ReaderSelection) -> Unit)? = null,
+    /** «نسخ الكل» with the title above and the source line and link below; else the bare text. */
+    onCopyWhole: ((ReaderSelection) -> Unit)? = null,
 ) {
     var introOpen by remember { mutableStateOf(false) }
     var settingsOpen by remember { mutableStateOf(false) }
@@ -848,7 +850,7 @@ fun ReaderScreen(
                             )
                             val chosen = resolveSelection(selection, window, state.blocks, settings.showTashkeel, onLoadSelectionBlocks)
                             selection.clear()
-                            if (chosen == null) "تعذّر نسخ النص" else { onCopySelection(chosen); "نُسخ النص كله" }
+                            if (chosen == null) "تعذّر نسخ النص" else { (onCopyWhole ?: onCopySelection)(chosen); "نُسخ النص كله" }
                         } catch (cancelled: CancellationException) { throw cancelled }
                         catch (_: Exception) { selection.clear(); "تعذّر نسخ النص" }
                     }

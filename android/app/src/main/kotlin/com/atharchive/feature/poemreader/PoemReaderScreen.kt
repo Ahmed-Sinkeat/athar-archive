@@ -503,11 +503,9 @@ fun PoemReaderScreen(
                 onMore = { moreOpen = true },
                 menu = {
                     // The prose view is Aa «العرض: متصل», not a second screen.
-                    val poemText = { buildString {
-                        append(state.title)
-                        if (state.poet.isNotBlank()) append(" — ").append(state.poet)
-                        state.verses.forEach { append("\n\n").append(it.sadr).append("\n").append(it.ajz) }
-                    } }
+                    // Verses as a selection copies them, the source and link below.
+                    val poemText = { com.atharchive.ui.wholeText(state.verses.joinToString("\n\n") { it.sadr + "\n" + it.ajz },
+                        state.title, state.poet, state.sourceUrl) }
                     AtharMenu(
                         expanded = moreOpen,
                         onDismiss = { moreOpen = false },

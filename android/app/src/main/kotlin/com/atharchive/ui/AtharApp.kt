@@ -927,6 +927,14 @@ internal fun citedText(
     return if (tail.isEmpty()) text else "$text\n\n$tail"
 }
 
+/**
+ * «نسخ الكل»: the title on its own line, the whole text, then the source line and link as
+ * «نسخ مع التذييل» has them. It copied the bare text (articles) or «العنوان — الشاعر» run into the
+ * first verse (poems), with no source or link.
+ */
+internal fun wholeText(text: String, title: String, author: String, url: String): String =
+    (if (title.isBlank()) "" else "$title\n\n") + citedText(text, title, author, null, null, url)
+
 internal fun copyText(context: Context, text: String) {
     val clipboard = context.getSystemService(ClipboardManager::class.java)
     clipboard.setPrimaryClip(ClipData.newPlainText("Athar", text))

@@ -95,6 +95,9 @@ internal fun EntryProviderScope<NavKey>.readerEntries(app: AppNav) = with(app) {
                         copyText(context, citedText(selection.quotedText, state.bookTitle, state.author,
                             vol.takeIf { state.volumeStarts.isNotEmpty() }, page, state.sourceUrl, state.volumeUnit))
                     },
+                    onCopyWhole = { selection ->
+                        copyText(context, wholeText(selection.quotedText, state.bookTitle, state.author, state.sourceUrl))
+                    },
                     onPlayAudio = { contentViewModel.playWorkAudio(route.bookId, it.id) },
                     playback = { playbackState },
                     onToggleAudio = contentViewModel.playback::toggle,

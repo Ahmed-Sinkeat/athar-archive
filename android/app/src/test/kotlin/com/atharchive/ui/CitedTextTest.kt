@@ -19,4 +19,10 @@ class CitedTextTest {
             citedText("ب", "القصيدة", "الشاعر", null, null, "https://x/poem/a", verses = 12..12))
         assertEquals("ب\n\n— القصيدة، الأبيات ١٢–١٥", citedText("ب", "القصيدة", "", null, null, "", verses = 12..15))
     }
+
+    @Test fun copyAllPutsTheTitleApartAndTheSourceBelow() {
+        assertEquals("القصيدة\n\nصدر\nعجز\n\n— القصيدة، الشاعر\nhttps://x",
+            wholeText("صدر\nعجز", "القصيدة", "الشاعر", "https://x"))
+        assertEquals("نص", wholeText("نص", "", "", ""))
+    }
 }
