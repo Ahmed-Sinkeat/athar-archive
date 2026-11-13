@@ -35,7 +35,7 @@ interface Doc {
   displayTitle: string;
   title: string;  // normalized, searchable
   text: string;   // as written; normalized into the searchable column per row, kept as-is in `raw`
-  pg?: string;    // the app's block range "first-last" of this passage (books, v2 only): a tap opens it directly
+  pg?: string;    // the app's block range "first-last" of this passage (books and poems, v2 only): a tap opens it directly
 }
 
 async function main() {
@@ -116,7 +116,10 @@ async function main() {
     metaEntries.filter((e) => e.collection === "person").map((e) => [e.id, String(e.data.title ?? "")]),
   );
 
-  const hashOf = (d: Doc) => crypto.createHash("sha256").update([d.title, d.text, d.displayTitle, d.type, d.book, d.person, ...(v2 ? [priorOf(d)] : [])].join("\0")).digest("hex");
+  // "pg1": poems gained their passages' block ranges (2026-11-14); their text did not change, so
+  // without it an incremental run would keep every poem's old rows, which have none.
+  const hashOf = (d: Doc) => crypto.createHash("sha256").update([d.title, d.text, d.displayTitle, d.type, d.book, d.person,
+    ...(v2 ? [priorOf(d)] : []), ...(v2 && d.type === "poem" ? ["pg1"] : [])].join("\0")).digest("hex");
   const q = (s: string) => `'${s.replace(/'/g, "''").replace(/[\u0000-\u001f]/g, " ")}'`;
   // `raw` is the passage as written (letters + tashkeel): results show it and rank the typed spelling first.
   // An incremental run writes into the live table, which only has `raw` after the full reindex
@@ -292,6 +295,9 @@ async function main() {
       case "term": {
         const body = await readBody(e);
         const urls: Record<string, string> = { poem: "poem", article: "article", term: "term" };
+        // A poem's passages carry their verses' blocks as a book's do: a tap opens the ديوان's poem
+        // and verse directly. It used to walk the ديوان frame by frame and fall back to its first poem.
+        const place = v2 && e.collection === "poem" ? appPlace(e.id, body, "poem") : undefined;
         processDoc({
           type: e.collection, book: e.collection === "poem" ? e.id : "", person,
           url: `/${urls[e.collection]}/${e.id}`,
@@ -299,7 +305,8 @@ async function main() {
           // A poem is searched in its verses only: its description, «المقدمة» card and prose headings
           // came up as poem hits that read like a book's (12.x owner feedback 2026-11-11).
           text: strip(e.collection === "poem" ? numberedVerses(body) : [e.data.definition ?? "", body].join(" ")),
-        });
+        }, place);
+        if (place) { placedRows += place.placed; unplacedRows += place.missed; }
         break;
       }
       case "question": {
@@ -369,10 +376,10 @@ const WINDOW = 400_000;
  */
 export interface Place { text: string; starts: number[]; cursor: number; placed: number; missed: number }
 
-/** The app's blocks of one book, or undefined when its parser cannot read it. */
-export function appPlace(id: string, body: string): Place | undefined {
+/** The app's blocks of one book or poem, or undefined when its parser cannot read it. */
+export function appPlace(id: string, body: string, coll: "book" | "poem" = "book"): Place | undefined {
   try {
-    const blocks = parseReadableDocument({ coll: "book", id, body, sourcePath: `${id}.md` }).blocks;
+    const blocks = parseReadableDocument({ coll, id, body, sourcePath: `${id}.md` }).blocks;
     const starts: number[] = [];
     let text = "";
     for (const b of blocks) {

@@ -70,6 +70,14 @@ private class SearchCatalog(entities: List<ContentEntity>) {
 }
 
 /** «القرن ٨» → 8. */
+/**
+ * A poem passage's blocks, 16 more each side: the index places it by its letters, and the باب
+ * headings and prose it leaves out move an edge by a few blocks (rarely ~25-40; measured over every
+ * poem 2026-11-14). The best match by the snippet's words is still taken inside it.
+ */
+internal fun widenedPoemRange(pg: String): String? =
+    pg.split('-').mapNotNull(String::toIntOrNull).takeIf { it.size == 2 }?.let { (from, to) -> "${(from - 16).coerceAtLeast(0)}-${to + 16}" }
+
 private fun centuryNumber(label: String) = com.atharchive.data.AllCenturies.indexOf(label) + 1
 
 private data class SearchTrace(val query: String, val cookie: Int)
@@ -378,7 +386,8 @@ internal class SearchModel(
      * anchor), then the first match of [query] in that chapter's loaded frame; an article, poem or
      * مسألة is searched from its start. Null ordinal: open it as usual.
      */
-    suspend fun locateOnlineHit(hit: SearchHitUi, query: String): Triple<Int?, Int, Int> = locateOnline(hit.entityId, hit.url, query, hit.excerpt, hit.pg)
+    suspend fun locateOnlineHit(hit: SearchHitUi, query: String): Triple<Int?, Int, Int> =
+        locateOnline(hit.entityId, hit.url, query, hit.excerpt, if (hit.type == SearchResultType.Poem) hit.pg?.let(::widenedPoemRange) else hit.pg)
 
     /**
      * The block behind an online hit: its chapter (or the site's «--pages-85-124» piece of it) is
@@ -391,7 +400,9 @@ internal class SearchModel(
         if (query.length < 2) return Triple(null, 0, 0)
         // The index knows the passage's blocks: only their frames are opened (online too), no chapter walk.
         pg?.split('-')?.mapNotNull(String::toIntOrNull)?.takeIf { it.size == 2 && it[0] <= it[1] }?.let { (from, to) ->
-            runCatching { bestMatch(entityId, from..to, query, snippetWords(snippet), frameLimit = 4) }
+            // past the last block (a widened poem range) it would fail and walk the chapter instead
+            val last = minOf(to, (catalogDao.entity(entityId)?.pkgBlocks ?: Int.MAX_VALUE) - 1)
+            runCatching { bestMatch(entityId, from..last, query, snippetWords(snippet), frameLimit = 4) }
                 .getOrElse { if (it is kotlinx.coroutines.CancellationException) throw it else null }
                 ?.let { return Triple(it.ordinal, it.sourceMatchStart, it.sourceMatchEnd) }
         }
