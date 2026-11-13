@@ -17,6 +17,7 @@ room3 {
 dependencies {
     implementation(project(":core:athar-text"))
     api(libs.room.runtime)
+    api(libs.room.paging)
     implementation(libs.sqlite.bundled)
     implementation(libs.okhttp)
     implementation(libs.kotlinx.serialization.json)

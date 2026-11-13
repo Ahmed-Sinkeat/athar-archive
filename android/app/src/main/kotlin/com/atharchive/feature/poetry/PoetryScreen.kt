@@ -25,7 +25,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.items
+import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.compose.itemKey
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -95,6 +97,7 @@ fun PoetryScreen(
     scrollToTopRequest: Int = 0,
     onBack: (() -> Unit)? = null,
     textSearch: com.atharchive.feature.search.SectionTextSearch? = null,
+    poemPages: (com.atharchive.core.data.repository.PoemPageQuery) -> kotlinx.coroutines.flow.Flow<androidx.paging.PagingData<com.atharchive.core.data.repository.PoemListRow>> = { kotlinx.coroutines.flow.emptyFlow() },
 ) {
     var selectedTab by rememberSaveable { mutableStateOf(SectionTab.All) }
     var query by rememberSaveable { mutableStateOf("") }
@@ -124,40 +127,35 @@ fun PoetryScreen(
     val audio = audioStored.asChoiceSet() intersect setOf(com.atharchive.ui.components.HasAudioChoice)
     val hasActiveFilters = (topic + poet + era + audio).isNotEmpty() || section != com.atharchive.ui.components.SectionAll
 
-    // Normalized once per catalog change, not per filter pass or per sort comparison.
-    val normalized = remember(state.poems) {
-        state.poems.associate { poem ->
-            poem.id to Triple(normKey(poem.title), normKey(poem.poet), poem.openingVerses.map(::normKey))
-        }
-    }
-    val ranks = com.atharchive.ui.components.rememberCatalogRanks(query, "poem")
-    val visiblePoems = remember(state.poems, selectedTab, query, ranks, topic, sort, descending, poet, era, audio, section) {
-        val term = ArNormalize.normalize(query.trim())
-        state.poems.filter { poem ->
-            val matchesTab = selectedTab.matches(poem.recentRank != null, poem.downloaded, poem.saved)
-            // The catalog has no verses: an opening line typed in still finds its poem.
-            val matchesQuery = ranks == null || poem.id in ranks ||
-                term.isNotBlank() && com.atharchive.ui.components.matchesWords(term, *normalized.getValue(poem.id).third.toTypedArray())
-            matchesTab && matchesQuery && (topic.isEmpty() || poem.topics.any(topic::contains)) &&
+    // What a work decides (tab, topic, poet, era, audio, section) is filtered here over the ~3k
+    // works; the ~53k poem lines are read from the content DB a screenful at a time.
+    val works = remember(state.poems) { state.poems.associateBy(PoemUi::id) }
+    val shownWorks = remember(state.poems, selectedTab, topic, poet, era, audio, section) {
+        val all = selectedTab == SectionTab.All && (topic + poet + era + audio).isEmpty() && section == com.atharchive.ui.components.SectionAll
+        if (all) null else state.poems.filter { poem ->
+            selectedTab.matches(poem.recentRank != null, poem.downloaded, poem.saved) &&
+                (topic.isEmpty() || poem.topics.any(topic::contains)) &&
                 (poet.isEmpty() || poem.poet in poet) &&
                 (era.isEmpty() || poem.era in era) &&
                 (audio.isEmpty() || poem.hasAudio) && com.atharchive.ui.components.inSection(section, poem.topics)
-        }.sortedWith(
-            if (selectedTab == SectionTab.Recent) compareBy { it.recentRank ?: Int.MAX_VALUE }
-            else if (sort == PoemSort.Died) compareBy<PoemUi, Int?>(nullsLast(if (descending) reverseOrder() else naturalOrder())) { it.died }.thenBy { normalized.getValue(it.id).first }
-            else (when (sort) {
-                PoemSort.Title -> compareBy<PoemUi> { normalized.getValue(it.id).first }
-                PoemSort.Poet -> compareBy<PoemUi> { normalized.getValue(it.id).second }
-                PoemSort.Newest, PoemSort.Died -> compareBy<PoemUi> { it.title }
-            }).directed(descending),
-        ).let { poems ->
-            // A search lists best match first, as البحث does; verse-only matches after.
-            if (ranks == null || selectedTab == SectionTab.Recent) poems else poems.sortedBy { ranks[it.id] ?: Int.MAX_VALUE }
-        }
+        }.let { if (selectedTab == SectionTab.Recent) it.sortedBy { poem -> poem.recentRank } else it }.map(PoemUi::id)
     }
+    val words = remember(query) { ArNormalize.normalize(query.trim()).split(' ').filter(String::isNotBlank) }
+    val pageQuery = com.atharchive.core.data.repository.PoemPageQuery(
+        shownWorks, words,
+        if (selectedTab == SectionTab.Recent) com.atharchive.core.data.repository.PoemRowOrder.Given else when (sort) {
+            PoemSort.Died -> com.atharchive.core.data.repository.PoemRowOrder.Died
+            PoemSort.Title -> com.atharchive.core.data.repository.PoemRowOrder.Title
+            PoemSort.Poet -> com.atharchive.core.data.repository.PoemRowOrder.Poet
+            PoemSort.Newest -> com.atharchive.core.data.repository.PoemRowOrder.Catalog
+        },
+        descending && selectedTab != SectionTab.Recent,
+    )
+    val pages = remember(pageQuery) { poemPages(pageQuery) }.collectAsLazyPagingItems()
+    val listed = pages.loadState.refresh is androidx.paging.LoadState.NotLoading
     // The list keeps its place by the top item's key, so a just-opened text moving to the top of
     // «الأخيرة» landed above the screen and looked dropped. The newest is always shown first.
-    androidx.compose.runtime.LaunchedEffect(selectedTab, visiblePoems.firstOrNull()?.id) {
+    androidx.compose.runtime.LaunchedEffect(selectedTab, pages.itemCount.takeIf { it > 0 }?.let { pages.peek(0)?.id }) {
         if (selectedTab == com.atharchive.ui.components.SectionTab.Recent) listState.scrollToItem(0)
     }
 
@@ -196,7 +194,7 @@ fun PoetryScreen(
                 )
                 AtharSearchField(
                     query = query,
-                    resultCount = visiblePoems.size,
+                    resultCount = pages.itemCount,
                     filtered = (topic + poet + era + audio).isNotEmpty() || section != com.atharchive.ui.components.SectionAll,
                     placeholder = "ابحث في ${state.countLabel}…",
                     onQueryChange = { query = it },
@@ -238,9 +236,9 @@ fun PoetryScreen(
                 .testTag("poetry_screen"),
             contentPadding = PaddingValues(top = header.height, bottom = 28.dp),
         ) {
-            if (!state.loaded) {
+            if (!state.loaded || !listed && pages.itemCount == 0) {
                 // first catalog read not back yet: show nothing rather than a false "no poems"
-            } else if (visiblePoems.isEmpty() && textHits.isEmpty() && !textHits.searching) {
+            } else if (pages.itemCount == 0 && textHits.isEmpty() && !textHits.searching) {
                 item(key = "poetry-empty") {
                     val (title, body) = when {
                         query.isNotBlank() ->
@@ -257,7 +255,11 @@ fun PoetryScreen(
                     )
                 }
             } else {
-                itemsIndexed(visiblePoems, key = { _, poem -> poem.id  }) { index, poem -> com.atharchive.ui.components.AtharRowItem {
+                items(pages.itemCount, key = pages.itemKey { it.id }) { index ->
+                    // A line not read yet keeps its height, so the fast scroller and the place hold.
+                    val poem = pages[index]?.let { row -> works[row.entityId]?.withRow(row) }
+                    if (poem == null) { androidx.compose.foundation.layout.Spacer(Modifier.fillMaxWidth().defaultMinSize(minHeight = 104.dp)); return@items }
+                    com.atharchive.ui.components.AtharRowItem {
                     PoemRow(
                         poem = poem,
                         query = query,
@@ -267,7 +269,7 @@ fun PoetryScreen(
                         onSave = { onSaveClick(poem) },
                         onDownload = { onDownloadClick(poem) },
                     )
-                    if (index != visiblePoems.lastIndex) {
+                    if (index != pages.itemCount - 1) {
                         com.atharchive.ui.components.AtharRowDivider(
                             modifier = Modifier.padding(horizontal = horizontalPadding),
                             color = AtharTheme.colors.divider.copy(alpha = 0.64f),

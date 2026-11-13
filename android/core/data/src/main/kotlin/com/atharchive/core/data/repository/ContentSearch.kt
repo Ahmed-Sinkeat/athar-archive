@@ -55,6 +55,7 @@ object ContentSearchSchema {
                 indexMissingCatalog(connection)
                 startPositions(connection)
             }
+            PoemRows.fillMissing(connection)
         }
     }
 
@@ -185,6 +186,7 @@ object ContentSearchSchema {
                 insert.clearBindings()
             }
         }
+        PoemRows.update(connection, changed, removedIds)
     }
 
     /** [searchText]: each block's normalized text by ordinal, computed before the write transaction. */
@@ -213,7 +215,7 @@ object ContentSearchSchema {
         "CREATE VIRTUAL TABLE IF NOT EXISTS catalog_fts USING fts5(" +
             "titleNorm, personNorm, topicsNorm, id UNINDEXED, tokenize='unicode61')",
         deleteTrigger("block_fts"),
-    )
+    ) + PoemRows.CreateTables
 
     private fun deleteTrigger(table: String) =
         "CREATE TRIGGER IF NOT EXISTS ${table}_before_delete BEFORE DELETE ON block BEGIN " +
@@ -239,6 +241,7 @@ object ContentSearchSchema {
         connection.execSQL("DROP TABLE IF EXISTS block_fts")
         connection.execSQL("DROP TABLE IF EXISTS block_fts_full")
         connection.execSQL("DROP TABLE IF EXISTS catalog_fts")
+        connection.execSQL("DROP TABLE IF EXISTS poem_row")
         connection.execSQL("DROP TABLE IF EXISTS athar_search_meta")
     }
 

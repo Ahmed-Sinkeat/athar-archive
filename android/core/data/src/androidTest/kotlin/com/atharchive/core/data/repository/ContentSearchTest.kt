@@ -8,6 +8,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.atharchive.core.data.content.CatalogDocument
 import com.atharchive.core.data.content.CatalogEntry
 import com.atharchive.core.data.content.ContentDigests
+import com.atharchive.core.data.content.DiwanPoem
+import androidx.room3.useReaderConnection
 import com.atharchive.core.data.content.FrameIndexEntry
 import com.atharchive.core.data.content.PackageReference
 import com.atharchive.core.data.db.content.AtharContentDatabase
@@ -133,6 +135,20 @@ class ContentSearchTest {
 
         assertEquals(listOf("first"), result.catalog.map(CatalogSearchHit::entityId))
         assertTrue(result.blocks.isEmpty())
+    }
+
+    @Test
+    fun aDiwansPoemsAreListedOneRowEachAndLeaveWithIt() = runBlocking {
+        val diwan = entry(10, id = "diwan", title = "ديوان").copy(coll = "poem", poems = listOf(DiwanPoem("الأولى", 3), DiwanPoem("الثانية", 9)))
+        val single = entry(10, id = "single", title = "قصيدة").copy(coll = "poem", openingVerses = listOf("مطلعها"))
+        val importer = ContentImporter(database)
+        suspend fun rows() = database.useReaderConnection { c ->
+            c.usePrepared("SELECT entityId, ordinal, title FROM poem_row ORDER BY entityId, ordinal") { q -> buildList { while (q.step()) add("${q.getText(0)} ${if (q.isNull(1)) "-" else q.getInt(1)} ${q.getText(2)}") } }
+        }
+        importer.applyCatalog(CatalogDocument(2, listOf(diwan, single)))
+        assertEquals(listOf("diwan 3 الأولى", "diwan 9 الثانية", "single - قصيدة"), rows())
+        importer.applyGeneration("g2", "0".repeat(64), "0".repeat(64), CatalogDocument(2, listOf(single)), setOf("diwan"), emptySet())
+        assertEquals(listOf("single - قصيدة"), rows())
     }
 
     private fun entry(

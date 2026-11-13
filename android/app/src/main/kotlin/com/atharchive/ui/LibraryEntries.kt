@@ -69,6 +69,7 @@ internal fun EntryProviderScope<NavKey>.libraryEntries(app: AppNav) = with(app) 
                     onDownloadClick = { onDownloadTap(it.entityId, it.title, it.sizeLabel, it.downloaded, it.transfer) },
                     onSaveClick = { contentViewModel.toggleFavourite(it.entityId) },
                     scrollToTopRequest = scrollToTopRequest,
+                    poemPages = contentViewModel::poemPages,
                 )
 
                 AtharDestination.Articles -> ArticlesScreen(

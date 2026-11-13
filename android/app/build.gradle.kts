@@ -143,6 +143,7 @@ dependencies {
     implementation(libs.work.runtime.ktx)
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)
+    implementation(libs.paging.compose)
     ksp(libs.hilt.compiler)
 
     androidTestImplementation(libs.androidx.test.runner)

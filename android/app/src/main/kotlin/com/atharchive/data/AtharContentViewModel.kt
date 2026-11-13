@@ -31,6 +31,8 @@ import com.atharchive.feature.books.BookUi
 import com.atharchive.feature.books.BooksUiState
 import com.atharchive.feature.poetry.PoemUi
 import com.atharchive.feature.poetry.PoetryUiState
+import com.atharchive.feature.poetry.verseCountLabel
+import androidx.room3.useReaderConnection
 import com.atharchive.feature.kannashah.ExcerptUi
 import com.atharchive.feature.kannashah.KannashahUiState
 import com.atharchive.feature.reader.InBookHit
@@ -362,14 +364,18 @@ class AtharContentViewModel @Inject constructor(
     }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.Eagerly, IssuesUiState("٠ مسألة", emptyList(), loaded = false)) // hot from app start so the tab opens filled; a download tick only re-copies the rows downloading
 
     val poetry: StateFlow<PoetryUiState> = combine(
-        // Decoded once per catalog change, not on every pin, shelf or progress change.
-        catalogDao.observeCollection("poem").pausedDuringUpdate().map { list -> list.map { it to it.toCatalogEntry() } },
+        // Decoded once per catalog change, not on every pin, shelf or progress change. One row per
+        // work: a ديوان's poems are read from poem_row a screenful at a time ([poemPages]).
+        catalogDao.observeCollection("poem").pausedDuringUpdate().map { list ->
+            list.map { it.copy(poemsJson = null).let { entity -> entity to entity.toCatalogEntry() } } to
+                content.contentDatabase.useReaderConnection { c -> c.usePrepared("SELECT count(*) FROM poem_row") { it.step(); it.getInt(0) } }
+        },
         pinIds, retainedPins, library, combine(recentRanks, localStates, ::Pair),
-    ) { decoded, pinnedIds, retainedIds, shelves, (ranks, states) ->
+    ) { (decoded, poemCount), pinnedIds, retainedIds, shelves, (ranks, states) ->
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         PoetryUiState(
-            countLabel = arabicCount(decoded.sumOf { (_, entry) -> entry.poems.size.coerceAtLeast(1) }, "القصائد", "قصيدة واحدة", "قصيدتين", "قصائد", "قصيدة"),
-            poems = decoded.flatMap { (entity, entry) ->
+            countLabel = arabicCount(poemCount, "القصائد", "قصيدة واحدة", "قصيدتين", "قصائد", "قصيدة"),
+            poems = decoded.map { (entity, entry) ->
                 PoemUi(
                     id = entity.id,
                     title = entity.title,
@@ -382,26 +388,23 @@ class AtharContentViewModel @Inject constructor(
                         entity.id !in states.failed,
                     saved = entity.id in shelfIds,
                     recentRank = ranks[entity.id],
-                    verseCountLabel = entry.verseCount?.takeIf { it > 0 }?.let { arabicCount(it, "", "بيت واحد", "بيتان", "أبيات", "بيتًا") },
+                    verseCountLabel = entry.verseCount?.takeIf { it > 0 }?.let(::verseCountLabel),
                     sizeLabel = byteSize(entity.pkgSize),
                     topics = entity.topicsCsv.split(',').filter(String::isNotBlank).map(::topicName),
                     died = entity.died,
                     era = entity.era.orEmpty(),
                     hasAudio = entity.audioJson != "[]",
                     kind = entity.kind ?: "قصيدة",
-                ).let { diwan ->
-                    // A ديوان is never a row of its own: each of its poems is, and opens alone (PoemReader).
-                    // ~53k rows rebuilt per catalog/pin change; cache per diwan if the tab stutters.
-                    if (entry.poems.isEmpty()) listOf(diwan) else entry.poems.map { poem ->
-                        diwan.copy(id = "${entity.id}#${poem.o}", title = poem.t, openingVerses = emptyList(), verseCountLabel = null,
-                            kind = "قصيدة", entityId = entity.id, ordinal = poem.o)
-                    }
-                }
+                )
             },
         )
-    }.withTransfers("قصيدة", PoetryUiState::poems, PoemUi::entityId, { state, rows -> state.copy(poems = rows) }) { row, transfer ->
+    }.withTransfers("قصيدة", PoetryUiState::poems, PoemUi::id, { state, rows -> state.copy(poems = rows) }) { row, transfer ->
         row.copy(transfer = transfer)
     }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.Eagerly, PoetryUiState("٠ قصيدة", emptyList(), loaded = false)) // hot from app start so the tab opens filled; a download tick only re-copies the rows downloading
+
+    /** الشعر's poems for [query], read a screenful at a time. */
+    fun poemPages(query: com.atharchive.core.data.repository.PoemPageQuery) =
+        com.atharchive.core.data.repository.poemPages(content.contentDatabase, query)
 
     init {
         viewModelScope.launch(errorHandler) {

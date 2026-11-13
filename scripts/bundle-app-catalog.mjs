@@ -98,6 +98,28 @@ for (const e of catalog.entries) {
   if (e.editionOf != null) continue;
   insertSearch.run(normalizeArabic(e.title), normalizeArabic(e.personName ?? ""), normalizeArabic((e.topics ?? []).join(" ")), e.id);
 }
+// الشعر's lines as PoemRows.kt makes them (same DDL and rows), so a fresh install does not list ~53k poems on first open.
+for (const ddl of [
+  "CREATE TABLE IF NOT EXISTS poem_row(entityId TEXT NOT NULL, ordinal INTEGER, title TEXT NOT NULL, titleNorm TEXT NOT NULL, poetNorm TEXT NOT NULL, diedKey INTEGER NOT NULL, opening TEXT, verseCount INTEGER, openingNorm TEXT)",
+  "CREATE INDEX IF NOT EXISTS poem_row_entity ON poem_row(entityId, ordinal)",
+  "CREATE INDEX IF NOT EXISTS poem_row_died ON poem_row(diedKey, titleNorm)",
+  "CREATE INDEX IF NOT EXISTS poem_row_title ON poem_row(titleNorm, ordinal)",
+  "CREATE INDEX IF NOT EXISTS poem_row_poet ON poem_row(poetNorm, entityId, ordinal)",
+]) db.exec(ddl);
+const insertPoem = db.prepare("INSERT INTO poem_row(entityId, ordinal, title, titleNorm, poetNorm, diedKey, opening, verseCount, openingNorm) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+let poemRows = 0;
+for (const e of catalog.entries) {
+  if (e.coll !== "poem" || e.editionOf != null) continue;
+  const poetNorm = normalizeArabic(e.personName ?? "");
+  const row = (ordinal, title, opening, verses, verseCount) => {
+    insertPoem.run(e.id, ordinal, title, normalizeArabic(title), poetNorm, e.died ?? 100000, opening, verseCount,
+      verses.length ? verses.map(normalizeArabic).join(" ") : null);
+    poemRows++;
+  };
+  if (e.poems?.length) for (const p of e.poems) row(p.o, p.t, null, [], null);
+  else row(null, e.title, JSON.stringify(e.openingVerses ?? []), e.openingVerses ?? [], e.verseCount > 0 ? e.verseCount : null);
+}
+console.log(`poem_row: ${poemRows} poems`);
 db.exec("COMMIT");
 db.exec("VACUUM");
 db.close();

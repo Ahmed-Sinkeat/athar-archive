@@ -45,6 +45,14 @@ data class PoemUi(
     val ordinal: Int? = null,
 )
 
+fun verseCountLabel(n: Int) = com.atharchive.data.arabicCount(n, "", "بيت واحد", "بيتان", "أبيات", "بيتًا")
+
+/** A paged poem line shown with its work's state (download, shelf, size); a ديوان's poem is a قصيدة of it. */
+fun PoemUi.withRow(row: com.atharchive.core.data.repository.PoemListRow) = if (row.ordinal == null) this else copy(
+    id = row.id, title = row.title, openingVerses = row.openingVerses, verseCountLabel = row.verseCount?.let(::verseCountLabel),
+    kind = "قصيدة", entityId = row.entityId, ordinal = row.ordinal,
+)
+
 data class PoetryUiState(
     val countLabel: String,
     val poems: List<PoemUi>,
