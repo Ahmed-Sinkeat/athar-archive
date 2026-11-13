@@ -149,7 +149,7 @@ internal class SearchModel(
         // «إخفاء التشكيل» is display only: toggling it must not search again.
         _searchFilters.map { it.copy(plain = false) }.distinctUntilChanged(),
         // The filter lists are built once per catalog change, not on every keystroke.
-        catalogDao.observeCatalog().pausedDuringUpdate().map { SearchCatalog(it) },
+        catalogDao.observeCatalogLean().pausedDuringUpdate().map { SearchCatalog(it) },
     ) { query, filters, catalog ->
         SearchInput(query, filters, catalog)
     }.combine(_searchLimit) { input, limit -> input to limit }.transformLatest { (input, limit) ->

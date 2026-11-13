@@ -108,7 +108,7 @@ internal class DownloadsModel(
     }.distinctUntilChanged().throttled(1_000).stateIn(scope, SharingStarted.Eagerly, LocalStates(emptySet(), emptySet()))
 
     private val textDownloads: StateFlow<List<DownloadUi>> = combine(
-        catalogDao.observeAllEntities().pausedDuringUpdate(), pinIds, retainedPins, jobIndex, combine(content.pausedDownloads, localStates, ::Pair),
+        catalogDao.observeAllEntitiesLean().pausedDuringUpdate(), pinIds, retainedPins, jobIndex, combine(content.pausedDownloads, localStates, ::Pair),
     ) { entities, pinnedIds, retainedIds, jobs, (pausedIds, states) ->
         entities.filter { it.id in pinnedIds }.map { entity ->
             val job = jobs["content:${entity.coll}:${entity.id}"]
@@ -195,7 +195,7 @@ internal class DownloadsModel(
 
     /** Every work's text and every recording, with how far each got, and the rows the reader started. */
     private val bulkCandidates = combine(
-        catalogDao.observeCatalog().pausedDuringUpdate(),
+        catalogDao.observeCatalogLean().pausedDuringUpdate(),
         combine(pinIds, retainedPins, content.pausedDownloads) { pinned, retained, paused -> Triple(pinned, retained, paused) },
         audioSources,
         combine(content.requestedAudio, content.downloadedAudio, content.batches) { requested, downloaded, batches -> Triple(requested, downloaded, batches) },

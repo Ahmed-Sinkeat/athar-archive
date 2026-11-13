@@ -228,7 +228,7 @@ class AtharContentViewModel @Inject constructor(
 
     val kannashahState: StateFlow<KannashahUiState> = combine(
         annotations,
-        catalogDao.observeAllEntities().pausedDuringUpdate(),
+        catalogDao.observeAllEntitiesLean().pausedDuringUpdate(),
     ) { saved, catalog ->
         val sourceById = catalog.associateBy(ContentEntity::id)
         // A list, not a sequence: a poem's verse number is read from its block (a suspend call).
@@ -273,7 +273,7 @@ class AtharContentViewModel @Inject constructor(
         generation?.persons().orEmpty()
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
-    val personWorks = catalogDao.observeCatalog().pausedDuringUpdate().map { entities -> entities.associateBy { it.id } }
+    val personWorks = catalogDao.observeCatalogLean().pausedDuringUpdate().map { entities -> entities.associateBy { it.id } }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
 
     val books: StateFlow<BooksUiState> = combine(

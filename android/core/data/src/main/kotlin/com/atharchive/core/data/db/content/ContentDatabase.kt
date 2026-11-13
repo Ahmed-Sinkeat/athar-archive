@@ -281,6 +281,11 @@ fun stagingId(entityId: String, pkgHash: String) = "$entityId#${pkgHash.take(16)
 fun oldCopyId(entityId: String) = "$entityId#old"
 
 private const val DeleteSlice = 500
+/** An entity row without its heavy JSON columns, which read back null. */
+private const val LeanColumns = "id, coll, v, hash, title, titleNorm, person, personName, died, kind, authoredYear, publishedAt, description, excerpt, " +
+    "openingVersesJson, topicsCsv, pkgPath, pkgHash, pkgSize, pkgUncompressed, idxPath, idxHash, idxSize, pkgBlocks, pkgChapters, " +
+    "audioJson, editionOf, edition, NULL AS editionsJson, verseCount, pageFrom, pageTo, volumes, volumeUnit, NULL AS f0Json, " +
+    "NULL AS cardJson, NULL AS poemsJson, catalogPresent"
 private const val CatalogSlice = 250
 
 @Dao
@@ -337,6 +342,17 @@ abstract class ContentCatalogDao {
     @Query("SELECT * FROM entity WHERE catalogPresent = 1 ORDER BY titleNorm, id")
     abstract fun observeCatalog(): Flow<List<ContentEntity>>
 
+    /**
+     * [observeAllEntities] / [observeCatalog] without the heavy JSON (card fields, editions, f0, a
+     * ديوان's poem list): the lists that hold the whole catalog (الكناشة, downloads, search, author
+     * pages) read none of it, and it was ~6 of the ~10 MB each of them kept.
+     */
+    @Query("SELECT $LeanColumns FROM entity ORDER BY titleNorm, id")
+    abstract fun observeAllEntitiesLean(): Flow<List<ContentEntity>>
+
+    @Query("SELECT $LeanColumns FROM entity WHERE catalogPresent = 1 ORDER BY titleNorm, id")
+    abstract fun observeCatalogLean(): Flow<List<ContentEntity>>
+
     @Query("SELECT * FROM entity WHERE coll = :coll AND catalogPresent = 1 AND editionOf IS NULL ORDER BY titleNorm, id")
     abstract fun observeCollection(coll: String): Flow<List<ContentEntity>>
 
@@ -344,12 +360,7 @@ abstract class ContentCatalogDao {
      * [observeCollection] without the three heavy JSON columns (card fields, first lines, editions):
      * a book row draws none of them, and they were most of the 10 MB each list pass loaded.
      */
-    @Query(
-        "SELECT id, coll, v, hash, title, titleNorm, person, personName, died, kind, authoredYear, publishedAt, description, excerpt, " +
-            "openingVersesJson, topicsCsv, pkgPath, pkgHash, pkgSize, pkgUncompressed, idxPath, idxHash, idxSize, pkgBlocks, pkgChapters, " +
-            "audioJson, editionOf, edition, NULL AS editionsJson, verseCount, pageFrom, pageTo, volumes, volumeUnit, NULL AS f0Json, " +
-            "NULL AS cardJson, catalogPresent FROM entity WHERE coll = :coll AND catalogPresent = 1 AND editionOf IS NULL ORDER BY titleNorm, id",
-    )
+    @Query("SELECT $LeanColumns FROM entity WHERE coll = :coll AND catalogPresent = 1 AND editionOf IS NULL ORDER BY titleNorm, id")
     abstract fun observeCollectionLean(coll: String): Flow<List<ContentEntity>>
 
     @Query("SELECT * FROM entity WHERE catalogPresent = 1 AND (id = :primaryId OR editionOf = :primaryId) ORDER BY id")
