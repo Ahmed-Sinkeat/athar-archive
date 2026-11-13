@@ -823,7 +823,9 @@ fun ReaderScreen(
                     if (url == null) jumpTo(hit.blockIndex) else locateJob = scope.launch {
                         locating = true
                         toast = "جارٍ فتح الموضع…"
-                        val (ordinal, start, end) = try { onLocateOnline?.invoke(hit, query) ?: Triple(null, 0, 0) } finally { locating = false }
+                        val self = coroutineContext[kotlinx.coroutines.Job]
+                        // A replaced tap's cleanup runs after the next one began: it must not end that one's «جارٍ فتح الموضع…».
+                        val (ordinal, start, end) = try { onLocateOnline?.invoke(hit, query) ?: Triple(null, 0, 0) } finally { if (locateJob === self || locateJob?.isActive != true) locating = false }
                         toast = null
                         if (ordinal == null) toast = "تعذّر فتح الموضع"
                         else jumpTo(ordinal, if (end > start) ReaderSearchTarget(ordinal, start, end) else null)

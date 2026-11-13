@@ -42,10 +42,12 @@ internal fun EntryProviderScope<NavKey>.readerEntries(app: AppNav) = with(app) {
             val readerWindow = remember(route.bookId) { contentViewModel.readerWindow(route.bookId) }
             val openProgress by contentViewModel.openProgress.collectAsStateWithLifecycle()
             val loadProgress = openProgress?.takeIf { it.first == route.bookId }?.second
+            val firstVisit = rememberFirstVisit(route)
+            val target = route.targetOrdinal.takeIf { firstVisit }
             // An online hit opens at once on its passage; the match is placed here, in the frames the reader
             // fetches anyway (openLocks share them), instead of before the book opened.
             val located by androidx.compose.runtime.produceState<Pair<ReaderSearchTarget?, Boolean>>(null to (route.locate == null), route) {
-                val locate = route.locate ?: return@produceState
+                val locate = route.locate?.takeIf { firstVisit } ?: return@produceState
                 val (ordinal, start, end) = kotlinx.coroutines.withTimeoutOrNull(LocateWaitMs) {
                     contentViewModel.locateOnline(route.bookId, locate.url, locate.query, locate.snippet, locate.pg, walk = false)
                 } ?: Triple(null, 0, 0)
@@ -57,7 +59,7 @@ internal fun EntryProviderScope<NavKey>.readerEntries(app: AppNav) = with(app) {
                 // A work opens in the edition last chosen for it; a jump to a place opens as asked.
                 val edition = if (route.targetOrdinal == null) contentViewModel.editionToOpen(route.bookId) else route.bookId
                 if (edition != route.bookId) replaceRoute(route, ReaderRoute(edition))
-                else contentViewModel.openReader(route.bookId, route.targetOrdinal)
+                else contentViewModel.openReader(route.bookId, target)
             }
             DisposableEffect(route.bookId) {
                 onDispose { contentViewModel.closeReader(route.bookId) }
@@ -86,7 +88,7 @@ internal fun EntryProviderScope<NavKey>.readerEntries(app: AppNav) = with(app) {
                     state = state,
                     window = readerWindow,
                     loadProgress = loadProgress,
-                    initialOrdinal = route.targetOrdinal,
+                    initialOrdinal = target,
                     onSearch = { query, mode, partial -> contentViewModel.searchInBook(route.bookId, query, mode, partial) },
                     bookSaved = route.bookId in retainedIds,
                     onDownloadForSearch = { contentViewModel.downloadForSearch(route.bookId) },
@@ -149,9 +151,9 @@ internal fun EntryProviderScope<NavKey>.readerEntries(app: AppNav) = with(app) {
                     onThemeModeChange = onThemeModeChange,
                     awaitingTarget = !located.second,
                     initialSearchTarget = located.first ?: if (
-                        route.targetOrdinal != null && route.matchStart != null && route.matchEnd != null
+                        target != null && route.matchStart != null && route.matchEnd != null
                     ) {
-                        ReaderSearchTarget(route.targetOrdinal, route.matchStart, route.matchEnd)
+                        ReaderSearchTarget(target, route.matchStart, route.matchEnd)
                     } else {
                         null
                     },
@@ -164,6 +166,7 @@ internal fun EntryProviderScope<NavKey>.readerEntries(app: AppNav) = with(app) {
             val openProgress by contentViewModel.openProgress.collectAsStateWithLifecycle()
             val loadProgress = openProgress?.takeIf { it.first == route.poemId }?.second
             val poemState = poemEmitted?.value
+            val firstVisit = rememberFirstVisit(route)
             LaunchedEffect(route.poemId) { contentViewModel.openReader(route.poemId, route.targetOrdinal) }
             DisposableEffect(route.poemId) {
                 onDispose { contentViewModel.closeReader(route.poemId) }
@@ -200,11 +203,25 @@ internal fun EntryProviderScope<NavKey>.readerEntries(app: AppNav) = with(app) {
                     onVerseInKannashah = { scope.launch {
                         contentViewModel.savedBlockId(route.poemId, it)?.let { id -> kannashahFocus = id; navigateTo(AtharDestination.Kannashah) }
                     } },
-                    initialOrdinal = route.targetOrdinal,
-                    match = route.match,
+                    // The ordinal still picks a ديوان's poem (the state above); only the jump to it is once.
+                    initialOrdinal = route.targetOrdinal.takeIf { firstVisit },
+                    match = route.match.takeIf { firstVisit },
                     matchHint = route.hint,
                     onPositionChange = { contentViewModel.onReaderPosition(route.poemId, it) },
                     onRetry = { contentViewModel.openReader(route.poemId, route.targetOrdinal) },
                 ) }
         }
+}
+
+/**
+ * False once this entry has been shown and left: back on it (from an author, a linked book, a note),
+ * a reader resumes where it was read. It reopened at the place it was opened on, a search hit
+ * lit again, and the reading since was lost.
+ */
+@androidx.compose.runtime.Composable
+private fun rememberFirstVisit(route: NavKey): Boolean {
+    var visits by androidx.compose.runtime.saveable.rememberSaveable(route) { androidx.compose.runtime.mutableIntStateOf(0) }
+    val first = remember(route) { visits == 0 }
+    LaunchedEffect(route) { visits++ }
+    return first
 }
