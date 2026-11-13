@@ -36,7 +36,12 @@ internal data class ReaderRoute(
     val targetOrdinal: Int? = null,
     val matchStart: Int? = null,
     val matchEnd: Int? = null,
+    /** An online hit opened at its passage's first block and placed there by the reader. */
+    val locate: OnlineLocate? = null,
 ) : NavKey
+
+@Serializable
+internal data class OnlineLocate(val url: String?, val query: String, val snippet: String, val pg: String)
 
 @Serializable
 internal data class SubSectionRoute(val section: String) : NavKey

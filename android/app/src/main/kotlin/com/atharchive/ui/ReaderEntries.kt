@@ -26,6 +26,9 @@ import com.atharchive.ui.navigation.AtharDestination
 import kotlinx.coroutines.launch
 import androidx.navigation3.runtime.EntryProviderScope
 
+/** How long a just-opened online hit waits to be placed before its passage shows unplaced. */
+private const val LocateWaitMs = 6_000L
+
 /** The readers: a book and a poem, each full-screen. */
 internal fun EntryProviderScope<NavKey>.readerEntries(app: AppNav) = with(app) {
         // The reader owns the whole screen: no bottom navigation inside a book.
@@ -39,6 +42,15 @@ internal fun EntryProviderScope<NavKey>.readerEntries(app: AppNav) = with(app) {
             val readerWindow = remember(route.bookId) { contentViewModel.readerWindow(route.bookId) }
             val openProgress by contentViewModel.openProgress.collectAsStateWithLifecycle()
             val loadProgress = openProgress?.takeIf { it.first == route.bookId }?.second
+            // An online hit opens at once on its passage; the match is placed here, in the frames the reader
+            // fetches anyway (openLocks share them), instead of before the book opened.
+            val located by androidx.compose.runtime.produceState<Pair<ReaderSearchTarget?, Boolean>>(null to (route.locate == null), route) {
+                val locate = route.locate ?: return@produceState
+                val (ordinal, start, end) = kotlinx.coroutines.withTimeoutOrNull(LocateWaitMs) {
+                    contentViewModel.locateOnline(route.bookId, locate.url, locate.query, locate.snippet, locate.pg, walk = false)
+                } ?: Triple(null, 0, 0)
+                value = (if (ordinal != null && end > start) ReaderSearchTarget(ordinal, start, end) else null) to true
+            }
             LaunchedEffect(route.bookId, route.targetOrdinal) {
                 // Any path that opens a poem as a book (links, meanings, lists) lands in the poem reader instead.
                 if (contentViewModel.isPoem(route.bookId)) return@LaunchedEffect replaceRoute(route, PoemReaderRoute(route.bookId, route.targetOrdinal))
@@ -135,7 +147,8 @@ internal fun EntryProviderScope<NavKey>.readerEntries(app: AppNav) = with(app) {
                     onSettingsChange = onReaderSettingsChange,
                     themeMode = themeMode,
                     onThemeModeChange = onThemeModeChange,
-                    initialSearchTarget = if (
+                    awaitingTarget = !located.second,
+                    initialSearchTarget = located.first ?: if (
                         route.targetOrdinal != null && route.matchStart != null && route.matchEnd != null
                     ) {
                         ReaderSearchTarget(route.targetOrdinal, route.matchStart, route.matchEnd)

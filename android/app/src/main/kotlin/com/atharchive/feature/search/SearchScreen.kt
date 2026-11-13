@@ -636,9 +636,11 @@ fun SearchHitCard(
     LaunchedEffect(expanded) {
         if (expanded && passage == null && hit.url != null) passage = loadPassage(hit)?.let { if (poem) aroundVerses(it, hit.excerpt, hit.matches) else around(it, hit) }
     }
-    val text = (passage ?: hit.excerpt).let { if (poem) verseLines(it) else it }
+    // Folded again, the row shows its snippet: the passage's first lines run ~400 letters before the match.
+    val full = passage?.takeIf { expanded }
+    val text = (full ?: hit.excerpt).let { if (poem) verseLines(it) else it }
     val highlighted = remember(text, hit, accent, plain) {
-        val marked = if (passage == null) hit.matches else wordRanges(text, hit)
+        val marked = if (full == null) hit.matches else wordRanges(text, hit)
         val (shown, ranges) = if (plain) withoutTashkeel(text, marked) else text to marked
         buildAnnotatedString {
             append(shown)

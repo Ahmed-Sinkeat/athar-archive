@@ -78,6 +78,36 @@ private class SearchCatalog(entities: List<ContentEntity>) {
  * headings and prose it leaves out move an edge by a few blocks (rarely ~25-40; measured over every
  * poem 2026-11-14). The best match by the snippet's words is still taken inside it.
  */
+/**
+ * Of the occurrences in [text] of the words at [start]..[end], the one whose surroundings share most
+ * of [words] (an online hit's snippet); ties keep the earliest. A word said five times in a long
+ * paragraph used to land on the first of them whichever the hit was.
+ */
+internal fun nearestOccurrence(text: String, start: Int, end: Int, words: Set<String>): Pair<Int, Int> {
+    if (words.isEmpty() || start !in 0 until end || end > text.length) return start to end
+    val mapped = com.atharchive.core.ArNormalize.normalizeWithMap(text)
+    val term = com.atharchive.core.ArNormalize.normalize(text.substring(start, end))
+    if (term.isEmpty()) return start to end
+    var best = start to end
+    var bestScore = -1
+    var at = mapped.text.indexOf(term)
+    while (at >= 0) {
+        val around = mapped.text.substring((at - NearContext).coerceAtLeast(0), (at + term.length + NearContext).coerceAtMost(mapped.text.length))
+        val have = around.split(' ', '\n').toHashSet()
+        val score = words.count { it in have }
+        if (score > bestScore) {
+            bestScore = score
+            val range = mapped.sourceRange(at, at + term.length)
+            best = range.first to range.last + 1
+        }
+        at = mapped.text.indexOf(term, at + 1)
+    }
+    return best
+}
+
+/** Characters each side of an occurrence compared with the snippet (the site's snippets run ~70 before, ~100 after). */
+private const val NearContext = 90
+
 internal fun widenedPoemRange(pg: String): String? =
     pg.split('-').mapNotNull(String::toIntOrNull).takeIf { it.size == 2 }?.let { (from, to) -> "${(from - 16).coerceAtLeast(0)}-${to + 16}" }
 
@@ -418,7 +448,7 @@ internal class SearchModel(
      * hit's own snippet wins. It used to take the chapter's first match: a tap on the fifth hit in
      * a 40-page piece landed on the first.
      */
-    suspend fun locateOnline(entityId: String, url: String?, query: String, snippet: String = "", pg: String? = null): Triple<Int?, Int, Int> {
+    suspend fun locateOnline(entityId: String, url: String?, query: String, snippet: String = "", pg: String? = null, walk: Boolean = true): Triple<Int?, Int, Int> {
         val slug = url?.substringAfter("/$entityId/", "")?.let(android.net.Uri::decode).orEmpty()
         if (query.length < 2) return Triple(null, 0, 0)
         // The index knows the passage's blocks: only their frames are opened (online too), no chapter walk.
@@ -429,6 +459,7 @@ internal class SearchModel(
                 .getOrElse { if (it is kotlinx.coroutines.CancellationException) throw it else null }
                 ?.let { return Triple(it.ordinal, it.sourceMatchStart, it.sourceMatchEnd) }
         }
+        if (!walk) return Triple(null, 0, 0)
         return runCatching {
             content.open(entityId, 0) // the first frame carries the chapter list
             val chapters = if (slug.isEmpty()) emptyList() else importDao.observeChapters(entityId).first()
@@ -457,14 +488,22 @@ internal class SearchModel(
             content.open(entityId, at)
             val frame = importDao.frames(entityId).firstOrNull { at in it.firstBlockOrdinal until it.firstBlockOrdinal + it.blockCount } ?: break
             val end = minOf(frame.firstBlockOrdinal + frame.blockCount - 1, range.last)
-            contentSearch.search(
+            val hits = contentSearch.search(
                 ContentSearchRequest(query = query, sort = ContentSearchSort.BookOrder,
                     filter = ContentSearchFilter(entityIds = setOf(entityId)), ordinals = at..end),
                 limit = 200,
-            ).blocks.forEach { hit ->
-                val text = importDao.blockAt(entityId, hit.ordinal)?.text.orEmpty()
+            ).blocks
+            // One read for the frame's matching blocks, not one query per hit.
+            val texts = if (hits.isEmpty()) emptyMap()
+                else importDao.blockWindow(entityId, hits.first().ordinal, hits.last().ordinal).associate { it.ordinal to it.text }
+            hits.forEach { hit ->
+                val text = texts[hit.ordinal].orEmpty()
                 val score = snippetWords(text).let { have -> words.count { it in have } }
-                if (best == null || score > best!!.first) best = score to hit
+                if (best == null || score > best!!.first) {
+                    // The FTS match is the block's first occurrence; the snippet's own is the one nearest its words.
+                    val (start, end) = nearestOccurrence(text, hit.sourceMatchStart, hit.sourceMatchEnd, words)
+                    best = score to hit.copy(sourceMatchStart = start, sourceMatchEnd = end)
+                }
             }
             if (best != null && (words.isEmpty() || best!!.first * 5 >= words.size * 4)) break
             at = end + 1

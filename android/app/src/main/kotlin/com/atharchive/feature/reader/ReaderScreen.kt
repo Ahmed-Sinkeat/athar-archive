@@ -147,6 +147,8 @@ fun ReaderScreen(
     onThemeModeChange: (com.atharchive.ui.theme.ThemeMode) -> Unit,
     modifier: Modifier = Modifier,
     initialSearchTarget: ReaderSearchTarget? = null,
+    /** An online hit still being placed in its passage: the page stays hidden, so it never shows the passage's top then leaps. */
+    awaitingTarget: Boolean = false,
     initialOrdinal: Int? = null,
     /** (words, mode, first pages as they land) → the whole answer. */
     onSearch: (suspend (String, com.atharchive.feature.search.SearchMode, (InBookSearch) -> Unit) -> InBookSearch)? = null,
@@ -311,8 +313,9 @@ fun ReaderScreen(
             }
     }
     // An empty book has nothing to restore; otherwise wait for the saved place.
-    val contentReady = positionReady ||
-        (window != null && window.ready && window.count == 0)
+    var revealedTarget by remember { mutableStateOf<ReaderSearchTarget?>(null) }
+    val contentReady = (positionReady || (window != null && window.ready && window.count == 0)) &&
+        !awaitingTarget && (initialSearchTarget == null || revealedTarget == initialSearchTarget)
     LaunchedEffect(contentReady) { if (contentReady) androidx.tracing.Trace.endAsyncSection(com.atharchive.data.BookOpenTraceName, 0) }
     BackHandler(selection.active || panelOpen || tappedHighlight != null || settingsOpen) {
         selection.clear()
@@ -328,6 +331,7 @@ fun ReaderScreen(
     var searchMode by remember { mutableStateOf(com.atharchive.feature.search.SearchMode.All) }
     var hitsFor by remember { mutableStateOf<Pair<String, com.atharchive.feature.search.SearchMode>?>(null) }
     var locating by remember { mutableStateOf(false) }
+    var locateJob by remember { mutableStateOf<kotlinx.coroutines.Job?>(null) }
     LaunchedEffect(query, bookSaved, searchMode) {
         // A rerun for the same words (the book finished saving) keeps its list until the new one lands:
         // it used to blank and refill under the reader's finger.
@@ -391,6 +395,7 @@ fun ReaderScreen(
         val displayIndex = if (window != null) target.ordinal else
             state.blocks.indexOfFirst { it.ordinal == target.ordinal }.takeIf { it >= 0 } ?: target.ordinal
         reveal(displayIndex, target)
+        revealedTarget = target
         kotlinx.coroutines.delay(2200)
         searchTarget = null
     }
@@ -813,8 +818,9 @@ fun ReaderScreen(
                 onHit = { hit ->
                     onRememberSearch(query)
                     val url = hit.url
-                    // One locate at a time: a second tap while the first runs used to jump twice.
-                    if (url == null) jumpTo(hit.blockIndex) else if (!locating) scope.launch {
+                    // The latest tap wins: a second one while the first was located used to be ignored.
+                    locateJob?.cancel()
+                    if (url == null) jumpTo(hit.blockIndex) else locateJob = scope.launch {
                         locating = true
                         toast = "جارٍ فتح الموضع…"
                         val (ordinal, start, end) = try { onLocateOnline?.invoke(hit, query) ?: Triple(null, 0, 0) } finally { locating = false }

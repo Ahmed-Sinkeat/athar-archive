@@ -452,8 +452,10 @@ private fun PanelSearch(
                     }
                     // The words the search matched (its own ranges), not the query re-found letter by letter:
                     // that lit «كتب» inside «مكتبة» and missed every word of a two-word query.
-                    val shown = passage ?: hit.excerpt
-                    val ranges = if (passage == null) hit.matches else com.atharchive.feature.search.wordRanges(shown, hit.excerpt, hit.matches)
+                    // Folded again, the snippet: the passage's first lines run ~400 letters before the match.
+                    val full = passage?.takeIf { expanded }
+                    val shown = full ?: hit.excerpt
+                    val ranges = if (full == null) hit.matches else com.atharchive.feature.search.wordRanges(shown, hit.excerpt, hit.matches)
                     Text(
                         text = if (ranges.isEmpty()) highlightMatches(shown, query, colors.highlight) else markRanges(shown, ranges, colors.highlight),
                         color = colors.text,

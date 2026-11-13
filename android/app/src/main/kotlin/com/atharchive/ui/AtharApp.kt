@@ -474,6 +474,12 @@ fun AtharApp(
             backStack.add(if (poem) PoemReaderRoute(hit.entityId, hit.ordinal, query) else ReaderRoute(hit.entityId, hit.ordinal, hit.sourceMatchStart, hit.sourceMatchEnd))
             return
         }
+        // A book passage the index placed opens at once on its first block; the reader places the match.
+        val pgFirst = hit.pg?.substringBefore('-')?.toIntOrNull()
+        if (!poem && pgFirst != null) {
+            backStack.add(ReaderRoute(hit.entityId, pgFirst, locate = OnlineLocate(hit.url, query, hit.excerpt, hit.pg)))
+            return
+        }
         val from = backStack.lastOrNull()
         openingHit = scope.launch {
             // A poem that is a work of its own opens at once and the reader finds the verse by its
