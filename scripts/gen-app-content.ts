@@ -56,7 +56,8 @@ for (const entity of result.entities) {
     + `${entity.packageBytes} bytes, IDs ${entity.reusedIds} reused/${entity.createdIds} new`,
   );
 }
-console.log(`bundles: ${await writeBundles(result.outputDirectory, result.catalog.entries)}`);
+// The old catalog (apps up to 1.2.4) leaves out the ديوان entries, so its poem bundles differ.
+console.log(`bundles: ${await writeBundles(result.outputDirectory, result.catalog.entries, result.catalog.entries.filter((entry) => !entry.poems))}`);
 console.log(`catalog: ${result.catalog.entries.length} entries · generation ${result.rootPayload.generationId}`);
 console.log(`root: ${result.envelope ? "signed index.json" : "unsigned index.payload.json (set ATHAR_CONTENT_SIGNING_KEY_FILE + ATHAR_CONTENT_SIGNING_KEY_ID to sign)"}`);
 console.log(`output: ${result.outputDirectory}`);

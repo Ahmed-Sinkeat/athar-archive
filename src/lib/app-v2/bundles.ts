@@ -83,15 +83,19 @@ function zip(files: { name: string; data: Buffer }[]): Buffer {
   return Buffer.concat([...locals, directory, end]);
 }
 
-/** Writes `bundles/<kind>/<name>.zip` under the app root and removes bundles no catalog names any more. */
-export async function writeBundles(appRoot: string, entries: readonly CatalogEntry[]): Promise<number> {
+/**
+ * Writes `bundles/<kind>/<name>.zip` under the app root and removes bundles no catalog names any more.
+ * One entry list per catalog apps read (the light one and the old one without ديوان entries).
+ */
+export async function writeBundles(appRoot: string, ...catalogs: (readonly CatalogEntry[])[]): Promise<number> {
   let written = 0;
   for (const coll of BUNDLED_KINDS) {
     const directory = path.join(appRoot, "bundles", coll);
     await mkdir(directory, { recursive: true });
     const wanted = new Set<string>();
-    for (const part of bundleParts(entries, coll)) {
+    for (const part of catalogs.flatMap((entries) => bundleParts(entries, coll))) {
       const file = `${part.name}.zip`;
+      if (wanted.has(file)) continue;
       wanted.add(file);
       const files: { name: string; data: Buffer }[] = [];
       for (const item of part.items) {

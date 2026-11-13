@@ -86,6 +86,27 @@ class FramedPackageDecoderTest {
     }
 
     @Test
+    fun lightCatalogReadsBackToTheFullEntries() {
+        val f0 = FramedPackageDecoder.decodeIndex(INDEX.toByteArray(), ARTICLE).frames.first()
+        val full = ARTICLE.copy(person = "author", personName = "Author", died = 241, pkg = ARTICLE.pkg.copy(f0 = f0),
+            poems = listOf(DiwanPoem("الأولى", 0)))
+        val p = full.pkg
+        // As src/lib/app-v2/package.ts lightCatalogBytes writes it: personName/died left to the person.
+        val line = AppContentJson.encodeToString(CatalogEntry.serializer(), full)
+            .replace(",\"personName\":\"Author\",\"died\":241", "")
+            .replace(Regex(""""pkg":\{.*\}\}$"""), """"pkg":{"h":"${p.hash}","s":${p.size},"u":${p.uncompressed},"b":${p.blocks},"c":${p.chapters},""" +
+                """"ih":"${p.idxHash}","is":${p.idxSize},"f0":[${f0.len},${f0.n},"${f0.sha256}"]}}""")
+        val persons = listOf(CatalogPerson("author", "Author", died = 241, works = listOf(ARTICLE_ID)))
+        val header = AppContentJson.encodeToString(LightCatalogHeader.serializer(), LightCatalogHeader(2, persons))
+        val decoded = AppContentDocuments.decodeLightCatalog("$header\n$line\n".byteInputStream())
+        assertEquals(listOf(full), decoded.entries)
+        assertEquals(persons, decoded.persons)
+        assertThrows(ContentIntegrityException::class.java) {
+            AppContentDocuments.decodeLightCatalog("$header\n${line.replace("\"ih\"", "\"x\"")}\n".byteInputStream())
+        }
+    }
+
+    @Test
     fun unknownCollectionsAreSkippedNotFatal() {
         val page = ARTICLE.copy(id = "adel-al-hamdan", coll = "person")
         val catalog = CatalogDocument(2, listOf(ARTICLE, page), listOf(CatalogPerson("author", "Author", works = listOf(ARTICLE_ID, page.id))))

@@ -212,6 +212,7 @@ fun CatalogEntry.toEntity(): ContentEntity = ContentEntity(
     f0Json = pkg.f0?.let { AppContentJson.encodeToString(it) },
     cardJson = card.takeIf { it.isNotEmpty() }?.let { AppContentJson.encodeToString(it) },
     review = review,
+    poemsJson = poems.takeIf { it.isNotEmpty() }?.let { AppContentJson.encodeToString(it) },
 )
 
 fun ContentEntity.toCatalogEntry(): CatalogEntry = CatalogEntry(
@@ -234,6 +235,7 @@ fun ContentEntity.toCatalogEntry(): CatalogEntry = CatalogEntry(
     description = description,
     excerpt = excerpt,
     openingVerses = AppContentJson.decodeFromString(openingVersesJson),
+    poems = poemsJson?.let { AppContentJson.decodeFromString(it) } ?: emptyList(),
     verseCount = verseCount,
     card = cardJson?.let { AppContentJson.decodeFromString(it) } ?: emptyList(),
     review = review,

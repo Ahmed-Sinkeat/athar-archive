@@ -135,13 +135,14 @@ object SignedRootVerifier {
         if (payload.generationId.isBlank()) fail("signed root has an empty generation ID")
         validateRootReference(payload.catalog, "catalog")
         validateRootReference(payload.tombstones, "tombstones")
+        payload.light?.let { validateRootReference(it, "light", ".jsonl") }
     }
 
-    private fun validateRootReference(reference: ArtifactReference, kind: String) {
+    private fun validateRootReference(reference: ArtifactReference, kind: String, extension: String = ".json") {
         if (!ContentDigests.isSha256(reference.hash) || reference.size < 0) {
             fail("malformed signed root $kind reference")
         }
-        if (reference.path != "$kind/${reference.hash}.json") {
+        if (reference.path != "$kind/${reference.hash}$extension") {
             fail("signed root $kind path is not content-addressed")
         }
     }

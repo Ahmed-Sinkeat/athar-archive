@@ -20,6 +20,8 @@ import {
   contentPath,
   encodePackage,
   jsonBytes,
+  lightCatalogBytes,
+  readLightCatalog,
   signRootPayload,
 } from "./package.js";
 import type { KeyObject } from "node:crypto";
@@ -245,6 +247,10 @@ function catalogBase(source: SourceEntry, version: number, parsed: ReturnType<ty
   const letters = (text: string) => text.replace(/[\u064B-\u0652\u0670\u0640]/g, "").replace(/[^\u0621-\u064A]/g, "");
   const firstHalf = openingVerses?.[0]?.split(/\s(?:…|\.\.\.)\s/)[0] ?? "";
   const titledByOpening = !description && firstHalf !== "" && letters(firstHalf).startsWith(letters(String(source.data.title)));
+  // A ديوان is one package; its poems (each a heading) are listed so the app shows every poem as its own row.
+  const poems = source.target.coll === "poem" && kind === "ديوان"
+    ? parsed.blocks.flatMap((block, o) => block.t.startsWith("h") && block.x ? [{ t: block.x, o }] : [])
+    : undefined;
   return {
     id: source.target.id,
     ...(typeof source.data.edition_of === "string" ? { editionOf: source.data.edition_of } : {}),
@@ -261,6 +267,7 @@ function catalogBase(source: SourceEntry, version: number, parsed: ReturnType<ty
     ...(description ? { description } : {}),
     ...(excerpt ? { excerpt } : {}),
     ...(openingVerses?.length && !titledByOpening ? { openingVerses } : {}),
+    ...(poems?.length ? { poems } : {}),
     ...(parsed.card?.length ? { card: parsed.card } : {}),
     ...(source.target.coll === "poem" ? { verseCount: parsed.blocks.filter(block => block.t === "verse").length } : {}),
   };
@@ -416,14 +423,16 @@ async function generate(options: GenerateAppContentOptions, stagingRoot: string)
   const previousPath = path.join(appRoot, "index.payload.json");
   if (await exists(previousPath)) {
     const previous = JSON.parse(await readFile(previousPath, "utf8")) as RootPayload;
-    for (const [kind, reference] of [["catalog", previous.catalog], ["tombstones", previous.tombstones]] as const) {
+    // The light catalog, when there is one, holds every entry; the old one leaves out the ديوان entries.
+    const catalogKind = previous.light ? "light" : "catalog";
+    for (const [kind, reference] of [[catalogKind, previous.light ?? previous.catalog], ["tombstones", previous.tombstones]] as const) {
       if (!reference || !/^[a-f0-9]{64}$/.test(reference.hash) || reference.path !== artifactPath(kind, reference.hash)) {
         throw new Error("previous generation has an unsafe artifact reference");
       }
       const bytes = await readFile(path.join(appRoot, reference.path));
       if (sha256Hex(bytes) !== reference.hash || bytes.length !== reference.size) throw new Error("previous generation is corrupt");
-      const document = JSON.parse(bytes.toString("utf8"));
-      if (kind === "catalog") {
+      const document = kind === "light" ? readLightCatalog(bytes) : JSON.parse(bytes.toString("utf8"));
+      if (kind !== "tombstones") {
         for (const entry of (document as CatalogDocument).entries) {
           if (unique.has(entry.id)) continue;
           // --only keeps the rest, but not an entry whose source file is gone: phones must drop it too.
@@ -434,7 +443,9 @@ async function generate(options: GenerateAppContentOptions, stagingRoot: string)
         catalogEntries.sort((a, b) => compareText(a.coll, b.coll) || compareText(a.id, b.id));
       } else tombstones.deleted.push(...(document as TombstoneDocument).deleted.filter((entry) => !unique.has(entry.id)));
     }
-    tombstones.deleted = [...new Map(tombstones.deleted.map((entry) => [entry.id, entry])).values()].sort((a, b) => compareText(a.id, b.id));
+    const present = new Set(catalogEntries.map(entry => entry.id));
+    tombstones.deleted = [...new Map(tombstones.deleted.filter(entry => !present.has(entry.id)).map((entry) => [entry.id, entry])).values()]
+      .sort((a, b) => compareText(a.id, b.id));
   }
   // Rebuilt from scratch: an --only run keeps old entries, whose editions may since have moved.
   for (const entry of catalogEntries) delete entry.editions;
@@ -460,19 +471,28 @@ async function generate(options: GenerateAppContentOptions, stagingRoot: string)
       ...(bio ? { bio } : {}), works: catalogEntries.filter(entry => entry.person === id && !entry.editionOf).map(entry => entry.id) });
   }
   catalog.persons = persons;
-  const catalogBytes = jsonBytes(catalog);
+  // Apps up to 1.2.4 decode `catalog` as one string (76 MB ran them out of memory) and know nothing of a
+  // ديوان's poem rows: they get it without the ديوان entries. Newer apps read the light catalog, line by line.
+  const old = new Set(catalogEntries.filter(entry => !entry.poems).map(entry => entry.id));
+  const catalogBytes = jsonBytes({ ...catalog, entries: catalogEntries.filter(entry => old.has(entry.id)),
+    persons: persons.map(person => ({ ...person, works: person.works.filter(id => old.has(id)) })) });
+  const lightBytes = lightCatalogBytes(catalog);
   const tombstoneBytes = jsonBytes(tombstones);
   const catalogHash = sha256Hex(catalogBytes);
+  const lightHash = sha256Hex(lightBytes);
   const tombstoneHash = sha256Hex(tombstoneBytes);
   const catalogRelative = artifactPath("catalog", catalogHash);
+  const lightRelative = artifactPath("light", lightHash);
   const tombstoneRelative = artifactPath("tombstones", tombstoneHash);
   await writeAtomic(path.join(appRoot, catalogRelative), catalogBytes);
+  await writeAtomic(path.join(appRoot, lightRelative), lightBytes);
   await writeAtomic(path.join(appRoot, tombstoneRelative), tombstoneBytes);
   const rootPayload: RootPayload = {
     schema: APP_CONTENT_SCHEMA,
-    generationId: sha256Hex(`${catalogHash}\u0000${tombstoneHash}`).slice(0, 16),
+    generationId: sha256Hex(`${catalogHash}\u0000${tombstoneHash}\u0000${lightHash}`).slice(0, 16),
     catalog: { path: catalogRelative, hash: catalogHash, size: catalogBytes.byteLength },
     tombstones: { path: tombstoneRelative, hash: tombstoneHash, size: tombstoneBytes.byteLength },
+    light: { path: lightRelative, hash: lightHash, size: lightBytes.byteLength },
     minAppSchema: APP_CONTENT_SCHEMA,
   };
   await writeAtomic(path.join(appRoot, "index.payload.json"), jsonBytes(rootPayload));

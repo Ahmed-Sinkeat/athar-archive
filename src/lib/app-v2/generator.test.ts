@@ -7,7 +7,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { generateAppContent, publishedContentTargets } from "./generator.js";
-import { jsonBytes, verifyRootEnvelope } from "./package.js";
+import { jsonBytes, readLightCatalog, verifyRootEnvelope } from "./package.js";
 
 const temporaryRoots: string[] = [];
 
@@ -224,6 +224,25 @@ describe("app/v2 content generator", () => {
     expect(only.catalog.entries.map((entry) => entry.id).sort()).toEqual(["fixture", "kept"]);
     const deleted = JSON.parse(readFileSync(path.join(only.outputDirectory, only.rootPayload.tombstones.path), "utf8")).deleted;
     expect(deleted.map((entry: { id: string }) => entry.id)).toEqual(["gone"]);
+  });
+
+  it("lists a ديوان's poems in the light catalog only, which reads back to the full catalog", async () => {
+    const root = fixtureRoot();
+    mkdirSync(path.join(root, "src/content/poem"), { recursive: true });
+    writeFileSync(path.join(root, "src/content/poem/diwan.md"), "---\ntitle: ديوان\nstatus: published\nperson: author\nwork_type: ديوان\n---\n\n## الأولى\n\nمن البحر الطويل\n\nصدر … عجز\n\n## الثانية\n\nصدر … عجز\n");
+    const options = { repositoryRoot: root, outputRoot: path.join(root, "out"), sidecarRoot: path.join(root, "ids") };
+    const targets = [{ coll: "book" as const, id: "fixture" }, { coll: "poem" as const, id: "diwan" }];
+    const result = await generateAppContent({ ...options, targets });
+    const read = (ref: { path: string }) => readFileSync(path.join(result.outputDirectory, ref.path));
+    expect(result.catalog.entries.find(entry => entry.id === "diwan")?.poems).toEqual([{ t: "الأولى", o: 0 }, { t: "الثانية", o: 3 }]);
+    expect(readLightCatalog(read(result.rootPayload.light!))).toEqual(JSON.parse(JSON.stringify(result.catalog)));
+    const old = JSON.parse(read(result.rootPayload.catalog).toString());
+    expect(old.entries.map((entry: { id: string }) => entry.id)).toEqual(["fixture"]);
+    expect(old.persons[0].works).toEqual(["fixture"]);
+    // A second run reads the light catalog back: nothing tombstoned, nothing changed.
+    const again = await generateAppContent({ ...options, targets: [targets[0]!], keepOthers: true });
+    expect(JSON.parse(readFileSync(path.join(again.outputDirectory, again.rootPayload.tombstones.path), "utf8")).deleted).toEqual([]);
+    expect(again.rootPayload.generationId).toBe(result.rootPayload.generationId);
   });
 
   it("drops opening verses from a poem titled by its own opening", async () => {

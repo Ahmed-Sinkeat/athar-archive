@@ -16,6 +16,8 @@ const HASH_RE = /^[0-9a-f]{64}$/;
 
 const CONTENT_TYPES = new Map([
   [".json", "application/json; charset=utf-8"],
+  // text/plain so Cloudflare gzips it like the JSON catalog.
+  [".jsonl", "text/plain; charset=utf-8"],
   [".zip", "application/zip"],
   [".idx", "application/json; charset=utf-8"],
   [".athar", "application/vnd.athar+gzip"],
@@ -96,10 +98,26 @@ export function validateLocalGeneration(keyId, publicKey, localRoot = LOCAL_ROOT
     [catalogArtifact.key, catalogArtifact],
     [tombstoneArtifact.key, tombstoneArtifact],
   ]);
-  for (const entry of catalog.entries) {
+  // The light catalog (newer apps) holds every entry, the old one all but the ديوان entries.
+  let entries = catalog.entries.map((entry) => ({ coll: entry.coll, id: entry.id, ...entry.pkg, audio: entry.audio }));
+  if (payload.light) {
+    if (payload.light.path !== `light/${payload.light.hash}.jsonl`) throw new Error("light catalog path is not content-addressed");
+    const lightArtifact = localArtifact(localRoot, payload.light.path, payload.light.hash, payload.light.size);
+    immutable.set(lightArtifact.key, lightArtifact);
+    const [header, ...lines] = fs.readFileSync(lightArtifact.filePath, "utf8").split("\n").filter(Boolean);
+    if (JSON.parse(header).schema !== 2) throw new Error("malformed app/v2 light catalog");
+    entries = lines.map((line) => {
+      const { coll, id, pkg, audio } = JSON.parse(line);
+      const base = `content/${coll}/${id}`;
+      return { coll, id, path: `${base}/${pkg.h}.athar`, hash: pkg.h, size: pkg.s, idxPath: `${base}/${pkg.ih}.athar.idx`, idxHash: pkg.ih, idxSize: pkg.is, audio };
+    });
+    const light = new Set(entries.map((entry) => entry.id));
+    if (catalog.entries.some((entry) => !light.has(entry.id))) throw new Error("light catalog lacks an entry of the old catalog");
+  }
+  for (const entry of entries) {
     const refs = [
-      [entry.pkg?.path, entry.pkg?.hash, entry.pkg?.size],
-      [entry.pkg?.idxPath, entry.pkg?.idxHash, entry.pkg?.idxSize],
+      [entry.path, entry.hash, entry.size],
+      [entry.idxPath, entry.idxHash, entry.idxSize],
       ...(Array.isArray(entry.audio) ? entry.audio.map((audio) => [audio.path, audio.hash, audio.size]) : []),
     ];
     for (const [relative, hash, size] of refs) {

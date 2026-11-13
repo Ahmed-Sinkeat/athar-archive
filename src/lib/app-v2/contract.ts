@@ -176,11 +176,18 @@ export interface CatalogEntry {
   excerpt?: string;
   /** Exact authored verse text, normally the first two lines of a poem. */
   openingVerses?: string[];
+  /** A ديوان's poems: each heading and the block ordinal it opens at (light catalog only). */
+  poems?: { t: string; o: number }[];
   verseCount?: number;
   /** Shown in the reader's «المصدر» dialog instead of opening the book. */
   card?: CardField[];
   pkg: PackageCatalogRef;
   audio?: AudioCatalogRef[];
+}
+
+/** A [PackageCatalogRef] in the light catalog: paths follow from the hashes, f0 is [len, n, sha256]. */
+export interface LightPackageRef {
+  h: string; s: number; u: number; b: number; c: number; pg?: PageRange; ih: string; is: number; f0?: [number, number, string];
 }
 
 export interface CatalogPerson {
@@ -208,6 +215,8 @@ export interface RootPayload {
   generationId: string;
   catalog: { path: string; hash: string; size: number };
   tombstones: { path: string; hash: string; size: number };
+  /** The full catalog, line by line (package.ts lightCatalogBytes); old apps ignore it and read `catalog`. */
+  light?: { path: string; hash: string; size: number };
   minAppSchema: typeof APP_CONTENT_SCHEMA;
 }
 

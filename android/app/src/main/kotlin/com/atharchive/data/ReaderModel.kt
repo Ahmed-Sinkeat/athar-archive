@@ -137,14 +137,18 @@ internal class ReaderModel(
         return annotationRepository.reattach(annotationId).start.ordinalHint
     }
 
-    fun poemReaderState(entityId: String): Flow<PoemReaderUiState?> = poemFlows.getOrPut(entityId) {
+    fun poemReaderState(entityId: String, targetOrdinal: Int? = null): Flow<PoemReaderUiState?> = poemFlows.getOrPut("$entityId#$targetOrdinal") {
         combine(catalogDao.observeEntity(entityId), importDao.observeBlocks(entityId), userDao.observeReadingPosition(entityId),
             annotationRepository.observe(AnnotationFilter(entityId = entityId))) { entity, blocks, position, saved ->
             val (marks, benefits) = saved.partition { it.kind == AnnotationKind.Bookmark }
             val ordinals = blocks.associate { AnnotationBlockId(it.blockIdHi, it.blockIdLo) to it.ordinal }
             val reading = position?.let { ordinals[AnnotationBlockId(it.blockIdHi, it.blockIdLo)] }
-            entity?.toPoemReaderUi(blocks)?.copy(
-                readingOrdinal = reading ?: position?.ordinalHint ?: 0,
+            val readingOrdinal = reading ?: position?.ordinalHint ?: 0
+            // A ديوان opens on one poem only: the one holding the target, else the reading position.
+            val poem = entity?.diwanPoem(targetOrdinal ?: readingOrdinal)
+            val shown = poem?.let { (range, _) -> blocks.filter { it.ordinal in range } } ?: blocks
+            entity?.toPoemReaderUi(shown, poem?.second ?: entity.title, poem?.first?.count() ?: entity.pkgBlocks)?.copy(
+                readingOrdinal = readingOrdinal,
                 readingPositionReady = position == null || reading != null || blocks.size >= entity.pkgBlocks,
                 bookmarks = marks.mapNotNull { ordinals[it.start.blockId] },
                 saved = benefits.mapNotNull { ordinals[it.start.blockId] },
@@ -344,7 +348,7 @@ internal class ReaderModel(
         readerJobs.remove(entityId)?.cancel()
         readerWindows.remove(entityId)
         readerFlows.remove(entityId)
-        poemFlows.remove(entityId)
+        poemFlows.keys.removeIf { it.startsWith("$entityId#") }
     }
 }
 
@@ -408,7 +412,16 @@ private fun ReaderUiState.withAnnotations(annotations: List<Annotation>, preview
 /** The parser's «…» / «...» / «---» between a verse's halves (src/lib/app-v2/parser.ts HEMISTICH_RE). */
 private val HemistichSeparator = Regex("""\s*(?:---|\.\.\.|…)\s*""")
 
-private fun ContentEntity.toPoemReaderUi(blocks: List<ContentBlockEntity>): PoemReaderUiState {
+/** The poem of a ديوان holding [ordinal]: its block range and title; null for any other work. */
+private fun ContentEntity.diwanPoem(ordinal: Int): Pair<IntRange, String>? {
+    if (poemsJson == null) return null
+    val poems = toCatalogEntry().poems
+    val index = poems.indexOfLast { it.o <= ordinal }.coerceAtLeast(0)
+    val poem = poems.getOrNull(index) ?: return null
+    return (poem.o until (poems.getOrNull(index + 1)?.o ?: pkgBlocks)) to poem.t
+}
+
+private fun ContentEntity.toPoemReaderUi(blocks: List<ContentBlockEntity>, title: String = this.title, expectedBlocks: Int = pkgBlocks): PoemReaderUiState {
     val prose = blocks.none { it.type == "verse" }
     // A باب heading rides on the verse after it, so the list stays one row per verse
     // (indices are what the panel and audio jump to).
@@ -440,7 +453,7 @@ private fun ContentEntity.toPoemReaderUi(blocks: List<ContentBlockEntity>): Poem
         title = title,
         poet = personName.orEmpty(),
         sourceUrl = PlayStoreUrl,
-        bodyLoaded = blocks.size >= pkgBlocks,
+        bodyLoaded = blocks.size >= expectedBlocks,
         verses = verses,
         recordings = audioReferences().map { audio ->
             PoemAudioUi(

@@ -5,6 +5,9 @@ import {
   APP_CONTENT_SCHEMA,
   APP_FRAME_BLOCKS,
   APP_PACKAGE_SPLIT_BYTES,
+  type CatalogDocument,
+  type CatalogEntry,
+  type LightPackageRef,
   type PackageArtifact,
   type PackageBlock,
   type PackageHeader,
@@ -177,12 +180,68 @@ export function verifyRootEnvelope(envelopeBytes: Buffer, trustedKeys: Map<strin
     || !/^[0-9a-f]{64}$/.test(payload.tombstones.hash)
     || payload.tombstones.path !== `tombstones/${payload.tombstones.hash}.json`
     || !Number.isSafeInteger(payload.tombstones.size)
+    || (payload.light != null && (!/^[0-9a-f]{64}$/.test(payload.light.hash)
+      || payload.light.path !== artifactPath("light", payload.light.hash) || !Number.isSafeInteger(payload.light.size)))
   ) throw new Error("malformed signed root payload");
   return payload as RootPayload;
 }
 
-export function artifactPath(kind: "catalog" | "tombstones", hash: string): string {
-  return `${kind}/${hash}.json`;
+export function artifactPath(kind: "catalog" | "tombstones" | "light", hash: string): string {
+  return kind === "light" ? `light/${hash}.jsonl` : `${kind}/${hash}.json`;
+}
+
+/**
+ * The light catalog ([RootPayload.light]): line 1 is `{schema, persons}`, then one entry per line with
+ * its package as a [LightPackageRef] and personName/died left to `persons` when they match. Apps read it
+ * line by line; the whole-string decode of a 76 MB catalog ran every 1.2.4 phone out of memory.
+ */
+export function lightCatalogBytes(catalog: CatalogDocument): Buffer {
+  const persons = new Map((catalog.persons ?? []).map(person => [person.id, person]));
+  const lines = [JSON.stringify({ schema: catalog.schema, persons: catalog.persons ?? [] })];
+  for (const { pkg, ...entry } of catalog.entries) {
+    const person = entry.person ? persons.get(entry.person) : undefined;
+    if (person && person.name === entry.personName && person.died === entry.died) {
+      delete entry.personName;
+      delete entry.died;
+    }
+    const light: LightPackageRef = {
+      h: pkg.hash, s: pkg.size, u: pkg.uncompressed, b: pkg.blocks, c: pkg.chapters, ...(pkg.pages ? { pg: pkg.pages } : {}),
+      ih: pkg.idxHash, is: pkg.idxSize, ...(pkg.f0 ? { f0: [pkg.f0.len, pkg.f0.n, pkg.f0.sha256] as [number, number, string] } : {}),
+    };
+    lines.push(JSON.stringify({ ...entry, pkg: light }));
+  }
+  return Buffer.from(`${lines.join("\n")}\n`, "utf8");
+}
+
+/** The inverse of [lightCatalogBytes], fields in the generator's order so entry hashes come out the same. */
+export function readLightCatalog(bytes: Buffer): CatalogDocument {
+  const [header, ...lines] = bytes.toString("utf8").split("\n").filter(Boolean);
+  const { schema, persons } = JSON.parse(header!) as Required<Pick<CatalogDocument, "schema" | "persons">>;
+  const byId = new Map(persons.map(person => [person.id, person]));
+  const entries = lines.map(line => {
+    const light = JSON.parse(line) as Record<string, unknown> & { id: string; coll: string; pkg: LightPackageRef };
+    const entry: Record<string, unknown> = {};
+    for (const [key, value] of Object.entries(light)) {
+      if (key === "pkg") {
+        const p = value as LightPackageRef;
+        const base = `content/${light.coll}/${light.id}`;
+        entry.pkg = {
+          path: `${base}/${p.h}.athar`, hash: p.h, size: p.s, idxPath: `${base}/${p.ih}.athar.idx`, idxHash: p.ih, idxSize: p.is,
+          uncompressed: p.u, blocks: p.b, chapters: p.c, ...(p.pg ? { pages: p.pg } : {}),
+          ...(p.f0 ? { f0: { off: 0, len: p.f0[0], ord: 0, n: p.f0[1], sha256: p.f0[2] } } : {}),
+        };
+        continue;
+      }
+      entry[key] = value;
+      const person = key === "person" ? byId.get(value as string) : undefined;
+      if (person && !("personName" in light)) {
+        entry.personName = person.name;
+        if (person.died != null) entry.died = person.died;
+      }
+    }
+    return entry as unknown as CatalogEntry;
+  });
+  return { schema, entries, persons };
 }
 
 export function contentPath(coll: string, id: string, hash: string, suffix: ".athar" | ".athar.idx"): string {

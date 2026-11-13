@@ -15,6 +15,7 @@ import { copyFileSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync } 
 import { DatabaseSync } from "node:sqlite";
 import path from "node:path";
 import { normalizeArabic } from "../src/lib/ar-normalize.js";
+import { readLightCatalog } from "../src/lib/app-v2/package.js";
 
 const source = path.resolve(process.argv[2] ?? "dist/app-content/app/v2");
 const target = path.resolve("android/app/src/main/assets/app-content");
@@ -24,7 +25,10 @@ const envelope = JSON.parse(readFileSync(path.join(source, "index.json"), "utf8"
 const root = typeof envelope.payload === "string"
   ? JSON.parse(Buffer.from(envelope.payload, "base64url").toString("utf8"))
   : envelope.payload;
-const catalog = JSON.parse(readFileSync(path.join(source, root.catalog.path), "utf8"));
+// The light catalog is what this app syncs (the old one leaves out the ديوان entries).
+const catalog = root.light
+  ? readLightCatalog(readFileSync(path.join(source, root.light.path)))
+  : JSON.parse(readFileSync(path.join(source, root.catalog.path), "utf8"));
 
 // The newest schema Room exported is the one the app builds against.
 const version = Math.max(...readdirSync(schemaDir).filter((f) => /^\d+\.json$/.test(f)).map((f) => Number.parseInt(f)));
@@ -62,8 +66,8 @@ const personsJson = (persons) => JSON.stringify(persons.map((p) => fields(p, [["
 const insertEntity = db.prepare(`INSERT INTO entity (id, coll, v, hash, title, titleNorm, person, personName, died, kind,
   authoredYear, publishedAt, description, excerpt, openingVersesJson, topicsCsv, pkgPath, pkgHash, pkgSize, pkgUncompressed,
   idxPath, idxHash, idxSize, pkgBlocks, pkgChapters, audioJson, editionOf, edition, editionsJson, verseCount, pageFrom,
-  pageTo, volumes, volumeUnit, f0Json, cardJson, catalogPresent)
-  VALUES (${Array(37).fill("?").join(", ")})`);
+  pageTo, volumes, volumeUnit, f0Json, cardJson, poemsJson, catalogPresent)
+  VALUES (${Array(38).fill("?").join(", ")})`);
 const insertState = db.prepare("INSERT INTO entityState (id, availability, transferState, localPackageHash) VALUES (?, 'absent', 'idle', NULL)");
 db.exec("BEGIN");
 for (const e of catalog.entries) {
@@ -75,7 +79,8 @@ for (const e of catalog.entries) {
     JSON.stringify(e.openingVerses ?? []), (e.topics ?? []).join(","), pkg.path, pkg.hash, pkg.size, pkg.uncompressed,
     pkg.idxPath, pkg.idxHash, pkg.idxSize, pkg.blocks, pkg.chapters, audioJson(e.audio ?? []), e.editionOf ?? null,
     e.edition ?? null, JSON.stringify(e.editions ?? []), e.verseCount ?? null, pages?.from ?? null, pages?.to ?? null,
-    pages?.vols ?? null, pages?.unit ?? null, pkg.f0 ? f0Json(pkg.f0) : null, e.card?.length ? cardJson(e.card) : null, 1,
+    pages?.vols ?? null, pages?.unit ?? null, pkg.f0 ? f0Json(pkg.f0) : null, e.card?.length ? cardJson(e.card) : null,
+    e.poems?.length ? JSON.stringify(e.poems.map((p) => fields(p, [["t"], ["o"]]))) : null, 1,
   );
   insertState.run(e.id);
 }

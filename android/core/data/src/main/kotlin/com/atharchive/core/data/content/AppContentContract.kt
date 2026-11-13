@@ -39,6 +39,8 @@ data class RootPayload(
     val catalog: ArtifactReference,
     val tombstones: ArtifactReference,
     val minAppSchema: Int,
+    /** The whole catalog, one entry per line ([AppContentDocuments.decodeLightCatalog]); apps up to 1.2.4 read [catalog]. */
+    val light: ArtifactReference? = null,
 )
 
 @Serializable
@@ -127,6 +129,8 @@ data class CatalogEntry(
     val description: String? = null,
     val excerpt: String? = null,
     val openingVerses: List<String> = emptyList(),
+    /** A ديوان's poems: each heading and the block ordinal it opens at. */
+    val poems: List<DiwanPoem> = emptyList(),
     val verseCount: Int? = null,
     /** The book's opening info card (الكتاب / المؤلف / الناشر …), shown under «المصدر». */
     val card: List<CardField> = emptyList(),
@@ -148,6 +152,9 @@ data class CatalogDocument(
     val entries: List<CatalogEntry>,
     val persons: List<CatalogPerson> = emptyList(),
 )
+
+@Serializable
+data class DiwanPoem(val t: String, val o: Int)
 
 @Serializable
 data class Tombstone(

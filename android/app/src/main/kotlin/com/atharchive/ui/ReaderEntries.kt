@@ -141,7 +141,7 @@ internal fun EntryProviderScope<NavKey>.readerEntries(app: AppNav) = with(app) {
             }
         }
         entry<PoemReaderRoute> { route ->
-            val poemEmitted = collectEmitted(route.poemId) { contentViewModel.poemReaderState(route.poemId) }
+            val poemEmitted = collectEmitted("${route.poemId}#${route.targetOrdinal}") { contentViewModel.poemReaderState(route.poemId, route.targetOrdinal) }
             val openProgress by contentViewModel.openProgress.collectAsStateWithLifecycle()
             val loadProgress = openProgress?.takeIf { it.first == route.poemId }?.second
             val poemState = poemEmitted?.value

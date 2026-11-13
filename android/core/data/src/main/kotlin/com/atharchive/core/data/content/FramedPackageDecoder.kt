@@ -2,19 +2,73 @@ package com.atharchive.core.data.content
 
 import java.io.ByteArrayInputStream
 import java.io.IOException
+import java.io.InputStream
 import java.util.zip.GZIPInputStream
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.decodeFromJsonElement
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
+import kotlinx.serialization.json.put
+
+@Serializable
+internal data class LightCatalogHeader(val schema: Int, val persons: List<CatalogPerson> = emptyList())
 
 object AppContentDocuments {
     private val Collections = setOf("book", "article", "question", "poem")
 
     fun decodeCatalog(bytes: ByteArray, reference: ArtifactReference): CatalogDocument {
         ContentDigests.verify(bytes, reference.hash, reference.size, "catalog")
-        val decoded = decode<CatalogDocument>(bytes, "catalog")
+        return checked(decode<CatalogDocument>(bytes, "catalog"))
+    }
+
+    /**
+     * The light catalog, line by line, never one string: the 76 MB catalog decoded whole ran 1.2.4 out of
+     * memory. Line 1 is `{schema, persons}`; each next line is an entry whose pkg is shortened (paths follow
+     * from the hashes, f0 = [len, n, sha256]) and whose personName/died, when left out, are its person's.
+     * The caller checks the bytes' size and SHA-256 before using what this returns.
+     */
+    fun decodeLightCatalog(input: InputStream): CatalogDocument = try {
+        val reader = input.bufferedReader(Charsets.UTF_8)
+        val header = AppContentJson.decodeFromString<LightCatalogHeader>(reader.readLine() ?: fail("light catalog is empty"))
+        val persons = header.persons.associateBy { it.id }
+        val entries = ArrayList<CatalogEntry>()
+        while (true) {
+            val line = reader.readLine() ?: break
+            val light = AppContentJson.parseToJsonElement(line).jsonObject
+            val p = light.getValue("pkg").jsonObject
+            fun text(key: String) = p.getValue(key).jsonPrimitive.content
+            val base = "content/${light.getValue("coll").jsonPrimitive.content}/${light.getValue("id").jsonPrimitive.content}"
+            val person = light["person"]?.jsonPrimitive?.content?.let(persons::get)?.takeIf { "personName" !in light }
+            val entry = buildJsonObject {
+                light.forEach { (key, value) -> if (key != "pkg") put(key, value) }
+                person?.let { put("personName", it.name); it.died?.let { died -> put("died", died) } }
+                put("pkg", buildJsonObject {
+                    put("path", "$base/${text("h")}.athar"); put("hash", text("h")); put("size", p.getValue("s"))
+                    put("idxPath", "$base/${text("ih")}.athar.idx"); put("idxHash", text("ih")); put("idxSize", p.getValue("is"))
+                    put("uncompressed", p.getValue("u")); put("blocks", p.getValue("b")); put("chapters", p.getValue("c"))
+                    p["pg"]?.let { put("pages", it) }
+                    p["f0"]?.jsonArray?.let { f0 ->
+                        put("f0", buildJsonObject { put("off", 0); put("len", f0[0]); put("ord", 0); put("n", f0[1]); put("sha256", f0[2]) })
+                    }
+                })
+            }
+            entries += AppContentJson.decodeFromJsonElement<CatalogEntry>(entry)
+        }
+        checked(CatalogDocument(header.schema, entries, header.persons))
+    } catch (error: SerializationException) {
+        throw ContentIntegrityException("malformed light catalog", error)
+    } catch (error: IllegalArgumentException) {
+        throw ContentIntegrityException("malformed light catalog", error)
+    } catch (error: NoSuchElementException) {
+        throw ContentIntegrityException("malformed light catalog", error)
+    }
+
+    private fun checked(decoded: CatalogDocument): CatalogDocument {
         if (decoded.schema != APP_CONTENT_SCHEMA) {
             throw UnsupportedContentSchemaException(decoded.schema, decoded.schema)
         }

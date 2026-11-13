@@ -5,7 +5,7 @@ import { createReadStream, readFileSync } from "node:fs";
 import path from "node:path";
 import { gunzipSync } from "node:zlib";
 import type { CatalogDocument, PackageIndex, PackageBlock } from "../src/lib/app-v2/contract.js";
-import { sha256Hex, verifyRootEnvelope } from "../src/lib/app-v2/package.js";
+import { readLightCatalog, sha256Hex, verifyRootEnvelope } from "../src/lib/app-v2/package.js";
 
 const root = path.resolve(process.argv[2] ?? "dist/app-content/app/v2");
 const keyFile = process.env.ATHAR_CONTENT_SIGNING_KEY_FILE;
@@ -20,7 +20,11 @@ function artifact(ref: { path: string; hash: string; size: number }) {
   assert.equal(sha256Hex(bytes), ref.hash, ref.path);
   return bytes;
 }
-const catalog = JSON.parse(artifact(payload.catalog).toString()) as CatalogDocument;
+const old = JSON.parse(artifact(payload.catalog).toString()) as CatalogDocument;
+// The light catalog (newer apps) holds every entry; the old one must be a subset of it.
+const catalog = payload.light ? readLightCatalog(artifact(payload.light)) : old;
+const lightIds = new Set(catalog.entries.map(entry => entry.id));
+assert(old.entries.every(entry => lightIds.has(entry.id)), "old catalog has an entry the light one lacks");
 artifact(payload.tombstones);
 const identities = new Set(catalog.entries.map(entry => entry.id));
 assert.equal(identities.size, catalog.entries.length);

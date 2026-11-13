@@ -194,7 +194,7 @@ class AtharContentViewModel @Inject constructor(
     fun readerWindow(entityId: String) = readerModel.readerWindow(entityId)
     suspend fun selectionBlocks(entityId: String, range: IntRange) = readerModel.selectionBlocks(entityId, range)
     suspend fun savedPoemOrdinal(entityId: String, annotationId: String) = readerModel.savedPoemOrdinal(entityId, annotationId)
-    fun poemReaderState(entityId: String) = readerModel.poemReaderState(entityId)
+    fun poemReaderState(entityId: String, targetOrdinal: Int? = null) = readerModel.poemReaderState(entityId, targetOrdinal)
     fun openReader(entityId: String, targetOrdinal: Int? = null) = readerModel.openReader(entityId, targetOrdinal)
     suspend fun textVersion(entityId: String) = readerModel.textVersion(entityId)
     suspend fun findPrintedPage(entityId: String, page: Int, volume: Int?) = readerModel.findPrintedPage(entityId, page, volume)
@@ -368,8 +368,8 @@ class AtharContentViewModel @Inject constructor(
     ) { decoded, pinnedIds, retainedIds, shelves, (ranks, states) ->
         val shelfIds = shelves.mapTo(hashSetOf(), LibraryEntryEntity::entityId)
         PoetryUiState(
-            countLabel = arabicCount(decoded.size, "القصائد", "قصيدة واحدة", "قصيدتين", "قصائد", "قصيدة"),
-            poems = decoded.map { (entity, entry) ->
+            countLabel = arabicCount(decoded.sumOf { (_, entry) -> entry.poems.size.coerceAtLeast(1) }, "القصائد", "قصيدة واحدة", "قصيدتين", "قصائد", "قصيدة"),
+            poems = decoded.flatMap { (entity, entry) ->
                 PoemUi(
                     id = entity.id,
                     title = entity.title,
@@ -389,10 +389,17 @@ class AtharContentViewModel @Inject constructor(
                     era = entity.era.orEmpty(),
                     hasAudio = entity.audioJson != "[]",
                     kind = entity.kind ?: "قصيدة",
-                )
+                ).let { diwan ->
+                    // A ديوان is never a row of its own: each of its poems is, and opens alone (PoemReader).
+                    // ponytail: ~53k rows rebuilt per catalog/pin change; cache per diwan if the tab stutters.
+                    if (entry.poems.isEmpty()) listOf(diwan) else entry.poems.map { poem ->
+                        diwan.copy(id = "${entity.id}#${poem.o}", title = poem.t, openingVerses = emptyList(), verseCountLabel = null,
+                            kind = "قصيدة", entityId = entity.id, ordinal = poem.o)
+                    }
+                }
             },
         )
-    }.withTransfers("قصيدة", PoetryUiState::poems, PoemUi::id, { state, rows -> state.copy(poems = rows) }) { row, transfer ->
+    }.withTransfers("قصيدة", PoetryUiState::poems, PoemUi::entityId, { state, rows -> state.copy(poems = rows) }) { row, transfer ->
         row.copy(transfer = transfer)
     }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.Eagerly, PoetryUiState("٠ قصيدة", emptyList(), loaded = false)) // hot from app start so the tab opens filled; a download tick only re-copies the rows downloading
 

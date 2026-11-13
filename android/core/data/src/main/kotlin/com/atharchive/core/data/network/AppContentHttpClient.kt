@@ -13,8 +13,10 @@ import com.atharchive.core.data.content.SignedRootVerifier
 import com.atharchive.core.data.content.TombstoneDocument
 import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.FilterInputStream
 import java.io.FileOutputStream
 import java.io.InputStream
+import java.security.MessageDigest
 import java.security.PublicKey
 import kotlinx.coroutines.ensureActive
 import kotlin.coroutines.coroutineContext
@@ -56,11 +58,12 @@ class AppContentHttpClient(
     }
 
     suspend fun fetchGeneration(root: RootPayload): VerifiedGeneration = withContext(Dispatchers.IO) {
-        val catalogBytes = get(root.catalog.path, root.catalog.size.checkedSize("catalog"))
+        val catalog = root.light?.let { light -> stream(light, "light catalog", AppContentDocuments::decodeLightCatalog) }
+            ?: AppContentDocuments.decodeCatalog(get(root.catalog.path, root.catalog.size.checkedSize("catalog")), root.catalog)
         val tombstoneBytes = get(root.tombstones.path, root.tombstones.size.checkedSize("tombstones"))
         VerifiedGeneration(
             root = root,
-            catalog = AppContentDocuments.decodeCatalog(catalogBytes, root.catalog),
+            catalog = catalog,
             tombstones = AppContentDocuments.decodeTombstones(tombstoneBytes, root.tombstones),
         )
     }
@@ -199,6 +202,42 @@ class AppContentHttpClient(
             if (!response.isSuccessful) throw ContentTransportException("$relativePath returned HTTP ${response.code}")
             requireIdentity(response)
             readBounded(response, maximumBytes, onBytes)
+        }
+    }
+
+    /**
+     * Hands [read] the artifact as it arrives, with no copy of the whole thing in memory, and returns its
+     * result only once the bytes match [reference]'s size and SHA-256.
+     */
+    private suspend fun <T> stream(reference: ArtifactReference, label: String, read: (InputStream) -> T): T {
+        val request = Request.Builder().url(resolve(reference.path)).build()
+        return withResponse(request) { response ->
+            if (!response.isSuccessful) throw ContentTransportException("${reference.path} returned HTTP ${response.code}")
+            requireIdentity(response)
+            val body = response.body ?: throw ContentTransportException("app-content response has no body")
+            val digest = MessageDigest.getInstance("SHA-256")
+            var total = 0L
+            val counted = object : FilterInputStream(body.byteStream()) {
+                override fun read(): Int {
+                    val one = ByteArray(1)
+                    return if (read(one, 0, 1) < 0) -1 else one[0].toInt() and 0xff
+                }
+                override fun read(buffer: ByteArray, offset: Int, length: Int): Int {
+                    val read = super.read(buffer, offset, length)
+                    if (read > 0) {
+                        total += read
+                        if (total > reference.size) throw ContentTransportException("$label exceeds its declared size")
+                        digest.update(buffer, offset, read)
+                    }
+                    return read
+                }
+            }
+            val result = read(counted)
+            val rest = ByteArray(DEFAULT_BUFFER_SIZE)
+            while (counted.read(rest) >= 0) Unit
+            val hash = digest.digest().joinToString("") { "%02x".format(it) }
+            if (total != reference.size || hash != reference.hash) throw ContentIntegrityException("$label differs from the signed root")
+            result
         }
     }
 
