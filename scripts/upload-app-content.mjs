@@ -179,9 +179,10 @@ async function main() {
   const remote = new Map();
   await listPrefix(s3, PREFIX, (object) => remote.set(object.key, object.etag));
   const changed = generation.immutable.filter((artifact) => remote.get(artifact.key) !== artifact.md5);
-  // ponytail: fixed pool of 8 workers; sequential was ~40 files/min. Raise if the uplink allows.
+  // ponytail: pool of 8 workers by default; R2_CONCURRENCY=64 for tens of thousands of ~1 KB files,
+  // which are latency-bound (~8 files/s at 8 workers).
   const queue = changed.slice();
-  await Promise.all(Array.from({ length: 8 }, async () => { for (let artifact; (artifact = queue.shift()); ) await upload(s3, artifact, IMMUTABLE_CACHE); }));
+  await Promise.all(Array.from({ length: Number(process.env.R2_CONCURRENCY ?? 8) }, async () => { for (let artifact; (artifact = queue.shift()); ) await upload(s3, artifact, IMMUTABLE_CACHE); }));
   console.log(`immutable: ${changed.length} uploaded, ${generation.immutable.length - changed.length} unchanged`);
 
   // Publication point. Never move this above an immutable upload.
