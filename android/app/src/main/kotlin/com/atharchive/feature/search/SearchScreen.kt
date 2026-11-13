@@ -268,8 +268,10 @@ fun SearchScreen(
             }
             // Kept while the next search runs: hidden then, it pulled the list up on every keystroke and pushed it back down.
             if (state.topAuthors.size > 1) item(key = "top-authors") {
-                TopAuthors(state.topAuthors, filters.authors, horizontalPadding) { name ->
-                    changeFilters(filters.copy(authors = if (name in filters.authors) filters.authors - name else filters.authors + name))
+                Box(Modifier.animateItem()) {
+                    TopAuthors(state.topAuthors, filters.authors, horizontalPadding) { name ->
+                        changeFilters(filters.copy(authors = if (name in filters.authors) filters.authors - name else filters.authors + name))
+                    }
                 }
             }
 
@@ -318,7 +320,8 @@ fun SearchScreen(
                 ResultsHeading(if (searching) "في النصوص · جارٍ البحث في المكتبة كلها…" else "في النصوص", horizontalPadding)
             }
             // One card per book at its best hit's rank; the book's other passages open under it.
-            itemsIndexed(bookGroups, key = { _, group -> group.first().id }) { index, group ->
+            // Rows fade in where they land (the rest of the results under the first page) instead of popping.
+            itemsIndexed(bookGroups, key = { _, group -> group.first().id }) { index, group -> Column(Modifier.animateItem()) {
                 val entityId = group.first().entityId
                 val open = entityId in openBooks
                 @Composable fun card(hit: SearchHitUi, inBook: Boolean = false) = SearchHitCard(
@@ -346,8 +349,12 @@ fun SearchScreen(
                 // 8.13: the other places hang under their book (indented, on its rule, no title again), not as more books.
                 if (open) group.drop(1).forEach { card(it, inBook = true) }
                 if (group.size > 1) HorizontalDivider(Modifier.padding(horizontal = horizontalPadding), thickness = 0.6.dp, color = AtharTheme.colors.divider.copy(alpha = 0.6f))
-            }
-            if (state.hasMore) {
+            } }
+            // The first page is up and the rest is on its way: said under it, where it will land.
+            if (searching && state.query == inputQuery) item(key = "search-rest") {
+                Text("جارٍ تحميل بقية النتائج…", Modifier.animateItem().fillMaxWidth().padding(horizontal = horizontalPadding, vertical = 16.dp),
+                    color = AtharTheme.colors.secondaryText, style = MaterialTheme.typography.bodyMedium, textAlign = androidx.compose.ui.text.style.TextAlign.Center)
+            } else if (state.hasMore) {
                 item(key = "search-more") {
                     TextButton(onClick = onLoadMore, Modifier.fillMaxWidth().padding(horizontal = horizontalPadding)) {
                         Text("المزيد من النتائج", color = AtharTheme.colors.accent)

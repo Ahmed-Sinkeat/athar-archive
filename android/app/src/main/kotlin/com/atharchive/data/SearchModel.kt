@@ -49,6 +49,8 @@ import kotlinx.coroutines.launch
 private const val SearchDebounceMs = 60L
 private const val OnlineSearchPauseMs = 150L
 private const val FacetsWaitMs = 1_500L
+/** Before the first page shows: the counts and authors row usually land with it rather than push it down after. */
+private const val PartialFacetsWaitMs = 300L
 private const val SearchPageSize = 40
 // a list search keeps the best 3000; the largest list (المقالات) is ~2000, raise it with the catalog.
 private const val CatalogMatchLimit = 3000
@@ -257,8 +259,20 @@ internal class SearchModel(
                     topAuthors = facets.persons.mapNotNull { p -> catalog.nameBySlug[p.slug]?.let { AuthorCountUi(it, p.count) } }.take(8),
                 )
             }
+            var shownPartial = false
             val online = try {
-                onlineSearch.hits(query, limit) // whole, not page by page: each partial list moved the results again
+                // The first page shows as it lands (~1 s a page); the rest is added under it, so what
+                // is on screen never moves. Only for a new search: «المزيد» refetches from the top, and
+                // its first pages would shorten the list already shown.
+                onlineSearch.hits(query, limit) { partial, _ ->
+                    if (limit != SearchPageSize) return@hits
+                    kotlinx.coroutines.withTimeoutOrNull(PartialFacetsWaitMs) { facetsAsync.await() }
+                    shownPartial = true
+                    emit(counted(base.copy(
+                        scope = SearchScope.Online, roots = roots, directMatches = direct, hasMore = false, searching = true,
+                        hits = exactOnly(partial).mapIndexedNotNull { index, hit -> hit.toHitUi(index, catalog) },
+                    )))
+                }
             } catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled
             } catch (offline: Exception) { null }
             if (online == null) {
@@ -279,7 +293,11 @@ internal class SearchModel(
             )
             // Passages, counts and top authors land together (the authors row used to push the list down
             // a moment later); only counts slower than this follow on their own.
-            if (kotlinx.coroutines.withTimeoutOrNull(FacetsWaitMs) { facetsAsync.await() } == null) {
+            // (Not once the first page is up: the rest would wait on them.)
+            if (shownPartial && !facetsAsync.isCompleted) {
+                emit(state)
+                facetsAsync.await()
+            } else if (kotlinx.coroutines.withTimeoutOrNull(FacetsWaitMs) { facetsAsync.await() } == null) {
                 emit(state)
                 facetsAsync.await()
             }
