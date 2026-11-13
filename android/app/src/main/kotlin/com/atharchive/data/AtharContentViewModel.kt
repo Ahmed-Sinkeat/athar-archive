@@ -169,7 +169,6 @@ class AtharContentViewModel @Inject constructor(
     val recentQueries: StateFlow<List<String>> get() = searchModel.recentQueries
     suspend fun catalogMatches(query: String, collections: Set<String>) = searchModel.catalogMatches(query, collections)
     suspend fun searchSection(type: SearchResultType, query: String) = searchModel.searchSection(type, query)
-    suspend fun searchSectionLocal(type: SearchResultType, query: String) = searchModel.searchSectionLocal(type, query)
     suspend fun onlinePassage(hit: SearchHitUi) = searchModel.onlinePassage(hit)
     suspend fun locateOnlineHit(hit: SearchHitUi, query: String) = searchModel.locateOnlineHit(hit, query)
     /** A ديوان: a hit in it must be located first, the reader showing one of its poems only. */

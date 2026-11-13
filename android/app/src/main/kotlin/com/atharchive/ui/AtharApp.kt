@@ -463,33 +463,37 @@ fun AtharApp(
     }
 
     /** Opens a passage from any search: local hits know their paragraph, online ones are located first. */
-    var openingHit by remember { mutableStateOf(false) }
+    var openingHit by remember { mutableStateOf<kotlinx.coroutines.Job?>(null) }
     fun openHit(hit: com.atharchive.feature.search.SearchHitUi, query: String) {
         val poem = hit.type == com.atharchive.feature.search.SearchResultType.Poem
-        // Locating an online hit fetches the book's frames first: say so, and take one tap at a time
-        // (the screen used to sit still, and a second tap opened the book twice).
-        if (hit.url != null) { if (openingHit) return; openingHit = true; scope.launch {
+        // The latest tap wins: a second one used to be ignored while the first was located (a dead tap),
+        // and before that opened the book twice.
+        openingHit?.cancel()
+        openingHit = null
+        if (hit.url == null) {
+            backStack.add(if (poem) PoemReaderRoute(hit.entityId, hit.ordinal, query) else ReaderRoute(hit.entityId, hit.ordinal, hit.sourceMatchStart, hit.sourceMatchEnd))
+            return
+        }
+        val from = backStack.lastOrNull()
+        openingHit = scope.launch {
             // A poem that is a work of its own opens at once and the reader finds the verse by its
             // words (the walk here fetched its frames first, then the reader fetched them again).
             if (poem && !contentViewModel.isDiwan(hit.entityId)) {
-                openingHit = false
                 backStack.add(PoemReaderRoute(hit.entityId, null, query, hit.excerpt))
                 return@launch
             }
+            // Locating an online hit fetches the book's frames first: say so.
             val note = launch { snackbarHostState.showSnackbar("جارٍ فتح الموضع…", duration = androidx.compose.material3.SnackbarDuration.Indefinite) }
-            val (ordinal, start, end) = try { contentViewModel.locateOnlineHit(hit, query) } finally { note.cancel(); openingHit = false }
+            val (ordinal, start, end) = try { contentViewModel.locateOnlineHit(hit, query) } finally { note.cancel() }
+            // Left meanwhile (back, another section): the book no longer jumps open over what is on screen.
+            if (backStack.lastOrNull() != from) return@launch
             val found = ordinal != null && end > start
-            backStack.add(if (poem) PoemReaderRoute(hit.entityId, ordinal, query) else ReaderRoute(hit.entityId, ordinal, start.takeIf { found }, end.takeIf { found }))
-        } } else if (poem) {
-            backStack.add(PoemReaderRoute(hit.entityId, hit.ordinal, query))
-        } else {
-            backStack.add(ReaderRoute(hit.entityId, hit.ordinal, hit.sourceMatchStart, hit.sourceMatchEnd))
+            backStack.add(if (poem) PoemReaderRoute(hit.entityId, ordinal, query, hit.excerpt) else ReaderRoute(hit.entityId, ordinal, start.takeIf { found }, end.takeIf { found }))
         }
     }
 
     fun sectionSearch(type: com.atharchive.feature.search.SearchResultType) = com.atharchive.feature.search.SectionTextSearch(
         search = { contentViewModel.searchSection(type, it) },
-        local = { contentViewModel.searchSectionLocal(type, it) },
         loadPassage = contentViewModel::onlinePassage,
         onOpen = ::openHit,
     )

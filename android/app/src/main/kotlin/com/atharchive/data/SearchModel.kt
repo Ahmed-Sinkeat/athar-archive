@@ -29,6 +29,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.first
@@ -153,16 +154,20 @@ internal class SearchModel(
     private var lastFacets: Pair<OnlineSearch.Query, OnlineSearch.Facets>? = null
     private val searchTraceSequence = AtomicInteger()
     private var activeSearchTrace: SearchTrace? = null
+    // Room emits the catalog again after every update (and any entity write) though nothing a search
+    // reads changed: each emission re-ran the search, emptied the passages and refilled them, the
+    // list jumping back to its top under the reader. Shared with the section searches, which loaded
+    // their section's whole rows, every column, per search.
+    private val searchCatalog = catalogDao.observeCatalogLean().pausedDuringUpdate().distinctUntilChanged().map { SearchCatalog(it) }
+        .shareIn(scope, SharingStarted.Eagerly, replay = 1)
+
     val search: StateFlow<SearchUiState> = combine(
         // Leave half of the §17 120 ms keystroke-to-results target for Room and drawing.
         _searchQuery.debounce(SearchDebounceMs),
         // «إخفاء التشكيل» is display only: toggling it must not search again.
         _searchFilters.map { it.copy(plain = false) }.distinctUntilChanged(),
         // The filter lists are built once per catalog change, not on every keystroke.
-        // Room emits the catalog again after every update (and any entity write) though nothing a search
-        // reads changed: each emission re-ran the search, emptied the passages and refilled them, the
-        // list jumping back to its top under the reader.
-        catalogDao.observeCatalogLean().pausedDuringUpdate().distinctUntilChanged().map { SearchCatalog(it) },
+        searchCatalog,
     ) { query, filters, catalog ->
         SearchInput(query, filters, catalog)
     }.combine(_searchLimit) { input, limit -> input to limit }.transformLatest { (input, limit) ->
@@ -353,7 +358,7 @@ internal class SearchModel(
         ).catalog.map { it.entityId }
 
     suspend fun searchSection(type: SearchResultType, query: String): List<SearchHitUi> {
-        val catalog = SearchCatalog(catalogDao.observeCollection(type.contentCollection).first())
+        val catalog = searchCatalog.first()
         val online = try {
             onlineSearch.hits(OnlineSearch.Query(query, "all", "text", setOf(type.contentCollection), emptySet(), "relevance"), 20).first
         } catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled
@@ -361,9 +366,6 @@ internal class SearchModel(
         if (online != null) return online.mapIndexedNotNull { index, hit -> hit.toHitUi(index, catalog) }
         return localSectionHits(type, query, catalog)
     }
-
-    suspend fun searchSectionLocal(type: SearchResultType, query: String): List<SearchHitUi> =
-        localSectionHits(type, query, SearchCatalog(catalogDao.observeCollection(type.contentCollection).first()))
 
     private suspend fun localSectionHits(type: SearchResultType, query: String, known: SearchCatalog): List<SearchHitUi> {
         return contentSearch.search(
