@@ -1,0 +1,12 @@
+---
+title: "عرضنة ليل في العرضنات جنحا"
+status: published
+published_at: 2026-11-12
+person: al-kmyt-bn-zyd
+work_type: "قصيدة"
+topics: ["al-adab"]
+---
+
+من البحر الطويل
+
+"عرضنة ليلٍ في العِرَضْنَاتِ جُنَّحا"

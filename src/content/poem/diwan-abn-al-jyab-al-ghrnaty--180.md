@@ -1,0 +1,12 @@
+---
+title: "وكفيت حال المعتدي والمجتدي"
+status: published
+published_at: 2026-11-12
+person: abn-al-jyab-al-ghrnaty
+work_type: "قصيدة"
+topics: ["al-adab"]
+---
+
+من البحر الكامل
+
+وكفيت حال المعتدي والمجتدي … ها ذاك محدود وذا مجدود
