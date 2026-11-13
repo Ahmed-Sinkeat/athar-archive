@@ -31,6 +31,8 @@ data class VerseUi(
     val ordinal: Int = number - 1,
     /** The باب heading printed just before this verse, if any. */
     val heading: String? = null,
+    /** The line printed under that heading (a ديوان's «من البحر …»). */
+    val headingNote: String? = null,
 )
 
 /** One commentator's explanation. Several may exist for the same verse. */

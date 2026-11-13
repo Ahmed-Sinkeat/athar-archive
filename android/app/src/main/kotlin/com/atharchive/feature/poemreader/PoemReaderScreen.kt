@@ -320,7 +320,7 @@ fun PoemReaderScreen(
                             }
                         }
                         itemsIndexed(state.verses, key = { _, v -> v.id }) { index, verse ->
-                            verse.heading?.let { PoemHeading(it, colors, settings) }
+                            verse.heading?.let { PoemHeading(it, verse.headingNote, colors, settings) }
                             val isSaved = verse.ordinal in saved
                             VerseRow(
                                 verse = verse,
@@ -894,16 +894,25 @@ private fun WordCallout(
 
 /** A باب heading, in the flow where the poem prints it. */
 @Composable
-private fun PoemHeading(text: String, colors: ReaderColors, settings: ReaderSettings) {
+private fun PoemHeading(text: String, note: String?, colors: ReaderColors, settings: ReaderSettings) {
     Text(
         text = text,
-        modifier = Modifier.fillMaxWidth().padding(horizontal = settings.margin.dp).padding(top = 18.dp, bottom = 6.dp),
+        modifier = Modifier.fillMaxWidth().padding(horizontal = settings.margin.dp).padding(top = 18.dp, bottom = if (note == null) 6.dp else 0.dp),
         textAlign = TextAlign.Center,
         color = colors.heading,
         fontFamily = AtharEditorialFontFamily,
         fontWeight = FontWeight.Bold,
         fontSize = (settings.fontSize + 1).sp,
     )
+    note?.let {
+        Text(
+            text = it,
+            modifier = Modifier.fillMaxWidth().padding(horizontal = settings.margin.dp).padding(bottom = 6.dp),
+            textAlign = TextAlign.Center,
+            color = colors.text.copy(alpha = 0.7f),
+            fontSize = (settings.fontSize - 3).sp,
+        )
+    }
 }
 
 @Composable

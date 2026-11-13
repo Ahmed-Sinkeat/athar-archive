@@ -64,10 +64,10 @@ internal fun EntryProviderScope<NavKey>.libraryEntries(app: AppNav) = with(app) 
                 AtharDestination.Poetry -> PoetryScreen(
                     state = contentViewModel.poetry.collectAsStateWithLifecycle().value,
                     onSettings = openSettings,
-                    onPoemClick = { backStack.add(PoemReaderRoute(it.id)) },
+                    onPoemClick = { backStack.add(PoemReaderRoute(it.entityId, it.ordinal)) },
                     textSearch = remember { sectionSearch(com.atharchive.feature.search.SearchResultType.Poem) },
-                    onDownloadClick = { onDownloadTap(it.id, it.title, it.sizeLabel, it.downloaded, it.transfer) },
-                    onSaveClick = { contentViewModel.toggleFavourite(it.id) },
+                    onDownloadClick = { onDownloadTap(it.entityId, it.title, it.sizeLabel, it.downloaded, it.transfer) },
+                    onSaveClick = { contentViewModel.toggleFavourite(it.entityId) },
                     scrollToTopRequest = scrollToTopRequest,
                 )
 

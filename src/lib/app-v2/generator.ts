@@ -240,6 +240,10 @@ function catalogBase(source: SourceEntry, version: number, parsed: ReturnType<ty
       .slice(0, 2)
       .map((block) => block.x ?? `${block.s} … ${block.j}`)
     : undefined;
+  // A ديوان is one package; its poems (each a heading) are listed so the app shows every poem as a row.
+  const poems = source.target.coll === "poem" && kind === "ديوان"
+    ? parsed.blocks.flatMap((block, o) => block.t.startsWith("h") && block.x ? [{ t: block.x, o }] : [])
+    : undefined;
   return {
     id: source.target.id,
     ...(typeof source.data.edition_of === "string" ? { editionOf: source.data.edition_of } : {}),
@@ -256,6 +260,7 @@ function catalogBase(source: SourceEntry, version: number, parsed: ReturnType<ty
     ...(description ? { description } : {}),
     ...(excerpt ? { excerpt } : {}),
     ...(openingVerses?.length ? { openingVerses } : {}),
+    ...(poems?.length ? { poems } : {}),
     ...(parsed.card?.length ? { card: parsed.card } : {}),
     ...(source.target.coll === "poem" ? { verseCount: parsed.blocks.filter(block => block.t === "verse").length } : {}),
   };

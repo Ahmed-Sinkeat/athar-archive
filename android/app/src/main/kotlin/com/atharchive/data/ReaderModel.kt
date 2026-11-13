@@ -413,9 +413,11 @@ private fun ContentEntity.toPoemReaderUi(blocks: List<ContentBlockEntity>): Poem
     // A باب heading rides on the verse after it, so the list stays one row per verse
     // (indices are what the panel and audio jump to).
     var heading: String? = null
+    var headingNote: String? = null
     val verses = mutableListOf<VerseUi>()
     blocks.forEach { block ->
         if (block.type.startsWith('h')) { heading = listOfNotNull(heading, block.text).joinToString(" — "); return@forEach }
+        if (!prose && block.type == "p" && heading != null) { headingNote = listOfNotNull(headingNote, block.text).joinToString("\n"); return@forEach }
         if (block.type != "verse" && !(prose && block.type == "p")) return@forEach
         val attrs = block.safeAttributes()
         // A verse carrying a footnote mark or emphasis comes as one line (x), separator and all.
@@ -428,8 +430,10 @@ private fun ContentEntity.toPoemReaderUi(blocks: List<ContentBlockEntity>): Poem
             ordinal = block.ordinal,
             commentary = attrs.commentary.map { com.atharchive.feature.poemreader.CommentaryUi(it.sourceLabel, it.text) },
             heading = heading,
+            headingNote = headingNote,
         )
         heading = null
+        headingNote = null
     }
     return PoemReaderUiState(
         card = toCatalogEntry().card,
