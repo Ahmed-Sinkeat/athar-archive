@@ -27,7 +27,8 @@ internal data object SettingsRoute : NavKey
 internal data object PlayerRoute : NavKey
 
 @Serializable
-internal data class PoemReaderRoute(val poemId: String, val targetOrdinal: Int? = null, val match: String? = null) : NavKey
+/** [hint]: an online hit's snippet, to tell its verse from others holding the searched words. */
+internal data class PoemReaderRoute(val poemId: String, val targetOrdinal: Int? = null, val match: String? = null, val hint: String? = null) : NavKey
 
 @Serializable
 internal data class ReaderRoute(

@@ -134,6 +134,8 @@ fun PoemReaderScreen(
     initialOrdinal: Int? = null,
     /** The search that opened the poem: its verse is opened and its words marked. */
     match: String? = null,
+    /** Text around the searched verse (an online hit's snippet): which of the verses holding [match]. */
+    matchHint: String? = null,
     onPositionChange: (Int) -> Unit = {},
     onRetry: () -> Unit = {},
 ) {
@@ -201,7 +203,8 @@ fun PoemReaderScreen(
     // The verse is found here, by its words, rather than trusting the search's ordinal: the
     // server indexes a poem as one passage, and the local lookup falls back to verse 1 on a miss.
     val matchWords = remember(match) { match?.let { ArNormalize.normalize(it).split(' ').filter(String::isNotBlank) }.orEmpty() }
-    val matchVerse = remember(state.verses, matchWords) { findVerse(state.verses, matchWords) }
+    val hintWords = remember(matchHint) { matchHint?.let { ArNormalize.normalize(it).split(' ', '\n', '…').filterTo(HashSet()) { w -> w.length >= 2 } }.orEmpty() }
+    val matchVerse = remember(state.verses, matchWords) { findVerse(state.verses, matchWords, initialOrdinal, hintWords) }
     var restored by remember { mutableStateOf(false) }
     LaunchedEffect(state.verses, state.readingPositionReady, state.bodyLoaded, matchVerse) {
         if (restored) return@LaunchedEffect
@@ -611,11 +614,21 @@ fun PoemReaderScreen(
 
 /** A glossary word and where it sits in the rendered line. */
 /** The verse holding the searched words: the phrase itself first, else every word. */
-internal fun findVerse(verses: List<VerseUi>, words: List<String>): VerseUi? {
+/**
+ * The verse holding [words]: the typed phrase before the words scattered. Of several, the first
+ * from [near] on (the verse the search located), else the one sharing most of [hint]: it used to
+ * be the first in the poem, so a common word always opened on an earlier verse than the one tapped.
+ */
+internal fun findVerse(verses: List<VerseUi>, words: List<String>, near: Int? = null, hint: Set<String> = emptySet()): VerseUi? {
     if (words.isEmpty()) return null
     val folded = verses.map { it to ArNormalize.normalize("${it.sadr} ${it.ajz}").replace(Regex("\\s+"), " ") }
     val phrase = words.joinToString(" ")
-    return (folded.firstOrNull { phrase in it.second } ?: folded.firstOrNull { (_, t) -> words.all { it in t } })?.first
+    fun pick(test: (String) -> Boolean): VerseUi? = folded.filter { test(it.second) }.map { it.first }
+        .let { found ->
+            near?.let { n -> found.firstOrNull { it.ordinal >= n } }
+                ?: found.maxByOrNull { v -> ArNormalize.normalize("${v.sadr} ${v.ajz}").split(' ').count { it in hint } }
+        }
+    return pick { phrase in it } ?: pick { t -> words.all { it in t } }
 }
 
 private data class WordSpan(val start: Int, val end: Int, val word: String, val meaning: String)

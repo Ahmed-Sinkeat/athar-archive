@@ -172,6 +172,8 @@ class AtharContentViewModel @Inject constructor(
     suspend fun searchSectionLocal(type: SearchResultType, query: String) = searchModel.searchSectionLocal(type, query)
     suspend fun onlinePassage(hit: SearchHitUi) = searchModel.onlinePassage(hit)
     suspend fun locateOnlineHit(hit: SearchHitUi, query: String) = searchModel.locateOnlineHit(hit, query)
+    /** A ديوان: a hit in it must be located first, the reader showing one of its poems only. */
+    suspend fun isDiwan(entityId: String) = catalogDao.entity(entityId)?.poemsJson != null
     suspend fun locateOnline(entityId: String, url: String?, query: String, snippet: String = "", pg: String? = null) =
         searchModel.locateOnline(entityId, url, query, snippet, pg)
     suspend fun searchInBook(

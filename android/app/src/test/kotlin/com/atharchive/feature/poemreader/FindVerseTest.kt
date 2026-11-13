@@ -19,6 +19,16 @@ class FindVerseTest {
         assertEquals("v2", findVerse(verses, listOf("مثله", "تحت"))?.id)
     }
 
+    @Test fun theLocatedVerseBeatsAnEarlierOne() {
+        // both verses hold مثله: the search located verse 2 (ordinal 1), so it opens there, not on verse 1
+        assertEquals("v2", findVerse(verses, listOf("مثله"), near = 1)?.id)
+        assertEquals("v1", findVerse(verses, listOf("مثله"))?.id)
+    }
+
+    @Test fun theSnippetPicksAmongMatches() {
+        assertEquals("v2", findVerse(verses, listOf("مثله"), hint = setOf("الدخان", "تاجج"))?.id)
+    }
+
     @Test fun noMatch() {
         assertNull(findVerse(verses, listOf("الصبر")))
     }

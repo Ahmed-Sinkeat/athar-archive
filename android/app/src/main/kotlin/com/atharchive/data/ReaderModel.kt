@@ -147,9 +147,12 @@ internal class ReaderModel(
             // A ديوان opens on one poem only: the one holding the target, else the reading position.
             val poem = entity?.diwanPoem(targetOrdinal ?: readingOrdinal)
             val shown = poem?.let { (range, _) -> blocks.filter { it.ordinal in range } } ?: blocks
-            entity?.toPoemReaderUi(shown, poem?.second ?: entity.title, poem?.first?.count() ?: entity.pkgBlocks)?.copy(
+            val expected = poem?.first?.count() ?: entity?.pkgBlocks ?: 0
+            entity?.toPoemReaderUi(shown, poem?.second ?: entity.title, expected)?.copy(
                 readingOrdinal = readingOrdinal,
-                readingPositionReady = position == null || reading != null || blocks.size >= entity.pkgBlocks,
+                // Only the shown poem's frames are fetched: a reading position in another poem of the
+                // ديوان is not waited for once this one is whole.
+                readingPositionReady = position == null || reading != null || shown.size >= expected,
                 bookmarks = marks.mapNotNull { ordinals[it.start.blockId] },
                 saved = benefits.mapNotNull { ordinals[it.start.blockId] },
             )
@@ -172,12 +175,26 @@ internal class ReaderModel(
             }
             try {
                 content.open(entityId, position)
-                if (entity.coll == "poem") visitTextFrames(entityId) { false }
+                // A poem shows whole, so all its frames come at once; a ديوان's are only the opened poem's
+                // (it fetched the whole ديوان, hundreds of frames, to show one poem).
+                if (entity.coll == "poem") entity.diwanPoem(position)?.let { (range, _) -> openFrames(entityId, range) }
+                    ?: visitTextFrames(entityId) { false }
             }
             catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled }
             catch (error: Exception) { errors.tryEmit(error.message ?: "تعذّر تحميل النص") }
             runCatching { annotationRepository.reattachEntity(entityId) }
             onOpened()
+        }
+    }
+
+    private suspend fun openFrames(entityId: String, range: IntRange) {
+        var at = range.first
+        while (at <= range.last) {
+            content.open(entityId, at)
+            val frame = requireNotNull(importDao.frames(entityId).firstOrNull {
+                at in it.firstBlockOrdinal until it.firstBlockOrdinal + it.blockCount
+            }) { "تعذّر تحميل جزء من النص" }
+            at = frame.firstBlockOrdinal + frame.blockCount
         }
     }
 

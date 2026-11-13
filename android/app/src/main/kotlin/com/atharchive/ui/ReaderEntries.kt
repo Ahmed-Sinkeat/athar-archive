@@ -183,6 +183,7 @@ internal fun EntryProviderScope<NavKey>.readerEntries(app: AppNav) = with(app) {
                     } },
                     initialOrdinal = route.targetOrdinal,
                     match = route.match,
+                    matchHint = route.hint,
                     onPositionChange = { contentViewModel.onReaderPosition(route.poemId, it) },
                     onRetry = { contentViewModel.openReader(route.poemId, route.targetOrdinal) },
                 ) }

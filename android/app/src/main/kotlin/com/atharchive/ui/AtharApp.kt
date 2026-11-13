@@ -469,6 +469,13 @@ fun AtharApp(
         // Locating an online hit fetches the book's frames first: say so, and take one tap at a time
         // (the screen used to sit still, and a second tap opened the book twice).
         if (hit.url != null) { if (openingHit) return; openingHit = true; scope.launch {
+            // A poem that is a work of its own opens at once and the reader finds the verse by its
+            // words (the walk here fetched its frames first, then the reader fetched them again).
+            if (poem && !contentViewModel.isDiwan(hit.entityId)) {
+                openingHit = false
+                backStack.add(PoemReaderRoute(hit.entityId, null, query, hit.excerpt))
+                return@launch
+            }
             val note = launch { snackbarHostState.showSnackbar("جارٍ فتح الموضع…", duration = androidx.compose.material3.SnackbarDuration.Indefinite) }
             val (ordinal, start, end) = try { contentViewModel.locateOnlineHit(hit, query) } finally { note.cancel(); openingHit = false }
             val found = ordinal != null && end > start
