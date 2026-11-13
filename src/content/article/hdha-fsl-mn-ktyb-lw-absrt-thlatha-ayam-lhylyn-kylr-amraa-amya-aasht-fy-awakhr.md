@@ -1,6 +1,6 @@
 ---
 title: "هذا فصل من كتيب «لو أبصرتُ ثلاثة أيام» لـ(هيلين كيلر) امرأة عمياء عاشت في أواخر"
-status: draft
+status: published
 published_at: 2024-05-05
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال صاحب كتاب صندوق النقد الدولي الذي أشرنا إليه آنفاً ص 228_230"
-status: draft
+status: published
 published_at: 2017-11-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

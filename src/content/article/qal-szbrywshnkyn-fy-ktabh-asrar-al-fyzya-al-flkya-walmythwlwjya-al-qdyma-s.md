@@ -1,6 +1,6 @@
 ---
 title: "قال سزبريوشنكين في كتابه أسرار الفيزياء الفلكية والميثولوجيا القديمة ص69"
-status: draft
+status: published
 published_at: 2017-10-10
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

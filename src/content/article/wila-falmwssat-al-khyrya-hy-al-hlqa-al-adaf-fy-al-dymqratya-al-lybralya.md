@@ -1,6 +1,6 @@
 ---
 title: "وإلا فالمؤسسات الخيرية هي الحلقة الأضعف في الديمقراطية الليبرالية"
-status: draft
+status: published
 published_at: 2020-11-30
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "أطلق الدكتور الفاضل مطلق الجاسر وسماً في تويتر بعنوان"
-status: draft
+status: published
 published_at: 2020-03-23
 person: abu-jafar-al-khalifi
 ---

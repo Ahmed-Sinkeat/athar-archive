@@ -1,6 +1,6 @@
 ---
 title: "أهل الإيمان أعظم الناس تلذُّذاً بالنعم!"
-status: draft
+status: published
 published_at: 2025-02-16
 person: abu-jafar-al-khalifi
 ---

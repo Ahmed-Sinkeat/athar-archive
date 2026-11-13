@@ -1,6 +1,6 @@
 ---
 title: "إليك عني فإني اليوم عنك مشغول"
-status: draft
+status: published
 published_at: 2026-05-30
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

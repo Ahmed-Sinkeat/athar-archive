@@ -1,6 +1,6 @@
 ---
 title: "الله المستعان لا زلت أذكر سؤالًا وجه لي من أخ يمني مقيم في قطر راسلته امرأة تونس"
-status: draft
+status: published
 published_at: 2019-11-26
 person: abu-jafar-al-khalifi
 ---

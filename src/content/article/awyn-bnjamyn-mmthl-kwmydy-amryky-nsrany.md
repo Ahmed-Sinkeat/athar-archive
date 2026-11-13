@@ -1,6 +1,6 @@
 ---
 title: "أوين بنجامين ممثل كوميدي أمريكي نصراني"
-status: draft
+status: published
 published_at: 2023-09-21
 person: abu-jafar-al-khalifi
 ---

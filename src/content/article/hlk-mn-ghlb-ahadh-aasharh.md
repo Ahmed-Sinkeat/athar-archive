@@ -1,6 +1,6 @@
 ---
 title: "هلك من غلب آحاده أعشاره"
-status: draft
+status: published
 published_at: 2025-04-28
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

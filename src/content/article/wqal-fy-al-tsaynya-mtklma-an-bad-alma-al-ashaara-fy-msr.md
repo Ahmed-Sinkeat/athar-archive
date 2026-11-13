@@ -1,6 +1,6 @@
 ---
 title: "وقال في التسعينية متكلما عن بعض علماء الأشاعرة في مصر"
-status: draft
+status: published
 published_at: 2018-08-27
 person: abu-jafar-al-khalifi
 ---

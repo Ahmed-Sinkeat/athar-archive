@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم"
-status: draft
+status: published
 published_at: 2018-03-11
 person: abu-jafar-al-khalifi
 ---

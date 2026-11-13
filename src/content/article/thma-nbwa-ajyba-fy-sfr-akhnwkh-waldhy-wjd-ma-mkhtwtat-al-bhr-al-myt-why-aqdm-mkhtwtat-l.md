@@ -1,6 +1,6 @@
 ---
 title: "ثمة نبوءة عجيبة في سفر أخنوخ والذي وجد مع مخطوطات البحر الميت وهي أقدم مخطوطات ل"
-status: draft
+status: published
 published_at: 2018-06-25
 person: abu-jafar-al-khalifi
 ---

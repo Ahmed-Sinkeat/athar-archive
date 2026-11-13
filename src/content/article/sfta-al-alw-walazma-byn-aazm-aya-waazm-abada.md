@@ -1,6 +1,6 @@
 ---
 title: "صفتا العلو والعظمة بين أعظم آية وأعظم عبادة..."
-status: draft
+status: published
 published_at: 2020-12-10
 person: abu-jafar-al-khalifi
 ---

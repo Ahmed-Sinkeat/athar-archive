@@ -1,6 +1,6 @@
 ---
 title: "باب ما جاء في مراعاة السياق"
-status: draft
+status: published
 published_at: 2022-09-14
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-imamah-was-sahabah"]

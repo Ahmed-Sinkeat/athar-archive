@@ -1,6 +1,6 @@
 ---
 title: "من يحتج أنّ الله أنزل القرآن بلسان عربي مبين ثم أمر رسوله ﷺ بدعوة كل البشر إلى ا"
-status: draft
+status: published
 published_at: 2025-10-30
 person: abu-umair-imran-al-zubaidi
 ---

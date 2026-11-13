@@ -1,6 +1,6 @@
 ---
 title: "هذه الآية يستدل بها منكري الرجم ممن خالف الأحاديث المتواترة في ذلك وإجماع الأمة"
-status: draft
+status: published
 published_at: 2019-01-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

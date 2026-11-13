@@ -1,6 +1,6 @@
 ---
 title: "قال يعقوب بن سفيان في المعرفة والتاريخ حدثنا حماد قال"
-status: draft
+status: published
 published_at: 2019-10-22
 person: abu-jafar-al-khalifi
 ---

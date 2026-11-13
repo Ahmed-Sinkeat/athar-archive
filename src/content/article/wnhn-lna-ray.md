@@ -1,6 +1,6 @@
 ---
 title: "ونحن لنا رأي ؟!"
-status: draft
+status: published
 published_at: 2025-04-16
 person: abu-abdillah-firas-al-ramli
 ---

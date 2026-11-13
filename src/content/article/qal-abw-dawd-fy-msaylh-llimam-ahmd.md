@@ -1,6 +1,6 @@
 ---
 title: "قال أبو داود في مسائله للإمام أحمد"
-status: draft
+status: published
 published_at: 2018-01-21
 person: abu-jafar-al-khalifi
 ---

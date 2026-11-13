@@ -1,6 +1,6 @@
 ---
 title: "ليلة الجمعة يا أتباع الأنبياء والرسل."
-status: draft
+status: published
 published_at: 2024-05-23
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أحسب أن الأمر يحتاج إلى موعظة وليس إلى فتوى"
-status: draft
+status: published
 published_at: 2022-10-30
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

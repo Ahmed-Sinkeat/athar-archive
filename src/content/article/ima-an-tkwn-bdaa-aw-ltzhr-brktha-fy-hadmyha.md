@@ -1,6 +1,6 @@
 ---
 title: "إما أن تكون بدعة أو لتظهر بركتها في هادميها!"
-status: draft
+status: published
 published_at: 2023-03-22
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

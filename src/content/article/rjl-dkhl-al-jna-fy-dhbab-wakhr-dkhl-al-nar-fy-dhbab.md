@@ -1,6 +1,6 @@
 ---
 title: "رجل دخل الجنة في ذباب وآخر دخل النار في ذباب"
-status: draft
+status: published
 published_at: 2023-12-13
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada", "tazkiyat-al-nafs"]

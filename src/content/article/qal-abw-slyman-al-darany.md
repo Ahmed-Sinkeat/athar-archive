@@ -1,6 +1,6 @@
 ---
 title: "قال أبو سليمان الداراني"
-status: draft
+status: published
 published_at: 2018-08-08
 person: abu-jafar-al-khalifi
 ---

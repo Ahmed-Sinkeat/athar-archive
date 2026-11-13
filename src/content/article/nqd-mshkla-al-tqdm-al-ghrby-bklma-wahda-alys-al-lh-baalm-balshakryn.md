@@ -1,6 +1,6 @@
 ---
 title: "نقض مشكلة التقدم الغربي بكلمة واحدة (أليس الله بأعلم بالشاكرين)."
-status: draft
+status: published
 published_at: 2020-04-30
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

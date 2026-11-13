@@ -1,6 +1,6 @@
 ---
 title: "منذ فترة طويلة وأنا أتابع بعض المعارضين السعوديين في الخارج"
-status: draft
+status: published
 published_at: 2025-11-17
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

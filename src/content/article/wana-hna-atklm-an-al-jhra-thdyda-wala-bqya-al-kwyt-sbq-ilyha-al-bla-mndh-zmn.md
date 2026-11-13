@@ -1,6 +1,6 @@
 ---
 title: "وأنا هنا أتكلم عن الجهراء تحديدا والا بقية الكويت سبق إليها البلاء منذ زمن"
-status: draft
+status: published
 published_at: 2019-03-23
 person: abu-jafar-al-khalifi
 ---

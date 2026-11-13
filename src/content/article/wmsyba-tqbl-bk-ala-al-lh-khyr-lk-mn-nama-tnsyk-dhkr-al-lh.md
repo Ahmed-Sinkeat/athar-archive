@@ -1,6 +1,6 @@
 ---
 title: "ومصيبةٌ تُقْبِلُ بك على الله خيرٌ لك من نعمةٍ تُنْسِيك ذكرَ الله."
-status: draft
+status: published
 published_at: 2023-09-28
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ما كنت أرى بقيت امرأة تصبر نفسها على مكروه لما بلغها من رسول الله صلى الله عليه"
-status: draft
+status: published
 published_at: 2024-07-08
 person: abu-abdillah-firas-al-ramli
 ---

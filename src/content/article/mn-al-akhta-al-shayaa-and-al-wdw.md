@@ -1,6 +1,6 @@
 ---
 title: "مِن الأخطاء الشائعة عند الوضوء"
-status: draft
+status: published
 published_at: 2023-01-11
 person: abu-umair-imran-al-zubaidi
 ---

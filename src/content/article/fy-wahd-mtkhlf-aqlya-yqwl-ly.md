@@ -1,6 +1,6 @@
 ---
 title: "في واحد متخلف عقليا يقول لي"
-status: draft
+status: published
 published_at: 2024-06-27
 person: abu-umair-imran-al-zubaidi
 ---

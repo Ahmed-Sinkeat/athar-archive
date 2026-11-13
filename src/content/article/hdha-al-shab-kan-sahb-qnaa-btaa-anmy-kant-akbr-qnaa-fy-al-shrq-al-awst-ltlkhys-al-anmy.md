@@ -1,6 +1,6 @@
 ---
 title: "هذا الشاب كان صاحب قناة (بتاع أنمي) كانت أكبر قناة في الشرق الأوسط لتلخيص الأنمي"
-status: draft
+status: published
 published_at: 2025-09-30
 person: abu-jafar-al-khalifi
 ---

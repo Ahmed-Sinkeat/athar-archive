@@ -1,6 +1,6 @@
 ---
 title: "هنا مقال عن خطورة القيادة في حال سكر من الخمر"
-status: draft
+status: published
 published_at: 2018-05-11
 person: abu-jafar-al-khalifi
 ---

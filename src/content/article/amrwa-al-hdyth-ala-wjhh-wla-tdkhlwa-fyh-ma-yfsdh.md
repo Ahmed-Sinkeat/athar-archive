@@ -1,6 +1,6 @@
 ---
 title: "أمروا الحديث على وجهه ولا تدخلوا فيه ما يفسده"
-status: draft
+status: published
 published_at: 2025-08-01
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

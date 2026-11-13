@@ -1,6 +1,6 @@
 ---
 title: "لا أظنّ أنّ هناك من يعرفني ولا يعرف مدى حبي وتعظيمي لشيخ الإسلام ابن تيمية رضوان"
-status: draft
+status: published
 published_at: 2024-07-07
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "انقطع صوته وما انقطعت رأفته ورحمته"
-status: draft
+status: published
 published_at: 2020-11-17
 person: abu-jafar-al-khalifi
 ---

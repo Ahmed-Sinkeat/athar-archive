@@ -1,6 +1,6 @@
 ---
 title: "الفقهاء وتجارة رابحة في أمر النية."
-status: draft
+status: published
 published_at: 2023-07-16
 person: abu-jafar-al-khalifi
 ---

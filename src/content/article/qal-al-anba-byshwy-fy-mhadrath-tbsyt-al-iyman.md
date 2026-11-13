@@ -1,6 +1,6 @@
 ---
 title: "قال الأنبا بيشوي في محاضراته تبسيط الإيمان"
-status: draft
+status: published
 published_at: 2017-10-15
 person: abu-jafar-al-khalifi
 ---

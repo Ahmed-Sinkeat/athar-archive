@@ -1,6 +1,6 @@
 ---
 title: "خلاف الناس في التوحيد لا يحتاج إلى تأجيج!"
-status: draft
+status: published
 published_at: 2021-08-12
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

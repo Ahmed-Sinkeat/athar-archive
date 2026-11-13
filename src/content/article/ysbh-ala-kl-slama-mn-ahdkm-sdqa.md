@@ -1,6 +1,6 @@
 ---
 title: "يصبح على كل سلامى من أحدكم صدقة"
-status: draft
+status: published
 published_at: 2024-02-24
 person: abu-abdillah-firas-al-ramli
 ---

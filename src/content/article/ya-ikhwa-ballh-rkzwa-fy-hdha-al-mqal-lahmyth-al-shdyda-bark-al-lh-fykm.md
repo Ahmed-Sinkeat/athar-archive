@@ -1,6 +1,6 @@
 ---
 title: "يا إخوة، بالله ركزوا في هذا المقال لأهميته الشديدة بارك الله فيكم."
-status: draft
+status: published
 published_at: 2023-08-08
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "اتفاقية سيداو هي الاتفاقية التي تلزم البلدان الموقعة عليها بالمساواة المزعومة بي"
-status: draft
+status: published
 published_at: 2020-06-09
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "في رحاب وعظ أم المؤمنين"
-status: draft
+status: published
 published_at: 2019-12-04
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

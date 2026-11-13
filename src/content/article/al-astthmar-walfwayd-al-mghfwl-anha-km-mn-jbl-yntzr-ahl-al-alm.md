@@ -1,6 +1,6 @@
 ---
 title: "الاستثمار والفوائد المغفول عنها (كم من جبل ينتظر أهل العلم؟)"
-status: draft
+status: published
 published_at: 2025-02-20
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

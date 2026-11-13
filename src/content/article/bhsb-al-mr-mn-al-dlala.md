@@ -1,6 +1,6 @@
 ---
 title: "بحسب المرء من الضلالة"
-status: draft
+status: published
 published_at: 2025-03-09
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

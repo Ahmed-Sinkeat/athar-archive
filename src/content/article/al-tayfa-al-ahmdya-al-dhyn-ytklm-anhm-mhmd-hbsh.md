@@ -1,6 +1,6 @@
 ---
 title: "الطائفة الأحمدية الذين يتكلم عنهم محمد حبش"
-status: draft
+status: published
 published_at: 2022-10-07
 person: abu-jafar-al-khalifi
 ---

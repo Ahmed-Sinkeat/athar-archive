@@ -1,6 +1,6 @@
 ---
 title: "قال أبو طاهر السلفي في السفر 445 - سَمِعت أَبَا الرِّضَا عَبْدَ اللَّهِ بْنَ الْ"
-status: draft
+status: published
 published_at: 2017-07-25
 person: abu-jafar-al-khalifi
 ---

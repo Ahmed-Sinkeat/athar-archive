@@ -1,6 +1,6 @@
 ---
 title: "باب في بيان أهمية الإسناد وأنه الفاصل بين أصحاب الحديث وبين أهل البدع"
-status: draft
+status: published
 published_at: 2023-08-07
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "al-sunnah-wal-bidah"]

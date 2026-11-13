@@ -1,6 +1,6 @@
 ---
 title: "الله تعالى يقول لهم"
-status: draft
+status: published
 published_at: 2023-03-30
 person: abu-umair-imran-al-zubaidi
 ---

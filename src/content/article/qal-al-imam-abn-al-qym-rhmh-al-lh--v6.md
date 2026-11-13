@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام ابن القيم رحمه الله"
-status: draft
+status: published
 published_at: 2024-05-12
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

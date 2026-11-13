@@ -1,6 +1,6 @@
 ---
 title: "كراهية قول العامة أطير الماء ونحوها من الألفاظ كناية عن البول"
-status: draft
+status: published
 published_at: 2024-06-12
 person: abu-abdillah-firas-al-ramli
 ---

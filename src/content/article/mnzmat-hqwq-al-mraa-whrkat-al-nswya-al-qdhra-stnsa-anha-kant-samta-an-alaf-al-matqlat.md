@@ -1,6 +1,6 @@
 ---
 title: "منظمات حقوق المرأة وحركات النسوية القذرة ستنسى أنها كانت صامتة عن آلاف المعتقلات"
-status: draft
+status: published
 published_at: 2024-12-09
 person: abu-umair-imran-al-zubaidi
 ---

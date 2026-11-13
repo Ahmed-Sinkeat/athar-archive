@@ -1,6 +1,6 @@
 ---
 title: "يبدو أنه ليس الملاحدة العرب فقط الذين بحاجة إلى ملحد مربي !"
-status: draft
+status: published
 published_at: 2018-05-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

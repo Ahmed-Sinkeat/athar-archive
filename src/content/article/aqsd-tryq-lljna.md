@@ -1,6 +1,6 @@
 ---
 title: "أقصد طريق للجنة"
-status: draft
+status: published
 published_at: 2024-01-23
 person: abu-abdillah-firas-al-ramli
 ---

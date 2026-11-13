@@ -1,6 +1,6 @@
 ---
 title: "وذكرت صحيفة تشاينا ديلي الصينية التي تسيطر عليها الدولة أن فوكسكون قد أنشأت \"سلس"
-status: draft
+status: published
 published_at: 2018-07-09
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

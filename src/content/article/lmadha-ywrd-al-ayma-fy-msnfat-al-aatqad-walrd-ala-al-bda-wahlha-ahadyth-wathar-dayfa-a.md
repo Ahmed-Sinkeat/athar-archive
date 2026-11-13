@@ -1,6 +1,6 @@
 ---
 title: "لماذا يورد الأئمة في مصنفات الاعتقاد والرد على البدع وأهلها أحاديث وآثار ضعيفة ا"
-status: draft
+status: published
 published_at: 2023-05-27
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

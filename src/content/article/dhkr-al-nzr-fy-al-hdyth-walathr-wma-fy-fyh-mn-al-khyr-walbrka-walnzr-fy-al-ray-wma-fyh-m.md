@@ -1,6 +1,6 @@
 ---
 title: "ذكر النظر في الحديث والأثر وما في فيه من الخير والبركة والنظر في الرأي وما فيه م"
-status: draft
+status: published
 published_at: 2023-12-08
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي شيبة في مصنفه ت الشثري (٥٧٦٨)"
-status: draft
+status: published
 published_at: 2024-06-14
 person: abu-abdillah-firas-al-ramli
 ---

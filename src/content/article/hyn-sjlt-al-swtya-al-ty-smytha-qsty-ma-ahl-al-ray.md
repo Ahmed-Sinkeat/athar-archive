@@ -1,6 +1,6 @@
 ---
-title: "حين سجلت الصوتية التي سميتها [قصتي مع أهل الرأي](https"
-status: draft
+title: "حين سجلت الصوتية التي سميتها قصتي مع أهل الرأي"
+status: published
 published_at: 2019-11-03
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال ابن قتيبة في عيون الأخبار أبو حاتم عن الأصمعي عن أبي عمرو بن العلاء قال"
-status: draft
+status: published
 published_at: 2020-02-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

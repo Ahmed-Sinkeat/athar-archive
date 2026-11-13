@@ -1,6 +1,6 @@
 ---
 title: "كشفُ المنافقين والسماعين لهم"
-status: draft
+status: published
 published_at: 2020-05-23
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

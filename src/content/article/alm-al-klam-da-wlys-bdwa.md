@@ -1,6 +1,6 @@
 ---
 title: "علم الكلام داء وليس بدواء…"
-status: draft
+status: published
 published_at: 2024-03-18
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

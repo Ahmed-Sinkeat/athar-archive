@@ -1,6 +1,6 @@
 ---
 title: "يُعذِّب الله الظالم بالظالم"
-status: draft
+status: published
 published_at: 2026-02-28
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran"]

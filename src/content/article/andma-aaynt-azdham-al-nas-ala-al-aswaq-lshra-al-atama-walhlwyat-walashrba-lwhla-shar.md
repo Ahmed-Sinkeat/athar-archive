@@ -1,6 +1,6 @@
 ---
 title: "عندما عاينت ازدحام الناس على الأسواق لشراء الأطعمة والحلويات والأشربة؛ لوهلة شعر"
-status: draft
+status: published
 published_at: 2025-02-28
 person: abu-umair-imran-al-zubaidi
 topics: ["tazkiyat-al-nafs"]

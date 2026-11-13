@@ -1,6 +1,6 @@
 ---
 title: "قال عبد العزيز الثعالبي التونسي في الرحلة اليمانية ( التي كانت ما بين 12 أغسطس إ"
-status: draft
+status: published
 published_at: 2018-11-26
 person: abu-jafar-al-khalifi
 ---

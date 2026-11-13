@@ -1,6 +1,6 @@
 ---
 title: "النخبة وليس الجماهير تحكم أمريكا هذا ما يقوله الأكاديميان توماس آر داي وإل هارمو"
-status: draft
+status: published
 published_at: 2017-12-02
 person: abu-jafar-al-khalifi
 ---

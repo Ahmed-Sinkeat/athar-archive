@@ -1,6 +1,6 @@
 ---
 title: "اللهم عليك باليهـود ومن عاونهم"
-status: draft
+status: published
 published_at: 2025-07-20
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أخبرنا أبو بكر المروذي"
-status: draft
+status: published
 published_at: 2024-10-19
 person: abu-umair-imran-al-zubaidi
 ---

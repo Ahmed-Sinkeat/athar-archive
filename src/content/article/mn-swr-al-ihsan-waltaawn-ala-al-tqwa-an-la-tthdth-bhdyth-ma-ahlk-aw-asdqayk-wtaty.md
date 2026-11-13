@@ -1,6 +1,6 @@
 ---
 title: "مِن صور الإحسان والتعاون على التقوى أن لا تتحدّث بحديثٍ مع أهلك أو أصدقائك وتأتي"
-status: draft
+status: published
 published_at: 2023-05-04
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لماذا يُبَدَّل الدين؟"
-status: draft
+status: published
 published_at: 2021-10-12
 person: abu-jafar-al-khalifi
 ---

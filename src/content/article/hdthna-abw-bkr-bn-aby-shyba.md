@@ -1,6 +1,6 @@
 ---
 title: "حدثنا أبو بكر بن أبي شيبة"
-status: draft
+status: published
 published_at: 2023-06-13
 person: abu-umair-imran-al-zubaidi
 ---

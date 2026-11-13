@@ -1,6 +1,6 @@
 ---
 title: "إلى جانب الوازع الديني والخوف من الله تبارك وتعالى وتقواه."
-status: draft
+status: published
 published_at: 2025-03-25
 person: abu-umair-imran-al-zubaidi
 ---

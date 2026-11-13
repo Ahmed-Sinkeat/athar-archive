@@ -1,6 +1,6 @@
 ---
 title: "هل وجد متتبعو الرخص هذه اللذة ؟"
-status: draft
+status: published
 published_at: 2020-06-01
 person: abu-jafar-al-khalifi
 ---

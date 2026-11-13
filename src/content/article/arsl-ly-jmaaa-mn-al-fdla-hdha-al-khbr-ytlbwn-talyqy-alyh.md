@@ -1,6 +1,6 @@
 ---
 title: "أرسل لي جماعة من الفضلاء هذا الخبر يطلبون تعليقي عليه."
-status: draft
+status: published
 published_at: 2024-05-23
 person: abu-jafar-al-khalifi
 ---

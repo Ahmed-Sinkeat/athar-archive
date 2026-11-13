@@ -1,6 +1,6 @@
 ---
 title: "من الأمور التي ينبغي ملاحظتها أثناء الحوار بين الناس مراعاة أصول الفقه"
-status: draft
+status: published
 published_at: 2018-11-07
 person: abu-jafar-al-khalifi
 ---

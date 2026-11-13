@@ -1,6 +1,6 @@
 ---
 title: "هلا عملوا بوصية محمد أحمد الراشد في أمر المبتدعة؟"
-status: draft
+status: published
 published_at: 2025-09-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

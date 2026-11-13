@@ -1,6 +1,6 @@
 ---
 title: "رصاصة في وهم وحدة الصف!."
-status: draft
+status: published
 published_at: 2023-03-14
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "adab-talab-al-ilm"]

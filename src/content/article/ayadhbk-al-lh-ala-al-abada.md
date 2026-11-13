@@ -1,6 +1,6 @@
 ---
 title: "أيعذبك الله على العبادة؟"
-status: draft
+status: published
 published_at: 2024-09-14
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "ليس من الرجولة ولا من العقل فضلا عن الدين أن تمجهر على تلون بعض المنتسبين للدين"
-status: draft
+status: published
 published_at: 2017-09-27
 person: abu-jafar-al-khalifi
 ---

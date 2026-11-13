@@ -1,6 +1,6 @@
 ---
 title: "ألا أحدثكم حديثا ينبغي للمؤمنين أن يعوه؟"
-status: draft
+status: published
 published_at: 2026-06-19
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

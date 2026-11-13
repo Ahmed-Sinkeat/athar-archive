@@ -1,6 +1,6 @@
 ---
 title: "لا يأتي عليكم زمان إلا الذي بعده شر منه"
-status: draft
+status: published
 published_at: 2025-07-24
 person: abu-abdillah-firas-al-ramli
 ---

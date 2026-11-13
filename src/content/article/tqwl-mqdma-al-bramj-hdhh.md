@@ -1,6 +1,6 @@
 ---
 title: "تقول مقدمة البرامج هذه"
-status: draft
+status: published
 published_at: 2024-01-29
 person: abu-jafar-al-khalifi
 ---

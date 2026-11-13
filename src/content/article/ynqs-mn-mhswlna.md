@@ -1,6 +1,6 @@
 ---
 title: "ينقص من محصولنا!"
-status: draft
+status: published
 published_at: 2023-05-12
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-sunnah-wal-bidah"]

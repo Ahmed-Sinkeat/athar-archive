@@ -1,6 +1,6 @@
 ---
 title: "هذا شاب اسمه حمد الويباري، مخرج سينمائي وصانع محتوى."
-status: draft
+status: published
 published_at: 2024-06-23
 person: abu-jafar-al-khalifi
 ---

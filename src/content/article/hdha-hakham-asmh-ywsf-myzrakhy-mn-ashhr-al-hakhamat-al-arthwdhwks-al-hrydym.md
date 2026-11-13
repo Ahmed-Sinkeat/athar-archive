@@ -1,6 +1,6 @@
 ---
 title: "هذا حاخام اسمه يوسف ميزراخي، من أشهر الحاخامات الأرثوذوكس الحريديم."
-status: draft
+status: published
 published_at: 2023-10-12
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "والله غريب حال بعض الناس حين يشغل باله بحال الكـ * ـار الذين وصلهم الإسلام مشوّه"
-status: draft
+status: published
 published_at: 2023-06-12
 person: abu-umair-imran-al-zubaidi
 ---

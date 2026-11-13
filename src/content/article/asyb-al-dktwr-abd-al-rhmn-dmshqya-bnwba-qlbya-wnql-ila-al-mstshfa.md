@@ -1,6 +1,6 @@
 ---
 title: "أصيب الدكتور عبد الرحمن دمشقية بنوبة قلبية ونقل إلى المستشفى..."
-status: draft
+status: published
 published_at: 2024-04-13
 person: abu-umair-imran-al-zubaidi
 ---

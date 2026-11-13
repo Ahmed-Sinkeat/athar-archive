@@ -1,6 +1,6 @@
 ---
 title: "أَنكِره على الإمام أحمد كما أنكرتَه على ابن تيمية!"
-status: draft
+status: published
 published_at: 2021-03-10
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

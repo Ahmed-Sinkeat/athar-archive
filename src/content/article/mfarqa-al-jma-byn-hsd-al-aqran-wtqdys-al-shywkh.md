@@ -1,6 +1,6 @@
 ---
 title: "مفارقة الجمع بين حسد الأقران وتقديس الشيوخ.."
-status: draft
+status: published
 published_at: 2022-07-22
 person: abu-jafar-al-khalifi
 ---

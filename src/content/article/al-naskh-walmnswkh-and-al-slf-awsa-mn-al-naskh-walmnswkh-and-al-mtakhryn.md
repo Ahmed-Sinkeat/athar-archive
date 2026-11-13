@@ -1,6 +1,6 @@
 ---
 title: "الناسخ والمنسوخ عند السلف أوسع من الناسخ والمنسوخ عند المتأخرين."
-status: draft
+status: published
 published_at: 2024-01-10
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs", "adab-talab-al-ilm"]

@@ -1,6 +1,6 @@
 ---
 title: "قال أبو يعلى في العدة في أصول الفقه (1/134)"
-status: draft
+status: published
 published_at: 2017-10-05
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

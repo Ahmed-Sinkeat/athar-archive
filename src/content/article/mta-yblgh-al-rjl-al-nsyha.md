@@ -1,6 +1,6 @@
 ---
 title: "متى يبلغ الرجل النصيحة ؟"
-status: draft
+status: published
 published_at: 2024-08-16
 person: abu-abdillah-firas-al-ramli
 ---

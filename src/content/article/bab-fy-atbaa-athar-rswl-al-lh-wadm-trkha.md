@@ -1,6 +1,6 @@
 ---
 title: "باب في اتباع آثار رسول الله ﷺ وعدم تركها"
-status: draft
+status: published
 published_at: 2023-05-28
 person: abu-abdillah-firas-al-ramli
 ---

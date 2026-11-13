@@ -1,6 +1,6 @@
 ---
 title: "الرأسمالية والدعوة للتمييز باسم المساواة"
-status: draft
+status: published
 published_at: 2020-11-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

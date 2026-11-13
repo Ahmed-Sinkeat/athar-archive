@@ -1,6 +1,6 @@
 ---
 title: "قد وصلنا إلى القرن الحادي والعشرين وما زلتم تقولون كذا وتفعلون كذا\"."
-status: draft
+status: published
 published_at: 2024-01-01
 person: abu-umair-imran-al-zubaidi
 ---

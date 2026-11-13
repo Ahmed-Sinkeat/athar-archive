@@ -1,6 +1,6 @@
 ---
 title: "بل هناك فرق أدركته أم المؤمنين وجهله من جهله.."
-status: draft
+status: published
 published_at: 2021-09-29
 person: abu-jafar-al-khalifi
 ---

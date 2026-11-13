@@ -1,6 +1,6 @@
 ---
 title: "وتأمل قولهم (الأجنبي) فالكلام عن كشف وجه المرأة وتغطيتها له على أنه مجرد خيار شخ"
-status: draft
+status: published
 published_at: 2026-10-11
 person: abu-jafar-al-khalifi
 ---

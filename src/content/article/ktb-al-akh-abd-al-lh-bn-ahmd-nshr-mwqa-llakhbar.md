@@ -1,6 +1,6 @@
 ---
 title: "كتب الأخ عبد الله بن أحمد : نشر موقع Hamburger morgenpost للأخبار"
-status: draft
+status: published
 published_at: 2018-06-24
 person: abu-jafar-al-khalifi
 ---

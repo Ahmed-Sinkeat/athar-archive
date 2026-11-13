@@ -1,6 +1,6 @@
 ---
 title: "ما رأت عيني أغبى من سؤال الأشعرية حينما تقول أن الله تبارك وتعالى فوق خلقه فيسأل"
-status: draft
+status: published
 published_at: 2025-10-18
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

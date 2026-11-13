@@ -1,6 +1,6 @@
 ---
 title: "النبي ﷺ والصحابة لم يكونوا يردون على أحد في هذا الباب لأنه لم يكن هناك أصلًا زنا"
-status: draft
+status: published
 published_at: 2024-06-27
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "صوتية: كيف سنعرف الله جل وعلا يوم القيامة ونحن لم نره من قبل؟"
-status: draft
+status: published
 published_at: 2024-07-05
 person: abu-umair-imran-al-zubaidi
 ---

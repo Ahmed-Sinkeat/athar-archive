@@ -1,6 +1,6 @@
 ---
 title: "اشتراط المدافعين عن النووي لعلماء سبقونا في ذمه والحكم عليه يلزم منه تسويغ طعن ا"
-status: draft
+status: published
 published_at: 2024-02-17
 person: abu-umair-imran-al-zubaidi
 ---

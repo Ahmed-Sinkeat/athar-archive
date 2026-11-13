@@ -1,6 +1,6 @@
 ---
 title: "إياكم والفخر بأقوام مِن فحم جهنم"
-status: draft
+status: published
 published_at: 2025-11-01
 person: awwab-bin-muhammad
 topics: ["tazkiyat-al-nafs"]

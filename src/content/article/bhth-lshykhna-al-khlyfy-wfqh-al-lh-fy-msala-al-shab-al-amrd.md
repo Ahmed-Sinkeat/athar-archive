@@ -1,6 +1,6 @@
 ---
 title: "بحث لشيخنا الخليفي وفقه الله في مسألة الشاب الأمرد"
-status: draft
+status: published
 published_at: 2024-06-30
 person: abu-umair-imran-al-zubaidi
 ---

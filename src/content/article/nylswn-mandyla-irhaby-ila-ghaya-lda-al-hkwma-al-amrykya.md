@@ -1,6 +1,6 @@
 ---
 title: "نيلسون مانديلا إرهابي إلى غاية 2008 لدى الحكومة الأمريكية"
-status: draft
+status: published
 published_at: 2018-07-18
 person: abu-jafar-al-khalifi
 ---

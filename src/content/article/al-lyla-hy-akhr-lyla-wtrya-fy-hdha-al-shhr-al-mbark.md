@@ -1,6 +1,6 @@
 ---
 title: "الّليلة هي آخر ليلة وتريّة في هذا الشهر المبارك."
-status: draft
+status: published
 published_at: 2023-04-19
 person: abu-umair-imran-al-zubaidi
 ---

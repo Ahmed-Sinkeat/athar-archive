@@ -1,6 +1,6 @@
 ---
 title: "أكثر ما يستفزني في تلاوات القراء الشباب -وهناك قدماء مشاهير- هو إطالتهم لزمن الغ"
-status: draft
+status: published
 published_at: 2024-09-03
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

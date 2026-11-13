@@ -1,6 +1,6 @@
 ---
 title: "قوله تعالى: ﴿ومن الناس من يقول آمنا بالله وباليوم الآخر وما هم بمؤمنين﴾"
-status: draft
+status: published
 published_at: 2024-03-12
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

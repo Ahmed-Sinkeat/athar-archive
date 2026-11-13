@@ -1,6 +1,6 @@
 ---
 title: "قوله تعالى عن القيامة: ﴿وترى كل أمة جاثية﴾"
-status: draft
+status: published
 published_at: 2023-09-29
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

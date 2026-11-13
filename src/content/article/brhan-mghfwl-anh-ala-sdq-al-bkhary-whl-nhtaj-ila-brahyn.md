@@ -1,6 +1,6 @@
 ---
 title: "برهان مغفول عنه على صدق البخاري (وهل نحتاج إلى براهين؟)"
-status: draft
+status: published
 published_at: 2023-11-25
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "يعني بعد كل هذه الدماء والبذل واستنفار عشرات الآلاف من العشائر"
-status: draft
+status: published
 published_at: 2025-07-20
 person: abu-umair-imran-al-zubaidi
 ---

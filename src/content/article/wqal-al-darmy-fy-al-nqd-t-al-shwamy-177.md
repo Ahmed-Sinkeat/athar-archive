@@ -1,6 +1,6 @@
 ---
 title: "وقال الدارمي في النقض ت الشوامي (١/&rlm;٧٧)"
-status: draft
+status: published
 published_at: 2023-07-13
 person: abu-abdillah-firas-al-ramli
 ---

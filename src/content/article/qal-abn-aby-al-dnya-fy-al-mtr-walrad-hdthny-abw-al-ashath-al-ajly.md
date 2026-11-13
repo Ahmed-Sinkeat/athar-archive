@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي الدنيا في المطر والرعد 46 - حدثني أبو الأشعث العجلي"
-status: draft
+status: published
 published_at: 2017-09-09
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

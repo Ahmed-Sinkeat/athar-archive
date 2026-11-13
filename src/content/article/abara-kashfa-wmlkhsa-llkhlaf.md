@@ -1,6 +1,6 @@
 ---
 title: "عبارة كاشفة وملخِّصة للخلاف"
-status: draft
+status: published
 published_at: 2022-01-16
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال رسول الله ﷺ : هل تُنصرون وتُرزقون إلا بضعفائكم. رواه البخاري"
-status: draft
+status: published
 published_at: 2017-10-20
 person: abu-jafar-al-khalifi
 ---

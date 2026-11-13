@@ -1,6 +1,6 @@
 ---
 title: "قوله عز وجل: ﴿ما أصاب من مصيبة إلا بإذن الله ومن يؤمن بالله يهد قلبه﴾"
-status: draft
+status: published
 published_at: 2024-05-17
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

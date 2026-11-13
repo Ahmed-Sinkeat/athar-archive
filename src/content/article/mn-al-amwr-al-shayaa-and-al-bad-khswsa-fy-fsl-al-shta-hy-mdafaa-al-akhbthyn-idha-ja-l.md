@@ -1,6 +1,6 @@
 ---
 title: "مِن الأمور الشائعة عند البعض -خصوصًا في فصل الشتاء- هي مدافعة الأخبثين إذا جاء ل"
-status: draft
+status: published
 published_at: 2023-01-25
 person: abu-umair-imran-al-zubaidi
 ---

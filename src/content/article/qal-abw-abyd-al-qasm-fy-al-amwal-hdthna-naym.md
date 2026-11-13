@@ -1,6 +1,6 @@
 ---
 title: "قال أبو عبيد القاسم في الأموال 114 - حَدَّثَنَا نُعَيْمٌ"
-status: draft
+status: published
 published_at: 2017-06-12
 person: abu-jafar-al-khalifi
 ---

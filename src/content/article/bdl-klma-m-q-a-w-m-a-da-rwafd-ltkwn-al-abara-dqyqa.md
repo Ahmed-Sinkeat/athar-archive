@@ -1,6 +1,6 @@
 ---
 title: "بدل كلمة \"م ق ا و م ة\" ضع روافض لتكون العبارة دقيقة!"
-status: draft
+status: published
 published_at: 2023-11-01
 person: abu-umair-imran-al-zubaidi
 ---

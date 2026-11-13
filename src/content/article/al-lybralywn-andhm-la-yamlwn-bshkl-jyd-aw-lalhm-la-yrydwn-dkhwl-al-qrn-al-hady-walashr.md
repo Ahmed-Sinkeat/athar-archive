@@ -1,6 +1,6 @@
 ---
 title: "الليبراليون عندهم لا يعملون بشكل جيد أو لعلهم لا يريدون دخول القرن الحادي والعشر"
-status: draft
+status: published
 published_at: 2017-09-30
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

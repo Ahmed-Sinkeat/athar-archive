@@ -1,6 +1,6 @@
 ---
 title: "حينما كاد الألمان أن يأخذوا دمشق (المدن الناجية والمدن العائدة)"
-status: draft
+status: published
 published_at: 2021-12-31
 person: abu-jafar-al-khalifi
 ---

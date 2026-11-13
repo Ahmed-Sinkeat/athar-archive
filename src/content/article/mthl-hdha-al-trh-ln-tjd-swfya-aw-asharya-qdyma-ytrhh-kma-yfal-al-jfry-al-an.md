@@ -1,6 +1,6 @@
 ---
 title: "مثل هذا الطرح لن تجد صوفياً أو أشعرياً قديماً يطرحه كما يفعل الجفري الآن."
-status: draft
+status: published
 published_at: 2025-11-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

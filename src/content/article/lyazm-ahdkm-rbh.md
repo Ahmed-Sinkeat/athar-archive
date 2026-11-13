@@ -1,6 +1,6 @@
 ---
 title: "ليعظم أحدكم ربه"
-status: draft
+status: published
 published_at: 2026-04-13
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

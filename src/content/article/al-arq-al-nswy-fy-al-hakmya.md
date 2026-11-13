@@ -1,6 +1,6 @@
 ---
 title: "العرق النسوي في الحاكمية!"
-status: draft
+status: published
 published_at: 2026-02-16
 person: abu-umair-imran-al-zubaidi
 ---

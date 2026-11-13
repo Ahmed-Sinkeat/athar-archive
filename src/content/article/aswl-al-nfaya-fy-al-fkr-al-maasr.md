@@ -1,6 +1,6 @@
 ---
 title: "أصولُ النفعية في الفِكر المُعاصِر"
-status: draft
+status: published
 published_at: 2026-05-10
 person: awwab-bin-muhammad
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]

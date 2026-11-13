@@ -1,6 +1,6 @@
 ---
 title: "قال الطبري في تاريخه حدثنا ابن حميد قال حدثنا سلمة عن محمد بن إسحاق عن محمد بن ج"
-status: draft
+status: published
 published_at: 2019-11-07
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "أتدرون من سلف هذا الجويهل المتعالم في ما قاله ها هنا؟"
-status: draft
+status: published
 published_at: 2024-06-27
 person: abu-umair-imran-al-zubaidi
 ---

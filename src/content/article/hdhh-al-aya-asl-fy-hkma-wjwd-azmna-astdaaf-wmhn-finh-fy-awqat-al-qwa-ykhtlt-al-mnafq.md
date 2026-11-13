@@ -1,6 +1,6 @@
 ---
 title: "هذه الآية أصل في حكمة وجود أزمنة استضعاف ومحن فإنه في أوقات القوة يختلط المنافق"
-status: draft
+status: published
 published_at: 2019-05-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-iman"]

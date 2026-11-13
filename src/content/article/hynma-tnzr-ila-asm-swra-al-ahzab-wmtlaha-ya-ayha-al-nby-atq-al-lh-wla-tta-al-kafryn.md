@@ -1,6 +1,6 @@
 ---
 title: "حينما تنظر إلى اسم سورة الأحزاب ومطلعها (يا أيها النبي اتق الله ولا تطع الكافرين"
-status: draft
+status: published
 published_at: 2026-04-09
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

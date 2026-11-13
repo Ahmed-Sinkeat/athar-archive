@@ -1,6 +1,6 @@
 ---
 title: "قال ابن حزم في «مراتب الإجماع"
-status: draft
+status: published
 published_at: 2025-03-20
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

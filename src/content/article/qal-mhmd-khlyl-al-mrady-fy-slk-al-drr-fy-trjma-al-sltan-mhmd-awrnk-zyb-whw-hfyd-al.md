@@ -1,6 +1,6 @@
 ---
 title: "قال محمد خليل المرادي في سلك الدرر في ترجمة السلطان محمد أورنك زيب _ وهو حفيد ال"
-status: draft
+status: published
 published_at: 2017-07-15
 person: abu-jafar-al-khalifi
 ---

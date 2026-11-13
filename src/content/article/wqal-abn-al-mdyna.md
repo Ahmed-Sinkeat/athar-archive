@@ -1,6 +1,6 @@
 ---
 title: "وقال ابن المدينى"
-status: draft
+status: published
 published_at: 2021-09-30
 person: abu-jafar-al-khalifi
 ---

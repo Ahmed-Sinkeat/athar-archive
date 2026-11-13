@@ -1,6 +1,6 @@
 ---
 title: "قال هيربرت شيللر في كتابه المتلاعبون بالعقول ص١٨: أسطورة الحياد"
-status: draft
+status: published
 published_at: 2017-09-05
 person: abu-jafar-al-khalifi
 ---

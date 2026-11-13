@@ -1,6 +1,6 @@
 ---
 title: "قصة عجيبة في إسلام إيطالي على يد صومالية (صارت زوجته لاحقاً)..."
-status: draft
+status: published
 published_at: 2025-12-04
 person: abu-jafar-al-khalifi
 ---

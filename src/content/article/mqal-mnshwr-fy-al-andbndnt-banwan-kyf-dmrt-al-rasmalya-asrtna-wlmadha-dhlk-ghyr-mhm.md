@@ -1,6 +1,6 @@
 ---
 title: "مقال منشور في الاندبندنت بعنوان كيف دمرت الرأسمالية أسرتنا ولماذا ذلك غير مهم"
-status: draft
+status: published
 published_at: 2018-07-11
 person: abu-jafar-al-khalifi
 ---

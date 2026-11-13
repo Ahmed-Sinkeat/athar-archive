@@ -1,6 +1,6 @@
 ---
 title: "هذه مقابلة مع مؤرخ أمريكي مسلم، ذكر عدة نقاط لا يعرفها كثير من الناس."
-status: draft
+status: published
 published_at: 2025-05-13
 person: abu-jafar-al-khalifi
 ---

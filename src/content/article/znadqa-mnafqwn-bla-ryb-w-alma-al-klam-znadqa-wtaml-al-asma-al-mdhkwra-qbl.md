@@ -1,6 +1,6 @@
 ---
 title: "( زنادقة منافقون بلا ريب ) و ( علماء الكلام زنادقة ) وتأمل الأسماء المذكورة قبل"
-status: draft
+status: published
 published_at: 2019-02-28
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-iman"]

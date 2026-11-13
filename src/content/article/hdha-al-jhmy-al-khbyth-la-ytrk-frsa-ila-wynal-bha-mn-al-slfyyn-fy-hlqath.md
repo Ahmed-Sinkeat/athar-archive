@@ -1,6 +1,6 @@
 ---
 title: "هذا الجهمي الخبيث لا يترك فرصة إلا وينال بها من السلفيين في حلقاته"
-status: draft
+status: published
 published_at: 2024-03-15
 person: abu-umair-imran-al-zubaidi
 ---

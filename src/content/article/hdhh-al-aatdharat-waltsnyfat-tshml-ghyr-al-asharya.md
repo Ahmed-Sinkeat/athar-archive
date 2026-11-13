@@ -1,6 +1,6 @@
 ---
 title: "هذه الاعتذارات والتصنيفات تشمل غير الأشعرية!"
-status: draft
+status: published
 published_at: 2021-08-13
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

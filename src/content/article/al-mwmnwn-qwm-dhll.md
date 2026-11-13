@@ -1,6 +1,6 @@
 ---
 title: "المؤمنون قوم ذلل"
-status: draft
+status: published
 published_at: 2025-04-30
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

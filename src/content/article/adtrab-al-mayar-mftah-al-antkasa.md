@@ -1,6 +1,6 @@
 ---
 title: "اضطراب المعيار مفتاح الانتكاسة"
-status: draft
+status: published
 published_at: 2019-03-29
 person: abu-jafar-al-khalifi
 ---

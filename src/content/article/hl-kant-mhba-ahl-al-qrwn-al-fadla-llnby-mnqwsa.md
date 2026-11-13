@@ -1,6 +1,6 @@
 ---
 title: "هل كانت محبة أهل القرون الفاضلة للنبي ﷺ منقوصة؟"
-status: draft
+status: published
 published_at: 2023-07-07
 person: abu-jafar-al-khalifi
 ---

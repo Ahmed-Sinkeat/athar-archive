@@ -1,6 +1,6 @@
 ---
 title: "جاء في مجلة لغة العرب العراقية لصاحبها أَنِسْتاس ماري الألياوي الكَرْمِلي"
-status: draft
+status: published
 published_at: 2018-09-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

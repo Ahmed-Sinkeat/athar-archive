@@ -1,6 +1,6 @@
 ---
 title: "الواحد ساكت ساكت ساكت، يقول لنفسه رمضان، وما بده يدخل في معمعة."
-status: draft
+status: published
 published_at: 2025-03-06
 person: abu-umair-imran-al-zubaidi
 ---

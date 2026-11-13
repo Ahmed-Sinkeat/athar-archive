@@ -1,6 +1,6 @@
 ---
 title: "تثبيت أهمية السنة من آيات تحريم الخمر وما بعدها.."
-status: draft
+status: published
 published_at: 2022-04-09
 person: abu-jafar-al-khalifi
 ---

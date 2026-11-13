@@ -1,6 +1,6 @@
 ---
 title: "#صفة_الصلاة"
-status: draft
+status: published
 published_at: 2023-12-15
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

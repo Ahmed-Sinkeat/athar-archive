@@ -1,6 +1,6 @@
 ---
 title: "هذه شركة محاماة كندية"
-status: draft
+status: published
 published_at: 2026-11-01
 person: abu-jafar-al-khalifi
 ---

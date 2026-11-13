@@ -1,6 +1,6 @@
 ---
 title: "هذا خبر منشور في موقع ألمانيا اليوم بالعربي."
-status: draft
+status: published
 published_at: 2021-12-19
 person: abu-jafar-al-khalifi
 ---

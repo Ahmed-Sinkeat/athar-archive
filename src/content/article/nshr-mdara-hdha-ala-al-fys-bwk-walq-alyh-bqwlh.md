@@ -1,6 +1,6 @@
 ---
 title: "نشر مدارا هذا على الفيس بوك وعلق عليه بقوله"
-status: draft
+status: published
 published_at: 2022-07-16
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

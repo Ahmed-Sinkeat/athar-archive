@@ -1,6 +1,6 @@
 ---
 title: "مشكلتي مع الجامعات والشهادات عمومًا ليست في ذات العِلم -هذا مع الأخذ بعين الاعتب"
-status: draft
+status: published
 published_at: 2022-12-04
 person: abu-umair-imran-al-zubaidi
 ---

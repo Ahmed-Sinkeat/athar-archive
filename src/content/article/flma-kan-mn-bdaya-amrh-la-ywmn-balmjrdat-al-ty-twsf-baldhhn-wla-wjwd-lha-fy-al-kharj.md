@@ -1,6 +1,6 @@
 ---
 title: "فلما كان من بداية أمره لا يؤمن بالمجردات التي توصف بالذهن ولا وجود لها في الخارج"
-status: draft
+status: published
 published_at: 2022-01-22
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

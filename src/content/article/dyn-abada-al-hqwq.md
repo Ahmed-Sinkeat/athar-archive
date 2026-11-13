@@ -1,6 +1,6 @@
 ---
 title: "ديـنُ عِبـادةِ الحقـوق"
-status: draft
+status: published
 published_at: 2025-06-18
 person: awwab-bin-muhammad
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

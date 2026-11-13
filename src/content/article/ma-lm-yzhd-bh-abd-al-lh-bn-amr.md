@@ -1,6 +1,6 @@
 ---
 title: "ما لم يزهد به عبد الله بن عمر"
-status: draft
+status: published
 published_at: 2022-12-30
 person: abu-jafar-al-khalifi
 ---

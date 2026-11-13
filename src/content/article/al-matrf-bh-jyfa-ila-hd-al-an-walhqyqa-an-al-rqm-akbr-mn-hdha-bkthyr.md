@@ -1,6 +1,6 @@
 ---
 title: "المُعترف به 1300 جيفة إلى حد الآن، والحقيقة أنّ الرقم أكبر من هذا بكثير."
-status: draft
+status: published
 published_at: 2023-10-12
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذه تعليقات على خبر عن مدينة في أمريكا يبدو أن غالب أهلها من المسلمين منعوا رفع"
-status: draft
+status: published
 published_at: 2023-06-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

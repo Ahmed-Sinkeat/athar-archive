@@ -1,6 +1,6 @@
 ---
 title: "لندسي كلانسي كانت أمًا من ولاية ماساتشوستس"
-status: draft
+status: published
 published_at: 2026-08-27
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

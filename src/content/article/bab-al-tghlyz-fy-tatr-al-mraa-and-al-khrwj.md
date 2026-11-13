@@ -1,6 +1,6 @@
 ---
 title: "باب التغليظ في تعطر المرأة عند الخروج"
-status: draft
+status: published
 published_at: 2025-08-08
 person: abu-abdillah-firas-al-ramli
 topics: ["al-imamah-was-sahabah"]

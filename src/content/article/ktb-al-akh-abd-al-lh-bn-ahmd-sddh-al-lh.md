@@ -1,6 +1,6 @@
 ---
 title: "كتب الأخ عبد الله بن أحمد سدّده الله"
-status: draft
+status: published
 published_at: 2018-08-04
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

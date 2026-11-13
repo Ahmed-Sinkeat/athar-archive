@@ -1,6 +1,6 @@
 ---
 title: "أمانة موسى عليه السلام في غض بصره وعدم مشيه خلف النساء"
-status: draft
+status: published
 published_at: 2024-11-26
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

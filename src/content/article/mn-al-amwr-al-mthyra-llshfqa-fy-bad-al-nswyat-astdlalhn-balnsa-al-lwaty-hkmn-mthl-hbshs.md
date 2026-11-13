@@ -1,6 +1,6 @@
 ---
 title: "من الأمور المثيرة للشفقة في بعض النسويات استدلالهن بالنساء اللواتي حكمن مثل حبشس"
-status: draft
+status: published
 published_at: 2018-06-04
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ودعوى أنهم أهل شرك وكفر فإن الخوارج لم يحل قتالهم إلا لما ارتكبوه من العصيان واس"
-status: draft
+status: published
 published_at: 2021-11-18
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah", "adab-talab-al-ilm"]

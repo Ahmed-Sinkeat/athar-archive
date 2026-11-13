@@ -1,6 +1,6 @@
 ---
 title: "قال الوحيد البهبهاني في رسائله الأصول ص126"
-status: draft
+status: published
 published_at: 2022-10-24
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

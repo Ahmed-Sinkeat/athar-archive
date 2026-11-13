@@ -1,6 +1,6 @@
 ---
 title: "منافع شعر اللحية"
-status: draft
+status: published
 published_at: 2023-05-19
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

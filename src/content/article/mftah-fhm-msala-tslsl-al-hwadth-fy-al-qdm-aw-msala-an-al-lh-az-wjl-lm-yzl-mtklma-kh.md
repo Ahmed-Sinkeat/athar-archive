@@ -1,6 +1,6 @@
 ---
 title: "مفتاح فهم مسألة (تسلسل الحوادث في القدم) أو مسألة أن الله عز وجل لم يزل متكلما خ"
-status: draft
+status: published
 published_at: 2019-09-06
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "يَا أَيُّهَا الَّذِينَ آمَنُوا لَا تَتَّخِذُوا آبَاءَكُمْ وَإِخْوَانَكُمْ أَوْلِ"
-status: draft
+status: published
 published_at: 2023-03-23
 person: abu-umair-imran-al-zubaidi
 ---

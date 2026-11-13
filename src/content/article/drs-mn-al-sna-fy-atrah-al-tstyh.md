@@ -1,6 +1,6 @@
 ---
 title: "درس من السنة في اطراح التسطيح."
-status: draft
+status: published
 published_at: 2020-04-23
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

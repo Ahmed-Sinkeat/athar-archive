@@ -1,6 +1,6 @@
 ---
 title: "التعليقات المؤيدة من كثير من النساء لهذا الفعل لا تدخل في الحصر"
-status: draft
+status: published
 published_at: 2021-05-30
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

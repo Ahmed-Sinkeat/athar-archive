@@ -1,6 +1,6 @@
 ---
 title: "التعامل مع أهل الأهواء والبدع المنتسبين إلى الملة على أصول السلف الصالح في الأحك"
-status: draft
+status: published
 published_at: 2025-12-11
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

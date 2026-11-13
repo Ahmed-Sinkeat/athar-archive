@@ -1,6 +1,6 @@
 ---
 title: "المطر والتذكير ببركة الوحي.."
-status: draft
+status: published
 published_at: 2021-11-26
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "في هذه التغريدة تلخيص لكلام لويز بيري عن التعدد"
-status: draft
+status: published
 published_at: 2026-03-23
 person: abu-jafar-al-khalifi
 ---

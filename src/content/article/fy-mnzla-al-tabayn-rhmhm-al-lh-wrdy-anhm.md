@@ -1,6 +1,6 @@
 ---
 title: "في منزلة التابعين رحمهم الله ورضي عنهم"
-status: draft
+status: published
 published_at: 2025-01-09
 person: abu-abdillah-firas-al-ramli
 ---

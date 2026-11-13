@@ -1,6 +1,6 @@
 ---
 title: "إليكم حقيقة غير معروفة"
-status: draft
+status: published
 published_at: 2019-02-23
 person: abu-jafar-al-khalifi
 ---

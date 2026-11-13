@@ -1,6 +1,6 @@
 ---
 title: "عبادة الحمد واستشعار النعمة.."
-status: draft
+status: published
 published_at: 2021-10-29
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "قصة عبد الله الرضيع هل تسلم من سهام النقد ؟"
-status: draft
+status: published
 published_at: 2020-08-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-imamah-was-sahabah"]

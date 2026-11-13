@@ -1,6 +1,6 @@
 ---
 title: "نقلا عن الأخ راغب الكيالي: موقع \"موديرن دبلوماسي\": لماذا ينهار اقتصاد دبي؟."
-status: draft
+status: published
 published_at: 2018-07-15
 person: abu-jafar-al-khalifi
 ---

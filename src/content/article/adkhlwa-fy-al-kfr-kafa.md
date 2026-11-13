@@ -1,6 +1,6 @@
 ---
 title: "ادخلوا في الكفر كافة"
-status: draft
+status: published
 published_at: 2021-09-26
 person: abu-jafar-al-khalifi
 ---

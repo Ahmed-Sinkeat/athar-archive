@@ -1,6 +1,6 @@
 ---
 title: "مِمّا لا يسع المسلم جهله هو معرفة صفة الغسل مِن الجنابة والحيض."
-status: draft
+status: published
 published_at: 2023-01-08
 person: abu-umair-imran-al-zubaidi
 ---

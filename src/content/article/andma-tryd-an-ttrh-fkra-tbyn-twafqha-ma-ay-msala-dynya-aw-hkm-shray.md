@@ -1,6 +1,6 @@
 ---
 title: "عندما تريد أن تطرح فكرة تبيّن توافقها مع أي مسألة دينية أو حكم شرعي"
-status: draft
+status: published
 published_at: 2023-12-13
 person: abu-umair-imran-al-zubaidi
 ---

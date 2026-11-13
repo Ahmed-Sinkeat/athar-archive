@@ -1,6 +1,6 @@
 ---
 title: "تفترض نظرية التطور أن الطيور تطورت من الديناصورات وهذا ما عليه جماهير التطوريين"
-status: draft
+status: published
 published_at: 2018-04-19
 person: abu-jafar-al-khalifi
 ---

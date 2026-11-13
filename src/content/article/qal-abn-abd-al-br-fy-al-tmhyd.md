@@ -1,6 +1,6 @@
 ---
 title: "قال ابن عبد البر في التمهيد"
-status: draft
+status: published
 published_at: 2017-06-19
 person: abu-jafar-al-khalifi
 ---

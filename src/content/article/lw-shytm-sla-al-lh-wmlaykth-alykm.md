@@ -1,6 +1,6 @@
 ---
 title: "لو شئتم صلى الله وملائكته عليكم"
-status: draft
+status: published
 published_at: 2024-10-01
 person: abu-abdillah-firas-al-ramli
 ---

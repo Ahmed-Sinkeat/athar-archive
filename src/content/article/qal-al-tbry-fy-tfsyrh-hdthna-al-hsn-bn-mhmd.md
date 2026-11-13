@@ -1,6 +1,6 @@
 ---
 title: "قال الطبري في تفسيره 19279 - حدثنا الحسن بن محمد"
-status: draft
+status: published
 published_at: 2017-07-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

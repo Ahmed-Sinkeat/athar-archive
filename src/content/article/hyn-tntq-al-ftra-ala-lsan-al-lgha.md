@@ -1,6 +1,6 @@
 ---
 title: "حين تنطق الفطرة على لسان اللغة"
-status: draft
+status: published
 published_at: 2019-11-15
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

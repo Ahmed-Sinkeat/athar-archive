@@ -1,6 +1,6 @@
 ---
 title: "ابن تيمية وشرح أطول باب في صحيح البخاري."
-status: draft
+status: published
 published_at: 2026-10-12
 person: abu-jafar-al-khalifi
 ---

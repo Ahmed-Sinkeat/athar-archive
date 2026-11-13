@@ -1,6 +1,6 @@
 ---
 title: "ضع في اعتبارك عند اختيار الزوجة حال أمها."
-status: draft
+status: published
 published_at: 2023-12-11
 person: abu-umair-imran-al-zubaidi
 ---

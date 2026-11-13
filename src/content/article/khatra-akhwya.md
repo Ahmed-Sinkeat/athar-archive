@@ -1,6 +1,6 @@
 ---
 title: "خاطرة أخوية"
-status: draft
+status: published
 published_at: 2019-03-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-iman"]

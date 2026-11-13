@@ -1,6 +1,6 @@
 ---
 title: "سنبدأ إن شاء الله بنشر فوائد من كتاب الإيمان لابن أبي شيبة (ت ٢٣٤ هـ) رحمه الله"
-status: draft
+status: published
 published_at: 2024-12-28
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

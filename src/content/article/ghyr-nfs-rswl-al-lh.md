@@ -1,6 +1,6 @@
 ---
 title: "غير نفس رسول الله ﷺ!"
-status: draft
+status: published
 published_at: 2023-07-12
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "جاء في تاريخ الإسلام للذهبي"
-status: draft
+status: published
 published_at: 2017-12-08
 person: abu-jafar-al-khalifi
 ---

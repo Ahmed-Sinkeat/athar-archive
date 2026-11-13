@@ -1,6 +1,6 @@
 ---
 title: "قوله تعالى: {ونبلوكم بالشر والخير فتنة}"
-status: draft
+status: published
 published_at: 2023-09-20
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

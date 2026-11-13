@@ -1,6 +1,6 @@
 ---
 title: "قال الشيخ محمد بن عبد الوهاب في كتابه التوحيد معلقاً على قوله تعالى"
-status: draft
+status: published
 published_at: 2017-09-22
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

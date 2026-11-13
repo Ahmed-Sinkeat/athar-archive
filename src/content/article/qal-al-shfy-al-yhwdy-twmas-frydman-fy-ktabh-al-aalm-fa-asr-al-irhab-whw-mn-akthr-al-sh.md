@@ -1,6 +1,6 @@
 ---
 title: "قال الصحفي اليهودي توماس فريدمان في كتابه العالم فى عصر الإرهاب وهو من أكثر الصح"
-status: draft
+status: published
 published_at: 2017-11-23
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

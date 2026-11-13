@@ -1,6 +1,6 @@
 ---
 title: "من أوائل من أظهر القول بنسبة آثار الصحابة والتابعين إلى الإسرائيليات ليردها هو ا"
-status: draft
+status: published
 published_at: 2024-04-04
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

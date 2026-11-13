@@ -1,6 +1,6 @@
 ---
 title: "ثم بعد ذلك الشافعية والمالكية خالفهم الحنابلة وأهل الرأي وإسحاق واشترطوا المحرم"
-status: draft
+status: published
 published_at: 2021-06-14
 person: abu-jafar-al-khalifi
 ---

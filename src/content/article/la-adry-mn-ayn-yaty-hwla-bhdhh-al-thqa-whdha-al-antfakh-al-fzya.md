@@ -1,6 +1,6 @@
 ---
 title: "لا أدري من أين يأتي هؤلاء بهذه الثقة وهذا الانتفاخ الفظيع."
-status: draft
+status: published
 published_at: 2025-12-19
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "مقالات تتعلق بالحضارات والتواريخ القديمة"
-status: draft
+status: published
 published_at: 2017-05-30
 person: abu-jafar-al-khalifi
 ---

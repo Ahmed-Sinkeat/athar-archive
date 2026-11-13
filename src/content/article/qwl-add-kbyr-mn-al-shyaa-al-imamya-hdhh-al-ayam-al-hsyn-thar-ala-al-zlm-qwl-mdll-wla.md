@@ -1,6 +1,6 @@
 ---
 title: "قول عدد كبير من الشيعة الإمامية هذه الأيام ( الحسين ثار على الظلم ) قول مضلل ولا"
-status: draft
+status: published
 published_at: 2018-09-16
 person: abu-jafar-al-khalifi
 ---

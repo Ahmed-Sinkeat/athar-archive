@@ -1,6 +1,6 @@
 ---
 title: "لو نظرت في الفوارق بين ما يذكره السلف الكرام من آثار في تفاصيل بعض الأحداث التي"
-status: draft
+status: published
 published_at: 2026-06-02
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

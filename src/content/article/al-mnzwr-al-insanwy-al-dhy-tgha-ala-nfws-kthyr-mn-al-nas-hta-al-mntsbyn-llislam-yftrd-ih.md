@@ -1,6 +1,6 @@
 ---
 title: "المنظور الإنسانوي الذي طغى على نفوس كثير من الناس حتى المنتسبين للإسلام يفترض إح"
-status: draft
+status: published
 published_at: 2019-01-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "كان عبدالله بن مسعود رضي الله عنه يدعو فيقول"
-status: draft
+status: published
 published_at: 2019-01-05
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

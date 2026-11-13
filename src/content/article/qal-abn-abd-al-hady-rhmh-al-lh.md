@@ -1,6 +1,6 @@
 ---
 title: "قال ابن عبد الهادي رحمه الله"
-status: draft
+status: published
 published_at: 2023-05-04
 person: abu-umair-imran-al-zubaidi
 ---

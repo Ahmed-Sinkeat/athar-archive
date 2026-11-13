@@ -1,6 +1,6 @@
 ---
 title: "اتباع الآباء على دينهم، أو كما يقال بالوراثة، ليس مذموما في نفسه."
-status: draft
+status: published
 published_at: 2026-08-04
 person: abu-umair-imran-al-zubaidi
 ---

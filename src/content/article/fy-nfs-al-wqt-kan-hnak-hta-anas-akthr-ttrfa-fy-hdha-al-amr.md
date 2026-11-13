@@ -1,6 +1,6 @@
 ---
 title: "في نفس الوقت كان هناك حتى أناس أكثر تطرفًا في هذا الأمر"
-status: draft
+status: published
 published_at: 2020-12-21
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "هناك خطأ في كتابة إحدى الآيات في التلاوة التي نشرتها؛ لذلك حذفتها."
-status: draft
+status: published
 published_at: 2023-12-08
 person: abu-umair-imran-al-zubaidi
 ---

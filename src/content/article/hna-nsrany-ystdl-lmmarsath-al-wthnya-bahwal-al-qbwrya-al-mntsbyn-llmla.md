@@ -1,6 +1,6 @@
 ---
 title: "هنا نصراني يستدل لممارساته الوثنية بأحوال القبورية المنتسبين للملة."
-status: draft
+status: published
 published_at: 2025-06-08
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لدي أولاد عمومة وأقارب في سجون القسدية الأنجاس في الحسكة."
-status: draft
+status: published
 published_at: 2026-01-20
 person: abu-umair-imran-al-zubaidi
 ---

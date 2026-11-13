@@ -1,6 +1,6 @@
 ---
 title: "من القرض الحسن الذي غفل الناس عنه..."
-status: draft
+status: published
 published_at: 2023-09-08
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

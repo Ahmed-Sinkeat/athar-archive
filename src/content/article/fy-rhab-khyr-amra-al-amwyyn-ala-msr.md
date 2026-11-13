@@ -1,6 +1,6 @@
 ---
 title: "في رحاب خير أمراء الأمويين على مصر.."
-status: draft
+status: published
 published_at: 2021-04-16
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

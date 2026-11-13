@@ -1,6 +1,6 @@
 ---
 title: "القلوب أربعة"
-status: draft
+status: published
 published_at: 2026-08-25
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada", "tazkiyat-al-nafs", "al-iman"]

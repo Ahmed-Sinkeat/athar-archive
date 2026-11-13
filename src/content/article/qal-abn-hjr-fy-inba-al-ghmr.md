@@ -1,6 +1,6 @@
 ---
 title: "قال ابن حجر في إنباء الغمر"
-status: draft
+status: published
 published_at: 2018-03-26
 person: abu-jafar-al-khalifi
 ---

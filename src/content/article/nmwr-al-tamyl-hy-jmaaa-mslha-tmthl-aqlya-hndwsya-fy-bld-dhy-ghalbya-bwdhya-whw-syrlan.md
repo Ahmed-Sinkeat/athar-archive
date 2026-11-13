@@ -1,6 +1,6 @@
 ---
 title: "نمور التاميل هي جماعة مسلحة تمثل أقلية هندوسية في بلد ذي غالبية بوذية وهو سيرلان"
-status: draft
+status: published
 published_at: 2019-01-02
 person: abu-jafar-al-khalifi
 ---

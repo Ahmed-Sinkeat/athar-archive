@@ -1,6 +1,6 @@
 ---
 title: "ما دُمتَ على التوحيد فأنت ناجحٌ في حياتك"
-status: draft
+status: published
 published_at: 2023-04-16
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

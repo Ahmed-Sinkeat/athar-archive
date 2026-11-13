@@ -1,6 +1,6 @@
 ---
 title: "أعيذ نفسي بالله وإياكم يا إخوة من مداخل الشيطان بين الأقران."
-status: draft
+status: published
 published_at: 2024-03-21
 person: abu-umair-imran-al-zubaidi
 ---

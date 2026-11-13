@@ -1,6 +1,6 @@
 ---
 title: "مهما كانت همومك ثقيلة فلن تكون أثقل من العرش!"
-status: draft
+status: published
 published_at: 2023-05-06
 person: abu-jafar-al-khalifi
 ---

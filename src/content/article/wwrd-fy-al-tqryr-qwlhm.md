@@ -1,6 +1,6 @@
 ---
 title: "وورد في التقرير قولهم"
-status: draft
+status: published
 published_at: 2019-11-21
 person: abu-jafar-al-khalifi
 ---

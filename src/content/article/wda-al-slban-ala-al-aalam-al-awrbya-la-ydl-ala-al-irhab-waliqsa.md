@@ -1,6 +1,6 @@
 ---
 title: "وضع الصلبان على الأعلام الأوربية لا يدل على الإرهاب والإقصاء"
-status: draft
+status: published
 published_at: 2024-12-15
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

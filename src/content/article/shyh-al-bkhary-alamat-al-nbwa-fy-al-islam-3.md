@@ -1,6 +1,6 @@
 ---
 title: "صحيح البخاري | علامات النبوة في الإسلام (٣)"
-status: draft
+status: published
 published_at: 2025-06-23
 person: abu-abdillah-firas-al-ramli
 ---

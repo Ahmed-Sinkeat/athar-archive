@@ -1,6 +1,6 @@
 ---
 title: "اليوم ( المساواة ) وقاعدة ( الغنم بالغرم ) لا يقنعن بعض الحالمات بالفردوس الأرضي"
-status: draft
+status: published
 published_at: 2020-06-07
 person: abu-jafar-al-khalifi
 ---

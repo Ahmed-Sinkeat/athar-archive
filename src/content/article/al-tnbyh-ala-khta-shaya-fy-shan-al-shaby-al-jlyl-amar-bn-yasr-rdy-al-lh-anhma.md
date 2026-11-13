@@ -1,6 +1,6 @@
 ---
 title: "التنبيه على خطأ شائع في شأن الصحابي الجليل عمار بن ياسر رضي الله عنهما"
-status: draft
+status: published
 published_at: 2023-12-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-imamah-was-sahabah"]

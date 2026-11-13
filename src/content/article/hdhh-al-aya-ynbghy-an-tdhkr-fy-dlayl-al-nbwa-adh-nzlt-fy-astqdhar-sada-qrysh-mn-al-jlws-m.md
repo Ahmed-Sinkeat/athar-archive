@@ -1,6 +1,6 @@
 ---
 title: "هذه الآية ينبغي أن تذكر في دلائل النبوة اذ نزلت في استقذار سادة قريش من الجلوس م"
-status: draft
+status: published
 published_at: 2018-05-21
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

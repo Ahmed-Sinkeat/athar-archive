@@ -1,6 +1,6 @@
 ---
 title: "قُلْ هَلْ نُنَبِّئُكُمْ بِالْأَخْسَرِينَ أَعْمَالًا (103) الَّذِينَ ضَلَّ سَعْيُ"
-status: draft
+status: published
 published_at: 2025-07-26
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

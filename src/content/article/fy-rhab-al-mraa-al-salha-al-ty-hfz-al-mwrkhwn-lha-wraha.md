@@ -1,6 +1,6 @@
 ---
 title: "في رحاب المرأة الصالحة التي حفظ المؤرخون لها ورعها"
-status: draft
+status: published
 published_at: 2020-07-27
 person: abu-jafar-al-khalifi
 ---

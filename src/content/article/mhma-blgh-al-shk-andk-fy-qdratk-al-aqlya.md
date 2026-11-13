@@ -1,6 +1,6 @@
 ---
 title: "مهما بلغ الشك عندك في قدراتك العقلية"
-status: draft
+status: published
 published_at: 2025-01-02
 person: abu-umair-imran-al-zubaidi
 ---

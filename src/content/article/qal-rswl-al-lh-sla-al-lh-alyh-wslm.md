@@ -1,6 +1,6 @@
 ---
 title: "قال رسول الله صلّى الله عليه وسلّم"
-status: draft
+status: published
 published_at: 2022-09-01
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "فخلاصة جوابهم أن فلاناً مسلم لأنه يدعي الإسلام"
-status: draft
+status: published
 published_at: 2019-11-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

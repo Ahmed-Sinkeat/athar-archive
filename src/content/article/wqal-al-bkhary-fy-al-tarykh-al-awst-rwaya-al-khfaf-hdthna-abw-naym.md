@@ -1,6 +1,6 @@
 ---
 title: "وقال البخاري في التاريخ الأوسط رواية الخفاف حدثنا أبو نعيم"
-status: draft
+status: published
 published_at: 2022-02-09
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

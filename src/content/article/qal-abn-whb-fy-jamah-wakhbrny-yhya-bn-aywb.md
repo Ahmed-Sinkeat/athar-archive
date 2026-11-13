@@ -1,6 +1,6 @@
 ---
 title: "قال ابن وهب في جامعه 554 - وَأَخْبَرَنِي يَحْيَى بْنُ أَيُّوبَ"
-status: draft
+status: published
 published_at: 2017-09-15
 person: abu-jafar-al-khalifi
 ---

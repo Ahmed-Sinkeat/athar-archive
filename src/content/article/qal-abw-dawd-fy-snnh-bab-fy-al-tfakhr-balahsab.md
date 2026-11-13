@@ -1,6 +1,6 @@
 ---
 title: "قال أبو دَاوُدَ في سننه: باب في التفاخر بالأحساب"
-status: draft
+status: published
 published_at: 2017-06-17
 person: abu-jafar-al-khalifi
 ---

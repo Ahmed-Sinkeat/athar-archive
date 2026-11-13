@@ -1,6 +1,6 @@
 ---
 title: "من نفائس ابن تيمية: نفاة العلو يغلب عليهم دعاء غير الله..."
-status: draft
+status: published
 published_at: 2025-06-26
 person: abu-jafar-al-khalifi
 ---

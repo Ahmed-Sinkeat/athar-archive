@@ -1,6 +1,6 @@
 ---
 title: "ما فائدة هذا البحث ؟"
-status: draft
+status: published
 published_at: 2020-02-04
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "ما يرفع ضغطي إلا المثقف يلي يزدري المشايخ لما يتكلم عن السياسة"
-status: draft
+status: published
 published_at: 2024-08-06
 person: abu-umair-imran-al-zubaidi
 ---

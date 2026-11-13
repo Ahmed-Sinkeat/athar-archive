@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي الدنيا"
-status: draft
+status: published
 published_at: 2026-01-12
 person: awwab-bin-muhammad
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

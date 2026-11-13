@@ -1,6 +1,6 @@
 ---
 title: "جاء في مجلة الحقائق الدمشقية لعبد القادر الكيلاني الدمشقي العدد 20 - بتاريخ"
-status: draft
+status: published
 published_at: 2018-01-14
 person: abu-jafar-al-khalifi
 ---

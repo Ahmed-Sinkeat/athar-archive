@@ -1,6 +1,6 @@
 ---
 title: "مما لفت نظري في كتب فقهاء الشافعية تعليلهم النهي عن العديد من المعازف بأنها من ش"
-status: draft
+status: published
 published_at: 2017-10-04
 person: abu-jafar-al-khalifi
 ---

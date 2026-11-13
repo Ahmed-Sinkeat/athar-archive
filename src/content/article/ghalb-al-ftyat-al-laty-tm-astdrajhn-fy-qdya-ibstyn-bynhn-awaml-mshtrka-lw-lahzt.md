@@ -1,6 +1,6 @@
 ---
 title: "غالب الفتيات اللاتي تم استدراجهن في قضية إبستين بينهن عوامل مشتركة لو لاحظت"
-status: draft
+status: published
 published_at: 2026-02-01
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "يا عباد الله نصيحة"
-status: draft
+status: published
 published_at: 2024-01-17
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام سفيان الثوري"
-status: draft
+status: published
 published_at: 2023-11-12
 person: abu-umair-imran-al-zubaidi
 ---

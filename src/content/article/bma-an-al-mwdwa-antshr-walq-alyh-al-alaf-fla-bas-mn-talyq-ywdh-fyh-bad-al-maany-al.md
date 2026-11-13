@@ -1,6 +1,6 @@
 ---
 title: "بما أن الموضوع انتشر وعلق عليه الآلاف فلا بأس من تعليق يوضَّح فيه بعض المعاني ال"
-status: draft
+status: published
 published_at: 2025-09-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

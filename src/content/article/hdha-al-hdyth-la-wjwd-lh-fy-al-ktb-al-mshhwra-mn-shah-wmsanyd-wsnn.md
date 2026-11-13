@@ -1,6 +1,6 @@
 ---
 title: "هذا الحديث لا وجود له في الكتب المشهورة من صحاح ومسانيد وسنن"
-status: draft
+status: published
 published_at: 2023-05-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "لعنة الله على الذين يشركون عليًا مع الله الواحد القهار"
-status: draft
+status: published
 published_at: 2024-04-14
 person: abu-umair-imran-al-zubaidi
 ---

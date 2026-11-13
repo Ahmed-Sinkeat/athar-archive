@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الله بن إدريس"
-status: draft
+status: published
 published_at: 2023-10-31
 person: abu-umair-imran-al-zubaidi
 ---

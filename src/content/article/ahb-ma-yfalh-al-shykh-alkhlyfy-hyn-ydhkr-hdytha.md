@@ -1,6 +1,6 @@
 ---
 title: "أحب ما يفعله الشيخ ألخليفي حين يذكر حديثًا"
-status: draft
+status: published
 published_at: 2024-01-27
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

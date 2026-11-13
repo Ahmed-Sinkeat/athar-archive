@@ -1,6 +1,6 @@
 ---
 title: "السؤال السادس"
-status: draft
+status: published
 published_at: 2021-02-01
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

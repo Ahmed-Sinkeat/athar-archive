@@ -1,6 +1,6 @@
 ---
 title: "آية وكأنها نزلت اليوم في سلوك البلدان الغربية، فسبحان الله العليم."
-status: draft
+status: published
 published_at: 2020-04-30
 person: abu-jafar-al-khalifi
 ---

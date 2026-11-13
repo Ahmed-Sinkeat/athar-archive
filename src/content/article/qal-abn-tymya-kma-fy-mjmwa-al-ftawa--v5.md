@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية كما في مجموع الفتاوى )15/289)"
-status: draft
+status: published
 published_at: 2019-01-03
 person: abu-jafar-al-khalifi
 ---

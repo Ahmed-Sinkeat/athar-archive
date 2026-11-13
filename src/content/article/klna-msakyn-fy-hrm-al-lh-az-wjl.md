@@ -1,6 +1,6 @@
 ---
 title: "كلنا مساكين في حرم الله عز وجل"
-status: draft
+status: published
 published_at: 2023-06-23
 person: abu-jafar-al-khalifi
 ---

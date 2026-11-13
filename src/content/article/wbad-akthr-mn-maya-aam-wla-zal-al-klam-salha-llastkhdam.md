@@ -1,6 +1,6 @@
 ---
 title: "وبعد أكثر من مائة عام ولا زال الكلام صالحاً للاستخدام."
-status: draft
+status: published
 published_at: 2020-04-22
 person: abu-jafar-al-khalifi
 ---

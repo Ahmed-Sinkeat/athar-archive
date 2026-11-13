@@ -1,6 +1,6 @@
 ---
 title: "جماعة العاذرية الذين يقولون: هو قصد الحق ولكن أخطأ، ولم يقصد الكفر."
-status: draft
+status: published
 published_at: 2025-07-26
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

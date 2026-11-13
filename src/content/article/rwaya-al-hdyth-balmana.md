@@ -1,6 +1,6 @@
 ---
 title: "رواية الحديث بالمعنى"
-status: draft
+status: published
 published_at: 2026-09-23
 person: abu-abdillah-firas-al-ramli
 ---

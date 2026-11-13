@@ -1,6 +1,6 @@
 ---
 title: "معاوية أم عمر بن عبد العزيز ؟"
-status: draft
+status: published
 published_at: 2023-05-31
 person: abu-abdillah-firas-al-ramli
 ---

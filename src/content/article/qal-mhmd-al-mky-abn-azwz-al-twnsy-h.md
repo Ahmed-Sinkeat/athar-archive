@@ -1,6 +1,6 @@
 ---
 title: "قال محمد المكي ابن عزوز التونسي ( 1270 – 1334 هـ )"
-status: draft
+status: published
 published_at: 2017-07-02
 person: abu-jafar-al-khalifi
 ---

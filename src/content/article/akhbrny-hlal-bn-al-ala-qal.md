@@ -1,6 +1,6 @@
 ---
 title: "9094 - أَخْبَرَنِي هِلَالُ بْنُ الْعَلَاءِ قَالَ"
-status: draft
+status: published
 published_at: 2023-12-29
 person: abu-umair-imran-al-zubaidi
 ---

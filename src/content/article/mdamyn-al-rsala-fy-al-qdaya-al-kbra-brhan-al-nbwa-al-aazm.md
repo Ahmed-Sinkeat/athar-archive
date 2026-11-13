@@ -1,6 +1,6 @@
 ---
 title: "مضامين الرسالة في القضايا الكبرى ( برهان النبوة الأعظم )"
-status: draft
+status: published
 published_at: 2020-05-02
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

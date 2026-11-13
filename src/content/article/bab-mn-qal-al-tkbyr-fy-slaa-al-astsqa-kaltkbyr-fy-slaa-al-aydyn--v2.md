@@ -1,6 +1,6 @@
 ---
 title: "باب من قال التكبير في صلاة الاستسقاء كالتكبير في صلاة العيدين"
-status: draft
+status: published
 published_at: 2017-11-04
 person: abu-jafar-al-khalifi
 ---

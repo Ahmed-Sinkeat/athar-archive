@@ -1,6 +1,6 @@
 ---
 title: "لفتة حول أثر صفات الله عز وجل في الوعظ والترغيب والترهيب"
-status: draft
+status: published
 published_at: 2024-03-10
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ويا ليت شعري ما الذي تستفيده من عد القرطبي على سبيل المثال وهو معترف بأن عقيدة إ"
-status: draft
+status: published
 published_at: 2021-10-04
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

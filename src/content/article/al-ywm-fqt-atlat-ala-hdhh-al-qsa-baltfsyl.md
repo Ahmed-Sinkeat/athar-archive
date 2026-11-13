@@ -1,6 +1,6 @@
 ---
 title: "اليوم فقط اطلعت على هذه القصة بالتفصيل."
-status: draft
+status: published
 published_at: 2025-05-25
 person: abu-jafar-al-khalifi
 ---

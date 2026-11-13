@@ -1,6 +1,6 @@
 ---
 title: "هذا جزء من كتاب «بر الوالدين» للإمام إبراهيم الحربي رحمه الله مستخرج من عدة كتب"
-status: draft
+status: published
 published_at: 2025-07-29
 person: abu-abdillah-firas-al-ramli
 ---

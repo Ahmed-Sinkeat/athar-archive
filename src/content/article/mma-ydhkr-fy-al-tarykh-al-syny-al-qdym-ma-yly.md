@@ -1,6 +1,6 @@
 ---
 title: "مما يذكر في التاريخ الصيني القديم ما يلي"
-status: draft
+status: published
 published_at: 2018-01-14
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

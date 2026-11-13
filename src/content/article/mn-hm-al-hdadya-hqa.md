@@ -1,6 +1,6 @@
 ---
 title: "من هم الحدادية حقًا؟!"
-status: draft
+status: published
 published_at: 2024-04-21
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

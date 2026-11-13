@@ -1,6 +1,6 @@
 ---
 title: "سلسلة عبد الله رشدي عن تعليم الإسلام للمبتدئين"
-status: draft
+status: published
 published_at: 2023-08-01
 person: abu-umair-imran-al-zubaidi
 ---

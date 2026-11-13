@@ -1,6 +1,6 @@
 ---
 title: "اعتقاد أهل السنة والجماعة أن العصاة الذين لم يكفروا تحت المشيئة"
-status: draft
+status: published
 published_at: 2025-07-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

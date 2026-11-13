@@ -1,6 +1,6 @@
 ---
 title: "الصبر على أذى المخالف والتوكل على الله"
-status: draft
+status: published
 published_at: 2023-05-13
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

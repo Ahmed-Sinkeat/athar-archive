@@ -1,6 +1,6 @@
 ---
 title: "أرسل لي أحد الشباب مقالاً للدكتور حاتم العوني عن العشق !"
-status: draft
+status: published
 published_at: 2019-03-30
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

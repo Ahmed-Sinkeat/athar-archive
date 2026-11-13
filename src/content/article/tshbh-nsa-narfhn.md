@@ -1,6 +1,6 @@
 ---
 title: "تُشبه نساءً نعرفهن !"
-status: draft
+status: published
 published_at: 2019-10-29
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ساعة الفلج الأعظم (موعظة المناظرات)."
-status: draft
+status: published
 published_at: 2021-06-12
 person: abu-jafar-al-khalifi
 ---

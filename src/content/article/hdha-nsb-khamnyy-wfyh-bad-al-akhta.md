@@ -1,6 +1,6 @@
 ---
 title: "هذا نسب خامنئي وفيه بعض الأخطاء"
-status: draft
+status: published
 published_at: 2026-03-10
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

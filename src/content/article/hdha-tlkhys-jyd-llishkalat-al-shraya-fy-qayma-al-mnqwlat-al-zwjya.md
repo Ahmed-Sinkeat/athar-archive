@@ -1,6 +1,6 @@
 ---
 title: "هذا تلخيص جيد للإشكالات الشرعية في قائمة المنقولات الزوجية."
-status: draft
+status: published
 published_at: 2022-10-18
 person: abu-jafar-al-khalifi
 ---

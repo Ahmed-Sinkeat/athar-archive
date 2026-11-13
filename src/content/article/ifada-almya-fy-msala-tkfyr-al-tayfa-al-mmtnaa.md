@@ -1,6 +1,6 @@
 ---
 title: "إفادة علمية في مسألة تكفير الطائفة الممتنعة"
-status: draft
+status: published
 published_at: 2020-10-18
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

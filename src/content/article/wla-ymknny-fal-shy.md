@@ -1,6 +1,6 @@
 ---
 title: "ولا يمكنني فعل شيء!"
-status: draft
+status: published
 published_at: 2021-03-15
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الوجه الرابع"
-status: draft
+status: published
 published_at: 2020-09-13
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ليس هذا بالرأي هذا رد على من خالف سنتي.."
-status: draft
+status: published
 published_at: 2021-11-07
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

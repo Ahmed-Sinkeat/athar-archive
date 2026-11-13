@@ -1,6 +1,6 @@
 ---
 title: "التناقض والسذاجة ملازم للمعترض على الشريعة."
-status: draft
+status: published
 published_at: 2023-09-20
 person: abu-jafar-al-khalifi
 ---

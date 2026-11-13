@@ -1,6 +1,6 @@
 ---
 title: "وكم منا كأبي صالح المؤذن!"
-status: draft
+status: published
 published_at: 2023-06-21
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

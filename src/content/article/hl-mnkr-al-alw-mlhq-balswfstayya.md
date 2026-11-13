@@ -1,6 +1,6 @@
 ---
 title: "هل منكر العلو ملحق بالسوفسطائية؟"
-status: draft
+status: published
 published_at: 2026-02-07
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

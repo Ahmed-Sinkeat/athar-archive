@@ -1,6 +1,6 @@
 ---
 title: "جماعة \"وحدة الأمة\" والتكاتف لأجل الرد على العلمانية والملاحدة والنسوية"
-status: draft
+status: published
 published_at: 2024-12-23
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

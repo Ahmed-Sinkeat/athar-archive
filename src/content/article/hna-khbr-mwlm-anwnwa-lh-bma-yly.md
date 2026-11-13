@@ -1,6 +1,6 @@
 ---
 title: "هنا خبر مؤلم عنونوا له بما يلي"
-status: draft
+status: published
 published_at: 2024-11-17
 person: abu-jafar-al-khalifi
 ---

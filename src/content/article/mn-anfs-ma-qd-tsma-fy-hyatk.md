@@ -1,6 +1,6 @@
 ---
 title: "من أنفس ما قد تسمع في حياتك"
-status: draft
+status: published
 published_at: 2025-12-25
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

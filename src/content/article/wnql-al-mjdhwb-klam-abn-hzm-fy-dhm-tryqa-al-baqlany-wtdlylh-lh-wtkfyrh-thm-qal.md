@@ -1,6 +1,6 @@
 ---
 title: "ونقل المجذوب كلام ابن حزم في ذم طريقة الباقلاني وتضليله له وتكفيره ثم قال"
-status: draft
+status: published
 published_at: 2020-06-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب حضارة العرب لغوستاف لوبون ص601"
-status: draft
+status: published
 published_at: 2019-01-11
 person: abu-jafar-al-khalifi
 ---

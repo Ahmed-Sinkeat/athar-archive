@@ -1,6 +1,6 @@
 ---
 title: "حلقة عبد الله رشدي الأخيرة يلي رد فيها على رشيد حمامي في مسألة استواء الله على ا"
-status: draft
+status: published
 published_at: 2023-05-20
 person: abu-umair-imran-al-zubaidi
 ---

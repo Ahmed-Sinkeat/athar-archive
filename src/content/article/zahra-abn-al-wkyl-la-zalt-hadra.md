@@ -1,6 +1,6 @@
 ---
 title: "ظاهرة ابن الوكيل لا زالت حاضرة!"
-status: draft
+status: published
 published_at: 2021-01-24
 person: abu-jafar-al-khalifi
 ---

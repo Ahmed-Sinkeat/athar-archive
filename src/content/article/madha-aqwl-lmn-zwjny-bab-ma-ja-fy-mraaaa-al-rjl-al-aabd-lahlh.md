@@ -1,6 +1,6 @@
 ---
 title: "ماذا أقول لمن زوجني؟ (باب ما جاء في مراعاة الرجل العابد لأهله)"
-status: draft
+status: published
 published_at: 2025-12-12
 person: abu-jafar-al-khalifi
 ---

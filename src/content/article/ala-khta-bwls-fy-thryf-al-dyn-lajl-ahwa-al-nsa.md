@@ -1,6 +1,6 @@
 ---
 title: "على خطى بولس في تحريف الدين لأجل أهواء النساء…"
-status: draft
+status: published
 published_at: 2024-10-07
 person: abu-jafar-al-khalifi
 ---

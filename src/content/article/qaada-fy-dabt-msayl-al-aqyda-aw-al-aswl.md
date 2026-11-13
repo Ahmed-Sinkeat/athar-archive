@@ -1,6 +1,6 @@
 ---
 title: "قاعدة في ضابط مسائل العقيدة أو الأصول"
-status: draft
+status: published
 published_at: 2019-12-13
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

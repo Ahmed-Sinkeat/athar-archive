@@ -1,6 +1,6 @@
 ---
 title: "هذا الكلام للشيعي الإمامي محمد حسن قدردان في كتابه الاجوبة على الشبهات الكلامية"
-status: draft
+status: published
 published_at: 2020-08-23
 person: abu-jafar-al-khalifi
 ---

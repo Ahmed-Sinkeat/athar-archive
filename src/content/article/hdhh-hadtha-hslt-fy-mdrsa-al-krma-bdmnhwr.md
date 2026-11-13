@@ -1,6 +1,6 @@
 ---
 title: "هذه حادثة حصلت في مدرسة الكرمة بدمنهور."
-status: draft
+status: published
 published_at: 2025-04-28
 person: abu-jafar-al-khalifi
 ---

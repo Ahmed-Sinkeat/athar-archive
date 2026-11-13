@@ -1,6 +1,6 @@
 ---
 title: "أكثر ما يُحزنني كوني على أعتاب التاسعة والعشرين مِن عمري هو أنني لو تزوّجت بعد ع"
-status: draft
+status: published
 published_at: 2023-01-14
 person: abu-umair-imran-al-zubaidi
 ---

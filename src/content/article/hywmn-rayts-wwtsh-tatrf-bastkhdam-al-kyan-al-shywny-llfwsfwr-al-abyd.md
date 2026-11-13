@@ -1,6 +1,6 @@
 ---
 title: "هيومن رايتس ووتش تعترف باستخدام الكيان الصهيوني للفوسفور الأبيض"
-status: draft
+status: published
 published_at: 2023-10-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

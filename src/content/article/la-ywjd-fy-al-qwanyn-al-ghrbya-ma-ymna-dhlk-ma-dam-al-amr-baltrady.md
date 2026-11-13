@@ -1,6 +1,6 @@
 ---
 title: "لا يوجد في القوانين الغربية ما يمنع ذلك ما دام الأمر بالتراضي"
-status: draft
+status: published
 published_at: 2020-10-05
 person: abu-jafar-al-khalifi
 ---

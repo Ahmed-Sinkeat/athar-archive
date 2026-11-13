@@ -1,6 +1,6 @@
 ---
 title: "{عن عَبْدِاللَّهِ بن مسعود رَضِيَ اللَّهُ عَنْهُ قال"
-status: draft
+status: published
 published_at: 2022-12-27
 person: abu-umair-imran-al-zubaidi
 ---

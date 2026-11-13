@@ -1,6 +1,6 @@
 ---
 title: "ومع هذا الواقع المفعم بالاضطراب بسبب عدم وجود منهجية قويمة في التعامل مع النصوص"
-status: draft
+status: published
 published_at: 2019-06-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

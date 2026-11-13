@@ -1,6 +1,6 @@
 ---
 title: "جاء في المغني لابن قدامة"
-status: draft
+status: published
 published_at: 2026-09-30
 person: abu-jafar-al-khalifi
 ---

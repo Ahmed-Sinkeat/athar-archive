@@ -1,6 +1,6 @@
 ---
 title: "آية تزيل شبهة بل شبهات..!"
-status: draft
+status: published
 published_at: 2018-03-12
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "كلمات تحتاج تأملاً"
-status: draft
+status: published
 published_at: 2019-11-29
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

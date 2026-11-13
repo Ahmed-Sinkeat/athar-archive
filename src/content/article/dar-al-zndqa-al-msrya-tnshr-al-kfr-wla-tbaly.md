@@ -1,6 +1,6 @@
 ---
 title: "دار الزندقة المصرية تنشر الكفر ولا تبالي!"
-status: draft
+status: published
 published_at: 2024-08-08
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

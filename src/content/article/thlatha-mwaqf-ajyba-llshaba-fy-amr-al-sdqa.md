@@ -1,6 +1,6 @@
 ---
 title: "ثلاثة مواقف عجيبة للصحابة في أمر الصدقة.."
-status: draft
+status: published
 published_at: 2021-12-01
 person: abu-jafar-al-khalifi
 ---

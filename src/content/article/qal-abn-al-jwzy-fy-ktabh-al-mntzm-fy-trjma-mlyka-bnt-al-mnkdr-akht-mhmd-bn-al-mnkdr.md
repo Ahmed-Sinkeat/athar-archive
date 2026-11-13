@@ -1,6 +1,6 @@
 ---
 title: "قال ابن الجوزي في كتابه المنتظم في ترجمة مليكة بنت المنكدر _ أخت محمد بن المنكدر"
-status: draft
+status: published
 published_at: 2018-04-19
 person: abu-jafar-al-khalifi
 ---

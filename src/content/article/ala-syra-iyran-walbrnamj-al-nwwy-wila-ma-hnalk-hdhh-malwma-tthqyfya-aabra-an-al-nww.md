@@ -1,6 +1,6 @@
 ---
 title: "على سيرة إيران والبرنامج النووي وإلى ما هنالك؛ هذه معلومة تثقيفية عابرة عن النوو"
-status: draft
+status: published
 published_at: 2026-01-15
 person: abu-umair-imran-al-zubaidi
 ---

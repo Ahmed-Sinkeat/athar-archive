@@ -1,6 +1,6 @@
 ---
 title: "{قالوا من فعل هذا بآلهتنا إنه لمن الظالمين} سورة الأنبياء."
-status: draft
+status: published
 published_at: 2026-01-09
 person: abu-umair-imran-al-zubaidi
 ---

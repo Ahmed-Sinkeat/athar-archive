@@ -1,6 +1,6 @@
 ---
 title: "ما الذي يستحق الفرح والاحتفال؟"
-status: draft
+status: published
 published_at: 2024-01-01
 person: abu-jafar-al-khalifi
 ---

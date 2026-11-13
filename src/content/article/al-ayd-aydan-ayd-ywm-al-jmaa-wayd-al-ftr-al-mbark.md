@@ -1,6 +1,6 @@
 ---
 title: "العيد عيدان، عيد يوم الجمعة، وعيد الفطر المبارك."
-status: draft
+status: published
 published_at: 2026-03-19
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "الإنسان بين مشاهدة الافتقار ومشاهدة نعمة التسخير"
-status: draft
+status: published
 published_at: 2022-08-05
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "مَا أَنْصَفْنَاكَ"
-status: draft
+status: published
 published_at: 2017-06-27
 person: abu-jafar-al-khalifi
 ---

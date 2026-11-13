@@ -1,6 +1,6 @@
 ---
 title: "تجارة العدمية"
-status: draft
+status: published
 published_at: 2023-09-03
 person: abu-jafar-al-khalifi
 ---

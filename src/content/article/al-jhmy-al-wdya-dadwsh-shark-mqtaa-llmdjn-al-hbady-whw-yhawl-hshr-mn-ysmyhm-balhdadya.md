@@ -1,6 +1,6 @@
 ---
 title: "الجهمي الوضيع دعدوش شارك مقطعًا للمدجن الهبادي وهو يحاول حشر من يسميهم بالحدادية"
-status: draft
+status: published
 published_at: 2023-11-06
 person: abu-umair-imran-al-zubaidi
 ---

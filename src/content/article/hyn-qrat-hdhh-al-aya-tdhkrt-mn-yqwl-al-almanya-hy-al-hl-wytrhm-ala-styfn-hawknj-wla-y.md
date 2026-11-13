@@ -1,6 +1,6 @@
 ---
 title: "حين قرأت هذه الآية تذكرت من يقول العلمانية هي الحل ويترحم على ستيفن هاوكنج ولا ي"
-status: draft
+status: published
 published_at: 2018-06-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

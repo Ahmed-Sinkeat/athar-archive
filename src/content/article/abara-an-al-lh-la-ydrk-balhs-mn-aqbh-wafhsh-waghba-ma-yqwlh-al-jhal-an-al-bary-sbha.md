@@ -1,6 +1,6 @@
 ---
 title: "عبارة أنّ الله لا يُدرك بالحس من أقبح وأفحش وأغبى ما يقوله الجهال عن الباري سبحا"
-status: draft
+status: published
 published_at: 2024-02-05
 person: abu-umair-imran-al-zubaidi
 ---

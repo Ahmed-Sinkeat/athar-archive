@@ -1,6 +1,6 @@
 ---
 title: "جل شبهات المعاصرين مردها"
-status: draft
+status: published
 published_at: 2018-05-10
 person: abu-jafar-al-khalifi
 ---

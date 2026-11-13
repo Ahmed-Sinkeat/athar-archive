@@ -1,6 +1,6 @@
 ---
 title: "زكاة الفِطر، أحكامٌ ومسائِل"
-status: draft
+status: published
 published_at: 2025-03-22
 person: awwab-bin-muhammad
 ---

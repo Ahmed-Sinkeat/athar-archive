@@ -1,6 +1,6 @@
 ---
 title: "ٍلا يكن بيتُكَ يا عبد الله ولا يكن بيتُكِ يا أمَة الله صِفراً مِن تلاوةِ وقراءةِ"
-status: draft
+status: published
 published_at: 2025-09-20
 person: awwab-bin-muhammad
 topics: ["tahwid-al-ibada"]

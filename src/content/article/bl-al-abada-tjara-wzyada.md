@@ -1,6 +1,6 @@
 ---
 title: "بل العبادة تجارة وزيادة..."
-status: draft
+status: published
 published_at: 2022-03-25
 person: abu-jafar-al-khalifi
 ---

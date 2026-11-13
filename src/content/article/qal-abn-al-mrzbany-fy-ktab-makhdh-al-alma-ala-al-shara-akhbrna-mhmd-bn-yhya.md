@@ -1,6 +1,6 @@
 ---
 title: "قال ابن المرزباني في كتاب مآخذ العلماء على الشعراء أخبرنى محمد بن يحيى"
-status: draft
+status: published
 published_at: 2018-09-29
 person: abu-jafar-al-khalifi
 ---

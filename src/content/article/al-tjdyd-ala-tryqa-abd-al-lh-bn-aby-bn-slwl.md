@@ -1,6 +1,6 @@
 ---
 title: "التجديد على طريقة عبد الله بن أبي بن سلول."
-status: draft
+status: published
 published_at: 2019-04-19
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

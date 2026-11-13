@@ -1,6 +1,6 @@
 ---
 title: "قرابة ثلاثة ملايين شخص يموتون سنويا بسبب الكحول لما تسببه من سرطان وسكتات قلبية"
-status: draft
+status: published
 published_at: 2019-08-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

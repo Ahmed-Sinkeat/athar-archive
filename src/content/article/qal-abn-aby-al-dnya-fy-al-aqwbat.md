@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي الدنيا في العقوبات 341"
-status: draft
+status: published
 published_at: 2017-09-03
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

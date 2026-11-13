@@ -1,6 +1,6 @@
 ---
 title: "فكرة (تكافؤ الأدلة) في الفقهيات بمعنى أنه لا يوجد حق موضوعي"
-status: draft
+status: published
 published_at: 2021-07-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

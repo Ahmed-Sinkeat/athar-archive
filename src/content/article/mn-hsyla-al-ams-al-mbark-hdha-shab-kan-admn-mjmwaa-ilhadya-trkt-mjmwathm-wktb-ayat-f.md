@@ -1,6 +1,6 @@
 ---
 title: "من حصيلة الأمس المبارك هذا شاب كان آدمن مجموعة إلحادية تركت مجموعتهم وكتب آيات ف"
-status: draft
+status: published
 published_at: 2018-01-05
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

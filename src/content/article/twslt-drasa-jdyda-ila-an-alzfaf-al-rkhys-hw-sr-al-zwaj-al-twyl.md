@@ -1,6 +1,6 @@
 ---
 title: "توصلت دراسة جديدة إلى أن \"الزفاف الرخيص هو سر الزواج الطويل\""
-status: draft
+status: published
 published_at: 2022-02-15
 person: abu-jafar-al-khalifi
 ---

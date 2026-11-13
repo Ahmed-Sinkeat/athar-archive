@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم في مختصر الصواعق"
-status: draft
+status: published
 published_at: 2018-07-30
 person: abu-jafar-al-khalifi
 ---

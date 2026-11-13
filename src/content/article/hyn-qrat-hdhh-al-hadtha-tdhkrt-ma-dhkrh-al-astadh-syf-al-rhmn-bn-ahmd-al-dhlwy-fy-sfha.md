@@ -1,6 +1,6 @@
 ---
 title: "حين قرأت هذه الحادثة تذكرت ما ذكره الأستاذ سيف الرحمن بن أحمد الدهلوي في صفحة (3"
-status: draft
+status: published
 published_at: 2024-05-02
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "باب ما جاء في الصبر على الفاشل حتى ينجح."
-status: draft
+status: published
 published_at: 2026-05-09
 person: abu-jafar-al-khalifi
 ---

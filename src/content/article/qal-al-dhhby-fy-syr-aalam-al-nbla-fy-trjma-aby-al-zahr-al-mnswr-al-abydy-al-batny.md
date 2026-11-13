@@ -1,6 +1,6 @@
 ---
 title: "قال الذهبي في سير أعلام النبلاء في ترجمة أبي الظاهر المنصور العبيدي الباطني"
-status: draft
+status: published
 published_at: 2017-06-21
 person: abu-jafar-al-khalifi
 ---

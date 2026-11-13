@@ -1,6 +1,6 @@
 ---
 title: "وقال الماوردي في الأحكام السلطانية"
-status: draft
+status: published
 published_at: 2021-09-07
 person: abu-jafar-al-khalifi
 ---

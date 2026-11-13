@@ -1,6 +1,6 @@
 ---
 title: "العيد الوطني بالتاريخ الميلادي."
-status: draft
+status: published
 published_at: 2023-09-23
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "عن عبد الله بن أبي الهذيل العنزي قال"
-status: draft
+status: published
 published_at: 2023-05-26
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "لا يشترط في دعوة الغيب لأخيك عدم وجوده عندك"
-status: draft
+status: published
 published_at: 2025-04-12
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وجاء في تفسير الطبري"
-status: draft
+status: published
 published_at: 2017-09-19
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

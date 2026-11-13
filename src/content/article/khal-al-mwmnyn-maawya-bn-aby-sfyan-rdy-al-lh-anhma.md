@@ -1,6 +1,6 @@
 ---
 title: "خال المؤمنين معاوية بن أبي سفيان رضي الله عنهما"
-status: draft
+status: published
 published_at: 2025-03-04
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

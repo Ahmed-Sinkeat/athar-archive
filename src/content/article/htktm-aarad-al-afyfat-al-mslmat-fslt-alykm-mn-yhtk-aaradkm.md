@@ -1,6 +1,6 @@
 ---
 title: "هتكتم أعراض العفيفات المسلمات فسُلّط عليكم من يهتك أعراضكم."
-status: draft
+status: published
 published_at: 2025-03-12
 person: abu-umair-imran-al-zubaidi
 ---

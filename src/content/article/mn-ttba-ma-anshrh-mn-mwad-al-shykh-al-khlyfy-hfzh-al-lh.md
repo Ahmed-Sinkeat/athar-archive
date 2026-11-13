@@ -1,6 +1,6 @@
 ---
 title: "من تتبع ما أنشره من مواد الشيخ الخليفي حفظه الله"
-status: draft
+status: published
 published_at: 2023-12-20
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "هنا خبر جريمة قتل قبل عدة ساعات في ولاية تكساس بأمريكا قام بها شاب أبيض عمره ٢١"
-status: draft
+status: published
 published_at: 2019-08-04
 person: abu-jafar-al-khalifi
 ---

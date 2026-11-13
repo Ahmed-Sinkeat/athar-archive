@@ -1,6 +1,6 @@
 ---
 title: "الباقلاني مسبوق بهذا الإلزام"
-status: draft
+status: published
 published_at: 2023-04-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

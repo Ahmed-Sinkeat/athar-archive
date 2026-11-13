@@ -1,6 +1,6 @@
 ---
 title: "أصح ما جاء في أشكال حملة العرش"
-status: draft
+status: published
 published_at: 2023-11-17
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

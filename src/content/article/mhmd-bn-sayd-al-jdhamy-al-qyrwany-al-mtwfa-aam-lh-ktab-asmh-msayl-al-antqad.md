@@ -1,6 +1,6 @@
 ---
 title: "محمد بن سعيد الجذامي القيرواني المتوفى عام 460 له كتاب اسمه مسائل الانتقاد"
-status: draft
+status: published
 published_at: 2019-11-19
 person: abu-jafar-al-khalifi
 ---

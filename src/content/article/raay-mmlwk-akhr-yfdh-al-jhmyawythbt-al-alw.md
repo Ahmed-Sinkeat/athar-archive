@@ -1,6 +1,6 @@
 ---
 title: "راعي مملوك آخر يفضح الجهمية..ويثبت العلو"
-status: draft
+status: published
 published_at: 2023-06-07
 person: abu-abdillah-firas-al-ramli
 ---

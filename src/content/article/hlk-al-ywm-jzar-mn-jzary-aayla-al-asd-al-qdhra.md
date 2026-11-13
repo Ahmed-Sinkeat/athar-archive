@@ -1,6 +1,6 @@
 ---
 title: "هلك اليوم جزار من جزاري عائلة الأسد القذرة"
-status: draft
+status: published
 published_at: 2026-01-21
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وَلَمَّا جَاءَ مُوسَىٰ لِمِيقَاتِنَا وَكَلَّمَهُ رَبُّهُ قَالَ رَبِّ أَرِنِي أَن"
-status: draft
+status: published
 published_at: 2023-04-07
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

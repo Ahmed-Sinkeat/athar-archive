@@ -1,6 +1,6 @@
 ---
 title: "الأمر الثاني والأخير"
-status: draft
+status: published
 published_at: 2020-12-21
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

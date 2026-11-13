@@ -1,6 +1,6 @@
 ---
 title: "كان الرجل في الجاهلية اذا أراد طلاق المرأة آذاها حتى تعطيه مالا ليفارقها فأنزل ا"
-status: draft
+status: published
 published_at: 2018-05-18
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "منكري السنة هم أنفسهم دليل على حفظ السنة"
-status: draft
+status: published
 published_at: 2018-05-18
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

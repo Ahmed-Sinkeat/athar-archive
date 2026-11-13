@@ -1,6 +1,6 @@
 ---
 title: "انتكاسات بهيمية وقضايا نسوية"
-status: draft
+status: published
 published_at: 2025-06-24
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran", "al-iman"]

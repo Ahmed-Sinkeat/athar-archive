@@ -1,6 +1,6 @@
 ---
 title: "وقد استدل بحديث أبي داود"
-status: draft
+status: published
 published_at: 2019-10-09
 person: abu-jafar-al-khalifi
 ---

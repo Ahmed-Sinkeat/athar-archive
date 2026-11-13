@@ -1,6 +1,6 @@
 ---
 title: "لو أن رجلين من أوائل هذه الأمة ..."
-status: draft
+status: published
 published_at: 2024-07-02
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs", "al-sunnah-wal-bidah"]

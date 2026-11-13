@@ -1,6 +1,6 @@
 ---
 title: "الرجل الصالح الذي أنقذه الله بالإمام أحمد ابن حنبل"
-status: draft
+status: published
 published_at: 2019-04-08
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

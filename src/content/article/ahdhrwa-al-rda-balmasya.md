@@ -1,6 +1,6 @@
 ---
 title: "احذروا الرضا بالمعصية"
-status: draft
+status: published
 published_at: 2024-04-03
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

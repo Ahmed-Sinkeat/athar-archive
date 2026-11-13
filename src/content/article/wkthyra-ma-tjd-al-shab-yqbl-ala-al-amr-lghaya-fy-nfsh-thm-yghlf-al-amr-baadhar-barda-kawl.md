@@ -1,6 +1,6 @@
 ---
 title: "وكثيرا ما تجد الشاب يقبل على الأمر لغاية في نفسه ثم يغلف الأمر بأعذار باردة كأول"
-status: draft
+status: published
 published_at: 2019-12-17
 person: abu-jafar-al-khalifi
 ---

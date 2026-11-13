@@ -1,6 +1,6 @@
 ---
 title: "يتخير بين أقوال الفقهاء الذين خلافهم محدود ومضبوط"
-status: draft
+status: published
 published_at: 2018-04-22
 person: abu-jafar-al-khalifi
 ---

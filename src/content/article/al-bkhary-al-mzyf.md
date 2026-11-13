@@ -1,6 +1,6 @@
 ---
 title: "البخاري المزيف !"
-status: draft
+status: published
 published_at: 2019-01-02
 person: abu-jafar-al-khalifi
 ---

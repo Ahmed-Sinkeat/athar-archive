@@ -1,6 +1,6 @@
 ---
 title: "هذا جزء من مقال منشور في صحيفة الجارديان"
-status: draft
+status: published
 published_at: 2025-08-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

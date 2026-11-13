@@ -1,6 +1,6 @@
 ---
 title: "أنا أعجب مِن الّذين لا شغل لهم في أوقات المصيبة والكوارث إلّا التساؤل عن"
-status: draft
+status: published
 published_at: 2023-02-08
 person: abu-umair-imran-al-zubaidi
 topics: ["al-qadr"]

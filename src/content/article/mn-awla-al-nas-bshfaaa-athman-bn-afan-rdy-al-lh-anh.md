@@ -1,6 +1,6 @@
 ---
 title: "من أولى الناس بشفاعة عثمان بن عفان رضي الله عنه؟"
-status: draft
+status: published
 published_at: 2024-09-15
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "tazkiyat-al-nafs"]

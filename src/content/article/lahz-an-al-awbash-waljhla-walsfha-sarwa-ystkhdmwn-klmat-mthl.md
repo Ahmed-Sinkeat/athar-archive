@@ -1,6 +1,6 @@
 ---
 title: "لاحظ أنّ الأوباش والجهلة والسفهاء صاروا يستخدمون كلمات مثل"
-status: draft
+status: published
 published_at: 2023-11-21
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

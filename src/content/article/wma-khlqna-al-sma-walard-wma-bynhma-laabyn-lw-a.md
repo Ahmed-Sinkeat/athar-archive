@@ -1,6 +1,6 @@
 ---
 title: "وَمَا خَلَقْنَا السَّمَاءَ وَالْأَرْضَ وَمَا بَيْنَهُمَا لَاعِبِينَ (16) لَوْ أَ"
-status: draft
+status: published
 published_at: 2024-01-13
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

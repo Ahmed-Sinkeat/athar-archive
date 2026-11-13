@@ -1,6 +1,6 @@
 ---
 title: "مزيداً من تنوير العقول"
-status: draft
+status: published
 published_at: 2017-05-21
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

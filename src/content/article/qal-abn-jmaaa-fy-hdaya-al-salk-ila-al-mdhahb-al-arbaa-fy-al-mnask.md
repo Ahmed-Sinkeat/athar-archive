@@ -1,6 +1,6 @@
 ---
 title: "قال ابن جماعة في هداية السالك إلى المذاهب الأربعة في المناسك (1/377)"
-status: draft
+status: published
 published_at: 2019-02-27
 person: abu-jafar-al-khalifi
 ---

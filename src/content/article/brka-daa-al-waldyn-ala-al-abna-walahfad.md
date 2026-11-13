@@ -1,6 +1,6 @@
 ---
 title: "بركة دعاء الوالدين على الأبناء والأحفاد"
-status: draft
+status: published
 published_at: 2020-04-28
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

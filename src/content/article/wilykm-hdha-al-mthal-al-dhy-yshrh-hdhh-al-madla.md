@@ -1,6 +1,6 @@
 ---
 title: "وإليكم هذا المثال الذي يشرح هذه المعضلة"
-status: draft
+status: published
 published_at: 2020-10-26
 person: abu-jafar-al-khalifi
 ---

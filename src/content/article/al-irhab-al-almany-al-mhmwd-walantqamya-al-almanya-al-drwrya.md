@@ -1,6 +1,6 @@
 ---
 title: "الإرهاب العلماني المحمود والانتقامية العلمانية الضرورية..."
-status: draft
+status: published
 published_at: 2024-12-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

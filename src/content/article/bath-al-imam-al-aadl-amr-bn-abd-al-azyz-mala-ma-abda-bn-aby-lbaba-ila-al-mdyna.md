@@ -1,6 +1,6 @@
 ---
 title: "بعث الإمام العادل عمر بن عبد العزيز مالاً مع عبدة بن أبي لبابة إلى المدينة"
-status: draft
+status: published
 published_at: 2018-04-06
 person: abu-jafar-al-khalifi
 ---

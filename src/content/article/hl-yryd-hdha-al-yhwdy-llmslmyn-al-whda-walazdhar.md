@@ -1,6 +1,6 @@
 ---
 title: "هل يريد هذا اليهودي للمسلمين الوحدة والازدهار؟"
-status: draft
+status: published
 published_at: 2023-08-15
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال الخطيب في تاريخه أَخْبَرَنِي مُحَمَّد بْن الحسين القطان"
-status: draft
+status: published
 published_at: 2017-06-25
 person: abu-jafar-al-khalifi
 ---

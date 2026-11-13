@@ -1,6 +1,6 @@
 ---
 title: "فجاء بعض المعاصرين وقالوا قولا ملفقاً عجيباً ونسبوه لابن تيمية قسراً"
-status: draft
+status: published
 published_at: 2021-11-18
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

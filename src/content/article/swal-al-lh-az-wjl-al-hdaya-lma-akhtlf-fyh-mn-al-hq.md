@@ -1,6 +1,6 @@
 ---
 title: "سؤال الله عز وجل الهداية لما اختلف فيه من الحق"
-status: draft
+status: published
 published_at: 2025-10-05
 person: abu-abdillah-firas-al-ramli
 ---

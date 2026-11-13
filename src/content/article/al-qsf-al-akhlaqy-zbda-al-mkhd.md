@@ -1,6 +1,6 @@
 ---
 title: "القصف الأخلاقي (زبدة المخض)"
-status: draft
+status: published
 published_at: 2019-12-11
 person: abu-jafar-al-khalifi
 ---

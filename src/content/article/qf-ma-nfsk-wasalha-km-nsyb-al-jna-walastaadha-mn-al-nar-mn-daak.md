@@ -1,6 +1,6 @@
 ---
 title: "قف مع نفسك واسألها: كم نصيب الجنة والاستعاذة من النار من دعاءك؟"
-status: draft
+status: published
 published_at: 2026-04-26
 person: abu-umair-imran-al-zubaidi
 ---

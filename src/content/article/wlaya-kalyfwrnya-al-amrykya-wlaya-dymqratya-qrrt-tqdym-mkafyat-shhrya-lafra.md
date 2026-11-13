@@ -1,6 +1,6 @@
 ---
 title: "&rlm;ولاية كاليفورنيا الأمريكية (ولاية ديمقراطية) قررت تقديم مكافئات شهرية لأفرا"
-status: draft
+status: published
 published_at: 2021-09-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

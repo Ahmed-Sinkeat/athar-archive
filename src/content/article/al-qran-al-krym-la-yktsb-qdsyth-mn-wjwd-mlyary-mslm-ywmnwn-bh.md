@@ -1,6 +1,6 @@
 ---
 title: "القرآن الكريم لا يكتسب قدسيته من وجود ملياري مسلم يؤمنون به."
-status: draft
+status: published
 published_at: 2023-07-04
 person: abu-umair-imran-al-zubaidi
 ---

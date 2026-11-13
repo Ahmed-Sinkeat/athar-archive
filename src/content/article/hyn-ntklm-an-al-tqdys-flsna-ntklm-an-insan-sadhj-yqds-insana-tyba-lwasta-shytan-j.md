@@ -1,6 +1,6 @@
 ---
 title: "حين نتكلم عن التقديس فلسنا نتكلم عن إنسان ساذج يقدس إنساناً طيباً لواسطة شيطان ج"
-status: draft
+status: published
 published_at: 2023-04-24
 person: abu-jafar-al-khalifi
 ---

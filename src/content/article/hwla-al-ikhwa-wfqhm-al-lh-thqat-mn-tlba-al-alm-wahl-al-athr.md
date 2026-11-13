@@ -1,6 +1,6 @@
 ---
 title: "هؤلاء الإخوة وفقهم الله ثقات من طلبة العلم وأهل الأثر"
-status: draft
+status: published
 published_at: 2025-07-25
 person: abu-abdillah-firas-al-ramli
 ---

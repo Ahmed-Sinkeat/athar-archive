@@ -1,6 +1,6 @@
 ---
 title: "مشكلتي مع عاذري الجهمية الأشعرية ليست فقط في إعذارهم لهم على دفع مئات وآلاف النص"
-status: draft
+status: published
 published_at: 2025-09-19
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

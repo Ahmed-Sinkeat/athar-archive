@@ -1,6 +1,6 @@
 ---
 title: "كتب عباس محمود العقاد كتاباً اسمه الصديقة بنت الصديق وأنكر الخبر المتفق عليه في"
-status: draft
+status: published
 published_at: 2018-09-14
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

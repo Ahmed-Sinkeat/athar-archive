@@ -1,6 +1,6 @@
 ---
 title: "وصية الإمام الثوري لناشر العلم"
-status: draft
+status: published
 published_at: 2023-09-06
 person: abu-abdillah-firas-al-ramli
 ---

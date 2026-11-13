@@ -1,6 +1,6 @@
 ---
 title: "جاء في موجز دائرة المعارف الإسلامية (32/ 9925 )"
-status: draft
+status: published
 published_at: 2019-06-30
 person: abu-jafar-al-khalifi
 ---

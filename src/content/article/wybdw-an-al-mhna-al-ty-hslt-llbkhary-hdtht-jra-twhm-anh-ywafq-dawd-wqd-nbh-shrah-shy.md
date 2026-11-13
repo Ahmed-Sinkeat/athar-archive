@@ -1,6 +1,6 @@
 ---
 title: "ويبدو أن المحنة التي حصلت للبخاري حدثت جراء توهم أنه يوافق داود وقد نبه شراح صحي"
-status: draft
+status: published
 published_at: 2021-05-19
 person: abu-jafar-al-khalifi
 ---

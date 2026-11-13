@@ -1,6 +1,6 @@
 ---
 title: "فهذه فكرة فلسفية عقائدية أصلا لأجلها ينحاز التطوريون لتفسير المعطيات من التصميم"
-status: draft
+status: published
 published_at: 2019-03-27
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

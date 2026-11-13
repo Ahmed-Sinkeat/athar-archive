@@ -1,6 +1,6 @@
 ---
 title: "قال ابن رجب الحنبلي في رسالته فضل علم السلف على علم الخلف"
-status: draft
+status: published
 published_at: 2019-02-12
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

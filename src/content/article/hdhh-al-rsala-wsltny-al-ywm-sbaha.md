@@ -1,6 +1,6 @@
 ---
 title: "هذه الرسالة وصلتني اليوم صباحا"
-status: draft
+status: published
 published_at: 2022-09-07
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada", "al-sunnah-wal-bidah"]

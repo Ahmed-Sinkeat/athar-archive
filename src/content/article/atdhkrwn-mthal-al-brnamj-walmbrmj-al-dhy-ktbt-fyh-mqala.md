@@ -1,6 +1,6 @@
 ---
 title: "أتذكرون مثال البرنامج والمبرمج الذي كتبت فيه مقالًا؟!"
-status: draft
+status: published
 published_at: 2023-12-17
 person: abu-umair-imran-al-zubaidi
 ---

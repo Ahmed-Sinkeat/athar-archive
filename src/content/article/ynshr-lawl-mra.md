@@ -1,6 +1,6 @@
 ---
 title: "ينشر لأول مرة"
-status: draft
+status: published
 published_at: 2026-06-02
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "حصر عوض الله تبارك وتعالى عن البلايا والمصائب والحرمان في إطار العوض الدنيوي بال"
-status: draft
+status: published
 published_at: 2023-06-20
 person: abu-umair-imran-al-zubaidi
 ---

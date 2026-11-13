@@ -1,6 +1,6 @@
 ---
 title: "ما الذي نستفيده من إنكار الإمام أحمد على الحارث المحاسبي ولعن أبي نعيم لبشر المر"
-status: draft
+status: published
 published_at: 2022-02-09
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

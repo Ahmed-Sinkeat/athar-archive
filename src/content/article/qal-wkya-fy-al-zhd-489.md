@@ -1,6 +1,6 @@
 ---
 title: "قال وكيع في الزهد (٤٨٩)"
-status: draft
+status: published
 published_at: 2023-06-27
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

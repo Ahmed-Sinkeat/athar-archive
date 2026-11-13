@@ -1,6 +1,6 @@
 ---
 title: "ما بربنا خفاء!"
-status: draft
+status: published
 published_at: 2026-05-03
 person: abu-umair-imran-al-zubaidi
 ---

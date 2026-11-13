@@ -1,6 +1,6 @@
 ---
 title: "بآية واحدة أقام الحجة على غيلان الدمشقي!"
-status: draft
+status: published
 published_at: 2026-06-16
 person: abu-jafar-al-khalifi
 ---

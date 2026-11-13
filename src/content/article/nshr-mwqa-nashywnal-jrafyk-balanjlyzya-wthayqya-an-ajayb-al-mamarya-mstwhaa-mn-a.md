@@ -1,6 +1,6 @@
 ---
 title: "نشر موقع ناشيونال جرافيك بالانجليزية وثائقيا عن ( 9 عجائب المعمارية مستوحاة من ا"
-status: draft
+status: published
 published_at: 2019-07-20
 person: abu-jafar-al-khalifi
 ---

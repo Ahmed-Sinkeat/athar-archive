@@ -1,6 +1,6 @@
 ---
 title: "بربكم أمثل هذا الزنديق يتصدر للكلام في الدين ويتخذه الناس شيخُا؟!"
-status: draft
+status: published
 published_at: 2023-10-22
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "يقول أبو نعيم في الحلية"
-status: draft
+status: published
 published_at: 2017-11-16
 person: abu-jafar-al-khalifi
 ---

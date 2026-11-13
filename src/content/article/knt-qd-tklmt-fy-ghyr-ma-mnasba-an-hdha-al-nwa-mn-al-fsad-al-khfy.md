@@ -1,6 +1,6 @@
 ---
 title: "كنت قد تكلمت في غير ما مناسبة عن هذا النوع من الفساد الخفي"
-status: draft
+status: published
 published_at: 2022-08-09
 person: abu-jafar-al-khalifi
 ---

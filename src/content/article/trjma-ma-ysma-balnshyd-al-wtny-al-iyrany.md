@@ -1,6 +1,6 @@
 ---
 title: "ترجمة ما يسمى بالنشيد الوطني الإيراني"
-status: draft
+status: published
 published_at: 2023-11-10
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

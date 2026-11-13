@@ -1,6 +1,6 @@
 ---
 title: "قرأها الشيخ في الصلاة فأخذت بشغاف قلبي"
-status: draft
+status: published
 published_at: 2025-03-18
 person: abu-jafar-al-khalifi
 ---

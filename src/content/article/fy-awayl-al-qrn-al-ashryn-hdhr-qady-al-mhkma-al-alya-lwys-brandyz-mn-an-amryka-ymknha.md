@@ -1,6 +1,6 @@
 ---
 title: "في أوائل القرن العشرين حذر قاضي المحكمة العليا لويس برانديز من أن أمريكا يمكنها"
-status: draft
+status: published
 published_at: 2017-11-26
 person: abu-jafar-al-khalifi
 ---

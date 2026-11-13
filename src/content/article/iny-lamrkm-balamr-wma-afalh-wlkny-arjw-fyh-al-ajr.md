@@ -1,6 +1,6 @@
 ---
 title: "إني لآمركم بالأمر وما أفعله، ولكني أرجو فيه الأجر"
-status: draft
+status: published
 published_at: 2024-03-20
 person: abu-abdillah-firas-al-ramli
 ---

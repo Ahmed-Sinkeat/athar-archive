@@ -1,6 +1,6 @@
 ---
 title: "الشمائل المحمدية باب لحجية السنة وحفظها ودليل من دلائل النبوة…"
-status: draft
+status: published
 published_at: 2024-10-20
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs", "al-iman"]

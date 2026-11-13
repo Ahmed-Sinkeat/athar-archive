@@ -1,6 +1,6 @@
 ---
 title: "الكلام على مَن جمع بين هيئة الهِداية وأفعال الغِواية"
-status: draft
+status: published
 published_at: 2025-06-20
 person: awwab-bin-muhammad
 ---

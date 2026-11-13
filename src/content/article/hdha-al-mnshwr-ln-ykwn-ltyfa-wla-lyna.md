@@ -1,6 +1,6 @@
 ---
 title: "هذا المنشور لن يكون لطيفا ولا لينا"
-status: draft
+status: published
 published_at: 2024-09-10
 person: abu-umair-imran-al-zubaidi
 ---

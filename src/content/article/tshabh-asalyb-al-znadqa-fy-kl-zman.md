@@ -1,6 +1,6 @@
 ---
 title: "تشابه أساليب الزنادقة في كل زمان"
-status: draft
+status: published
 published_at: 2020-04-07
 person: abu-jafar-al-khalifi
 ---

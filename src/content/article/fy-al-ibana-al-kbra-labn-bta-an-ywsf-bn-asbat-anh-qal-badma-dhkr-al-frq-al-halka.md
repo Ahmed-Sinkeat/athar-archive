@@ -1,6 +1,6 @@
 ---
 title: "في الإبانة الكبرى لابن بطة عن يوسف بن أسباط أنه قال بعدما ذكر الفرق الهالكة"
-status: draft
+status: published
 published_at: 2019-02-06
 person: abu-jafar-al-khalifi
 ---

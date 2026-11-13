@@ -1,6 +1,6 @@
 ---
 title: "التعامل مع الله بالمقايضة"
-status: draft
+status: published
 published_at: 2020-10-10
 person: abu-jafar-al-khalifi
 ---

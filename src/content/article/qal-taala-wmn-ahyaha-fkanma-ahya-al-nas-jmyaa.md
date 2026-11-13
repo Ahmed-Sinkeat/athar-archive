@@ -1,6 +1,6 @@
 ---
 title: "قال تعالى: {ومن أحياها فكأنما أحيا الناس جميعا}"
-status: draft
+status: published
 published_at: 2022-08-21
 person: abu-jafar-al-khalifi
 ---

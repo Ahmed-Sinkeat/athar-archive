@@ -1,6 +1,6 @@
 ---
 title: "في الجنة السحاب يمطر نساء!"
-status: draft
+status: published
 published_at: 2023-11-14
 person: abu-umair-imran-al-zubaidi
 topics: ["tazkiyat-al-nafs"]

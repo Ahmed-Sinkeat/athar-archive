@@ -1,6 +1,6 @@
 ---
 title: "قال الخطيب البغدادي في تاريخه 7746- أبو جعفر"
-status: draft
+status: published
 published_at: 2017-12-09
 person: abu-jafar-al-khalifi
 ---

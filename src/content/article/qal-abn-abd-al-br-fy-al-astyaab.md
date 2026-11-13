@@ -1,6 +1,6 @@
 ---
 title: "قال ابن عبد البر في الاستيعاب"
-status: draft
+status: published
 published_at: 2017-08-18
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

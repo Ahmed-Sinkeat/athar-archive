@@ -1,6 +1,6 @@
 ---
 title: "هنا خبران"
-status: draft
+status: published
 published_at: 2018-11-09
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

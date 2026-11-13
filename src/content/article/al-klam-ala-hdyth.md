@@ -1,6 +1,6 @@
 ---
 title: "الكلام على حديث"
-status: draft
+status: published
 published_at: 2025-06-16
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]

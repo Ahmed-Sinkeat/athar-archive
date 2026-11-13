@@ -1,6 +1,6 @@
 ---
 title: "قال قاسم أمين في كتابه ذي الأثر السيء العظيم على مصر وكل الأمة الإسلامية تحرير ا"
-status: draft
+status: published
 published_at: 2018-02-22
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "القاعدة التي يقولونها ( النساء أولاً ) مع مجافاتها لمطالب المساواة قد طبقها الفق"
-status: draft
+status: published
 published_at: 2018-09-08
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "للتو قرأ إمامنا في صلاة الفجر آيات من سورة يوسف تلك القصة العجيبة المؤثرة التي أ"
-status: draft
+status: published
 published_at: 2020-03-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

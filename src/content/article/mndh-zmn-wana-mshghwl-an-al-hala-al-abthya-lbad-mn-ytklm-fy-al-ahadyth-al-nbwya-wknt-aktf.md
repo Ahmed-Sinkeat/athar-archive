@@ -1,6 +1,6 @@
 ---
 title: "منذ زمن وأنا مشغول عن الحالة العبثية لبعض من يتكلم في الأحاديث النبوية وكنت اكتف"
-status: draft
+status: published
 published_at: 2018-08-25
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

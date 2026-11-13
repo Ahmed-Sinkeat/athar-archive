@@ -1,6 +1,6 @@
 ---
 title: "من تناقضات الفكر المادي العلموي أنه يذهب إلى أن البشر مجرد مادة وبناء عليه كل تص"
-status: draft
+status: published
 published_at: 2017-05-12
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

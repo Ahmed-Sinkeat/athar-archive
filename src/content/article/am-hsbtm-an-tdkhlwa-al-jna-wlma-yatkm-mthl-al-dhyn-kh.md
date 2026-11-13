@@ -1,6 +1,6 @@
 ---
 title: "أَمْ حَسِبْتُمْ أَن تَدْخُلُوا الْجَنَّةَ وَلَمَّا يَأْتِكُم مَّثَلُ الَّذِينَ خ"
-status: draft
+status: published
 published_at: 2025-07-17
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

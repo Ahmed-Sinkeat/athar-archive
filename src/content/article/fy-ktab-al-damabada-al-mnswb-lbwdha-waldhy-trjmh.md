@@ -1,6 +1,6 @@
 ---
 title: "في كتاب الدامابادا المنسوب لبوذا والذي ترجمه"
-status: draft
+status: published
 published_at: 2018-05-30
 person: abu-jafar-al-khalifi
 ---

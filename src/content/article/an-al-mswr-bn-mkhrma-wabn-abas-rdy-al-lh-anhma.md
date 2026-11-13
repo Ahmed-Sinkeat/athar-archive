@@ -1,6 +1,6 @@
 ---
 title: "عن المسور بن مخرمة وابن عباس رضي الله عنهما"
-status: draft
+status: published
 published_at: 2023-11-26
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

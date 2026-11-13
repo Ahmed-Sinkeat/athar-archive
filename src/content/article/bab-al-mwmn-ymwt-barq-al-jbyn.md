@@ -1,6 +1,6 @@
 ---
 title: "باب المؤمن يموت بعرق الجبين"
-status: draft
+status: published
 published_at: 2023-05-15
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

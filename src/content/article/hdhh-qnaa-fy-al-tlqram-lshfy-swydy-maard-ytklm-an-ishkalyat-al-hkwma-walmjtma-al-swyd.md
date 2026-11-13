@@ -1,6 +1,6 @@
 ---
 title: "هذه قناة في التلقرام لصحفي سويدي معارض يتكلم عن إشكاليات الحكومة والمجتمع السويد"
-status: draft
+status: published
 published_at: 2022-09-11
 person: abu-jafar-al-khalifi
 ---

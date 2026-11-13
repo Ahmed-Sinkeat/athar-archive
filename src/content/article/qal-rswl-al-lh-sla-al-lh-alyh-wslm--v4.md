@@ -1,6 +1,6 @@
 ---
 title: "قال رسول الله صلّى الله عليه وسلّم"
-status: draft
+status: published
 published_at: 2023-03-13
 person: abu-umair-imran-al-zubaidi
 ---

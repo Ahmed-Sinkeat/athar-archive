@@ -1,6 +1,6 @@
 ---
 title: "قراءات مسعورة للتاريخ الإسلامي !"
-status: draft
+status: published
 published_at: 2019-12-10
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

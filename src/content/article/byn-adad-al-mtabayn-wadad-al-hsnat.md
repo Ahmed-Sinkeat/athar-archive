@@ -1,6 +1,6 @@
 ---
 title: "بين عداد المتابعين وعداد الحسنات"
-status: draft
+status: published
 published_at: 2019-11-13
 person: abu-jafar-al-khalifi
 ---

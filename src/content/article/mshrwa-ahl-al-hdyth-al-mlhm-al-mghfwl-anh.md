@@ -1,6 +1,6 @@
 ---
 title: "مشروع أهل الحديث الملهم المغفول عنه !"
-status: draft
+status: published
 published_at: 2020-07-04
 person: abu-jafar-al-khalifi
 ---

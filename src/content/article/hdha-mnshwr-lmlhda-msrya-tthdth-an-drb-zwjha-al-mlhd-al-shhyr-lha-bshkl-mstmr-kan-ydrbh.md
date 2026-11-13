@@ -1,6 +1,6 @@
 ---
 title: "هذا منشور لملحدة مصرية تتحدث عن ضرب زوجها الملحد الشهير لها بشكل مستمر كان يضربه"
-status: draft
+status: published
 published_at: 2019-06-01
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

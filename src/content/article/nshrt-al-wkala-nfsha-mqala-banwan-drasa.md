@@ -1,6 +1,6 @@
 ---
 title: "4_ نشرت الوكالة نفسها مقالاً بعنوان دراسة"
-status: draft
+status: published
 published_at: 2020-03-27
 person: abu-jafar-al-khalifi
 ---

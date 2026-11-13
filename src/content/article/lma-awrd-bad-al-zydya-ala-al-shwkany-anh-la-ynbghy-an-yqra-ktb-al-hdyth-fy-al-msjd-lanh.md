@@ -1,6 +1,6 @@
 ---
 title: "لما أورد بعض الزيدية على الشوكاني أنه لا ينبغي أن يقرأ كتب الحديث في المسجد لأنه"
-status: draft
+status: published
 published_at: 2018-07-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

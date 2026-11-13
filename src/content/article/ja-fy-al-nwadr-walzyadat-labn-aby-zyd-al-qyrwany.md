@@ -1,6 +1,6 @@
 ---
 title: "جاء في النوادر والزيادات لابن أبي زيد القيرواني (2/506)"
-status: draft
+status: published
 published_at: 2017-12-12
 person: abu-jafar-al-khalifi
 ---

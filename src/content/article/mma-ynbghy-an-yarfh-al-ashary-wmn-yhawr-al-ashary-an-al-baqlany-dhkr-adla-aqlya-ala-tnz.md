@@ -1,6 +1,6 @@
 ---
 title: "مما ينبغي أن يعرفه الأشعري ومن يحاور الأشعري أن الباقلاني ذكر أدلة عقلية على تنز"
-status: draft
+status: published
 published_at: 2018-01-27
 person: abu-jafar-al-khalifi
 ---

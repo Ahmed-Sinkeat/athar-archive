@@ -1,6 +1,6 @@
 ---
 title: "على هامش المقال المذكور أودّ النظر في هذا الكلام وعذرا عن كون كاتبه كتبه بالعامي"
-status: draft
+status: published
 published_at: 2017-09-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

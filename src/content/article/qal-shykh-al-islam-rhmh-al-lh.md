@@ -1,6 +1,6 @@
 ---
 title: "قال شيخ الإسلام رحمه الله"
-status: draft
+status: published
 published_at: 2024-01-07
 person: abu-umair-imran-al-zubaidi
 ---

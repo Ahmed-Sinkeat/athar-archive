@@ -1,6 +1,6 @@
 ---
 title: "&rlm;محامي الطلاق جيمس سيكستون حول سبب شعور الزواج الحديث بالظلم تجاه الرجال."
-status: draft
+status: published
 published_at: 2026-06-29
 person: abu-jafar-al-khalifi
 ---

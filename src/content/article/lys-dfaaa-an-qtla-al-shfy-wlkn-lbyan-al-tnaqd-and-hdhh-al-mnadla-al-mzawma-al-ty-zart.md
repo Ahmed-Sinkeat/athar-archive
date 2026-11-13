@@ -1,6 +1,6 @@
 ---
 title: "ليس دفاعا عن قتلة الصحفي ولكن لبيان التناقض عند هذه المناضلة المزعومة التي زارت"
-status: draft
+status: published
 published_at: 2018-10-26
 person: abu-jafar-al-khalifi
 ---

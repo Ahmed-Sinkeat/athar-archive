@@ -1,6 +1,6 @@
 ---
 title: "هذا الشاب يذكر قصة فيها منافرة بين ابن الزبير وابن عباس وفيها مفاخرة بينهما."
-status: draft
+status: published
 published_at: 2022-09-26
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

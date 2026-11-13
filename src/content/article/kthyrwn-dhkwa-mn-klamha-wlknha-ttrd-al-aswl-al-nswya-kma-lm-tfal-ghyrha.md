@@ -1,6 +1,6 @@
 ---
 title: "كثيرون ضحكوا من كلامها ولكنها تطرد الأصول النسوية كما لم تفعل غيرها"
-status: draft
+status: published
 published_at: 2020-04-20
 person: abu-jafar-al-khalifi
 ---

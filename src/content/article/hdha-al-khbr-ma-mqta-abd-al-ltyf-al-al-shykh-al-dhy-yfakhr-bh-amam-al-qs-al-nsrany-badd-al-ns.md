@@ -1,6 +1,6 @@
 ---
 title: "هذا الخبر مع مقطع عبد اللطيف آل الشيخ الذي يفاخر به أمام القس النصراني بعدد النس"
-status: draft
+status: published
 published_at: 2023-03-02
 person: abu-jafar-al-khalifi
 ---

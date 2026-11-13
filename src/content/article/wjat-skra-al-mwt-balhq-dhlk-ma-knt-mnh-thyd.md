@@ -1,6 +1,6 @@
 ---
 title: "وَجَاءَتْ سَكْرَةُ الْمَوْتِ بِالْحَقِّ ذَلِكَ مَا كُنْتَ مِنْهُ تَحِيدُ (19)"
-status: draft
+status: published
 published_at: 2023-03-28
 person: abu-umair-imran-al-zubaidi
 ---

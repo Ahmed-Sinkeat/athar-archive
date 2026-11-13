@@ -1,6 +1,6 @@
 ---
 title: "من طرق كشف الكذابين عند علماء الحديث"
-status: draft
+status: published
 published_at: 2024-09-24
 person: abu-abdillah-firas-al-ramli
 ---

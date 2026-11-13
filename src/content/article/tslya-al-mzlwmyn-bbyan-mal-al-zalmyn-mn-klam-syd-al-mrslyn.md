@@ -1,6 +1,6 @@
 ---
 title: "تسليةُ المظلومين ببيان مآلِ الظالمين مِن كلام سيِّد المرسلين"
-status: draft
+status: published
 published_at: 2025-10-26
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وصية للنساء ..."
-status: draft
+status: published
 published_at: 2023-06-25
 person: abu-abdillah-firas-al-ramli
 ---

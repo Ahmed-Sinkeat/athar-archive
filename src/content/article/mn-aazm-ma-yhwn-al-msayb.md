@@ -1,6 +1,6 @@
 ---
 title: "من أعظم ما يهون المصائب ..."
-status: draft
+status: published
 published_at: 2023-11-20
 person: abu-abdillah-firas-al-ramli
 ---

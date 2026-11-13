@@ -1,6 +1,6 @@
 ---
 title: "أرأيت الذين يعذرون الأشاعرة بالتأويل من المنتسبين إلى السلفية؟"
-status: draft
+status: published
 published_at: 2024-03-07
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "إذا حاولت قوات الحكومة أخذ سلاح العشائر فهذه خيانة لا تغتفر."
-status: draft
+status: published
 published_at: 2025-07-18
 person: abu-umair-imran-al-zubaidi
 ---

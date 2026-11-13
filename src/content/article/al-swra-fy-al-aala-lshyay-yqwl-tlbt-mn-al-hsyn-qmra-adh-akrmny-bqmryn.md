@@ -1,6 +1,6 @@
 ---
 title: "الصورة في الأعلى لشيعي يقول: \"طلبت من الحسين قمرا اذ أكرمني بقمرين\"."
-status: draft
+status: published
 published_at: 2026-08-07
 person: abu-jafar-al-khalifi
 ---

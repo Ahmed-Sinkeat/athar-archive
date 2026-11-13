@@ -1,6 +1,6 @@
 ---
 title: "عليكم بالفقه فإنه كالتفاح ..."
-status: draft
+status: published
 published_at: 2023-07-10
 person: abu-abdillah-firas-al-ramli
 ---

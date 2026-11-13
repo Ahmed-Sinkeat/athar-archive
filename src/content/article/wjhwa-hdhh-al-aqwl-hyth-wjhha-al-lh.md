@@ -1,6 +1,6 @@
 ---
 title: "وجهوا هذه العقول حيث وجهها الله"
-status: draft
+status: published
 published_at: 2023-12-07
 person: abu-abdillah-firas-al-ramli
 ---

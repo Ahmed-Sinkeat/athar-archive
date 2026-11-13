@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب الاقتصاد العجيب لكاتبيه ستيفن د"
-status: draft
+status: published
 published_at: 2017-11-15
 person: abu-jafar-al-khalifi
 ---

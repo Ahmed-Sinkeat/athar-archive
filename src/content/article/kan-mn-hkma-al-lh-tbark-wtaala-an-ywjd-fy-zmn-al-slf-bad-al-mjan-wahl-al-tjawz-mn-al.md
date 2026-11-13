@@ -1,6 +1,6 @@
 ---
 title: "كان من حكمة الله تبارك وتعالى أن يوجد في زمن السلف بعض المجان وأهل التجاوز من ال"
-status: draft
+status: published
 published_at: 2018-09-01
 person: abu-jafar-al-khalifi
 ---

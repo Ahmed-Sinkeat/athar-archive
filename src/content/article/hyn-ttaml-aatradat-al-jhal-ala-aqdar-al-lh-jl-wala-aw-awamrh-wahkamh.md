@@ -1,6 +1,6 @@
 ---
 title: "حين تتأمل اعتراضات الجهال على أقدار الله جل وعلا أو أوامره وأحكامه"
-status: draft
+status: published
 published_at: 2024-08-28
 person: abu-umair-imran-al-zubaidi
 ---

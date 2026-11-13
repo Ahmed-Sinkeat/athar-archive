@@ -1,6 +1,6 @@
 ---
 title: "من آثار هذه النظرة التي يحذر منها الأستاذ محمد قولهم"
-status: draft
+status: published
 published_at: 2021-11-04
 person: abu-jafar-al-khalifi
 ---

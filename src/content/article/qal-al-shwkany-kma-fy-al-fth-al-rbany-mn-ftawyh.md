@@ -1,6 +1,6 @@
 ---
 title: "قال الشوكاني كما في الفتح الرباني من فتاويه"
-status: draft
+status: published
 published_at: 2020-01-02
 person: abu-jafar-al-khalifi
 ---

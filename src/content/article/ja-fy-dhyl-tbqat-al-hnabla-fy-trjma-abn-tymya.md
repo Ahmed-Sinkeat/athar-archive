@@ -1,6 +1,6 @@
 ---
 title: "جاء في ذيل طبقات الحنابلة في ترجمة ابن تيمية"
-status: draft
+status: published
 published_at: 2017-06-03
 person: abu-jafar-al-khalifi
 ---

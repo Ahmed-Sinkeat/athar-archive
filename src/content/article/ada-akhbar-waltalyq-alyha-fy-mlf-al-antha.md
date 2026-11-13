@@ -1,6 +1,6 @@
 ---
 title: "عدة أخبار والتعليق عليها في ملف الأنثى..."
-status: draft
+status: published
 published_at: 2021-10-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

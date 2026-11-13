@@ -1,6 +1,6 @@
 ---
 title: "يَا أَيُّهَا الَّذِينَ آمَنُوا لَا تُبْطِلُوا صَدَقَاتِكُم بِالْمَنِّ وَالْأَذَى"
-status: draft
+status: published
 published_at: 2024-01-28
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

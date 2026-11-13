@@ -1,6 +1,6 @@
 ---
 title: "علماء صوفية يكفِّرون الصوفية المعاصرين ويشهدون عليهم بمخالفة المذاهب الأربعة..."
-status: draft
+status: published
 published_at: 2025-10-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

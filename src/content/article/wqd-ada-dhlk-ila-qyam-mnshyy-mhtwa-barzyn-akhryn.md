@@ -1,6 +1,6 @@
 ---
 title: "وقد أدى ذلك إلى قيام منشئي محتوى بارزين آخرين"
-status: draft
+status: published
 published_at: 2021-09-02
 person: abu-jafar-al-khalifi
 ---

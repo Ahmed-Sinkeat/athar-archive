@@ -1,6 +1,6 @@
 ---
 title: "كلمتان حبيبتان إلى الرحمن، خفيفتان على اللسان، ثقيلتان في الميزان"
-status: draft
+status: published
 published_at: 2025-07-13
 person: abu-abdillah-firas-al-ramli
 ---

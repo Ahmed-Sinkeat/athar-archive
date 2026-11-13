@@ -1,6 +1,6 @@
 ---
 title: "قال الأستاذ محمود شاكر كما في مجموع مقالاته معلقا على الحرب العالمية التي عاصرها"
-status: draft
+status: published
 published_at: 2018-10-24
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

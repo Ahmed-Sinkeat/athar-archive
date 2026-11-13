@@ -1,6 +1,6 @@
 ---
 title: "وَلَا مُتَّخِذَاتِ أَخْدَانٍ [سورة النساء"
-status: draft
+status: published
 published_at: 2025-03-25
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "عطفًا على ما ذكرته هنا"
-status: draft
+status: published
 published_at: 2023-12-31
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

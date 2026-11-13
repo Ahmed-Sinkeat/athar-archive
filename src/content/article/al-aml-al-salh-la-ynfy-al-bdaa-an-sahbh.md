@@ -1,6 +1,6 @@
 ---
 title: "العمل الصالح لا ينفي البدعة عن صاحبه"
-status: draft
+status: published
 published_at: 2023-07-28
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

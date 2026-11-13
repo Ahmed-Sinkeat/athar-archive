@@ -1,6 +1,6 @@
 ---
 title: "لستَ وحدك المهموم"
-status: draft
+status: published
 published_at: 2023-01-16
 person: abu-umair-imran-al-zubaidi
 ---

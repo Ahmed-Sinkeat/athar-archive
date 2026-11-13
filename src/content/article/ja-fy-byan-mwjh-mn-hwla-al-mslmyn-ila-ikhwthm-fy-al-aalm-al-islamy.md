@@ -1,6 +1,6 @@
 ---
 title: "جاء في بيان موجه من هؤلاء المسلمين إلى إخوتهم في العالم الإسلاميّ"
-status: draft
+status: published
 published_at: 2017-07-14
 person: abu-jafar-al-khalifi
 ---

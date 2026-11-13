@@ -1,6 +1,6 @@
 ---
 title: "يعود باسم بشينية المنتفخ إلى الخبط وإيراد ما هو حجة عليه من حيث لا يعلم!"
-status: draft
+status: published
 published_at: 2024-03-03
 person: abu-umair-imran-al-zubaidi
 ---

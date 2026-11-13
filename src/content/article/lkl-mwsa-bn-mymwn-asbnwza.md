@@ -1,6 +1,6 @@
 ---
 title: "لكل موسى بن ميمون اسبنوزا.."
-status: draft
+status: published
 published_at: 2024-07-15
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-iman"]

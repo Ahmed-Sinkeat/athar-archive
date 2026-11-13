@@ -1,6 +1,6 @@
 ---
 title: "خمس خصال بها تمام العمل"
-status: draft
+status: published
 published_at: 2026-04-10
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "تغير الزمان ليس دائماً يعني التسهيل بل قد يدعو للتشديد وسد الذريعة."
-status: draft
+status: published
 published_at: 2017-08-16
 person: abu-jafar-al-khalifi
 ---

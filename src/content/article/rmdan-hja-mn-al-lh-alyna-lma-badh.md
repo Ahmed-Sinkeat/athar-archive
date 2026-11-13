@@ -1,6 +1,6 @@
 ---
 title: "رمضان حجة من الله علينا لما بعده!"
-status: draft
+status: published
 published_at: 2025-03-28
 person: abu-umair-imran-al-zubaidi
 ---

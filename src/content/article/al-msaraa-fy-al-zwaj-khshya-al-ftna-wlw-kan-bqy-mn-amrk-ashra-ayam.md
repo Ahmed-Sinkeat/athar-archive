@@ -1,6 +1,6 @@
 ---
 title: "المسارعة في الزواج خشية الفتنة ولو كان بقي من عمرك عشرة أيام"
-status: draft
+status: published
 published_at: 2024-01-28
 person: abu-abdillah-firas-al-ramli
 ---

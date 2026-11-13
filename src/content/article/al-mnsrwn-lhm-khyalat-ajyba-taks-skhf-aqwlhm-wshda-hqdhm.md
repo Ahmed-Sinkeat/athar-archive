@@ -1,6 +1,6 @@
 ---
 title: "المنصرون لهم خيالات عجيبة تعكس سخف عقولهم وشدة حقدهم"
-status: draft
+status: published
 published_at: 2018-05-24
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

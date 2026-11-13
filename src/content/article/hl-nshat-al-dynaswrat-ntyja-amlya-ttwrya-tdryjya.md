@@ -1,6 +1,6 @@
 ---
 title: "هل نشأت الديناصورات نتيجة عملية تطوُّرية تدريجية؟."
-status: draft
+status: published
 published_at: 2018-04-25
 person: abu-jafar-al-khalifi
 ---

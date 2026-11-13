@@ -1,6 +1,6 @@
 ---
 title: "هذا كلام لأخ في تونس."
-status: draft
+status: published
 published_at: 2022-09-10
 person: abu-jafar-al-khalifi
 ---

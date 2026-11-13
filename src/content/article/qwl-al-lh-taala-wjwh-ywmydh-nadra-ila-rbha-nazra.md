@@ -1,6 +1,6 @@
 ---
 title: "قول الله تعالى: ﴿وجوهٌ يومئذٍ ناضرة إلى ربها ناظرة﴾"
-status: draft
+status: published
 published_at: 2019-10-06
 person: abu-jafar-al-khalifi
 ---

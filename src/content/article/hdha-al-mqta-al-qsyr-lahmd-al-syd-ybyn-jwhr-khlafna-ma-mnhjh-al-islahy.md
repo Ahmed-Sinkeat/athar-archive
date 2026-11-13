@@ -1,6 +1,6 @@
 ---
 title: "هذا المقطع القصير لأحمد السيد يبيّن جوهر خلافنا مع منهجه الإصلاحي!"
-status: draft
+status: published
 published_at: 2024-01-08
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

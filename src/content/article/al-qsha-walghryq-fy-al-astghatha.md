@@ -1,6 +1,6 @@
 ---
 title: "القشة والغريق في الاستغاثة"
-status: draft
+status: published
 published_at: 2019-12-24
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-asma-was-sifat"]

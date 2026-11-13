@@ -1,6 +1,6 @@
 ---
 title: "قُلْ هَلْ تَرَبَّصُونَ بِنَا إِلَّا إِحْدَى الْحُسْنَيَيْنِ ۖ وَنَحْنُ نَتَرَبَّ"
-status: draft
+status: published
 published_at: 2023-12-10
 person: abu-umair-imran-al-zubaidi
 ---

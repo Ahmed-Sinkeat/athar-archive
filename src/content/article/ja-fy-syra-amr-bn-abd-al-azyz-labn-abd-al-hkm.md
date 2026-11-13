@@ -1,6 +1,6 @@
 ---
 title: "جاء في سيرة عمر بن عبد العزيز لابن عبد الحكم"
-status: draft
+status: published
 published_at: 2017-07-18
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "رد الحكيم الترمذي على متأخري الصوفية في استدلالهم بقصة موسى والخضر..."
-status: draft
+status: published
 published_at: 2025-07-10
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "حرمهم الله نجاة موسى ورزقهم نجاة امرأة فرعون."
-status: draft
+status: published
 published_at: 2026-06-25
 person: abu-jafar-al-khalifi
 ---

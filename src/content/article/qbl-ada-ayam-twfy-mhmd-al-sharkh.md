@@ -1,6 +1,6 @@
 ---
 title: "قبل عدة أيام توفي محمد الشارخ"
-status: draft
+status: published
 published_at: 2024-03-09
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "في رحاب أول من لقب ب( السجاد ) من هذه الأمة"
-status: draft
+status: published
 published_at: 2020-01-20
 person: abu-jafar-al-khalifi
 ---

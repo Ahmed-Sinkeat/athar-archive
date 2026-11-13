@@ -1,6 +1,6 @@
 ---
 title: "وصفهم بقسوة القلب ثم أظهر لنا لين قلبه بضرب الطالب والسكوت على ضرب الطلبة له"
-status: draft
+status: published
 published_at: 2020-03-12
 person: abu-jafar-al-khalifi
 ---

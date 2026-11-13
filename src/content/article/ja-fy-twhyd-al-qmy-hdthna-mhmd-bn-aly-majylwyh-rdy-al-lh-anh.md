@@ -1,6 +1,6 @@
 ---
 title: "جاء في توحيد القمي حدثنا محمد بن علي ماجيلويه رضي الله عنه"
-status: draft
+status: published
 published_at: 2017-11-10
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

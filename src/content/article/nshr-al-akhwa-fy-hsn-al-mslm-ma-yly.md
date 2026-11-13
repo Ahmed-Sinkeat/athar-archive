@@ -1,6 +1,6 @@
 ---
 title: "نشر الأخوة في حصن المسلم ما يلي"
-status: draft
+status: published
 published_at: 2019-08-29
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

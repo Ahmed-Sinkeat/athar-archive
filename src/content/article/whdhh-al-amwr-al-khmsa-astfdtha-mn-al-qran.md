@@ -1,6 +1,6 @@
 ---
 title: "وهذه الأمور الخمسة استفدتها من القرآن"
-status: draft
+status: published
 published_at: 2021-07-25
 person: abu-jafar-al-khalifi
 ---

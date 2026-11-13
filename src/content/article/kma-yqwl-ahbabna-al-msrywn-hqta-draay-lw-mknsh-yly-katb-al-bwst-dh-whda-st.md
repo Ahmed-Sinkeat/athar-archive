@@ -1,6 +1,6 @@
 ---
 title: "كما يقول أحبابنا المصريون: \"هقطع دراعي لو مكنش يلي كاتب البوست ده وحدة ست\"."
-status: draft
+status: published
 published_at: 2023-11-14
 person: abu-umair-imran-al-zubaidi
 ---

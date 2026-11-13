@@ -1,6 +1,6 @@
 ---
 title: "نقلا عن الأستاذ أشرف قطب"
-status: draft
+status: published
 published_at: 2018-05-08
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "يتحولون إلى نازيين إذا تعلق الأمر بالإجهاض"
-status: draft
+status: published
 published_at: 2019-01-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

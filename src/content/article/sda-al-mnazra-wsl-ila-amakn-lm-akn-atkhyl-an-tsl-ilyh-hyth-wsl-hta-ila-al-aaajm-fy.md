@@ -1,6 +1,6 @@
 ---
 title: "صدى المناظرة وصل إلى أماكن لم أكن أتخيّل أن تصل إليه؛ حيث وصل حتى إلى الأعاجم في"
-status: draft
+status: published
 published_at: 2023-07-29
 person: abu-umair-imran-al-zubaidi
 ---

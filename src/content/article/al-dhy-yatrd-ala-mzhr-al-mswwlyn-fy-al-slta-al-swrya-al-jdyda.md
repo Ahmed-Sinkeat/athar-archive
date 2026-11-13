@@ -1,6 +1,6 @@
 ---
 title: "الذي يعترض على مظهر المسؤولين في السلطة السورية الجديدة"
-status: draft
+status: published
 published_at: 2024-12-17
 person: abu-umair-imran-al-zubaidi
 ---

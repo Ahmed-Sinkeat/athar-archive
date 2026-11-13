@@ -1,6 +1,6 @@
 ---
 title: "ثم يقول جان في المقال نفسه"
-status: draft
+status: published
 published_at: 2020-09-17
 person: abu-jafar-al-khalifi
 ---

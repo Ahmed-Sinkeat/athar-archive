@@ -1,6 +1,6 @@
 ---
 title: "تفكرت في نعيم الجنة فوجدت أن كل لذة في الدنيا يقابلها ما هو من جنسها في الآخرة"
-status: draft
+status: published
 published_at: 2017-12-01
 person: abu-jafar-al-khalifi
 ---

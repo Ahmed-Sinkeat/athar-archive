@@ -1,6 +1,6 @@
 ---
 title: "عميد الأدب الأمريكي مارك توين وهو بعمر ٧٢ سنة مع عشيقته دوروثي كويك وهي بعمر ١١"
-status: draft
+status: published
 published_at: 2020-12-29
 person: abu-jafar-al-khalifi
 ---

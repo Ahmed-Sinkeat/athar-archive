@@ -1,6 +1,6 @@
 ---
 title: "عجيبة: تأثر الشيعة الإمامية بمذهب جهم في الإيمان!"
-status: draft
+status: published
 published_at: 2021-10-01
 person: abu-jafar-al-khalifi
 ---

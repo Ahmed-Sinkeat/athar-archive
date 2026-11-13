@@ -1,6 +1,6 @@
 ---
 title: "وقد قرأت كلاماً لبعض المعترضين يقول فيه أن المعلوم من الدين بالاضطرار عند ابن تي"
-status: draft
+status: published
 published_at: 2021-11-20
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

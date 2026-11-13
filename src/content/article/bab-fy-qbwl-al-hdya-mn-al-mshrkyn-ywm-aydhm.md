@@ -1,6 +1,6 @@
 ---
 title: "باب في قبول الهدية من المشركين يوم عيدهم"
-status: draft
+status: published
 published_at: 2026-01-06
 person: abu-abdillah-firas-al-ramli
 ---

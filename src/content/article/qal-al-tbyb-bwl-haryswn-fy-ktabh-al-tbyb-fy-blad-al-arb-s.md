@@ -1,6 +1,6 @@
 ---
 title: "قال الطبيب (بول هاريسون) (4) في كتابه \" الطبيب في بلاد العرب \" (ص 277)"
-status: draft
+status: published
 published_at: 2017-07-21
 person: abu-jafar-al-khalifi
 ---

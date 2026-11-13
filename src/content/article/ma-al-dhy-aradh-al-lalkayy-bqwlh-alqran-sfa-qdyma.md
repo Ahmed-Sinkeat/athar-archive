@@ -1,6 +1,6 @@
 ---
 title: "ما الذي أراده اللالكائي بقوله (القرآن صفة قديمة)؟"
-status: draft
+status: published
 published_at: 2022-01-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "كان بين مالك بن أنس فقيه أهل المدينة والليث بن سعد فقيه أهل مصر أخوة صادقة وكان"
-status: draft
+status: published
 published_at: 2018-12-10
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

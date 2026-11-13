@@ -1,6 +1,6 @@
 ---
 title: "سلسلة هل تعلم"
-status: draft
+status: published
 published_at: 2017-10-01
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "قارئ الصحابة الشهيد المغمور في الأرض المعروف في السماء"
-status: draft
+status: published
 published_at: 2019-09-09
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

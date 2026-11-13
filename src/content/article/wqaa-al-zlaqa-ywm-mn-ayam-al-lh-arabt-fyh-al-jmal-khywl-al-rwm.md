@@ -1,6 +1,6 @@
 ---
 title: "وقعة الزلاقة ( يوم من أيام الله أرعبت فيه الجمال خيول الروم )"
-status: draft
+status: published
 published_at: 2019-01-09
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال الطبري في تفسيره 10715- حدثنا الحسن بن يحيى قال"
-status: draft
+status: published
 published_at: 2017-06-30
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

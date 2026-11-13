@@ -1,6 +1,6 @@
 ---
 title: "أولا، قوله أن هذا الفعل مزاح في الدين وشرائعه تدليس وقلة فقه وتهور!"
-status: draft
+status: published
 published_at: 2025-08-04
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "مبحث في تعيين شخص بعينه بالولاية"
-status: draft
+status: published
 published_at: 2023-08-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

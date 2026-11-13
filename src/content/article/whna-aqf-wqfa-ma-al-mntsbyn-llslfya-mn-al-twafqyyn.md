@@ -1,6 +1,6 @@
 ---
 title: "وهنا أقف وقفة مع المنتسبين للسلفية من التوافقيين"
-status: draft
+status: published
 published_at: 2021-08-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

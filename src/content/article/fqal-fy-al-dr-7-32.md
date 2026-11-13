@@ -1,6 +1,6 @@
 ---
 title: "فقال في الدرء (٧/ ٣٢)"
-status: draft
+status: published
 published_at: 2021-03-27
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "أقول أنا عبد الله"
-status: draft
+status: published
 published_at: 2020-09-01
 person: abu-jafar-al-khalifi
 ---

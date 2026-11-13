@@ -1,6 +1,6 @@
 ---
 title: "على سيرة قياس توحيد الأسماء والصفات على حكم السواك."
-status: draft
+status: published
 published_at: 2024-06-21
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

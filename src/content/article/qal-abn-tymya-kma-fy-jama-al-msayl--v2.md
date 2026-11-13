@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية كما في جامع المسائل"
-status: draft
+status: published
 published_at: 2018-06-10
 person: abu-jafar-al-khalifi
 ---

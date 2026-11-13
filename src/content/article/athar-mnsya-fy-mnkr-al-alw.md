@@ -1,6 +1,6 @@
 ---
 title: "آثار منسية في منكر العلو..."
-status: draft
+status: published
 published_at: 2024-04-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "تم بحمد الله"
-status: draft
+status: published
 published_at: 2024-05-09
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

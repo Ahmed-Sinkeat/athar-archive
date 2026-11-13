@@ -1,6 +1,6 @@
 ---
 title: "قال ابن قدامة في المغني"
-status: draft
+status: published
 published_at: 2022-11-22
 person: abu-jafar-al-khalifi
 ---

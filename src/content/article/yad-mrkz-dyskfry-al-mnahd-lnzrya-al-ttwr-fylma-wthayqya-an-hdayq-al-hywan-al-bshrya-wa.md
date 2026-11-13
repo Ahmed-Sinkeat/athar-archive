@@ -1,6 +1,6 @@
 ---
 title: "يعد مركز ديسكفري المناهض لنظرية التطور فيلما وثائقيا عن حدائق الحيوان البشرية وا"
-status: draft
+status: published
 published_at: 2018-05-08
 person: abu-jafar-al-khalifi
 ---

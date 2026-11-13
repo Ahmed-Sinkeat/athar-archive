@@ -1,6 +1,6 @@
 ---
 title: "سَنَفْرُغُ لَكُمْ أَيُّهَ الثَّقَلَانِ (31)"
-status: draft
+status: published
 published_at: 2026-08-12
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

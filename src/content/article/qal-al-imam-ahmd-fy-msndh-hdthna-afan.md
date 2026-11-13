@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام أحمد في مسنده (20248) 20512- حَدَّثَنَا عَفَّانُ"
-status: draft
+status: published
 published_at: 2017-09-08
 person: abu-jafar-al-khalifi
 ---

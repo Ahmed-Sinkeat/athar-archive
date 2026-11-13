@@ -1,6 +1,6 @@
 ---
 title: "أحسب أنَّ أحَد الأسباب التي جُعِلت بها أقوال سلَف هذه الأمة –حمَلة الوحي ونقَلة"
-status: draft
+status: published
 published_at: 2026-05-31
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran"]

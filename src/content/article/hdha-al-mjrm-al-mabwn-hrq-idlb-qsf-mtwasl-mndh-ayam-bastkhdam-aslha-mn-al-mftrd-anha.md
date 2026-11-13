@@ -1,6 +1,6 @@
 ---
 title: "هذا المجر-م المأبون حرق إدلب؛ قصف متواصل منذ أيام باستخدام أسلحة من المفترض أنها"
-status: draft
+status: published
 published_at: 2023-10-08
 person: abu-umair-imran-al-zubaidi
 ---

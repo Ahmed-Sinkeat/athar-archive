@@ -1,6 +1,6 @@
 ---
 title: "مما يتردد دائما في الدوائر البحثية الغربية ووسائل الإعلام هناك"
-status: draft
+status: published
 published_at: 2018-12-17
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

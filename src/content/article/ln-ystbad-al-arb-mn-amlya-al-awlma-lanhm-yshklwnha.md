@@ -1,6 +1,6 @@
 ---
 title: "لن يستبعد العرب من عملية العولمة لأنهم يشكلونها"
-status: draft
+status: published
 published_at: 2017-11-26
 person: abu-jafar-al-khalifi
 ---

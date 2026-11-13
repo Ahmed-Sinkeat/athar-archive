@@ -1,6 +1,6 @@
 ---
 title: "ربنا فوق سماواته جالسٌ على عرشه"
-status: draft
+status: published
 published_at: 2023-08-07
 person: abu-umair-imran-al-zubaidi
 ---

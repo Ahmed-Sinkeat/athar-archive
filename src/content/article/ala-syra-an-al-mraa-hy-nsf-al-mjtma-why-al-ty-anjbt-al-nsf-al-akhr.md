@@ -1,6 +1,6 @@
 ---
 title: "على سيرة أنّ المرأة هي نصف المجتمع وهي التي أنجبت النصف الآخر"
-status: draft
+status: published
 published_at: 2023-09-23
 person: abu-umair-imran-al-zubaidi
 ---

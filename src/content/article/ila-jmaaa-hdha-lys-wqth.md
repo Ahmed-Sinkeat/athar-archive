@@ -1,6 +1,6 @@
 ---
 title: "إلى جماعة \"هذا ليس وقته\" ..."
-status: draft
+status: published
 published_at: 2024-10-09
 person: abu-umair-imran-al-zubaidi
 ---

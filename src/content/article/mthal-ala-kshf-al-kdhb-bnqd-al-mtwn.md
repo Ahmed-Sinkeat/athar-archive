@@ -1,6 +1,6 @@
 ---
 title: "مثال على كشف الكذب بنقد المتون"
-status: draft
+status: published
 published_at: 2019-10-06
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ديـن الله واضِح بيِّن خصوصاً أركانه الأساسية التي لا يقوم إيمان العبد إلا عليها"
-status: draft
+status: published
 published_at: 2025-07-02
 person: awwab-bin-muhammad
 topics: ["tahwid-al-ibada"]

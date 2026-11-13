@@ -1,6 +1,6 @@
 ---
 title: "كل من يعمل في منصة السبيل مع علمه بعقيدة مؤسسها أحمد دعدوش"
-status: draft
+status: published
 published_at: 2024-03-18
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال أبو نعيم في معرفة الصحابة 6580 - حَدَّثَنَا عَبْدُ اللهِ بْنُ مُحَمَّدِ بْنِ"
-status: draft
+status: published
 published_at: 2017-07-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

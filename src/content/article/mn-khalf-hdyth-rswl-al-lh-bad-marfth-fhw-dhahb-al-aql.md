@@ -1,6 +1,6 @@
 ---
 title: "من خالف حديث رسول الله ﷺ بعد معرفته فهو ذاهب العقل"
-status: draft
+status: published
 published_at: 2024-07-21
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا الكلام بينه وبين الكفر شعرة إن لم يكن كفرا خالصا!"
-status: draft
+status: published
 published_at: 2025-01-01
 person: abu-umair-imran-al-zubaidi
 ---

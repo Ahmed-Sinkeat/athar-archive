@@ -1,6 +1,6 @@
 ---
 title: "فهل تنكر على من ينكر خلافة علي أو يرى الصرف أو يرى جواز المتعة"
-status: draft
+status: published
 published_at: 2019-01-27
 person: abu-jafar-al-khalifi
 ---

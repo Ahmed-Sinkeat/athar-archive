@@ -1,6 +1,6 @@
 ---
 title: "هل صح عن إبراهيم الحربي قول «قبر معروف، الترياق المجرب»؟"
-status: draft
+status: published
 published_at: 2021-05-30
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "جاء في جزء بيان الفرقة الناجية من النار لأبي حامد أحمد بن محمد بن إبراهيم المقري"
-status: draft
+status: published
 published_at: 2020-01-04
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "قال ابن الأثير في الكامل"
-status: draft
+status: published
 published_at: 2018-01-24
 person: abu-jafar-al-khalifi
 ---

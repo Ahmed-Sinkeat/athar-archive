@@ -1,6 +1,6 @@
 ---
 title: "الليبراليون والشرعنة الخرقاء للغلو أو ما يعدونه غلواً !"
-status: draft
+status: published
 published_at: 2021-07-28
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

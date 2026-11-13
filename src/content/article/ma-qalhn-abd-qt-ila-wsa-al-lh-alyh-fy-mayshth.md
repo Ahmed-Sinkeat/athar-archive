@@ -1,6 +1,6 @@
 ---
 title: "ما قالهن عبد قط إلا وسع الله عليه في معيشته"
-status: draft
+status: published
 published_at: 2024-08-07
 person: abu-abdillah-firas-al-ramli
 ---

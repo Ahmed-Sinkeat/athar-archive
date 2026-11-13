@@ -1,6 +1,6 @@
 ---
 title: "خطورة وضع عقيدة الجهمية في مقابل النصرانية على أنها عقيدة أهل الإسلام أو عقيدة م"
-status: draft
+status: published
 published_at: 2021-06-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-asma-was-sifat"]

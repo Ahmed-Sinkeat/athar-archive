@@ -1,6 +1,6 @@
 ---
 title: "أبيحوا كشف الوجه وإلا كشفنا الشعر (جولة في أهواء ووساوس كونت مناهج فقهية حديثة)"
-status: draft
+status: published
 published_at: 2025-06-01
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

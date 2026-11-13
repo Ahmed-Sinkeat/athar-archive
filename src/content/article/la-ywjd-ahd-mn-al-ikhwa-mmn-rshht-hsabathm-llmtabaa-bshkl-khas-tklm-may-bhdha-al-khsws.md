@@ -1,6 +1,6 @@
 ---
 title: "لا يوجد أحد من الإخوة ممن رشحت حساباتهم للمتابعة بشكل خاص تكلم معي بهذا الخصوص؛"
-status: draft
+status: published
 published_at: 2026-01-23
 person: abu-umair-imran-al-zubaidi
 ---

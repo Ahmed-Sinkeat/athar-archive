@@ -1,6 +1,6 @@
 ---
 title: "وقال محمود الآلوسي في تفسيره روح المعاني عند تفسيره لسورة الحج"
-status: draft
+status: published
 published_at: 2022-05-28
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

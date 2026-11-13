@@ -1,6 +1,6 @@
 ---
 title: "صدر الْيَوْمَ القرار بسجن الليبرالي الكويتي عبد العزيز القناعي بتهمة الإساءة للد"
-status: draft
+status: published
 published_at: 2018-06-06
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

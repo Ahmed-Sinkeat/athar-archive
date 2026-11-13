@@ -1,6 +1,6 @@
 ---
 title: "الأحكام التكليفية في آية..."
-status: draft
+status: published
 published_at: 2021-01-22
 person: abu-jafar-al-khalifi
 ---

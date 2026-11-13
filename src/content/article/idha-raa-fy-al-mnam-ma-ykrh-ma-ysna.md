@@ -1,6 +1,6 @@
 ---
 title: "إذا رأى في المنام ما يكره، ما يصنع؟"
-status: draft
+status: published
 published_at: 2024-02-22
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "كثير من الشباب المؤمن بالله في حواره مع مراهقي الملاحدة إذا ذكروا لهم جرائم بعض"
-status: draft
+status: published
 published_at: 2018-08-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

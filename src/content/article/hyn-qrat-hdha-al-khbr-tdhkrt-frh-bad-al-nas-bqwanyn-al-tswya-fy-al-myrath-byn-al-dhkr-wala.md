@@ -1,6 +1,6 @@
 ---
 title: "حين قرأت هذا الخبر تذكرت فرح بعض الناس بقوانين التسوية في الميراث بين الذكر والأ"
-status: draft
+status: published
 published_at: 2021-04-21
 person: abu-jafar-al-khalifi
 ---

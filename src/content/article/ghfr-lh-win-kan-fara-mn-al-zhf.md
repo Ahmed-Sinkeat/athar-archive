@@ -1,6 +1,6 @@
 ---
 title: "غفر له وإن كان فارا من الزحف ..."
-status: draft
+status: published
 published_at: 2023-07-04
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "تطمعون أن تعانقوا هؤلاء، ولا تطيعون الله فيما أمركم؟!"
-status: draft
+status: published
 published_at: 2023-11-07
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

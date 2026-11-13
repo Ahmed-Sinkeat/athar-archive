@@ -1,6 +1,6 @@
 ---
 title: "بين الإجابة عن شبهة جهاد الطلب وذم المختلفين في العقيدة."
-status: draft
+status: published
 published_at: 2026-04-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

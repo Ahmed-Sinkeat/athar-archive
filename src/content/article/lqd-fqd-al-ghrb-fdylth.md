@@ -1,6 +1,6 @@
 ---
 title: "لقد فقد الغرب فضيلته"
-status: draft
+status: published
 published_at: 2022-06-01
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

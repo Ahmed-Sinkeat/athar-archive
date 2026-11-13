@@ -1,6 +1,6 @@
 ---
 title: "رقة القلب بعد منتصف الليل بلاء!"
-status: draft
+status: published
 published_at: 2023-11-03
 person: abu-umair-imran-al-zubaidi
 ---

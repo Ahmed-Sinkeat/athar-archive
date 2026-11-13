@@ -1,6 +1,6 @@
 ---
 title: "أعلى مقامات سلامة الصدر"
-status: draft
+status: published
 published_at: 2019-01-11
 person: abu-jafar-al-khalifi
 ---

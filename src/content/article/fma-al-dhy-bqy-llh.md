@@ -1,6 +1,6 @@
 ---
 title: "فما الذي بقي لله ؟"
-status: draft
+status: published
 published_at: 2020-05-01
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-wala-wal-bara"]

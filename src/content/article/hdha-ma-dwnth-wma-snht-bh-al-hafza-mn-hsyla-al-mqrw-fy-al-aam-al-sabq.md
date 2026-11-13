@@ -1,6 +1,6 @@
 ---
 title: "هذا ما دوَّنته وما سنَحت به الحافِظة من حصيلة المقروء في العام السابق"
-status: draft
+status: published
 published_at: 2026-01-02
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-asma-was-sifat"]

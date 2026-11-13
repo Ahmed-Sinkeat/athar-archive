@@ -1,6 +1,6 @@
 ---
 title: "روي عن يحيى بن معاذ العابد أنه يقول"
-status: draft
+status: published
 published_at: 2018-09-02
 person: abu-jafar-al-khalifi
 ---

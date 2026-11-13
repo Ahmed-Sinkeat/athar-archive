@@ -1,6 +1,6 @@
 ---
 title: "الكلمة الباقية إلى قيام الساعة"
-status: draft
+status: published
 published_at: 2026-01-23
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال علمي حديث النشر عن فائدة الجبال في نزول الأمطار"
-status: draft
+status: published
 published_at: 2018-05-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

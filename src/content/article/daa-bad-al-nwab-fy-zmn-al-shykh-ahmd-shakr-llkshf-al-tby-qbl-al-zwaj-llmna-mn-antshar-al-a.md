@@ -1,6 +1,6 @@
 ---
 title: "دعا بعض النواب في زمن الشيخ أحمد شاكر للكشف الطبي قبل الزواج للمنع من انتشار الأ"
-status: draft
+status: published
 published_at: 2018-09-14
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

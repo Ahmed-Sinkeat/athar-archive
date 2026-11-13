@@ -1,6 +1,6 @@
 ---
 title: "بمناسبة حديث بعض الزنادقة عن تعاليم البوذية ومقارنتها بالإسلام"
-status: draft
+status: published
 published_at: 2023-12-11
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-wala-wal-bara"]

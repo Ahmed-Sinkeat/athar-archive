@@ -1,6 +1,6 @@
 ---
 title: "فصل في إلزامهم القول بنفي الرسالة إذا انتفت صفة الكلام"
-status: draft
+status: published
 published_at: 2024-04-08
 person: abu-umair-imran-al-zubaidi
 ---

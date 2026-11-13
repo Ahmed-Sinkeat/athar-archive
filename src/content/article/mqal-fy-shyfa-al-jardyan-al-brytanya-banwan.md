@@ -1,6 +1,6 @@
 ---
 title: "مقال في صحيفة الجارديان البريطانية بعنوان"
-status: draft
+status: published
 published_at: 2019-02-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

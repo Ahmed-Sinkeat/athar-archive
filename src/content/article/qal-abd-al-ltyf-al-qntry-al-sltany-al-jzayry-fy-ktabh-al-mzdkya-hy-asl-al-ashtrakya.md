@@ -1,6 +1,6 @@
 ---
 title: "قال عبد اللطيف القنطري السلطاني الجزائري في كتابه المزدكية هي أصل الاشتراكية"
-status: draft
+status: published
 published_at: 2017-07-22
 person: abu-jafar-al-khalifi
 ---

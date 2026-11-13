@@ -1,6 +1,6 @@
 ---
 title: "شرح قصة (صدق الله وكذب ابن سينا).."
-status: draft
+status: published
 published_at: 2022-01-22
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

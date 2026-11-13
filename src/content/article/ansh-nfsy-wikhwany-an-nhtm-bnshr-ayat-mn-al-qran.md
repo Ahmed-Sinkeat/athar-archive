@@ -1,6 +1,6 @@
 ---
 title: "أنصح نفسي وإخواني أن نهتم بنشر آيات من القرآن"
-status: draft
+status: published
 published_at: 2024-11-25
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

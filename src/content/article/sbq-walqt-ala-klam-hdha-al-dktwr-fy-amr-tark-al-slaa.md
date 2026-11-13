@@ -1,6 +1,6 @@
 ---
 title: "سبق وعلقت على كلام هذا الدكتور في أمر تارك الصلاة"
-status: draft
+status: published
 published_at: 2022-01-10
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

@@ -1,6 +1,6 @@
 ---
 title: "جواب ابن تيمية عن قوائم علماء الأشاعرة"
-status: draft
+status: published
 published_at: 2022-11-13
 person: abu-jafar-al-khalifi
 ---

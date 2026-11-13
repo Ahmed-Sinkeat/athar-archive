@@ -1,6 +1,6 @@
 ---
 title: "تحليلات المختصين توصلت لأفضل تفسير وهو ما يزال قيد الدراسة بأن سبب هذا الرصد الغ"
-status: draft
+status: published
 published_at: 2022-06-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "هذا هو شيخ الشافعية بالأزهر عبد العزيز الشهاوي"
-status: draft
+status: published
 published_at: 2025-11-09
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tazkiyat-al-nafs", "al-sunnah-wal-bidah"]

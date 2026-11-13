@@ -1,6 +1,6 @@
 ---
 title: "أعلم أنه قد لاحظ الكثيرون أنني تغيرت بعد رمضان"
-status: draft
+status: published
 published_at: 2025-05-04
 person: abu-umair-imran-al-zubaidi
 ---

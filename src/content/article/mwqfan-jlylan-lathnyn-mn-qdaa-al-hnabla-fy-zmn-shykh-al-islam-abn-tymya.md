@@ -1,6 +1,6 @@
 ---
 title: "موقفان جليلان لاثنين من قضاة الحنابلة في زمن شيخ الإسلام ابن تيمية.."
-status: draft
+status: published
 published_at: 2021-12-21
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

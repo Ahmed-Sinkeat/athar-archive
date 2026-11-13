@@ -1,6 +1,6 @@
 ---
 title: "كم أشعر بالغضب والغل وأود قول كلامٍ كثير، ولكن #معلش كل شيء في وقته إن شاء الله."
-status: draft
+status: published
 published_at: 2023-11-01
 person: abu-umair-imran-al-zubaidi
 ---

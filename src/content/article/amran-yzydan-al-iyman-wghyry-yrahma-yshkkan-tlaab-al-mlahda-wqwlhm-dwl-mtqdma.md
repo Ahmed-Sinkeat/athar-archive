@@ -1,6 +1,6 @@
 ---
 title: "أمران يزيدان الإيمان وغيري يراهما يشككان (تلاعب الملاحدة وقولهم \"دول متقدمة\")"
-status: draft
+status: published
 published_at: 2026-10-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-iman"]

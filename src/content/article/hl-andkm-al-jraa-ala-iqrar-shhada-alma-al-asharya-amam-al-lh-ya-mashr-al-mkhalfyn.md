@@ -1,6 +1,6 @@
 ---
 title: "هل عندكم الجرأة على إقرار شهادة علماء الأشعرية أمام الله يا معشر المخالفين؟!"
-status: draft
+status: published
 published_at: 2024-11-21
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "ابن خال أم المؤمنين الذي تتلمذ عليه أعيان الصالحين"
-status: draft
+status: published
 published_at: 2019-11-23
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

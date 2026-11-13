@@ -1,6 +1,6 @@
 ---
 title: "خمس آفات إذا فشت في المسلمين لَم تُبق لهم من الإسلام إلا اسمه وبالتالي فهم ليسوا"
-status: draft
+status: published
 published_at: 2019-12-05
 person: abu-jafar-al-khalifi
 ---

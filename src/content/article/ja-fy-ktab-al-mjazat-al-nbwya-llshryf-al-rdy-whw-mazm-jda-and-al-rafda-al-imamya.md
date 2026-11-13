@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب المجازات النبوية للشريف الرضي وهو معظم جداً عند الرافضة الإمامية"
-status: draft
+status: published
 published_at: 2017-12-09
 person: abu-jafar-al-khalifi
 ---

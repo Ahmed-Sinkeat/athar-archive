@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب الأب الغنى والأب الفقير ل روبرت تي-كيوساكي ص109"
-status: draft
+status: published
 published_at: 2018-01-03
 person: abu-jafar-al-khalifi
 ---

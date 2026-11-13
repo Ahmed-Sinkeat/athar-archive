@@ -1,6 +1,6 @@
 ---
 title: "بدأ شعبان، فهل استعددت يا أيها المشتاق إلى رمضان؟"
-status: draft
+status: published
 published_at: 2024-02-10
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال الكندي في كتابه الولاة والقضاة حَدَّثَنَا محمد بْن يوسف"
-status: draft
+status: published
 published_at: 2018-07-12
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ولكن الله عاد بعائدته ورحمته"
-status: draft
+status: published
 published_at: 2026-05-22
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

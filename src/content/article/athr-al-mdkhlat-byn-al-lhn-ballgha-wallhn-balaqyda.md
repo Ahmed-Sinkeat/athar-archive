@@ -1,6 +1,6 @@
 ---
 title: "أثر المُدخلات (بين اللحن باللغة واللحن بالعقيدة)"
-status: draft
+status: published
 published_at: 2019-07-29
 person: abu-jafar-al-khalifi
 ---

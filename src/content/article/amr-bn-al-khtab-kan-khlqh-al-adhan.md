@@ -1,6 +1,6 @@
 ---
 title: "عمر بن الخطاب كان خلقه الأذان!"
-status: draft
+status: published
 published_at: 2026-08-06
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

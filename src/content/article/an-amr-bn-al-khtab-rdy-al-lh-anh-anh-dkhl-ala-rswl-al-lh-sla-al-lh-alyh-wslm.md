@@ -1,6 +1,6 @@
 ---
 title: "عن عمر بن الخطاب رضي الله عنه أنه دخل على رسول الله -صلى الله عليه وسلم"
-status: draft
+status: published
 published_at: 2018-04-14
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

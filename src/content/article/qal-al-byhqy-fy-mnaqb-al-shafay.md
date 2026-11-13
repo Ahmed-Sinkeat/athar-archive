@@ -1,6 +1,6 @@
 ---
 title: "قال البيهقي في مناقب الشافعي (194/ 2)"
-status: draft
+status: published
 published_at: 2024-02-08
 person: abu-umair-imran-al-zubaidi
 ---

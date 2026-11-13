@@ -1,6 +1,6 @@
 ---
 title: "الاستدلال باضطراب الرازي على ضعف جدوى علم الكلام"
-status: draft
+status: published
 published_at: 2020-04-16
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "إنما هلكتم حين تركتم الآثار"
-status: draft
+status: published
 published_at: 2024-06-05
 person: abu-abdillah-firas-al-ramli
 ---

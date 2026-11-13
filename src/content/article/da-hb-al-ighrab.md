@@ -1,6 +1,6 @@
 ---
 title: "داء حب الإغراب"
-status: draft
+status: published
 published_at: 2019-03-24
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

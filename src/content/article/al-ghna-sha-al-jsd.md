@@ -1,6 +1,6 @@
 ---
 title: "الغنى صحة الجسد"
-status: draft
+status: published
 published_at: 2025-03-12
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "في القوانين الغربية للزوج أن يطالب بتعويضات مادية للضرر الذي تعرض له عند خيانته"
-status: draft
+status: published
 published_at: 2026-04-15
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

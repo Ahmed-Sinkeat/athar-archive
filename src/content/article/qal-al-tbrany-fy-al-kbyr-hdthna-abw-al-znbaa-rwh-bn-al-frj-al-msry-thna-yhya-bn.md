@@ -1,6 +1,6 @@
 ---
 title: "قال الطبراني في الكبير 2806 - حدثنا أبو الزنباع روح بن الفرج المصري ثنا يحيى بن"
-status: draft
+status: published
 published_at: 2020-03-10
 person: abu-jafar-al-khalifi
 ---

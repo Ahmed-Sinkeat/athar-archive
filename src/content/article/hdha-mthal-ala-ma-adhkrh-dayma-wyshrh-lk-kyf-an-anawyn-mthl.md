@@ -1,6 +1,6 @@
 ---
 title: "هذا مثال على ما أذكره دائما ويشرح لك كيف أن عناوين مثل"
-status: draft
+status: published
 published_at: 2026-07-14
 person: abu-jafar-al-khalifi
 ---

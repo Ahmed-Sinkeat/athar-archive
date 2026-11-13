@@ -1,6 +1,6 @@
 ---
 title: "يبدأ التكليف في الإسلام بمجرّد بلوغ الإنسان الحُلُم"
-status: draft
+status: published
 published_at: 2022-11-12
 person: abu-umair-imran-al-zubaidi
 ---

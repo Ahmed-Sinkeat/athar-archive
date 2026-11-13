@@ -1,6 +1,6 @@
 ---
 title: "في الترهيب من ترك صلاة الصبح والعصر"
-status: draft
+status: published
 published_at: 2025-09-02
 person: abu-abdillah-firas-al-ramli
 ---

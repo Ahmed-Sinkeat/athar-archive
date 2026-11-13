@@ -1,6 +1,6 @@
 ---
 title: "ما عقله الفيلسوف الكافر في معضلة الشر وجهله كثير من الناس مع حضوره في الوحي…"
-status: draft
+status: published
 published_at: 2024-07-05
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

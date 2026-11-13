@@ -1,6 +1,6 @@
 ---
 title: "الكافرين عبدوا الله بالواسطة والمؤمنون يعبدونه بلا واسطة"
-status: draft
+status: published
 published_at: 2025-01-13
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

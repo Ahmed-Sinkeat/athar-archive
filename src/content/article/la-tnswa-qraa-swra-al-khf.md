@@ -1,6 +1,6 @@
 ---
 title: "لا تنسوا قراءة سورة الكهف"
-status: draft
+status: published
 published_at: 2023-05-12
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

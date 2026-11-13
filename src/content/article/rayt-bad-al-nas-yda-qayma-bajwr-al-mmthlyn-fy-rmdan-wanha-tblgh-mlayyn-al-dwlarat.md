@@ -1,6 +1,6 @@
 ---
 title: "رأيت بعض الناس يضع قائمة بأجور الممثلين في رمضان وأنها تبلغ ملايين الدولارات"
-status: draft
+status: published
 published_at: 2018-05-10
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أول ظهور للأشعري في كتب التاريخ (أبو الحسن الأشعري الكلابي)."
-status: draft
+status: published
 published_at: 2023-09-14
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

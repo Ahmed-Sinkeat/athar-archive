@@ -1,6 +1,6 @@
 ---
 title: "فائدة في العقيدة من كتاب لغوي..."
-status: draft
+status: published
 published_at: 2021-02-02
 person: abu-jafar-al-khalifi
 ---

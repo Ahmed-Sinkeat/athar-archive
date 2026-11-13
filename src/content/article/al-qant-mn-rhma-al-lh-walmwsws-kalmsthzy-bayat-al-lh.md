@@ -1,6 +1,6 @@
 ---
 title: "القانط من رحمة الله والموسوس كالمستهزئ بآيات الله!"
-status: draft
+status: published
 published_at: 2025-07-12
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

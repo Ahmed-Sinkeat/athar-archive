@@ -1,6 +1,6 @@
 ---
 title: "حياكم الله بالسلام يا إخوة."
-status: draft
+status: published
 published_at: 2024-08-27
 person: abu-umair-imran-al-zubaidi
 ---

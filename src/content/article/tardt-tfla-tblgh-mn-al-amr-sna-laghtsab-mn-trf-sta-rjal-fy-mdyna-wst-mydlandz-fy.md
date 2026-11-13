@@ -1,6 +1,6 @@
 ---
 title: "تعرضت طفلة تبلغ من العمر 12 سنة لاغتصاب من طرف ستة رجال في مدينة وست ميدلاندز في"
-status: draft
+status: published
 published_at: 2019-04-05
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

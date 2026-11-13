@@ -1,6 +1,6 @@
 ---
 title: "أعظم آية في القرآن هي آية الكرسي، والسورة التي تعادل ثلث القرآن هي الإخلاص."
-status: draft
+status: published
 published_at: 2023-08-06
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

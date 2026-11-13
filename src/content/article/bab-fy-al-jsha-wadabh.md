@@ -1,6 +1,6 @@
 ---
 title: "باب في الجشاء وآدابه"
-status: draft
+status: published
 published_at: 2025-11-17
 person: abu-abdillah-firas-al-ramli
 ---

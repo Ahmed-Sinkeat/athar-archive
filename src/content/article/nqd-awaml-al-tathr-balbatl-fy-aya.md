@@ -1,6 +1,6 @@
 ---
 title: "نقض عوامل التأثر بالباطل في آية"
-status: draft
+status: published
 published_at: 2023-02-03
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

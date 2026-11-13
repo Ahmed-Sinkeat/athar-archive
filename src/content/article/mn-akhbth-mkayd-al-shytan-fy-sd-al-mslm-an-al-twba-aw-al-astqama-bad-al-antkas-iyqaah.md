@@ -1,6 +1,6 @@
 ---
 title: "مِن أخبث مكائد الشيطان في صدّ المسلم عن التوبة أو الاستقامة بعد الانتكاس؛ إيقاعه"
-status: draft
+status: published
 published_at: 2023-02-05
 person: abu-umair-imran-al-zubaidi
 ---

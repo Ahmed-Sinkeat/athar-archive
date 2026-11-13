@@ -1,6 +1,6 @@
 ---
 title: "في غمرة فرحك وخوفك على إخواننا في غزة -حفظهنم الله وأيدهم بنصره- لا تنسَ إخوانك"
-status: draft
+status: published
 published_at: 2023-10-07
 person: abu-umair-imran-al-zubaidi
 ---

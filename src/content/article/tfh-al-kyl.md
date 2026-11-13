@@ -1,6 +1,6 @@
 ---
 title: "طفح الكيل!"
-status: draft
+status: published
 published_at: 2024-01-16
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "جاء في تيسير التحرير لمحمد أمين البخاري الحنفي المتوفى عام 972 (3/183)"
-status: draft
+status: published
 published_at: 2017-10-03
 person: abu-jafar-al-khalifi
 ---

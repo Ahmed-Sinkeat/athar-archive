@@ -1,6 +1,6 @@
 ---
 title: "الوهم الذي تعيشه كثير من الفتيات أنهن يمكنهن أَن يحققن السعادة عن طريق أحلام الن"
-status: draft
+status: published
 published_at: 2020-01-17
 person: abu-jafar-al-khalifi
 ---

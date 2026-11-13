@@ -1,6 +1,6 @@
 ---
 title: "كنا نعد البخيل فينا من يقرض أخاه"
-status: draft
+status: published
 published_at: 2025-08-07
 person: abu-abdillah-firas-al-ramli
 ---

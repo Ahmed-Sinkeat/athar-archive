@@ -1,6 +1,6 @@
 ---
 title: "من جميل ما قال محمد البشير الابراهيمي كما في آثاره"
-status: draft
+status: published
 published_at: 2018-10-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

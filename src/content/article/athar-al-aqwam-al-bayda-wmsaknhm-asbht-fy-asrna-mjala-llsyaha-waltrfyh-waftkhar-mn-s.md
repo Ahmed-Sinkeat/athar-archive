@@ -1,6 +1,6 @@
 ---
 title: "آثار الأقوام البائدة ومساكنهم أصبحت في عصرنا مجالا للسياحة والترفيه وافتخار من س"
-status: draft
+status: published
 published_at: 2025-10-22
 person: abu-umair-imran-al-zubaidi
 ---

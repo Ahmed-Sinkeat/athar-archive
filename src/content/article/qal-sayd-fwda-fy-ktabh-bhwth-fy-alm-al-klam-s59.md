@@ -1,6 +1,6 @@
 ---
 title: "قال سعيد فودة في كتابه بحوث في علم الكلام ص٥٩"
-status: draft
+status: published
 published_at: 2018-04-24
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "مقصد الاجتماع لا ينبغي أن يسقط الحقوق الثابتة.."
-status: draft
+status: published
 published_at: 2021-05-08
 person: abu-jafar-al-khalifi
 ---

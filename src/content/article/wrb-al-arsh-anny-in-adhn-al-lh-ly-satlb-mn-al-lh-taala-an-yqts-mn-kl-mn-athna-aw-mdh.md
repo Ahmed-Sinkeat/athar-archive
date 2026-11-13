@@ -1,6 +1,6 @@
 ---
 title: "ورب العرش أنني -إن أذن الله لي- سأطلب من الله تعالى أن يقتص من كل من أثنى أو مدح"
-status: draft
+status: published
 published_at: 2023-11-21
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "يا أخي، اتقِّ الله هذا مُنكَر لا يجوز"
-status: draft
+status: published
 published_at: 2025-10-24
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran"]

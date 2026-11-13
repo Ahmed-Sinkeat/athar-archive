@@ -1,6 +1,6 @@
 ---
 title: "ذكر جليل ما يعمل به إلا قليل، فاعملوا به وعلموه"
-status: draft
+status: published
 published_at: 2023-07-08
 person: abu-abdillah-firas-al-ramli
 ---

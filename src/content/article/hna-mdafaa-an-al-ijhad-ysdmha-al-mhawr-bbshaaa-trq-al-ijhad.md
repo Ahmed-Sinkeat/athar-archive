@@ -1,6 +1,6 @@
 ---
 title: "هنا مدافعة عن الإجهاض يصدمها المحاور ببشاعة طرق الإجهاض."
-status: draft
+status: published
 published_at: 2026-09-24
 person: abu-jafar-al-khalifi
 ---

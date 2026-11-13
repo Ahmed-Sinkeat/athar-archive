@@ -1,6 +1,6 @@
 ---
 title: "في رحاب العباسي الأول !"
-status: draft
+status: published
 published_at: 2019-11-18
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

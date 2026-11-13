@@ -1,6 +1,6 @@
 ---
 title: "على بشاعة ما كنا نسمعه عن سجن صيدنايا، ظهر أنّه أبشع مما يتصوره عقل!"
-status: draft
+status: published
 published_at: 2024-12-09
 person: abu-umair-imran-al-zubaidi
 ---

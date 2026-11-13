@@ -1,6 +1,6 @@
 ---
 title: "الشيء الوحيد الذي يُسكِن الألم هو اليقين الجازم بأنّ الله سبحانه وتعالى مستوٍ فو"
-status: draft
+status: published
 published_at: 2023-10-13
 person: abu-umair-imran-al-zubaidi
 ---

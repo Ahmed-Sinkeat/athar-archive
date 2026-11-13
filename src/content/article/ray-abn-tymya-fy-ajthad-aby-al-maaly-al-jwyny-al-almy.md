@@ -1,6 +1,6 @@
 ---
 title: "رأي ابن تيمية في اجتهاد أبي المعالي الجويني العلمي"
-status: draft
+status: published
 published_at: 2023-04-26
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]

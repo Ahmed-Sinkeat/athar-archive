@@ -1,6 +1,6 @@
 ---
 title: "في رحاب التابعي الفقيه الذي نُسبت فضيلته للحجاج !"
-status: draft
+status: published
 published_at: 2019-12-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

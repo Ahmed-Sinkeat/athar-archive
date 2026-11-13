@@ -1,6 +1,6 @@
 ---
 title: "الولايات المتحدة الأمريكية هي أكثر بلاد العالم جذبا للكفاءات فقد هاجر إليها ثلاث"
-status: draft
+status: published
 published_at: 2017-10-11
 person: abu-jafar-al-khalifi
 ---

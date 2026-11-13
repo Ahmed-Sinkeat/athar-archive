@@ -1,6 +1,6 @@
 ---
 title: "كما قال حافظ إبراهيم أحياؤنا لا يرزقون بدرهم وبألف ألف يرزق الأموات ولعل البعض س"
-status: draft
+status: published
 published_at: 2018-07-04
 person: abu-jafar-al-khalifi
 ---

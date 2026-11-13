@@ -1,6 +1,6 @@
 ---
 title: "في كرة القدم الرياضة الشعبية الأولى في العالم والتي تشغل منافساتها عقول الكثير م"
-status: draft
+status: published
 published_at: 2018-07-19
 person: abu-jafar-al-khalifi
 ---

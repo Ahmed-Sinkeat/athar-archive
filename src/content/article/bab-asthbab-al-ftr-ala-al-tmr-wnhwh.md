@@ -1,6 +1,6 @@
 ---
 title: "باب استحباب الفطر على التمر ونحوه"
-status: draft
+status: published
 published_at: 2025-03-02
 person: abu-abdillah-firas-al-ramli
 ---

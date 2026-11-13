@@ -1,6 +1,6 @@
 ---
 title: "بين الفينة والأخرى أنكب على مشاهدة حلقات الفاضلين معاذ عليان ومحمود داود عن النص"
-status: draft
+status: published
 published_at: 2023-02-21
 person: abu-umair-imran-al-zubaidi
 ---

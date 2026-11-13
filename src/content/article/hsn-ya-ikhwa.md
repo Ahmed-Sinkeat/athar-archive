@@ -1,6 +1,6 @@
 ---
 title: "حسنٌ يا إخوة ..."
-status: draft
+status: published
 published_at: 2023-12-20
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

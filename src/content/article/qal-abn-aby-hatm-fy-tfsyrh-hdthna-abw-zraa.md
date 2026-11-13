@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي حاتم في تفسيره 15998 - حَدَّثَنَا أَبُو زُرْعَةَ"
-status: draft
+status: published
 published_at: 2017-06-11
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

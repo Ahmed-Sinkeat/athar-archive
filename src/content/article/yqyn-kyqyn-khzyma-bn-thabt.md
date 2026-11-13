@@ -1,6 +1,6 @@
 ---
 title: "يقين كيقين خزيمة بن ثابت."
-status: draft
+status: published
 published_at: 2024-01-31
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

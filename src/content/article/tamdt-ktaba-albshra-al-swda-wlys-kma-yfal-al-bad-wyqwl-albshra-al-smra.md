@@ -1,6 +1,6 @@
 ---
 title: "تعمدت كتابة \"البشرة السوداء\" وليس كما يفعل البعض ويقول \"البشرة السمراء\"."
-status: draft
+status: published
 published_at: 2023-12-19
 person: abu-umair-imran-al-zubaidi
 ---

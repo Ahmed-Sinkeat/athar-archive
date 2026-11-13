@@ -1,6 +1,6 @@
 ---
 title: "فإن الله يحب في الصلاة ما يحب في القتال..."
-status: draft
+status: published
 published_at: 2021-11-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "فائدة في غير مظانها في أثر الوحي والعقيدة الصحيحة على أخلاقِ الناس وبعدِهم عن ال"
-status: draft
+status: published
 published_at: 2021-10-17
 person: abu-jafar-al-khalifi
 ---

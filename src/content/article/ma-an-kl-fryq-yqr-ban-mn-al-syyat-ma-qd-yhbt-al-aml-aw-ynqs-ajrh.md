@@ -1,6 +1,6 @@
 ---
 title: "مع أن كل فريق يقر بأن من السيئات ما قد يحبط العمل أو ينقص أجره"
-status: draft
+status: published
 published_at: 2021-08-29
 person: abu-jafar-al-khalifi
 ---

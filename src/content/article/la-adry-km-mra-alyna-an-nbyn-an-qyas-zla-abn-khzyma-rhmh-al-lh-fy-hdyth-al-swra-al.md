@@ -1,6 +1,6 @@
 ---
 title: "لا أدري كم مرةً علينا أن نبين أنّ قياس زلة ابن خزيمة رحمه الله في حديث الصورة عل"
-status: draft
+status: published
 published_at: 2024-03-13
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

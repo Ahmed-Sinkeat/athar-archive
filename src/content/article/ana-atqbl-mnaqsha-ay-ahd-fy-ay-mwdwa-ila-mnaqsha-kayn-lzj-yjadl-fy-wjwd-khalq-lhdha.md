@@ -1,6 +1,6 @@
 ---
 title: "أنا أتقبل مناقشة أي أحد في أي موضوع إلا مناقشة كائن لزج يجادل في وجود خالق لهذا"
-status: draft
+status: published
 published_at: 2025-08-14
 person: abu-umair-imran-al-zubaidi
 ---

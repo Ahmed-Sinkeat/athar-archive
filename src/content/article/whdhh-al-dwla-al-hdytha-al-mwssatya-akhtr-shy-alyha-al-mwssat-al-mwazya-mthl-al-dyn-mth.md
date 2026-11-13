@@ -1,6 +1,6 @@
 ---
 title: "وهذه الدولة الحديثة المؤسساتية أخطر شيء عليها ( المؤسسات الموازية ) مثل الدين مث"
-status: draft
+status: published
 published_at: 2020-02-11
 person: abu-jafar-al-khalifi
 ---

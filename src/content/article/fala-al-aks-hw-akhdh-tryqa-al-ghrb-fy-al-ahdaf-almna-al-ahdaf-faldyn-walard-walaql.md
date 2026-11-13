@@ -1,6 +1,6 @@
 ---
 title: "فعلى العكس هو أخذ طريقة الغرب في الأهداف ( علمنة الأهداف ) فالدين والعرض والعقل"
-status: draft
+status: published
 published_at: 2019-03-20
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

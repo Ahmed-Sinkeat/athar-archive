@@ -1,6 +1,6 @@
 ---
 title: "من يتابع المدعو \"أحمد أبو الفتوح\" لما ينشره من أخبار عن الحرب"
-status: draft
+status: published
 published_at: 2023-12-11
 person: abu-umair-imran-al-zubaidi
 ---

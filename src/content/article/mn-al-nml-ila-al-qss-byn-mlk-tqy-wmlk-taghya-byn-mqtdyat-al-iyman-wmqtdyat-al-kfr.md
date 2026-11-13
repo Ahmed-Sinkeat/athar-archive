@@ -1,6 +1,6 @@
 ---
 title: "من النمل إلى القصص بين ملك تقي وملك طاغية (بين مقتضيات الإيمان ومقتضيات الكفر)"
-status: draft
+status: published
 published_at: 2026-02-19
 person: abu-jafar-al-khalifi
 ---

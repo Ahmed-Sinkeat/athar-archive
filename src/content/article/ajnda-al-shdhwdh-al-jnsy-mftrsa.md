@@ -1,6 +1,6 @@
 ---
 title: "2_ أجندة الشذوذ الجنسي مفترسة"
-status: draft
+status: published
 published_at: 2022-05-23
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

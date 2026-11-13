@@ -1,6 +1,6 @@
 ---
 title: "الأشعري المعاصر والإسفاف العلمي"
-status: draft
+status: published
 published_at: 2020-02-23
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "خرج علينا الملحد المصري شريف جابر بفيديو يستعطف به الناس بعد سجنه لأربعة أيام فق"
-status: draft
+status: published
 published_at: 2018-07-11
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

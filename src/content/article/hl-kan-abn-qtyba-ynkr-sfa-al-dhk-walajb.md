@@ -1,6 +1,6 @@
 ---
 title: "هل كان ابن قتيبة ينكر صفة الضحك والعَجَب؟"
-status: draft
+status: published
 published_at: 2024-10-08
 person: abu-jafar-al-khalifi
 ---

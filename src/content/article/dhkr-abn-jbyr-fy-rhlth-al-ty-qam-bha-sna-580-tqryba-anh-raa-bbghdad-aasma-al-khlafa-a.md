@@ -1,6 +1,6 @@
 ---
 title: "ذكر ابن جبير في رحلته التي قام بها سنة ٥٨٠ تقريبا أنه رأى ببغداد عاصمة الخلافة ا"
-status: draft
+status: published
 published_at: 2017-09-04
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "كل آية تقرأ في بيوتكم"
-status: draft
+status: published
 published_at: 2025-03-08
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

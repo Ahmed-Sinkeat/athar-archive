@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم الحنبلي في كتابه «أحكام أهل الذمة"
-status: draft
+status: published
 published_at: 2024-12-24
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

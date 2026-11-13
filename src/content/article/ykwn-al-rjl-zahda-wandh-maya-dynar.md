@@ -1,6 +1,6 @@
 ---
 title: "يكون الرجل زاهدا وعنده مائة دينار؟"
-status: draft
+status: published
 published_at: 2025-11-27
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

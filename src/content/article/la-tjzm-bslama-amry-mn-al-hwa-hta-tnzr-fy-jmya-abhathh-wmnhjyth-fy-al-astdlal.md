@@ -1,6 +1,6 @@
 ---
 title: "لا تجزم بسلامة امرئ من الهوى حتى تنظر في جميع أبحاثه ومنهجيته في الاستدلال…"
-status: draft
+status: published
 published_at: 2018-11-10
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

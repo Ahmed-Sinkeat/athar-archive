@@ -1,6 +1,6 @@
 ---
 title: "روى الجبرتي \"المؤرخ المصري في تاريخه المعروف\" عجائب الآثار تلك الحادثة التي وقعت"
-status: draft
+status: published
 published_at: 2017-07-08
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

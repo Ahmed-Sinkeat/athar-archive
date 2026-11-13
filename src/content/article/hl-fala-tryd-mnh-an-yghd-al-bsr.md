@@ -1,6 +1,6 @@
 ---
 title: "هل فعلا تريد منه أَن يغض البصر ؟"
-status: draft
+status: published
 published_at: 2020-01-10
 person: abu-jafar-al-khalifi
 ---

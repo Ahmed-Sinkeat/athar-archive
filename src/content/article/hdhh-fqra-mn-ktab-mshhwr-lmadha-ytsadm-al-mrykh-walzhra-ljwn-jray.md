@@ -1,6 +1,6 @@
 ---
 title: "هذه فقرة من كتاب مشهور «لماذا يتصادم المريخ والزهرة» لجون جراي."
-status: draft
+status: published
 published_at: 2024-03-06
 person: abu-jafar-al-khalifi
 ---

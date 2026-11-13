@@ -1,6 +1,6 @@
 ---
 title: "\"الأشاعرة وافقوا أهل السنة في كل شيء إلا باب الصفات\""
-status: draft
+status: published
 published_at: 2023-08-09
 person: abu-umair-imran-al-zubaidi
 ---

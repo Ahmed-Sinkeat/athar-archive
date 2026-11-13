@@ -1,6 +1,6 @@
 ---
 title: "أَوَلَمْ يَرَ الَّذِينَ كَفَرُوا أَنَّ السَّمَاوَاتِ وَالْأَرْضَ كَانَتَا رَتْقً"
-status: draft
+status: published
 published_at: 2025-08-25
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الله أكبر الله أكبر ولله الحمد."
-status: draft
+status: published
 published_at: 2024-06-30
 person: abu-umair-imran-al-zubaidi
 ---

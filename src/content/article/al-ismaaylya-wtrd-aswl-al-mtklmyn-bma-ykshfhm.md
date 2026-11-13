@@ -1,6 +1,6 @@
 ---
 title: "الإسماعيلية وطرد أصول المتكلمين بما يكشفهم."
-status: draft
+status: published
 published_at: 2021-05-19
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "قس قبطي في ألمانيا يحذرهم من هجرة المسلمين."
-status: draft
+status: published
 published_at: 2025-02-15
 person: abu-jafar-al-khalifi
 ---

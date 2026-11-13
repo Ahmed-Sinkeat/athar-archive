@@ -1,6 +1,6 @@
 ---
 title: "أحيانا من قوة الحفظ تنسى الأشياء البسيطة :\")"
-status: draft
+status: published
 published_at: 2023-07-30
 person: abu-abdillah-firas-al-ramli
 ---

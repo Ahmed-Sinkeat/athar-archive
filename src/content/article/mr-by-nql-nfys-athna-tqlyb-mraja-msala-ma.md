@@ -1,6 +1,6 @@
 ---
 title: "مرَّ بي نقل نفيس أثناء تقليب مراجِع مسألة ما"
-status: draft
+status: published
 published_at: 2026-07-04
 person: awwab-bin-muhammad
 topics: ["tahwid-al-ibada", "tazkiyat-al-nafs"]

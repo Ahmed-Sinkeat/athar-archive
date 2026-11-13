@@ -1,6 +1,6 @@
 ---
 title: "بمناسبة ذكر بعض مشاهير مواقع التواصل لبعض الآيات القرآنية مثل قوله تعالى"
-status: draft
+status: published
 published_at: 2018-10-27
 person: abu-jafar-al-khalifi
 ---

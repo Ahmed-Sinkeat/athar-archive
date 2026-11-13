@@ -1,6 +1,6 @@
 ---
 title: "هذا في كلية شرعية في الأردن لا أدري لو بوبنا عليه على طريقة الفقهاء ماذا نكتب هل"
-status: draft
+status: published
 published_at: 2018-06-26
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "رائحة الثياب الجديدة"
-status: draft
+status: published
 published_at: 2024-06-15
 person: abu-umair-imran-al-zubaidi
 ---

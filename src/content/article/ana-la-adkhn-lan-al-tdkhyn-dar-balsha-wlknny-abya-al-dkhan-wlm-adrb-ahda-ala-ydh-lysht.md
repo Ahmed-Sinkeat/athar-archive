@@ -1,6 +1,6 @@
 ---
 title: "أنا لا أدخن لأن التدخين ضار بالصحة ولكنني أبيع الدخان ولم أضرب أحدا على يده ليشت"
-status: draft
+status: published
 published_at: 2018-02-17
 person: abu-jafar-al-khalifi
 ---

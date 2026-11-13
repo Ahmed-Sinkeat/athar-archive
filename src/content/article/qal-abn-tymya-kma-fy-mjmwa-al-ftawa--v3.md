@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية كما في مجموع الفتاوى ( 7/ 486)"
-status: draft
+status: published
 published_at: 2018-08-27
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

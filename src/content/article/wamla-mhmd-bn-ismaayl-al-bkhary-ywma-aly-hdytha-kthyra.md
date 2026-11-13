@@ -1,6 +1,6 @@
 ---
 title: "وَأَملَى ( محمد بن إسماعيل البخاري ) يَوْماً عليَّ حَدِيْثاً كَثِيْراً"
-status: draft
+status: published
 published_at: 2018-07-28
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "أعمالهم تظلهم وتصحبهم"
-status: draft
+status: published
 published_at: 2025-01-02
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

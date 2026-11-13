@@ -1,6 +1,6 @@
 ---
 title: "من لم يصل فلا دين له"
-status: draft
+status: published
 published_at: 2025-02-11
 person: abu-abdillah-firas-al-ramli
 ---

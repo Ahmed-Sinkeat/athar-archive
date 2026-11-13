@@ -1,6 +1,6 @@
 ---
 title: "خبر والتعليق عليه .."
-status: draft
+status: published
 published_at: 2019-07-20
 person: abu-jafar-al-khalifi
 ---

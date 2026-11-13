@@ -1,6 +1,6 @@
 ---
 title: "مذاكرة سنة النبي ﷺ"
-status: draft
+status: published
 published_at: 2026-02-10
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "هذا كلام فاسد؛ بل ومتناقض!"
-status: draft
+status: published
 published_at: 2023-09-14
 person: abu-umair-imran-al-zubaidi
 ---

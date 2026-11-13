@@ -1,6 +1,6 @@
 ---
 title: "الذي ينبغي أن نستفيده من هذا الخبر توكيد عدة معطيات"
-status: draft
+status: published
 published_at: 2021-05-05
 person: abu-jafar-al-khalifi
 ---

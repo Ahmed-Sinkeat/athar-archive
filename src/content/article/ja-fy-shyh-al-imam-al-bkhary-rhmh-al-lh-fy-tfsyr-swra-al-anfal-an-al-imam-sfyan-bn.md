@@ -1,6 +1,6 @@
 ---
 title: "◆ جاء في صحيح الإمام البخاري رحمه الله في تفسير سورة الأنفال أن الإمام سفيان بن"
-status: draft
+status: published
 published_at: 2025-07-23
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran"]

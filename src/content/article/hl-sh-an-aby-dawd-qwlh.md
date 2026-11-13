@@ -1,6 +1,6 @@
 ---
 title: "هل صح عن أبي داود قوله"
-status: draft
+status: published
 published_at: 2025-02-25
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

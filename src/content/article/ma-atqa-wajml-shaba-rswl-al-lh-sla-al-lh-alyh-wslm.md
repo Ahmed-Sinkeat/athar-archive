@@ -1,6 +1,6 @@
 ---
 title: "ما أتقى وأجمل صحابة رسول الله صلّى الله عليه وسلّم!."
-status: draft
+status: published
 published_at: 2023-04-18
 person: abu-umair-imran-al-zubaidi
 topics: ["al-imamah-was-sahabah"]

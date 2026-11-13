@@ -1,6 +1,6 @@
 ---
 title: "الاستعباد الحديث في ألمانيا , moderne Sklaverei"
-status: draft
+status: published
 published_at: 2019-04-11
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

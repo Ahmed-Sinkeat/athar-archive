@@ -1,6 +1,6 @@
 ---
 title: "قال أبو يعلى في إبطال التأويلات"
-status: draft
+status: published
 published_at: 2018-01-04
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

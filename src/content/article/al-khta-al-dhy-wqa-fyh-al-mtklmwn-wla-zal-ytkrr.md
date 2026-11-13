@@ -1,6 +1,6 @@
 ---
 title: "الخطأ الذي وقع فيه المتكلمون ولا زال يتكرر"
-status: draft
+status: published
 published_at: 2020-04-19
 person: abu-jafar-al-khalifi
 ---

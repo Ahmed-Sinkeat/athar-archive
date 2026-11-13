@@ -1,6 +1,6 @@
 ---
 title: "هذا كتيب لأحد الشيوخ في مصر قبل ستة أعوام كُتب في الرد على علي جمعة في قوله بأنه"
-status: draft
+status: published
 published_at: 2024-03-21
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "مجرد أن نشرت كلام الإمام عبد الغني ثم وتعقيبي عليه"
-status: draft
+status: published
 published_at: 2024-02-26
 person: abu-umair-imran-al-zubaidi
 ---

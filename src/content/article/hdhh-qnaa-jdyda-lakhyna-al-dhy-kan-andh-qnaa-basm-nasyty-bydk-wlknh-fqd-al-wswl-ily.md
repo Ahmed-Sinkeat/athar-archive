@@ -1,6 +1,6 @@
 ---
 title: "هذه قناة جديدة لأخينا الذي كان عنده قناة باسم \"ناصيتي بيدك\" ولكنه فقد الوصول إلي"
-status: draft
+status: published
 published_at: 2024-07-23
 person: abu-umair-imran-al-zubaidi
 ---

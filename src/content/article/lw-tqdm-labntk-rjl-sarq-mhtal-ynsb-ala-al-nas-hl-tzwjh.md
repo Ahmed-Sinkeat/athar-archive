@@ -1,6 +1,6 @@
 ---
 title: "لو تقدم لابنتك رجل سارق، محتال، ينصب على الناس، هل تزوجه؟"
-status: draft
+status: published
 published_at: 2026-08-10
 person: abu-umair-imran-al-zubaidi
 ---

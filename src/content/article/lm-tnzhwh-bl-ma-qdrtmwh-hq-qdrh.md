@@ -1,6 +1,6 @@
 ---
 title: "لَم تنزهوه بل ما قدرتموه حق قدره!"
-status: draft
+status: published
 published_at: 2021-04-20
 person: abu-jafar-al-khalifi
 ---

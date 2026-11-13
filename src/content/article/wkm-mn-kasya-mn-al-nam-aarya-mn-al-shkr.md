@@ -1,6 +1,6 @@
 ---
 title: "وكم من كاسية من النعم عارية من الشكر"
-status: draft
+status: published
 published_at: 2021-02-14
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

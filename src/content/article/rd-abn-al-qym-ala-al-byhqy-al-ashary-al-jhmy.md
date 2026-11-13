@@ -1,6 +1,6 @@
 ---
 title: "رد ابن القيم على البيهقي الأشعري الجهمي"
-status: draft
+status: published
 published_at: 2023-07-14
 person: abu-abdillah-firas-al-ramli
 ---

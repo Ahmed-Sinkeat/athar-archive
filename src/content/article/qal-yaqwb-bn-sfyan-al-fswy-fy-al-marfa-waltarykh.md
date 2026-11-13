@@ -1,6 +1,6 @@
 ---
 title: "قال يعقوب بن سفيان الفسوي في المعرفة والتاريخ (2/82)"
-status: draft
+status: published
 published_at: 2017-09-30
 person: abu-jafar-al-khalifi
 ---

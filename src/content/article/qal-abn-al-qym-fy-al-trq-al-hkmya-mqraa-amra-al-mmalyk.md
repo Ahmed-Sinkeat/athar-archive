@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم في الطرق الحكمية مقرعاً أمراء المماليك"
-status: draft
+status: published
 published_at: 2018-02-06
 person: abu-jafar-al-khalifi
 ---

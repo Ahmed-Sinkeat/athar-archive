@@ -1,6 +1,6 @@
 ---
 title: "لن يصلح هذه الأمة إلا ما أصلح أولها"
-status: draft
+status: published
 published_at: 2023-08-03
 person: abu-abdillah-firas-al-ramli
 ---

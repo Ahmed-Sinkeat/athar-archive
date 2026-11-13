@@ -1,6 +1,6 @@
 ---
 title: "التحرش والإغراء الجنسي"
-status: draft
+status: published
 published_at: 2018-03-15
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "يوما بعد يوم يتراءى لي اقتراب وقت اعتزال الكتابة لظروف ما."
-status: draft
+status: published
 published_at: 2025-02-25
 person: abu-umair-imran-al-zubaidi
 ---

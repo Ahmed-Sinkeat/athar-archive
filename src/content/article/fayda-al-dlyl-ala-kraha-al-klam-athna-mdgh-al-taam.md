@@ -1,6 +1,6 @@
 ---
 title: "فائدة: الدليل على كراهة الكلام أثناء مضغ الطعام..."
-status: draft
+status: published
 published_at: 2025-09-28
 person: abu-jafar-al-khalifi
 ---

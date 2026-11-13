@@ -1,6 +1,6 @@
 ---
 title: "لا تلق منجلك بل أعطهم مناجل..."
-status: draft
+status: published
 published_at: 2025-08-18
 person: abu-jafar-al-khalifi
 ---

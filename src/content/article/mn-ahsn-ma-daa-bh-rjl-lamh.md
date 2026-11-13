@@ -1,6 +1,6 @@
 ---
 title: "من أحسن ما دعا به رجل لأمه"
-status: draft
+status: published
 published_at: 2018-01-05
 person: abu-jafar-al-khalifi
 ---

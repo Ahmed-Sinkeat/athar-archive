@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي الدنيا في محاسبة النفس 32 - حَدَّثَنَا سَعِيدُ بْنُ سُلَيْمَانَ الْو"
-status: draft
+status: published
 published_at: 2017-08-30
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "تسألني وهذا يحدثك عن عمر!"
-status: draft
+status: published
 published_at: 2024-06-06
 person: abu-abdillah-firas-al-ramli
 ---

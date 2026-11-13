@@ -1,6 +1,6 @@
 ---
 title: "مقالة من متحف الحرب العالمية الوطني في إثبات أن أغلب التطورات التقنية حصلت بعد ا"
-status: draft
+status: published
 published_at: 2025-09-20
 person: abu-jafar-al-khalifi
 ---

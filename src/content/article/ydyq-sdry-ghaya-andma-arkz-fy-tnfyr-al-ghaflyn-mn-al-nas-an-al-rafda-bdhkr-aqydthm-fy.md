@@ -1,6 +1,6 @@
 ---
 title: "يضيق صدري غاية عندما ٱركز في تنفير الغافلين من الناس عن الرافضة بذكر عقيدتهم في"
-status: draft
+status: published
 published_at: 2026-03-02
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

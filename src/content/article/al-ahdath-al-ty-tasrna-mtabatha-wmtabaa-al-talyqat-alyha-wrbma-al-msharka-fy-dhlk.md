@@ -1,6 +1,6 @@
 ---
 title: "الأحداث التي تأسرنا متابعتها ومتابعة التعليقات عليها وربما المشاركة في ذلك"
-status: draft
+status: published
 published_at: 2019-06-19
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "جواب شبهة في غير مظانه"
-status: draft
+status: published
 published_at: 2020-02-17
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "يَا أَيُّهَا الَّذِينَ آمَنُوا عَلَيْكُمْ أَنفُسَكُمْ ۖ لَا يَضُرُّكُم مَّن ضَلّ"
-status: draft
+status: published
 published_at: 2025-07-09
 person: abu-umair-imran-al-zubaidi
 ---

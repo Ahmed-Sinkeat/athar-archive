@@ -1,6 +1,6 @@
 ---
 title: "أحسن الناس تكبيراً..."
-status: draft
+status: published
 published_at: 2024-06-14
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "عندما جاء الإسلام قعَّد النبي ﷺ في الأنفس (التوحيد) و(الإيمان)"
-status: draft
+status: published
 published_at: 2025-07-21
 person: awwab-bin-muhammad
 topics: ["tahwid-al-ibada"]

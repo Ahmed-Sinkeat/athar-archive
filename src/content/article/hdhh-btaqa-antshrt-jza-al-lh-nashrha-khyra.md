@@ -1,6 +1,6 @@
 ---
 title: "هذه بطاقة انتشرت جزى الله ناشرها خيراً"
-status: draft
+status: published
 published_at: 2024-06-12
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

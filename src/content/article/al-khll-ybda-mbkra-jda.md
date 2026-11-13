@@ -1,6 +1,6 @@
 ---
 title: "الخلل يبدأ مُبكرًا جِدًا!."
-status: draft
+status: published
 published_at: 2022-10-11
 person: abu-umair-imran-al-zubaidi
 ---

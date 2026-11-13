@@ -1,6 +1,6 @@
 ---
 title: "خطأ."
-status: draft
+status: published
 published_at: 2024-05-20
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

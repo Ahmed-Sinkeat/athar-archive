@@ -1,6 +1,6 @@
 ---
 title: "كان الحافظ عمرو بن قيس الملائي أبو عبد الله الكوفي يقول"
-status: draft
+status: published
 published_at: 2018-12-17
 person: abu-jafar-al-khalifi
 ---

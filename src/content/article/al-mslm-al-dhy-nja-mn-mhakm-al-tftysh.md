@@ -1,6 +1,6 @@
 ---
 title: "المسلم الذي نجا من محاكم التفتيش"
-status: draft
+status: published
 published_at: 2019-08-18
 person: abu-jafar-al-khalifi
 ---

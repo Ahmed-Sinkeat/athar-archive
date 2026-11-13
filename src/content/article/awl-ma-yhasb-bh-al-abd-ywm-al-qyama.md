@@ -1,6 +1,6 @@
 ---
 title: "أول ما يحاسب به العبد يوم القيامة"
-status: draft
+status: published
 published_at: 2024-12-31
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال النووي في روضة الطالبين"
-status: draft
+status: published
 published_at: 2019-03-03
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

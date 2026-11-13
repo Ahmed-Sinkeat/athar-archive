@@ -1,6 +1,6 @@
 ---
 title: "بمناسبة تحرير حمص: ثناء الإمام أحمد على أهل حمص بالسُّنة..."
-status: draft
+status: published
 published_at: 2024-12-08
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

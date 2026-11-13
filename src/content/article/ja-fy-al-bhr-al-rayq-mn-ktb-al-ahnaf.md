@@ -1,6 +1,6 @@
 ---
 title: "جاء في البحر الرائق من كتب الأحناف"
-status: draft
+status: published
 published_at: 2017-09-19
 person: abu-jafar-al-khalifi
 ---

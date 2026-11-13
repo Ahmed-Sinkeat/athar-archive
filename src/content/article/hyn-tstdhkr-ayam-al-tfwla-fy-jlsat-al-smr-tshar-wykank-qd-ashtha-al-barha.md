@@ -1,6 +1,6 @@
 ---
 title: "حين تستذكر أيام الطفولة في جلسات السمر تشعر ويكأنّك قد عشتها البارحة"
-status: draft
+status: published
 published_at: 2023-07-28
 person: abu-umair-imran-al-zubaidi
 ---

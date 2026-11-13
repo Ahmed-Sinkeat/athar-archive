@@ -1,6 +1,6 @@
 ---
 title: "لطيفة : من أين جاءت فكرة فيس آب !"
-status: draft
+status: published
 published_at: 2020-04-02
 person: abu-jafar-al-khalifi
 ---

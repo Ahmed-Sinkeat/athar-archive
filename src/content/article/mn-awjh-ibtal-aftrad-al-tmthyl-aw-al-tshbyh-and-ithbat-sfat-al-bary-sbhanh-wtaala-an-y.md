@@ -1,6 +1,6 @@
 ---
 title: "من أوجه إبطال افتراض التمثيل أو التشبيه عند إثبات صفات الباري سبحانه وتعالى أن ي"
-status: draft
+status: published
 published_at: 2024-02-24
 person: abu-umair-imran-al-zubaidi
 ---

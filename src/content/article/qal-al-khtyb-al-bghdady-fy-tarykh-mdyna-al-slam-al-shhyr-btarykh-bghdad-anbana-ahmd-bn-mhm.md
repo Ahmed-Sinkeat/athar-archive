@@ -1,6 +1,6 @@
 ---
 title: "قال الخطيب البغدادي في تاريخ مدينة السلام الشهير بتاريخ بغداد أنبأنا أحمد بن محم"
-status: draft
+status: published
 published_at: 2018-12-07
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "من أكثر صفات الباري سبحانه وتعالى التي تأسر قلبي هي ضحكه جل وعلا."
-status: draft
+status: published
 published_at: 2023-11-03
 person: abu-umair-imran-al-zubaidi
 ---

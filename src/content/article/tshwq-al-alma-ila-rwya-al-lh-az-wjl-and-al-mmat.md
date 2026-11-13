@@ -1,6 +1,6 @@
 ---
 title: "تشوق العلماء إلى رؤية الله عز وجل عند الممات"
-status: draft
+status: published
 published_at: 2025-09-14
 person: abu-abdillah-firas-al-ramli
 ---

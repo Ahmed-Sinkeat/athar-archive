@@ -1,6 +1,6 @@
 ---
 title: "&rlm;حاكم مينيسوتا تيم والتز يوقّع لإلغاء قانون مينيسوتا \"حماية المواليد الحيين\""
-status: draft
+status: published
 published_at: 2026-10-10
 person: abu-jafar-al-khalifi
 ---

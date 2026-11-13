@@ -1,6 +1,6 @@
 ---
 title: "قال البيهقي في السنن الكبرى 6721 - أخبرنا أبو حازم الحافظ أنبأ أبو أحمد بن محمد"
-status: draft
+status: published
 published_at: 2018-02-10
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

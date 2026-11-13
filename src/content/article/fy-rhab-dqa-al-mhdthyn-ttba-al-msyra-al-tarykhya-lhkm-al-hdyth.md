@@ -1,6 +1,6 @@
 ---
 title: "في رحاب دقة المحدِّثين: تتبع المسيرة التاريخية لحكم الحديث..."
-status: draft
+status: published
 published_at: 2020-12-30
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

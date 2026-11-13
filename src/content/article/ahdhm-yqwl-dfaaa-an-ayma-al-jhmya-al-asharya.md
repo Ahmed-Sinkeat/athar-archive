@@ -1,6 +1,6 @@
 ---
 title: "أحدهم يقول دفاعًا عن أئمة الجهمية الأشعرية"
-status: draft
+status: published
 published_at: 2024-02-22
 person: abu-umair-imran-al-zubaidi
 ---

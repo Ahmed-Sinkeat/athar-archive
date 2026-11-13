@@ -1,6 +1,6 @@
 ---
 title: "باب في النهي عن الحلف بغير الله"
-status: draft
+status: published
 published_at: 2025-04-24
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "لن تكون جميلا بالعلم حتى تكون بما علمت عاملا"
-status: draft
+status: published
 published_at: 2025-07-25
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب الأصل للشيباني وهو من أقدم كتب الفقه على مذهب أهل الرأي _ الذين كان"
-status: draft
+status: published
 published_at: 2017-11-11
 person: abu-jafar-al-khalifi
 ---

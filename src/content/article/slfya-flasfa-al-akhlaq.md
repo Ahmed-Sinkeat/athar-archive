@@ -1,6 +1,6 @@
 ---
 title: "سلفية فلاسفة الأخلاق !"
-status: draft
+status: published
 published_at: 2020-02-05
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

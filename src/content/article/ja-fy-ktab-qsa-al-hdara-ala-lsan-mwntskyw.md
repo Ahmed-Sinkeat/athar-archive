@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب قصة الحضارة (36/161) على لسان مونتسكيو"
-status: draft
+status: published
 published_at: 2017-09-25
 person: abu-jafar-al-khalifi
 ---

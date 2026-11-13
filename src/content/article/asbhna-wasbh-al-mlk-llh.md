@@ -1,6 +1,6 @@
 ---
 title: "أصبحنا وأصبح الملك لله"
-status: draft
+status: published
 published_at: 2023-12-22
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا بحث مختصر من منظمة التحكم بالامراض أو CDC"
-status: draft
+status: published
 published_at: 2019-03-05
 person: abu-jafar-al-khalifi
 ---

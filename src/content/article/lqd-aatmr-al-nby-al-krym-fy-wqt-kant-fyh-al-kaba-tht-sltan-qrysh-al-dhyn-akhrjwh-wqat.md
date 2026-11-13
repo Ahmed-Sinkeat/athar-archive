@@ -1,6 +1,6 @@
 ---
 title: "لقد اعتمر النبي الكريم ﷺ في وقت كانت فيه الكعبة تحت سلطان قريش الذين أخرجوه وقات"
-status: draft
+status: published
 published_at: 2018-08-17
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "التفريق بين القادة السياسيين والعسكريين وبين جنود الجماعة لا معنى له حقيقة"
-status: draft
+status: published
 published_at: 2025-10-12
 person: abu-umair-imran-al-zubaidi
 ---

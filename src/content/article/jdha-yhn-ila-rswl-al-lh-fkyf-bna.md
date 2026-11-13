@@ -1,6 +1,6 @@
 ---
 title: "جذع يحن إلى رسول الله ﷺ فكيف بنا؟"
-status: draft
+status: published
 published_at: 2023-11-24
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "قال شيخ الإسلام الأنصاري الهروي في تفسيره لآية الاستواء"
-status: draft
+status: published
 published_at: 2021-08-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]

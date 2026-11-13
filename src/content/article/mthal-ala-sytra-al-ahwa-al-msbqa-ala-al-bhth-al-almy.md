@@ -1,6 +1,6 @@
 ---
 title: "مثال على سيطرة الأهواء المسبقة على البحث العلمي.."
-status: draft
+status: published
 published_at: 2021-08-21
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

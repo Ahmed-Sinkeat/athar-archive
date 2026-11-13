@@ -1,6 +1,6 @@
 ---
 title: "أصبح الناس ما بين شامت أو مشفق أو معتبر بما حصل لأهل الصين غير أنه قبل هذا الفير"
-status: draft
+status: published
 published_at: 2020-02-11
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

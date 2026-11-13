@@ -1,6 +1,6 @@
 ---
 title: "مشاهد إخراج الرُضّع مِن تحت الأتقاض لا يجب أن تمرّ بمشاعر الفرح والبهجة فحسب؛ بل"
-status: draft
+status: published
 published_at: 2023-02-12
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من عجيب فقه عمر بن الخطاب رضي الله عنه"
-status: draft
+status: published
 published_at: 2020-07-30
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية في جواب الاعتراضات المصرية على الفتوى الحموية"
-status: draft
+status: published
 published_at: 2018-08-23
 person: abu-jafar-al-khalifi
 ---

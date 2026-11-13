@@ -1,6 +1,6 @@
 ---
 title: "قَالَ لَوْ أَنَّ لِي بِكُمْ قُوَّةً أَوْ آوِي إِلَىٰ رُكْنٍ شَدِيدٍ (80) سورة هو"
-status: draft
+status: published
 published_at: 2025-04-26
 person: abu-umair-imran-al-zubaidi
 ---

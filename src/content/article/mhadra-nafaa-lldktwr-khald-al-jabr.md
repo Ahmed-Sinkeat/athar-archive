@@ -1,6 +1,6 @@
 ---
 title: "محاضرة نافعة للدكتور خالد الجابر"
-status: draft
+status: published
 published_at: 2021-10-14
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

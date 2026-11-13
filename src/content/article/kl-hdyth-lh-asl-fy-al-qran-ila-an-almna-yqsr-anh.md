@@ -1,6 +1,6 @@
 ---
 title: "كل حديث له أصل في القرآن إلا أن علمنا يقصر عنه"
-status: draft
+status: published
 published_at: 2024-02-24
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

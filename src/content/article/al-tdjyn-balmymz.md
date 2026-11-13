@@ -1,6 +1,6 @@
 ---
 title: "التدجين بـ(الميمز)…"
-status: draft
+status: published
 published_at: 2024-11-05
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

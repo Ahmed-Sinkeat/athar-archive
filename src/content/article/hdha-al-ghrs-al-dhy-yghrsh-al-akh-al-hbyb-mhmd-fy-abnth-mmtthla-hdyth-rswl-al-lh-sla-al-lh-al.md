@@ -1,6 +1,6 @@
 ---
 title: "هذا الغرس الذي يغرسه الأخ الحبيب محمد في ابنته ممتثلا حديث رسول الله صلى الله عل"
-status: draft
+status: published
 published_at: 2019-12-26
 person: abu-jafar-al-khalifi
 ---

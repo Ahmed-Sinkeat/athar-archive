@@ -1,6 +1,6 @@
 ---
 title: "أحد الأخوة الكرام ناصحني في المنشور الذي انتقدت فيه \"بسخرية\" أحد الدعاة دون ذكر"
-status: draft
+status: published
 published_at: 2023-11-14
 person: abu-umair-imran-al-zubaidi
 ---

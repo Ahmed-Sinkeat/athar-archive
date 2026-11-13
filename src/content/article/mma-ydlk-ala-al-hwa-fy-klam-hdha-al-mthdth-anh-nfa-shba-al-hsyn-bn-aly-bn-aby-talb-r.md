@@ -1,6 +1,6 @@
 ---
 title: "مما يدلك على الهوى في كلام هذا المتحدث أنه نفى صحبة الحسين بن علي بن أبي طالب -ر"
-status: draft
+status: published
 published_at: 2024-12-14
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

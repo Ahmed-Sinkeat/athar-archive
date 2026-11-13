@@ -1,6 +1,6 @@
 ---
 title: "قال الرازي في المحصول (4/91)"
-status: draft
+status: published
 published_at: 2017-09-26
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

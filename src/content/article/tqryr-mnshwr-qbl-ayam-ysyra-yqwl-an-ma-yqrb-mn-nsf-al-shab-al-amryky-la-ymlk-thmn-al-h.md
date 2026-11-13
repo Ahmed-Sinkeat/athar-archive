@@ -1,6 +1,6 @@
 ---
 title: "تقرير منشور قبل أيام يسيرة يقول أن ما يقرب من نصف الشعب الأمريكي لا يملك ثمن الح"
-status: draft
+status: published
 published_at: 2018-05-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

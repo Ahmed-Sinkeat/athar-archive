@@ -1,6 +1,6 @@
 ---
 title: "ماذا لو كان الأمر معكوساً؟ (التدخين من عادة صحية إلى شيء قاتل)."
-status: draft
+status: published
 published_at: 2021-07-09
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "كوريا الجنوبية التي افتتن كثير من أبناء المسلمين بموادها الإعلامية من مسلسلات وأ"
-status: draft
+status: published
 published_at: 2022-11-19
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال الخرائطي في اعتلال القلوب 401 - حدثنا أبو عبد الرحمن علي بن المبارك قال"
-status: draft
+status: published
 published_at: 2017-11-19
 person: abu-jafar-al-khalifi
 ---

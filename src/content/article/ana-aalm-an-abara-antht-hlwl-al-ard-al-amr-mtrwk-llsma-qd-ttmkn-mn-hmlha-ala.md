@@ -1,6 +1,6 @@
 ---
 title: "أنا أعلم أنّ عبارة \"انتهت حلول الأرض؛ الأمر متروك للسماء\" قد تتمكن من حملها على"
-status: draft
+status: published
 published_at: 2024-10-27
 person: abu-umair-imran-al-zubaidi
 ---

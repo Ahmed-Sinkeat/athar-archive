@@ -1,6 +1,6 @@
 ---
 title: "بين الهرمونات والذكورة السامة..."
-status: draft
+status: published
 published_at: 2025-01-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

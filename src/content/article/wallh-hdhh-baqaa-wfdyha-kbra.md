@@ -1,6 +1,6 @@
 ---
 title: "والله هذه باقعة وفضيحة كبرى!"
-status: draft
+status: published
 published_at: 2024-07-04
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "تدبُّر في قصص إحياء الموتى في سورة البقرة..."
-status: draft
+status: published
 published_at: 2024-07-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-iman"]

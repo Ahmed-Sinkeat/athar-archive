@@ -1,6 +1,6 @@
 ---
 title: "إخوة يوسف كانوا أنبياء صلوات ربي وسلامه عليهم!"
-status: draft
+status: published
 published_at: 2024-02-12
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "أخلاق سماوية !"
-status: draft
+status: published
 published_at: 2020-04-27
 person: abu-jafar-al-khalifi
 ---

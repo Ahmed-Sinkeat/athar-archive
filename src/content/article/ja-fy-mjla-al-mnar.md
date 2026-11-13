@@ -1,6 +1,6 @@
 ---
 title: "جاء في مجلة المنار"
-status: draft
+status: published
 published_at: 2018-08-03
 person: abu-jafar-al-khalifi
 ---

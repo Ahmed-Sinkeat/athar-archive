@@ -1,6 +1,6 @@
 ---
 title: "ليلة استقبال الملائكة"
-status: draft
+status: published
 published_at: 2023-04-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

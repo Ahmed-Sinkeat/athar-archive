@@ -1,6 +1,6 @@
 ---
 title: "تكلفة المعيشة الغالية تدفع النساء في بريطانيا للدعارة ولا يكن قادرات على رفض الز"
-status: draft
+status: published
 published_at: 2022-08-25
 person: abu-jafar-al-khalifi
 ---

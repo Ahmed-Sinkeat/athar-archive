@@ -1,6 +1,6 @@
 ---
 title: "لفت نظري قول المتكلم: (ما بعرف هذا عقيدته جبرية عقيدته أيش، والله ما بعرف)."
-status: draft
+status: published
 published_at: 2025-02-06
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الدرجة الثانية"
-status: draft
+status: published
 published_at: 2020-09-12
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat", "al-sunnah-wal-bidah"]

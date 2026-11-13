@@ -1,6 +1,6 @@
 ---
 title: "صرح الأمير البريطاني هاري عن ندمه على رؤية بعض المشاهد الحميمية لزوجته \"ميغان ما"
-status: draft
+status: published
 published_at: 2024-04-07
 person: abu-jafar-al-khalifi
 ---

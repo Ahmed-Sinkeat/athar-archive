@@ -1,6 +1,6 @@
 ---
 title: "لسنا بحاجة لدراسات حتى نعلم فوائد الاتصال بالله تبارك وتعالى"
-status: draft
+status: published
 published_at: 2018-07-10
 person: abu-jafar-al-khalifi
 ---

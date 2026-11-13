@@ -1,6 +1,6 @@
 ---
 title: "تقول لا ألبس الحجاب حتى أقتنع"
-status: draft
+status: published
 published_at: 2018-07-09
 person: abu-jafar-al-khalifi
 ---

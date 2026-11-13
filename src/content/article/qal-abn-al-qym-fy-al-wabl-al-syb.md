@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم في الوابل الصيب"
-status: draft
+status: published
 published_at: 2017-06-05
 person: abu-jafar-al-khalifi
 ---

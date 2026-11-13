@@ -1,6 +1,6 @@
 ---
 title: "في بعض الأحيان تتحرك يدك أو رجلك وأنت مستلقٍ على ظهرك حركة لا إرادية منك."
-status: draft
+status: published
 published_at: 2023-09-04
 person: abu-umair-imran-al-zubaidi
 ---

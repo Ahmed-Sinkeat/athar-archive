@@ -1,6 +1,6 @@
 ---
 title: "قانون التسوية بين الذكر والأنثى مطلقا في الميراث مطلقا ليس مخالفا للشريعة فحسب و"
-status: draft
+status: published
 published_at: 2018-08-16
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

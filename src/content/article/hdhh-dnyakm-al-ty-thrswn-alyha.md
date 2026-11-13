@@ -1,6 +1,6 @@
 ---
 title: "هذه دنياكم التي تحرصون عليها"
-status: draft
+status: published
 published_at: 2024-01-13
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

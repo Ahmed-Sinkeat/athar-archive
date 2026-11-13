@@ -1,6 +1,6 @@
 ---
 title: "تذكر الأميرة سالمة بنت السيد سعيد البوسعيدي في كتابهامذكرات أميرة عربية أن التسا"
-status: draft
+status: published
 published_at: 2017-07-09
 person: abu-jafar-al-khalifi
 ---

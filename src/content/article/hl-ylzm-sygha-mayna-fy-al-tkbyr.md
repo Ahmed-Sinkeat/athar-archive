@@ -1,6 +1,6 @@
 ---
 title: "هل يلزم صيغة معينة في التكبير ؟"
-status: draft
+status: published
 published_at: 2024-04-09
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لماذا وقوع المرأة في الزنا أقبح من وقوع الرجل فيه؟"
-status: draft
+status: published
 published_at: 2024-03-27
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

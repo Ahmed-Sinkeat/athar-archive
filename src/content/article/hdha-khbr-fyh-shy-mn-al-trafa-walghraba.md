@@ -1,6 +1,6 @@
 ---
 title: "هذا خبر فيه شيء من الطرافة والغرابة."
-status: draft
+status: published
 published_at: 2020-11-28
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

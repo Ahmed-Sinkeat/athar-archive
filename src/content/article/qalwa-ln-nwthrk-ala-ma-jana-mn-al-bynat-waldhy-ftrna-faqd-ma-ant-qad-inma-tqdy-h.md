@@ -1,6 +1,6 @@
 ---
 title: "( قالوا لن نؤثرك على ما جاءنا من البينات والذي فطرنا فاقض ما أنت قاض إنما تقضي ه"
-status: draft
+status: published
 published_at: 2019-05-11
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

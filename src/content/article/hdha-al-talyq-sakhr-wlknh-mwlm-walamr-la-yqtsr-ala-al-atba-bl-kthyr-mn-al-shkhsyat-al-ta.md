@@ -1,6 +1,6 @@
 ---
 title: "هذا التعليق ساخر ولكنه مؤلم والأمر لا يقتصر على الأطباء بل كثير من الشخصيات التا"
-status: draft
+status: published
 published_at: 2020-04-04
 person: abu-jafar-al-khalifi
 ---

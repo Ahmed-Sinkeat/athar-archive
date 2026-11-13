@@ -1,6 +1,6 @@
 ---
 title: "وَإِذْ قُلْنَا لِلْمَلَائِكَةِ اسْجُدُوا لِآدَمَ فَسَجَدُوا إِلَّا إِبْلِيسَ قَا"
-status: draft
+status: published
 published_at: 2025-09-10
 person: abu-umair-imran-al-zubaidi
 ---

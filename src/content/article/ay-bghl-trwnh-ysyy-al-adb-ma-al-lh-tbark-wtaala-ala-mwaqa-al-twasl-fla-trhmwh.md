@@ -1,6 +1,6 @@
 ---
 title: "أي بغل ترونه يسيئ الأدب مع الله تبارك وتعالى على مواقع التواصل فلا ترحموه"
-status: draft
+status: published
 published_at: 2023-10-28
 person: abu-umair-imran-al-zubaidi
 ---

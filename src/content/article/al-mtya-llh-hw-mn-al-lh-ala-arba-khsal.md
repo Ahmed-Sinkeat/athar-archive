@@ -1,6 +1,6 @@
 ---
 title: "المطيع لله هو من الله على أربع خصال"
-status: draft
+status: published
 published_at: 2019-01-06
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

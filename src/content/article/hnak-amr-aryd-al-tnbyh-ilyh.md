@@ -1,6 +1,6 @@
 ---
 title: "هناك أمر أريد التنبيه إليه."
-status: draft
+status: published
 published_at: 2023-12-14
 person: abu-umair-imran-al-zubaidi
 ---

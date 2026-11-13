@@ -1,6 +1,6 @@
 ---
 title: "الهدف الأساسي والأسمى والأعظم من إقامة دولة إسلامية هو"
-status: draft
+status: published
 published_at: 2023-05-28
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

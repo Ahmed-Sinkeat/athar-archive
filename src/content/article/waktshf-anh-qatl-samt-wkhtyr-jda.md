@@ -1,6 +1,6 @@
 ---
 title: "وأكتشف أنه قاتل صامت وخطير جداً"
-status: draft
+status: published
 published_at: 2021-07-09
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

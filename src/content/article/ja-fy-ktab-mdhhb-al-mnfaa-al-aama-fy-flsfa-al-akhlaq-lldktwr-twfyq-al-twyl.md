@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب مذهب المنفعة العامة في فلسفة الأخلاق للدكتور توفيق الطويل"
-status: draft
+status: published
 published_at: 2020-01-29
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

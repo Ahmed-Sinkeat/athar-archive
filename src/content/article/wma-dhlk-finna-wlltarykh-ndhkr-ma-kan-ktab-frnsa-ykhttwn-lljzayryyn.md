@@ -1,6 +1,6 @@
 ---
 title: "ومع ذلك فإننا - وللتاريخ - نذكر ما كان كتاب فرنسا يخططون للجزائريين"
-status: draft
+status: published
 published_at: 2018-01-12
 person: abu-jafar-al-khalifi
 ---

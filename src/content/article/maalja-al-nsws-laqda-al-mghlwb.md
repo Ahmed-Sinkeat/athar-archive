@@ -1,6 +1,6 @@
 ---
 title: "معالجة النصوص لعقدة المغلوب.."
-status: draft
+status: published
 published_at: 2021-11-13
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

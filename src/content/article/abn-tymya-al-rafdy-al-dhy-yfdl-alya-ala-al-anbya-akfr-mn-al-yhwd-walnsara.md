@@ -1,6 +1,6 @@
 ---
 title: "ابن تيمية: الرافضي الذي يفضل علياً على الأنبياء أكفر من اليهود والنصارى..."
-status: draft
+status: published
 published_at: 2025-06-13
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

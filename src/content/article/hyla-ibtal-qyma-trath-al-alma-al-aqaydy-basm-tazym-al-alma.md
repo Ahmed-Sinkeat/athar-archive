@@ -1,6 +1,6 @@
 ---
 title: "حيلة إبطال قيمة تراث العلماء العقائدي باسم تعظيم العلماء!"
-status: draft
+status: published
 published_at: 2020-09-26
 person: abu-jafar-al-khalifi
 topics: ["adab-talab-al-ilm"]

@@ -1,6 +1,6 @@
 ---
 title: "تأثير العقيدة على الأخلاق.."
-status: draft
+status: published
 published_at: 2022-04-04
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

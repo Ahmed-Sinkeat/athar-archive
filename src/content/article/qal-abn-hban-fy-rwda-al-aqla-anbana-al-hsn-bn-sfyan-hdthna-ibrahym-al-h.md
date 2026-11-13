@@ -1,6 +1,6 @@
 ---
 title: "قال ابن حبان في روضة العقلاء أَنْبَأَنَا الْحَسَنُ بْنُ سفيان حدثنا إبراهيم الْح"
-status: draft
+status: published
 published_at: 2018-02-22
 person: abu-jafar-al-khalifi
 ---

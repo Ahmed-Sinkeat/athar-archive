@@ -1,6 +1,6 @@
 ---
 title: "والعلم إنما يتعامل مع المشاهَد أمامه فنحن حين نرى ذاك الرجل يجري في الميدان فتعا"
-status: draft
+status: published
 published_at: 2019-09-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

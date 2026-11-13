@@ -1,6 +1,6 @@
 ---
 title: "وهذا ما لا يعقله الحركيون ومن تأثر بهم من الناس."
-status: draft
+status: published
 published_at: 2024-01-28
 person: abu-umair-imran-al-zubaidi
 ---

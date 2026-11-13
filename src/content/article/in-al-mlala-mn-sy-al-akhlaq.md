@@ -1,6 +1,6 @@
 ---
 title: "إن الملالة من سيء الأخلاق"
-status: draft
+status: published
 published_at: 2026-05-19
 person: abu-abdillah-firas-al-ramli
 ---

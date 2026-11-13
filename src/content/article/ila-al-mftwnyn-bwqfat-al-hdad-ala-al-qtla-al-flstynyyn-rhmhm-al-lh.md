@@ -1,6 +1,6 @@
 ---
 title: "إلى المفتونين بوقفات الحداد على القتلى الفلسطينيين رحمهم الله"
-status: draft
+status: published
 published_at: 2017-07-12
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "محمول على التقية (حينما أسقطت شذوذات علماء أهل السنة عقيدة العصمة عند الإمامية)."
-status: draft
+status: published
 published_at: 2023-05-14
 person: abu-jafar-al-khalifi
 ---

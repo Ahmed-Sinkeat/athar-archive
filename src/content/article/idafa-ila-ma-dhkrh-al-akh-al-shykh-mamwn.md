@@ -1,6 +1,6 @@
 ---
 title: "إضافة إلى ما ذكره الأخ الشيخ مأمون"
-status: draft
+status: published
 published_at: 2024-03-04
 person: abu-jafar-al-khalifi
 ---

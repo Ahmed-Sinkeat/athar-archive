@@ -1,6 +1,6 @@
 ---
 title: "فكيف لو أدركوا البوصيري وبردته؟"
-status: draft
+status: published
 published_at: 2022-03-01
 person: abu-jafar-al-khalifi
 ---

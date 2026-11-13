@@ -1,6 +1,6 @@
 ---
 title: "اخترع عجلة الدوس المهندس البريطاني وليام كيوبيت والذي كان له إسهامات كبيرة في ال"
-status: draft
+status: published
 published_at: 2017-08-08
 person: abu-jafar-al-khalifi
 ---

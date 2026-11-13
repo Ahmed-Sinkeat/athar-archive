@@ -1,6 +1,6 @@
 ---
 title: "\"الجماعة\" موقفهم من الرافضة مخزي وقبيح ومخالف للشريعة."
-status: draft
+status: published
 published_at: 2025-10-09
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-wala-wal-bara"]

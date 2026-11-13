@@ -1,6 +1,6 @@
 ---
 title: "في كتاب الوصايا من الأم للشافعي رأى تلميذ الشافعي الربيع بن سليمان"
-status: draft
+status: published
 published_at: 2018-05-13
 person: abu-jafar-al-khalifi
 ---

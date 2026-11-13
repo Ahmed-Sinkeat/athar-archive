@@ -1,6 +1,6 @@
 ---
 title: "حين يراودك الشيطان لتسخط على قدر الله سبحانه وتعالى عليك"
-status: draft
+status: published
 published_at: 2023-07-11
 person: abu-umair-imran-al-zubaidi
 ---

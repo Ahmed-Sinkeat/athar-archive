@@ -1,6 +1,6 @@
 ---
 title: "كتب يعقوب صنوع ( وهو يهودي مصري )قصيدة بالعربية الفصحى بعنوان «القول الوجيز في د"
-status: draft
+status: published
 published_at: 2017-06-01
 person: abu-jafar-al-khalifi
 ---

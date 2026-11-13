@@ -1,6 +1,6 @@
 ---
 title: "يلبسون جلود الضأن على قلوب الذئاب"
-status: draft
+status: published
 published_at: 2026-01-19
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada", "tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "السبب الرابع"
-status: draft
+status: published
 published_at: 2021-11-09
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

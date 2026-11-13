@@ -1,6 +1,6 @@
 ---
 title: "الحقيقة الخامسة"
-status: draft
+status: published
 published_at: 2024-05-11
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

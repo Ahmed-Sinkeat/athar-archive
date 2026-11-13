@@ -1,6 +1,6 @@
 ---
 title: "في هذا المقطع الذي اشتهر للأسف الشيخ وليد إسماعيل ينفي أن النبي ﷺ مات مقتولا ويق"
-status: draft
+status: published
 published_at: 2023-12-28
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

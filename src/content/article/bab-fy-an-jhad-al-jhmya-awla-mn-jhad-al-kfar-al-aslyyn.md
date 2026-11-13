@@ -1,6 +1,6 @@
 ---
 title: "باب في أن جهاد الجهمية أولى من جهاد الكفار الأصليين"
-status: draft
+status: published
 published_at: 2023-07-30
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

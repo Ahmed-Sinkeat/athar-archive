@@ -1,6 +1,6 @@
 ---
 title: "براءة عبد الله بن الزبير من تهمة النصب"
-status: draft
+status: published
 published_at: 2020-02-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

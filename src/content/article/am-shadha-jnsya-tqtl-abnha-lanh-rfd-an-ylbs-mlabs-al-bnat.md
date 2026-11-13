@@ -1,6 +1,6 @@
 ---
 title: "أم شاذة جنسيا تقتل ابنها لأنه رفض أَن يلبس ملابس البنات"
-status: draft
+status: published
 published_at: 2020-01-06
 person: abu-jafar-al-khalifi
 ---

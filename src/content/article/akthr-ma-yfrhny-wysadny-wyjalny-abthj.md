@@ -1,6 +1,6 @@
 ---
 title: "أكثر ما يُفرحني ويُسعدني ويجعلني أبتهج"
-status: draft
+status: published
 published_at: 2023-02-22
 person: abu-umair-imran-al-zubaidi
 ---

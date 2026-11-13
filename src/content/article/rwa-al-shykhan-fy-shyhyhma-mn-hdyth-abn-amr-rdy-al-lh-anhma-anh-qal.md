@@ -1,6 +1,6 @@
 ---
 title: "روى الشيخان في صحيحيهما من حديث ابن عمر رضي الله عنهما أنه قال"
-status: draft
+status: published
 published_at: 2023-08-13
 person: abu-umair-imran-al-zubaidi
 ---

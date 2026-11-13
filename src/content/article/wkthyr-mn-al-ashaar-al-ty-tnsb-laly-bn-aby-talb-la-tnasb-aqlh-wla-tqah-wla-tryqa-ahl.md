@@ -1,6 +1,6 @@
 ---
 title: "وكثير من الأشعار التي تنسب لعلي بن أبي طالب لا تناسب عقله ولا تقاه ولا طريقة أهل"
-status: draft
+status: published
 published_at: 2020-05-30
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

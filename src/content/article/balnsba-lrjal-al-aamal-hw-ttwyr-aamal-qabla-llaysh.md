@@ -1,6 +1,6 @@
 ---
 title: "بالنسبة لرجال الأعمال هو تطوير أعمال قابلة للعيش"
-status: draft
+status: published
 published_at: 2018-07-15
 person: abu-jafar-al-khalifi
 ---

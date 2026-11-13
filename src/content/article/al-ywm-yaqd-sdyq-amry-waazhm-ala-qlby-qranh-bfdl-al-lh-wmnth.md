@@ -1,6 +1,6 @@
 ---
 title: "اليوم يعقد صديق عمري وأعزهم على قلبي قرانه بفضل الله ومنته."
-status: draft
+status: published
 published_at: 2023-12-08
 person: abu-umair-imran-al-zubaidi
 ---

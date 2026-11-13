@@ -1,6 +1,6 @@
 ---
 title: "مرحبا يا ستر عبد الله من النار"
-status: draft
+status: published
 published_at: 2026-01-25
 person: abu-abdillah-firas-al-ramli
 ---

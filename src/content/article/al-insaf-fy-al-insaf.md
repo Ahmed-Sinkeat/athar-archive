@@ -1,6 +1,6 @@
 ---
 title: "الإنصاف في الإنصاف"
-status: draft
+status: published
 published_at: 2021-09-09
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "tazkiyat-al-nafs"]

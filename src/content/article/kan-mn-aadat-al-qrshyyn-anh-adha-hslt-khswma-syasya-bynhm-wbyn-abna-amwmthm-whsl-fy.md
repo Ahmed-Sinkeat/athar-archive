@@ -1,6 +1,6 @@
 ---
 title: "كان من عادات القرشيين أنه اذا حصلت خصومة سياسية بينهم وبين أبناء عمومتهم وحصل في"
-status: draft
+status: published
 published_at: 2018-04-27
 person: abu-jafar-al-khalifi
 ---

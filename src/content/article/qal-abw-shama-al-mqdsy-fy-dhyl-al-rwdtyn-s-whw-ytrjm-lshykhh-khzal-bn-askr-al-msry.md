@@ -1,6 +1,6 @@
 ---
 title: "قال أبو شامة المقدسي في ذيل الروضتين ص149 وهو يترجم لشيخه خزعل بن عسكر المصري"
-status: draft
+status: published
 published_at: 2017-09-16
 person: abu-jafar-al-khalifi
 ---

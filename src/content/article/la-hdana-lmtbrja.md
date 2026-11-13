@@ -1,6 +1,6 @@
 ---
 title: "لا حضانة لمتبرجة"
-status: draft
+status: published
 published_at: 2018-02-12
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

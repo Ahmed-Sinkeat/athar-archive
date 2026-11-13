@@ -1,6 +1,6 @@
 ---
 title: "كل الحوادث مبدؤها من النظر"
-status: draft
+status: published
 published_at: 2023-08-07
 person: abu-abdillah-firas-al-ramli
 ---

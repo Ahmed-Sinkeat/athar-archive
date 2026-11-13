@@ -1,6 +1,6 @@
 ---
 title: "قال الشافعي في الأم (5/110)"
-status: draft
+status: published
 published_at: 2017-10-07
 person: abu-jafar-al-khalifi
 ---

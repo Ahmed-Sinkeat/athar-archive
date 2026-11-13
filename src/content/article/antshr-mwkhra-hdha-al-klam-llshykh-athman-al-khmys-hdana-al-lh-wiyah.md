@@ -1,6 +1,6 @@
 ---
 title: "انتشر مؤخرا هذا الكلام للشيخ عثمان الخميس هدانا الله وإياه"
-status: draft
+status: published
 published_at: 2025-02-19
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tahwid-al-ibada", "al-sunnah-wal-bidah"]

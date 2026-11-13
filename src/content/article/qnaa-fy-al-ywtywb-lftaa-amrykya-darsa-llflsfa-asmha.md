@@ -1,6 +1,6 @@
 ---
 title: "قناة في اليوتيوب لفتاة أمريكية دارسة للفلسفة اسمها"
-status: draft
+status: published
 published_at: 2019-10-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

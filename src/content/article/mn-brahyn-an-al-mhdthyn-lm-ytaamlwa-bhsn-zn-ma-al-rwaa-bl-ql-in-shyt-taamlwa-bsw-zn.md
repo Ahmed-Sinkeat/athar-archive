@@ -1,6 +1,6 @@
 ---
 title: "من براهين أن المحدثين لم يتعاملوا بحسن ظن مع الرواة بل قل إن شئت تعاملوا بسوء ظن"
-status: draft
+status: published
 published_at: 2018-06-27
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

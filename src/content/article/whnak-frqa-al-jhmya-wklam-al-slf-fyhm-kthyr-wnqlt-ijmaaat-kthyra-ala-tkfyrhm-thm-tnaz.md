@@ -1,6 +1,6 @@
 ---
 title: "وهناك فرقة الجهمية وكلام السلف فيهم كثير ونقلت إجماعات كثيرة على تكفيرهم ثم تناز"
-status: draft
+status: published
 published_at: 2020-09-12
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

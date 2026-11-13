@@ -1,6 +1,6 @@
 ---
 title: "باب من طلب العلم بغير نية فرده العلم إلى النية"
-status: draft
+status: published
 published_at: 2023-12-28
 person: abu-abdillah-firas-al-ramli
 topics: ["al-imamah-was-sahabah"]

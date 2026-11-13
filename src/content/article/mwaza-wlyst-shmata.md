@@ -1,6 +1,6 @@
 ---
 title: "موعظة وليست شماتة"
-status: draft
+status: published
 published_at: 2023-02-06
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tazkiyat-al-nafs"]

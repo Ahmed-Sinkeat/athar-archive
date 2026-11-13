@@ -1,6 +1,6 @@
 ---
 title: "اقتناء جهاز الهاتف الذكي كان قراراً مخيفا جداً بالنسبة لي."
-status: draft
+status: published
 published_at: 2018-07-11
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

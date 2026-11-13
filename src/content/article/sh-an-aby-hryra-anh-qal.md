@@ -1,6 +1,6 @@
 ---
 title: "صح عن أبي هُريرة أنه قال"
-status: draft
+status: published
 published_at: 2020-09-02
 person: abu-jafar-al-khalifi
 ---

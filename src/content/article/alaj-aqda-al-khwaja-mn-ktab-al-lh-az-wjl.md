@@ -1,6 +1,6 @@
 ---
 title: "علاج عقدة الخواجة من كتاب الله عز وجل."
-status: draft
+status: published
 published_at: 2023-03-08
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

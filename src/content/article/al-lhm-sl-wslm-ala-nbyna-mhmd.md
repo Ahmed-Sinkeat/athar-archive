@@ -1,6 +1,6 @@
 ---
 title: "اللهم صل وسلم على نبينا محمد"
-status: draft
+status: published
 published_at: 2024-02-19
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

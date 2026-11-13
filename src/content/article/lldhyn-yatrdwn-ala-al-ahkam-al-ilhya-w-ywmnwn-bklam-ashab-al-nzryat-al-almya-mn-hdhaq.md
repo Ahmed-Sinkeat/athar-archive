@@ -1,6 +1,6 @@
 ---
 title: "للذين يعترضون على الأحكام الإلهية و يؤمنون بكلام أصحاب النظريات العلمية من حذاق"
-status: draft
+status: published
 published_at: 2018-01-18
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من الجفاء أن تسمع الأذان ثم لا تقول مثل ما يقول"
-status: draft
+status: published
 published_at: 2024-09-20
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وأكبر شعارين رفعتهما التيارات الحركية"
-status: draft
+status: published
 published_at: 2019-08-29
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs", "al-wala-wal-bara"]

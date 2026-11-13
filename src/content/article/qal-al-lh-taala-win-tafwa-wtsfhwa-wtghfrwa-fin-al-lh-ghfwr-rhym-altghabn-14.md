@@ -1,6 +1,6 @@
 ---
 title: "قال الله تعالى: {وإن تعفوا وتصفحوا وتغفروا فإن الله غفور رحيم} [التغابن ١٤"
-status: draft
+status: published
 published_at: 2026-01-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "يجلس على مائدة الفطور فيأكل ويأكل ويأكل حتّى تمتلِئ معدته"
-status: draft
+status: published
 published_at: 2023-04-05
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ما أنكره المقريزي على القاضي الحنفي."
-status: draft
+status: published
 published_at: 2023-03-28
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "... فأما الكافرون فلست لهم بأم"
-status: draft
+status: published
 published_at: 2023-12-04
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "٦- السمعيات والفتن"
-status: draft
+status: published
 published_at: 2024-01-10
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "adab-talab-al-ilm"]

@@ -1,6 +1,6 @@
 ---
 title: "باب في اشتياق الحور لزوجها ومعرفة بعض أحواله"
-status: draft
+status: published
 published_at: 2024-03-25
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

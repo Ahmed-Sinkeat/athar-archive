@@ -1,6 +1,6 @@
 ---
 title: "تارك الصلاة لا ترجى له الشفاعة يوم القيامة"
-status: draft
+status: published
 published_at: 2025-11-12
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "al-iman"]

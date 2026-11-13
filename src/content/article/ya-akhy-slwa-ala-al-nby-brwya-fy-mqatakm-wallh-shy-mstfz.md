@@ -1,6 +1,6 @@
 ---
 title: "يا أخي صلّوا على النبي ﷺ برويّة في مقاطعكم، والله شيء مستفز!."
-status: draft
+status: published
 published_at: 2023-07-04
 person: abu-umair-imran-al-zubaidi
 ---

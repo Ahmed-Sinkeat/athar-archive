@@ -1,6 +1,6 @@
 ---
 title: "في رحاب طبيب الأئمة"
-status: draft
+status: published
 published_at: 2020-02-06
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

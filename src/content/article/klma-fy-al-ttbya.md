@@ -1,6 +1,6 @@
 ---
 title: "كلمة في التطبيع"
-status: draft
+status: published
 published_at: 2018-10-27
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

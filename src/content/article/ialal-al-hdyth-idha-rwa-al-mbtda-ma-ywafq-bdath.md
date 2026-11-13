@@ -1,6 +1,6 @@
 ---
 title: "إعلال الحديث إذا روى المبتدع ما يوافق بدعته"
-status: draft
+status: published
 published_at: 2023-05-15
 person: abu-abdillah-firas-al-ramli
 ---

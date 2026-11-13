@@ -1,6 +1,6 @@
 ---
 title: "ظهر من الخليفة الأموي الوليد بن يزيد بن عبد الملك شرب للخمر وميل للنساء واللواط"
-status: draft
+status: published
 published_at: 2017-09-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

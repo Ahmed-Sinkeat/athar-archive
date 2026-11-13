@@ -1,6 +1,6 @@
 ---
 title: "الولايات المتحدة الأمريكية بلد الحرية مشهورة بأنها من أكثر البلدان التي تعاني من"
-status: draft
+status: published
 published_at: 2018-05-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

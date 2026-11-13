@@ -1,6 +1,6 @@
 ---
 title: "قُبيل قدوم رمضان المبارك"
-status: draft
+status: published
 published_at: 2023-03-01
 person: abu-umair-imran-al-zubaidi
 ---

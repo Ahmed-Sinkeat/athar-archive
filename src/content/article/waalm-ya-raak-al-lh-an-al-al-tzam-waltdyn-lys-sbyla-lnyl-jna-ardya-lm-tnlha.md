@@ -1,6 +1,6 @@
 ---
 title: "واعلم يا رعاك الله أنّ الالتزام والتديّن ليس سبيلًا لنيل جنّةٍ أرضيّةٍ لم تنلها"
-status: draft
+status: published
 published_at: 2022-10-14
 person: abu-umair-imran-al-zubaidi
 ---

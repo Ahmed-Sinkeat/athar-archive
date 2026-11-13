@@ -1,6 +1,6 @@
 ---
 title: "\"لسنا نحن من يحاسب الناس؛ الله هو من يحاسبهم\""
-status: draft
+status: published
 published_at: 2024-10-09
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

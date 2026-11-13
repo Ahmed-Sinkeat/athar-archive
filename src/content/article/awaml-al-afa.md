@@ -1,6 +1,6 @@
 ---
 title: "عوامل العفة.."
-status: draft
+status: published
 published_at: 2022-04-06
 person: abu-jafar-al-khalifi
 ---

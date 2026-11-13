@@ -1,6 +1,6 @@
 ---
 title: "والشيخ ابن تيمية يشير إلى معنى دقيق قد لا يفهمه كثيرون للوهلة الأولى وهو أن التص"
-status: draft
+status: published
 published_at: 2018-10-16
 person: abu-jafar-al-khalifi
 ---

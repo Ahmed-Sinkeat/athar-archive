@@ -1,6 +1,6 @@
 ---
 title: "بالنسبة للكلام عن توافر الشروط وانتفاء الموانع ..."
-status: draft
+status: published
 published_at: 2023-07-27
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الحق أن صلاة الضحى مثال يعضد منهج من تسميهم (السلفية المعاصرة)"
-status: draft
+status: published
 published_at: 2025-07-03
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

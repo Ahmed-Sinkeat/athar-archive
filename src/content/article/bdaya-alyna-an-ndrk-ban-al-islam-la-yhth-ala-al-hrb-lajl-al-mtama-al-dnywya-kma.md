@@ -1,6 +1,6 @@
 ---
 title: "بدايةً علينا أن نُدرك بأنّ الإسلام لا يحثّ على الحرب لأجل المطامع الدنيويّة كما"
-status: draft
+status: published
 published_at: 2022-09-20
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

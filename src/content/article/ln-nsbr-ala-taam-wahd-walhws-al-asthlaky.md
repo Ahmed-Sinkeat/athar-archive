@@ -1,6 +1,6 @@
 ---
 title: "{لن نصبر على طعام واحد} والهوس الاستهلاكي…"
-status: draft
+status: published
 published_at: 2024-03-11
 person: abu-jafar-al-khalifi
 ---

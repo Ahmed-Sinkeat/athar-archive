@@ -1,6 +1,6 @@
 ---
 title: "الرأسمالية ذاتية التدمير .."
-status: draft
+status: published
 published_at: 2020-08-16
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]

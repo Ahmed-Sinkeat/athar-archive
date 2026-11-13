@@ -1,6 +1,6 @@
 ---
 title: "وهذا بخصوص معهد الأندلس الشرعي -الدفعة الثالثة"
-status: draft
+status: published
 published_at: 2024-01-19
 person: abu-umair-imran-al-zubaidi
 ---

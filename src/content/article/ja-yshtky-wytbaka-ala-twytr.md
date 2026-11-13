@@ -1,6 +1,6 @@
 ---
 title: "جاء يشتكي ويتباكى على تويتر"
-status: draft
+status: published
 published_at: 2019-10-31
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "【 تشوِيه الفضِيلة 】"
-status: draft
+status: published
 published_at: 2025-06-08
 person: awwab-bin-muhammad
 ---

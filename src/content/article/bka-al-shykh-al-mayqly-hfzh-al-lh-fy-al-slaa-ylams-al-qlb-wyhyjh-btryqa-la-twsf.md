@@ -1,6 +1,6 @@
 ---
 title: "بكاء الشيخ المعيقلي -حفظه الله- في الصلاة يلامس القلب ويهيّجه بطريقة لا توصف!."
-status: draft
+status: published
 published_at: 2023-05-17
 person: abu-umair-imran-al-zubaidi
 ---

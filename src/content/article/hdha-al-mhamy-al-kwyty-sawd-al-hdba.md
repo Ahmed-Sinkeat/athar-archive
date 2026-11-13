@@ -1,6 +1,6 @@
 ---
 title: "هذا المحامي الكويتي سعود الهدبة"
-status: draft
+status: published
 published_at: 2024-04-21
 person: abu-jafar-al-khalifi
 ---

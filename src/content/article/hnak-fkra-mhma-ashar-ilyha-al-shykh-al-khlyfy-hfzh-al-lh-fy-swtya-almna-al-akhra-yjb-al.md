@@ -1,6 +1,6 @@
 ---
 title: "هناك فكرة مهمة أشار إليها الشيخ الخليفي حفظه الله في صوتية \"علمنة الآخرة\" يجب ال"
-status: draft
+status: published
 published_at: 2024-03-17
 person: abu-umair-imran-al-zubaidi
 ---

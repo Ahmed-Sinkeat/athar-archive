@@ -1,6 +1,6 @@
 ---
 title: "من الأفكار الفاشية بين طلبة العلم"
-status: draft
+status: published
 published_at: 2019-09-24
 person: abu-jafar-al-khalifi
 ---

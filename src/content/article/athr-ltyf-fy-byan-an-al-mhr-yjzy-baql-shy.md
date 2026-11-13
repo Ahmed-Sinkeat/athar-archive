@@ -1,6 +1,6 @@
 ---
 title: "أثر لطيف في بيان أن المهر يجزئ بأقل شيء"
-status: draft
+status: published
 published_at: 2023-05-18
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

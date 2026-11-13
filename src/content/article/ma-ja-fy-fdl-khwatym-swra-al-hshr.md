@@ -1,6 +1,6 @@
 ---
 title: "ما جاء في فضل خواتيم سورة الحشر"
-status: draft
+status: published
 published_at: 2024-09-29
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "دليل على انتشار اعتقاد العلو بين السلف والرد على شبهة مشهورة للمعطلة"
-status: draft
+status: published
 published_at: 2020-06-30
 person: abu-jafar-al-khalifi
 ---

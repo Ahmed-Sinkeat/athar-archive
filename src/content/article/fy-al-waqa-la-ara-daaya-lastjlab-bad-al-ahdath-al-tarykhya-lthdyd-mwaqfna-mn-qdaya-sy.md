@@ -1,6 +1,6 @@
 ---
 title: "في الواقع لا أرى داعيا لاستجلاب بعض الأحداث التاريخية لتحديد مواقفنا من قضايا سي"
-status: draft
+status: published
 published_at: 2018-05-06
 person: abu-jafar-al-khalifi
 ---

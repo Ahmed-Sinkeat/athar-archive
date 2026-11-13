@@ -1,6 +1,6 @@
 ---
 title: "قال الكاتب الفرنسي اليهودي من أصول جزائرية جاك دريدا في كتابه أطياف ماركس ص156 ر"
-status: draft
+status: published
 published_at: 2017-11-17
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

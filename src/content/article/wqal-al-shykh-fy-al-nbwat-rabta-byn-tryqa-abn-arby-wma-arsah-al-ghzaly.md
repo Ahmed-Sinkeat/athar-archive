@@ -1,6 +1,6 @@
 ---
 title: "وقال الشيخ في النبوات رابطًا بين طريقة ابن عربي وما أرساه الغزالي"
-status: draft
+status: published
 published_at: 2020-09-21
 person: abu-jafar-al-khalifi
 ---

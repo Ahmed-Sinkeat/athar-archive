@@ -1,6 +1,6 @@
 ---
 title: "باب فيما شابه فيه الإنسانويون عبَّاد الأوثان..."
-status: draft
+status: published
 published_at: 2025-05-12
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

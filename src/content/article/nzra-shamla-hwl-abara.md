@@ -1,6 +1,6 @@
 ---
 title: "نظرة شاملة حول عبارة"
-status: draft
+status: published
 published_at: 2018-11-26
 person: abu-jafar-al-khalifi
 ---

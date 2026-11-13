@@ -1,6 +1,6 @@
 ---
 title: "معلومة قد اكتشفها العالم العلّامة"
-status: draft
+status: published
 published_at: 2022-08-18
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

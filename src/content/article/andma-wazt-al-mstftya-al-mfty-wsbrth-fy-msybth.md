@@ -1,6 +1,6 @@
 ---
 title: "عندما وعظَت المستفتية المفتي وصبَّرته في مصيبته"
-status: draft
+status: published
 published_at: 2023-10-30
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

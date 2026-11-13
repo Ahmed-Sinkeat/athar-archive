@@ -1,6 +1,6 @@
 ---
 title: "كتب المدير المشارك لمجموعة العلوم والسياسات بجماعة أريزونا الملحد دانيال ساريويت"
-status: draft
+status: published
 published_at: 2017-11-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

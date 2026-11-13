@@ -1,6 +1,6 @@
 ---
 title: "فائدة في استنباط قتل الخوارج مِن القرآن الكريم"
-status: draft
+status: published
 published_at: 2025-11-05
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "رأيت مقطعاً لعدنان إبراهيم يأتي فيه برواية يدعي فيها أن معاوية بن يزيد بن معاوية"
-status: draft
+status: published
 published_at: 2018-09-26
 person: abu-jafar-al-khalifi
 ---

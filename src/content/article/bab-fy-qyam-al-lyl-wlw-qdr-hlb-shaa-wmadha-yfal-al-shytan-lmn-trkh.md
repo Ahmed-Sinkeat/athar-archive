@@ -1,6 +1,6 @@
 ---
 title: "باب في قيام الليل ولو قدر حلب شاة، وماذا يفعل الشيطان لمن تركه؟"
-status: draft
+status: published
 published_at: 2023-07-31
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

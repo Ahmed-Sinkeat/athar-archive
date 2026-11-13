@@ -1,6 +1,6 @@
 ---
 title: "قال الشيخ عبد الرحمن السعدي في تيسير اللطيف المنان"
-status: draft
+status: published
 published_at: 2018-08-22
 person: abu-jafar-al-khalifi
 ---

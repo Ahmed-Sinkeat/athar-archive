@@ -1,6 +1,6 @@
 ---
 title: "بلدي، سوريا الحبيبة ..."
-status: draft
+status: published
 published_at: 2026-08-02
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

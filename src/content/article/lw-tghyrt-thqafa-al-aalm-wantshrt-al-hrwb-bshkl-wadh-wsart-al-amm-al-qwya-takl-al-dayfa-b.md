@@ -1,6 +1,6 @@
 ---
 title: "لو تغيرت ثقافة العالم وانتشرت الحروب بشكل واضح وصارت الأمم القوية تأكل الضعيفة ب"
-status: draft
+status: published
 published_at: 2017-06-23
 person: abu-jafar-al-khalifi
 ---

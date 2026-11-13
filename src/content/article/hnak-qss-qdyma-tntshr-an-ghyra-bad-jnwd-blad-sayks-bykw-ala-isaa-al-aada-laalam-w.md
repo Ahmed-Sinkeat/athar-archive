@@ -1,6 +1,6 @@
 ---
 title: "هناك قصص قديمة تنتشر عن غيرة بعض جنود بلاد سايكس بيكو على إساءة الأعداء لأعلام و"
-status: draft
+status: published
 published_at: 2023-11-13
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

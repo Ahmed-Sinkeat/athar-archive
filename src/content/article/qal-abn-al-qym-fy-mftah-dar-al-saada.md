@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم في مفتاح دار السعادة"
-status: draft
+status: published
 published_at: 2019-02-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

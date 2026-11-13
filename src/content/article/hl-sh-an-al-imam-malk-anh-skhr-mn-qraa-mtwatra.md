@@ -1,6 +1,6 @@
 ---
 title: "هل صح عن الإمام مالك أنه سخر من قراءة متواترة؟"
-status: draft
+status: published
 published_at: 2023-05-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

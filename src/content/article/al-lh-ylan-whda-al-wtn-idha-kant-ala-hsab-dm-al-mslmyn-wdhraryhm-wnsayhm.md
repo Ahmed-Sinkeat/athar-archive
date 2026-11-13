@@ -1,6 +1,6 @@
 ---
 title: "الله يلعن وحدة الوطن إذا كانت على حساب دم المسلمين وذراريهم ونسائهم."
-status: draft
+status: published
 published_at: 2025-07-17
 person: abu-umair-imran-al-zubaidi
 ---

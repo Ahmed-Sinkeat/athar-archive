@@ -1,6 +1,6 @@
 ---
 title: "الطب العلاجي بمقياس العلم الحديث متأخر جدا"
-status: draft
+status: published
 published_at: 2018-01-16
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وفي الإنصاف من كتب الحنابلة"
-status: draft
+status: published
 published_at: 2022-11-29
 person: abu-jafar-al-khalifi
 ---

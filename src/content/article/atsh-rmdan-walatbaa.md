@@ -1,6 +1,6 @@
 ---
 title: "عطش رمضان والاتباع.."
-status: draft
+status: published
 published_at: 2021-04-26
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

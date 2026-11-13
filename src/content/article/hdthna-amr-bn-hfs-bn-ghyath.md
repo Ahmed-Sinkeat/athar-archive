@@ -1,6 +1,6 @@
 ---
 title: "حدثنا ‌عمر بن حفص بن غياث"
-status: draft
+status: published
 published_at: 2023-06-05
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

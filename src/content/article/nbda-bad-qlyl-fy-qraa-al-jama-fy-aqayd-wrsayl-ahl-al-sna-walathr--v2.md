@@ -1,6 +1,6 @@
 ---
 title: "نبدأ بعد قليل في قراءة [ الجامع في عقائد ورسائل أهل السنة والأثر"
-status: draft
+status: published
 published_at: 2018-02-09
 person: abu-jafar-al-khalifi
 ---

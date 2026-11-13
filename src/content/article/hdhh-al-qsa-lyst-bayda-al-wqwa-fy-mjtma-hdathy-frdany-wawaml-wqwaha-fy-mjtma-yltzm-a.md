@@ -1,6 +1,6 @@
 ---
 title: "هذه القصة ليست بعيدة الوقوع في مجتمع حداثي فرداني وعوامل وقوعها في مجتمع يلتزم ا"
-status: draft
+status: published
 published_at: 2020-08-27
 person: abu-jafar-al-khalifi
 ---

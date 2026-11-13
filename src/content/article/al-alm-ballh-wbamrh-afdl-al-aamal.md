@@ -1,6 +1,6 @@
 ---
 title: "العلم بالله وبأمره أفضل الأعمال"
-status: draft
+status: published
 published_at: 2025-07-16
 person: abu-abdillah-firas-al-ramli
 ---

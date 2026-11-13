@@ -1,6 +1,6 @@
 ---
 title: "وبعد هذا يصير النظر في دليل العناية والذي من فروعه ( الضبط الدقيق ) أكثر إحكاما"
-status: draft
+status: published
 published_at: 2019-06-05
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "tazkiyat-al-nafs"]

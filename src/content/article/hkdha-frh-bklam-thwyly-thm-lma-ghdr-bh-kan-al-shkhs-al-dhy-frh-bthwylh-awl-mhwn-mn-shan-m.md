@@ -1,6 +1,6 @@
 ---
 title: "هكذا فرح بكلام تهويلي ثم لما غدر به كان الشخص الذي فرح بتهويله أول مهون من شأن م"
-status: draft
+status: published
 published_at: 2018-10-26
 person: abu-jafar-al-khalifi
 ---

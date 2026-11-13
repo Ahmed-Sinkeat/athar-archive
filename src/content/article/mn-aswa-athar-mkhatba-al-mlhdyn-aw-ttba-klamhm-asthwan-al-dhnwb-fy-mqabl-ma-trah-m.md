@@ -1,6 +1,6 @@
 ---
 title: "من أسوأ آثار مخاطبة الملحدين أو تتبُّع كلامهم استهوان الذنوب في مقابل ما تراه مِ"
-status: draft
+status: published
 published_at: 2019-05-31
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

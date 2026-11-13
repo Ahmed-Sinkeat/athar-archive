@@ -1,6 +1,6 @@
 ---
 title: "هل رأيت أعرابياً يصنف كتاباً بعنوان"
-status: draft
+status: published
 published_at: 2025-02-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

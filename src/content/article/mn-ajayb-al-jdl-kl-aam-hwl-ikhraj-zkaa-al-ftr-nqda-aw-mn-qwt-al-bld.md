@@ -1,6 +1,6 @@
 ---
 title: "من عجائب الجدل كل عام حول إخراج زكاة الفطر نقدا أو من قوت البلد"
-status: draft
+status: published
 published_at: 2018-06-12
 person: abu-jafar-al-khalifi
 ---

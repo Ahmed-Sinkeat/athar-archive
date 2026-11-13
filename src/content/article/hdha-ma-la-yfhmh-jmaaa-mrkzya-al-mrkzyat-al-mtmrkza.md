@@ -1,6 +1,6 @@
 ---
 title: "هذا ما لا يفهمه جماعة مركزية المركزيات المتمركزة!"
-status: draft
+status: published
 published_at: 2025-05-25
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال شيخ الإسلام ابن تيمية في القواعد النورانية"
-status: draft
+status: published
 published_at: 2017-07-13
 person: abu-jafar-al-khalifi
 ---

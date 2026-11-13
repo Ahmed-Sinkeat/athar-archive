@@ -1,6 +1,6 @@
 ---
 title: "طعام وطعام .."
-status: draft
+status: published
 published_at: 2020-10-27
 person: abu-jafar-al-khalifi
 ---

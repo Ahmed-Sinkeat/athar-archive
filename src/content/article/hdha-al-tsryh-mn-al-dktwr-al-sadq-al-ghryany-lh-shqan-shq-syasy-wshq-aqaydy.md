@@ -1,6 +1,6 @@
 ---
 title: "هذا التصريح من الدكتور الصادق الغرياني له شقان، شق سياسي وشق عقائدي."
-status: draft
+status: published
 published_at: 2026-03-04
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

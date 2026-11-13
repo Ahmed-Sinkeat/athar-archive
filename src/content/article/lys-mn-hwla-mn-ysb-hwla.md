@@ -1,6 +1,6 @@
 ---
 title: "ليس من هؤلاء من يسب هؤلاء"
-status: draft
+status: published
 published_at: 2025-10-19
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "بمناسبة الدراما التاريخية التي ستظهر في شهر رمضان عن الصحابي الجليل معاوية بن أب"
-status: draft
+status: published
 published_at: 2023-02-26
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

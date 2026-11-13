@@ -1,6 +1,6 @@
 ---
 title: "لسائل أن يسأل: ما علاقة الاستغفار بفتح مغلقات العلم؟"
-status: draft
+status: published
 published_at: 2025-01-24
 person: abu-jafar-al-khalifi
 ---

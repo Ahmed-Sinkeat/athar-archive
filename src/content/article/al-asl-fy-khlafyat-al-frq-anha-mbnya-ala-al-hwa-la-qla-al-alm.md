@@ -1,6 +1,6 @@
 ---
 title: "الأصل في خلافيات الفرق أنها مبنية على الهوى لا قلة العلم..."
-status: draft
+status: published
 published_at: 2021-08-19
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]

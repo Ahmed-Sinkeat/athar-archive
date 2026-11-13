@@ -1,6 +1,6 @@
 ---
 title: "قناة عربية تهتم بإثبات أن مركزية الأرض ممكنة"
-status: draft
+status: published
 published_at: 2017-08-04
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا خبر هلاك خامنئي"
-status: draft
+status: published
 published_at: 2026-02-28
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

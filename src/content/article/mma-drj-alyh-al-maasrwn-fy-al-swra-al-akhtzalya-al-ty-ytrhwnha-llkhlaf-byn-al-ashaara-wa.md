@@ -1,6 +1,6 @@
 ---
 title: "مما درج عليه المعاصرون في الصورة الاختزالية التي يطرحونها للخلاف بين الأشاعرة وأ"
-status: draft
+status: published
 published_at: 2018-04-05
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

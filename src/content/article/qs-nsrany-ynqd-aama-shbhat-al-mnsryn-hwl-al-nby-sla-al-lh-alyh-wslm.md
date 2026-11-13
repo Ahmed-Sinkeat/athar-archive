@@ -1,6 +1,6 @@
 ---
 title: "قس نصراني ينقض عامة شبهات المنصرين حول النبي صلى الله عليه وسلم"
-status: draft
+status: published
 published_at: 2019-04-17
 person: abu-jafar-al-khalifi
 ---

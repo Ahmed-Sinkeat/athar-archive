@@ -1,6 +1,6 @@
 ---
 title: "من إفادات أحد الأصدقاء"
-status: draft
+status: published
 published_at: 2019-04-27
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

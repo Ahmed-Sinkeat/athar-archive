@@ -1,6 +1,6 @@
 ---
 title: "فائدة في الرد على الرافضة ومنكري السنة ودعاة التنوير من آية تتكلم عن المسيح عليه"
-status: draft
+status: published
 published_at: 2023-07-27
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

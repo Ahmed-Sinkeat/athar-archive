@@ -1,6 +1,6 @@
 ---
 title: "عن عِمران بن حصين رضي الله عنه أنَّ النبي ﷺ قال"
-status: draft
+status: published
 published_at: 2025-05-09
 person: awwab-bin-muhammad
 ---

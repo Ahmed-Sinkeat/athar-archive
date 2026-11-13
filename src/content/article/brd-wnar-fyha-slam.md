@@ -1,6 +1,6 @@
 ---
 title: "برد ونار فيها سلام"
-status: draft
+status: published
 published_at: 2022-12-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

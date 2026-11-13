@@ -1,6 +1,6 @@
 ---
 title: "قال الأصفهاني في الأغاني أخبرني الحرميّ بن أبي العلاء قال حدّثنا الزّبير بن بكّا"
-status: draft
+status: published
 published_at: 2018-02-02
 person: abu-jafar-al-khalifi
 ---

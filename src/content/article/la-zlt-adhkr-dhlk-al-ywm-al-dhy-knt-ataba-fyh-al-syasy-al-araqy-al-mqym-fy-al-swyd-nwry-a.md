@@ -1,6 +1,6 @@
 ---
 title: "لا زلت أذكر ذلك اليوم الذي كنت أتابع فيه السياسي العراقي المقيم في السويد نوري ا"
-status: draft
+status: published
 published_at: 2018-11-08
 person: abu-jafar-al-khalifi
 ---

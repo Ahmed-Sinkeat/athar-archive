@@ -1,6 +1,6 @@
 ---
 title: "لو تدبَّرتَ في أصولهم الفكرية لوجدت مِن أغرب الأمور المنع من الزواج قبل سن ١٨ مع"
-status: draft
+status: published
 published_at: 2020-09-20
 person: abu-jafar-al-khalifi
 ---

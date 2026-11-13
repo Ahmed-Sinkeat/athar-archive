@@ -1,6 +1,6 @@
 ---
 title: "قاعدة في الأفعال المتعدية والأفعال اللازمة ومحاولة بعض المنتسبين للحنابلة في عصر"
-status: draft
+status: published
 published_at: 2019-02-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

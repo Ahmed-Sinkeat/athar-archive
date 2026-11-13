@@ -1,6 +1,6 @@
 ---
 title: "أريد أن أنبه أنه ليس لدي أي حساب على مواقع التواصل إلا حساب الفيس بوك وقناة التي"
-status: draft
+status: published
 published_at: 2025-01-25
 person: abu-umair-imran-al-zubaidi
 ---

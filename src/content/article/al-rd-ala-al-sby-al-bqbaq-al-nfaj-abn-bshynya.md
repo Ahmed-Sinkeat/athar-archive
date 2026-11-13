@@ -1,6 +1,6 @@
 ---
 title: "الرد على الصبي البقباق النفاج ابن بشينية"
-status: draft
+status: published
 published_at: 2024-03-05
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs", "al-imamah-was-sahabah"]

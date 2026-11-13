@@ -1,6 +1,6 @@
 ---
 title: "لما بشَّر اللهُ –تعالى جَدُّه وجلَّ اسمُه– الشقِيَّ أبا لهبٍ عبدَ العُزَّى ابنَ"
-status: draft
+status: published
 published_at: 2026-05-04
 person: awwab-bin-muhammad
 ---

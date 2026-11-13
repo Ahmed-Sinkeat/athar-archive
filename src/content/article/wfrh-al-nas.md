@@ -1,6 +1,6 @@
 ---
 title: "وفرِح الناس!"
-status: draft
+status: published
 published_at: 2020-10-17
 person: abu-jafar-al-khalifi
 ---

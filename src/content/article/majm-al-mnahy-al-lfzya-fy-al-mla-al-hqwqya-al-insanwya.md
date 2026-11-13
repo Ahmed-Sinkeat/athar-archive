@@ -1,6 +1,6 @@
 ---
 title: "معجم المناهي اللفظية في الملة الحقوقية الإنسانوية!"
-status: draft
+status: published
 published_at: 2020-07-06
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "في ثواب من فَطر الصائم"
-status: draft
+status: published
 published_at: 2024-03-12
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

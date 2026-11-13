@@ -1,6 +1,6 @@
 ---
 title: "قال رسول الله ﷺ: \"تزوَّجوا الوَدودَ الولودَ فإنِّي مُكاثرٌ بِكُمُ الأُممَ\"."
-status: draft
+status: published
 published_at: 2023-11-21
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "حتى الملحد المعتوه حامد عبد الصمد قال في مذكراته أنه لم ير شعبا أسوأ تعاملا مع ا"
-status: draft
+status: published
 published_at: 2019-06-12
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "فلاحظ أنه جاء بلفظ النووي لأنه لا يوجد أي حنبلي نص على هذا وغيره صرح بالأخذ من ش"
-status: draft
+status: published
 published_at: 2020-07-30
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

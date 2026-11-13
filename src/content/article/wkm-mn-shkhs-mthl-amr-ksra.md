@@ -1,6 +1,6 @@
 ---
 title: "وكم من شخص مثل عمر كسرى"
-status: draft
+status: published
 published_at: 2022-09-04
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

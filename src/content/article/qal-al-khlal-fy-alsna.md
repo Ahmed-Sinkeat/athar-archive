@@ -1,6 +1,6 @@
 ---
 title: "قال الخلال في «السنة» [1167"
-status: draft
+status: published
 published_at: 2017-12-31
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

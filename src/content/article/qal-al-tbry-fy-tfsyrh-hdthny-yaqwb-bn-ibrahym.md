@@ -1,6 +1,6 @@
 ---
 title: "قال الطبري في تفسيره حدثني يعقوب بن إبراهيم"
-status: draft
+status: published
 published_at: 2019-03-21
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "يا سلام، إثبات اليد مع إشارة حسية."
-status: draft
+status: published
 published_at: 2024-06-07
 person: abu-umair-imran-al-zubaidi
 ---

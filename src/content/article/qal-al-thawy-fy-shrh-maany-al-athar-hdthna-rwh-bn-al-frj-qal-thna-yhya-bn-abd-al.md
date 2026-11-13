@@ -1,6 +1,6 @@
 ---
 title: "قال الطحاوي في شرح معاني الآثار 4760 - حدثنا روح بن الفرج قال ثنا يحيى بن عبد ال"
-status: draft
+status: published
 published_at: 2017-10-31
 person: abu-jafar-al-khalifi
 ---

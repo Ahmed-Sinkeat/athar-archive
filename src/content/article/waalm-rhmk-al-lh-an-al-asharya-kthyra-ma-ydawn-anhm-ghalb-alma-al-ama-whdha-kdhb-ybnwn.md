@@ -1,6 +1,6 @@
 ---
 title: "واعلم رحمك الله أن الأشعرية كثيراً ما يدعون أنهم غالب علماء الأمة وهذا كذب يبنون"
-status: draft
+status: published
 published_at: 2019-10-26
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-wala-wal-bara", "al-sunnah-wal-bidah"]

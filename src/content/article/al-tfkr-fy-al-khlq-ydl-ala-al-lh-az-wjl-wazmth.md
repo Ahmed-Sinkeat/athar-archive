@@ -1,6 +1,6 @@
 ---
 title: "التفكر في الخلق يدل على الله عز وجل وعظمته"
-status: draft
+status: published
 published_at: 2025-04-01
 person: abu-abdillah-firas-al-ramli
 ---

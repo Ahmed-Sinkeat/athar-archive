@@ -1,6 +1,6 @@
 ---
 title: "كيف يا عامي تعرض عن النظر في الأدلة الكلامية حتى تكون مؤمنا؟"
-status: draft
+status: published
 published_at: 2024-07-09
 person: abu-umair-imran-al-zubaidi
 ---

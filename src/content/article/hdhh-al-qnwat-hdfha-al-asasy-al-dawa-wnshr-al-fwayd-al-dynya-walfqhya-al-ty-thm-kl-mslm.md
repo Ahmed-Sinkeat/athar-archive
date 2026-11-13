@@ -1,6 +1,6 @@
 ---
 title: "هذه القنوات هدفها الأساسي الدعوة ونشر الفوائد الدينية والفقهية التي تهم كل مسلم"
-status: draft
+status: published
 published_at: 2025-01-16
 person: abu-umair-imran-al-zubaidi
 ---

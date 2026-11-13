@@ -1,6 +1,6 @@
 ---
 title: "قال الطبري في تفسيره ط هجر (١١٦/٦ - ١٢٤)"
-status: draft
+status: published
 published_at: 2023-10-20
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

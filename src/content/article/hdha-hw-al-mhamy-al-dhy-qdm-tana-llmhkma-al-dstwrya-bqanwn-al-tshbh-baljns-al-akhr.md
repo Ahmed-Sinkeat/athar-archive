@@ -1,6 +1,6 @@
 ---
 title: "هذا هو المحامي الذي قدم طعنًا للمحكمة الدستورية بقانون التشبه بالجنس الآخر."
-status: draft
+status: published
 published_at: 2022-03-25
 person: abu-jafar-al-khalifi
 ---

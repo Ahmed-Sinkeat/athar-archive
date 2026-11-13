@@ -1,6 +1,6 @@
 ---
 title: "قال الرافعي في التدوين في أخبار قزوين (1/&rlm;48)"
-status: draft
+status: published
 published_at: 2024-01-30
 person: abu-umair-imran-al-zubaidi
 ---

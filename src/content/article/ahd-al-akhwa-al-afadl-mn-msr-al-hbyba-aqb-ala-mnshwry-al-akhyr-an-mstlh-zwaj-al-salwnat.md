@@ -1,6 +1,6 @@
 ---
 title: "أحد الأخوة الأفاضل من مصر الحبيبة عقب على منشوري الأخير عن مصطلح \"زواج الصالونات"
-status: draft
+status: published
 published_at: 2023-11-14
 person: abu-umair-imran-al-zubaidi
 ---

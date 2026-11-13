@@ -1,6 +1,6 @@
 ---
 title: "من دلائل النبوة: إخبار الله عز وجل عن هزيمة المشركين في معركة بدر قبل حدوثها"
-status: draft
+status: published
 published_at: 2024-03-28
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

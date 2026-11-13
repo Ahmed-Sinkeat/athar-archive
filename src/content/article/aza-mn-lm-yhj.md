@@ -1,6 +1,6 @@
 ---
 title: "عزاء من لم يحج.."
-status: draft
+status: published
 published_at: 2022-06-30
 person: abu-jafar-al-khalifi
 ---

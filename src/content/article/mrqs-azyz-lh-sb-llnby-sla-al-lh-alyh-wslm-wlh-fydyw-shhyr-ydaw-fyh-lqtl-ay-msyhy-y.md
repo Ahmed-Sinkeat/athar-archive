@@ -1,6 +1,6 @@
 ---
 title: "مرقص عزيز له سب للنبي صلى الله عليه وسلم وله فيديو شهير يدعو فيه لقتل أي مسيحي ي"
-status: draft
+status: published
 published_at: 2019-09-17
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هل صح عن إمام الشام مكحول القول ببدعة القدر؟"
-status: draft
+status: published
 published_at: 2024-11-21
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

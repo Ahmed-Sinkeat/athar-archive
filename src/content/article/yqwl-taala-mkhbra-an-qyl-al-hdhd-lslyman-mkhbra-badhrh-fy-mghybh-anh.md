@@ -1,6 +1,6 @@
 ---
 title: "يقول تعالى مخبرا عن قيل الهدهد لسليمان مخبرا بعذره في مغيبه عنه"
-status: draft
+status: published
 published_at: 2025-11-07
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

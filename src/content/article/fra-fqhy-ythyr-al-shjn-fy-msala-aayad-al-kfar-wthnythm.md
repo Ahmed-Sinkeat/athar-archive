@@ -1,6 +1,6 @@
 ---
 title: "فرع فقهي يثير الشجن في مسألة أعياد الكفار وتهنئتهم..."
-status: draft
+status: published
 published_at: 2025-12-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

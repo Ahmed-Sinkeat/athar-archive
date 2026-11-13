@@ -1,6 +1,6 @@
 ---
 title: "روى عثمان بن واقِد عن نافِع قال"
-status: draft
+status: published
 published_at: 2025-10-28
 person: awwab-bin-muhammad
 topics: ["mustalah-al-hadith"]

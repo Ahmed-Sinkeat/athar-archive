@@ -1,6 +1,6 @@
 ---
 title: "لا يوجد شيء اسمه \"إنسان بدائي\"، فهذا المصطلح من زبالات نظرية التطور!"
-status: draft
+status: published
 published_at: 2024-08-30
 person: abu-umair-imran-al-zubaidi
 ---

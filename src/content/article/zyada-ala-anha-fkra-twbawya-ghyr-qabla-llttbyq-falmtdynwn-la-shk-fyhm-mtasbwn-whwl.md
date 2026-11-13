@@ -1,6 +1,6 @@
 ---
 title: "زيادة على أنها فكرة طوباوية غير قابلة للتطبيق فالمتدينون لا شك فيهم متعصبون وهؤل"
-status: draft
+status: published
 published_at: 2019-03-27
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

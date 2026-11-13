@@ -1,6 +1,6 @@
 ---
 title: "كثير من الناس إذا نشر منشورا في (الفيس بوك) أو نشر تغريدة في (تويتر ) يفرح كلما"
-status: draft
+status: published
 published_at: 2019-08-04
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

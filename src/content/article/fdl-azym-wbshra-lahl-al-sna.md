@@ -1,6 +1,6 @@
 ---
 title: "فضل عظيم وبشرى لأهل السنة"
-status: draft
+status: published
 published_at: 2023-01-07
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

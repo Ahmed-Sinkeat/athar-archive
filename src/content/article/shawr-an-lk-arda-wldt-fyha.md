@@ -1,6 +1,6 @@
 ---
 title: "شعور أنّ لك أرضا ولدت فيها"
-status: draft
+status: published
 published_at: 2024-12-07
 person: abu-umair-imran-al-zubaidi
 ---

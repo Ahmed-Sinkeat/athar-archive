@@ -1,6 +1,6 @@
 ---
 title: "الذِّكر الذي ينبغي أن يتذكره الملوك وأتباع الملوك وتذاكَر به الملوك."
-status: draft
+status: published
 published_at: 2023-12-24
 person: abu-jafar-al-khalifi
 ---

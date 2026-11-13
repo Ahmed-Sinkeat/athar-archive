@@ -1,6 +1,6 @@
 ---
 title: "احذر من إضعاف الشيطان لشكرك"
-status: draft
+status: published
 published_at: 2023-10-25
 person: abu-abdillah-firas-al-ramli
 ---

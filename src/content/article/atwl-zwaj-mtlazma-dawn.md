@@ -1,6 +1,6 @@
 ---
 title: "&rlm;\"أطول زواج متلازمة داون\""
-status: draft
+status: published
 published_at: 2019-09-10
 person: abu-jafar-al-khalifi
 ---

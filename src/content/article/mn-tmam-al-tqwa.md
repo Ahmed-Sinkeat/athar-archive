@@ -1,6 +1,6 @@
 ---
 title: "من تمام التقوى"
-status: draft
+status: published
 published_at: 2025-08-23
 person: abu-abdillah-firas-al-ramli
 ---

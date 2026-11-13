@@ -1,6 +1,6 @@
 ---
 title: "قال سيّدنا عبد الله بن عمر -رضي الله عنهما- لرجلٍ أصاب ذنوبا"
-status: draft
+status: published
 published_at: 2023-01-27
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

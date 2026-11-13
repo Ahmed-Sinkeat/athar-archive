@@ -1,6 +1,6 @@
 ---
 title: "قال محمد محمود الصواف في كتابه ( العلامة المجاهد لشيخ أمجد الزهاوي ) ( والشيخ أم"
-status: draft
+status: published
 published_at: 2019-04-05
 person: abu-jafar-al-khalifi
 ---

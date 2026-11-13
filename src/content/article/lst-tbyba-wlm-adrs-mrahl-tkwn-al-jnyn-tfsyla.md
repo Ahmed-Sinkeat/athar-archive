@@ -1,6 +1,6 @@
 ---
 title: "لست طبيبا ولم أدرس مراحل تكون الجنين تفصيلا"
-status: draft
+status: published
 published_at: 2025-09-05
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

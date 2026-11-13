@@ -1,6 +1,6 @@
 ---
 title: "مضى الرُبُعُ الأوّل مِن رمضان سريعًا كلمح البصر!."
-status: draft
+status: published
 published_at: 2023-03-29
 person: abu-umair-imran-al-zubaidi
 ---

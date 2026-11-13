@@ -1,6 +1,6 @@
 ---
 title: "جاء في مقالات الأستاذ محمود الطناحي"
-status: draft
+status: published
 published_at: 2019-08-28
 person: abu-jafar-al-khalifi
 ---

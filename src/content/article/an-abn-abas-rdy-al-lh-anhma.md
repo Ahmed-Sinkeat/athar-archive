@@ -1,6 +1,6 @@
 ---
 title: "عن ابن عباس رضي الله عنهما"
-status: draft
+status: published
 published_at: 2023-06-22
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

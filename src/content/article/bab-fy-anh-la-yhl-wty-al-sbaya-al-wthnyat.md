@@ -1,6 +1,6 @@
 ---
 title: "باب في أنه لا يحل وطئ السبايا الوثنيات"
-status: draft
+status: published
 published_at: 2024-12-02
 person: abu-abdillah-firas-al-ramli
 ---

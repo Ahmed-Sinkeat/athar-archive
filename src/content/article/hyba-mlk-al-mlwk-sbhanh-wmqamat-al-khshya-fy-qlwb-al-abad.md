@@ -1,6 +1,6 @@
 ---
 title: "هيبة ملك الملوك سبحانه ومقامات الخشية في قلوب العباد.."
-status: draft
+status: published
 published_at: 2022-03-09
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

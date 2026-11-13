@@ -1,6 +1,6 @@
 ---
 title: "إن من بركة العلم أن تضيف الشيء إلى قائله"
-status: draft
+status: published
 published_at: 2024-07-20
 person: abu-abdillah-firas-al-ramli
 ---

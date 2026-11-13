@@ -1,6 +1,6 @@
 ---
 title: "يعرض الفيلم جرائمًا مروّعة ارتُكبت بحق الأجنة من قطع أرجلهم والاحتفاظ بها في علب"
-status: draft
+status: published
 published_at: 2019-02-27
 person: abu-jafar-al-khalifi
 ---

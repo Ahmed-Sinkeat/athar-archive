@@ -1,6 +1,6 @@
 ---
 title: "قال ابن اللحام في القواعد والفوائد الأصولية"
-status: draft
+status: published
 published_at: 2017-10-02
 person: abu-jafar-al-khalifi
 ---

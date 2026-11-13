@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم في الفوائد"
-status: draft
+status: published
 published_at: 2017-08-07
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

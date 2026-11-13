@@ -1,6 +1,6 @@
 ---
 title: "لماذا ربط جرائم النصيرية بمعتقدهم وفيهم أبرياء؟ (علاقة العقيدة بالفساد السلوكي)"
-status: draft
+status: published
 published_at: 2024-12-10
 person: abu-jafar-al-khalifi
 ---

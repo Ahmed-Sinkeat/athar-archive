@@ -1,6 +1,6 @@
 ---
 title: "لطيفة : أقدم مستشفى على الطراز الحديث المعهود عندنا"
-status: draft
+status: published
 published_at: 2020-06-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "قال صاحب كتاب قصة الحضارة (2/271)"
-status: draft
+status: published
 published_at: 2017-09-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

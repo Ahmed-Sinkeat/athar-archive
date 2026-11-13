@@ -1,6 +1,6 @@
 ---
 title: "أتحسدونهم على ما هو حسرة واستدراج؟"
-status: draft
+status: published
 published_at: 2021-04-16
 person: abu-jafar-al-khalifi
 ---

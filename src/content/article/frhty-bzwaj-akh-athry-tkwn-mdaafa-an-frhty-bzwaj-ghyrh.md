@@ -1,6 +1,6 @@
 ---
 title: "فرحتي بزواج أخ أثري تكون مضاعفة عن فرحتي بزواج غيره."
-status: draft
+status: published
 published_at: 2025-01-19
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "يحيى بن معاذ الرازي مظلوم آخر في زمن المهاترات والمناكفات"
-status: draft
+status: published
 published_at: 2020-07-16
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

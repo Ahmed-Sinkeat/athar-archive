@@ -1,6 +1,6 @@
 ---
 title: "الوجه الآخر ليوسف بن عمر الثقفي.."
-status: draft
+status: published
 published_at: 2021-10-28
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ثم قال ابن تيمية"
-status: draft
+status: published
 published_at: 2019-12-03
 person: abu-jafar-al-khalifi
 ---

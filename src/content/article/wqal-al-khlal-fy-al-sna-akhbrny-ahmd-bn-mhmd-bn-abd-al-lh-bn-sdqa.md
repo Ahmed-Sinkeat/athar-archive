@@ -1,6 +1,6 @@
 ---
 title: "وقال الخلال في السنة 1768 - أخبرني أحمد بن محمد بن عبد الله بن صدقة"
-status: draft
+status: published
 published_at: 2021-09-28
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

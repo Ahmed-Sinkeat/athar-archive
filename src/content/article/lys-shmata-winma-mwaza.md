@@ -1,6 +1,6 @@
 ---
 title: "ليس شماتة وإنما موعظة.."
-status: draft
+status: published
 published_at: 2022-01-10
 person: abu-jafar-al-khalifi
 ---

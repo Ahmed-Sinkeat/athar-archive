@@ -1,6 +1,6 @@
 ---
 title: "خرج حسام عبد العزيز في مقطع فيديو يرد فيه على أسامة الأزهري ويبين مخالفة الأزهر"
-status: draft
+status: published
 published_at: 2025-01-23
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من قصص الناجين من مسلخ صيدنايا"
-status: draft
+status: published
 published_at: 2026-01-10
 person: abu-umair-imran-al-zubaidi
 ---

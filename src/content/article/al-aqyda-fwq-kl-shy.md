@@ -1,6 +1,6 @@
 ---
 title: "العقيدة فوق كل شيء.."
-status: draft
+status: published
 published_at: 2021-09-06
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

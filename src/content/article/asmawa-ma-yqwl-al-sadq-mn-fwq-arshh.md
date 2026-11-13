@@ -1,6 +1,6 @@
 ---
 title: "اسمعوا ما يقول الصادق من فوق عرشه"
-status: draft
+status: published
 published_at: 2025-12-21
 person: abu-abdillah-firas-al-ramli
 ---

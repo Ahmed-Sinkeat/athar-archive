@@ -1,6 +1,6 @@
 ---
 title: "من البلاء الذي جادت به عقول المنحلين في الغرب أن كندا كانت قد شرعت قانونا ببتر ا"
-status: draft
+status: published
 published_at: 2018-01-08
 person: abu-jafar-al-khalifi
 ---

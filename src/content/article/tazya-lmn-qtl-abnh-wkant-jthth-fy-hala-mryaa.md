@@ -1,6 +1,6 @@
 ---
 title: "تعزية لمن قتل ابنه وكانت جثته في حالة مريعة"
-status: draft
+status: published
 published_at: 2023-10-20
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

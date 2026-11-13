@@ -1,6 +1,6 @@
 ---
 title: "باب فيمن اشتهر بنوع معين من العبادة فصار له لقباً .."
-status: draft
+status: published
 published_at: 2020-08-06
 person: abu-jafar-al-khalifi
 ---

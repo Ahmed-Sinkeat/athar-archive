@@ -1,6 +1,6 @@
 ---
 title: "ما أتت على عبد ليلة قط"
-status: draft
+status: published
 published_at: 2024-03-24
 person: abu-abdillah-firas-al-ramli
 ---

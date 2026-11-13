@@ -1,6 +1,6 @@
 ---
 title: "مدخل التوحيد في الصلاة على النبي ﷺ"
-status: draft
+status: published
 published_at: 2023-01-17
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

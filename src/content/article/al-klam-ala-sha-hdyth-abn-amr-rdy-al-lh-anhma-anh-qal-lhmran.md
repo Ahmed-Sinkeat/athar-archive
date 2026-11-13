@@ -1,6 +1,6 @@
 ---
 title: "الكلام على صحة حديث ابن عمر -رضي الله عنهما- أنه قال لحمران"
-status: draft
+status: published
 published_at: 2024-02-08
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

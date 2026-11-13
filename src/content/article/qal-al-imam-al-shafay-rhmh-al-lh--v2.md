@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام الشافعي رحمه الله"
-status: draft
+status: published
 published_at: 2023-06-30
 person: abu-abdillah-firas-al-ramli
 ---

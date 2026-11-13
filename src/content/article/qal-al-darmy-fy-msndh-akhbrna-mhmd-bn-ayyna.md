@@ -1,6 +1,6 @@
 ---
 title: "قال الدارمي في مسنده 220 - أَخْبَرَنَا مُحَمَّدُ بْنُ عُيَيْنَةَ"
-status: draft
+status: published
 published_at: 2017-06-10
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الخطورة أم البعد عن الوحي"
-status: draft
+status: published
 published_at: 2022-11-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-sunnah-wal-bidah"]

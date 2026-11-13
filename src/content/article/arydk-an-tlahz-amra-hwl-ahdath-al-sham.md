@@ -1,6 +1,6 @@
 ---
 title: "أريدك أن تلاحظ أمرا حول أحداث الشام"
-status: draft
+status: published
 published_at: 2025-03-10
 person: abu-umair-imran-al-zubaidi
 topics: ["al-iman"]

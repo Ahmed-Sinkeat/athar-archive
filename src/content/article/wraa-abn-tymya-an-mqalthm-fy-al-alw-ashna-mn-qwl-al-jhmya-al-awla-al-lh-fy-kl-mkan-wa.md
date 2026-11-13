@@ -1,6 +1,6 @@
 ---
 title: "ورأى ابن تيمية أن مقالتهم في العلو أشنع من قول الجهمية الأولى الله في كل مكان وأ"
-status: draft
+status: published
 published_at: 2020-09-12
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "برهان التحامل على معاوية بن أبي سفيان (حين لا يعمل نقدك في روايات ثلبه)."
-status: draft
+status: published
 published_at: 2023-12-31
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا مقطع لامرأة كورية في التيك توك تشرح كيف صنع شكل الفرق الكورية ولماذا أشكالهم"
-status: draft
+status: published
 published_at: 2025-11-24
 person: abu-jafar-al-khalifi
 ---

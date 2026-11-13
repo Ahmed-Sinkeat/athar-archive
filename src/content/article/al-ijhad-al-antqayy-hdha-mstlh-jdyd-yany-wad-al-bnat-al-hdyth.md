@@ -1,6 +1,6 @@
 ---
 title: "الإجهاض الانتقائي هذا مصطلح جديد يعني وأد البنات الحديث!"
-status: draft
+status: published
 published_at: 2026-05-12
 person: abu-jafar-al-khalifi
 ---

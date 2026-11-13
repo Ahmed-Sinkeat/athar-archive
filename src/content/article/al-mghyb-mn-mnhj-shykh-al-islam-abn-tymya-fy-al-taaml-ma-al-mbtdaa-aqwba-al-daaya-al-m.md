@@ -1,6 +1,6 @@
 ---
 title: "المغيَّب من منهج شيخ الإسلام ابن تيمية في التعامل مع المبتدعة (عقوبة الداعية الم"
-status: draft
+status: published
 published_at: 2024-07-21
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

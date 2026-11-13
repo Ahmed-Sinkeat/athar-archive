@@ -1,6 +1,6 @@
 ---
 title: "شرع الله عز وجل لأهل المحلة الاجتماع كل يوم خمس مرات في المسجد في الصلوات الخمس"
-status: draft
+status: published
 published_at: 2017-06-25
 person: abu-jafar-al-khalifi
 ---

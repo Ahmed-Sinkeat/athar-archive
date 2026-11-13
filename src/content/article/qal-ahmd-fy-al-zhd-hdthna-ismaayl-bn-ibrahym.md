@@ -1,6 +1,6 @@
 ---
 title: "قال أحمد في الزهد 845- حدثنا إسماعيل بن إبراهيم"
-status: draft
+status: published
 published_at: 2018-12-01
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

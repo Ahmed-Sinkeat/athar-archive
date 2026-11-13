@@ -1,6 +1,6 @@
 ---
 title: "لماذا ينشر عبد الله رشدي مثل هذا الكلام؟"
-status: draft
+status: published
 published_at: 2023-08-21
 person: abu-jafar-al-khalifi
 ---

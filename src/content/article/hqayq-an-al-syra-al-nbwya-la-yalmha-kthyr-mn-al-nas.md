@@ -1,6 +1,6 @@
 ---
 title: "حقائق عن السيرة النبوية لا يعلمها كثير من الناس..."
-status: draft
+status: published
 published_at: 2024-05-11
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

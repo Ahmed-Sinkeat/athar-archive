@@ -1,6 +1,6 @@
 ---
 title: "جاء في شرح المنار لعبد اللطيف بن فرشنة (2/1117)"
-status: draft
+status: published
 published_at: 2017-11-02
 person: abu-jafar-al-khalifi
 ---

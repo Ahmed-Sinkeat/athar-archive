@@ -1,6 +1,6 @@
 ---
 title: "مسألة خروج أناس منتسبين أو محسوبين على السلطة السورية ليقولوا أنّ رجل الأمن الذي"
-status: draft
+status: published
 published_at: 2026-02-04
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

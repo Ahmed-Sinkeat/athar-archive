@@ -1,6 +1,6 @@
 ---
 title: "اذْهَبْ أَنْتَ وَأَخُوكَ بِآيَاتِي وَلَا تَنِيَا فِي ذِكْرِي (42) اذْهَبَا إِلَى"
-status: draft
+status: published
 published_at: 2025-08-10
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

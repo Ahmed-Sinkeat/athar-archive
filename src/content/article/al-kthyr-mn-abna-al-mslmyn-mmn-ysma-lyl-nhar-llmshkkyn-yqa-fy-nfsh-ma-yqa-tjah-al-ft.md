@@ -1,6 +1,6 @@
 ---
 title: "الكثير من أبناء المسلمين ممن يسمع ليل نهار للمشككين يقع في نفسه ما يقع تجاه الفت"
-status: draft
+status: published
 published_at: 2019-04-26
 person: abu-jafar-al-khalifi
 ---

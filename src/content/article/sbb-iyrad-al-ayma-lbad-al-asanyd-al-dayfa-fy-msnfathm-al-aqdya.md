@@ -1,6 +1,6 @@
 ---
 title: "سبب إيراد الأئمة لبعض الأسانيد الضعيفة في مصنفاتهم العقدية"
-status: draft
+status: published
 published_at: 2026-04-14
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

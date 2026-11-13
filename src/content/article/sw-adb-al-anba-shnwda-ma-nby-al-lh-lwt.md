@@ -1,6 +1,6 @@
 ---
 title: "سوء أدب الأنبا شنودة مع نبي الله لوط .."
-status: draft
+status: published
 published_at: 2019-09-17
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "في هذه الأوقات يهبط ملك الملوك سبحانه وتعالى إلى السماء الدنيا"
-status: draft
+status: published
 published_at: 2024-06-02
 person: abu-umair-imran-al-zubaidi
 ---

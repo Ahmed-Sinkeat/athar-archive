@@ -1,6 +1,6 @@
 ---
 title: "بل يسعك الصمت، بل وحتى الثناء يسعك."
-status: draft
+status: published
 published_at: 2025-03-02
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

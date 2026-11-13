@@ -1,6 +1,6 @@
 ---
 title: "كيف ذب علماء الشيعة ورواتهم عن معاوية بن أبي سفيان من حيث لا يشعرون؟"
-status: draft
+status: published
 published_at: 2023-02-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "أكثر ما يغضبني حينما يُتحدث عن النصيرية ثم يتم التفريق بين العسكري منهم والمدني"
-status: draft
+status: published
 published_at: 2025-03-14
 person: abu-umair-imran-al-zubaidi
 ---

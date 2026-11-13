@@ -1,6 +1,6 @@
 ---
 title: "كتبت إحدى الأمريكيات في تويتر ما يلي"
-status: draft
+status: published
 published_at: 2019-10-10
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "تأمل معي ..."
-status: draft
+status: published
 published_at: 2026-08-14
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

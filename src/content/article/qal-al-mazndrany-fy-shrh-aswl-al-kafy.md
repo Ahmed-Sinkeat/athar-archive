@@ -1,6 +1,6 @@
 ---
 title: "قال المازندراني في شرح أصول الكافي ( 3/220)"
-status: draft
+status: published
 published_at: 2017-11-09
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

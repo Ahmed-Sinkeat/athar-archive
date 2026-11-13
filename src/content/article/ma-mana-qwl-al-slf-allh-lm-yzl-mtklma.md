@@ -1,6 +1,6 @@
 ---
 title: "ما معنى قول السلف: \"الله لم يزل متكلمًا\" ؟!"
-status: draft
+status: published
 published_at: 2023-08-17
 person: abu-umair-imran-al-zubaidi
 ---

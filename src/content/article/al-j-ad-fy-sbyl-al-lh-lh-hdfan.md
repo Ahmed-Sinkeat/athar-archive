@@ -1,6 +1,6 @@
 ---
 title: "الجـ ° ـاد في سبيل الله له هدفان"
-status: draft
+status: published
 published_at: 2023-02-21
 person: abu-umair-imran-al-zubaidi
 ---

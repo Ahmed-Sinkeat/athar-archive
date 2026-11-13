@@ -1,6 +1,6 @@
 ---
 title: "أنا أجزم أن العاهات الذين يقولون أن آية التعدد خاصة بالزواج من اليتيمات أو الأرا"
-status: draft
+status: published
 published_at: 2025-08-16
 person: abu-umair-imran-al-zubaidi
 ---

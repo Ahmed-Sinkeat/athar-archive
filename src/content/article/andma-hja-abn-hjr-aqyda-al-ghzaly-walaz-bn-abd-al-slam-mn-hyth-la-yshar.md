@@ -1,6 +1,6 @@
 ---
 title: "عندما هجا ابن حجر عقيدة الغزالي والعز بن عبد السلام من حيث لا يشعر."
-status: draft
+status: published
 published_at: 2023-04-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

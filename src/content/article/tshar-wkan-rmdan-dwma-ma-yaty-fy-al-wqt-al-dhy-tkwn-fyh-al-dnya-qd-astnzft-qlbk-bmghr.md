@@ -1,6 +1,6 @@
 ---
 title: "تشعر وكأنّ رمضان دوما ما يأتي في الوقت الذي تكون فيه الدنيا قد استنزفت قلبك بمغر"
-status: draft
+status: published
 published_at: 2025-02-27
 person: abu-umair-imran-al-zubaidi
 ---

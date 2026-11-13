@@ -1,6 +1,6 @@
 ---
 title: "قال نيل جاكسون وزميله في كتابهما أساسيات في السياسة ص125"
-status: draft
+status: published
 published_at: 2017-11-09
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

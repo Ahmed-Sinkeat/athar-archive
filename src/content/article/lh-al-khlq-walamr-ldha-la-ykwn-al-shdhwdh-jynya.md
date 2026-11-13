@@ -1,6 +1,6 @@
 ---
 title: "له الخلق والأمر لذا لا يكون الشذوذ جينيًّا!"
-status: draft
+status: published
 published_at: 2021-02-27
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

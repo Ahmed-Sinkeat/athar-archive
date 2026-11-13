@@ -1,6 +1,6 @@
 ---
 title: "جاء في الآداب الشرعية لابن مفلح"
-status: draft
+status: published
 published_at: 2017-07-09
 person: abu-jafar-al-khalifi
 ---

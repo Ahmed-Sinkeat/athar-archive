@@ -1,6 +1,6 @@
 ---
 title: "رحمة المؤمن ورأفته لا تنفصل عن إيمانه، وقسوته رحمة لو كنت تعقل!"
-status: draft
+status: published
 published_at: 2026-07-23
 person: abu-jafar-al-khalifi
 ---

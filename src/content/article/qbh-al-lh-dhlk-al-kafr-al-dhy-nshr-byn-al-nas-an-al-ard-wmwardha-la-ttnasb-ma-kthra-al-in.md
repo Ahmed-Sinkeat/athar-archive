@@ -1,6 +1,6 @@
 ---
 title: "قبح الله ذلك الكافر الذي نشر بين الناس أنّ الأرض ومواردها لا تتناسب مع كثرة الإن"
-status: draft
+status: published
 published_at: 2025-05-14
 person: abu-umair-imran-al-zubaidi
 ---

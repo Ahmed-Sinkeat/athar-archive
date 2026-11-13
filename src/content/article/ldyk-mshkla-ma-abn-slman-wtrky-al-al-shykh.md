@@ -1,6 +1,6 @@
 ---
 title: "لديك مشكلة مع ابن سلمان وتركي آل الشيخ؟!"
-status: draft
+status: published
 published_at: 2023-10-29
 person: abu-umair-imran-al-zubaidi
 ---

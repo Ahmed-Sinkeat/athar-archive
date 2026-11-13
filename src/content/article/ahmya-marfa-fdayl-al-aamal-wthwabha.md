@@ -1,6 +1,6 @@
 ---
 title: "أهمية معرفة فضائل الأعمال وثوابها"
-status: draft
+status: published
 published_at: 2024-02-16
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

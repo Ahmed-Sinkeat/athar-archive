@@ -1,6 +1,6 @@
 ---
 title: "شيء من الواقعية في أحوال المعلمين والمتعلمين.."
-status: draft
+status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi
 ---

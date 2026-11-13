@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم في مدارج السالكين (3/390)"
-status: draft
+status: published
 published_at: 2017-09-17
 person: abu-jafar-al-khalifi
 ---

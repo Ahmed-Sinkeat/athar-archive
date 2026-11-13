@@ -1,6 +1,6 @@
 ---
 title: "من يحسب أنّ الرجل الغربي الأبيض له كلمة على حكومات بلاده فهو ساذج"
-status: draft
+status: published
 published_at: 2023-10-20
 person: abu-umair-imran-al-zubaidi
 ---

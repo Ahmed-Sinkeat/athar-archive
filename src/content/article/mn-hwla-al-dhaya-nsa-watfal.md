@@ -1,6 +1,6 @@
 ---
 title: "من هؤلاء الضحايا نساء وأطفال"
-status: draft
+status: published
 published_at: 2026-10-27
 person: abu-jafar-al-khalifi
 ---

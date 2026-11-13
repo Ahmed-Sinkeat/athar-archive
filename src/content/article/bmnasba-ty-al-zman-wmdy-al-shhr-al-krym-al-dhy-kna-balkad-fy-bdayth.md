@@ -1,6 +1,6 @@
 ---
 title: "بمناسبة طيِّ الزَّمان ومُضيِّ الشَّهر الكريم الذي كنا بالكاد في بدايته"
-status: draft
+status: published
 published_at: 2025-03-21
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "باب ما جاء في الذكر بعد الخروج من الخلاء"
-status: draft
+status: published
 published_at: 2024-09-09
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

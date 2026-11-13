@@ -1,6 +1,6 @@
 ---
 title: "في ذم الإمام ابن القيم رحمه الله مَن يُعارِض الوحي بعقله ويُقدِّمه عليه ويجعله ح"
-status: draft
+status: published
 published_at: 2025-08-03
 person: awwab-bin-muhammad
 ---

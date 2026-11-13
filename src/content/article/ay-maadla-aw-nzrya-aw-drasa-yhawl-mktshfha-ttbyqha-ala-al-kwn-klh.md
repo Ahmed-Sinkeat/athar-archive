@@ -1,6 +1,6 @@
 ---
 title: "أي معادلة أو نظرية أو دراسة يحاول مكتشفها تطبيقها على الكون كله"
-status: draft
+status: published
 published_at: 2023-08-30
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا خبر منشور في سكاي عربية نيوز بتاريخ 2 أغسطس 2019"
-status: draft
+status: published
 published_at: 2019-08-19
 person: abu-jafar-al-khalifi
 ---

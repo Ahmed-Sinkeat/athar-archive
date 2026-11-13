@@ -1,6 +1,6 @@
 ---
 title: "أبو القاسم الخوئي يُثبت براءة الزهري من افتراء الإمامية عليه."
-status: draft
+status: published
 published_at: 2020-09-19
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "الرجولة المنسية والرجولة الزائفة..."
-status: draft
+status: published
 published_at: 2024-01-09
 person: abu-jafar-al-khalifi
 ---

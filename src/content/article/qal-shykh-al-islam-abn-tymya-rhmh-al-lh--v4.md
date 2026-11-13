@@ -1,6 +1,6 @@
 ---
 title: "قال شيخ الإسلام ابن تيمية رحمه الله"
-status: draft
+status: published
 published_at: 2023-09-10
 person: abu-umair-imran-al-zubaidi
 ---

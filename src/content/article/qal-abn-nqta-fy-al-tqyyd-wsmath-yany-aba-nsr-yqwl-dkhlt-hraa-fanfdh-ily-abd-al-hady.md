@@ -1,6 +1,6 @@
 ---
 title: "قال ابن نقطة في التقييد وسمعته يعني أبا نصر يقول دخلت هراة فأنفذ إلي عبد الهادي"
-status: draft
+status: published
 published_at: 2017-07-24
 person: abu-jafar-al-khalifi
 ---

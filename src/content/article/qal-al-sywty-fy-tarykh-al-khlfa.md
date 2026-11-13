@@ -1,6 +1,6 @@
 ---
 title: "قال السيوطي في تاريخ الخلفاء"
-status: draft
+status: published
 published_at: 2018-03-29
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "علاج الخوف \"الزائد\" من المستقبل يكمن بالإيمان بالقدر حقًا"
-status: draft
+status: published
 published_at: 2023-07-14
 person: abu-umair-imran-al-zubaidi
 ---

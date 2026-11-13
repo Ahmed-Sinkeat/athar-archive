@@ -1,6 +1,6 @@
 ---
 title: "انهكوا وجوه القوم ولا تخزوا الحور العين"
-status: draft
+status: published
 published_at: 2024-11-29
 person: abu-abdillah-firas-al-ramli
 ---

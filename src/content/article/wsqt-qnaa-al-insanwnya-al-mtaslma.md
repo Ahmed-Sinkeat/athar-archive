@@ -1,6 +1,6 @@
 ---
 title: "وسقط قناع الإنسانونية المتأسلمة."
-status: draft
+status: published
 published_at: 2020-01-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

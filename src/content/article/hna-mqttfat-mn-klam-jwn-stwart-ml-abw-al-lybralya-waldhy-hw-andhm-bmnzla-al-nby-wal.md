@@ -1,6 +1,6 @@
 ---
 title: "هنا مقتطفات من كلام جون ستوارت مل أبو الليبرالية والذي هو عندهم بمنزلة النبي وال"
-status: draft
+status: published
 published_at: 2019-04-28
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

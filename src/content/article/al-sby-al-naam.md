@@ -1,6 +1,6 @@
 ---
 title: "السبي الناعم!"
-status: draft
+status: published
 published_at: 2021-09-15
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال مسلم في صحيحه 4321- [35"
-status: draft
+status: published
 published_at: 2018-04-06
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

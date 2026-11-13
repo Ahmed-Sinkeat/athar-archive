@@ -1,6 +1,6 @@
 ---
 title: "الأصل البراهمي لخُمس المكاسب عند الشيعة الإمامية"
-status: draft
+status: published
 published_at: 2020-10-15
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]

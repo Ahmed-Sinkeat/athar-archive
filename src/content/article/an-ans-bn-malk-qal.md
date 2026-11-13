@@ -1,6 +1,6 @@
 ---
 title: "عَنْ أَنَسِ بْنِ مَالِكٍ قَالَ"
-status: draft
+status: published
 published_at: 2017-07-10
 person: abu-jafar-al-khalifi
 ---

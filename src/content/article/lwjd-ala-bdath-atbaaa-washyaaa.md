@@ -1,6 +1,6 @@
 ---
 title: "لوجد على بدعته أتباعا وأشياعا"
-status: draft
+status: published
 published_at: 2023-06-24
 person: abu-abdillah-firas-al-ramli
 ---

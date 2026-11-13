@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال كنت أحرره الفترة الماضية"
-status: draft
+status: published
 published_at: 2025-10-05
 person: awwab-bin-muhammad
 ---

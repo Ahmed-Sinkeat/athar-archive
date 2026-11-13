@@ -1,6 +1,6 @@
 ---
 title: "وانظر كيف لخص علاء الدين البعلي الدمشقي مذهب شيخ الإسلام في المسألة في كتابه «ال"
-status: draft
+status: published
 published_at: 2021-03-21
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

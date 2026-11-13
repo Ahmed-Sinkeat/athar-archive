@@ -1,6 +1,6 @@
 ---
 title: "ليس النصر محصورًا في الظفر بالأعداء وغلبتهم في الدنيا فحسب!"
-status: draft
+status: published
 published_at: 2023-10-11
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

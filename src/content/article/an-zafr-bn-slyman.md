@@ -1,6 +1,6 @@
 ---
 title: "عن زافر بن سليمان"
-status: draft
+status: published
 published_at: 2023-06-16
 person: abu-abdillah-firas-al-ramli
 ---

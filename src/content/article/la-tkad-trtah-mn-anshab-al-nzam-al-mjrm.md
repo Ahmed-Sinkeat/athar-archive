@@ -1,6 +1,6 @@
 ---
 title: "لا تكاد ترتاح من انسحاب النظام المجرم"
-status: draft
+status: published
 published_at: 2024-11-30
 person: abu-umair-imran-al-zubaidi
 ---

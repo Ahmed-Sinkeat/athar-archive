@@ -1,6 +1,6 @@
 ---
 title: "روى ابن أبي الدنيا في كتاب «الصمت» عن الحسن البصري أنه قال"
-status: draft
+status: published
 published_at: 2025-02-24
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من أحوج لمن؟"
-status: draft
+status: published
 published_at: 2021-07-31
 person: abu-jafar-al-khalifi
 ---

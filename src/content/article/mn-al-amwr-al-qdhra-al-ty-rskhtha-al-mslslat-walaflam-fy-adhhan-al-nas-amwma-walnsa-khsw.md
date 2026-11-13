@@ -1,6 +1,6 @@
 ---
 title: "من الأمور القذرة التي رسختها المسلسلات والأفلام في أذهان الناس عموما والنساء خصو"
-status: draft
+status: published
 published_at: 2024-09-09
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "لا أظن عالمانيا عربيا يتشجع لمثل هذا الخطاب الذي يقترحه عليهم الأخ!"
-status: draft
+status: published
 published_at: 2021-04-13
 person: abu-jafar-al-khalifi
 ---

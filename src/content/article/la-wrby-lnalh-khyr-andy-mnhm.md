@@ -1,6 +1,6 @@
 ---
 title: "لا وربي لنعله خير عندي منهم"
-status: draft
+status: published
 published_at: 2025-01-02
 person: abu-umair-imran-al-zubaidi
 ---

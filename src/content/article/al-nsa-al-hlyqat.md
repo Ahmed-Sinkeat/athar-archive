@@ -1,6 +1,6 @@
 ---
 title: "النساء الحليقات - Les femmes tondues"
-status: draft
+status: published
 published_at: 2018-12-06
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "بين السجل الأحفوري والعمالقة (بين التسليم لدارون والاعتراض على الأحاديث)!"
-status: draft
+status: published
 published_at: 2020-10-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

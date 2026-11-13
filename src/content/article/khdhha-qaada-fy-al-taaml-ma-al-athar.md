@@ -1,6 +1,6 @@
 ---
 title: "خذها قاعدة في التعامل مع الآثار"
-status: draft
+status: published
 published_at: 2023-05-27
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

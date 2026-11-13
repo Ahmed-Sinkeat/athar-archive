@@ -1,6 +1,6 @@
 ---
 title: "بعد رؤية ما فعله المجرمون في الشام في نساء المسلمين من أمور لا تخطر على قلب بشر"
-status: draft
+status: published
 published_at: 2024-12-18
 person: abu-umair-imran-al-zubaidi
 ---

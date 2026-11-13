@@ -1,6 +1,6 @@
 ---
 title: "أقرَّ مجلس النواب الأمريكي مشروع قانون يسمح بفرض عقوبات على المحكمة الجنائية الد"
-status: draft
+status: published
 published_at: 2024-06-09
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "جاء في إرشاد إلى أفعال المناسك لابن فرحون بحث مسألة نذر المرأة أن تحج ماشية ونقل"
-status: draft
+status: published
 published_at: 2017-12-26
 person: abu-jafar-al-khalifi
 ---

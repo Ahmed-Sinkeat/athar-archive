@@ -1,6 +1,6 @@
 ---
 title: "للأخوة المهتمين بملف الرق"
-status: draft
+status: published
 published_at: 2018-04-26
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

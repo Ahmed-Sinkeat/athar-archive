@@ -1,6 +1,6 @@
 ---
 title: "لو تأملت في قصة موسى عليه السلام مع قومه وفرعون وجنوده ستلاحظ أمرا على ظهوره ولك"
-status: draft
+status: published
 published_at: 2025-11-21
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

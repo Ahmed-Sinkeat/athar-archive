@@ -1,6 +1,6 @@
 ---
 title: "إيّاك أن تبخل بأيّ معلومةٍ دينيّة مهما كانت بدهية وتعتقد أنّ مِن المحال وجود من"
-status: draft
+status: published
 published_at: 2023-01-26
 person: abu-umair-imran-al-zubaidi
 ---

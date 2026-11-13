@@ -1,6 +1,6 @@
 ---
 title: "قال الطبري في تفسيره 16998- حدثني محمد بن معمر قال"
-status: draft
+status: published
 published_at: 2017-07-06
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

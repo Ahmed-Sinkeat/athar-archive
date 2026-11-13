@@ -1,6 +1,6 @@
 ---
 title: "لا يكون حظكم من هذا الخير أن تسمعوه بهذه الأذن، ويخرج من هذه الأخرى"
-status: draft
+status: published
 published_at: 2025-11-09
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

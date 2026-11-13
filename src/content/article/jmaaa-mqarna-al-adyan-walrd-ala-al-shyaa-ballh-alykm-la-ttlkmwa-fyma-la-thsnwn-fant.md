@@ -1,6 +1,6 @@
 ---
 title: "جماعة مقارنة الأديان والرد على الشيعة بالله عليكم لا تتلكموا فيما لا تحسنون فأنت"
-status: draft
+status: published
 published_at: 2024-04-17
 person: abu-abdillah-firas-al-ramli
 ---

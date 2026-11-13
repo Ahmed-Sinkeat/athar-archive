@@ -1,6 +1,6 @@
 ---
 title: "سبب حديثي عن هذه الثورة أنها أخرجت الناس قليلاً من حال الانتقائية الذي كانوا يعي"
-status: draft
+status: published
 published_at: 2022-06-27
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-wala-wal-bara"]

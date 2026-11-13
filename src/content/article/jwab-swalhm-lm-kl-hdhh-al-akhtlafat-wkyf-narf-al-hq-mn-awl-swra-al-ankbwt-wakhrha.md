@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤالهم: لم كل هذه الاختلافات؟ وكيف نعرف الحق من أول سورة العنكبوت وآخرها؟"
-status: draft
+status: published
 published_at: 2026-04-14
 person: abu-jafar-al-khalifi
 ---

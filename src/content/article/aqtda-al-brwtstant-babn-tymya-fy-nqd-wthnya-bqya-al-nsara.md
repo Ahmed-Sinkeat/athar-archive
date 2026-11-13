@@ -1,6 +1,6 @@
 ---
 title: "اقتداء البروتستانت بابن تيمية في نقد وثنية بقية النصارى!"
-status: draft
+status: published
 published_at: 2026-03-13
 person: abu-jafar-al-khalifi
 ---

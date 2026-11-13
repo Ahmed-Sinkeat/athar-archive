@@ -1,6 +1,6 @@
 ---
 title: "من الشعارات التي رفعها المتظاهرين وأعجبت الكاتب الألماني أولريش بيك في كتابه الس"
-status: draft
+status: published
 published_at: 2017-11-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

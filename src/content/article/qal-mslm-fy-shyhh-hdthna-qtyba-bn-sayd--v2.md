@@ -1,6 +1,6 @@
 ---
 title: "قال مسلم في صحيحه 858- [84-413] حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ"
-status: draft
+status: published
 published_at: 2017-12-26
 person: abu-jafar-al-khalifi
 ---

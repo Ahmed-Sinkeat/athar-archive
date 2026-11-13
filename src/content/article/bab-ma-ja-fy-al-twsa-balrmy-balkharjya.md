@@ -1,6 +1,6 @@
 ---
 title: "باب ما جاء في التوسع بالرمي بالخارجية"
-status: draft
+status: published
 published_at: 2022-07-30
 person: abu-jafar-al-khalifi
 ---

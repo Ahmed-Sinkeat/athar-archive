@@ -1,6 +1,6 @@
 ---
 title: "في هذا الحر تذكر فضل الصلاة والصدقة والعمل الصالح واتباع السنة..."
-status: draft
+status: published
 published_at: 2025-06-19
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

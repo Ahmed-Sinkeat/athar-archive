@@ -1,6 +1,6 @@
 ---
 title: "تنبيه دقيق لشيخ الإسلام فيما يجده بعض الناس في الباطل من منافع"
-status: draft
+status: published
 published_at: 2020-08-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

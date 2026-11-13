@@ -1,6 +1,6 @@
 ---
 title: "المسألة الثانية"
-status: draft
+status: published
 published_at: 2021-11-01
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

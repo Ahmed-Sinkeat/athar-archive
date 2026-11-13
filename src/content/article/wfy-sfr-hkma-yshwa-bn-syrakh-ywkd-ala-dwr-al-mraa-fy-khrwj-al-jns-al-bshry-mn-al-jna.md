@@ -1,6 +1,6 @@
 ---
 title: "وفي سفر حكمة يشوع بن سيراخ يؤكد على دور المرأة في خروج الجنس البشري من الجنة"
-status: draft
+status: published
 published_at: 2017-11-22
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

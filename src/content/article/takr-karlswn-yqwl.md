@@ -1,6 +1,6 @@
 ---
 title: "تاكر كارلسون يقول"
-status: draft
+status: published
 published_at: 2026-03-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

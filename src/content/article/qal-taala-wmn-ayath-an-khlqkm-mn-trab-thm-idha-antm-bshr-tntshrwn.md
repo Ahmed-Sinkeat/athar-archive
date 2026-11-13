@@ -1,6 +1,6 @@
 ---
 title: "قال تعالى : ( ومن آياته أن خلقكم من تراب ثم إذا أنتم بشر تنتشرون)"
-status: draft
+status: published
 published_at: 2017-11-09
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

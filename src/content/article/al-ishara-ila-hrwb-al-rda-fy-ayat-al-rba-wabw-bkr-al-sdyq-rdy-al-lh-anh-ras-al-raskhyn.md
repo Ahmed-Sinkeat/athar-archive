@@ -1,6 +1,6 @@
 ---
 title: "الإشارة إلى حروب الردة في آيات الربا وأبو بكر الصديق -رضي الله عنه- رأس الراسخين"
-status: draft
+status: published
 published_at: 2024-03-12
 person: abu-jafar-al-khalifi
 ---

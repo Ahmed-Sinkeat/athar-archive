@@ -1,6 +1,6 @@
 ---
 title: "هذا الأخ محمد غنايم ما شاء الله تبارك الله يوما بعد يوم يتحسن محتواه"
-status: draft
+status: published
 published_at: 2023-10-06
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

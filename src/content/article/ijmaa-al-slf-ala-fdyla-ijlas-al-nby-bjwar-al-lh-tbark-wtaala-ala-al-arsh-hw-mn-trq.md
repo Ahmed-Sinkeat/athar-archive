@@ -1,6 +1,6 @@
 ---
 title: "إجماع السلف على فضيلة إجلاس النبي ﷺ بجوار الله تبارك وتعالى على العرش هو من طرق"
-status: draft
+status: published
 published_at: 2025-02-16
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

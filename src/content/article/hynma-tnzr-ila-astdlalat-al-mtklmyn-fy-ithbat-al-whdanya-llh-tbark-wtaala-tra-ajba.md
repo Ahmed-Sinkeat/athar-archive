@@ -1,6 +1,6 @@
 ---
 title: "حينما تنظر إلى استدلالات المتكلمين في إثبات الوحدانية لله تبارك وتعالى ترى عجبًا"
-status: draft
+status: published
 published_at: 2024-05-11
 person: abu-umair-imran-al-zubaidi
 ---

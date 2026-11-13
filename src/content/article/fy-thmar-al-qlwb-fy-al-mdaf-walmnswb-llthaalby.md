@@ -1,6 +1,6 @@
 ---
 title: "في (ثمار القلوب في المضاف والمنسوب) للثعالبي"
-status: draft
+status: published
 published_at: 2018-02-18
 person: abu-jafar-al-khalifi
 ---

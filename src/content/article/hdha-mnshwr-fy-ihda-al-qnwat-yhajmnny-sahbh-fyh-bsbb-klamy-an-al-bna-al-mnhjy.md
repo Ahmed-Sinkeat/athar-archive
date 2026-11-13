@@ -1,6 +1,6 @@
 ---
 title: "هذا منشور في إحدى القنوات يهاجمنني صاحبه فيه بسبب كلامي عن البناء المنهجي."
-status: draft
+status: published
 published_at: 2024-01-07
 person: abu-umair-imran-al-zubaidi
 topics: ["tazkiyat-al-nafs"]

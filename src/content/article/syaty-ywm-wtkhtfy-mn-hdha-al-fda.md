@@ -1,6 +1,6 @@
 ---
 title: "سيأتي يوم وتختفي من هذا الفضاء."
-status: draft
+status: published
 published_at: 2025-01-23
 person: abu-umair-imran-al-zubaidi
 ---

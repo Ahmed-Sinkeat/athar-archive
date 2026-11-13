@@ -1,6 +1,6 @@
 ---
 title: "لا تخافوا على ما تقدمون ولا تحزنوا على ما خلفتم"
-status: draft
+status: published
 published_at: 2025-09-17
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

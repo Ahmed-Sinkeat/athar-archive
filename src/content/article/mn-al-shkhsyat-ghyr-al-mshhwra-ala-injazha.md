@@ -1,6 +1,6 @@
 ---
 title: "من الشخصيات غير المشهورة على إنجازها"
-status: draft
+status: published
 published_at: 2017-07-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

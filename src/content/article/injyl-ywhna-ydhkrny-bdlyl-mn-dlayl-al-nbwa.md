@@ -1,6 +1,6 @@
 ---
 title: "إنجيل يوحنا يذكِّرني بدليل من دلائل النبوة."
-status: draft
+status: published
 published_at: 2021-02-04
 person: abu-jafar-al-khalifi
 ---

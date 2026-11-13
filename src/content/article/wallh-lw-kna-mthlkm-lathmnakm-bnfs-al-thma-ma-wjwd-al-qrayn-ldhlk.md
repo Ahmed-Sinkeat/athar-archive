@@ -1,6 +1,6 @@
 ---
 title: "والله لو كنا مثلكم لاتهمناكم بنفس التهمة مع وجود القرائن لذلك"
-status: draft
+status: published
 published_at: 2025-01-20
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

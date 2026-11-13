@@ -1,6 +1,6 @@
 ---
 title: "مفارقة عجيبة: لا أدرية بريطانية تطالب بتحكيم الشريعة الإسلامية!"
-status: draft
+status: published
 published_at: 2021-04-14
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

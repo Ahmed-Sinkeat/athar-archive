@@ -1,6 +1,6 @@
 ---
 title: "من غرائب الأسئلة التي بلغتني"
-status: draft
+status: published
 published_at: 2019-04-07
 person: abu-jafar-al-khalifi
 ---

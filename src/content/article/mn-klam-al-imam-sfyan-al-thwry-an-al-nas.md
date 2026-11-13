@@ -1,6 +1,6 @@
 ---
 title: "من كلام الإمام سفيان الثوري عن الناس"
-status: draft
+status: published
 published_at: 2023-08-29
 person: abu-abdillah-firas-al-ramli
 ---

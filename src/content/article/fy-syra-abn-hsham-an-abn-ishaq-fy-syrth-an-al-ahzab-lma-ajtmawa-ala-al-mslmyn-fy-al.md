@@ -1,6 +1,6 @@
 ---
 title: "في سيرة ابن هشام عن ابن إسحاق في سيرته أن الأحزاب لما اجتمعوا على المسلمين في ال"
-status: draft
+status: published
 published_at: 2017-10-26
 person: abu-jafar-al-khalifi
 ---

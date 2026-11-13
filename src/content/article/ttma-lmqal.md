@@ -1,6 +1,6 @@
 ---
 title: "تتمّةٌ لِمقال"
-status: draft
+status: published
 published_at: 2022-08-16
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

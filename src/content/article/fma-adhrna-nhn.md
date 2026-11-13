@@ -1,6 +1,6 @@
 ---
 title: "فما عذرنا نحن؟"
-status: draft
+status: published
 published_at: 2020-11-20
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

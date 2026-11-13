@@ -1,6 +1,6 @@
 ---
 title: "نشر الأخ حسان بن عابد ما يلي"
-status: draft
+status: published
 published_at: 2019-08-05
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

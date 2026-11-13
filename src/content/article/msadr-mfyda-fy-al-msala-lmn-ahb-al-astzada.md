@@ -1,6 +1,6 @@
 ---
 title: "مصادر مفيدة في المسألة لمن أحب الاستزادة"
-status: draft
+status: published
 published_at: 2025-03-29
 person: awwab-bin-muhammad
 ---

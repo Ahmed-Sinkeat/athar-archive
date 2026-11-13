@@ -1,6 +1,6 @@
 ---
 title: "وأوسطه عذر ( فمن اضطر )"
-status: draft
+status: published
 published_at: 2018-05-16
 person: abu-jafar-al-khalifi
 ---

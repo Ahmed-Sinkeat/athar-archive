@@ -1,6 +1,6 @@
 ---
 title: "من الأمور التي تدعو للأسف جهلنا بالكثير من الشخصيات المحورية في تاريخنا وبعض موا"
-status: draft
+status: published
 published_at: 2018-10-01
 person: abu-jafar-al-khalifi
 ---

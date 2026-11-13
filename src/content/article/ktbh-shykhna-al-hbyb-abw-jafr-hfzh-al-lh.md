@@ -1,6 +1,6 @@
 ---
 title: "كتبه شيخنا الحبيب أبو جعفر حفظه الله."
-status: draft
+status: published
 published_at: 2025-11-21
 person: abu-umair-imran-al-zubaidi
 ---

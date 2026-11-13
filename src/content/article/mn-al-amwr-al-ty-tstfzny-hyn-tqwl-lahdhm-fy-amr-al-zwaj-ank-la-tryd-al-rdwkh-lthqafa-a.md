@@ -1,6 +1,6 @@
 ---
 title: "من الأمور التي تستفزني حين تقول لأحدهم في أمر الزواج أنك لا تريد الرضوخ لثقافة ا"
-status: draft
+status: published
 published_at: 2023-05-20
 person: abu-umair-imran-al-zubaidi
 ---

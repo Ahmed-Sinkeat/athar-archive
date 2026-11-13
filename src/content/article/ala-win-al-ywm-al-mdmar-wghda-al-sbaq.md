@@ -1,6 +1,6 @@
 ---
 title: "ألا وإن اليوم المضمار وغدا السباق"
-status: draft
+status: published
 published_at: 2025-09-26
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

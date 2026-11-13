@@ -1,6 +1,6 @@
 ---
 title: "هذه صورة واحدة من صور العبودية المعاصرة وهناك ما يحصل في مصانع الشركات العابرة ل"
-status: draft
+status: published
 published_at: 2019-07-08
 person: abu-jafar-al-khalifi
 ---

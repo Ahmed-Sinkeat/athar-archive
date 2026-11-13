@@ -1,6 +1,6 @@
 ---
 title: "وإنِّي والله لا أرى فضلاً في كلَف الأنفس بالثَّناء والتوسِعة سواء كان ذلك قولاً"
-status: draft
+status: published
 published_at: 2026-03-21
 person: awwab-bin-muhammad
 ---

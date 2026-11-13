@@ -1,6 +1,6 @@
 ---
 title: "من أحالك على غير أخبرنا وحدثنا فقد أضلك عن سواء السبيل"
-status: draft
+status: published
 published_at: 2025-07-23
 person: abu-abdillah-firas-al-ramli
 ---

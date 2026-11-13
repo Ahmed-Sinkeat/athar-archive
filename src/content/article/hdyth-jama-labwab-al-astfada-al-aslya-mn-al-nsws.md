@@ -1,6 +1,6 @@
 ---
 title: "حديث جامع لأبواب الاستفادة الأصلية من النصوص.."
-status: draft
+status: published
 published_at: 2022-03-27
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

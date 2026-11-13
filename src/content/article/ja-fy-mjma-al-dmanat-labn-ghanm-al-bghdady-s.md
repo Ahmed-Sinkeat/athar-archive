@@ -1,6 +1,6 @@
 ---
 title: "جاء في مجمع الضمانات لابن غانم البغدادي ص451"
-status: draft
+status: published
 published_at: 2017-11-13
 person: abu-jafar-al-khalifi
 ---

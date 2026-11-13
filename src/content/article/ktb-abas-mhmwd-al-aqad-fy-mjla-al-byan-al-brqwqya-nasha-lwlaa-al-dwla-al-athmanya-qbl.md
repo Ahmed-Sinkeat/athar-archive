@@ -1,6 +1,6 @@
 ---
 title: "كتب عباس محمود العقاد في مجلة البيان البرقوقية ناصحاً لولاة الدولة العثمانية قبل"
-status: draft
+status: published
 published_at: 2018-01-18
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

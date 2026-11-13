@@ -1,6 +1,6 @@
 ---
 title: "يوم دحو الأرض عند الإمامية وتساؤلات حول منظومة الحديث عندهم"
-status: draft
+status: published
 published_at: 2020-07-18
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

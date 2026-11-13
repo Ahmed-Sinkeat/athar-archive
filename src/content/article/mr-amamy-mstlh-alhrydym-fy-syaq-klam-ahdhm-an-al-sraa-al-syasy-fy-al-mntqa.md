@@ -1,6 +1,6 @@
 ---
 title: "مر أمامي مصطلح \"الحريديم\" في سياق كلام أحدهم عن الصراع السياسي في المنطقة"
-status: draft
+status: published
 published_at: 2025-10-02
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

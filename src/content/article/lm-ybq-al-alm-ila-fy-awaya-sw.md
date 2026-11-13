@@ -1,6 +1,6 @@
 ---
 title: "لم يبق العلم إلا في أوعية سوء!"
-status: draft
+status: published
 published_at: 2023-11-18
 person: abu-abdillah-firas-al-ramli
 ---

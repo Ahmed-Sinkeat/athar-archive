@@ -1,6 +1,6 @@
 ---
 title: "في رحاب الوالي العادل الزاهد وكان سبباً في دخول عامة البربر في الإسلام"
-status: draft
+status: published
 published_at: 2019-11-16
 person: abu-jafar-al-khalifi
 ---

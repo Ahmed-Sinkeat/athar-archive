@@ -1,6 +1,6 @@
 ---
 title: "\"وهكذا القول في المثل الثاني -وهو الروح التي فينا- فإنها قد وصفت بصفات ثبوتية وس"
-status: draft
+status: published
 published_at: 2023-08-18
 person: abu-umair-imran-al-zubaidi
 ---

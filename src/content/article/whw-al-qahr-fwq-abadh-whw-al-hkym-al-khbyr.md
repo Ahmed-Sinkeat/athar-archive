@@ -1,6 +1,6 @@
 ---
 title: "وَهُوَ الْقَاهِرُ فَوْقَ عِبَادِهِ ۚ وَهُوَ الْحَكِيمُ الْخَبِيرُ (18)"
-status: draft
+status: published
 published_at: 2023-11-07
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

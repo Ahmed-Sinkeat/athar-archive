@@ -1,6 +1,6 @@
 ---
 title: "جاء في حاشية القليوبي على شرح المحلي على منهاج الطالبين (1/244) ط دار الكتب العل"
-status: draft
+status: published
 published_at: 2018-10-06
 person: abu-jafar-al-khalifi
 ---

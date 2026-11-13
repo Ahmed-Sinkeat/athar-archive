@@ -1,6 +1,6 @@
 ---
 title: "في قول المخالفين وأهل البدع القبيح: بول فلان خير منكم"
-status: draft
+status: published
 published_at: 2024-04-28
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "جمعَت هذه الآيات خيري الدنيا والآخرة ولو عمل الناس بها لأغنتهم عن كل فلسفات الإص"
-status: draft
+status: published
 published_at: 2017-05-25
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "جواب عن سؤال حول حديث انتشر في مواقع التواصل في فضل الدعاء للوالدين."
-status: draft
+status: published
 published_at: 2024-05-05
 person: abu-jafar-al-khalifi
 ---

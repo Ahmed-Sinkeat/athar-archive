@@ -1,6 +1,6 @@
 ---
 title: "صحيح البخاري | باب ما يقول إذا فرغ من طعامه"
-status: draft
+status: published
 published_at: 2024-03-27
 person: abu-abdillah-firas-al-ramli
 ---

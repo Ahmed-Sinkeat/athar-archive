@@ -1,6 +1,6 @@
 ---
 title: "باب ما جاء في تناكد الجهمية المتأخرين."
-status: draft
+status: published
 published_at: 2020-09-11
 person: abu-jafar-al-khalifi
 ---

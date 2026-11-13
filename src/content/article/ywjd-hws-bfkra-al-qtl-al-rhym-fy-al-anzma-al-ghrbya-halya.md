@@ -1,6 +1,6 @@
 ---
 title: "يوجد هوس بفكرة القتل الرحيم في الأنظمة الغربية حاليا"
-status: draft
+status: published
 published_at: 2018-03-31
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

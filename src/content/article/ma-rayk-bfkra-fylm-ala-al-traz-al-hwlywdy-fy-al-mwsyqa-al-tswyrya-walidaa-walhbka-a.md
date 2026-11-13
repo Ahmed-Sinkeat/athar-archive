@@ -1,6 +1,6 @@
 ---
 title: "ما رأيك بفكرة فيلم على الطراز الهوليودي في الموسيقى التصويرية والإضاءة والحبكة ا"
-status: draft
+status: published
 published_at: 2018-06-16
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

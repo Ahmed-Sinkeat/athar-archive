@@ -1,6 +1,6 @@
 ---
 title: "التفويض الجديد..."
-status: draft
+status: published
 published_at: 2024-05-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

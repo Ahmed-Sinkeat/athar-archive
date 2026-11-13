@@ -1,6 +1,6 @@
 ---
 title: "عالم البيئة التطوري ايريك بيانكا في محاضرة مشهودة يتكلم عن خطورة الاكتظاظ السكان"
-status: draft
+status: published
 published_at: 2018-05-03
 person: abu-jafar-al-khalifi
 ---

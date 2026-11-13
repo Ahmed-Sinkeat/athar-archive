@@ -1,6 +1,6 @@
 ---
 title: "رسالة وصلتني من أحد طلبة العلم في الشيشان تعليقا على صوتية ( صاحب الثلاث سنين ال"
-status: draft
+status: published
 published_at: 2019-12-06
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

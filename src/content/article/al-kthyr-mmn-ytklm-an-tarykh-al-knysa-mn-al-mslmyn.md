@@ -1,6 +1,6 @@
 ---
 title: "الكثير ممن يتكلم عن تاريخ الكنيسة من المسلمين"
-status: draft
+status: published
 published_at: 2019-02-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

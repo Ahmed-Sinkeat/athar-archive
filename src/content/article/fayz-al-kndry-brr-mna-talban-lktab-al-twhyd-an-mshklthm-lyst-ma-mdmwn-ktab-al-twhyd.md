@@ -1,6 +1,6 @@
 ---
 title: "فايز الكندري برر منع طالبان لكتاب التوحيد أنّ مشكلتهم ليست مع مضمون كتاب التوحيد"
-status: draft
+status: published
 published_at: 2025-01-22
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

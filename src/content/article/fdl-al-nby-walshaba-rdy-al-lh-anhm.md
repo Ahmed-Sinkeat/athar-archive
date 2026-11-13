@@ -1,6 +1,6 @@
 ---
 title: "فضل النبي ﷺ والصحابة رضي الله عنهم"
-status: draft
+status: published
 published_at: 2023-05-16
 person: abu-abdillah-firas-al-ramli
 ---

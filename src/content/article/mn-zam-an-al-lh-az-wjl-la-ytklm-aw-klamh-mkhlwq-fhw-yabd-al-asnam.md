@@ -1,6 +1,6 @@
 ---
 title: "من زعم أن الله عز وجل لا يتكلم أو كلامه مخلوق فهو يعبد الأصنام"
-status: draft
+status: published
 published_at: 2023-07-04
 person: abu-abdillah-firas-al-ramli
 ---

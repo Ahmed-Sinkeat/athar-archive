@@ -1,6 +1,6 @@
 ---
 title: "هذه ترجمة منشور في بعض صفحات السود في أمريكا : لن نغفر أبداً ولن ننسى أبداً !!"
-status: draft
+status: published
 published_at: 2018-08-20
 person: abu-jafar-al-khalifi
 ---

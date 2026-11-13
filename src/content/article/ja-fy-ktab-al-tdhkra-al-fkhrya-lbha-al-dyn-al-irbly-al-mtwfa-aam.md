@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب التذكرة الفخرية لبهاء الدين الإربلي المتوفى عام 692"
-status: draft
+status: published
 published_at: 2019-12-17
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

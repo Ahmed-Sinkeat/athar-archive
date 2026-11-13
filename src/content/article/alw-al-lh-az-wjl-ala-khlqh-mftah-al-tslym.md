@@ -1,6 +1,6 @@
 ---
 title: "علو الله عز وجل على خلقه مفتاح التسليم..."
-status: draft
+status: published
 published_at: 2021-07-17
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-asma-was-sifat"]

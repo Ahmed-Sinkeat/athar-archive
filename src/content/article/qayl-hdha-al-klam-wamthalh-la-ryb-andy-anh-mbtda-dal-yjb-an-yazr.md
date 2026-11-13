@@ -1,6 +1,6 @@
 ---
 title: "قائل هذا الكلام وأمثاله لا ريب عندي أنه مبتدع ضال يجب أن يعزر!"
-status: draft
+status: published
 published_at: 2025-03-21
 person: abu-umair-imran-al-zubaidi
 ---

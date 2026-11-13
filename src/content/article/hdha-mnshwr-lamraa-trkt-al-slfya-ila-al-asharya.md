@@ -1,6 +1,6 @@
 ---
 title: "هذا منشور لامرأة تركت السلفية إلى الأشعرية."
-status: draft
+status: published
 published_at: 2025-05-26
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

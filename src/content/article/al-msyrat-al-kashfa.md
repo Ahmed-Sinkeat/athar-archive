@@ -1,6 +1,6 @@
 ---
 title: "المسيرات الكاشفة"
-status: draft
+status: published
 published_at: 2019-03-10
 person: abu-jafar-al-khalifi
 ---

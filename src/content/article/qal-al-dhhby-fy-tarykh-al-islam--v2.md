@@ -1,6 +1,6 @@
 ---
 title: "قال الذهبي في تاريخ الإسلام"
-status: draft
+status: published
 published_at: 2017-12-22
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

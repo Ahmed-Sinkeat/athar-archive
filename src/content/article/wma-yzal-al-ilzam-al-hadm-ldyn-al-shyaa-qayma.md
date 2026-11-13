@@ -1,6 +1,6 @@
 ---
 title: "وما يزال الإلزام الهادم لدين الشيعة قائماً."
-status: draft
+status: published
 published_at: 2023-01-17
 person: abu-jafar-al-khalifi
 ---

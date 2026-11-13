@@ -1,6 +1,6 @@
 ---
 title: "عصاب يوم الأحد !"
-status: draft
+status: published
 published_at: 2018-05-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

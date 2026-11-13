@@ -1,6 +1,6 @@
 ---
 title: "وقالت في ص27"
-status: draft
+status: published
 published_at: 2017-12-16
 person: abu-jafar-al-khalifi
 ---

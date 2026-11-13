@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري في صحيحه 6467 - حدثنا علي بن عبد الله حدثنا محمد بن الزبرقان حدثنا م"
-status: draft
+status: published
 published_at: 2019-07-05
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

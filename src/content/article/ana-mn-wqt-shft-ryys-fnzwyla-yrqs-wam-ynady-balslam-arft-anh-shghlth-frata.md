@@ -1,6 +1,6 @@
 ---
 title: "أنا من وقت شفت رئيس فنزويلا يرقص وعم ينادي بالسلام عرفت أنه شغلته فراطة."
-status: draft
+status: published
 published_at: 2026-01-03
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من عجائب بعض الآباء المتأثرين بالتغريب اذا رأوْا من بعض أولادهم استقامة على الأو"
-status: draft
+status: published
 published_at: 2018-05-23
 person: abu-jafar-al-khalifi
 ---

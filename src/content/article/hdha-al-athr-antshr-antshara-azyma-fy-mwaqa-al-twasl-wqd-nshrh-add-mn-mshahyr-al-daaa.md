@@ -1,6 +1,6 @@
 ---
 title: "هذا الأثر انتشر انتشاراً عظيماً في مواقع التواصل، وقد نشره عدد من مشاهير الدعاة."
-status: draft
+status: published
 published_at: 2025-08-24
 person: abu-jafar-al-khalifi
 ---

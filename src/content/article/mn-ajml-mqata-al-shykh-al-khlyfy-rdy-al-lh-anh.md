@@ -1,6 +1,6 @@
 ---
 title: "من أجمل مقاطع الشيخ الخليفي رضي الله عنه"
-status: draft
+status: published
 published_at: 2024-06-24
 person: abu-umair-imran-al-zubaidi
 ---

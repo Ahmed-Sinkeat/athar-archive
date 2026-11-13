@@ -1,6 +1,6 @@
 ---
 title: "الذي يرفض إنجاب الأولاد بحجة أنّ وضعه المعيشي غير مناسب"
-status: draft
+status: published
 published_at: 2024-05-31
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

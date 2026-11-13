@@ -1,6 +1,6 @@
 ---
 title: "قال ابن الجوزي في ص 100 من كتابه دفع شبه التشبيه وهو يعدد الأقوال التي يستنكرها"
-status: draft
+status: published
 published_at: 2018-07-30
 person: abu-jafar-al-khalifi
 ---

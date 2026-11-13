@@ -1,6 +1,6 @@
 ---
 title: "هبك عفا عنك فلِمَ توبق نفسك مرة أخرى"
-status: draft
+status: published
 published_at: 2023-04-13
 person: abu-jafar-al-khalifi
 ---

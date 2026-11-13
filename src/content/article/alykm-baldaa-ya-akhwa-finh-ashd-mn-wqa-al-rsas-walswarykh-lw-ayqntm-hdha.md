@@ -1,6 +1,6 @@
 ---
 title: "عليكم بالدعاء يا أخوة فإنه أشد من وقع الرصـاص والصـواريخ لو أيقنتم هذا ..."
-status: draft
+status: published
 published_at: 2023-10-09
 person: abu-abdillah-firas-al-ramli
 ---

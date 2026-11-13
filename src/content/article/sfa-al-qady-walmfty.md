@@ -1,6 +1,6 @@
 ---
 title: "صفة القاضي والمفتي"
-status: draft
+status: published
 published_at: 2024-03-03
 person: abu-abdillah-firas-al-ramli
 ---

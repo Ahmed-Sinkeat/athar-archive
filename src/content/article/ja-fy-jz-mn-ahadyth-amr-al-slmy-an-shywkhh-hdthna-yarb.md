@@ -1,6 +1,6 @@
 ---
 title: "جاء في جزء من أحاديث عمر السلمي عن شيوخه 1027 - حَدَّثَنَا يَعْرُبُ"
-status: draft
+status: published
 published_at: 2018-01-16
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

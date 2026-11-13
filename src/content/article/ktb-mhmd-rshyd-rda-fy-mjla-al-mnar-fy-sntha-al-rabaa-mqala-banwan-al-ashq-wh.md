@@ -1,6 +1,6 @@
 ---
 title: "كتب محمد رشيد رضا في مجلة المنار في سنتها الرابعة ( 1901) مقالاً بعنوان العشق وح"
-status: draft
+status: published
 published_at: 2018-08-07
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

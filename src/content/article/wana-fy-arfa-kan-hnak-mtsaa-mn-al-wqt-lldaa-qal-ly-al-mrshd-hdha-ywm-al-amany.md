@@ -1,6 +1,6 @@
 ---
 title: "وأنا في عرفة كان هناك متسعا من الوقت للدعاء قال لي المرشد هذا يوم الأماني"
-status: draft
+status: published
 published_at: 2019-08-16
 person: abu-jafar-al-khalifi
 ---

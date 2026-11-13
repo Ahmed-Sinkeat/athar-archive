@@ -1,6 +1,6 @@
 ---
 title: "كلام صعب لابن تيمية ولكنه من أنفس ما قال!"
-status: draft
+status: published
 published_at: 2019-12-18
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "اللاكتراثية (الأعرابية الجديدة)"
-status: draft
+status: published
 published_at: 2021-04-23
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

@@ -1,6 +1,6 @@
 ---
 title: "اذا بلغك عن إنسان أنه يسعى في إزالة الضرر عن كل شخص يعلم أنه أصابه ضرر وهو باستط"
-status: draft
+status: published
 published_at: 2019-07-19
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

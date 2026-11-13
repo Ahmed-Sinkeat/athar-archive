@@ -1,6 +1,6 @@
 ---
 title: "رمضان وعروض المبيعات.."
-status: draft
+status: published
 published_at: 2022-04-01
 person: abu-jafar-al-khalifi
 ---

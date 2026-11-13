@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية كما في مجموع الفتاوى (20/141)"
-status: draft
+status: published
 published_at: 2017-08-19
 person: abu-jafar-al-khalifi
 ---

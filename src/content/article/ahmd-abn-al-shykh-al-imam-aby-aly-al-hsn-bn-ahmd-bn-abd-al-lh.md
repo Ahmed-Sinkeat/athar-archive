@@ -1,6 +1,6 @@
 ---
 title: "4- أحمد ابن الشيخ الإمام أبي علي الحسن بن أحمد بن عبد الله"
-status: draft
+status: published
 published_at: 2022-06-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "قال الحافظ يعقوب بن سفيان في «المعرفة والتاريخ» [2/808"
-status: draft
+status: published
 published_at: 2017-11-21
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "يزعم كثير من الأشعرية الجهمية أننا نفعل مثلهم في تحريف معاني الصفات الظاهر"
-status: draft
+status: published
 published_at: 2025-01-22
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

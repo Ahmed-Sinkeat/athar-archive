@@ -1,6 +1,6 @@
 ---
 title: "والله لو لم أكن مضطرُا لقول ما هو آت لما قلته حتى لا يظن أنني أتفاخر أو أنني ألم"
-status: draft
+status: published
 published_at: 2023-09-29
 person: abu-umair-imran-al-zubaidi
 ---

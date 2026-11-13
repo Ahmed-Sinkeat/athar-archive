@@ -1,6 +1,6 @@
 ---
 title: "قال ابن حزم الظاهري في كتابه الفصل في الملل والنحل"
-status: draft
+status: published
 published_at: 2018-04-06
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "{وَقَرْنَ فِي بُيُوتِكُنَّ وَلَا تَبَرَّجْنَ تَبَرُّجَ الْجَاهِلِيَّةِ الْأُولَى"
-status: draft
+status: published
 published_at: 2023-03-12
 person: abu-umair-imran-al-zubaidi
 ---

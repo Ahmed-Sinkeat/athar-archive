@@ -1,6 +1,6 @@
 ---
 title: "أنتم تترخصون في الغناء؟"
-status: draft
+status: published
 published_at: 2026-01-26
 person: abu-abdillah-firas-al-ramli
 ---

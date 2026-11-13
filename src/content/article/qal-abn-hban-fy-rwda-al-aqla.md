@@ -1,6 +1,6 @@
 ---
 title: "قال ابن حبان في روضة العقلاء"
-status: draft
+status: published
 published_at: 2017-12-20
 person: abu-jafar-al-khalifi
 ---

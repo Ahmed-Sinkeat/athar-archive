@@ -1,6 +1,6 @@
 ---
 title: "فها أنت تجد ابن المنذر وابن رجب وغيرهم يدعيان الإجماع على فرضية الجمعة ( مع توهي"
-status: draft
+status: published
 published_at: 2019-11-21
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

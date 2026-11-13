@@ -1,6 +1,6 @@
 ---
 title: "شعور الاطمئنان عند التوجه إلى الله تعالى في حال التيه والضعف وقلة الحيلة بالافتق"
-status: draft
+status: published
 published_at: 2023-05-26
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

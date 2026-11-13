@@ -1,6 +1,6 @@
 ---
 title: "عصابات شيكاغو التي أعجزت الولايات المتحدة الأمريكية"
-status: draft
+status: published
 published_at: 2019-11-21
 person: abu-jafar-al-khalifi
 ---

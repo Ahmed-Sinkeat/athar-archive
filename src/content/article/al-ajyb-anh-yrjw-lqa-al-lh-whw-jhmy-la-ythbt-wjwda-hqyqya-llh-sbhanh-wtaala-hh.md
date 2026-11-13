@@ -1,6 +1,6 @@
 ---
 title: "العجيب أنه يرجو لقاء الله وهو جهمي لا يثبت وجودًا حقيقيًا لله سبحانه وتعالى هه."
-status: draft
+status: published
 published_at: 2024-03-17
 person: abu-umair-imran-al-zubaidi
 ---

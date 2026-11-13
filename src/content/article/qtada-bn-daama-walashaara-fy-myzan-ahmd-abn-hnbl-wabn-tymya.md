@@ -1,6 +1,6 @@
 ---
 title: "قتادة بن دعامة والأشاعرة في ميزان أحمد ابن حنبل وابن تيمية"
-status: draft
+status: published
 published_at: 2023-08-01
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

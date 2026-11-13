@@ -1,6 +1,6 @@
 ---
 title: "هذا من كتاب ( من وجدوا الله ) للدكتور المسلم لورانس براون"
-status: draft
+status: published
 published_at: 2020-08-14
 person: abu-jafar-al-khalifi
 ---

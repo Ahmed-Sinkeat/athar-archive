@@ -1,6 +1,6 @@
 ---
 title: "يا شيخنا، كيف يكون الزواج مكتوبًا عليّ وفي نفس الوقت انا مخيّرة فيه؟!."
-status: draft
+status: published
 published_at: 2023-03-26
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

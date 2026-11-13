@@ -1,6 +1,6 @@
 ---
 title: "اللهمّ إني أُشهِدك وأشهِدُ جميع خلقك أنّك الله لا إله إلّا أنت وحدك لا شريك لك و"
-status: draft
+status: published
 published_at: 2023-02-28
 person: abu-umair-imran-al-zubaidi
 ---

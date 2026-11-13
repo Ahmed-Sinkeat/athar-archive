@@ -1,6 +1,6 @@
 ---
 title: "إن طعام بني آدم ضرب للدنيا مثلا"
-status: draft
+status: published
 published_at: 2026-01-22
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

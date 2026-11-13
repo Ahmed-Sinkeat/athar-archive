@@ -1,6 +1,6 @@
 ---
 title: "كيف واسى الشيخ محمد بن عبد الوهاب أنصاره حين مُنعوا من الحج؟"
-status: draft
+status: published
 published_at: 2025-01-28
 person: abu-jafar-al-khalifi
 ---

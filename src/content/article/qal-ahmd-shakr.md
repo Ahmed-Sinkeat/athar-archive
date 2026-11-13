@@ -1,6 +1,6 @@
 ---
 title: "قال أحمد شاكر"
-status: draft
+status: published
 published_at: 2017-06-06
 person: abu-jafar-al-khalifi
 ---

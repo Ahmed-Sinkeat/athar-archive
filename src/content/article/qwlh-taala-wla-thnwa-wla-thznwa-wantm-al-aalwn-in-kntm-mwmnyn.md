@@ -1,6 +1,6 @@
 ---
 title: "قوله تعالى: {ولا تهنوا ولا تحزنوا وأنتم الأعلون إن كنتم مؤمنين}"
-status: draft
+status: published
 published_at: 2023-10-13
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

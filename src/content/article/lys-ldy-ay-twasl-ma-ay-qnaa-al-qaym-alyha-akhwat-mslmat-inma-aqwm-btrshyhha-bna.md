@@ -1,6 +1,6 @@
 ---
 title: "ليس لدي أي تواصل مع أي قناة القائم عليها أخوات مسلمات؛ إنما أقوم بترشيحها بناءً"
-status: draft
+status: published
 published_at: 2023-11-27
 person: abu-umair-imran-al-zubaidi
 ---

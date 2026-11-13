@@ -1,6 +1,6 @@
 ---
 title: "الّذي يعتقد أني أكايد النساء في منشوراتي الخآصّة بمواضيع المرأة؛ فعليه مراجعة نف"
-status: draft
+status: published
 published_at: 2023-03-19
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "في الولايات المتحدة و بعض دول أوروبا عندما تتزوج الفتاة فإن اسم عائلتها يستبدل ب"
-status: draft
+status: published
 published_at: 2019-05-27
 person: abu-jafar-al-khalifi
 ---

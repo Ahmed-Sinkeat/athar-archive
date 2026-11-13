@@ -1,6 +1,6 @@
 ---
 title: "ألبسه ربطة عنق يصِر مقبولاً..."
-status: draft
+status: published
 published_at: 2024-12-18
 person: abu-jafar-al-khalifi
 ---

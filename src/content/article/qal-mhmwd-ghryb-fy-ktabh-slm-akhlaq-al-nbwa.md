@@ -1,6 +1,6 @@
 ---
 title: "قال محمود غريب في كتابه سلم أخلاق النبوة"
-status: draft
+status: published
 published_at: 2017-07-18
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

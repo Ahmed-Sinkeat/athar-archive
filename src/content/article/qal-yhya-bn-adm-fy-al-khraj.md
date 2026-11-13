@@ -1,6 +1,6 @@
 ---
 title: "قال يحيى بن آدم في الخراج"
-status: draft
+status: published
 published_at: 2017-09-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

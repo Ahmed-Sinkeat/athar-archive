@@ -1,6 +1,6 @@
 ---
 title: "أين الشبهة في حديث طواف النبي صلى الله عليه وسلم على نسائه 👇"
-status: draft
+status: published
 published_at: 2018-06-27
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

@@ -1,6 +1,6 @@
 ---
 title: "رد ابن تيمية على الفهم المغلوط لآيات الرحمة"
-status: draft
+status: published
 published_at: 2020-06-18
 person: abu-jafar-al-khalifi
 ---

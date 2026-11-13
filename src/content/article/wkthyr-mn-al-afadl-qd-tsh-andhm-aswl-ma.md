@@ -1,6 +1,6 @@
 ---
 title: "وكثيرٌ مِن الأفاضِل قد تصِحُّ عِندهُم أصولٌ ما"
-status: draft
+status: published
 published_at: 2025-06-12
 person: awwab-bin-muhammad
 topics: ["mustalah-al-hadith"]

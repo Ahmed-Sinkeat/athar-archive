@@ -1,6 +1,6 @@
 ---
 title: "أكتشفت أنني لا أصلح للحكم بأي شكل كان رغم أنني لم أحكم حتى أرضا زراعية من قبل!"
-status: draft
+status: published
 published_at: 2025-01-03
 person: abu-umair-imran-al-zubaidi
 ---

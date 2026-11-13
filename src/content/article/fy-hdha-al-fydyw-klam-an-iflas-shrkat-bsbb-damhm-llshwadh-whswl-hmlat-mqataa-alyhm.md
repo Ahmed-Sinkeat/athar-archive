@@ -1,6 +1,6 @@
 ---
 title: "في هذا الفيديو كلام عن إفلاس شركاتٍ بسبب دعمهم للشواذ وحصول حملات مقاطعة عليهم"
-status: draft
+status: published
 published_at: 2023-08-11
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "هذا يؤكد ما ذكرته في صوتية"
-status: draft
+status: published
 published_at: 2022-08-07
 person: abu-jafar-al-khalifi
 ---

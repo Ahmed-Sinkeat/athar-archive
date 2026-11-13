@@ -1,6 +1,6 @@
 ---
 title: "قال الدكتور سامي عامري في كتابه العالمانية طاعون العصر ص162"
-status: draft
+status: published
 published_at: 2017-10-02
 person: abu-jafar-al-khalifi
 ---

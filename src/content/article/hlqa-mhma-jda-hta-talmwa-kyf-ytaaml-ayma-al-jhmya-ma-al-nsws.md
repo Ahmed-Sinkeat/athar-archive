@@ -1,6 +1,6 @@
 ---
 title: "حلقة مهمة جدًا حتى تعلموا كيف يتعامل أئمة الجهمية مع النصوص"
-status: draft
+status: published
 published_at: 2024-01-27
 person: abu-umair-imran-al-zubaidi
 ---

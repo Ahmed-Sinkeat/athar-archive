@@ -1,6 +1,6 @@
 ---
 title: "هذا عنوان خبر منشور في السي أن أن"
-status: draft
+status: published
 published_at: 2019-09-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

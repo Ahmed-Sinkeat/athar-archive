@@ -1,6 +1,6 @@
 ---
 title: "أفادني بهذا الفيديو الصديق بركة خان وهو للدكتور بيرج المشهور بين أنصار نظام الكي"
-status: draft
+status: published
 published_at: 2020-04-24
 person: abu-jafar-al-khalifi
 ---

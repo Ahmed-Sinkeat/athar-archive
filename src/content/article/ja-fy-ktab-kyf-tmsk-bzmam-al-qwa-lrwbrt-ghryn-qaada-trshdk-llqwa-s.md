@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب كيف تمسك بزمام القوة لروبرت غرين ( 48 قاعدة ترشدك للقوة ) ص650"
-status: draft
+status: published
 published_at: 2018-10-19
 person: abu-jafar-al-khalifi
 ---

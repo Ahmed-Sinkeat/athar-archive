@@ -1,6 +1,6 @@
 ---
 title: "لست من هواة الاختزال التاريخي ولا تسطيح البحث فيه ولا إستغلال الأحداث التاريخية"
-status: draft
+status: published
 published_at: 2018-04-30
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

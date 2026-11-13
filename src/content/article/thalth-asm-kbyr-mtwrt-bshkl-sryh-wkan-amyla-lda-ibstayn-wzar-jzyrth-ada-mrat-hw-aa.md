@@ -1,6 +1,6 @@
 ---
 title: "ثالث اسم كبير متورط بشكل صريح وكان عميلاً لدى إبستاين وزار جزيرته عدة مرات هو عا"
-status: draft
+status: published
 published_at: 2024-01-04
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

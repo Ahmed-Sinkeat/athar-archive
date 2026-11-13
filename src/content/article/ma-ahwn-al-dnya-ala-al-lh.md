@@ -1,6 +1,6 @@
 ---
 title: "ما أهون الدنيا على الله!"
-status: draft
+status: published
 published_at: 2026-07-03
 person: abu-umair-imran-al-zubaidi
 ---

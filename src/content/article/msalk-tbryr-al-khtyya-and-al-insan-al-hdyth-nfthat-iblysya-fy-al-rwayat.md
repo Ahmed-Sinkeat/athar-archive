@@ -1,6 +1,6 @@
 ---
 title: "مسالك تبرير الخطيئة عند الإنسان الحديث (نفثات إبليسية في الروايات)"
-status: draft
+status: published
 published_at: 2024-02-08
 person: abu-jafar-al-khalifi
 ---

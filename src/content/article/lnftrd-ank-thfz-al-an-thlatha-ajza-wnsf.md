@@ -1,6 +1,6 @@
 ---
 title: "لنفترض أنك تحفظ الأن ثلاثة أجزاء ونصف"
-status: draft
+status: published
 published_at: 2023-05-13
 person: abu-umair-imran-al-zubaidi
 ---

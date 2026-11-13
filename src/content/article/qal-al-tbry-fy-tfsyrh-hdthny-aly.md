@@ -1,6 +1,6 @@
 ---
 title: "قال الطبري في تفسيره حدثني علي"
-status: draft
+status: published
 published_at: 2026-10-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

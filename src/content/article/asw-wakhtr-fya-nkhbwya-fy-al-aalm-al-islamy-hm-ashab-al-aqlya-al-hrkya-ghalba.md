@@ -1,6 +1,6 @@
 ---
 title: "أسوء وأخطر فئة نخبويّة في العالم الإسلامي هم أصحاب العقليّة الحركيّة (غالبًا)!."
-status: draft
+status: published
 published_at: 2022-10-08
 person: abu-umair-imran-al-zubaidi
 ---

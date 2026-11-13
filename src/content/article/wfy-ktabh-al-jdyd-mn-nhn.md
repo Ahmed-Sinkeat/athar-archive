@@ -1,6 +1,6 @@
 ---
 title: "وفي كتابه الجديد (من نحن"
-status: draft
+status: published
 published_at: 2017-07-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

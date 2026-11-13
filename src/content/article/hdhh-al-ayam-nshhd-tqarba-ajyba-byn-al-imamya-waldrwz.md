@@ -1,6 +1,6 @@
 ---
 title: "هذه الأيام نشهد تقارباً عجيباً بين الإمامية والدروز."
-status: draft
+status: published
 published_at: 2025-07-19
 person: abu-jafar-al-khalifi
 ---

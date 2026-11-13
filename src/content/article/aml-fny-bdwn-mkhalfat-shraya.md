@@ -1,6 +1,6 @@
 ---
 title: "\"عمل فني بدون مخالفات شرعية\""
-status: draft
+status: published
 published_at: 2023-11-10
 person: abu-umair-imran-al-zubaidi
 ---

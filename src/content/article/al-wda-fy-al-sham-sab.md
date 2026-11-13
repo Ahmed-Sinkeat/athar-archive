@@ -1,6 +1,6 @@
 ---
 title: "الوضع في الشام صعب"
-status: draft
+status: published
 published_at: 2025-03-09
 person: abu-umair-imran-al-zubaidi
 ---

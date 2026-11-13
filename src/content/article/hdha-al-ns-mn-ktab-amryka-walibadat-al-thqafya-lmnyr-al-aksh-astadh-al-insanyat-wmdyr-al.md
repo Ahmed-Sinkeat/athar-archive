@@ -1,6 +1,6 @@
 ---
 title: "هذا النص من كتاب أمريكا والإبادات الثقافية لمنير العكش أستاذ الإنسانيات ومدير ال"
-status: draft
+status: published
 published_at: 2020-12-12
 person: abu-jafar-al-khalifi
 ---

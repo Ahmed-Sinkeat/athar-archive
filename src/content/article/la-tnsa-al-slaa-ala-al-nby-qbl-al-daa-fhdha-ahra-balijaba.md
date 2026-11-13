@@ -1,6 +1,6 @@
 ---
 title: "لا تنسى الصلاة على النبي ﷺ قبل الدعاء فهذا أحرى بالإجابة"
-status: draft
+status: published
 published_at: 2023-10-26
 person: abu-abdillah-firas-al-ramli
 ---

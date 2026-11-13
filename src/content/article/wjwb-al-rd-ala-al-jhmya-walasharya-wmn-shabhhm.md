@@ -1,6 +1,6 @@
 ---
 title: "وجوب الرد على الجهمية والأشعرية ومن شابههم"
-status: draft
+status: published
 published_at: 2023-05-24
 person: abu-abdillah-firas-al-ramli
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

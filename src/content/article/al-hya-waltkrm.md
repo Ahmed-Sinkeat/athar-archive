@@ -1,6 +1,6 @@
 ---
 title: "الحياء والتكرم"
-status: draft
+status: published
 published_at: 2025-07-31
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

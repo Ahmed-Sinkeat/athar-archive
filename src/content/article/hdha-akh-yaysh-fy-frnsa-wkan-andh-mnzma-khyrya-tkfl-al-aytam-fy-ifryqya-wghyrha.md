@@ -1,6 +1,6 @@
 ---
 title: "هذا أخ يعيش في فرنسا وكان عنده منظمة خيرية تكفل الأيتام في إفريقيا وغيرها"
-status: draft
+status: published
 published_at: 2020-10-31
 person: abu-jafar-al-khalifi
 ---

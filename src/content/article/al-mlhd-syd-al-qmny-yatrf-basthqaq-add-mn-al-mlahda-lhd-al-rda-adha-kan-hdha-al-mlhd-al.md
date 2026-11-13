@@ -1,6 +1,6 @@
 ---
 title: "الملحد سيد القمني يعترف باستحقاق عدد من الملاحدة لحد الردة اذا كان هذا الملحد ال"
-status: draft
+status: published
 published_at: 2017-09-06
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

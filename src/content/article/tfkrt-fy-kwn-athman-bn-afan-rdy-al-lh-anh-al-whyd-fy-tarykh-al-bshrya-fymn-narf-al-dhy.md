@@ -1,6 +1,6 @@
 ---
 title: "تفكرت في كون عثمان بن عفان -رضي الله عنه- الوحيد في تاريخ البشرية فيمن نعرف الذي"
-status: draft
+status: published
 published_at: 2018-07-31
 person: abu-jafar-al-khalifi
 ---

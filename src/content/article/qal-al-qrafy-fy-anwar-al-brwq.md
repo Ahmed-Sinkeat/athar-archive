@@ -1,6 +1,6 @@
 ---
 title: "قال القرافي في أنوار البروق"
-status: draft
+status: published
 published_at: 2017-08-26
 person: abu-jafar-al-khalifi
 ---

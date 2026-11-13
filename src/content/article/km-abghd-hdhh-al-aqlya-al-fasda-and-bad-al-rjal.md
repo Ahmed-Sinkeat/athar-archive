@@ -1,6 +1,6 @@
 ---
 title: "كم أبغض هذه العقلية الفاسدة عند بعض. الرجال!"
-status: draft
+status: published
 published_at: 2023-11-21
 person: abu-umair-imran-al-zubaidi
 ---

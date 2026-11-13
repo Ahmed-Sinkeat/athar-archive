@@ -1,6 +1,6 @@
 ---
 title: "الاحتساب في إدخال السرور على العيال في الأعياد."
-status: draft
+status: published
 published_at: 2021-07-19
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

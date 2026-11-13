@@ -1,6 +1,6 @@
 ---
 title: "درس للمتعصبين من محمد بن الحسن الشيباني..."
-status: draft
+status: published
 published_at: 2021-10-12
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "لو جاء إنسان عندنا وقال"
-status: draft
+status: published
 published_at: 2019-04-19
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

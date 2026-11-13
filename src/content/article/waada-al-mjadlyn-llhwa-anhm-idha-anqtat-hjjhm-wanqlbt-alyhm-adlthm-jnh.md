@@ -1,6 +1,6 @@
 ---
 title: "وعادَة المُجادِلين للهوَى أنَّهم إذا انقطعتْ حججهم وانقلبتْ عليهم أدِلَّتهم جنَح"
-status: draft
+status: published
 published_at: 2025-03-05
 person: awwab-bin-muhammad
 ---

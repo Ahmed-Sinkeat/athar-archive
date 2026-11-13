@@ -1,6 +1,6 @@
 ---
 title: "طلب الثواب العاجل أصل الفتور واستهوان النعم العظيمة"
-status: draft
+status: published
 published_at: 2020-10-18
 person: abu-jafar-al-khalifi
 ---

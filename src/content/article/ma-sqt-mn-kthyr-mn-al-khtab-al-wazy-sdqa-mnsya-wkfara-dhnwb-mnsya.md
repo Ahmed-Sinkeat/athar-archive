@@ -1,6 +1,6 @@
 ---
 title: "ما سقط من كثير من الخطاب الوعظي (صدقة منسية وكفارة ذنوب منسية)."
-status: draft
+status: published
 published_at: 2026-09-14
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

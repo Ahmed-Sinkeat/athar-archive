@@ -1,6 +1,6 @@
 ---
 title: "من أعذب الألفاظ التي يسمعها المرء وهي تنضح رحمة قول القائل ( اعتن بنفسك ) فحين ي"
-status: draft
+status: published
 published_at: 2017-06-23
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "في قولهم: «علماء حيض ونفاس» تحقيرا للعلماء."
-status: draft
+status: published
 published_at: 2025-09-13
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

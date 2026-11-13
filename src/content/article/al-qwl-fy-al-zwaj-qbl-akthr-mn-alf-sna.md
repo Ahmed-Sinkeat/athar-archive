@@ -1,6 +1,6 @@
 ---
 title: "القول في الزواج قبل أكثر من ألف سنة!"
-status: draft
+status: published
 published_at: 2023-07-27
 person: abu-abdillah-firas-al-ramli
 ---

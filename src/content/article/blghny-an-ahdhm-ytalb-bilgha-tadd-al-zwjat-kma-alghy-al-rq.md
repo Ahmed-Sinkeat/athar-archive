@@ -1,6 +1,6 @@
 ---
 title: "بلغني أن أحدهم يطالب بإلغاء تعدد الزوجات كما ألغي الرّق"
-status: draft
+status: published
 published_at: 2018-11-23
 person: abu-jafar-al-khalifi
 ---

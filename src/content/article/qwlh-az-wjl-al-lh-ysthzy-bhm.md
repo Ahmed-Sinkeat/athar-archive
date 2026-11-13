@@ -1,6 +1,6 @@
 ---
 title: "قوله عز وجل: { الله يستهزئ بهم }"
-status: draft
+status: published
 published_at: 2024-03-23
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

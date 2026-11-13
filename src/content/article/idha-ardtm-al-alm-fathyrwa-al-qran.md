@@ -1,6 +1,6 @@
 ---
 title: "إذا أردتم العلم فأَثِيروا القرآن"
-status: draft
+status: published
 published_at: 2026-05-09
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

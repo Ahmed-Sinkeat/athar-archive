@@ -1,6 +1,6 @@
 ---
 title: "شهادة عزيزة للتاج السبكي على قلة الأشعرية في أهل الإسناد."
-status: draft
+status: published
 published_at: 2023-02-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

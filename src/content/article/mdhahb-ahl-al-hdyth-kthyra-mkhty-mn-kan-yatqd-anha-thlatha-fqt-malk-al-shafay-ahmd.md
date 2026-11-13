@@ -1,6 +1,6 @@
 ---
 title: "مذاهب أهل الحديث كثيرة، مخطئ من كان يعتقد أنها ثلاثة فقط (مالك، الشافعي، أحمد)!"
-status: draft
+status: published
 published_at: 2023-12-09
 person: abu-umair-imran-al-zubaidi
 ---

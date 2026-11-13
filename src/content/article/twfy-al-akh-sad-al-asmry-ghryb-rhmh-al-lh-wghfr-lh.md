@@ -1,6 +1,6 @@
 ---
 title: "توفي الأخ سعد الأسمري (غريب ) رحمه الله وغفر له"
-status: draft
+status: published
 published_at: 2018-03-13
 person: abu-jafar-al-khalifi
 ---

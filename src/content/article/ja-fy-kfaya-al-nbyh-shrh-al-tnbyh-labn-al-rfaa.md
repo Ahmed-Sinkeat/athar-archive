@@ -1,6 +1,6 @@
 ---
 title: "جاء في كفاية النبيه شرح التنبيه لابن الرفعة"
-status: draft
+status: published
 published_at: 2020-07-30
 person: abu-jafar-al-khalifi
 ---

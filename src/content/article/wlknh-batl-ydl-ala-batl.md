@@ -1,6 +1,6 @@
 ---
 title: "ولكنه باطل يدل على باطل"
-status: draft
+status: published
 published_at: 2025-08-10
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada", "al-asma-was-sifat", "al-sunnah-wal-bidah"]

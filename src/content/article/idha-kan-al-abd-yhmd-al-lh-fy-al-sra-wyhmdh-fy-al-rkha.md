@@ -1,6 +1,6 @@
 ---
 title: "إذا كان العبد يحمد الله في السراء ويحمده في الرخاء"
-status: draft
+status: published
 published_at: 2024-11-17
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "في الأشهر القليلة الماضية غادر ما يزيد عن ألف شخص من هذه القناة."
-status: draft
+status: published
 published_at: 2025-08-30
 person: abu-umair-imran-al-zubaidi
 ---

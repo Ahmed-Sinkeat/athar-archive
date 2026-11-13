@@ -1,6 +1,6 @@
 ---
 title: "بين السجزي والبخاري !!"
-status: draft
+status: published
 published_at: 2026-04-17
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

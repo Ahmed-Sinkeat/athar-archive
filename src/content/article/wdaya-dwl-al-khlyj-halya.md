@@ -1,6 +1,6 @@
 ---
 title: "وضعية دول الخليج حاليا"
-status: draft
+status: published
 published_at: 2026-03-02
 person: abu-umair-imran-al-zubaidi
 ---

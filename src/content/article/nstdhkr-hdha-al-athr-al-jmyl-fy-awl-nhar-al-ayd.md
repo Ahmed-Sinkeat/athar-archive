@@ -1,6 +1,6 @@
 ---
 title: "نستذكر هذا الأثر الجميل في أول نهار العيد :\")"
-status: draft
+status: published
 published_at: 2023-06-28
 person: abu-abdillah-firas-al-ramli
 ---

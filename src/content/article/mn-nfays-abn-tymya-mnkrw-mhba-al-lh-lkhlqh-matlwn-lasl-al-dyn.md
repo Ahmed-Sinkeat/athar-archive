@@ -1,6 +1,6 @@
 ---
 title: "من نفائس ابن تيمية: منكرو محبة الله لخلقه معطلون لأصل الدين..."
-status: draft
+status: published
 published_at: 2026-04-05
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

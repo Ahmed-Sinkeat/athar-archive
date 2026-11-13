@@ -1,6 +1,6 @@
 ---
 title: "الكلام المذكور كلام سليم بالجملة."
-status: draft
+status: published
 published_at: 2024-02-12
 person: abu-jafar-al-khalifi
 ---

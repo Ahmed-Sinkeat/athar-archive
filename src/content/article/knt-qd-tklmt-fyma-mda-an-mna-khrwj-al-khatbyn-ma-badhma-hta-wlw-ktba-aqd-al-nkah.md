@@ -1,6 +1,6 @@
 ---
 title: "كنت قد تكلمت فيما مضى عن منع خروج الخاطبين مع بعضهما حتى ولو كتبا عقد النكاح"
-status: draft
+status: published
 published_at: 2024-01-04
 person: abu-umair-imran-al-zubaidi
 ---

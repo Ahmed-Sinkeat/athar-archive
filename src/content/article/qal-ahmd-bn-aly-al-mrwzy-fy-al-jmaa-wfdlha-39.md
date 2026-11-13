@@ -1,6 +1,6 @@
 ---
 title: "قال أحمد بن علي المروزي في الجمعة وفضلها (٣٩)"
-status: draft
+status: published
 published_at: 2024-05-10
 person: abu-abdillah-firas-al-ramli
 ---

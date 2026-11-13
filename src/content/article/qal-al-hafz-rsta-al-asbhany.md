@@ -1,6 +1,6 @@
 ---
 title: "قال الحافظ رستة الأصبهاني"
-status: draft
+status: published
 published_at: 2018-05-10
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

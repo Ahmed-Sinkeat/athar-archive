@@ -1,6 +1,6 @@
 ---
 title: "كل يوم أكتشف أنّ شأن العقيدة أعظم مما كنت أظن!"
-status: draft
+status: published
 published_at: 2023-08-10
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "قال حمود التويجري في الإيضاح والتبيين (١/&rlm;١٨٩)"
-status: draft
+status: published
 published_at: 2024-02-23
 person: abu-abdillah-firas-al-ramli
 ---

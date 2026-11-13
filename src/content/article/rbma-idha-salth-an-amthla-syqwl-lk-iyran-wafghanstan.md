@@ -1,6 +1,6 @@
 ---
 title: "ربما إذا سألته عن أمثلة سيقول لك: \"إيران وأفغانستان\"."
-status: draft
+status: published
 published_at: 2022-05-06
 person: abu-jafar-al-khalifi
 ---

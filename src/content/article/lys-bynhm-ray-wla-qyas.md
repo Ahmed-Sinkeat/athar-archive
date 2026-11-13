@@ -1,6 +1,6 @@
 ---
 title: "ليس بينهم رأي ولا قياس"
-status: draft
+status: published
 published_at: 2024-12-29
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

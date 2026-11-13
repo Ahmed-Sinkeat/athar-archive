@@ -1,6 +1,6 @@
 ---
 title: "باب في أن المصلي يباعد بين قدميه شيئا يسيرا في الصلاة ولا يلصقهما ببعض"
-status: draft
+status: published
 published_at: 2023-06-24
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

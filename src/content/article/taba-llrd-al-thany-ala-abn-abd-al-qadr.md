@@ -1,6 +1,6 @@
 ---
 title: "تابع للرد الثاني على ابن عبد القادر"
-status: draft
+status: published
 published_at: 2024-05-29
 person: abu-abdillah-firas-al-ramli
 ---

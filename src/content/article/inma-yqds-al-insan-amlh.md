@@ -1,6 +1,6 @@
 ---
 title: "إنما يقدس الإنسان عمله"
-status: draft
+status: published
 published_at: 2024-12-08
 person: abu-abdillah-firas-al-ramli
 ---

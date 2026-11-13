@@ -1,6 +1,6 @@
 ---
 title: "وبناءً عليه يجوز أن يتكلم المنافق بما ينتفع به بعض أهل الإيمان"
-status: draft
+status: published
 published_at: 2021-03-22
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "بمناسبة فيديو الدكتور هيثم طلعت الأخير عن سبب وجود شبهات على الدين"
-status: draft
+status: published
 published_at: 2018-10-09
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-asma-was-sifat"]

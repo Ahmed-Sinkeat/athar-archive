@@ -1,6 +1,6 @@
 ---
 title: "تأمل قوله ( إلى أجل قريب ) فكأن الميت لما عاين من بدايات الآخرة ما عاين صغرت الد"
-status: draft
+status: published
 published_at: 2018-01-18
 person: abu-jafar-al-khalifi
 ---

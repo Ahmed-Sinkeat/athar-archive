@@ -1,6 +1,6 @@
 ---
 title: "عن عروة بن الزبير أنه كان دخل على أهل الدنيا فرأى من دنياهم طرفا فإذا رجع إلى أه"
-status: draft
+status: published
 published_at: 2025-08-21
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

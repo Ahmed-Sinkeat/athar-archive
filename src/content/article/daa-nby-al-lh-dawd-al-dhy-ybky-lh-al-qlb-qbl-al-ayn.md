@@ -1,6 +1,6 @@
 ---
 title: "دعاء نبي الله داود ﷺ الذي يبكي له القلب قبل العين!"
-status: draft
+status: published
 published_at: 2024-02-20
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

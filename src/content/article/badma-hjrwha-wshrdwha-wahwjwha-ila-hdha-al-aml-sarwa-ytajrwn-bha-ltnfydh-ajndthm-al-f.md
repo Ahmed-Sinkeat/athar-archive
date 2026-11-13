@@ -1,6 +1,6 @@
 ---
 title: "بعدما هجروها وشردوها وأحوجوها إلى هذا العمل صاروا يتاجرون بها لتنفيذ أجندتهم الف"
-status: draft
+status: published
 published_at: 2019-05-03
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال محمد سعد الأزهري معلقاً على خبر منع السويد لدفع المهور للنساء قبل الزواج واع"
-status: draft
+status: published
 published_at: 2018-08-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

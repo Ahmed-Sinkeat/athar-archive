@@ -1,6 +1,6 @@
 ---
 title: "الحكم بما أنزل الله"
-status: draft
+status: published
 published_at: 2024-01-06
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

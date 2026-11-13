@@ -1,6 +1,6 @@
 ---
 title: "يوجد مستشرق بريطاني اسمه الدكتور لتنر كتب عن الإسلام بإعجاب شديد حيث بدأ كلامه ب"
-status: draft
+status: published
 published_at: 2018-01-20
 person: abu-jafar-al-khalifi
 ---

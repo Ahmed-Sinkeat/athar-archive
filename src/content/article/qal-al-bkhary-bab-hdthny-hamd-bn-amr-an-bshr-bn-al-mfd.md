@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري 3938 - بَاب حَدَّثَنِي حَامِدُ بْنُ عُمَرَ عَنْ بِشْرِ بْنِ الْمُفَض"
-status: draft
+status: published
 published_at: 2017-09-18
 person: abu-jafar-al-khalifi
 ---

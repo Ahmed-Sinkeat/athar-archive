@@ -1,6 +1,6 @@
 ---
 title: "حينما وعظ الأوزاعي الخليفة المهدي برواية أسلافه.."
-status: draft
+status: published
 published_at: 2022-03-16
 person: abu-jafar-al-khalifi
 ---

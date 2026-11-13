@@ -1,6 +1,6 @@
 ---
 title: "شكاية عجيبة لشيخ الإسلام في سجن مصر !"
-status: draft
+status: published
 published_at: 2020-06-23
 person: abu-jafar-al-khalifi
 ---

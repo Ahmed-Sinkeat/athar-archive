@@ -1,6 +1,6 @@
 ---
 title: "في كراهية مصافحة النصارى والـيهود"
-status: draft
+status: published
 published_at: 2024-12-24
 person: abu-abdillah-firas-al-ramli
 ---

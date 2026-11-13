@@ -1,6 +1,6 @@
 ---
 title: "قال الأستاذ محمود شاكر رادا على طه حسين كما مجموع مقالاته"
-status: draft
+status: published
 published_at: 2018-10-25
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

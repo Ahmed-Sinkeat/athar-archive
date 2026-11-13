@@ -1,6 +1,6 @@
 ---
 title: "لعل الملائكة تصلي عليك في كل لحظة ثبات!"
-status: draft
+status: published
 published_at: 2024-10-10
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

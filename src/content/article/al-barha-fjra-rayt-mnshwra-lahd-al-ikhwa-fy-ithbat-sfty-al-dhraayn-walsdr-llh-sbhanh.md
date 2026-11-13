@@ -1,6 +1,6 @@
 ---
 title: "البارحة فجرًا رأيت منشورًا لأحد الإخوة في إثبات صفتيّ الذراعين والصدر لله سبحانه"
-status: draft
+status: published
 published_at: 2024-04-21
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

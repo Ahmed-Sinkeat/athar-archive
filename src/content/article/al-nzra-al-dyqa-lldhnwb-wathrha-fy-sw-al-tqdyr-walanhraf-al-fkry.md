@@ -1,6 +1,6 @@
 ---
 title: "النظرة الضيقة للذنوب وأثرها في سوء التقدير والانحراف الفكري"
-status: draft
+status: published
 published_at: 2021-03-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "قال صاحب كتاب تاريخ الدولة العلية العثمانية"
-status: draft
+status: published
 published_at: 2020-09-10
 person: abu-jafar-al-khalifi
 ---

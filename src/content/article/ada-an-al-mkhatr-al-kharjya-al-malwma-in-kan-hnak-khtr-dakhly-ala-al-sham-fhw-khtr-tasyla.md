@@ -1,6 +1,6 @@
 ---
 title: "عدا عن المخاطر الخارجية المعلومة؛ إن كان هناك خطر داخلي على الشام فهو خطر تأصيلا"
-status: draft
+status: published
 published_at: 2024-12-11
 person: abu-umair-imran-al-zubaidi
 ---

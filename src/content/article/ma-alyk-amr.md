@@ -1,6 +1,6 @@
 ---
 title: "(ما عليك أمر)!"
-status: draft
+status: published
 published_at: 2024-10-03
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من الملاحظ أن كثيرا من طلبة العلم فضلا عن غيرهم لا يترك الأمر إلا اذا كان فيه دل"
-status: draft
+status: published
 published_at: 2018-09-17
 person: abu-jafar-al-khalifi
 ---

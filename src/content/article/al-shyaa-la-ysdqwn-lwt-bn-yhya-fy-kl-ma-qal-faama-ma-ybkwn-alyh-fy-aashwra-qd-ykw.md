@@ -1,6 +1,6 @@
 ---
 title: "الشيعة لا يصدقون لوط بن يحيى في كل ما قال (فعامة ما يبكون عليه في عاشوراء قد يكو"
-status: draft
+status: published
 published_at: 2023-07-24
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

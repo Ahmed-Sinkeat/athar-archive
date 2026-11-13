@@ -1,6 +1,6 @@
 ---
 title: "فأول صفة المجاهد التوبة لأن من لم يغلب نفسه لا يغلب عدوه وشر ما على العبد ذنوبه"
-status: draft
+status: published
 published_at: 2017-07-24
 person: abu-jafar-al-khalifi
 ---

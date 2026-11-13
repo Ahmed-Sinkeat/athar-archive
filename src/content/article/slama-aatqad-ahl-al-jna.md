@@ -1,6 +1,6 @@
 ---
 title: "سلامة اعتقاد أهل الجنة..."
-status: draft
+status: published
 published_at: 2021-12-03
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

@@ -1,6 +1,6 @@
 ---
 title: "أحد الدعاة الشاميين مشهور في نشر مقاطع دعوية قصيرة."
-status: draft
+status: published
 published_at: 2025-01-09
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

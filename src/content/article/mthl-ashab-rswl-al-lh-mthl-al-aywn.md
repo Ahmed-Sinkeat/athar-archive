@@ -1,6 +1,6 @@
 ---
 title: "مثل أصحاب رسول الله ﷺ مثل العيون"
-status: draft
+status: published
 published_at: 2026-05-24
 person: abu-abdillah-firas-al-ramli
 ---

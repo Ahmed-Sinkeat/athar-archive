@@ -1,6 +1,6 @@
 ---
 title: "خطورة التفسير بلا أثر، ورد المأثور"
-status: draft
+status: published
 published_at: 2023-08-26
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

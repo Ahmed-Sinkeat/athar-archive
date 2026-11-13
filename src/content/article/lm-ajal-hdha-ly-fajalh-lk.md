@@ -1,6 +1,6 @@
 ---
 title: "لم أجعل هذا لي فأجعله لك؟"
-status: draft
+status: published
 published_at: 2023-10-24
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

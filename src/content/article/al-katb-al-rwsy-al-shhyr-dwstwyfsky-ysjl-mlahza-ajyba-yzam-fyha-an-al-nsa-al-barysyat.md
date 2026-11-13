@@ -1,6 +1,6 @@
 ---
 title: "الكاتب الروسي الشهير دوستويفسكي يسجل ملاحظة عجيبة يزعم فيها أن النساء الباريسيات"
-status: draft
+status: published
 published_at: 2025-08-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

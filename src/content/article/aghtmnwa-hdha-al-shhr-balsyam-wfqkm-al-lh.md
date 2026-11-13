@@ -1,6 +1,6 @@
 ---
 title: "اغتمنوا هذا الشهر بالصيام وفقكم الله"
-status: draft
+status: published
 published_at: 2024-07-10
 person: abu-abdillah-firas-al-ramli
 ---

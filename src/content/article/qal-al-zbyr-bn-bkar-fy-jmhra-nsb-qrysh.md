@@ -1,6 +1,6 @@
 ---
 title: "قال الزبير بن بكار في جمهرة نسب قريش"
-status: draft
+status: published
 published_at: 2019-07-14
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "السنة مثل سفينة نوح"
-status: draft
+status: published
 published_at: 2025-03-15
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال تعالى: ﴿فلا يخرجنكما من الجنة فتشقى﴾"
-status: draft
+status: published
 published_at: 2025-12-14
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

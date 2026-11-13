@@ -1,6 +1,6 @@
 ---
 title: "لا تلفظ إلا بخير"
-status: draft
+status: published
 published_at: 2025-02-05
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

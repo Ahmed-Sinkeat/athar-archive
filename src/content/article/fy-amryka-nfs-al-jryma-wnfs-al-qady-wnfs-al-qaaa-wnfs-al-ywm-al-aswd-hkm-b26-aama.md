@@ -1,6 +1,6 @@
 ---
 title: "في أمريكا نفس الجريمة ونفس القاضي ونفس القاعة ونفس الْيَوْم الأسود حكم ب٢٦ عاما"
-status: draft
+status: published
 published_at: 2018-09-12
 person: abu-jafar-al-khalifi
 ---

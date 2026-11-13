@@ -1,6 +1,6 @@
 ---
 title: "ما مِن عبد أُشرِب حبَّ البدعةِ قلبُه واجتهد لها وأقبل بُكليِّته عليها إلا بَعُد"
-status: draft
+status: published
 published_at: 2026-08-25
 person: awwab-bin-muhammad
 topics: ["al-sunnah-wal-bidah"]

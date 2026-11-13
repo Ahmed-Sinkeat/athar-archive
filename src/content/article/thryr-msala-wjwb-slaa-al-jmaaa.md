@@ -1,6 +1,6 @@
 ---
 title: "تحرير مسألة وجوب صلاة الجماعة"
-status: draft
+status: published
 published_at: 2025-01-10
 person: abu-abdillah-firas-al-ramli
 topics: ["al-iman"]

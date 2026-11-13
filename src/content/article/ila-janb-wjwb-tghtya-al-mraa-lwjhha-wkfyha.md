@@ -1,6 +1,6 @@
 ---
 title: "إلى جانب وجوب تغطية المرأة لوجهها وكفّيها"
-status: draft
+status: published
 published_at: 2023-12-13
 person: abu-umair-imran-al-zubaidi
 ---

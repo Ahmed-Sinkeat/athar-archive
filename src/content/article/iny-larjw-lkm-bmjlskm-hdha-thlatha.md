@@ -1,6 +1,6 @@
 ---
 title: "إني لأرجو لكم بمجلسكم هذا ثلاثة"
-status: draft
+status: published
 published_at: 2025-08-26
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لا تلقوا سمعكم وأبصاركم وأفئدتكم إلى من يغلو في رسول الله -صلّى الله عليه وسلّم"
-status: draft
+status: published
 published_at: 2023-04-25
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "قال أبو نعيم في الحلية حدثنا أبو حامد بن جبلة"
-status: draft
+status: published
 published_at: 2019-02-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

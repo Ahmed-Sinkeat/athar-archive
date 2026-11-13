@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الله النديم في مجلة الأستاذ التي كانت تصدر عام 1892 ميلادي ص416"
-status: draft
+status: published
 published_at: 2018-07-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

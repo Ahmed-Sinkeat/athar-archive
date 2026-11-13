@@ -1,6 +1,6 @@
 ---
 title: "{بَدِيعُ السَّمَاوَاتِ وَالْأَرْضِ ۖ أَنَّىٰ يَكُونُ لَهُ وَلَدٌ وَلَمْ تَكُن لّ"
-status: draft
+status: published
 published_at: 2023-10-03
 person: abu-umair-imran-al-zubaidi
 ---

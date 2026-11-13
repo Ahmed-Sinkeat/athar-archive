@@ -1,6 +1,6 @@
 ---
 title: "هذا منشور للدكتور المتخصص حاتم العوني يزعم فيه أن المحدثين ظنوا أن أبا حنيفة سرق"
-status: draft
+status: published
 published_at: 2022-07-02
 person: abu-jafar-al-khalifi
 ---

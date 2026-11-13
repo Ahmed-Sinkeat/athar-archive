@@ -1,6 +1,6 @@
 ---
 title: "هل وضعت إيران شرطا واحدا ضمن بنود وقف إطلاق النار والجلوس على طاولة المفاوضات يت"
-status: draft
+status: published
 published_at: 2025-06-24
 person: abu-umair-imran-al-zubaidi
 ---

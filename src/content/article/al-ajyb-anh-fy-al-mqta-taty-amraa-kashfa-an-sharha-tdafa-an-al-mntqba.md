@@ -1,6 +1,6 @@
 ---
 title: "العجيب أنه في المقطع تأتي امرأة كاشفة عن شعرها تدافع عن المنتقبة"
-status: draft
+status: published
 published_at: 2024-08-30
 person: abu-jafar-al-khalifi
 ---

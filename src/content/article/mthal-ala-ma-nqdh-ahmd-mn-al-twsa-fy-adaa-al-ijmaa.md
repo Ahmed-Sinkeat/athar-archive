@@ -1,6 +1,6 @@
 ---
 title: "مثال على ما نقده أحمد مِن التوسع في ادعاء الإجماع.."
-status: draft
+status: published
 published_at: 2021-08-14
 person: abu-jafar-al-khalifi
 ---

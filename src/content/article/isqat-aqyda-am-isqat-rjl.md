@@ -1,6 +1,6 @@
 ---
 title: "إسقاط عقيدة أم إسقاط رجل."
-status: draft
+status: published
 published_at: 2023-07-29
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat", "al-sunnah-wal-bidah"]

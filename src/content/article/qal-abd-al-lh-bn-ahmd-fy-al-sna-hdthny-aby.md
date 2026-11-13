@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الله بن أحمد في السنة 887 - (911) حَدَّثَنِي أَبِي"
-status: draft
+status: published
 published_at: 2017-12-11
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

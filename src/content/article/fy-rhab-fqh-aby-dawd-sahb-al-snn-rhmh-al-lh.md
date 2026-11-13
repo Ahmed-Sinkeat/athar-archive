@@ -1,6 +1,6 @@
 ---
 title: "في رحاب فقه أبي داود صاحب السنن رحمه الله"
-status: draft
+status: published
 published_at: 2020-11-25
 person: abu-jafar-al-khalifi
 ---

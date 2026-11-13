@@ -1,6 +1,6 @@
 ---
 title: "والذي يفترض أنك لم تعرفه بعد"
-status: draft
+status: published
 published_at: 2018-01-12
 person: abu-jafar-al-khalifi
 ---

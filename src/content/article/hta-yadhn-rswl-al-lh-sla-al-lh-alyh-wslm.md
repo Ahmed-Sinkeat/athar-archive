@@ -1,6 +1,6 @@
 ---
 title: "حتى يأذن رسول الله صلى الله عليه وسلم"
-status: draft
+status: published
 published_at: 2020-10-23
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

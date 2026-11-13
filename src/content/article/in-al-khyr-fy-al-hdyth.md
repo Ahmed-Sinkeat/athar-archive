@@ -1,6 +1,6 @@
 ---
 title: "إن الخير في الحديث"
-status: draft
+status: published
 published_at: 2024-04-13
 person: abu-abdillah-firas-al-ramli
 ---

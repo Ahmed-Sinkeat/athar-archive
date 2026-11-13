@@ -1,6 +1,6 @@
 ---
 title: "المحن لأبي العرب التميمي | وممن تصلب في المحنة -أي خلق القرآن- ولم يأخذ بالتقية."
-status: draft
+status: published
 published_at: 2023-11-26
 person: abu-abdillah-firas-al-ramli
 ---

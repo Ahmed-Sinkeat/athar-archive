@@ -1,6 +1,6 @@
 ---
 title: "كثير من دعاة الوطنية يستدلون بهذا الحديث"
-status: draft
+status: published
 published_at: 2019-03-19
 person: abu-jafar-al-khalifi
 ---

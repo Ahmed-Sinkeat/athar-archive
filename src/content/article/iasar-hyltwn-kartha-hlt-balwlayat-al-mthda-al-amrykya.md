@@ -1,6 +1,6 @@
 ---
 title: "إعصار هيلتون كارثة حلت بالولايات المتحدة الأمريكية."
-status: draft
+status: published
 published_at: 2024-10-19
 person: abu-jafar-al-khalifi
 ---

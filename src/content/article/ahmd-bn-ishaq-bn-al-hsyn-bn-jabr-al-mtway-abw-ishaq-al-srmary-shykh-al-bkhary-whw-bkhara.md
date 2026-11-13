@@ -1,6 +1,6 @@
 ---
 title: "أحمد بن إسحاق بن الحصين بن جابر المطوعي أبو إسحاق السرماري شيخ البخاري وهو بخارى"
-status: draft
+status: published
 published_at: 2018-03-11
 person: abu-jafar-al-khalifi
 ---

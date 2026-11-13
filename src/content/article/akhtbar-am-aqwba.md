@@ -1,6 +1,6 @@
 ---
 title: "اختبار أم عقوبة؟!"
-status: draft
+status: published
 published_at: 2023-07-19
 person: abu-umair-imran-al-zubaidi
 ---

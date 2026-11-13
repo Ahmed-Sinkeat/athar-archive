@@ -1,6 +1,6 @@
 ---
 title: "يمكننا القول أنّ حلب المدينة تم تطهيرها من ملاحدة الكرد القسدية ولله الحمد."
-status: draft
+status: published
 published_at: 2026-01-10
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

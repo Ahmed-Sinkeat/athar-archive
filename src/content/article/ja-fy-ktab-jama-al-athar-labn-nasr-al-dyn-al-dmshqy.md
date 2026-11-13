@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب جامع الآثار لابن ناصر الدين الدمشقي"
-status: draft
+status: published
 published_at: 2017-07-17
 person: abu-jafar-al-khalifi
 ---

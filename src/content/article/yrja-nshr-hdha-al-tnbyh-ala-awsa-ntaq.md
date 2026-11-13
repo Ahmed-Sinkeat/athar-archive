@@ -1,6 +1,6 @@
 ---
 title: "يُرجى نشر هذا التنبيه على أوسع نطاق."
-status: draft
+status: published
 published_at: 2024-10-25
 person: abu-jafar-al-khalifi
 ---

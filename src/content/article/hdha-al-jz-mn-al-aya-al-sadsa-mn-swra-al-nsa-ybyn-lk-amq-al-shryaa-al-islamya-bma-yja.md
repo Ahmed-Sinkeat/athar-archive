@@ -1,6 +1,6 @@
 ---
 title: "هذا الجزء من الآية السادسة من سورة النساء يُبين لك عمق الشريعة الإسلامية بما يجع"
-status: draft
+status: published
 published_at: 2019-03-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

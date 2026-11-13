@@ -1,6 +1,6 @@
 ---
 title: "الأمور لا تؤخذ بهذه السطحية التي اعتدنا عليها عند هؤلاء."
-status: draft
+status: published
 published_at: 2026-06-01
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لا أستطيع استيعاب عقلية الحركي المعاصر حقيقة."
-status: draft
+status: published
 published_at: 2025-03-28
 person: abu-umair-imran-al-zubaidi
 ---

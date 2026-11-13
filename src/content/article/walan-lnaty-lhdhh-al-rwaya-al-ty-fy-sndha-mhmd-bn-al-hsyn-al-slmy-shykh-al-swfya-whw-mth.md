@@ -1,6 +1,6 @@
 ---
 title: "والآن لنأتي لهذه الرواية التي في سندها محمد بن الحسين السلمي شيخ الصوفية وهو مته"
-status: draft
+status: published
 published_at: 2020-08-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "أين أهلك يا خربة ؟"
-status: draft
+status: published
 published_at: 2024-05-05
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

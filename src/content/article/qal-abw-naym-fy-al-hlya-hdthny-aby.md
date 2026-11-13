@@ -1,6 +1,6 @@
 ---
 title: "قال أبو نعيم في الحلية حدثني أبي"
-status: draft
+status: published
 published_at: 2017-06-19
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "التابعي الكبير والإمام الجليل الربيع بن خثيم رحمه الله ورضي عنه"
-status: draft
+status: published
 published_at: 2023-05-17
 person: abu-abdillah-firas-al-ramli
 ---

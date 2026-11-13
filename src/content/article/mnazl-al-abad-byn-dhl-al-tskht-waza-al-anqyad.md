@@ -1,6 +1,6 @@
 ---
 title: "مَنازِل العباد بين ذلِّ التسخُّط وعِزَّة الانقياد"
-status: draft
+status: published
 published_at: 2025-07-30
 person: awwab-bin-muhammad
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "من نفائس ابن تيمية: علاقة نفي العلو بترك دعاء الله وعدم الشعور بلذة التضرع."
-status: draft
+status: published
 published_at: 2026-04-26
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

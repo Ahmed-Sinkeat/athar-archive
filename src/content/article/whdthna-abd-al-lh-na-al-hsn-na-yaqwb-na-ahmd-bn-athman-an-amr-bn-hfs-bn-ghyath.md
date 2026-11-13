@@ -1,6 +1,6 @@
 ---
 title: "11159 - وحدثنا عبد الله نا الحسن نا يعقوب نا أحمد بن عثمان عن عمر بن حفص بن غياث"
-status: draft
+status: published
 published_at: 2021-08-23
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

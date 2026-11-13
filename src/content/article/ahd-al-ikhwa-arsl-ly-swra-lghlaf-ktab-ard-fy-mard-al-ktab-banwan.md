@@ -1,6 +1,6 @@
 ---
 title: "أحد الإخوة أرسل لي صورة لغلاف كتاب عُرض في معرض الكتاب بعنوان"
-status: draft
+status: published
 published_at: 2025-02-02
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "دخل سفيان بن حسين"
-status: draft
+status: published
 published_at: 2017-10-23
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وَذَكَرَ أَنَّ لَهُ فِيهَا أَرْبَعَ رَسَائِلَ"
-status: draft
+status: published
 published_at: 2017-11-27
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

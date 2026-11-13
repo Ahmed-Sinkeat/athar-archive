@@ -1,6 +1,6 @@
 ---
 title: "قال الشيخ السعدي رحمه الله"
-status: draft
+status: published
 published_at: 2024-09-04
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

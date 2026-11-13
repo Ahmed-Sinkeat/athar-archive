@@ -1,6 +1,6 @@
 ---
 title: "ربما كان القبض عطاءً في صورة القبض فلا تحزن ولا تحسد!"
-status: draft
+status: published
 published_at: 2025-06-03
 person: abu-jafar-al-khalifi
 ---

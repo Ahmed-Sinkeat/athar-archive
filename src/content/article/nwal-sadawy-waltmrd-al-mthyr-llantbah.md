@@ -1,6 +1,6 @@
 ---
 title: "نوال سعداوي والتمرد المثير للانتباه"
-status: draft
+status: published
 published_at: 2021-03-29
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

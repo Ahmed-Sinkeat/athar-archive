@@ -1,6 +1,6 @@
 ---
 title: "منذ فترة قرأت منشورًا لأحد الأحباب تحدث فيه عن الاضطراب النفسي الّذي يُصاحب تصفّ"
-status: draft
+status: published
 published_at: 2023-03-15
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هؤلاء المؤمنون وهؤلاء المنافقون!"
-status: draft
+status: published
 published_at: 2025-04-08
 person: abu-abdillah-firas-al-ramli
 topics: ["al-iman"]

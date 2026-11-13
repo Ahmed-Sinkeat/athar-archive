@@ -1,6 +1,6 @@
 ---
 title: "قال الحافظ يحيى بن معين"
-status: draft
+status: published
 published_at: 2018-12-07
 person: abu-jafar-al-khalifi
 ---

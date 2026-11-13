@@ -1,6 +1,6 @@
 ---
 title: "سناء سعيد، ناقدة ثقافية متبرجة غير محجبة!"
-status: draft
+status: published
 published_at: 2020-11-24
 person: abu-jafar-al-khalifi
 ---

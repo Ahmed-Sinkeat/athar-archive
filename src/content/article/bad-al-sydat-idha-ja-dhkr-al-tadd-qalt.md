@@ -1,6 +1,6 @@
 ---
 title: "بعض السيدات إذا جاء ذكر التعدد قالت"
-status: draft
+status: published
 published_at: 2020-01-26
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "جاء في تفسير القمي الشيعي ( وهو أقدم تفسير لهم )"
-status: draft
+status: published
 published_at: 2019-07-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]

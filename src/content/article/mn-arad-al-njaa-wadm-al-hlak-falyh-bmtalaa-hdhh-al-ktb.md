@@ -1,6 +1,6 @@
 ---
 title: "من أراد النجاة وعدم الهلاك فعليه بمطالعة هذه الكتب"
-status: draft
+status: published
 published_at: 2025-02-15
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

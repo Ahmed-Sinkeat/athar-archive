@@ -1,6 +1,6 @@
 ---
 title: "كاسية عارية (رأسمالية تحافظ على الأسرة والعفة)."
-status: draft
+status: published
 published_at: 2023-01-08
 person: abu-jafar-al-khalifi
 ---

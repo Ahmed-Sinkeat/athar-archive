@@ -1,6 +1,6 @@
 ---
 title: "قال التابعي الحافظ عروة بن الزبير رحمه الله"
-status: draft
+status: published
 published_at: 2018-02-28
 person: abu-jafar-al-khalifi
 ---

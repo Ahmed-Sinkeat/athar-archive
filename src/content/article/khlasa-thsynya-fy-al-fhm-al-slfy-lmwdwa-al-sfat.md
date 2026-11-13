@@ -1,6 +1,6 @@
 ---
 title: "خلاصة تحصينية في الفهم السلفي لموضوع الصفات"
-status: draft
+status: published
 published_at: 2019-12-12
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

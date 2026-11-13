@@ -1,6 +1,6 @@
 ---
 title: "شهادة ابن تيمية على المتمسحين به بمخالفة الإمام أحمد..."
-status: draft
+status: published
 published_at: 2021-08-01
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

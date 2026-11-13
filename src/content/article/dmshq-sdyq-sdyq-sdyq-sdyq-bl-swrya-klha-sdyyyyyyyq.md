@@ -1,6 +1,6 @@
 ---
 title: "دمشق صديق صديق صديق صديق؛ بل سوريا كلها صديييييييق!"
-status: draft
+status: published
 published_at: 2024-12-08
 person: abu-umair-imran-al-zubaidi
 ---

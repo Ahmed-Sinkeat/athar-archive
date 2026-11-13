@@ -1,6 +1,6 @@
 ---
 title: "عن أبي هريرة رضي الله عنه أن رسول الله ﷺ قال"
-status: draft
+status: published
 published_at: 2025-03-26
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

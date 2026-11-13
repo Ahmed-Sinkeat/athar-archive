@@ -1,6 +1,6 @@
 ---
 title: "هذه صفحة في تويتر فيها أكثر من نصف مليون متابع"
-status: draft
+status: published
 published_at: 2022-08-13
 person: abu-jafar-al-khalifi
 ---

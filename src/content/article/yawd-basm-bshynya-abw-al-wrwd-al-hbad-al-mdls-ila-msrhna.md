@@ -1,6 +1,6 @@
 ---
 title: "يعود باسم بشينية -أبو الورود الهبّاد المدلس إلى مسرحنا"
-status: draft
+status: published
 published_at: 2024-05-30
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "دافع قادة منطقة الكاريبي عن سعي المنطقة للحصول على تعويضات عن العبودية"
-status: draft
+status: published
 published_at: 2026-04-27
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "خُلُق أهل الجنة في ليلة النصف من شعبان..."
-status: draft
+status: published
 published_at: 2024-02-24
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

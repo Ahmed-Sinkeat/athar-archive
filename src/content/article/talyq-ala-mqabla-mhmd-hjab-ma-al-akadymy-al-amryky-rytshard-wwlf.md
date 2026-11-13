@@ -1,6 +1,6 @@
 ---
 title: "تعليق على مقابلة محمد حجاب مع الأكاديمي الأمريكي ريتشارد وولف."
-status: draft
+status: published
 published_at: 2020-12-21
 person: abu-jafar-al-khalifi
 ---

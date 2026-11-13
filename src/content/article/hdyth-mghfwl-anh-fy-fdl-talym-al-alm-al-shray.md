@@ -1,6 +1,6 @@
 ---
 title: "حديث مغفول عنه في فضل تعليم العلم الشرعي…"
-status: draft
+status: published
 published_at: 2024-03-24
 person: abu-jafar-al-khalifi
 ---

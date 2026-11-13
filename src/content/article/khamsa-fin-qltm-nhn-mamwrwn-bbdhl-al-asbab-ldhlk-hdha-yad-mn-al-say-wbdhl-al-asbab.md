@@ -1,6 +1,6 @@
 ---
 title: "خامسًا، فإن قلتم: نحن مأمورون ببذل الأسباب، لذلك هذا يُعد من السعي وبذل الأسباب."
-status: draft
+status: published
 published_at: 2024-05-21
 person: abu-umair-imran-al-zubaidi
 ---

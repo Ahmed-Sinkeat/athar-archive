@@ -1,6 +1,6 @@
 ---
 title: "هذا الكلام جاء ردًّا على ردٍّ كتبته في الأمس على تعليق أحد الأحباب ممازحًا قلت ف"
-status: draft
+status: published
 published_at: 2023-01-07
 person: abu-umair-imran-al-zubaidi
 ---

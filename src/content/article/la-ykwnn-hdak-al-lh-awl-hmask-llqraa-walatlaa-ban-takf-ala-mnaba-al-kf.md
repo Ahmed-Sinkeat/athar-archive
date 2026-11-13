@@ -1,6 +1,6 @@
 ---
 title: "لا يكونن – هداك الله – أوَّلُ حماسِك للقراءة والاطلاع بأنْ تعكف على منابِع الكُف"
-status: draft
+status: published
 published_at: 2025-12-02
 person: awwab-bin-muhammad
 ---

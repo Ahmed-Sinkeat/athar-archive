@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي شيبة في مصنفه [ 36737"
-status: draft
+status: published
 published_at: 2018-01-03
 person: abu-jafar-al-khalifi
 ---

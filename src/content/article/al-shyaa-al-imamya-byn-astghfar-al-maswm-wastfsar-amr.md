@@ -1,6 +1,6 @@
 ---
 title: "الشيعة الإمامية بين استغفار المعصوم واستفسار عمر"
-status: draft
+status: published
 published_at: 2020-11-12
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-iman"]

@@ -1,6 +1,6 @@
 ---
 title: "قال شيخ الإسلام وحجّته سيّدي مالك بن أنس -رضي الله عنه- حينما سأله رجلٌ عن كيف ا"
-status: draft
+status: published
 published_at: 2022-09-09
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

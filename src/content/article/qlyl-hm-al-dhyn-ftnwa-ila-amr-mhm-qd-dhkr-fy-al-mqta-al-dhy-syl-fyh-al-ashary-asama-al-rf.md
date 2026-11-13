@@ -1,6 +1,6 @@
 ---
 title: "قليل هم الذين فطنوا إلى أمر مهم قد ذكر في المقطع الذي سئل فيه الأشعري أسامة الرف"
-status: draft
+status: published
 published_at: 2026-09-18
 person: abu-umair-imran-al-zubaidi
 topics: ["al-wala-wal-bara"]

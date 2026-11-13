@@ -1,6 +1,6 @@
 ---
 title: "هذا الطرح الذي يطرحه علي الجفري"
-status: draft
+status: published
 published_at: 2021-03-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

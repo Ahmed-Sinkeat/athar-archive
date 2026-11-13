@@ -1,6 +1,6 @@
 ---
 title: "40 ٪ من البلجيكيين مع وقف الرعاية لمن هم فوق 85 سنة"
-status: draft
+status: published
 published_at: 2019-03-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

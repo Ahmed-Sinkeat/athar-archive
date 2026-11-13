@@ -1,6 +1,6 @@
 ---
 title: "قال الحافظ ابن قُدامة رحمه الله"
-status: draft
+status: published
 published_at: 2025-11-12
 person: awwab-bin-muhammad
 ---

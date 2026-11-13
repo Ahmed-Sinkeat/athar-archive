@@ -1,6 +1,6 @@
 ---
 title: "قال السخاوي في القول البديع في الصلاة على الحبيب الشفيع"
-status: draft
+status: published
 published_at: 2018-01-01
 person: abu-jafar-al-khalifi
 ---

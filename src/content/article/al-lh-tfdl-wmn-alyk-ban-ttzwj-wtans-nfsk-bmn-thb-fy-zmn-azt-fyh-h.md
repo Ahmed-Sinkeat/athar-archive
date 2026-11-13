@@ -1,6 +1,6 @@
 ---
 title: "اللهُ تفضَّل ومَنَّ عليك بأن تتزوَّج وتأنَس نفسُك بمَن تحِبُّ في زمن عزَّت فيه ه"
-status: draft
+status: published
 published_at: 2025-06-15
 person: awwab-bin-muhammad
 ---

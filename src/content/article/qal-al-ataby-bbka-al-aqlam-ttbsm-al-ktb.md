@@ -1,6 +1,6 @@
 ---
 title: "قال العتابي :ببكاء الأقلام تتبسم الكتب."
-status: draft
+status: published
 published_at: 2017-12-25
 person: abu-jafar-al-khalifi
 ---

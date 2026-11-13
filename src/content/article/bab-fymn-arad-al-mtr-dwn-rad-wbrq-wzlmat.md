@@ -1,6 +1,6 @@
 ---
 title: "باب فيمن أراد المطر دون رعد وبرق وظلمات!"
-status: draft
+status: published
 published_at: 2026-10-29
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-wala-wal-bara"]

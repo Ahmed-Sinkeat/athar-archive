@@ -1,6 +1,6 @@
 ---
 title: "الحياة لا تحلو بدون رجل !! من أجمل ما قيل في وصف الرجل من امرأة."
-status: draft
+status: published
 published_at: 2017-08-19
 person: abu-jafar-al-khalifi
 ---

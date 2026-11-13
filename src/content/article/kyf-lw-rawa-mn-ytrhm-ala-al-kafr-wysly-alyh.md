@@ -1,6 +1,6 @@
 ---
 title: "كيف لو رأوا من يترحم على الكافر ويصلي عليه؟"
-status: draft
+status: published
 published_at: 2022-05-14
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

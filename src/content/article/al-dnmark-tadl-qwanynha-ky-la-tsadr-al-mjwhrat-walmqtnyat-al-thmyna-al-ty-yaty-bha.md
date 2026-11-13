@@ -1,6 +1,6 @@
 ---
 title: "الدنمارك تعدل قوانينها كي لا تُصادَر المجوهرات والمقتنيات الثمينة التي يأتي بها"
-status: draft
+status: published
 published_at: 2022-03-08
 person: abu-jafar-al-khalifi
 ---

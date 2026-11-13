@@ -1,6 +1,6 @@
 ---
 title: "حقارة العمل عند رؤية أهوال يوم القيامة"
-status: draft
+status: published
 published_at: 2023-05-17
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "غير أننا إذا طبقنا قواعد القوم مع حديث الجارية فإننا سنضعف هذا الخبر لا محالة"
-status: draft
+status: published
 published_at: 2023-12-31
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

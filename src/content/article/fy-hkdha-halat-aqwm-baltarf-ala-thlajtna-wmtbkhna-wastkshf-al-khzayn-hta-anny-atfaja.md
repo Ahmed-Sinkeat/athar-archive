@@ -1,6 +1,6 @@
 ---
 title: "في هكذا حالات أقوم بالتعرف على ثلاجتنا ومطبخنا وأستكشف الخزائن؛ حتى أنني أتفاجأ"
-status: draft
+status: published
 published_at: 2024-01-03
 person: abu-umair-imran-al-zubaidi
 ---

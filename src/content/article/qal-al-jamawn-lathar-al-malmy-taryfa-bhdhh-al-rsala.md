@@ -1,6 +1,6 @@
 ---
 title: "قال الجامعون لآثار المعلمي تعريفاً بهذه الرسالة"
-status: draft
+status: published
 published_at: 2021-06-25
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "مفهوم البركة وأثره في علاج أطماع النفوس وعلاقته بالعقيدة الصحيحة"
-status: draft
+status: published
 published_at: 2021-03-26
 person: abu-jafar-al-khalifi
 ---

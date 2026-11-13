@@ -1,6 +1,6 @@
 ---
 title: "مصداقاً لما ذكر الشيخ أسامة؛ وجدت مقالاً بعنوان"
-status: draft
+status: published
 published_at: 2025-04-11
 person: abu-jafar-al-khalifi
 ---

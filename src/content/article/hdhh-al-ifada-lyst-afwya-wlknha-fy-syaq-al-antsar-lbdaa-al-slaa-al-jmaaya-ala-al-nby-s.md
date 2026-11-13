@@ -1,6 +1,6 @@
 ---
 title: "هذه الإفادة ليست عفوية ولكنها في سياق الانتصار لبدعة الصلاة الجماعية على النبي ص"
-status: draft
+status: published
 published_at: 2023-05-27
 person: abu-jafar-al-khalifi
 ---

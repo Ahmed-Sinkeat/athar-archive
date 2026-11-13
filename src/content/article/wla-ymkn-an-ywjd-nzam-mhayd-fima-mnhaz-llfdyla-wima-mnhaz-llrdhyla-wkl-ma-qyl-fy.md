@@ -1,6 +1,6 @@
 ---
 title: "ولا يمكن أن يوجد نظام محايد فإما منحاز للفضيلة وإما منحاز للرذيلة وكل ما قيل في"
-status: draft
+status: published
 published_at: 2019-07-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

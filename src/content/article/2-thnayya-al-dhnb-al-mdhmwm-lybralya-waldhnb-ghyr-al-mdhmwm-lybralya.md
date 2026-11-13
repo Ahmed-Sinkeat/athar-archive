@@ -1,6 +1,6 @@
 ---
 title: "٢ - ثنائية الذنب المذموم ليبراليًّا والذنب غير المذموم ليبراليًّا"
-status: draft
+status: published
 published_at: 2022-11-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

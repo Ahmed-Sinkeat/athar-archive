@@ -1,6 +1,6 @@
 ---
 title: "ما أكثر الأسماء على اسمك واسمي"
-status: draft
+status: published
 published_at: 2024-06-01
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

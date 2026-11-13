@@ -1,6 +1,6 @@
 ---
 title: "المتخلف عقليا والمريض نفسيا الذي يشمت بدول الخليج."
-status: draft
+status: published
 published_at: 2026-03-22
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "مسألة خدمة المرأة لزوجها"
-status: draft
+status: published
 published_at: 2024-08-04
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

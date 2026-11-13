@@ -1,6 +1,6 @@
 ---
 title: "أخذني كل مأخذ فتذكرت أولئك المسلمين الذين يعيشون في الديار التي يسمي أهلها عمل ق"
-status: draft
+status: published
 published_at: 2019-12-02
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "مشكلة حديث الافتراق والحلول المتفرقة."
-status: draft
+status: published
 published_at: 2021-06-19
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-wala-wal-bara", "al-sunnah-wal-bidah"]

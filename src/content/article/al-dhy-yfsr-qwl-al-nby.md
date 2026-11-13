@@ -1,6 +1,6 @@
 ---
 title: "الذي يُفسّر قول النبي ﷺ"
-status: draft
+status: published
 published_at: 2024-01-05
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

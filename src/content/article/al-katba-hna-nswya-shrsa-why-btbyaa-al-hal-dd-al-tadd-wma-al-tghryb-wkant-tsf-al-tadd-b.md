@@ -1,6 +1,6 @@
 ---
 title: "الكاتبة هنا نسوية شرسة وهي بطبيعة الحال ضد التعدد ومع التغريب وكانت تصف التعدد ب"
-status: draft
+status: published
 published_at: 2019-01-16
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "قال الإعلامي عبد الصمد ناصر ( مذيع في قناة الجزيرة ) في صفحته في تويتر"
-status: draft
+status: published
 published_at: 2019-04-02
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

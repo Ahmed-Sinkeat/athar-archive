@@ -1,6 +1,6 @@
 ---
 title: "آية في صفة العلو مغفول عنها في الدرس العلمي..."
-status: draft
+status: published
 published_at: 2021-12-05
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

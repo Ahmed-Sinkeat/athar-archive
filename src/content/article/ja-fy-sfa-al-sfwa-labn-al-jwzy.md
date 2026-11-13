@@ -1,6 +1,6 @@
 ---
 title: "جاء في صفة الصفوة لابن الجوزي"
-status: draft
+status: published
 published_at: 2017-07-17
 person: abu-jafar-al-khalifi
 ---

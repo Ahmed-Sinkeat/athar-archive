@@ -1,6 +1,6 @@
 ---
 title: "وهناك طرف آخر تقمَّص الصورة النمطية حقاً وصدَّق أنها من الدين"
-status: draft
+status: published
 published_at: 2021-09-04
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

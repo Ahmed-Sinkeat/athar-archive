@@ -1,6 +1,6 @@
 ---
 title: "دعوة للمراجعة في شأن موضوع تهوين الخلاف مع الأشعرية"
-status: draft
+status: published
 published_at: 2019-10-26
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]

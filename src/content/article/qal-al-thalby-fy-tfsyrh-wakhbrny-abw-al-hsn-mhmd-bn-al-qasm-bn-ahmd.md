@@ -1,6 +1,6 @@
 ---
 title: "قال الثعلبي في تفسيره وأخبرني أبو الحسن محمد بن القاسم بن أحمد"
-status: draft
+status: published
 published_at: 2017-06-13
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "هنا عدنان إبراهيم يستدل بقوله تعالى"
-status: draft
+status: published
 published_at: 2026-06-13
 person: abu-jafar-al-khalifi
 ---

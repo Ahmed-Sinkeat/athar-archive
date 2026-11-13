@@ -1,6 +1,6 @@
 ---
 title: "لم أقرأ لمفكر غربي سواءً كان ملحداً أو نصرانياً متديناً إلا وأجده يتحدث بأسى عن"
-status: draft
+status: published
 published_at: 2018-07-17
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-iman"]

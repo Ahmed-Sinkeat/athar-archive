@@ -1,6 +1,6 @@
 ---
 title: "قال الله تعالى: ﴿ إن الحسنات يذهبن السيئات ﴾"
-status: draft
+status: published
 published_at: 2023-11-02
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

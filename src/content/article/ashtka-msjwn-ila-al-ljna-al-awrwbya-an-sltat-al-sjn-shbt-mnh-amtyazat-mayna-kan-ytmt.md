@@ -1,6 +1,6 @@
 ---
 title: "اشتكى مسجون إلى اللجنة الأوروبية أن سلطات السجن سحبت منه امتيازات معينة كان يتمت"
-status: draft
+status: published
 published_at: 2017-10-30
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

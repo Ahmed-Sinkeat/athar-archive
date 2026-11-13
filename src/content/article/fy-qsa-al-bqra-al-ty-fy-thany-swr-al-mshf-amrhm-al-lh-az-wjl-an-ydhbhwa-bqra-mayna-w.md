@@ -1,6 +1,6 @@
 ---
 title: "في قصة البقرة التي في ثاني سُوَر المصحف أمرهم الله عز وجل أن يذبحوا بقرة معينة و"
-status: draft
+status: published
 published_at: 2018-04-12
 person: abu-jafar-al-khalifi
 ---

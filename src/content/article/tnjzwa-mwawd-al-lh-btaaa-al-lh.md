@@ -1,6 +1,6 @@
 ---
 title: "تَنَجزوا موعود الله بطاعة الله"
-status: draft
+status: published
 published_at: 2025-05-02
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

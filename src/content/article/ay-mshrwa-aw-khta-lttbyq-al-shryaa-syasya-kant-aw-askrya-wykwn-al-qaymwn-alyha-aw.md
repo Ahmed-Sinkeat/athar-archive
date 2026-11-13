@@ -1,6 +1,6 @@
 ---
 title: "أيّ مشروع أو خطة لتطبيق الشريعة -سياسيّة كانت أو عسكرية- ويكون القائمون عليها أو"
-status: draft
+status: published
 published_at: 2023-03-16
 person: abu-umair-imran-al-zubaidi
 ---

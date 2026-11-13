@@ -1,6 +1,6 @@
 ---
 title: "هذا رجل من الديوبندية الأفغان"
-status: draft
+status: published
 published_at: 2026-07-07
 person: abu-jafar-al-khalifi
 ---

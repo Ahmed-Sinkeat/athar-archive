@@ -1,6 +1,6 @@
 ---
 title: "قال ابن حجر في إبناء الغمر بأبناء العمر"
-status: draft
+status: published
 published_at: 2017-08-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

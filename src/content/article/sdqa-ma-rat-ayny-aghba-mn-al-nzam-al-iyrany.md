@@ -1,6 +1,6 @@
 ---
 title: "صدقا، ما رأت عيني أغبى من النظام الإيراني!"
-status: draft
+status: published
 published_at: 2026-02-28
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أسأل الله أن يُسلّم الدكتور أيمن من شر هؤلاء الساقطين أعداء الفطرة والدين"
-status: draft
+status: published
 published_at: 2023-08-26
 person: abu-umair-imran-al-zubaidi
 ---

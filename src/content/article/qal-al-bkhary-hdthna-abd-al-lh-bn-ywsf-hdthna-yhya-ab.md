@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري 1945 - حَدَّثَنَا عَبْدُ اللَّهِ بْنُ يُوسُفَ حَدَّثَنَا يَحْيَى ابْ"
-status: draft
+status: published
 published_at: 2017-07-07
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من دقة المحدثين التي تملأ قلبك ثقة بما نقل لك من سنة النبي ﷺ."
-status: draft
+status: published
 published_at: 2018-11-15
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "اللهم يا ساكن السماء"
-status: draft
+status: published
 published_at: 2024-04-23
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

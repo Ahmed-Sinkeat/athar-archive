@@ -1,6 +1,6 @@
 ---
 title: "الذي يتأمل في مخططات المنصرين والمستشرقين وما كانوا يؤملونه القرن الماضي من تنصي"
-status: draft
+status: published
 published_at: 2017-07-17
 person: abu-jafar-al-khalifi
 ---

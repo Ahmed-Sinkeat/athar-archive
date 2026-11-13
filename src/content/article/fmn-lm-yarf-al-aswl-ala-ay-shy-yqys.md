@@ -1,6 +1,6 @@
 ---
 title: "فمن لم يعرف الأصول على أي شيء يقيس؟!"
-status: draft
+status: published
 published_at: 2025-05-09
 person: abu-abdillah-firas-al-ramli
 ---

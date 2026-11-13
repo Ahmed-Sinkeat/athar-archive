@@ -1,6 +1,6 @@
 ---
 title: "من الأمور التي عنيت بها زمناً بيان فضل المنهج الروائي لأهل السنة على النهج الروا"
-status: draft
+status: published
 published_at: 2019-09-21
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

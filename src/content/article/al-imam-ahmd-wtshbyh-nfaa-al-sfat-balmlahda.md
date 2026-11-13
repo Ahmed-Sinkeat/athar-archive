@@ -1,6 +1,6 @@
 ---
 title: "الإمام أحمد وتشبيه نفاة الصفات بالملاحدة."
-status: draft
+status: published
 published_at: 2024-05-07
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

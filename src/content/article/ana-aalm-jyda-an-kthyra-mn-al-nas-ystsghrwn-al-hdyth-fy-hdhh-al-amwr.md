@@ -1,6 +1,6 @@
 ---
 title: "أنا أعلم جيداً أن كثيراً من الناس يستصغرون الحديث في هذه الأمور"
-status: draft
+status: published
 published_at: 2026-11-06
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لو استبدلنا كلمة الحرية في الإعلام والتعليم والخطابات بكلمة ( الفضيلة )"
-status: draft
+status: published
 published_at: 2018-11-07
 person: abu-jafar-al-khalifi
 ---

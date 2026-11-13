@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الله بن أحمد في زوائد الزهد ٢٨٦"
-status: draft
+status: published
 published_at: 2017-11-14
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "معالجة النبي صلى الله عليه وسلم لداء تقديس الأشخاص.."
-status: draft
+status: published
 published_at: 2021-06-04
 person: abu-jafar-al-khalifi
 ---

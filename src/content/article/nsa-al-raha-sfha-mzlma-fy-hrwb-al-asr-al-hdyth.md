@@ -1,6 +1,6 @@
 ---
 title: "نساء الراحة: صفحة مظلمة في حروب العصر الحديث."
-status: draft
+status: published
 published_at: 2023-07-14
 person: abu-jafar-al-khalifi
 ---

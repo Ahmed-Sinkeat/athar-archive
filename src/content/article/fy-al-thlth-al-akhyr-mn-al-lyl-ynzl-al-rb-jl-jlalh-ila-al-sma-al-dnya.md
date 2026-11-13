@@ -1,6 +1,6 @@
 ---
 title: "في الثلث الأخير من الليل ينزل الرب جل جلاله إلى السماء الدنيا"
-status: draft
+status: published
 published_at: 2023-09-09
 person: abu-abdillah-firas-al-ramli
 ---

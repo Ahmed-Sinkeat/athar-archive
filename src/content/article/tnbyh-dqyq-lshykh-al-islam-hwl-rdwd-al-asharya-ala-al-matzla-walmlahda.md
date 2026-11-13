@@ -1,6 +1,6 @@
 ---
 title: "تنبيه دقيق لشيخ الإسلام حول ردود الأشعرية على المعتزلة والملاحدة..."
-status: draft
+status: published
 published_at: 2021-12-18
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

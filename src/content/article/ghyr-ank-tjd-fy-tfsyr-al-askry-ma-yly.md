@@ -1,6 +1,6 @@
 ---
 title: "غير أنك تجد في تفسير العسكري ما يلي"
-status: draft
+status: published
 published_at: 2019-06-19
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

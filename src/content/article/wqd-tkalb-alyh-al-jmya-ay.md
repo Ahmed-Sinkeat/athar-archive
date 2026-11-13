@@ -1,6 +1,6 @@
 ---
 title: "وقد تكالب عليه الجميع –أي"
-status: draft
+status: published
 published_at: 2026-03-03
 person: awwab-bin-muhammad
 ---

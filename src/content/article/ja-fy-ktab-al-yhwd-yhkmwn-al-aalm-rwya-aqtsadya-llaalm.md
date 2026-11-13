@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب اليهود يحكمون العالم رؤية اقتصادية للعالم"
-status: draft
+status: published
 published_at: 2017-11-01
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

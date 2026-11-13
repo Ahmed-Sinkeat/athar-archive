@@ -1,6 +1,6 @@
 ---
 title: "هذا التخصص لا يجوز الدخول إليه إلا عند الضرورة والحاجة"
-status: draft
+status: published
 published_at: 2023-12-31
 person: abu-umair-imran-al-zubaidi
 ---

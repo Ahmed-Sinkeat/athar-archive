@@ -1,6 +1,6 @@
 ---
 title: "ابن تيمية يكشف سبب وقوع كثير من الظلمة وأهل الفجور في إدمان المخدرات!"
-status: draft
+status: published
 published_at: 2021-07-07
 person: abu-jafar-al-khalifi
 ---

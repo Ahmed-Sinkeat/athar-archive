@@ -1,6 +1,6 @@
 ---
 title: "أرسل لي أحد الإخوة هذا المقطع للمهندس أيمن عبد الرحيم."
-status: draft
+status: published
 published_at: 2025-09-12
 person: abu-umair-imran-al-zubaidi
 ---

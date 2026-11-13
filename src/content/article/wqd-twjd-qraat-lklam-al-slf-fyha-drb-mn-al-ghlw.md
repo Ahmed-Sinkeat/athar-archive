@@ -1,6 +1,6 @@
 ---
 title: "وقد توجد قراءات لكلام السلف فيها ضرب من الغلو"
-status: draft
+status: published
 published_at: 2021-03-15
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

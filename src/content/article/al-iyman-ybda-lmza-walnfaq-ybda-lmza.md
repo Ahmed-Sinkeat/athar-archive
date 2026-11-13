@@ -1,6 +1,6 @@
 ---
 title: "الإيمان يبدأ لمظة والنفاق يبدأ لمظة"
-status: draft
+status: published
 published_at: 2024-12-29
 person: abu-abdillah-firas-al-ramli
 topics: ["al-iman"]

@@ -1,6 +1,6 @@
 ---
 title: "إشارة قرآنية لحديث «سيد الشهداء يوم القيامة حمزة بن عبد المطلب"
-status: draft
+status: published
 published_at: 2024-05-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

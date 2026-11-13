@@ -1,6 +1,6 @@
 ---
 title: "قديماً كانت الكوفة واحِدة مِن أزخَر وأغنَى مُدن الإسـلام بالحدِيث"
-status: draft
+status: published
 published_at: 2025-04-16
 person: awwab-bin-muhammad
 ---

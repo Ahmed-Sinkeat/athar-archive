@@ -1,6 +1,6 @@
 ---
 title: "كتبه أخي عثمان لباش وفقه الله."
-status: draft
+status: published
 published_at: 2024-01-13
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "ما هو التواضع ؟"
-status: draft
+status: published
 published_at: 2023-09-25
 person: abu-abdillah-firas-al-ramli
 ---

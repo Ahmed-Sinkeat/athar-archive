@@ -1,6 +1,6 @@
 ---
 title: "ما تقولون إذا أصبحتم وأمسيتم ؟"
-status: draft
+status: published
 published_at: 2024-03-22
 person: abu-abdillah-firas-al-ramli
 ---

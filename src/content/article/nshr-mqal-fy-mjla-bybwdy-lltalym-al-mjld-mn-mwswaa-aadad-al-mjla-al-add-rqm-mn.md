@@ -1,6 +1,6 @@
 ---
 title: "نشر مقال في مجلة بيبودي للتعليم المجلد 87 من موسوعة أعداد المجلة العدد رقم 3 من"
-status: draft
+status: published
 published_at: 2019-11-02
 person: abu-jafar-al-khalifi
 ---

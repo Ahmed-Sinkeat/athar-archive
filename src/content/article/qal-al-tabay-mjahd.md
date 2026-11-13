@@ -1,6 +1,6 @@
 ---
 title: "قال التابعي #مجاهد"
-status: draft
+status: published
 published_at: 2019-07-26
 person: abu-jafar-al-khalifi
 ---

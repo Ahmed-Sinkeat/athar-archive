@@ -1,6 +1,6 @@
 ---
 title: "خلاصة الموضوع"
-status: draft
+status: published
 published_at: 2025-09-02
 person: abu-umair-imran-al-zubaidi
 ---

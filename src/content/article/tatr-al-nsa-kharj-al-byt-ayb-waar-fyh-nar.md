@@ -1,6 +1,6 @@
 ---
 title: "تعطر النساء خارج البيت عيب وعار فيه نار"
-status: draft
+status: published
 published_at: 2023-07-01
 person: abu-abdillah-firas-al-ramli
 ---

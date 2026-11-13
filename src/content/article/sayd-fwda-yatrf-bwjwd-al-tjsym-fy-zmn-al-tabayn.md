@@ -1,6 +1,6 @@
 ---
 title: "سعيد فودة يعترف بوجود التجسيم في زمن التابعين…"
-status: draft
+status: published
 published_at: 2021-10-17
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-asma-was-sifat", "al-sunnah-wal-bidah"]

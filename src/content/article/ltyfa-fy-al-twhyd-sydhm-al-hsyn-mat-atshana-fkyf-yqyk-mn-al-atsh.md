@@ -1,6 +1,6 @@
 ---
 title: "لطيفة في التوحيد: سيدهم الحسين مات عطشانًا فكيف يقيك من العطش!"
-status: draft
+status: published
 published_at: 2022-01-01
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "قال الشيخ عبد الرحمن بن حسن بن محمد بن عبد الوهاب _ رحمهم الله جميعاً _ كما في م"
-status: draft
+status: published
 published_at: 2019-05-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-asma-was-sifat", "al-sunnah-wal-bidah"]

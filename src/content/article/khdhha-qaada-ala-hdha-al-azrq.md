@@ -1,6 +1,6 @@
 ---
 title: "خذها قاعدة على هذا الأزرق"
-status: draft
+status: published
 published_at: 2023-05-07
 person: abu-umair-imran-al-zubaidi
 ---

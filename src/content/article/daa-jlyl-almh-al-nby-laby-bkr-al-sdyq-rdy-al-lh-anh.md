@@ -1,6 +1,6 @@
 ---
 title: "دعاء جليل علمه النبي ﷺ لأبي بكر الصديق رضي الله عنه"
-status: draft
+status: published
 published_at: 2026-03-16
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "فكيف لو رأى أبو أمامة وسفيان الثوري حملات حج الشخصيات المهمة"
-status: draft
+status: published
 published_at: 2026-05-29
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

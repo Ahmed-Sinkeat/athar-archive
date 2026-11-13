@@ -1,6 +1,6 @@
 ---
 title: "سمعت أحمد يقول: إذا اشترى الرجل من رجل شيئا، وهو يعلم أنه سرقه، فقد شاركه."
-status: draft
+status: published
 published_at: 2023-10-03
 person: abu-abdillah-firas-al-ramli
 ---

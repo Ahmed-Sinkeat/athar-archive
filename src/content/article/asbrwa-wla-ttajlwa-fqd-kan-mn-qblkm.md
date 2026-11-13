@@ -1,6 +1,6 @@
 ---
 title: "اصبروا ولا تتعجلوا فقد كان من قبلكم ..."
-status: draft
+status: published
 published_at: 2023-10-12
 person: abu-abdillah-firas-al-ramli
 ---

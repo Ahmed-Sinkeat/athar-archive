@@ -1,6 +1,6 @@
 ---
 title: "قال ابن المبارك في الزهد (٢٨)"
-status: draft
+status: published
 published_at: 2023-11-09
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

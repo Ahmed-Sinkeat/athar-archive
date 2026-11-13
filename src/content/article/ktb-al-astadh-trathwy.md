@@ -1,6 +1,6 @@
 ---
 title: "كتب الأستاذ تراثوي"
-status: draft
+status: published
 published_at: 2020-02-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

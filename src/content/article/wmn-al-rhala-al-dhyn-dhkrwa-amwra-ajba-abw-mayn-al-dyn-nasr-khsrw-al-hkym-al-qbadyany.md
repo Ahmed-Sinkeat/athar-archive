@@ -1,6 +1,6 @@
 ---
 title: "ومن الرحالة الذين ذكروا أموراً عجباً أبو معين الدين ناصر خسرو الحكيم القبادياني"
-status: draft
+status: published
 published_at: 2021-09-11
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

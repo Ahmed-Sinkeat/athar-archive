@@ -1,6 +1,6 @@
 ---
 title: "من الأدلة الملفتة على أن الإسلام هو الدين الوحيد الصحيح المنزل من الله تعالى"
-status: draft
+status: published
 published_at: 2017-11-09
 person: abu-jafar-al-khalifi
 ---

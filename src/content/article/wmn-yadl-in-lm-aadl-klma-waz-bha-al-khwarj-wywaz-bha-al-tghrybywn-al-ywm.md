@@ -1,6 +1,6 @@
 ---
 title: "ومن يعدل إن لم أعدل» كلمة وُعظ بها الخوارج ويوعظ بها التغريبيون اليوم..."
-status: draft
+status: published
 published_at: 2025-04-14
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

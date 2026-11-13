@@ -1,6 +1,6 @@
 ---
 title: "أورد النافون للتعبد بخبر الواحد على الآمدي الأشعري احتجاجه عليهم بأخبار آحادية ع"
-status: draft
+status: published
 published_at: 2017-08-23
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "تقرير السجزي لقاعدة الأصل في الأخبار أنها على ظاهرها حتى تأتي دلالة تصرفها عن ال"
-status: draft
+status: published
 published_at: 2026-04-22
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

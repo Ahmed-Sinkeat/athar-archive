@@ -1,6 +1,6 @@
 ---
 title: "جاء في تعليقة القاضي أبي الحسين المرورذي على مختصر المزني ( 2/661)"
-status: draft
+status: published
 published_at: 2017-11-08
 person: abu-jafar-al-khalifi
 ---

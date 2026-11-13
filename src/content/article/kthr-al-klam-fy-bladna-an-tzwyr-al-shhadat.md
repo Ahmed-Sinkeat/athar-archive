@@ -1,6 +1,6 @@
 ---
 title: "كثر الكلام في بلادنا عن تزوير الشهادات"
-status: draft
+status: published
 published_at: 2018-07-28
 person: abu-jafar-al-khalifi
 ---

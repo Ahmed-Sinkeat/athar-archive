@@ -1,6 +1,6 @@
 ---
 title: "نزع الخوف من القوامة (استفادة من آيات الطلاق)."
-status: draft
+status: published
 published_at: 2023-06-02
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

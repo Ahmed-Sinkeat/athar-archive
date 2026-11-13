@@ -1,6 +1,6 @@
 ---
 title: "نحن في زمنٍ نحتاج فيه إلى سؤال الخاطب عن عقيدته؛ بل ويجب أن نحرص على ذلك أيّما ح"
-status: draft
+status: published
 published_at: 2022-09-21
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "سارعوا قبل أن تندموا"
-status: draft
+status: published
 published_at: 2024-01-25
 person: abu-abdillah-firas-al-ramli
 ---

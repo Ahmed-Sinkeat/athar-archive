@@ -1,6 +1,6 @@
 ---
 title: "نشر صورتك على مواقع التواصل وأنتَ حليق الّلحية أو جاعفها دون القبضة ذنبٌ عظيم!."
-status: draft
+status: published
 published_at: 2023-03-03
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من ظرف الإمامية: حين تصبح الهجرة فجأة فضيلة!"
-status: draft
+status: published
 published_at: 2020-02-15
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

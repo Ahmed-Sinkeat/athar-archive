@@ -1,6 +1,6 @@
 ---
 title: "تمسكوا بما عليه الصحابة والتابعون فإنه الطريق الواضح"
-status: draft
+status: published
 published_at: 2024-07-03
 person: abu-abdillah-firas-al-ramli
 ---

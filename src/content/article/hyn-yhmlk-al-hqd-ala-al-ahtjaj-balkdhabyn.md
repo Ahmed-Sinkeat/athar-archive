@@ -1,6 +1,6 @@
 ---
 title: "حين يحملك الحقد على الاحتجاج بالكذابين"
-status: draft
+status: published
 published_at: 2023-08-10
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

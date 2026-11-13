@@ -1,6 +1,6 @@
 ---
 title: "فارق جوهري بين السنة الهجرية والسنة الميلادية الشمسية"
-status: draft
+status: published
 published_at: 2019-08-31
 person: abu-jafar-al-khalifi
 ---

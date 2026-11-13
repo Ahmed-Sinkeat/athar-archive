@@ -1,6 +1,6 @@
 ---
 title: "من إفادات الأخ عماد المصري"
-status: draft
+status: published
 published_at: 2019-07-29
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

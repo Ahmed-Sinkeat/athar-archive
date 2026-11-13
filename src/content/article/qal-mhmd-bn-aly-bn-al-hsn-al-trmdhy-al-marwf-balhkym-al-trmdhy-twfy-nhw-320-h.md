@@ -1,6 +1,6 @@
 ---
 title: "قال محمد بن علي بن الحسن الترمذي المعروف بالحكيم الترمذي (توفي نحو ٣٢٠ هـ )"
-status: draft
+status: published
 published_at: 2023-09-19
 person: abu-abdillah-firas-al-ramli
 ---

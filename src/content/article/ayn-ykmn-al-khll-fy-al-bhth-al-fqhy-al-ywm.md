@@ -1,6 +1,6 @@
 ---
 title: "أين يكمن الخلل في البحث الفقهي اليوم ؟"
-status: draft
+status: published
 published_at: 2020-05-18
 person: abu-jafar-al-khalifi
 ---

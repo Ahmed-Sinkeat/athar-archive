@@ -1,6 +1,6 @@
 ---
 title: "في مجلة المنار لرشيد رضا"
-status: draft
+status: published
 published_at: 2018-08-13
 person: abu-jafar-al-khalifi
 ---

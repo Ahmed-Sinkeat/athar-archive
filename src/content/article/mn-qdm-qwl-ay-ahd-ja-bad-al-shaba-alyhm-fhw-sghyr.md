@@ -1,6 +1,6 @@
 ---
 title: "من قدم قول أي أحد جاء بعد الصحابة عليهم فهو صغير"
-status: draft
+status: published
 published_at: 2024-05-16
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

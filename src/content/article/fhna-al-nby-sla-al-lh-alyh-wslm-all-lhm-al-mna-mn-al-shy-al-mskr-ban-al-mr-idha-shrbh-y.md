@@ -1,6 +1,6 @@
 ---
 title: "فهنا النبي صلى الله عليه وسلم علل لهم المنع من الشيء المسكر بأن المرء إذا شربه ي"
-status: draft
+status: published
 published_at: 2021-05-31
 person: abu-jafar-al-khalifi
 ---

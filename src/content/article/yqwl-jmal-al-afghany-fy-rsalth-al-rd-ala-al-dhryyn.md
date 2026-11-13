@@ -1,6 +1,6 @@
 ---
 title: "يقول جمال الأفغاني في رسالته الرد على الدهريين"
-status: draft
+status: published
 published_at: 2017-06-17
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وقت هبوط الرب سبحانه وتعالى إلى السماء الدنيا؛ فلا تضيعوا هذه المكرمة والتفضل ال"
-status: draft
+status: published
 published_at: 2023-08-23
 person: abu-umair-imran-al-zubaidi
 ---

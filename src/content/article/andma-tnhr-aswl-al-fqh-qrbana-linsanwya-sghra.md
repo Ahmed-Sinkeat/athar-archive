@@ -1,6 +1,6 @@
 ---
 title: "عندما تُنحَر أصول الفقه قُرباناً لإنسانوية صُغرى"
-status: draft
+status: published
 published_at: 2025-03-29
 person: awwab-bin-muhammad
 topics: ["mustalah-al-hadith", "adab-talab-al-ilm"]

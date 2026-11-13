@@ -1,6 +1,6 @@
 ---
 title: "ليس هذا عشك فادرجي.."
-status: draft
+status: published
 published_at: 2022-05-22
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

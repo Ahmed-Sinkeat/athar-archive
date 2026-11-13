@@ -1,6 +1,6 @@
 ---
 title: "\"ومما يوضح ذلك أنّ وجوب تصديق كل مسلم بما أخبر الله به ورسوله من صفاته ليس موقوف"
-status: draft
+status: published
 published_at: 2024-02-14
 person: abu-umair-imran-al-zubaidi
 ---

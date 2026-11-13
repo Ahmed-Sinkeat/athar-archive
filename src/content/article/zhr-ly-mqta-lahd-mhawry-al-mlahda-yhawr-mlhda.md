@@ -1,6 +1,6 @@
 ---
 title: "ظهر لي مقطع لأحد محاوري الملاحدة يحاور ملحدا"
-status: draft
+status: published
 published_at: 2026-07-19
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-asma-was-sifat"]

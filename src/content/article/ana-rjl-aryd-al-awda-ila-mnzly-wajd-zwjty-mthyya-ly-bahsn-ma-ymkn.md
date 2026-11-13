@@ -1,6 +1,6 @@
 ---
 title: "أنا رجل أريد العودة إلى منزلي وأجد زوجتي متهيئة لي بأحسن ما يمكن"
-status: draft
+status: published
 published_at: 2023-09-03
 person: abu-umair-imran-al-zubaidi
 ---

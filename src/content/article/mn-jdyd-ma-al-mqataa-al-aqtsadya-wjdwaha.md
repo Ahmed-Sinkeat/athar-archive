@@ -1,6 +1,6 @@
 ---
 title: "من جديد: مع المقاطعة الاقتصادية وجدواها."
-status: draft
+status: published
 published_at: 2021-04-30
 person: abu-jafar-al-khalifi
 ---

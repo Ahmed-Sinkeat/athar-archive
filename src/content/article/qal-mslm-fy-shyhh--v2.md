@@ -1,6 +1,6 @@
 ---
 title: "قال مسلم في صحيحه 4500- [9"
-status: draft
+status: published
 published_at: 2019-10-17
 person: abu-jafar-al-khalifi
 ---

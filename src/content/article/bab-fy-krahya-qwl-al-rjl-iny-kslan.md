@@ -1,6 +1,6 @@
 ---
 title: "باب في كراهية قول الرجل إني كسلان"
-status: draft
+status: published
 published_at: 2025-12-13
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

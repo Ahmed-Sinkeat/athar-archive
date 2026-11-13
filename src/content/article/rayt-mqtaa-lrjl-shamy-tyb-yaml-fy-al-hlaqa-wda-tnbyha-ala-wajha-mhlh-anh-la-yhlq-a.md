@@ -1,6 +1,6 @@
 ---
 title: "رأيت مقطعا لرجل شامي طيب يعمل في الحلاقة وضع تنبيها على واجهة محله أنه لا يحلق ا"
-status: draft
+status: published
 published_at: 2026-01-29
 person: abu-umair-imran-al-zubaidi
 ---

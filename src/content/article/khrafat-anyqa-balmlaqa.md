@@ -1,6 +1,6 @@
 ---
 title: "خرافات أنيقة بالملعقة"
-status: draft
+status: published
 published_at: 2022-06-07
 person: abu-jafar-al-khalifi
 ---

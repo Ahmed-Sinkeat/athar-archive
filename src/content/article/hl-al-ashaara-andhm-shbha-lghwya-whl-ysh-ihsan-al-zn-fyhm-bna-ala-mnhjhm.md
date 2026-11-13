@@ -1,6 +1,6 @@
 ---
 title: "هل الأشاعرة عندهم شبهة لغوية؟ وهل يصح إحسان الظن فيهم بناءً على منهجهم؟"
-status: draft
+status: published
 published_at: 2024-03-01
 person: abu-umair-imran-al-zubaidi
 ---

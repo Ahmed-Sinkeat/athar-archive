@@ -1,6 +1,6 @@
 ---
 title: "(الإسلام البدوي ) عبارة ما صارت تقال إلا في عصر ما بعد الاستعمار حيث قيل في فقه"
-status: draft
+status: published
 published_at: 2019-03-31
 person: abu-jafar-al-khalifi
 ---

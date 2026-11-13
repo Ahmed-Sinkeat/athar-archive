@@ -1,6 +1,6 @@
 ---
 title: "لا تسلم على من يقعد في الطريق ويدع صلاة الجمعة"
-status: draft
+status: published
 published_at: 2024-06-20
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

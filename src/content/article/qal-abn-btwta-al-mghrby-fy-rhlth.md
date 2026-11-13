@@ -1,6 +1,6 @@
 ---
 title: "قال ابن بطوطة المغربي في رحلته"
-status: draft
+status: published
 published_at: 2018-04-17
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

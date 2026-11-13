@@ -1,6 +1,6 @@
 ---
 title: "شهادتي بالشيخ الخليفي مجروحة جرح عميق!"
-status: draft
+status: published
 published_at: 2023-11-07
 person: abu-umair-imran-al-zubaidi
 ---

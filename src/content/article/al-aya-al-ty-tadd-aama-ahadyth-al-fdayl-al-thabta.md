@@ -1,6 +1,6 @@
 ---
 title: "الآية التي تعضد عامة أحاديث الفضائل الثابتة..."
-status: draft
+status: published
 published_at: 2024-06-11
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

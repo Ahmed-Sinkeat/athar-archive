@@ -1,6 +1,6 @@
 ---
 title: "تنبيه نفيس من الشيخ محمد بن إبراهيم آل الشيخ حول منشأ شبهة الرق في الإسلام."
-status: draft
+status: published
 published_at: 2026-10-19
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال جمال الدين السرمري في كتابه خصائص سيد العالمين وما له من المناقب والعجائب عل"
-status: draft
+status: published
 published_at: 2019-10-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

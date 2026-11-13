@@ -1,6 +1,6 @@
 ---
 title: "ما شاء الله تقبل الله من المتصدقين والقائمين على المشروع وبارك فيهم"
-status: draft
+status: published
 published_at: 2025-07-27
 person: abu-abdillah-firas-al-ramli
 ---

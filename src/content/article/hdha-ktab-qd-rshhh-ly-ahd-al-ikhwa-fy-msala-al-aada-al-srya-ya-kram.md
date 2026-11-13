@@ -1,6 +1,6 @@
 ---
 title: "هذا كتاب قد رشحه لي أحد الإخوة في مسألة العادة السرية يا كرام"
-status: draft
+status: published
 published_at: 2023-12-30
 person: abu-umair-imran-al-zubaidi
 ---

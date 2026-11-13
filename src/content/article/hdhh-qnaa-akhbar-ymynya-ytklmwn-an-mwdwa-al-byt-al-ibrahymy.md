@@ -1,6 +1,6 @@
 ---
 title: "هذه قناة أخبار يمينية، يتكلمون عن موضوع البيت الإبراهيمي."
-status: draft
+status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi
 ---

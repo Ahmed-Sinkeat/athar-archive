@@ -1,6 +1,6 @@
 ---
 title: "الحكمة العلوية التي تذكر باستمرار ولا تنسب له"
-status: draft
+status: published
 published_at: 2020-01-28
 person: abu-jafar-al-khalifi
 ---

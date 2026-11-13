@@ -1,6 +1,6 @@
 ---
 title: "هل ذكر الله أصحاب الحديث في القرآن ؟"
-status: draft
+status: published
 published_at: 2023-11-04
 person: abu-abdillah-firas-al-ramli
 ---

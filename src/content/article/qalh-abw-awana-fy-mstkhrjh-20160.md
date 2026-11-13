@@ -1,6 +1,6 @@
 ---
 title: "قاله أبو عوانة في مستخرجه (٢٠/&rlm;١٦٠)"
-status: draft
+status: published
 published_at: 2023-08-02
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الرجل الذي كان الإمام مالك يحب أن يقتدي به"
-status: draft
+status: published
 published_at: 2023-09-25
 person: abu-abdillah-firas-al-ramli
 ---

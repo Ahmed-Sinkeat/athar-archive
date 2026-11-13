@@ -1,6 +1,6 @@
 ---
 title: "قد يكون صغير كيّس"
-status: draft
+status: published
 published_at: 2023-08-03
 person: abu-abdillah-firas-al-ramli
 ---

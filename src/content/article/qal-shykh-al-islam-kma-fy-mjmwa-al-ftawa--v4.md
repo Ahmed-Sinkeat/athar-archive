@@ -1,6 +1,6 @@
 ---
 title: "قال شيخ الإسلام كما في مجموع الفتاوى (12/ 368)"
-status: draft
+status: published
 published_at: 2017-12-18
 person: abu-jafar-al-khalifi
 ---

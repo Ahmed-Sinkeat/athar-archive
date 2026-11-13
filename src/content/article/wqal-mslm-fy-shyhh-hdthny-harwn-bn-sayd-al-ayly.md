@@ -1,6 +1,6 @@
 ---
 title: "وقال مسلم في صحيحه 19 - (1828) حَدَّثَنِي هَارُونُ بْنُ سَعِيدٍ الْأَيْلِيُّ"
-status: draft
+status: published
 published_at: 2017-06-15
 person: abu-jafar-al-khalifi
 ---

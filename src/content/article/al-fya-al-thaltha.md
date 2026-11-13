@@ -1,6 +1,6 @@
 ---
 title: "الفئة الثالثة"
-status: draft
+status: published
 published_at: 2021-05-21
 person: abu-jafar-al-khalifi
 ---

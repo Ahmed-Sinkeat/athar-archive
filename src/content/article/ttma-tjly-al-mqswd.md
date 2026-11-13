@@ -1,6 +1,6 @@
 ---
 title: "تتمة تجلي المقصود ..."
-status: draft
+status: published
 published_at: 2021-07-29
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

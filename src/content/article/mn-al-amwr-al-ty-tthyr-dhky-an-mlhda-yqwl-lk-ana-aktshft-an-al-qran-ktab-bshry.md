@@ -1,6 +1,6 @@
 ---
 title: "من الأمور التي تثير ضحكي أن ملحدا يقول لك أنا اكتشفت أن القرآن كتاب بشري"
-status: draft
+status: published
 published_at: 2018-06-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

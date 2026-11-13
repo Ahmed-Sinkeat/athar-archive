@@ -1,6 +1,6 @@
 ---
 title: "فضل الرمي للطبراني | باب الرخصة في الضحك عند إصابة السهم مقتل الكافر"
-status: draft
+status: published
 published_at: 2023-10-19
 person: abu-abdillah-firas-al-ramli
 ---

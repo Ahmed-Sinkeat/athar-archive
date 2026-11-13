@@ -1,6 +1,6 @@
 ---
 title: "هذا شاب مسلم بريطاني كان كاثوليكيًّا، يعمل الآن مع حمزة تزورتزس وغيره."
-status: draft
+status: published
 published_at: 2021-10-18
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

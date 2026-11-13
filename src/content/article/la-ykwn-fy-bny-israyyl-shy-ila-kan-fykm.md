@@ -1,6 +1,6 @@
 ---
 title: "لا يكون في بني إسرائيل شيء إلا كان فيكم"
-status: draft
+status: published
 published_at: 2023-06-11
 person: abu-abdillah-firas-al-ramli
 ---

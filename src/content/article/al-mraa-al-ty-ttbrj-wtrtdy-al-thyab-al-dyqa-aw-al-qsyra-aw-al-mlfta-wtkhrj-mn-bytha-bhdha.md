@@ -1,6 +1,6 @@
 ---
 title: "المرأة التي تتبرج وترتدي الثياب الضيقة أو القصيرة أو الملفتة وتخرج من بيتها بهذا"
-status: draft
+status: published
 published_at: 2023-11-11
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال إبراهيم أبو محمد مفتي استراليا وهو مصري في كتابه الثورة المصرية ص١٣٨"
-status: draft
+status: published
 published_at: 2017-08-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

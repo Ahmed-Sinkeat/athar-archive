@@ -1,6 +1,6 @@
 ---
 title: "إيمان عمرو بن العاص إعجاز غفل عنه كثر من الناس وبيان من هم أهل البيت"
-status: draft
+status: published
 published_at: 2019-05-12
 person: abu-jafar-al-khalifi
 ---

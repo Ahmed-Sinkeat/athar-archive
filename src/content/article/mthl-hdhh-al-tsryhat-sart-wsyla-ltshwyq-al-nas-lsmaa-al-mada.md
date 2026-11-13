@@ -1,6 +1,6 @@
 ---
 title: "مثل هذه التصريحات صارت وسيلة لتشويق الناس لسماع المادة"
-status: draft
+status: published
 published_at: 2023-10-04
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

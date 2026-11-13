@@ -1,6 +1,6 @@
 ---
 title: "نانسي بيلوسي زعيمة الحزب الديمقراطي تقول"
-status: draft
+status: published
 published_at: 2022-06-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

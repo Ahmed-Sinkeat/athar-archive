@@ -1,6 +1,6 @@
 ---
 title: "حينما تتمعّن وتتأمّل وتُدرك وتُذعِن لمعاني {إِنَّ اللَّهَ يَحْكُمُ مَا يُرِيدُ)"
-status: draft
+status: published
 published_at: 2023-03-08
 person: abu-umair-imran-al-zubaidi
 ---

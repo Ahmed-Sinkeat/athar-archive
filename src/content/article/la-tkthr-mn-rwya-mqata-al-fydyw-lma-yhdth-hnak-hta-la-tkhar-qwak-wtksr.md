@@ -1,6 +1,6 @@
 ---
 title: "لا تُكثر من رؤية مقاطع الفيديو لما يحدث هناك حتى لا تخار قواك وتُكسر."
-status: draft
+status: published
 published_at: 2023-10-15
 person: abu-umair-imran-al-zubaidi
 ---

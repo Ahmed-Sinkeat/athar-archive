@@ -1,6 +1,6 @@
 ---
 title: "الصداقة على غير اعتبار ديني حسرة يوم القيامة..."
-status: draft
+status: published
 published_at: 2021-09-02
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

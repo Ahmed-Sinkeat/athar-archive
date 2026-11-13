@@ -1,6 +1,6 @@
 ---
 title: "هل أنت من قرر المجيء إلى هذا العالم ؟"
-status: draft
+status: published
 published_at: 2018-07-03
 person: abu-jafar-al-khalifi
 ---

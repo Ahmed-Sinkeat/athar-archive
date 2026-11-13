@@ -1,6 +1,6 @@
 ---
 title: "هنا عدة أسئلة لمن يطعن في الأئمة وينكر الإجماع والقياس"
-status: draft
+status: published
 published_at: 2018-11-03
 person: abu-jafar-al-khalifi
 ---

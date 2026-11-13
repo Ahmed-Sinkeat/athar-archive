@@ -1,6 +1,6 @@
 ---
 title: "حقيقة مؤلمة علينا الوقوف عندها"
-status: draft
+status: published
 published_at: 2018-08-21
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

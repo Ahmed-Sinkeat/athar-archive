@@ -1,6 +1,6 @@
 ---
 title: "الهوس بمظهر المرأة الخارجي في العقل الغربي الحديث.."
-status: draft
+status: published
 published_at: 2022-06-12
 person: abu-jafar-al-khalifi
 ---

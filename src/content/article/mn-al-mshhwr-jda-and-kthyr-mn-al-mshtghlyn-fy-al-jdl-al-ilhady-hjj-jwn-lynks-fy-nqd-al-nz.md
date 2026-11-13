@@ -1,6 +1,6 @@
 ---
 title: "من المشهور جدا عند كثير من المشتغلين في الجدل الإلحادي حجج جون لينكس في نقض النظ"
-status: draft
+status: published
 published_at: 2019-08-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

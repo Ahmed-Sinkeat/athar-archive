@@ -1,6 +1,6 @@
 ---
 title: "من فضائل صلاة الفجر"
-status: draft
+status: published
 published_at: 2023-09-09
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

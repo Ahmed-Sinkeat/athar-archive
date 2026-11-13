@@ -1,6 +1,6 @@
 ---
 title: "في مثل هذا اليوم منذ عام امتلأت قلوب الموحدين بفرحة غامرة بالإثخان بأعداء الله و"
-status: draft
+status: published
 published_at: 2024-10-07
 person: abu-umair-imran-al-zubaidi
 ---

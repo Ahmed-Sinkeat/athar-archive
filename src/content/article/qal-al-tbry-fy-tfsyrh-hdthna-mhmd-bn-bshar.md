@@ -1,6 +1,6 @@
 ---
 title: "قال الطبري في تفسيره حدثنا محمد بن بشار"
-status: draft
+status: published
 published_at: 2017-07-09
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

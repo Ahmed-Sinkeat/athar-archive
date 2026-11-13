@@ -1,6 +1,6 @@
 ---
 title: "الحل النسوي لأزمة النساء في كوريا الجنوبية..."
-status: draft
+status: published
 published_at: 2024-09-04
 person: abu-jafar-al-khalifi
 ---

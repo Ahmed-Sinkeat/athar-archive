@@ -1,6 +1,6 @@
 ---
 title: "لقد دخلوا النار وإن حمده لفي قلوبهم"
-status: draft
+status: published
 published_at: 2025-10-20
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

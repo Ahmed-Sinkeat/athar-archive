@@ -1,6 +1,6 @@
 ---
 title: "1- هذا ليس خلافا وأثر عبد الله لا يناقض المرفوع"
-status: draft
+status: published
 published_at: 2024-04-21
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

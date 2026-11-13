@@ -1,6 +1,6 @@
 ---
 title: "جاء في ترجمة الربيع بن أنس"
-status: draft
+status: published
 published_at: 2017-08-09
 person: abu-jafar-al-khalifi
 ---

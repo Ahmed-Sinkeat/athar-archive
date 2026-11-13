@@ -1,6 +1,6 @@
 ---
 title: "وسبحان الله فأين النصوص ودلالتها فلو فرضنا أنه لا يعول على العقل والفطرة مطلقاً"
-status: draft
+status: published
 published_at: 2020-06-12
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

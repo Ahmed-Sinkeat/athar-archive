@@ -1,6 +1,6 @@
 ---
 title: "ألظوا بيا ذا الجلال والإكرام اسم الله العظيم"
-status: draft
+status: published
 published_at: 2023-10-27
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

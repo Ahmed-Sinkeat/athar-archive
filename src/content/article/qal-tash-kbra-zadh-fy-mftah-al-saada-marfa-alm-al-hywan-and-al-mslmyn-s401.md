@@ -1,6 +1,6 @@
 ---
 title: "قال طاش كبرى زاده في مفتاح السعادة معرّفاً علم الحيوان عند المسلمين ص٤٠١"
-status: draft
+status: published
 published_at: 2017-09-04
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "السحرة والشعراء!"
-status: draft
+status: published
 published_at: 2020-12-12
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

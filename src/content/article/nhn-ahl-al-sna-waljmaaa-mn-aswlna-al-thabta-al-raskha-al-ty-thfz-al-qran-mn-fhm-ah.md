@@ -1,6 +1,6 @@
 ---
 title: "نحن أهل السُنّة والجماعة مِن أصولنا الثابتة الراسخة الّتي تحفظ القرآن مِن فهم أه"
-status: draft
+status: published
 published_at: 2023-03-20
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat", "al-sunnah-wal-bidah"]

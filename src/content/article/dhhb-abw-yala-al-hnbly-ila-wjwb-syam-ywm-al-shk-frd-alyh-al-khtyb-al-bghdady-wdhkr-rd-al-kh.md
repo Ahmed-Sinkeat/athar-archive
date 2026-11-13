@@ -1,6 +1,6 @@
 ---
 title: "ذهب أبو يعلى الحنبلي إلى وجوب صيام يوم الشك فرد عليه الخطيب البغدادي وذكر رد الخ"
-status: draft
+status: published
 published_at: 2018-02-01
 person: abu-jafar-al-khalifi
 ---

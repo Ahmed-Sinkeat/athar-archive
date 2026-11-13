@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الله بن أحمد في زوائد المسند"
-status: draft
+status: published
 published_at: 2021-05-19
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

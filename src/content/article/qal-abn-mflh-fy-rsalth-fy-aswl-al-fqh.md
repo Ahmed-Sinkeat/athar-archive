@@ -1,6 +1,6 @@
 ---
 title: "قال ابن مفلح في رسالته في أصول الفقه"
-status: draft
+status: published
 published_at: 2017-09-11
 person: abu-jafar-al-khalifi
 ---

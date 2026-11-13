@@ -1,6 +1,6 @@
 ---
 title: "قوله إن معاوية بن أبي سفيان -رضي الله عنهما- ولَّى قتلة عثمان"
-status: draft
+status: published
 published_at: 2025-04-05
 person: abu-jafar-al-khalifi
 ---

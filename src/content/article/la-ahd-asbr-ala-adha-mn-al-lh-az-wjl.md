@@ -1,6 +1,6 @@
 ---
 title: "لا أحد أصبر على أذى من الله عز وجل"
-status: draft
+status: published
 published_at: 2023-10-29
 person: abu-abdillah-firas-al-ramli
 ---

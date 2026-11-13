@@ -1,6 +1,6 @@
 ---
 title: "من قال مثل هذا الكلام فاعلم أنه ضال"
-status: draft
+status: published
 published_at: 2026-05-14
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "يقول الله تعالى: {نحن نقص عليك نبأهم بالحق إنهم فتيةٌ آمنوا بربهم وزدناهم هدى}"
-status: draft
+status: published
 published_at: 2018-06-01
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "مركزية الصلاة في الوحي وترتيب الأولويات"
-status: draft
+status: published
 published_at: 2020-05-10
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

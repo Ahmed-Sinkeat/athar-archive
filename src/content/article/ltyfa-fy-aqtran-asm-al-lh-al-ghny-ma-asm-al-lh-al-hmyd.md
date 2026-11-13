@@ -1,6 +1,6 @@
 ---
 title: "لطيفة في اقتران اسم الله الغني مع اسم الله الحميد.."
-status: draft
+status: published
 published_at: 2022-04-09
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

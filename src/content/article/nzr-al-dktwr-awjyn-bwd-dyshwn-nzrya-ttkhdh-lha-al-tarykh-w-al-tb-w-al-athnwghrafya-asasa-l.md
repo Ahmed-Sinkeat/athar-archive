@@ -1,6 +1,6 @@
 ---
 title: "نظر الدكتور اوجين بود ديشون نظرية تتخذ لها التاريخ و الطب و الاثنوغرافية اساسا ل"
-status: draft
+status: published
 published_at: 2019-10-21
 person: abu-jafar-al-khalifi
 ---

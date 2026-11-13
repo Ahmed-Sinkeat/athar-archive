@@ -1,6 +1,6 @@
 ---
 title: "حمص أكبر محافظة سورية من حيث المساحة."
-status: draft
+status: published
 published_at: 2024-12-04
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذه هي الفتاة التي نشرت عنها سابقًا في تأسفها على التأثر بالفكر النسوي مما أفقده"
-status: draft
+status: published
 published_at: 2020-01-02
 person: abu-jafar-al-khalifi
 ---

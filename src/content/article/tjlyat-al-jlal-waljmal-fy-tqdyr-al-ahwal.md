@@ -1,6 +1,6 @@
 ---
 title: "تجلِّيـات الجلال والجمال في تقدِيـر الأهـوال"
-status: draft
+status: published
 published_at: 2025-05-14
 person: awwab-bin-muhammad
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

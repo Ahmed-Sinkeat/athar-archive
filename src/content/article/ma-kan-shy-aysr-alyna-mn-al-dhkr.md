@@ -1,6 +1,6 @@
 ---
 title: "ما كان شيء أيسر علينا من الذكر"
-status: draft
+status: published
 published_at: 2025-06-26
 person: abu-abdillah-firas-al-ramli
 ---

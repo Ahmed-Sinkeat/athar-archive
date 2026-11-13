@@ -1,6 +1,6 @@
 ---
 title: "وهذا جحيم تعيشه كثير من الفتيات"
-status: draft
+status: published
 published_at: 2024-07-24
 person: abu-jafar-al-khalifi
 ---

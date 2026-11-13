@@ -1,6 +1,6 @@
 ---
 title: "باب في صلاة التراويح بالأهل"
-status: draft
+status: published
 published_at: 2020-04-24
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هل النساء البريطانيات يبالغن ويدَّعين المظلومية"
-status: draft
+status: published
 published_at: 2021-03-16
 person: abu-jafar-al-khalifi
 ---

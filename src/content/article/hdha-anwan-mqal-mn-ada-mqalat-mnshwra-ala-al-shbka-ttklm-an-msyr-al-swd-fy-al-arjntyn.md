@@ -1,6 +1,6 @@
 ---
 title: "هذا عنوان مقال من عدة مقالات منشورة على الشبكة تتكلم عن مصير السود في الأرجنتين"
-status: draft
+status: published
 published_at: 2018-07-22
 person: abu-jafar-al-khalifi
 ---

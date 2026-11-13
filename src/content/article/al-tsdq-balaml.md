@@ -1,6 +1,6 @@
 ---
 title: "التصدق بالأمل..."
-status: draft
+status: published
 published_at: 2025-10-26
 person: abu-jafar-al-khalifi
 ---

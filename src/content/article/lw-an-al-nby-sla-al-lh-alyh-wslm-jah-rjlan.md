@@ -1,6 +1,6 @@
 ---
 title: "لو أن النبي صلى الله عليه وسلم جاءه رجلان؛"
-status: draft
+status: published
 published_at: 2019-02-27
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

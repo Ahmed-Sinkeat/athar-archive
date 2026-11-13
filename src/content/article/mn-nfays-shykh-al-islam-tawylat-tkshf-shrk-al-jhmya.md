@@ -1,6 +1,6 @@
 ---
 title: "من نفائس شيخ الإسلام: تأويلات تكشف شرك الجهمية…"
-status: draft
+status: published
 published_at: 2024-04-18
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

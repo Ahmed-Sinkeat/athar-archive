@@ -1,6 +1,6 @@
 ---
 title: "جاء في مجلة الحقائق الدمشقية والكاتب فيها عبد القادر بن محمد سليم الكيلاني الإسك"
-status: draft
+status: published
 published_at: 2018-01-13
 person: abu-jafar-al-khalifi
 ---

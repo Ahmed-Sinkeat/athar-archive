@@ -1,6 +1,6 @@
 ---
 title: "فصلٌ في إدراك الحِكمة الإلهية وأدَب العِباد"
-status: draft
+status: published
 published_at: 2025-06-09
 person: awwab-bin-muhammad
 ---

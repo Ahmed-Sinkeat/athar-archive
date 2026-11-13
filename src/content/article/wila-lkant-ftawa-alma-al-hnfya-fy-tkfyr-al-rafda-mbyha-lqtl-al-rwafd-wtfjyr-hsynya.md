@@ -1,6 +1,6 @@
 ---
 title: "وإلا لكانت فتاوى علماء الحنفية في تكفير الرافضة مبيحة لقتل الروافض وتفجير حسينيا"
-status: draft
+status: published
 published_at: 2025-01-15
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "إيران استهدفت أماكن مدنية كثيرة حتى محطات الكهرباء."
-status: draft
+status: published
 published_at: 2026-04-03
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وبقية كلامه نفيس وبهذا يتبين سخف هذه الشبهة بل من إعجاز القرآن أنه اشتمل على أوج"
-status: draft
+status: published
 published_at: 2018-05-31
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

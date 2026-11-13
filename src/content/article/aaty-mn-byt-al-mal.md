@@ -1,6 +1,6 @@
 ---
 title: "أعطي من بيت المال"
-status: draft
+status: published
 published_at: 2018-05-26
 person: abu-jafar-al-khalifi
 ---

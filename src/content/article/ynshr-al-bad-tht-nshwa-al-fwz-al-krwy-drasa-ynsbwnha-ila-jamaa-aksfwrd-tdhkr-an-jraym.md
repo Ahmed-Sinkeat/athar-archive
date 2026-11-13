@@ -1,6 +1,6 @@
 ---
 title: "ينشر البعض تحت نشوة الفوز الكروي دراسة ينسبونها إلى جامعة أكسفورد تذكر أن جرائم"
-status: draft
+status: published
 published_at: 2019-06-03
 person: abu-jafar-al-khalifi
 ---

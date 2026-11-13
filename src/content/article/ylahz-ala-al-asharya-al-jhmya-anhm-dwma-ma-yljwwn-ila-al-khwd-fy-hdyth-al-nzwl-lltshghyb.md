@@ -1,6 +1,6 @@
 ---
 title: "يلاحظ على الأشعرية الجهمية أنهم دوما ما يلجؤون إلى الخوض في حديث النزول للتشغيب"
-status: draft
+status: published
 published_at: 2025-02-09
 person: abu-umair-imran-al-zubaidi
 ---

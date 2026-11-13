@@ -1,6 +1,6 @@
 ---
 title: "أبو حنيفة النعمان بن محمّد بن منصور بن حيون المغربي ، والمعروف بالقاضي المغربي"
-status: draft
+status: published
 published_at: 2017-11-04
 person: abu-jafar-al-khalifi
 ---

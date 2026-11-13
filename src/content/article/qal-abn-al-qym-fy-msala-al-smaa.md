@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم في مسألة السماع"
-status: draft
+status: published
 published_at: 2022-06-21
 person: abu-jafar-al-khalifi
 ---

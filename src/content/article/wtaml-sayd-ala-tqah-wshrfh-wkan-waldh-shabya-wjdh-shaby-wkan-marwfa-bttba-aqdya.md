@@ -1,6 +1,6 @@
 ---
 title: "وتأمل سعيد على تقاه وشرفه وكان والده صحابياً وجده صحابي وكان معروفاً بتتبع أقضية"
-status: draft
+status: published
 published_at: 2019-11-09
 person: abu-jafar-al-khalifi
 ---

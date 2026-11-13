@@ -1,6 +1,6 @@
 ---
 title: "احتساب الشهداء كما ينبغي أن يكون ..."
-status: draft
+status: published
 published_at: 2023-10-27
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

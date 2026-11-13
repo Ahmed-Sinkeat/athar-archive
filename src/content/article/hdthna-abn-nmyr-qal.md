@@ -1,6 +1,6 @@
 ---
 title: "حدثنا ابن نمير قال"
-status: draft
+status: published
 published_at: 2023-01-13
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا التعليق يلخص لك مسألتين"
-status: draft
+status: published
 published_at: 2025-01-09
 person: abu-umair-imran-al-zubaidi
 ---

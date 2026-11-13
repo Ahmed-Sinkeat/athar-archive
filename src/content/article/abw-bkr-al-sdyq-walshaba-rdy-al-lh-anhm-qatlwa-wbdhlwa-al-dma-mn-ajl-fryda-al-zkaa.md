@@ -1,6 +1,6 @@
 ---
 title: "أبو بكر الصديق والصحابة رضي الله عنهم قاتلوا وبذلوا الدماء من أجل فريضة الزكاة."
-status: draft
+status: published
 published_at: 2025-03-21
 person: abu-umair-imran-al-zubaidi
 ---

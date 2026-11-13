@@ -1,6 +1,6 @@
 ---
 title: "من أعظم الدروس التي تعلّمتها مؤخّرًا هي أن لا أزكي أحدًا لأحد دون أن أعرفه جيدًا"
-status: draft
+status: published
 published_at: 2023-06-09
 person: abu-umair-imran-al-zubaidi
 ---

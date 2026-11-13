@@ -1,6 +1,6 @@
 ---
 title: "أنا رح أنجلط من غالب المشاهير المتصدرين للدعوة والإفتاء، خاصة في ملف المرأة!"
-status: draft
+status: published
 published_at: 2024-01-07
 person: abu-umair-imran-al-zubaidi
 ---

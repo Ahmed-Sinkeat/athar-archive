@@ -1,6 +1,6 @@
 ---
 title: "لو أن جيلنا جمع في صعيد واحد مع الأجيال السابقة من المسلمين في صعيد واحد"
-status: draft
+status: published
 published_at: 2019-03-12
 person: abu-jafar-al-khalifi
 ---

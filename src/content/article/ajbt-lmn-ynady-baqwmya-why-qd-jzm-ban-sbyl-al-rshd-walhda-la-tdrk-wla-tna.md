@@ -1,6 +1,6 @@
 ---
 title: "عجبتُ لمن يُنادي بأقومية وحيٍ قد جزم بأنَّ سبيل الرُّشد والهدى لا تُدرك ولا تُنا"
-status: draft
+status: published
 published_at: 2026-09-13
 person: awwab-bin-muhammad
 ---

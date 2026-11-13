@@ -1,6 +1,6 @@
 ---
 title: "قال أبو طاهر السلفي في معجم السفر 868 - سَمِعت أَبَا الْحَسَنِ عَلِيَّ بْنَ مُحَ"
-status: draft
+status: published
 published_at: 2017-10-27
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أيهما أولاً البيضة أم الدجاجة السؤال الذي ينقُض الرواية التطورية."
-status: draft
+status: published
 published_at: 2019-05-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

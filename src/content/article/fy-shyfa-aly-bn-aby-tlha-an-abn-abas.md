@@ -1,6 +1,6 @@
 ---
 title: "في صحيفة علي بن أبي طلحة عن ابن عباس"
-status: draft
+status: published
 published_at: 2019-04-07
 person: abu-jafar-al-khalifi
 ---

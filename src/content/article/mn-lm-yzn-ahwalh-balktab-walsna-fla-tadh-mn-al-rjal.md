@@ -1,6 +1,6 @@
 ---
 title: "من لم يزن أحواله بالكتاب والسنة فلا تعده من الرجال"
-status: draft
+status: published
 published_at: 2024-11-04
 person: abu-abdillah-firas-al-ramli
 ---

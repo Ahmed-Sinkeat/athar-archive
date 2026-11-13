@@ -1,6 +1,6 @@
 ---
 title: "أنصحكم بمتابعة هذه القناة النافعة يا كرام"
-status: draft
+status: published
 published_at: 2023-03-29
 person: abu-umair-imran-al-zubaidi
 ---

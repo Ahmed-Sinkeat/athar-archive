@@ -1,6 +1,6 @@
 ---
 title: "جزى الله الشيخ مصطفى كل خير على غيرته وحميته على أسماء وصفات رب العالمين سبحانه"
-status: draft
+status: published
 published_at: 2024-02-08
 person: abu-umair-imran-al-zubaidi
 ---

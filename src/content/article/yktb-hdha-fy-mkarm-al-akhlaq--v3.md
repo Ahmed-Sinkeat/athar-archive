@@ -1,6 +1,6 @@
 ---
 title: "... يكتب هذا في مكارم الأخلاق"
-status: draft
+status: published
 published_at: 2023-07-07
 person: abu-abdillah-firas-al-ramli
 ---

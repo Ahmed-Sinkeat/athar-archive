@@ -1,6 +1,6 @@
 ---
 title: "كم من إنسان يحتاج هذا الضرب اليوم!"
-status: draft
+status: published
 published_at: 2023-08-09
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

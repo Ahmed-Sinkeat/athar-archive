@@ -1,6 +1,6 @@
 ---
 title: "هذا لقاء قبل عامين مع طيار سابق في الكيان الصهيوني"
-status: draft
+status: published
 published_at: 2023-10-09
 person: abu-jafar-al-khalifi
 ---

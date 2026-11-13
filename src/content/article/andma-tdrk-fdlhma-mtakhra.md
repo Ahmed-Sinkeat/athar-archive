@@ -1,6 +1,6 @@
 ---
 title: "عندما تدرك فضلهما متأخراً…"
-status: draft
+status: published
 published_at: 2024-09-24
 person: abu-jafar-al-khalifi
 ---

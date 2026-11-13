@@ -1,6 +1,6 @@
 ---
 title: "عن جابِـر بن عبد الله رضي الله عنه أنَّ رسول الله ﷺ قال"
-status: draft
+status: published
 published_at: 2025-03-05
 person: awwab-bin-muhammad
 ---

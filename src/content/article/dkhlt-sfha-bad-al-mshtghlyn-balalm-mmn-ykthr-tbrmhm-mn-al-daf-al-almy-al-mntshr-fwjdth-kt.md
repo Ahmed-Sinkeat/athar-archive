@@ -1,6 +1,6 @@
 ---
 title: "دخلت صفحة بعض المشتغلين بالعلم ممن يكثر تبرمهم من الضعف العلمي المنتشر فوجدته كت"
-status: draft
+status: published
 published_at: 2019-09-02
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

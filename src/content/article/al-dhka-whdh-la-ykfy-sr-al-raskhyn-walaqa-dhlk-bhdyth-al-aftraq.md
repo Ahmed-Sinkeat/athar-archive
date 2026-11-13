@@ -1,6 +1,6 @@
 ---
 title: "الذكاء وحده لا يكفي (سر الراسخين وعلاقة ذلك بحديث الافتراق)"
-status: draft
+status: published
 published_at: 2024-06-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

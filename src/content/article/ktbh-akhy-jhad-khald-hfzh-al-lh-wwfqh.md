@@ -1,6 +1,6 @@
 ---
 title: "كتبه أخي جهاد خالد حفظه الله ووفقه"
-status: draft
+status: published
 published_at: 2023-12-28
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

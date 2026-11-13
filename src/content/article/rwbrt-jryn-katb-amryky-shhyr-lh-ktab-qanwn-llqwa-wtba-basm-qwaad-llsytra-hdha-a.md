@@ -1,6 +1,6 @@
 ---
 title: "روبرت جرين كاتب أمريكي شهير له كتاب 48 قانون للقوة وطبع باسم قواعد للسيطرة هذا ا"
-status: draft
+status: published
 published_at: 2018-01-18
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

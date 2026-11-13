@@ -1,6 +1,6 @@
 ---
 title: "قال التابعي الإمام الحسن البصري"
-status: draft
+status: published
 published_at: 2018-05-05
 person: abu-jafar-al-khalifi
 ---

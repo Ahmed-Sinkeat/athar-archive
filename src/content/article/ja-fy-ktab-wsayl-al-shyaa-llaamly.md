@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب وسائل الشيعة للعاملي"
-status: draft
+status: published
 published_at: 2017-10-26
 person: abu-jafar-al-khalifi
 ---

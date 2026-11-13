@@ -1,6 +1,6 @@
 ---
 title: "أرأيت حين تستخفي مِن النّاس وأنت ترتكب معصيةً"
-status: draft
+status: published
 published_at: 2023-03-20
 person: abu-umair-imran-al-zubaidi
 ---

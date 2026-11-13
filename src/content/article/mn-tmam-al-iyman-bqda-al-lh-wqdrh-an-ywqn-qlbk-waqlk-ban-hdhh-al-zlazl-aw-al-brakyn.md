@@ -1,6 +1,6 @@
 ---
 title: "من تمام الإيمان بقضاء الله وقدره أن يوقن قلبك وعقلك بأنّ هذه الزلازل أو البراكين"
-status: draft
+status: published
 published_at: 2023-09-09
 person: abu-umair-imran-al-zubaidi
 ---

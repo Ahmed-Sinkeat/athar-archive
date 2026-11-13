@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب مسالك الأبصار في ممالك الأمصار لابن فضل الله العمري"
-status: draft
+status: published
 published_at: 2018-10-21
 person: abu-jafar-al-khalifi
 ---

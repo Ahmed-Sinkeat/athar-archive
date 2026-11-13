@@ -1,6 +1,6 @@
 ---
 title: "بلده يعج بالخمور المحرمة في القرآن والسنة وإجماع كل الفرق المنتسبة للإسلام ( ويت"
-status: draft
+status: published
 published_at: 2018-07-11
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الأمير عروة بن محمد بن عطية السعدي رحمه الله"
-status: draft
+status: published
 published_at: 2018-09-05
 person: abu-jafar-al-khalifi
 ---

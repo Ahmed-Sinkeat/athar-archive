@@ -1,6 +1,6 @@
 ---
 title: "وفاة الملاكم الروسي مكسيم داداشيف متأثرا بإصاباته خلال نزال أمام غريمه سابريل ما"
-status: draft
+status: published
 published_at: 2019-07-24
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لماذا ذُكر الحلم والمغفرة بعد تسبيح السماوات والأرض ومن فيهن؟"
-status: draft
+status: published
 published_at: 2025-01-02
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat", "tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "نيك فوينتس (Nick Fuentes)"
-status: draft
+status: published
 published_at: 2025-08-30
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

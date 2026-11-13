@@ -1,6 +1,6 @@
 ---
 title: "أخبرنا أحمد بن عبد الله بن يونس قال أخبرنا زائدة بن قدامة عن الأعمش عن أبي وائل"
-status: draft
+status: published
 published_at: 2019-10-26
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

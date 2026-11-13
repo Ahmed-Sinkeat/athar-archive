@@ -1,6 +1,6 @@
 ---
 title: "مما يرجى لأهل الحديث..."
-status: draft
+status: published
 published_at: 2021-05-09
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

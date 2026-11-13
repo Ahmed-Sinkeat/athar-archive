@@ -1,6 +1,6 @@
 ---
 title: "الذي يدّعي أنّ الديموقراطية هي نظام الحكم الأمثل للشعوب لما فيها من حريات"
-status: draft
+status: published
 published_at: 2025-01-09
 person: abu-umair-imran-al-zubaidi
 ---

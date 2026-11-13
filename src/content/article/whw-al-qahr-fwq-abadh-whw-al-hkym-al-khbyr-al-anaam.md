@@ -1,6 +1,6 @@
 ---
 title: "{وَهُوَ الْقَاهِرُ فَوْقَ عِبَادِهِ ۚ وَهُوَ الْحَكِيمُ الْخَبِيرُ} الأنعام."
-status: draft
+status: published
 published_at: 2023-01-22
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "بالنسبة لهذا الأمر."
-status: draft
+status: published
 published_at: 2024-06-22
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

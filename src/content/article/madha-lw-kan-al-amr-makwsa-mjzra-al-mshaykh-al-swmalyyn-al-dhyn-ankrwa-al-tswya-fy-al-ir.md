@@ -1,6 +1,6 @@
 ---
 title: "ماذا لو كان الأمر معكوساً (مجزرة المشايخ الصوماليين الذين أنكروا التسوية في الإر"
-status: draft
+status: published
 published_at: 2025-10-29
 person: abu-jafar-al-khalifi
 ---

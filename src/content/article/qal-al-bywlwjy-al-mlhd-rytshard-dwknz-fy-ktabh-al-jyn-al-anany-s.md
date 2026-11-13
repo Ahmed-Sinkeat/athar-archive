@@ -1,6 +1,6 @@
 ---
 title: "قال البيولوجي الملحد ريتشارد دوكنز في كتابه الجين الأناني ص251"
-status: draft
+status: published
 published_at: 2018-08-22
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

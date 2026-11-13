@@ -1,6 +1,6 @@
 ---
 title: "ماذا يقول الشيطان لمن لم يذكر الله عز وجل عند دخوله بيته وعند طعامه؟"
-status: draft
+status: published
 published_at: 2025-07-19
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

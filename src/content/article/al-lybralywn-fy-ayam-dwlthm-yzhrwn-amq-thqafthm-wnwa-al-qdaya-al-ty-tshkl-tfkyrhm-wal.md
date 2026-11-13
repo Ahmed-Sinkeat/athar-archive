@@ -1,6 +1,6 @@
 ---
 title: "الليبراليون في أيام دولتهم يظهرون عمق ثقافتهم ونوع القضايا التي تشكل تفكيرهم وال"
-status: draft
+status: published
 published_at: 2018-05-04
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

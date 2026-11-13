@@ -1,6 +1,6 @@
 ---
 title: "#صفات_الرب_سبحانه_في_الكتاب_والسنة (2)."
-status: draft
+status: published
 published_at: 2022-12-27
 person: abu-umair-imran-al-zubaidi
 ---

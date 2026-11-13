@@ -1,6 +1,6 @@
 ---
 title: "كنت أتحدث مع أحد الشباب عن مسألة الحاكمية والجهاد والمجاهدين."
-status: draft
+status: published
 published_at: 2024-02-11
 person: abu-umair-imran-al-zubaidi
 ---

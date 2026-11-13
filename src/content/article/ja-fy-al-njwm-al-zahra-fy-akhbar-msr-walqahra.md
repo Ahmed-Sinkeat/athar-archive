@@ -1,6 +1,6 @@
 ---
 title: "جاء في النجوم الزاهرة في أخبار مصر والقاهرة"
-status: draft
+status: published
 published_at: 2018-11-24
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

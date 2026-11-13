@@ -1,6 +1,6 @@
 ---
 title: "قال سعيد بن منصور في تفسيره (661)"
-status: draft
+status: published
 published_at: 2024-01-01
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

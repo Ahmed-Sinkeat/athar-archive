@@ -1,6 +1,6 @@
 ---
 title: "على خلفية حديثي عن جرائم الشرف كلمني بعض الإخوة من الشام قائلاً"
-status: draft
+status: published
 published_at: 2019-01-01
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

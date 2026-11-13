@@ -1,6 +1,6 @@
 ---
 title: "باب في تنظيف القلوب من الدونية والكلف بالآخر!"
-status: draft
+status: published
 published_at: 2020-06-18
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

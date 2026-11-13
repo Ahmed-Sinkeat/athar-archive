@@ -1,6 +1,6 @@
 ---
 title: "الشيء الوحيد الذي يخفف من استعار النار المشتعلة في قلبي تجاه الزنادقة الباطنية ب"
-status: draft
+status: published
 published_at: 2025-03-07
 person: abu-umair-imran-al-zubaidi
 ---

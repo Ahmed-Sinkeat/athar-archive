@@ -1,6 +1,6 @@
 ---
 title: "نحن أيضاً بحاجة إلى الدعاء..."
-status: draft
+status: published
 published_at: 2025-04-13
 person: abu-jafar-al-khalifi
 ---

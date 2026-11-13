@@ -1,6 +1,6 @@
 ---
 title: "وقفة مع مناط الثناء على الصحابة..."
-status: draft
+status: published
 published_at: 2021-11-06
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-imamah-was-sahabah"]

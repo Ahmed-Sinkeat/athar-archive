@@ -1,6 +1,6 @@
 ---
 title: "أرسل لي أحد الأخوة تفريغاً لهذا البودكاست"
-status: draft
+status: published
 published_at: 2026-05-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

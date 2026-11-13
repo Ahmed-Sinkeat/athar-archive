@@ -1,6 +1,6 @@
 ---
 title: "اللامنهجية شر من اللامذهبية."
-status: draft
+status: published
 published_at: 2020-08-30
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

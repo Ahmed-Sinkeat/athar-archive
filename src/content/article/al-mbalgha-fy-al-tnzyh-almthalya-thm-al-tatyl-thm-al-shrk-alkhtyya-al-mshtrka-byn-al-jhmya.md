@@ -1,6 +1,6 @@
 ---
 title: "المبالغة في التنزيه (المثالية) ثم التعطيل ثم الشرك (الخطيئة المشتركة بين الجهمية"
-status: draft
+status: published
 published_at: 2020-10-31
 person: abu-jafar-al-khalifi
 ---

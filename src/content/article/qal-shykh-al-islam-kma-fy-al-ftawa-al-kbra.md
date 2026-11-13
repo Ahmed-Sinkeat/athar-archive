@@ -1,6 +1,6 @@
 ---
 title: "قال شيخ الإسلام كما في الفتاوى الكبرى (3/344)"
-status: draft
+status: published
 published_at: 2017-08-12
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

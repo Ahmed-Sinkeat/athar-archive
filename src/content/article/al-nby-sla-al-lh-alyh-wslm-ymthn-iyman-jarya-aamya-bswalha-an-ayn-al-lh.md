@@ -1,6 +1,6 @@
 ---
 title: "النبيّ -صلّى الله عليه وسلّم- يمتحن إيمان جارية عآمّيّة بسؤالها عن \"أين الله"
-status: draft
+status: published
 published_at: 2023-03-13
 person: abu-umair-imran-al-zubaidi
 ---

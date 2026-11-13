@@ -1,6 +1,6 @@
 ---
 title: "حيلة عالمانية نُقضت في القرآن قبل ظهورها !"
-status: draft
+status: published
 published_at: 2020-05-12
 person: abu-jafar-al-khalifi
 ---

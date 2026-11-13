@@ -1,6 +1,6 @@
 ---
 title: "جاء في مقدمة كتاب صندوق النقد الدولي قوة عظمى لمؤلفه أرنست فولف"
-status: draft
+status: published
 published_at: 2017-11-11
 person: abu-jafar-al-khalifi
 ---

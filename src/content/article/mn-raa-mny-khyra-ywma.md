@@ -1,6 +1,6 @@
 ---
 title: "مَن رأى مني خيراً يوماً"
-status: draft
+status: published
 published_at: 2026-05-26
 person: awwab-bin-muhammad
 ---

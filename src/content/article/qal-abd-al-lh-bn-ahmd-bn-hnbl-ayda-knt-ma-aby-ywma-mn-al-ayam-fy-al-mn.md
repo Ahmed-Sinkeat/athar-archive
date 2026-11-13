@@ -1,6 +1,6 @@
 ---
 title: "قال عَبْد اللَّهِ بْن أَحْمَد بن حنبل أَيْضًا كنت مع أبي يوما من الأيام فِي المن"
-status: draft
+status: published
 published_at: 2024-01-24
 person: abu-umair-imran-al-zubaidi
 ---

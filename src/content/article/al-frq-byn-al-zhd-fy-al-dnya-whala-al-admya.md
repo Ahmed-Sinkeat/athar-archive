@@ -1,6 +1,6 @@
 ---
 title: "الفرق بين الزهد في الدنيا وحالة العدمية"
-status: draft
+status: published
 published_at: 2020-04-04
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs", "al-iman"]

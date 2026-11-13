@@ -1,6 +1,6 @@
 ---
 title: "يقول النصراني فيكتور سحاب في كتابه من يحمي المسيحيين العرب ص٢٦"
-status: draft
+status: published
 published_at: 2017-11-01
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "تقبيح اتِّباع السنة والتزامها فيما خالف أهواء الأنفس جوهره واحد وصوره شتى"
-status: draft
+status: published
 published_at: 2026-03-03
 person: awwab-bin-muhammad
 ---

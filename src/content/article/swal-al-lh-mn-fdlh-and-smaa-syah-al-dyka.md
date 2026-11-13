@@ -1,6 +1,6 @@
 ---
 title: "سؤال الله من فضله عند سماع صياح الديكة"
-status: draft
+status: published
 published_at: 2023-05-24
 person: abu-abdillah-firas-al-ramli
 ---

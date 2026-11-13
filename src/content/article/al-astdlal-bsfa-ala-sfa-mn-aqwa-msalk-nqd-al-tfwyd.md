@@ -1,6 +1,6 @@
 ---
 title: "الاستدلال بصفة على صفة من أقوى مسالك نقض التفويض"
-status: draft
+status: published
 published_at: 2021-09-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

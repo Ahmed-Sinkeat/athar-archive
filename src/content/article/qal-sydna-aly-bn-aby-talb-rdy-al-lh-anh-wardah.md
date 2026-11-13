@@ -1,6 +1,6 @@
 ---
 title: "قال سيّدنا علي بن أبي طالب رضي الله عنه وأرضاه"
-status: draft
+status: published
 published_at: 2023-01-26
 person: abu-umair-imran-al-zubaidi
 ---

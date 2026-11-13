@@ -1,6 +1,6 @@
 ---
 title: "كان في هذه الأمة أمانان وبقي أمان"
-status: draft
+status: published
 published_at: 2026-02-11
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

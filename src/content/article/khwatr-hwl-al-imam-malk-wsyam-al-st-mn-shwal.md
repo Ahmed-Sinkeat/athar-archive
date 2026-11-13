@@ -1,6 +1,6 @@
 ---
 title: "خواطر حول الإمام مالك وصيام الست من شوال"
-status: draft
+status: published
 published_at: 2020-05-28
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "10 أخطاء شائعة في الصَّوم"
-status: draft
+status: published
 published_at: 2026-02-13
 person: awwab-bin-muhammad
 topics: ["tazkiyat-al-nafs"]

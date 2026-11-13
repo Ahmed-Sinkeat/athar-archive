@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية _ رحمه الله _ كما جامع المسائل المجموعة الثامنة ص29"
-status: draft
+status: published
 published_at: 2018-06-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

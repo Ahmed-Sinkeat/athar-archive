@@ -1,6 +1,6 @@
 ---
 title: "التوحيد قوة نفسية..."
-status: draft
+status: published
 published_at: 2025-12-10
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

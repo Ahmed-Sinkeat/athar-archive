@@ -1,6 +1,6 @@
 ---
 title: "قال أبو حاتم الرازي"
-status: draft
+status: published
 published_at: 2018-08-15
 person: abu-jafar-al-khalifi
 ---

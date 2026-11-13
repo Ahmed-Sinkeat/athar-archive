@@ -1,6 +1,6 @@
 ---
 title: "هل أجاز أحد من الفقهاء المتبوعين النظر إلى شعر المخطوبة؟"
-status: draft
+status: published
 published_at: 2022-11-29
 person: abu-jafar-al-khalifi
 ---

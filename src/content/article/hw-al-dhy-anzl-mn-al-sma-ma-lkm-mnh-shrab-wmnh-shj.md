@@ -1,6 +1,6 @@
 ---
 title: "هُوَ الَّذِي أَنزَلَ مِنَ السَّمَاءِ مَاءً ۖ لَّكُم مِّنْهُ شَرَابٌ وَمِنْهُ شَج"
-status: draft
+status: published
 published_at: 2025-06-03
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "وهكذا يلغي جهود مئات السنين وكأن القوم لم يكونوا ينطلقون من القرآن ويعملون على ف"
-status: draft
+status: published
 published_at: 2019-03-14
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

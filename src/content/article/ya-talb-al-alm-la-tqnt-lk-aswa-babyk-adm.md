@@ -1,6 +1,6 @@
 ---
 title: "يا طالب العلم لا تقنط، لك أسوة بأبيك آدم"
-status: draft
+status: published
 published_at: 2023-01-04
 person: abu-jafar-al-khalifi
 topics: ["adab-talab-al-ilm"]

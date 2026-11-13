@@ -1,6 +1,6 @@
 ---
 title: "يا من تبحث عن زوجة: احذر من التي تمرط دينك مرطًا ..."
-status: draft
+status: published
 published_at: 2023-06-18
 person: abu-abdillah-firas-al-ramli
 ---

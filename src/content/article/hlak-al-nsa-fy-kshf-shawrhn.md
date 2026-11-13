@@ -1,6 +1,6 @@
 ---
 title: "هلاك النساء في كشف شعورهن"
-status: draft
+status: published
 published_at: 2026-03-20
 person: awwab-bin-muhammad
 ---

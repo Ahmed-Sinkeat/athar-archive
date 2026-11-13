@@ -1,6 +1,6 @@
 ---
 title: "إذا انتهى الأمر إلى ما هو عليه الآن."
-status: draft
+status: published
 published_at: 2025-07-20
 person: abu-umair-imran-al-zubaidi
 ---

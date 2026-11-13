@@ -1,6 +1,6 @@
 ---
 title: "حصلت مناظرة بين جيمس وايت (أشهر وأكبر مدافع عن النصرانية) الذي خاض أكثر من ١٥٠ م"
-status: draft
+status: published
 published_at: 2019-10-19
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

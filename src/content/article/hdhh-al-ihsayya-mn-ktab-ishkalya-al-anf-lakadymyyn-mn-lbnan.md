@@ -1,6 +1,6 @@
 ---
 title: "هذه الإحصائية من كتاب إشكالية العنف لأكاديميَّين من لبنان"
-status: draft
+status: published
 published_at: 2020-11-10
 person: abu-jafar-al-khalifi
 ---

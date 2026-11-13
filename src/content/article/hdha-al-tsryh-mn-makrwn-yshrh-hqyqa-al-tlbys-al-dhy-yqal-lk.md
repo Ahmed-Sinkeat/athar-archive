@@ -1,6 +1,6 @@
 ---
 title: "هذا التصريح من ماكرون يشرح حقيقة التلبيس الذي يقال لك"
-status: draft
+status: published
 published_at: 2020-10-02
 person: abu-jafar-al-khalifi
 ---

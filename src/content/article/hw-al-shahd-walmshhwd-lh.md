@@ -1,6 +1,6 @@
 ---
 title: "هو الشاهدُ والمشهودُ له"
-status: draft
+status: published
 published_at: 2023-12-02
 person: abu-umair-imran-al-zubaidi
 ---

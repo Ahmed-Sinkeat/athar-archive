@@ -1,6 +1,6 @@
 ---
 title: "هنا لا أود الحديث عن عدم صحة هذه الرواية فحسب، بل أريد بيان منهجية عامة."
-status: draft
+status: published
 published_at: 2025-12-11
 person: abu-jafar-al-khalifi
 ---

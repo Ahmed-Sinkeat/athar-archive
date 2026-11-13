@@ -1,6 +1,6 @@
 ---
 title: "\"[الله خلق المكان وهو لا يحده"
-status: draft
+status: published
 published_at: 2025-11-10
 person: abu-umair-imran-al-zubaidi
 ---

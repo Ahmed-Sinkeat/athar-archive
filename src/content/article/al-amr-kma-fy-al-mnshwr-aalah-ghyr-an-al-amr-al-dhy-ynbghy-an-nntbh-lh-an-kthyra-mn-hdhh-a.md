@@ -1,6 +1,6 @@
 ---
 title: "الأمر كما في المنشور أعلاه غير أن الأمر الذي ينبغي أن ننتبه له أن كثيرا من هذه ا"
-status: draft
+status: published
 published_at: 2020-06-05
 person: abu-jafar-al-khalifi
 ---

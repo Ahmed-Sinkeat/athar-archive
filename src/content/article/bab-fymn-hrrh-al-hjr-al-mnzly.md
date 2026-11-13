@@ -1,6 +1,6 @@
 ---
 title: "باب فيمن حرره الحجر المنزلي"
-status: draft
+status: published
 published_at: 2020-04-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "بروتستانت القبلة !"
-status: draft
+status: published
 published_at: 2020-05-02
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

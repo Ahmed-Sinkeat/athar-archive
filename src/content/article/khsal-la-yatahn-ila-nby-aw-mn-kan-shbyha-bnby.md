@@ -1,6 +1,6 @@
 ---
 title: "خصال لا يعطاهن إلا نبي أو من كان شبيها بنبي"
-status: draft
+status: published
 published_at: 2026-05-17
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

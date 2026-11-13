@@ -1,6 +1,6 @@
 ---
 title: "وما عليك ألا تصدق الكذب في يزيد بن معاوية !"
-status: draft
+status: published
 published_at: 2020-03-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

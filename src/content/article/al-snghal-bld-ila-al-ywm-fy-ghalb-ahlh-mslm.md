@@ -1,6 +1,6 @@
 ---
 title: "السنغال بلد إلى اليوم في غالب أهله مسلم."
-status: draft
+status: published
 published_at: 2019-02-04
 person: abu-jafar-al-khalifi
 ---

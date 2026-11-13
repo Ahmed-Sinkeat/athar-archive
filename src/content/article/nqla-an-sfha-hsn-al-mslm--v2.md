@@ -1,6 +1,6 @@
 ---
 title: "نقلا عن صفحة حصن المسلم"
-status: draft
+status: published
 published_at: 2019-02-19
 person: abu-jafar-al-khalifi
 ---

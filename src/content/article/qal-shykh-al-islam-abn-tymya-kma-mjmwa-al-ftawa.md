@@ -1,6 +1,6 @@
 ---
 title: "قال شيخ الإسلام ابن تيمية كما مجموع الفتاوى (10/ 376)"
-status: draft
+status: published
 published_at: 2017-12-27
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

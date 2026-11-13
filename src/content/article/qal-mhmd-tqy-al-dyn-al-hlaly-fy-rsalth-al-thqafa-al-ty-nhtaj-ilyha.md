@@ -1,6 +1,6 @@
 ---
 title: "قال محمد تقي الدين الهلالي في رسالته الثقافة التي نحتاج إليها"
-status: draft
+status: published
 published_at: 2018-08-22
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

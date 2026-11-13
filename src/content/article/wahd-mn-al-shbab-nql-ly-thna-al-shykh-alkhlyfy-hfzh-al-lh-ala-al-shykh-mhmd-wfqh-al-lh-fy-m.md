@@ -1,6 +1,6 @@
 ---
 title: "واحد من الشباب نقل لي ثناء الشيخ ألخليفي حفظه الله على الشيخ محمد وفقه الله في م"
-status: draft
+status: published
 published_at: 2024-01-20
 person: abu-umair-imran-al-zubaidi
 ---

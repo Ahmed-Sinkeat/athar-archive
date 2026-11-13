@@ -1,6 +1,6 @@
 ---
 title: "آيات معدودات لخصت الإسلام بطريقة منهجية وبينت ميزته على كل دين فأجابت على شبهة م"
-status: draft
+status: published
 published_at: 2020-04-23
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

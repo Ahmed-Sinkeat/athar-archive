@@ -1,6 +1,6 @@
 ---
 title: "أَفَأَمِنَ أَهۡلُ ٱلۡقُرَىٰٓ أَن يَأۡتِيَهُم بَأۡسُنَا بَيَٰتٗا وَهُمۡ نَآئِمُو"
-status: draft
+status: published
 published_at: 2023-09-09
 person: abu-umair-imran-al-zubaidi
 ---

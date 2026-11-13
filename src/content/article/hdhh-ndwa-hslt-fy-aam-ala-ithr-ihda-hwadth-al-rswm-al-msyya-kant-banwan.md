@@ -1,6 +1,6 @@
 ---
 title: "هذه ندوة حصلت في عام 2006 على إثر إحدى حوادث الرسوم المسيئة كانت بعنوان"
-status: draft
+status: published
 published_at: 2023-11-21
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

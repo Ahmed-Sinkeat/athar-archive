@@ -1,6 +1,6 @@
 ---
 title: "في كلّ مرةٍ أفكًر بأنّ الكلام الموجود في هذا المصحف الّذي بين يديً هو كلامٌ تكلّ"
-status: draft
+status: published
 published_at: 2023-04-25
 person: abu-umair-imran-al-zubaidi
 ---

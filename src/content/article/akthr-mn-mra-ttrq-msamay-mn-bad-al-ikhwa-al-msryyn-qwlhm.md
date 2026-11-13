@@ -1,6 +1,6 @@
 ---
 title: "أكثر من مرة تطرق مسامعي من بعض الإخوة المصريين قولهم"
-status: draft
+status: published
 published_at: 2025-03-20
 person: abu-umair-imran-al-zubaidi
 ---

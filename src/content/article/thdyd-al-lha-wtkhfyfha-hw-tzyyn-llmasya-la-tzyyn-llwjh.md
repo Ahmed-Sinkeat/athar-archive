@@ -1,6 +1,6 @@
 ---
 title: "تحديد اللحى وتخفيفها هو تزيين للمعصية لا تزيين للوجه!"
-status: draft
+status: published
 published_at: 2023-11-16
 person: abu-umair-imran-al-zubaidi
 ---

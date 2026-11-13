@@ -1,6 +1,6 @@
 ---
 title: "\"دعاوى التفريق في تنزيل الأحكام بين الإطلاق والتعيين هي حصان طروادة الذي يمرر من"
-status: draft
+status: published
 published_at: 2024-10-01
 person: abu-umair-imran-al-zubaidi
 ---

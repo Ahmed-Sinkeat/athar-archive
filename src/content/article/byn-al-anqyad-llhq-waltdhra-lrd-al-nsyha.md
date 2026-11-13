@@ -1,6 +1,6 @@
 ---
 title: "بين الانقياد للحقِّ والتذرُّع لرد النصيحة"
-status: draft
+status: published
 published_at: 2025-07-07
 person: awwab-bin-muhammad
 ---

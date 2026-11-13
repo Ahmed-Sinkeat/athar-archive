@@ -1,6 +1,6 @@
 ---
 title: "هذا المقال مكتوب في شهر يناير."
-status: draft
+status: published
 published_at: 2024-10-18
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "دعنا نضع هذا المشهد الافتراضي لتعلم مدى التناقض والهوى والنفاق عند أكثر الناس"
-status: draft
+status: published
 published_at: 2024-08-01
 person: abu-umair-imran-al-zubaidi
 topics: ["al-iman"]

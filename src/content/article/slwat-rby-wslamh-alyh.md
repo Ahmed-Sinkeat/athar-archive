@@ -1,6 +1,6 @@
 ---
 title: "صلوات ربي وسلامه عليه."
-status: draft
+status: published
 published_at: 2023-12-07
 person: abu-umair-imran-al-zubaidi
 ---

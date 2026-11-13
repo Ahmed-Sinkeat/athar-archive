@@ -1,6 +1,6 @@
 ---
 title: "× وقد جاء من وجه ثالث عن ابن مسعود وفيه كلام"
-status: draft
+status: published
 published_at: 2023-05-18
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

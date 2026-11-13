@@ -1,6 +1,6 @@
 ---
 title: "إنسانوية اللسان وسفسطة اللغة…"
-status: draft
+status: published
 published_at: 2021-07-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

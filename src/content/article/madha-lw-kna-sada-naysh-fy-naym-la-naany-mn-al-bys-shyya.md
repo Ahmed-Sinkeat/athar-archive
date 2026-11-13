@@ -1,6 +1,6 @@
 ---
 title: "ماذا لو كنّا سُعداء نعيش في نعيمٍ لا نعاني من البَئس شيئًا"
-status: draft
+status: published
 published_at: 2022-10-31
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "وأما من يشترط قصد التعبد في أمر هو عبادة بشكل واضح فهذا يجاب عليه أن العبرة بالح"
-status: draft
+status: published
 published_at: 2021-04-28
 person: abu-jafar-al-khalifi
 ---

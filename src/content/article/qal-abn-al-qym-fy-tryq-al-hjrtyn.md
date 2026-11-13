@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم في طريق الهجرتين"
-status: draft
+status: published
 published_at: 2017-05-20
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

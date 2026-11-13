@@ -1,6 +1,6 @@
 ---
 title: "قال ابن حزم في التقريب لحد المنطق ص199"
-status: draft
+status: published
 published_at: 2018-11-06
 person: abu-jafar-al-khalifi
 ---

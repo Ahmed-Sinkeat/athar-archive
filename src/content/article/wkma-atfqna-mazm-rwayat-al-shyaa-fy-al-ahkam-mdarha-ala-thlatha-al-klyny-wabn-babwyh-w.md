@@ -1,6 +1,6 @@
 ---
 title: "وكما اتفقنا معظم روايات الشيعة في الأحكام مدارها على ثلاثة الكليني وابن بابويه و"
-status: draft
+status: published
 published_at: 2020-07-18
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

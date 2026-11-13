@@ -1,6 +1,6 @@
 ---
 title: "الاختلاط في احتفالات المزامير والغناء سبب بداية وقوع الفاحشة في بني آدم"
-status: draft
+status: published
 published_at: 2017-09-24
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

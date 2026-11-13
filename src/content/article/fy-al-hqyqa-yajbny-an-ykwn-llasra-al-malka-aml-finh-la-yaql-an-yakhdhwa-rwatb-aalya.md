@@ -1,6 +1,6 @@
 ---
 title: "في الحقيقة يعجبني أن يكون للأسرة المالكة عمل فإنه لا يعقل أن يأخذوا رواتب عالية"
-status: draft
+status: published
 published_at: 2019-08-29
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

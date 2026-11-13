@@ -1,6 +1,6 @@
 ---
 title: "وزارة التربية والتعليم في البلد العربي الفلاني تعطي دورة بمبلغ معين للرقية الشرع"
-status: draft
+status: published
 published_at: 2019-02-18
 person: abu-jafar-al-khalifi
 ---

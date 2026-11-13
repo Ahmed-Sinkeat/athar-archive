@@ -1,6 +1,6 @@
 ---
 title: "هل يعق عن السقط؟ (ومسألة مهمة في نقل مذاهب الفقهاء يقع فيها الغلط كثيراً)"
-status: draft
+status: published
 published_at: 2022-08-12
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

@@ -1,6 +1,6 @@
 ---
 title: "يقول أبو الحسين الطيوري 131"
-status: draft
+status: published
 published_at: 2017-09-17
 person: abu-jafar-al-khalifi
 ---

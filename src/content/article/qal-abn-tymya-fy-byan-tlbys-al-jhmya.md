@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية في بيان تلبيس الجهمية"
-status: draft
+status: published
 published_at: 2018-10-17
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

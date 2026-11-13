@@ -1,6 +1,6 @@
 ---
 title: "الظريف أن النقل الذي يستدل به هو من كتاب [بيان تلبيس الجهمية في تأسيس بدعهم الكل"
-status: draft
+status: published
 published_at: 2023-08-23
 person: abu-jafar-al-khalifi
 ---

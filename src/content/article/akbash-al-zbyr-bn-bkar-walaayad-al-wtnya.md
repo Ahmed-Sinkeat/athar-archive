@@ -1,6 +1,6 @@
 ---
 title: "أكباش الزبير بن بكار والأعياد الوطنية.."
-status: draft
+status: published
 published_at: 2022-02-23
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

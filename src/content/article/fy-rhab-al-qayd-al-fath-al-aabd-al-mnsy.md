@@ -1,6 +1,6 @@
 ---
 title: "في رحاب القائد الفاتح العابد المنسي.."
-status: draft
+status: published
 published_at: 2022-02-22
 person: abu-jafar-al-khalifi
 ---

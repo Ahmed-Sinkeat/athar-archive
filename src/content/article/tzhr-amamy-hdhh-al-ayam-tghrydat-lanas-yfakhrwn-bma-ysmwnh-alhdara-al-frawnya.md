@@ -1,6 +1,6 @@
 ---
 title: "تظهر أمامي هذه الأيام تغريدات لأناس يفاخرون بما يسمونه (الحضارة الفرعونية)"
-status: draft
+status: published
 published_at: 2025-05-23
 person: abu-jafar-al-khalifi
 ---

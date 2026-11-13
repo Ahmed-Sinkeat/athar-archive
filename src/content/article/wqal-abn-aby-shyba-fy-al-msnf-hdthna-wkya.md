@@ -1,6 +1,6 @@
 ---
 title: "وقال ابن أبي شيبة في المصنف 33813 - 32310 - حدثنا وكيع"
-status: draft
+status: published
 published_at: 2021-08-31
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب عقلاء المجانين"
-status: draft
+status: published
 published_at: 2018-04-05
 person: abu-jafar-al-khalifi
 ---

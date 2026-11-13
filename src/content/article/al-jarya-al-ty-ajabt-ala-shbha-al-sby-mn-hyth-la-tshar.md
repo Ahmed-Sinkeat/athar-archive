@@ -1,6 +1,6 @@
 ---
 title: "الجارية التي أجابت على شبهة السبي من حيث لا تشعر."
-status: draft
+status: published
 published_at: 2020-07-19
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-sunnah-wal-bidah"]

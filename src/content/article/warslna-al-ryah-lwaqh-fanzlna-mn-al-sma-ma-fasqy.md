@@ -1,6 +1,6 @@
 ---
 title: "وَأَرْسَلْنَا الرِّيَاحَ لَوَاقِحَ فَأَنزَلْنَا مِنَ السَّمَاءِ مَاءً فَأَسْقَيْ"
-status: draft
+status: published
 published_at: 2025-05-30
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

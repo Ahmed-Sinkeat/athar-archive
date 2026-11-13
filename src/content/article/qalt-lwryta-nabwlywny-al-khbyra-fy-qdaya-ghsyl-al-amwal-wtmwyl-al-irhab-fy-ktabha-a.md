@@ -1,6 +1,6 @@
 ---
 title: "قالت “لوريتا نابوليوني” الخبيرة في قضايا غسيل الأموال وتمويل الإرهاب في كتابها ا"
-status: draft
+status: published
 published_at: 2017-12-16
 person: abu-jafar-al-khalifi
 ---

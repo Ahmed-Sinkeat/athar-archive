@@ -1,6 +1,6 @@
 ---
 title: "هذا جندي سابق في حرب العراق"
-status: draft
+status: published
 published_at: 2025-11-30
 person: abu-jafar-al-khalifi
 ---

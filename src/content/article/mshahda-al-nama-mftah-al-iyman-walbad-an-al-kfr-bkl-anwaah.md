@@ -1,6 +1,6 @@
 ---
 title: "مشاهدة النعمة مفتاح الإيمان والبعد عن الكفر بكل أنواعه"
-status: draft
+status: published
 published_at: 2020-08-25
 person: abu-jafar-al-khalifi
 ---

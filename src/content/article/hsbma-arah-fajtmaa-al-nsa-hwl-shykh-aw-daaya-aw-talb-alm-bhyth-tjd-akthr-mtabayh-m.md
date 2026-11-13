@@ -1,6 +1,6 @@
 ---
 title: "حسبما أراه؛ فاجتماع النساء حول شيخٍ أو داعية أو طالب علم بحيث تجد أكثر متابعيه م"
-status: draft
+status: published
 published_at: 2023-04-02
 person: abu-umair-imran-al-zubaidi
 ---

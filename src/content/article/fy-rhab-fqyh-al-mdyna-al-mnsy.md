@@ -1,6 +1,6 @@
 ---
 title: "في رحاب فقيه المدينة المنسي..."
-status: draft
+status: published
 published_at: 2021-01-04
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

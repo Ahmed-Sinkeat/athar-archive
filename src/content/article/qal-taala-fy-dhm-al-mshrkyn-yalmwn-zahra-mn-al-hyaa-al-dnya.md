@@ -1,6 +1,6 @@
 ---
 title: "قال تعالى في ذم المشركين ( يعلمون ظاهرا من الحياة الدنيا"
-status: draft
+status: published
 published_at: 2019-04-20
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال يعقوب بن سفيان في المعرفة والتاريخ حدثنا أبو ربيعة فهد بن عوف قال"
-status: draft
+status: published
 published_at: 2018-04-02
 person: abu-jafar-al-khalifi
 ---

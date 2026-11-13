@@ -1,6 +1,6 @@
 ---
 title: "ثم يقول وقد قامت الشركات ذات الطاقة العالية بتقسيم خدماتها إلى مراكز منفصلة للرب"
-status: draft
+status: published
 published_at: 2018-01-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

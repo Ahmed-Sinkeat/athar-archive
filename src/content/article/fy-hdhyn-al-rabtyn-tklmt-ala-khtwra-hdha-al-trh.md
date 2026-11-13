@@ -1,6 +1,6 @@
 ---
 title: "في هذين الرابطين تكلمت على خطورة هذا الطرح"
-status: draft
+status: published
 published_at: 2021-08-08
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال اللاأدري ول ديورانت W"
-status: draft
+status: published
 published_at: 2018-03-07
 person: abu-jafar-al-khalifi
 ---

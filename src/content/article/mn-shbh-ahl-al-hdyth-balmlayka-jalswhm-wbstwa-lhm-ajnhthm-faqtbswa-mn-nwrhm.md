@@ -1,6 +1,6 @@
 ---
 title: "من شبه أهل الحديث بالملائكة: جالسوهم وبسطوا لهم أجنحتهم فاقتبسوا من نورهم..."
-status: draft
+status: published
 published_at: 2025-10-03
 person: abu-jafar-al-khalifi
 ---

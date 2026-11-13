@@ -1,6 +1,6 @@
 ---
 title: "قال الله تعالى"
-status: draft
+status: published
 published_at: 2019-05-19
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "شاهدت مقطع الضال المضل عبد الله الشريف الأخير عن الأحداث الجارية."
-status: draft
+status: published
 published_at: 2025-06-20
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

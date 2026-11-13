@@ -1,6 +1,6 @@
 ---
 title: "الموت مكروه عند الجميع، ولكن أحيانًا قد يُغبط المرء على ميتته!."
-status: draft
+status: published
 published_at: 2023-07-08
 person: abu-umair-imran-al-zubaidi
 ---

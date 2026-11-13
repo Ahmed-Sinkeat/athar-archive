@@ -1,6 +1,6 @@
 ---
 title: "أنفُسنا وأموالُنا وأولادنا وجميع أهلينا كل هذا مِن مواهب الله تعالى الهنية وعوار"
-status: draft
+status: published
 published_at: 2025-07-07
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "يقول عن نفسه ( عقلاني ) يقدس العقل ويحترمه"
-status: draft
+status: published
 published_at: 2018-12-13
 person: abu-jafar-al-khalifi
 ---

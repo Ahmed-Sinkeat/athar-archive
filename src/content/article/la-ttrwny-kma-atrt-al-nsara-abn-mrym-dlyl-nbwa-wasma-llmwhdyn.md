@@ -1,6 +1,6 @@
 ---
 title: "(لا تطروني كما أطرت النصارى ابن مريم) دليل نبوة وعصمة للموحدين"
-status: draft
+status: published
 published_at: 2018-12-13
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-wala-wal-bara"]

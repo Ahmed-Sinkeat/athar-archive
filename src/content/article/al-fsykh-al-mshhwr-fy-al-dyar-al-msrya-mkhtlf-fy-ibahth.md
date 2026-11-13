@@ -1,6 +1,6 @@
 ---
 title: "الفسيخ المشهور في الديار المصرية مختلف في إباحته"
-status: draft
+status: published
 published_at: 2018-04-10
 person: abu-jafar-al-khalifi
 ---

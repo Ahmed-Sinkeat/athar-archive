@@ -1,6 +1,6 @@
 ---
 title: "فالقرآن مملوء من بيان علوه على خلقه"
-status: draft
+status: published
 published_at: 2021-09-21
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

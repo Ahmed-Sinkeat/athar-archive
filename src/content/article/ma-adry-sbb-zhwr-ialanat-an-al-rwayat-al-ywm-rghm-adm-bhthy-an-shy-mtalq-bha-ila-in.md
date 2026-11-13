@@ -1,6 +1,6 @@
 ---
 title: "ما أدري سبب ظهور إعلانات عن الروايات اليوم رغم عدم بحثي عن شيء متعلق بها؛ إلا إن"
-status: draft
+status: published
 published_at: 2024-03-06
 person: abu-umair-imran-al-zubaidi
 ---

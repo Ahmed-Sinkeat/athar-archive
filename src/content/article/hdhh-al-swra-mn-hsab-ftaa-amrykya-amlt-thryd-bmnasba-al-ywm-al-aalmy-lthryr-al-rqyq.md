@@ -1,6 +1,6 @@
 ---
 title: "هذه الصورة من حساب فتاة أمريكية عملت (ثريد) بمناسبة اليوم العالمي لتحرير الرقيق"
-status: draft
+status: published
 published_at: 2021-12-02
 person: abu-jafar-al-khalifi
 ---

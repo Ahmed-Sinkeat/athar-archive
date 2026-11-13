@@ -1,6 +1,6 @@
 ---
 title: "حين رأيت هذا الخبر استبشرت لقوم وأشفقت على آخرين."
-status: draft
+status: published
 published_at: 2026-02-20
 person: abu-jafar-al-khalifi
 ---

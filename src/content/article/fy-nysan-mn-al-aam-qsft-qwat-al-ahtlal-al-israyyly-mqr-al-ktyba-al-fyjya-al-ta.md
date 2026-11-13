@@ -1,6 +1,6 @@
 ---
 title: "في 18 نيسان من العام 1996 قصفت قوات الاحتلال الإسرائيلي مقر الكتيبة الفيجية التا"
-status: draft
+status: published
 published_at: 2017-10-07
 person: abu-jafar-al-khalifi
 ---

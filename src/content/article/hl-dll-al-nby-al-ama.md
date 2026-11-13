@@ -1,6 +1,6 @@
 ---
 title: "هل ضلل النبي ﷺ الأمة؟"
-status: draft
+status: published
 published_at: 2025-08-26
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

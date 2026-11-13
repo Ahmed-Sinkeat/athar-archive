@@ -1,6 +1,6 @@
 ---
 title: "الطلاق هلاك!"
-status: draft
+status: published
 published_at: 2023-10-09
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وهذا ابن القيم الذي ينقل عنه بعضهم عقد فصلاً في بدائع الفوائد في تناقضات القوم ف"
-status: draft
+status: published
 published_at: 2020-02-20
 person: abu-jafar-al-khalifi
 ---

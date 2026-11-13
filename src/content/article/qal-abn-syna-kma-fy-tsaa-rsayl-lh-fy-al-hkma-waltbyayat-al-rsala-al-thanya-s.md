@@ -1,6 +1,6 @@
 ---
 title: "قال ابن سينا كما في تسعة رسائل له في الحكمة والطبيعيات الرسالة الثانية ص54"
-status: draft
+status: published
 published_at: 2018-12-12
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

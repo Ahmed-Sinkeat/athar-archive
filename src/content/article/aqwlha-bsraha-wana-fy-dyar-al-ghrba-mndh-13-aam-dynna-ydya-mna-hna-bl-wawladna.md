@@ -1,6 +1,6 @@
 ---
 title: "أقولها بصراحة وأنا في ديار الغربة منذ ١٣ عام ديننا يضيع منا هنا بل وأولادنا"
-status: draft
+status: published
 published_at: 2020-02-04
 person: abu-jafar-al-khalifi
 ---

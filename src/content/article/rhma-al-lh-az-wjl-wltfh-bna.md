@@ -1,6 +1,6 @@
 ---
 title: "رحمة الله عز وجل ولطفه بنا"
-status: draft
+status: published
 published_at: 2023-05-16
 person: abu-abdillah-firas-al-ramli
 ---

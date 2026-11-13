@@ -1,6 +1,6 @@
 ---
 title: "ولكن ما يزيد من الحزن أنّ يموت أخٌ على التوحيد والعقيدة الصحيحة في زمن الغربة"
-status: draft
+status: published
 published_at: 2025-01-01
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

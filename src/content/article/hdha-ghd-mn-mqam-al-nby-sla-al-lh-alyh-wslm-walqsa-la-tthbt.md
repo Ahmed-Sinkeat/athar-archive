@@ -1,6 +1,6 @@
 ---
 title: "هذا غض من مقام النبي صلى الله عليه وسلم والقصة لا تثبت"
-status: draft
+status: published
 published_at: 2026-08-25
 person: abu-jafar-al-khalifi
 ---

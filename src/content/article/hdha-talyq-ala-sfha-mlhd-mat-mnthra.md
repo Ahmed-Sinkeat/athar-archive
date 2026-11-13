@@ -1,6 +1,6 @@
 ---
 title: "هذا تعليق على صفحة ملحد مات منتحرا"
-status: draft
+status: published
 published_at: 2022-03-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

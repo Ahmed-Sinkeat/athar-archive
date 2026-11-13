@@ -1,6 +1,6 @@
 ---
 title: "رؤيا الفضيل في أبي إسحاق الفزاري ودلالتها على فضل العالم على العابد وترتيب الأول"
-status: draft
+status: published
 published_at: 2022-12-27
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

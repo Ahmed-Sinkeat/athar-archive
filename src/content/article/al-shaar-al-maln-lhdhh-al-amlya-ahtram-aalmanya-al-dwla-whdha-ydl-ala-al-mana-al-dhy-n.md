@@ -1,6 +1,6 @@
 ---
 title: "الشعار المعلن لهذه العملية ( احترام عالمانية الدولة ) وهذا يدل على المعنى الذي ن"
-status: draft
+status: published
 published_at: 2019-03-30
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "إعطاء ما تفكر فيه ويشغل بالك ويؤرقك حجمه الحقيقي أمر مهم جدا لتخفف عن نفسك ما حم"
-status: draft
+status: published
 published_at: 2025-06-20
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

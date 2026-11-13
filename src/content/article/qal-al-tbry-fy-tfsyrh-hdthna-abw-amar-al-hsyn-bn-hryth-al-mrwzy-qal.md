@@ -1,6 +1,6 @@
 ---
 title: "قال الطبري في تفسيره 11771 - حدثنا أبو عمار الحسين بن حريث المروزي قال"
-status: draft
+status: published
 published_at: 2017-07-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

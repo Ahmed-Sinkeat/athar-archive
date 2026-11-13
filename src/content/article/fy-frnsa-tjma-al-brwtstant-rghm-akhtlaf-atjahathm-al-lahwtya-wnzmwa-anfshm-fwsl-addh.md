@@ -1,6 +1,6 @@
 ---
 title: "في فرنسا تجمع البروتستانت رغم اختلاف اتجاهاتهم اللاهوتية ونظموا أنفسهم فوصل عدده"
-status: draft
+status: published
 published_at: 2017-10-09
 person: abu-jafar-al-khalifi
 ---

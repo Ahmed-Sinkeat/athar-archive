@@ -1,6 +1,6 @@
 ---
 title: "فرنسا: \"لا يمكن العيش في الضواحي دون الاختباء إن كنت مثليا\""
-status: draft
+status: published
 published_at: 2019-08-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

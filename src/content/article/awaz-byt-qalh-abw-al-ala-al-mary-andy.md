@@ -1,6 +1,6 @@
 ---
 title: "أوعظ بيت قاله أبو العلاء المعري عندي"
-status: draft
+status: published
 published_at: 2020-01-19
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

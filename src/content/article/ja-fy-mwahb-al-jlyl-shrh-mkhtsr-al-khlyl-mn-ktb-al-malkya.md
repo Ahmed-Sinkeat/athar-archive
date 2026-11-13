@@ -1,6 +1,6 @@
 ---
 title: "جاء في مواهب الجليل شرح مختصر الخليل من كتب المالكية"
-status: draft
+status: published
 published_at: 2018-01-01
 person: abu-jafar-al-khalifi
 ---

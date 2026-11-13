@@ -1,6 +1,6 @@
 ---
 title: "تتركهم من ضلالهم في باب الأسماء والصفات"
-status: draft
+status: published
 published_at: 2025-10-20
 person: abu-umair-imran-al-zubaidi
 ---

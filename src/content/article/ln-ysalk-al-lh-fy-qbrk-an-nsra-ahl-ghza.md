@@ -1,6 +1,6 @@
 ---
 title: "لن يسألك الله في قبرك عن نصرة أهل غزة!"
-status: draft
+status: published
 published_at: 2024-11-10
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-wala-wal-bara"]

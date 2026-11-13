@@ -1,6 +1,6 @@
 ---
 title: "العافية في اتباع أول الأمة"
-status: draft
+status: published
 published_at: 2023-05-30
 person: abu-abdillah-firas-al-ramli
 ---

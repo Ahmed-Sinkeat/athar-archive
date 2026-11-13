@@ -1,6 +1,6 @@
 ---
 title: "الأثر الطيب!"
-status: draft
+status: published
 published_at: 2024-11-18
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "غفر له بأدنى الأدنى إذ عظم إخلاصه فلا تحقرن من المعروف شيئاً..."
-status: draft
+status: published
 published_at: 2026-02-16
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

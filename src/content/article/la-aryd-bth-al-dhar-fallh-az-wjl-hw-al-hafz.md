@@ -1,6 +1,6 @@
 ---
 title: "لا أريد بث الذعر فالله عز وجل هو الحافظ"
-status: draft
+status: published
 published_at: 2026-03-04
 person: abu-jafar-al-khalifi
 ---

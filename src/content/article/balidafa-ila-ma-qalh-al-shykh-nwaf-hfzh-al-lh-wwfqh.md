@@ -1,6 +1,6 @@
 ---
 title: "بالإضافة إلى ما قاله الشيخ نواف حفظه الله ووفقه."
-status: draft
+status: published
 published_at: 2023-12-27
 person: abu-umair-imran-al-zubaidi
 ---

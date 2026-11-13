@@ -1,6 +1,6 @@
 ---
 title: "مشاهد ملاحقة النصيرية الكفرة ورؤية الرعب على وجوههم ثم قتلهم تثلج الصدر!"
-status: draft
+status: published
 published_at: 2024-12-10
 person: abu-umair-imran-al-zubaidi
 ---

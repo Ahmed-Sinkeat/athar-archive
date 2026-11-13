@@ -1,6 +1,6 @@
 ---
 title: "والله منذ الصباح وأنا في بالي كتابة منشور عن شيء له علاقة بهذا!"
-status: draft
+status: published
 published_at: 2023-10-08
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

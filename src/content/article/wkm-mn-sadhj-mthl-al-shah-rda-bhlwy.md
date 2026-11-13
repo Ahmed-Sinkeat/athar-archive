@@ -1,6 +1,6 @@
 ---
 title: "وكم من ساذج مثل الشاه رضا بهلوي!"
-status: draft
+status: published
 published_at: 2021-01-31
 person: abu-jafar-al-khalifi
 ---

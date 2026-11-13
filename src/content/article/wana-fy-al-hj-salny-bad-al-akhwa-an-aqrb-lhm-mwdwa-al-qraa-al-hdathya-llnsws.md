@@ -1,6 +1,6 @@
 ---
 title: "وأنا في الحج سألني بعض الأخوة أن أقرب لهم موضوع القراءة الحداثية للنصوص."
-status: draft
+status: published
 published_at: 2019-08-17
 person: abu-jafar-al-khalifi
 ---

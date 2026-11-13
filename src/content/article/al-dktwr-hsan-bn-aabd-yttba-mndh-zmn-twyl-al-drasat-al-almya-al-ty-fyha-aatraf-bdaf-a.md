@@ -1,6 +1,6 @@
 ---
 title: "الدكتور حسان بن عابد يتتبع منذ زمن طويل الدراسات العلمية التي فيها اعتراف بضعف أ"
-status: draft
+status: published
 published_at: 2022-09-30
 person: abu-jafar-al-khalifi
 ---

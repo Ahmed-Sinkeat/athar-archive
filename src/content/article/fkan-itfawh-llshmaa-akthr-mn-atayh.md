@@ -1,6 +1,6 @@
 ---
 title: "فكان إطفاؤه للشمعة أكثر من عطائه..."
-status: draft
+status: published
 published_at: 2024-11-27
 person: abu-jafar-al-khalifi
 ---

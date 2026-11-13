@@ -1,6 +1,6 @@
 ---
 title: "هل كانوا يعلمون أنهم سيشرفون بطلحة؟"
-status: draft
+status: published
 published_at: 2024-06-03
 person: abu-jafar-al-khalifi
 ---

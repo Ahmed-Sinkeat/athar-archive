@@ -1,6 +1,6 @@
 ---
 title: "ولد ابنة عمتي"
-status: draft
+status: published
 published_at: 2024-01-13
 person: abu-umair-imran-al-zubaidi
 ---

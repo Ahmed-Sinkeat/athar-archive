@@ -1,6 +1,6 @@
 ---
 title: "قال الشوكاني في نيل الأوطار _ وهو أحد عمد القائلين بعدم وجود إجماع على حرمة المع"
-status: draft
+status: published
 published_at: 2018-02-11
 person: abu-jafar-al-khalifi
 ---

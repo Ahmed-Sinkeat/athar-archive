@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام ابن القيم رحمه الله"
-status: draft
+status: published
 published_at: 2026-04-25
 person: awwab-bin-muhammad
 topics: ["tahwid-al-ibada"]

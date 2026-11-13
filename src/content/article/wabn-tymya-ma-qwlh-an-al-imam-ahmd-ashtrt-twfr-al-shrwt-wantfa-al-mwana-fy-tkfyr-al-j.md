@@ -1,6 +1,6 @@
 ---
 title: "وابن تيمية مع قوله أن الإمام أحمد اشترط توفر الشروط وانتفاء الموانع في تكفير الج"
-status: draft
+status: published
 published_at: 2021-08-01
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الرزاق في تفسيره (٩٥٢)"
-status: draft
+status: published
 published_at: 2023-07-01
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

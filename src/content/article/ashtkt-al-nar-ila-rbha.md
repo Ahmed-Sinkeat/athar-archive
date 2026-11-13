@@ -1,6 +1,6 @@
 ---
 title: "اشتكت النار إلى ربها"
-status: draft
+status: published
 published_at: 2024-06-03
 person: abu-abdillah-firas-al-ramli
 ---

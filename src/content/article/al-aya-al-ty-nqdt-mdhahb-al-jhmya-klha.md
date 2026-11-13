@@ -1,6 +1,6 @@
 ---
 title: "الآية التي نقضت مذاهب الجهمية كلها.."
-status: draft
+status: published
 published_at: 2021-08-06
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من أحسنِ من وصف عفو النبي ﷺ يوم الفتح عن أهل مكة ولو كان اقتص لكان له الحق في ذل"
-status: draft
+status: published
 published_at: 2019-09-28
 person: abu-jafar-al-khalifi
 ---

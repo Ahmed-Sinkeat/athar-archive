@@ -1,6 +1,6 @@
 ---
 title: "لفت نظري كلمته عن المساجد في الغرب."
-status: draft
+status: published
 published_at: 2026-01-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

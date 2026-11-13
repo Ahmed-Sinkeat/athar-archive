@@ -1,6 +1,6 @@
 ---
 title: "المتنبي ومعضلة التحسين والتقبيح العقليين"
-status: draft
+status: published
 published_at: 2020-07-15
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

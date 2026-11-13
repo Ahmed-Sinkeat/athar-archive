@@ -1,6 +1,6 @@
 ---
 title: "قال عمر بن الخطاب في بعض خطبه"
-status: draft
+status: published
 published_at: 2017-07-07
 person: abu-jafar-al-khalifi
 ---

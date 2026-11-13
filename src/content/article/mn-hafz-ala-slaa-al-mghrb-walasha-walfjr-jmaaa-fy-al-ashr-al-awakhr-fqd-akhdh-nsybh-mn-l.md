@@ -1,6 +1,6 @@
 ---
 title: "من حافظ على صلاة المغرب والعشاء والفجر جماعة في العشر الاواخر فقد أخذ نصيبه من ل"
-status: draft
+status: published
 published_at: 2024-03-31
 person: abu-abdillah-firas-al-ramli
 ---

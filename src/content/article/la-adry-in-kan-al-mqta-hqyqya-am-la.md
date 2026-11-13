@@ -1,6 +1,6 @@
 ---
 title: "لا أدري إن كان المقطع حقيقيًّا أم لا"
-status: draft
+status: published
 published_at: 2022-10-22
 person: abu-umair-imran-al-zubaidi
 ---

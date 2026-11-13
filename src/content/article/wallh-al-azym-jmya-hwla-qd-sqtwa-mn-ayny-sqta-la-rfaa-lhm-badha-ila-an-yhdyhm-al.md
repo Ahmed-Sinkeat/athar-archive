@@ -1,6 +1,6 @@
 ---
 title: "والله العظيم جميع هؤلاء قد سقطوا من عيني سقطة لا رفعة لهم بعدها إلا أن يهديهم ال"
-status: draft
+status: published
 published_at: 2024-06-25
 person: abu-umair-imran-al-zubaidi
 ---

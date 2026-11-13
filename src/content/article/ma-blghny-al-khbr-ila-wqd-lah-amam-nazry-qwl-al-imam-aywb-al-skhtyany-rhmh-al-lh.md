@@ -1,6 +1,6 @@
 ---
 title: "ما بلغني الخبر إلا وقد لاح أمام ناظِري قول الإمام أيوب السختياني رحمه الله"
-status: draft
+status: published
 published_at: 2025-09-23
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran"]

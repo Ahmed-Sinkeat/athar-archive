@@ -1,6 +1,6 @@
 ---
 title: "قال ابن قتيبة في عيون الأخبار (١/&rlm;٣٨٩)"
-status: draft
+status: published
 published_at: 2023-05-10
 person: abu-abdillah-firas-al-ramli
 ---

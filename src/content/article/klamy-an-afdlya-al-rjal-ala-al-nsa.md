@@ -1,6 +1,6 @@
 ---
 title: "كلامي عن أفضلية الرجال على النساء"
-status: draft
+status: published
 published_at: 2024-06-02
 person: abu-umair-imran-al-zubaidi
 ---

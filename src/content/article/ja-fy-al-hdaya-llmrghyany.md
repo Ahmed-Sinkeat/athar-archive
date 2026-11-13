@@ -1,6 +1,6 @@
 ---
 title: "جاء في الهداية للمرغياني"
-status: draft
+status: published
 published_at: 2017-11-16
 person: abu-jafar-al-khalifi
 ---

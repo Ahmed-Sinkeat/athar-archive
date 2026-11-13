@@ -1,6 +1,6 @@
 ---
 title: "وفي هذا السياق ظهر الآباء المطففون وهم الذين يثبتون لأنفسهم حقوقاً على زوجاتهم ل"
-status: draft
+status: published
 published_at: 2019-12-11
 person: abu-jafar-al-khalifi
 ---

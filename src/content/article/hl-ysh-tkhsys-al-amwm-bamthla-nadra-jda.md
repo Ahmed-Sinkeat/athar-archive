@@ -1,6 +1,6 @@
 ---
 title: "هل يصح تخصيص العموم بأمثلة نادرة جداً؟"
-status: draft
+status: published
 published_at: 2026-01-28
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

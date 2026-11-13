@@ -1,6 +1,6 @@
 ---
 title: "وممن كان يخالفهم في ذلك أبو عبد الله بن حامد"
-status: draft
+status: published
 published_at: 2019-02-20
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-asma-was-sifat"]

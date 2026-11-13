@@ -1,6 +1,6 @@
 ---
 title: "قال النصراني حلمي القمص يعقوب في كتابه مدارس التشكيك"
-status: draft
+status: published
 published_at: 2019-03-13
 person: abu-jafar-al-khalifi
 ---

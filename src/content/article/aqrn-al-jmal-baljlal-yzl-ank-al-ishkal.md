@@ -1,6 +1,6 @@
 ---
 title: "اقرِن الجمال بالجلال، يزُل عنك الإشكال!"
-status: draft
+status: published
 published_at: 2020-11-06
 person: abu-jafar-al-khalifi
 ---

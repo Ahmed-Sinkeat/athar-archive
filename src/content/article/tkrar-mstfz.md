@@ -1,6 +1,6 @@
 ---
 title: "تكرار مستفز!"
-status: draft
+status: published
 published_at: 2023-08-24
 person: abu-umair-imran-al-zubaidi
 ---

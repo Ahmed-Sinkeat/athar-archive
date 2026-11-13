@@ -1,6 +1,6 @@
 ---
 title: "خبر مؤلم وتعليق"
-status: draft
+status: published
 published_at: 2019-08-25
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هل نشفق عليه أم نغبطه إذ نفعه إيمانه؟"
-status: draft
+status: published
 published_at: 2023-11-23
 person: abu-jafar-al-khalifi
 ---

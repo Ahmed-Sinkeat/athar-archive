@@ -1,6 +1,6 @@
 ---
 title: "تغريدة لجوردان بيترسون يعلق فيها على الخزي الذي باء به الكيان الصهيوني"
-status: draft
+status: published
 published_at: 2023-10-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

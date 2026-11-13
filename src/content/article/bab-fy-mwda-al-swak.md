@@ -1,6 +1,6 @@
 ---
 title: "باب في موضع السواك"
-status: draft
+status: published
 published_at: 2024-07-17
 person: abu-abdillah-firas-al-ramli
 ---

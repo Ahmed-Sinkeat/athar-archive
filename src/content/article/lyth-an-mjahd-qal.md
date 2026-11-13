@@ -1,6 +1,6 @@
 ---
 title: "ليث عن مجاهد قال"
-status: draft
+status: published
 published_at: 2019-03-04
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

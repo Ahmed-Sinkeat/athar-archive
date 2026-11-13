@@ -1,6 +1,6 @@
 ---
 title: "لا علاقة للأيّام والشهور والسنين بما جرى ويجري وسيجري."
-status: draft
+status: published
 published_at: 2022-12-30
 person: abu-umair-imran-al-zubaidi
 ---

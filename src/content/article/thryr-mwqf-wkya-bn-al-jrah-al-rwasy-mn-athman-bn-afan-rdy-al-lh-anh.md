@@ -1,6 +1,6 @@
 ---
 title: "تحرير موقف وكيع بن الجراح الرؤاسي من عثمان بن عفان رضي الله عنه ."
-status: draft
+status: published
 published_at: 2024-03-01
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-imamah-was-sahabah"]

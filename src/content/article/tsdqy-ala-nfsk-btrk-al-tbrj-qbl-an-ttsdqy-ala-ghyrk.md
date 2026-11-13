@@ -1,6 +1,6 @@
 ---
 title: "تصدقي على نفسك بترك التبرج قبل أن تتصدقي على غيرك…"
-status: draft
+status: published
 published_at: 2024-04-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

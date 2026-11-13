@@ -1,6 +1,6 @@
 ---
 title: "فسيقول لك إن صدق"
-status: draft
+status: published
 published_at: 2018-10-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

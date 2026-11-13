@@ -1,6 +1,6 @@
 ---
 title: "لمن يتابع العبد لله حديثا حتى لا يتفاجأ لاحقا"
-status: draft
+status: published
 published_at: 2025-01-10
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

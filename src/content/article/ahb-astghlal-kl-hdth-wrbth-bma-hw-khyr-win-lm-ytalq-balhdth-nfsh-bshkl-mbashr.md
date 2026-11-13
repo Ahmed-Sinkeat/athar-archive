@@ -1,6 +1,6 @@
 ---
 title: "أحب استغلال كل حدث وربطه بما هو خير وإن لم يتعلق بالحدث نفسه بشكل مباشر."
-status: draft
+status: published
 published_at: 2023-10-12
 person: abu-umair-imran-al-zubaidi
 ---

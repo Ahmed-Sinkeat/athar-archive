@@ -1,6 +1,6 @@
 ---
 title: "وقال ابن حجر في فتح الباري"
-status: draft
+status: published
 published_at: 2017-10-18
 person: abu-jafar-al-khalifi
 ---

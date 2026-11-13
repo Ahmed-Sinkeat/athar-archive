@@ -1,6 +1,6 @@
 ---
 title: "تأمل في كلام الشافعي في نفي العذر عن المتكلم في القرآن برأيه.."
-status: draft
+status: published
 published_at: 2023-01-12
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

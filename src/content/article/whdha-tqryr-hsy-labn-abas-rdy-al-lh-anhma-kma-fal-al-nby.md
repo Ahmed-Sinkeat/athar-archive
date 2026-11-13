@@ -1,6 +1,6 @@
 ---
 title: "وهذا تقرير حسي لابن عباس رضي الله عنهما كما فعل النبي ﷺ"
-status: draft
+status: published
 published_at: 2024-03-30
 person: abu-umair-imran-al-zubaidi
 ---

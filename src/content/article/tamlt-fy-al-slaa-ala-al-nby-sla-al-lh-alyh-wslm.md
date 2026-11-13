@@ -1,6 +1,6 @@
 ---
 title: "تأملت في الصلاة على النبي صلى الله عليه وسلم"
-status: draft
+status: published
 published_at: 2019-01-27
 person: abu-jafar-al-khalifi
 ---

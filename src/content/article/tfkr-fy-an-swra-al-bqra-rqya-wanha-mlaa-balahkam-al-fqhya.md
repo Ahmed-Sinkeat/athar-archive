@@ -1,6 +1,6 @@
 ---
 title: "تفكر في أن سورة البقرة رقية وأنها ملأى بالأحكام الفقهية."
-status: draft
+status: published
 published_at: 2023-02-27
 person: abu-jafar-al-khalifi
 ---

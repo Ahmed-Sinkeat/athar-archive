@@ -1,6 +1,6 @@
 ---
 title: "أفرح كثيرًا حينما أرى رجلًا فحلًا في سن 19 أو 18 يتزوج من فتاة في سن 14 أو 15."
-status: draft
+status: published
 published_at: 2023-08-11
 person: abu-umair-imran-al-zubaidi
 ---

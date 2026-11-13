@@ -1,6 +1,6 @@
 ---
 title: "قال أبو نعيم في الحلية"
-status: draft
+status: published
 published_at: 2017-10-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

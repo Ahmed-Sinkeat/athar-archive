@@ -1,6 +1,6 @@
 ---
 title: "قبل عدة أيام عدت من زيارة إلى الولايات المتحدة التي تمثل النموذج الأقوى للرأسمال"
-status: draft
+status: published
 published_at: 2019-07-22
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

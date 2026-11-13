@@ -1,6 +1,6 @@
 ---
 title: "وَيَدْعُ الْإِنسَانُ بِالشَّرِّ دُعَاءَهُ بِالْخَيْرِ ۖ وَكَانَ الْإِنسَانُ عَجُ"
-status: draft
+status: published
 published_at: 2025-06-23
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

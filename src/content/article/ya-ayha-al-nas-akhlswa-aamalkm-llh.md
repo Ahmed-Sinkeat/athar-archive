@@ -1,6 +1,6 @@
 ---
 title: "يا أيها الناس أخلصوا أعمالكم لله"
-status: draft
+status: published
 published_at: 2025-12-15
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

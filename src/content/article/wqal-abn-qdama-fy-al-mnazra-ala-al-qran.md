@@ -1,6 +1,6 @@
 ---
 title: "وقال ابن قدامة في المناظرة على القرآن"
-status: draft
+status: published
 published_at: 2023-04-20
 person: abu-jafar-al-khalifi
 ---

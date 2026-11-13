@@ -1,6 +1,6 @@
 ---
 title: "اليوم قرأت منشورين فيهما اقتباس لموعظة دينية نافعة"
-status: draft
+status: published
 published_at: 2023-06-20
 person: abu-umair-imran-al-zubaidi
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "منذ عدة أيام"
-status: draft
+status: published
 published_at: 2024-09-06
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "حين قال النبي الكريم صلى الله عليه وسلم"
-status: draft
+status: published
 published_at: 2019-01-14
 person: abu-jafar-al-khalifi
 ---

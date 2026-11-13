@@ -1,6 +1,6 @@
 ---
 title: "استطراد يسير ولكنه مخيف في قضية إبستين."
-status: draft
+status: published
 published_at: 2026-02-01
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "ابدأ بالثناء على الله عز وجل قبل الدعاء"
-status: draft
+status: published
 published_at: 2024-07-30
 person: abu-abdillah-firas-al-ramli
 ---

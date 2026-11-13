@@ -1,6 +1,6 @@
 ---
 title: "قال ابن مسعود رضي الله عنه"
-status: draft
+status: published
 published_at: 2023-05-10
 person: abu-abdillah-firas-al-ramli
 ---

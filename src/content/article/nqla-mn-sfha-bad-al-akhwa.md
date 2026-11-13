@@ -1,6 +1,6 @@
 ---
 title: "نقلا من صفحة بعض الأخوة"
-status: draft
+status: published
 published_at: 2020-11-08
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

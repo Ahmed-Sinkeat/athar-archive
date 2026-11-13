@@ -1,6 +1,6 @@
 ---
 title: "الاستغفار لا يكون فقط من الذنوب والمعاصي؛ بل حتى من التقصير في أداء العبادات وال"
-status: draft
+status: published
 published_at: 2023-09-29
 person: abu-umair-imran-al-zubaidi
 ---

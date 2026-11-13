@@ -1,6 +1,6 @@
 ---
 title: "مراجعة أصلين كبيرين في مسألة العذر بالجهل"
-status: draft
+status: published
 published_at: 2020-07-28
 person: abu-jafar-al-khalifi
 ---

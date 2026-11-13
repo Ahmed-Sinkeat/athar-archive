@@ -1,6 +1,6 @@
 ---
 title: "لا أحب فكرة أنني لا أعرف منهج الإنسان الذي أمامي!"
-status: draft
+status: published
 published_at: 2023-11-05
 person: abu-umair-imran-al-zubaidi
 ---

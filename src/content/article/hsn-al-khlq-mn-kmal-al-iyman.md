@@ -1,6 +1,6 @@
 ---
 title: "حسن الخلق من كمال الإيمان"
-status: draft
+status: published
 published_at: 2025-01-12
 person: abu-abdillah-firas-al-ramli
 ---

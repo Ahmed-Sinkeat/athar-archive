@@ -1,6 +1,6 @@
 ---
 title: "الطريقة الثالثة من طرق الاستدلال"
-status: draft
+status: published
 published_at: 2020-09-12
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

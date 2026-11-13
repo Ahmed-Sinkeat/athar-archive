@@ -1,6 +1,6 @@
 ---
 title: "هل كفَّر ابن تيمية من يجيز أكل الحيات مطلقًا؟"
-status: draft
+status: published
 published_at: 2021-02-28
 person: abu-jafar-al-khalifi
 ---

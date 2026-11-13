@@ -1,6 +1,6 @@
 ---
 title: "قطوف من الضحك!"
-status: draft
+status: published
 published_at: 2024-09-11
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

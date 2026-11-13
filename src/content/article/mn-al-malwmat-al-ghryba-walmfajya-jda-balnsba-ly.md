@@ -1,6 +1,6 @@
 ---
 title: "مِن المعلومات الغريبة والمُفاجئة جدًا بالنسبة لي"
-status: draft
+status: published
 published_at: 2022-09-04
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

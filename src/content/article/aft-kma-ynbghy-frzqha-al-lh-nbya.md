@@ -1,6 +1,6 @@
 ---
 title: "عفَّت كما ينبغي فرزقها الله نبيًّا!"
-status: draft
+status: published
 published_at: 2021-01-15
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أكثر شيء يهز القلب هو فكرة كتابة الأسماء على الأبدان؛ حتى إذا صار أشلاءً تعرّفوا"
-status: draft
+status: published
 published_at: 2023-10-22
 person: abu-umair-imran-al-zubaidi
 ---

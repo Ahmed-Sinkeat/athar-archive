@@ -1,6 +1,6 @@
 ---
 title: "هنا خبر يحتاج إلى تأمل"
-status: draft
+status: published
 published_at: 2018-11-04
 person: abu-jafar-al-khalifi
 ---

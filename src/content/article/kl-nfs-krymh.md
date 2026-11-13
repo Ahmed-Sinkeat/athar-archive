@@ -1,6 +1,6 @@
 ---
 title: "كُلِّ نَفْسٍ كَرِيمَهْ"
-status: draft
+status: published
 published_at: 2017-06-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

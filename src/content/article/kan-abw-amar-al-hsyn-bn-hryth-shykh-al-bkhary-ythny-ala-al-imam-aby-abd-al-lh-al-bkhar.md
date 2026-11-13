@@ -1,6 +1,6 @@
 ---
 title: "كان أبو عمار الحسين بن حريث - شيخ البخاري - يُثني على الإمام أبي عبد الله البخار"
-status: draft
+status: published
 published_at: 2023-05-25
 person: abu-abdillah-firas-al-ramli
 ---

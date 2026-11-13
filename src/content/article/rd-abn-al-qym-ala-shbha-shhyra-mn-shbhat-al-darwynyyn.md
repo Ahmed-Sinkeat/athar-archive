@@ -1,6 +1,6 @@
 ---
 title: "رد ابن القيم على شبهة شهيرة من شبهات الداروينيين"
-status: draft
+status: published
 published_at: 2019-07-21
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

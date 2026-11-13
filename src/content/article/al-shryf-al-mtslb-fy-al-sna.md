@@ -1,6 +1,6 @@
 ---
 title: "الشريف المتصلب في السنة..."
-status: draft
+status: published
 published_at: 2022-01-03
 person: abu-jafar-al-khalifi
 ---

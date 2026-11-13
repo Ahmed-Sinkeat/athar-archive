@@ -1,6 +1,6 @@
 ---
 title: "عدنان إبراهيم بين التكذيب بالمتواترات ونشر الموضوعات والمنكرات"
-status: draft
+status: published
 published_at: 2017-05-26
 person: abu-jafar-al-khalifi
 ---

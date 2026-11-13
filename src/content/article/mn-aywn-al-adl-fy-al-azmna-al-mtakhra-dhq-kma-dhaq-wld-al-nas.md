@@ -1,6 +1,6 @@
 ---
 title: "من عيون العدل في الأزمنة المتأخرة (ذق كما ذاق ولد الناس )"
-status: draft
+status: published
 published_at: 2020-04-15
 person: abu-jafar-al-khalifi
 ---

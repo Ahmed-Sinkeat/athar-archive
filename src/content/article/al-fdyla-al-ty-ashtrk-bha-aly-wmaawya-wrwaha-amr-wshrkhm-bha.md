@@ -1,6 +1,6 @@
 ---
 title: "الفضيلة التي اشترك بها علي ومعاوية ورواها عمر وشركهم بها…"
-status: draft
+status: published
 published_at: 2024-09-01
 person: abu-jafar-al-khalifi
 ---

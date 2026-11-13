@@ -1,6 +1,6 @@
 ---
 title: "من الوقفات المضحكة المبكية التي نبه إليها الشيخ أبو جعفر هي أنّ أهل العلمنة والل"
-status: draft
+status: published
 published_at: 2023-05-25
 person: abu-umair-imran-al-zubaidi
 ---

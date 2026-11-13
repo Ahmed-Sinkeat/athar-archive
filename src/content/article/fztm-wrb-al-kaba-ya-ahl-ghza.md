@@ -1,6 +1,6 @@
 ---
 title: "فزتم ورب الكعبة يا أهل غزة!"
-status: draft
+status: published
 published_at: 2023-10-21
 person: abu-abdillah-firas-al-ramli
 ---

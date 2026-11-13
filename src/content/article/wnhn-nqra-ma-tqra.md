@@ -1,6 +1,6 @@
 ---
 title: "ونحن نقرأ ما تقرأ؟"
-status: draft
+status: published
 published_at: 2024-11-28
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

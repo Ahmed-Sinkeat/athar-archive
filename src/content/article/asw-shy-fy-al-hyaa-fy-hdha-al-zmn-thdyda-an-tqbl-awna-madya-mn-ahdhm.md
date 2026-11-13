@@ -1,6 +1,6 @@
 ---
 title: "أسوء شيءٍ في الحياة -في هذا الزمن تحديدًا- أن تقبل عونًا ماديًا من أحدهم!"
-status: draft
+status: published
 published_at: 2023-09-01
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

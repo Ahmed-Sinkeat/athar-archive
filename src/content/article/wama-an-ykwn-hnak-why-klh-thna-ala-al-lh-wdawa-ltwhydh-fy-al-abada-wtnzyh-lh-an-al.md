@@ -1,6 +1,6 @@
 ---
 title: "وأما أن يكون هناك وحي كله ثناء على الله ودعوة لتوحيده في العبادة وتنزيه له عن ال"
-status: draft
+status: published
 published_at: 2020-06-19
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

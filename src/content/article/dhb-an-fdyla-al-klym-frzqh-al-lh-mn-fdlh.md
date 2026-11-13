@@ -1,6 +1,6 @@
 ---
 title: "ذب عن فضيلة الكليم فرزقه الله من فضله.."
-status: draft
+status: published
 published_at: 2021-06-22
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "دعاء علمه النبي ﷺ لأحب الناس إليه"
-status: draft
+status: published
 published_at: 2025-09-21
 person: abu-abdillah-firas-al-ramli
 ---

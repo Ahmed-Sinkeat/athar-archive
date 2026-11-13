@@ -1,6 +1,6 @@
 ---
 title: "جاء في النجوم الزاهرة لابن تغري بردي"
-status: draft
+status: published
 published_at: 2019-01-16
 person: abu-jafar-al-khalifi
 ---

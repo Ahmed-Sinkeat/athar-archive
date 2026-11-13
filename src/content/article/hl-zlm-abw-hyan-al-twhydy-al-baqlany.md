@@ -1,6 +1,6 @@
 ---
 title: "هل ظلم أبو حيان التوحيدي الباقلاني؟"
-status: draft
+status: published
 published_at: 2020-06-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "سأتجاوز اعتبار شهادات الرق الرأسمالي معيارا للذكاء."
-status: draft
+status: published
 published_at: 2025-02-01
 person: abu-umair-imran-al-zubaidi
 ---

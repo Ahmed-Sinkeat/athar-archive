@@ -1,6 +1,6 @@
 ---
 title: "قال الذهبي في سير أعلام النبلاء (15/203)"
-status: draft
+status: published
 published_at: 2018-04-09
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال يقول أن بريطانيا وأمريكا هما أكثر دولتين تستفيدان من الأموال المنهوبة م"
-status: draft
+status: published
 published_at: 2019-02-09
 person: abu-jafar-al-khalifi
 ---

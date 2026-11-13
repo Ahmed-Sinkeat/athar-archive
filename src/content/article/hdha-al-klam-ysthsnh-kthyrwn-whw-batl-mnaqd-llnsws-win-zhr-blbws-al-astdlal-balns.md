@@ -1,6 +1,6 @@
 ---
 title: "هذا الكلام يستحسنه كثيرون، وهو باطل مناقض للنصوص، وإن ظهر بلبوس الاستدلال بالنص."
-status: draft
+status: published
 published_at: 2025-05-24
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

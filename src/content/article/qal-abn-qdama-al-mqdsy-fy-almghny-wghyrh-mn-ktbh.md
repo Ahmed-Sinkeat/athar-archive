@@ -1,6 +1,6 @@
 ---
 title: "قال ابن قدامة المقدسي في «المغني» وغيره من كتبه"
-status: draft
+status: published
 published_at: 2024-11-29
 person: abu-jafar-al-khalifi
 ---

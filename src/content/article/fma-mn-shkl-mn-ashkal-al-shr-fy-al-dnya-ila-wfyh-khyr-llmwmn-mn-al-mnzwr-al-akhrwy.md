@@ -1,6 +1,6 @@
 ---
 title: "فما من شكلٍ مِن أشكال الشر في الدنيا إلّا وفيه خيرٌ للمؤمن مِن المنظور الأخروي"
-status: draft
+status: published
 published_at: 2023-03-22
 person: abu-umair-imran-al-zubaidi
 ---

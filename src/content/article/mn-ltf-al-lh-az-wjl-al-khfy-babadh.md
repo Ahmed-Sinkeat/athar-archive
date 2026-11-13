@@ -1,6 +1,6 @@
 ---
 title: "من لطف الله عز وجل الخفي بعباده"
-status: draft
+status: published
 published_at: 2024-02-29
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

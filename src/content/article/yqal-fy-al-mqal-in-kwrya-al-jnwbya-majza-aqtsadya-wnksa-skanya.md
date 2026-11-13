@@ -1,6 +1,6 @@
 ---
 title: "يقال في المقال إن كوريا الجنوبية معجزة اقتصادية ونكسة سكانية."
-status: draft
+status: published
 published_at: 2021-03-06
 person: abu-jafar-al-khalifi
 ---

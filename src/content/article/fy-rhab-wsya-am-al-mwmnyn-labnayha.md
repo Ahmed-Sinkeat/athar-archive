@@ -1,6 +1,6 @@
 ---
 title: "في رحاب وصية أم المؤمنين لأبنائها"
-status: draft
+status: published
 published_at: 2019-12-28
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

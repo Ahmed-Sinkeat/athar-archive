@@ -1,6 +1,6 @@
 ---
 title: "قال الطاهر بن عاشور في مقالة له عن الشاعر بشار بن برد"
-status: draft
+status: published
 published_at: 2019-09-02
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "قصيدة إسماعيل الترمذي أنشدها لأحمد لما كان في سجن المحنة"
-status: draft
+status: published
 published_at: 2023-12-31
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "al-sunnah-wal-bidah"]

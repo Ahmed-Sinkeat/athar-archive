@@ -1,6 +1,6 @@
 ---
 title: "قال علي الطنطاوي في كتابه مقالات في كلمات"
-status: draft
+status: published
 published_at: 2017-07-26
 person: abu-jafar-al-khalifi
 ---

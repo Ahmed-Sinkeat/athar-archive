@@ -1,6 +1,6 @@
 ---
 title: "قال محمود الطناحي في الموجز"
-status: draft
+status: published
 published_at: 2018-01-04
 person: abu-jafar-al-khalifi
 ---

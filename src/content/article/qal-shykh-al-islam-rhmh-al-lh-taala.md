@@ -1,6 +1,6 @@
 ---
 title: "قال شيخ الإسلام رحمه الله تعالى"
-status: draft
+status: published
 published_at: 2017-07-01
 person: abu-jafar-al-khalifi
 ---

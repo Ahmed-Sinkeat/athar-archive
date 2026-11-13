@@ -1,6 +1,6 @@
 ---
 title: "مثال قتادة السدوسي من أغبى الحجج عند القوم في نقضهم على منهجنا حقيقة!"
-status: draft
+status: published
 published_at: 2023-09-24
 person: abu-umair-imran-al-zubaidi
 ---

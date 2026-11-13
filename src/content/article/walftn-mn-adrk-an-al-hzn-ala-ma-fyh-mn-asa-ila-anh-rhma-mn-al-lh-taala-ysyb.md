@@ -1,6 +1,6 @@
 ---
 title: "والفطِن من أدرك أنّ الحُزن على ما فيه من أسى إلّا أنه رحمةٌ مِن الله تعالى يُصيب"
-status: draft
+status: published
 published_at: 2023-05-10
 person: abu-umair-imran-al-zubaidi
 ---

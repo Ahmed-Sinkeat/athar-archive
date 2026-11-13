@@ -1,6 +1,6 @@
 ---
 title: "تفصيل السلف رضوان الله عليهم في الحكم على الواقفة واللفظية هو حجة دامعة لا تًرد"
-status: draft
+status: published
 published_at: 2023-12-09
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

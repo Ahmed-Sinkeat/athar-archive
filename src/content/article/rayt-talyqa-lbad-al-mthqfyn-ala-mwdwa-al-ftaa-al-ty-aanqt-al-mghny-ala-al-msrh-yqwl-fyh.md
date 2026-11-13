@@ -1,6 +1,6 @@
 ---
 title: "رأيت تعليقا لبعض المثقفين على موضوع الفتاة التي عانقت المغني على المسرح يقول فيه"
-status: draft
+status: published
 published_at: 2018-07-15
 person: abu-jafar-al-khalifi
 ---

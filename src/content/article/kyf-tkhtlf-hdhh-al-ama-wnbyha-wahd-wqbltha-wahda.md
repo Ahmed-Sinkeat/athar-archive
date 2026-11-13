@@ -1,6 +1,6 @@
 ---
 title: "كيف تختلف هذه الأمة ونبيها واحد؛ وقبلتها واحدة؟"
-status: draft
+status: published
 published_at: 2023-07-23
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "\"خذ من شاربك، ثم أقره حتى تلقاني\""
-status: draft
+status: published
 published_at: 2022-09-06
 person: abu-jafar-al-khalifi
 ---

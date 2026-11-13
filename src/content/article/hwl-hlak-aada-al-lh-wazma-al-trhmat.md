@@ -1,6 +1,6 @@
 ---
 title: "حول هلاكِ أعداء الله وأزمة الترحمات"
-status: draft
+status: published
 published_at: 2025-04-21
 person: awwab-bin-muhammad
 ---

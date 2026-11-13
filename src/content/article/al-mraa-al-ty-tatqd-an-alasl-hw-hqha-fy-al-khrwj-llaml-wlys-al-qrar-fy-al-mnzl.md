@@ -1,6 +1,6 @@
 ---
 title: "المرأة الّتي تعتقد أنّ [الأصل] هو حقّها في الخروج للعمل وليس القرار في المنزل"
-status: draft
+status: published
 published_at: 2022-10-15
 person: abu-umair-imran-al-zubaidi
 ---

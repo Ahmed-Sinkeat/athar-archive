@@ -1,6 +1,6 @@
 ---
 title: "قالت المفوضة الأوروبية للداخلية إلفا جوهانسون"
-status: draft
+status: published
 published_at: 2024-01-11
 person: abu-jafar-al-khalifi
 ---

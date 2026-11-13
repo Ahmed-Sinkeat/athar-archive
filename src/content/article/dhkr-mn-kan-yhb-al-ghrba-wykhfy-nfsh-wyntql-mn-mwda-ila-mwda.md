@@ -1,6 +1,6 @@
 ---
 title: "ذِكر مَن كان يُحبُّ الغربة ويُخفِي نفسه وينتقِل مِن موضِع إلى موضِع"
-status: draft
+status: published
 published_at: 2025-05-11
 person: awwab-bin-muhammad
 ---

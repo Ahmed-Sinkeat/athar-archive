@@ -1,6 +1,6 @@
 ---
 title: "ليتق رجل أن يكون يهوديا أو نصرانيا وهو لا يشعر"
-status: draft
+status: published
 published_at: 2025-09-18
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

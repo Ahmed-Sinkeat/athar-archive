@@ -1,6 +1,6 @@
 ---
 title: "هذا مقطع من حساب صاحبه عنده أكثر من نصف مليون متابع من كافة الطوائف"
-status: draft
+status: published
 published_at: 2025-09-04
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

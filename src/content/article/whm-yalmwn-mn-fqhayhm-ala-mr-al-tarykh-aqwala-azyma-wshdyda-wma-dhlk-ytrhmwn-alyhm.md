@@ -1,6 +1,6 @@
 ---
 title: "وهم يعلمون من فقهائهم على مر التاريخ أقوالاً عظيمة وشديدة ومع ذلك يترحمون عليهم"
-status: draft
+status: published
 published_at: 2019-10-13
 person: abu-jafar-al-khalifi
 ---

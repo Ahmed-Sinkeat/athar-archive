@@ -1,6 +1,6 @@
 ---
 title: "لحظات كاد يتسلل فيها اليأس بين يدي الفتح والتمكين..."
-status: draft
+status: published
 published_at: 2025-08-02
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

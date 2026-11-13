@@ -1,6 +1,6 @@
 ---
 title: "بعضُ النِّعم منعُ العبدِ مِنها وحَجزُه عنها خيرٌ له ورحمةٌ مِن الله به"
-status: draft
+status: published
 published_at: 2025-05-29
 person: awwab-bin-muhammad
 ---

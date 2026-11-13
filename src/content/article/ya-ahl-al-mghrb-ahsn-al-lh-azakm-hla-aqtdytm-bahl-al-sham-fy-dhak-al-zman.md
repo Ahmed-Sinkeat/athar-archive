@@ -1,6 +1,6 @@
 ---
 title: "يا أهل المغرب -أحسن الله عزاءكم- هلا اقتديتم بأهل الشام في ذاك الزمان.."
-status: draft
+status: published
 published_at: 2023-09-09
 person: abu-jafar-al-khalifi
 ---

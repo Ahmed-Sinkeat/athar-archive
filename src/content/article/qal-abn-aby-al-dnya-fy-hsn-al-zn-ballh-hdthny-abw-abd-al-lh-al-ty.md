@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي الدنيا في حسن الظن بالله 12 - حَدَّثَنِي أَبُو عَبْدِ اللَّهِ التَّي"
-status: draft
+status: published
 published_at: 2018-07-14
 person: abu-jafar-al-khalifi
 ---

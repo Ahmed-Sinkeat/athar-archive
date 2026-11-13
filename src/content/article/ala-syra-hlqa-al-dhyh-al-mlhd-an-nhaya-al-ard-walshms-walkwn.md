@@ -1,6 +1,6 @@
 ---
 title: "على سيرة حلقة الدحيح الملحد عن نهاية الأرض والشمس والكون."
-status: draft
+status: published
 published_at: 2026-01-23
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

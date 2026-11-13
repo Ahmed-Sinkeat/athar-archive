@@ -1,6 +1,6 @@
 ---
 title: "كلمة نبوية مباركة في نقض الوسواس «نحو وضوئي»…"
-status: draft
+status: published
 published_at: 2024-11-11
 person: abu-jafar-al-khalifi
 ---

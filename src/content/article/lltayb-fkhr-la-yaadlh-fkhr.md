@@ -1,6 +1,6 @@
 ---
 title: "للتائب فخر لا يعادله فخر"
-status: draft
+status: published
 published_at: 2023-06-17
 person: abu-abdillah-firas-al-ramli
 ---

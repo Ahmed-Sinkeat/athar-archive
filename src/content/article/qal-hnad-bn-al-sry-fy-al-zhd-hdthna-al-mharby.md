@@ -1,6 +1,6 @@
 ---
 title: "قال هناد بن السري في الزهد حَدَّثَنَا الْمُحَارِبِيُّ"
-status: draft
+status: published
 published_at: 2017-08-08
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

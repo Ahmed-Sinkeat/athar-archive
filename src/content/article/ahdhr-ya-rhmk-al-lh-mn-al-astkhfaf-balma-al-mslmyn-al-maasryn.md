@@ -1,6 +1,6 @@
 ---
 title: "احذر يا رحمك الله من الاستخفاف بعلماء المسلمين المعاصرين!"
-status: draft
+status: published
 published_at: 2023-09-24
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال خلف بن هشام بن ثعلب صاحب اللغة والقراءة أنه قرأ على سليم بن عيسى المقرئ"
-status: draft
+status: published
 published_at: 2020-10-20
 person: abu-jafar-al-khalifi
 ---

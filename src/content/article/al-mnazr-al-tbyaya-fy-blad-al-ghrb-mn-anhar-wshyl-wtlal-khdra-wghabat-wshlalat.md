@@ -1,6 +1,6 @@
 ---
 title: "المناظر الطبيعية في بلاد الغرب من أنهار وسهيل وتلال خضراء وغابات وشلالات"
-status: draft
+status: published
 published_at: 2025-08-24
 person: abu-umair-imran-al-zubaidi
 ---

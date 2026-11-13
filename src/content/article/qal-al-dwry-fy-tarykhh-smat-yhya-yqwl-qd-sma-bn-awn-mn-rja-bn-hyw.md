@@ -1,6 +1,6 @@
 ---
 title: "قال الدوري في تاريخه 4564 - سَمِعت يحيى يَقُول قد سمع بن عون من رَجَاء بن حَيْوَ"
-status: draft
+status: published
 published_at: 2019-11-26
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

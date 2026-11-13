@@ -1,6 +1,6 @@
 ---
 title: "لا يمكن لفرنسا الحفاظ على مكانتها إلا باستغلال مستعمراتها القديمة"
-status: draft
+status: published
 published_at: 2018-11-22
 person: abu-jafar-al-khalifi
 ---

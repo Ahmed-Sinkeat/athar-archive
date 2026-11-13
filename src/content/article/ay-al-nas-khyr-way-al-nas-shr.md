@@ -1,6 +1,6 @@
 ---
 title: "أي الناس خير وأي الناس شر ؟"
-status: draft
+status: published
 published_at: 2026-06-11
 person: abu-abdillah-firas-al-ramli
 ---

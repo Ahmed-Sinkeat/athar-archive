@@ -1,6 +1,6 @@
 ---
 title: "{وَظَنُّوٓاْ أَنَّهُم مَّانِعَتُهُمۡ حُصُونُهُم مِّنَ ٱللَّهِ فَأَتَاهُمُ ٱللَّه"
-status: draft
+status: published
 published_at: 2023-10-07
 person: abu-umair-imran-al-zubaidi
 ---

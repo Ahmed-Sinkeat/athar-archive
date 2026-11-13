@@ -1,6 +1,6 @@
 ---
 title: "ولاحظ أن هؤلاء العمال ومنهم الأطفال منتهكون تماما لا سبيل إلى عتقهم ولا حقوق لهم"
-status: draft
+status: published
 published_at: 2019-05-30
 person: abu-jafar-al-khalifi
 ---

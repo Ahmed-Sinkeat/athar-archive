@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال لصحفي تايواني ويبدو أنه نصراني"
-status: draft
+status: published
 published_at: 2024-07-29
 person: abu-jafar-al-khalifi
 ---

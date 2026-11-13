@@ -1,6 +1,6 @@
 ---
 title: "حين كتب ملك الحجاز الحسين بن علي منشوراً في تكفير الوهابية والدعوة إلى قتالهم في"
-status: draft
+status: published
 published_at: 2018-09-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "عندما ترجم الحاكم النيسابوري لوالده."
-status: draft
+status: published
 published_at: 2022-12-06
 person: abu-jafar-al-khalifi
 ---

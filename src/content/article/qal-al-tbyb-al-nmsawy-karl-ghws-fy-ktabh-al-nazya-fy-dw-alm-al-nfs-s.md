@@ -1,6 +1,6 @@
 ---
 title: "قال الطبيب النمساوي كارل غوس في كتابه النازية في ضوء علم النفس ص58"
-status: draft
+status: published
 published_at: 2019-09-16
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

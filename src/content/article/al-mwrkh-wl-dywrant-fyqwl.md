@@ -1,6 +1,6 @@
 ---
 title: "المؤرخ ول ديورانت فيقول"
-status: draft
+status: published
 published_at: 2017-06-12
 person: abu-jafar-al-khalifi
 ---

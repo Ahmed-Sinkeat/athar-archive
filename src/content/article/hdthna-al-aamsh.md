@@ -1,6 +1,6 @@
 ---
 title: "حدثنا الأعمش"
-status: draft
+status: published
 published_at: 2023-06-10
 person: abu-umair-imran-al-zubaidi
 topics: ["tazkiyat-al-nafs"]

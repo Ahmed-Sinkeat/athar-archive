@@ -1,6 +1,6 @@
 ---
 title: "مسئول قطري في بطولة رياضية يصافح الحكم الذكر ولا يصافح الحكم الأنثى."
-status: draft
+status: published
 published_at: 2021-02-12
 person: abu-jafar-al-khalifi
 ---

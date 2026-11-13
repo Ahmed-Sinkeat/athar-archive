@@ -1,6 +1,6 @@
 ---
 title: "فأين التمسك بمذهب الإمام مالك؟"
-status: draft
+status: published
 published_at: 2023-06-10
 person: abu-jafar-al-khalifi
 ---

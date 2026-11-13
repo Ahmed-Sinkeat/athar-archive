@@ -1,6 +1,6 @@
 ---
 title: "فأين حجة الله عز وجل؟"
-status: draft
+status: published
 published_at: 2024-05-22
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

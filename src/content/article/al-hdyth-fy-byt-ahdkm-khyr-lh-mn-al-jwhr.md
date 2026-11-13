@@ -1,6 +1,6 @@
 ---
 title: "الحديث في بيت أحدكم خير له من الجوهر"
-status: draft
+status: published
 published_at: 2026-03-26
 person: abu-abdillah-firas-al-ramli
 ---

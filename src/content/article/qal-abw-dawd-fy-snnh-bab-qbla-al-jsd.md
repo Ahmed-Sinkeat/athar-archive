@@ -1,6 +1,6 @@
 ---
 title: "قال أبو داود في سننه 160 - باب قُبْلة الجسد"
-status: draft
+status: published
 published_at: 2017-06-10
 person: abu-jafar-al-khalifi
 ---

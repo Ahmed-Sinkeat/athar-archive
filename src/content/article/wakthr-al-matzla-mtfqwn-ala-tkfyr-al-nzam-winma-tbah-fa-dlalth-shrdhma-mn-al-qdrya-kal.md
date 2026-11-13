@@ -1,6 +1,6 @@
 ---
 title: "وأكثر المعتزلة متفقون على تكفير النظام وإنما تبعه فى ضلالته شرذمة من القدرية كال"
-status: draft
+status: published
 published_at: 2021-04-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

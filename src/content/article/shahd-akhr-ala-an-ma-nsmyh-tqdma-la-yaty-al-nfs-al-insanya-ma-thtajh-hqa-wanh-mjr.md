@@ -1,6 +1,6 @@
 ---
 title: "شاهد آخر على أَن ما نسميه تقدمًا لا يعطي النفس الإنسانية ما تحتاجه حقًا وأنه مجر"
-status: draft
+status: published
 published_at: 2019-11-22
 person: abu-jafar-al-khalifi
 ---

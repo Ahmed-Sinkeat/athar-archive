@@ -1,6 +1,6 @@
 ---
 title: "١- الرد كذب عدنان إبراهيم في دعواه أن قتلى بني قريظة معظمهم لا ذنب لهم"
-status: draft
+status: published
 published_at: 2017-06-02
 person: abu-jafar-al-khalifi
 ---

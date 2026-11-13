@@ -1,6 +1,6 @@
 ---
 title: "من هو المقتصد؟"
-status: draft
+status: published
 published_at: 2023-10-26
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

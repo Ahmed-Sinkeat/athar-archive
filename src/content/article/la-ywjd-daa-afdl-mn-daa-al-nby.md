@@ -1,6 +1,6 @@
 ---
 title: "لا يوجد دعاء أفضل من دعاء النبي ﷺ"
-status: draft
+status: published
 published_at: 2024-07-21
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا حوار بين رجلين أحدهما قام بمشاركة أحد منشوراتي على صفحته."
-status: draft
+status: published
 published_at: 2024-07-04
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat", "al-sunnah-wal-bidah"]

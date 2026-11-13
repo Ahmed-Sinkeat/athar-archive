@@ -1,6 +1,6 @@
 ---
 title: "تابع لما قبله"
-status: draft
+status: published
 published_at: 2023-07-04
 person: abu-abdillah-firas-al-ramli
 ---

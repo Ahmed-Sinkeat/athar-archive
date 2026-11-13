@@ -1,6 +1,6 @@
 ---
 title: "ولا زالت الآية تتكرر.."
-status: draft
+status: published
 published_at: 2021-05-03
 person: abu-jafar-al-khalifi
 ---

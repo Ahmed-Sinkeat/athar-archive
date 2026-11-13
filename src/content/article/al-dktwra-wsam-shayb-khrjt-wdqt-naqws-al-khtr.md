@@ -1,6 +1,6 @@
 ---
 title: "الدكتورة وسام شعيب خرجت ودقت ناقوس الخطر"
-status: draft
+status: published
 published_at: 2024-11-13
 person: abu-jafar-al-khalifi
 ---

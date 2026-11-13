@@ -1,6 +1,6 @@
 ---
 title: "أصحاب العقارات يضغطون على النساء لممارسة الجنس لعدم قدرتهم على دفع الإيجار بسبب"
-status: draft
+status: published
 published_at: 2020-04-10
 person: abu-jafar-al-khalifi
 ---

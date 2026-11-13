@@ -1,6 +1,6 @@
 ---
 title: "لأن هذه الروابط يرسلها البوت من تلقاء نفسه وسأعمل على المشكلة ان شاء الله ومن عن"
-status: draft
+status: published
 published_at: 2025-04-26
 person: abu-abdillah-firas-al-ramli
 ---

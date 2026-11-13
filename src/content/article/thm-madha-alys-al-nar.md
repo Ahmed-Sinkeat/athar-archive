@@ -1,6 +1,6 @@
 ---
 title: "ثم ماذا ؟ أليس النار ؟"
-status: draft
+status: published
 published_at: 2020-12-24
 person: abu-jafar-al-khalifi
 ---

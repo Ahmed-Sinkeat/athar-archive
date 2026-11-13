@@ -1,6 +1,6 @@
 ---
 title: "أثران عجيبان في تاريخ دمشق"
-status: draft
+status: published
 published_at: 2022-09-19
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

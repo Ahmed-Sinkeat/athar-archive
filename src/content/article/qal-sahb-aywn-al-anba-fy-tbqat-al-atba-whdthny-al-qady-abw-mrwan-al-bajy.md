@@ -1,6 +1,6 @@
 ---
 title: "قال صاحب عيون الأنبا في طبقات الأطباء وحَدثني القَاضِي أَبُو مَرْوَان الْبَاجِيّ"
-status: draft
+status: published
 published_at: 2017-07-03
 person: abu-jafar-al-khalifi
 ---

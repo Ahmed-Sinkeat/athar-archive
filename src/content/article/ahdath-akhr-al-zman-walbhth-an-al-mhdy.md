@@ -1,6 +1,6 @@
 ---
 title: "أحداث آخر الزمان والبحث عن المهدي..."
-status: draft
+status: published
 published_at: 2024-02-16
 person: abu-jafar-al-khalifi
 ---

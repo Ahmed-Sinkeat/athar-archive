@@ -1,6 +1,6 @@
 ---
 title: "مثل هذا فاكسني"
-status: draft
+status: published
 published_at: 2024-05-13
 person: abu-abdillah-firas-al-ramli
 ---

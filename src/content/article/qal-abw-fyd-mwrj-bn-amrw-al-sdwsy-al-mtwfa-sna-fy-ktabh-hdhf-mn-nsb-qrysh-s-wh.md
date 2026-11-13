@@ -1,6 +1,6 @@
 ---
 title: "قال أبو فيد مؤرج بن عمرو السدوسي المتوفى سنة 195 في كتابه حذف من نسب قريش ص12 وه"
-status: draft
+status: published
 published_at: 2018-04-20
 person: abu-jafar-al-khalifi
 ---

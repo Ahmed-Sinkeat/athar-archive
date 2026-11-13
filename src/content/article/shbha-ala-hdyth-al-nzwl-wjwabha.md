@@ -1,6 +1,6 @@
 ---
 title: "شبهة على حديث النزول وجوابها..."
-status: draft
+status: published
 published_at: 2024-04-23
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-iman"]

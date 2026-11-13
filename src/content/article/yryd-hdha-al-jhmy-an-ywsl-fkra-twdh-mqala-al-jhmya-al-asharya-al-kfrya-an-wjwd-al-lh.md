@@ -1,6 +1,6 @@
 ---
 title: "يريد هذا الجهمي أن يوصل فكرة توضح مقالة الجهمية الأشعرية الكفرية عن وجود الله"
-status: draft
+status: published
 published_at: 2023-12-13
 person: abu-umair-imran-al-zubaidi
 ---

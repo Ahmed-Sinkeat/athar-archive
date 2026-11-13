@@ -1,6 +1,6 @@
 ---
 title: "ية فيمرنوا الْجنُود المظفرة على النظامات الجديدة الَّتِي ادخلها لوفوا الشهير فِي"
-status: draft
+status: published
 published_at: 2018-04-30
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

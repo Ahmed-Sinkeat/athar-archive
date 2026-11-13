@@ -1,6 +1,6 @@
 ---
 title: "هذِي حَضارَتُهُم بالخِزي قد عُرِفتْ"
-status: draft
+status: published
 published_at: 2026-02-01
 person: awwab-bin-muhammad
 ---

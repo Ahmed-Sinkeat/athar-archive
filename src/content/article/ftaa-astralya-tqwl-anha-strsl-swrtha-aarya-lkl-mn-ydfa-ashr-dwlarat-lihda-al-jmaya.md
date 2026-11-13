@@ -1,6 +1,6 @@
 ---
 title: "فتاة استرالية تقول أنها سترسل صورتها عارية لكل من يدفع عشر دولارات لإحدى الجمعيا"
-status: draft
+status: published
 published_at: 2020-01-10
 person: abu-jafar-al-khalifi
 ---

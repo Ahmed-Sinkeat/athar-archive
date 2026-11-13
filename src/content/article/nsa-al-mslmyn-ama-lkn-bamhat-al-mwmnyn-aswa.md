@@ -1,6 +1,6 @@
 ---
 title: "نساءَ المسلمين، أما لكُنَّ بأمهات المؤمنين أسوة؟!"
-status: draft
+status: published
 published_at: 2021-03-03
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs", "al-imamah-was-sahabah"]

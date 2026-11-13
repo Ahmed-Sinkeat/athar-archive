@@ -1,6 +1,6 @@
 ---
 title: "نحتاج إلى أربع سنوات حتى نقوم بانتخابات سليمةِ"
-status: draft
+status: published
 published_at: 2024-12-29
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "سبحان الله قبل أيام قرأت للأديب الأرجنتيني خورخي لويس بورخيس قصة مشابهة."
-status: draft
+status: published
 published_at: 2026-09-21
 person: abu-jafar-al-khalifi
 ---

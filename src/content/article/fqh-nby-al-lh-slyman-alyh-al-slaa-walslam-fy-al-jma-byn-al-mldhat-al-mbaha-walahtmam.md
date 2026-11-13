@@ -1,6 +1,6 @@
 ---
 title: "فقه نبي الله سليمان -عليه الصلاة والسلام- في الجمع بين الملذات المباحة والاهتمام"
-status: draft
+status: published
 published_at: 2023-11-22
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

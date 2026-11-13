@@ -1,6 +1,6 @@
 ---
 title: "أهل دينين في النار"
-status: draft
+status: published
 published_at: 2025-03-13
 person: abu-abdillah-firas-al-ramli
 ---

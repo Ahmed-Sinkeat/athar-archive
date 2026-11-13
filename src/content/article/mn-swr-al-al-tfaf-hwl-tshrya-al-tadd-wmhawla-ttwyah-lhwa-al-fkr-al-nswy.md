@@ -1,6 +1,6 @@
 ---
 title: "من صور الالتفاف حول تشريع التعدد ومحاولة تطويعه لهوى الفكر النسوي"
-status: draft
+status: published
 published_at: 2024-08-25
 person: abu-umair-imran-al-zubaidi
 ---

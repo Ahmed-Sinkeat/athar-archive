@@ -1,6 +1,6 @@
 ---
 title: "هذا ليس حكماً بالإعدام"
-status: draft
+status: published
 published_at: 2026-04-01
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "بشرى للصابرين على الابتلاءات من الجوع وغيره"
-status: draft
+status: published
 published_at: 2025-07-20
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "al-iman"]

@@ -1,6 +1,6 @@
 ---
 title: "سلامة العقيدة مفتاح الخلاص من الابتلاء ..."
-status: draft
+status: published
 published_at: 2021-06-24
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

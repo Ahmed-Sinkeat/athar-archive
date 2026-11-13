@@ -1,6 +1,6 @@
 ---
 title: "وقال ابن عساكر في تاريخه (60/384)"
-status: draft
+status: published
 published_at: 2022-09-19
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

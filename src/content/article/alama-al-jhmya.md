@@ -1,6 +1,6 @@
 ---
 title: "علامة الجهمية"
-status: draft
+status: published
 published_at: 2023-05-22
 person: abu-abdillah-firas-al-ramli
 ---

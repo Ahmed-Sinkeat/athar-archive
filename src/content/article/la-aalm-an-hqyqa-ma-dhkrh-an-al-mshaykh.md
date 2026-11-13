@@ -1,6 +1,6 @@
 ---
 title: "لا أعلم عن حقيقة ما ذكره عن المشايخ"
-status: draft
+status: published
 published_at: 2026-05-10
 person: abu-jafar-al-khalifi
 ---

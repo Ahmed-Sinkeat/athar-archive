@@ -1,6 +1,6 @@
 ---
 title: "لم أكن أحفل كثيراً بتتبع ما يقول وسيم يوسف ولا أرى الرد عليه متعيناً وذلك أن مقد"
-status: draft
+status: published
 published_at: 2019-03-25
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

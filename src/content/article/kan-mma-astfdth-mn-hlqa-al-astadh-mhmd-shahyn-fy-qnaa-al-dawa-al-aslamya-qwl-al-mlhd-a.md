@@ -1,6 +1,6 @@
 ---
 title: "كان مما استفدته من حلقة الأستاذ محمد شاهين في قناة الدعوة الاسلامية قول الملحد ا"
-status: draft
+status: published
 published_at: 2018-05-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

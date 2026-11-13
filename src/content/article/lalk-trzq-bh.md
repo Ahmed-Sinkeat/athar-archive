@@ -1,6 +1,6 @@
 ---
 title: "لعلك ترزق به"
-status: draft
+status: published
 published_at: 2025-09-09
 person: abu-abdillah-firas-al-ramli
 topics: ["adab-talab-al-ilm"]

@@ -1,6 +1,6 @@
 ---
 title: "باب في فضل صيام عاشوراء واستحباب صيام تاسوعاء معه مخالفة للمشركين"
-status: draft
+status: published
 published_at: 2025-07-03
 person: abu-abdillah-firas-al-ramli
 ---

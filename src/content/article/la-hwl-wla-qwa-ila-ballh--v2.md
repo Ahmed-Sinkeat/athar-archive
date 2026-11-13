@@ -1,6 +1,6 @@
 ---
 title: "لا حول ولا قوة إلا بالله"
-status: draft
+status: published
 published_at: 2020-10-20
 person: abu-jafar-al-khalifi
 ---

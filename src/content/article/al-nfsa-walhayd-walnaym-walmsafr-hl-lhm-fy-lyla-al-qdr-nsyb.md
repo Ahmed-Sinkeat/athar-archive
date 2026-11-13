@@ -1,6 +1,6 @@
 ---
 title: "النفساء والحائض والنائم والمسافر، هل لهم في ليلة القدر نصيب؟"
-status: draft
+status: published
 published_at: 2024-03-31
 person: abu-abdillah-firas-al-ramli
 ---

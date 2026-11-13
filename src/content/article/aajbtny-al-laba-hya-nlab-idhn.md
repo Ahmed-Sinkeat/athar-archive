@@ -1,6 +1,6 @@
 ---
 title: "أعجبتني اللعبة، هيا نلعب إذن!"
-status: draft
+status: published
 published_at: 2026-03-07
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

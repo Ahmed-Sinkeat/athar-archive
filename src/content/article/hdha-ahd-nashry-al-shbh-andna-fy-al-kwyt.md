@@ -1,6 +1,6 @@
 ---
 title: "هذا أحد ناشري الشُّبه عندنا في الكويت."
-status: draft
+status: published
 published_at: 2024-07-27
 person: abu-jafar-al-khalifi
 ---

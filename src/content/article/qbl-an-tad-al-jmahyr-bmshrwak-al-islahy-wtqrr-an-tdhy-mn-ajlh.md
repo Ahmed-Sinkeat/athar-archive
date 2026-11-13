@@ -1,6 +1,6 @@
 ---
 title: "قبل أن تعد الجماهير بمشروعك الإصلاحي وتقرر أن تضحي من أجله"
-status: draft
+status: published
 published_at: 2019-08-23
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

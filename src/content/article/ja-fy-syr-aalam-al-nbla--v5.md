@@ -1,6 +1,6 @@
 ---
 title: "جاء في سير أعلام النبلاء"
-status: draft
+status: published
 published_at: 2017-08-10
 person: abu-jafar-al-khalifi
 ---

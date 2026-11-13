@@ -1,6 +1,6 @@
 ---
 title: "بما أنها قصة مشاهدة وصاحبها معروف وحي يرزق والشهود عليها أحياء فمجال التشكيك فيه"
-status: draft
+status: published
 published_at: 2022-07-13
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

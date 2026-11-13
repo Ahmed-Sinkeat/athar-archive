@@ -1,6 +1,6 @@
 ---
 title: "لا يرد أثر مجاهد رضي الله عنه في المقام المحمود إلا جهمي أشعري زنديق أو ضعيف رأي"
-status: draft
+status: published
 published_at: 2023-12-07
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "هذا من كتاب «بلوغ الأماني من أسانيد صلاح الدين التجاني»."
-status: draft
+status: published
 published_at: 2024-09-22
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

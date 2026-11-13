@@ -1,6 +1,6 @@
 ---
 title: "(قاعدة في تسليط العدو بالذنوب وأن ذلك لا يعني تبرير ما يفعل العدو)"
-status: draft
+status: published
 published_at: 2019-05-13
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-iman"]

@@ -1,6 +1,6 @@
 ---
 title: "كما شهد المستشرق الإنجليزي والقسيس الأنجليكاني \"مونتجمري وات\" (1909-2006م) بعد خ"
-status: draft
+status: published
 published_at: 2017-07-18
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

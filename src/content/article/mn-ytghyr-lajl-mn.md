@@ -1,6 +1,6 @@
 ---
 title: "من يتغير لأجل من؟"
-status: draft
+status: published
 published_at: 2022-10-06
 person: abu-jafar-al-khalifi
 ---

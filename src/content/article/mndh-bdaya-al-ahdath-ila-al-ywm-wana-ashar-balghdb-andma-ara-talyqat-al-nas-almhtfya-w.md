@@ -1,6 +1,6 @@
 ---
 title: "منذ بداية الأحداث إلى اليوم وأنا أشعر بالغضب عندما أرى تعليقات الناس \"المحتفية و"
-status: draft
+status: published
 published_at: 2023-10-19
 person: abu-umair-imran-al-zubaidi
 ---

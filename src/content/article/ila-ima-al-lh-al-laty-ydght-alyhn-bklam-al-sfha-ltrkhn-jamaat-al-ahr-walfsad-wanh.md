@@ -1,6 +1,6 @@
 ---
 title: "إلى إماء الله اللاتي يُضغط عليهنّ بكلام السفهاء لتركهن جامعات العهر والفساد وأنه"
-status: draft
+status: published
 published_at: 2024-06-05
 person: abu-umair-imran-al-zubaidi
 ---

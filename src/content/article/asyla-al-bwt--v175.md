@@ -1,6 +1,6 @@
 ---
-title: "أسئلة البوت [@alkulifyQ_bot](https://t.me/alkulifyQ_bot)"
-status: draft
+title: "أسئلة البوت @alkulifyQ_bot"
+status: published
 published_at: 2023-09-28
 person: abu-umair-imran-al-zubaidi
 ---

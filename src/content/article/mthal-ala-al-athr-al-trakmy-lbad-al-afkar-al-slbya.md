@@ -1,6 +1,6 @@
 ---
 title: "مثال على الأثر التراكمي لبعض الأفكار السلبية"
-status: draft
+status: published
 published_at: 2020-12-10
 person: abu-jafar-al-khalifi
 ---

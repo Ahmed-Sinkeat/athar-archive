@@ -1,6 +1,6 @@
 ---
 title: "زمن السيولة بامتياز، عفوًا؛ بامتعاض!."
-status: draft
+status: published
 published_at: 2023-03-28
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

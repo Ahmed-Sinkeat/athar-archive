@@ -1,6 +1,6 @@
 ---
 title: "وكان الإمام الأشعري \"س\" يتأول صفات الله تبارك وتعالى"
-status: draft
+status: published
 published_at: 2026-08-07
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

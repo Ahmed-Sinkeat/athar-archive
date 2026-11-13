@@ -1,6 +1,6 @@
 ---
 title: "شهادة أبي البقاء الكفوي على متأخري الأشعرية والماتردية بمخالفة السلف ..."
-status: draft
+status: published
 published_at: 2021-06-16
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "27783- حدثنا أبو معاوية عن الأعمش عن إبراهيم النخعي قال"
-status: draft
+status: published
 published_at: 2024-01-21
 person: abu-umair-imran-al-zubaidi
 ---

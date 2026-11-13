@@ -1,6 +1,6 @@
 ---
 title: "باب استحباب صوم ستة أيام من شوال"
-status: draft
+status: published
 published_at: 2024-04-11
 person: abu-abdillah-firas-al-ramli
 ---

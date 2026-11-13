@@ -1,6 +1,6 @@
 ---
 title: "في أن البلاء واقع لا محالة والواجب الصبر والإحتساب"
-status: draft
+status: published
 published_at: 2023-06-22
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

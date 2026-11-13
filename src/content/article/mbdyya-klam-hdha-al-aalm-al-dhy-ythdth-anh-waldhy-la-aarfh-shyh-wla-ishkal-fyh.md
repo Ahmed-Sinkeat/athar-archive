@@ -1,6 +1,6 @@
 ---
 title: "مبدئيًا كلام هذا العالم الذي يتحدث عنه -والذي لا أعرفه- صحيح ولا إشكال فيه"
-status: draft
+status: published
 published_at: 2024-05-28
 person: abu-umair-imran-al-zubaidi
 ---

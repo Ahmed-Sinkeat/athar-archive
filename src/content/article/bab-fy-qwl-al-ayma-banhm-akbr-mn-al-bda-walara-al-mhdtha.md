@@ -1,6 +1,6 @@
 ---
 title: "باب في قول الأئمة بأنهم أكبر من البدع والآراء المحدثة"
-status: draft
+status: published
 published_at: 2025-02-28
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

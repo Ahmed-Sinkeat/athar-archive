@@ -1,6 +1,6 @@
 ---
 title: "الشوق المبدِّد للشبهات والشهوات..."
-status: draft
+status: published
 published_at: 2021-02-23
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "قال محمد بن وضاح في كتاب البدع [ 155"
-status: draft
+status: published
 published_at: 2018-07-31
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs", "al-sunnah-wal-bidah"]

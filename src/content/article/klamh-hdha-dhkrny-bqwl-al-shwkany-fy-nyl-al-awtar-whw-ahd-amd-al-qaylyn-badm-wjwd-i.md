@@ -1,6 +1,6 @@
 ---
 title: "كلامه هذا ذكرني بقول الشوكاني في «نيل الأوطار» -وهو أحد عمد القائلين بعدم وجود إ"
-status: draft
+status: published
 published_at: 2025-12-20
 person: abu-jafar-al-khalifi
 ---

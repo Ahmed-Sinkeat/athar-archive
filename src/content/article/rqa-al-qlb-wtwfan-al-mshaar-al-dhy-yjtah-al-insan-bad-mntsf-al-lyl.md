@@ -1,6 +1,6 @@
 ---
 title: "رِقّةُ القلب وطوفان المشاعر الّذي يجتاح الإنسان بعد منتصف الّليل"
-status: draft
+status: published
 published_at: 2023-03-26
 person: abu-umair-imran-al-zubaidi
 ---

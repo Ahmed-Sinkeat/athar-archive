@@ -1,6 +1,6 @@
 ---
 title: "قال المنصر جاير دنر"
-status: draft
+status: published
 published_at: 2017-07-06
 person: abu-jafar-al-khalifi
 ---

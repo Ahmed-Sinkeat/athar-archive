@@ -1,6 +1,6 @@
 ---
 title: "المضحك في المناظرة، أنّ الرافضي يستدل بكلام علماء الأشعرية."
-status: draft
+status: published
 published_at: 2024-07-01
 person: abu-umair-imran-al-zubaidi
 ---

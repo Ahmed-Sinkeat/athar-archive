@@ -1,6 +1,6 @@
 ---
 title: "أرسل لي أحد إخواني الأعزاء من مصر فيديو لعبد الله رشدي وهو أحد مشاهير الأزهريين"
-status: draft
+status: published
 published_at: 2018-05-07
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

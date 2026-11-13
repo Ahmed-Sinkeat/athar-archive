@@ -1,6 +1,6 @@
 ---
 title: "من سرته حسنته وساءته سيئته فهو مؤمن"
-status: draft
+status: published
 published_at: 2025-04-21
 person: abu-abdillah-firas-al-ramli
 ---

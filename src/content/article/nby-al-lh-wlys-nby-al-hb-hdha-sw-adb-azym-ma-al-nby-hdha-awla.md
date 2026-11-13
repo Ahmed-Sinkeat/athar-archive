@@ -1,6 +1,6 @@
 ---
 title: "نبي الله وليس نبي الحب، هذا سوء أدب عظيم مع النبي ﷺ! هذا أولًا."
-status: draft
+status: published
 published_at: 2024-03-31
 person: abu-umair-imran-al-zubaidi
 topics: ["al-imamah-was-sahabah"]

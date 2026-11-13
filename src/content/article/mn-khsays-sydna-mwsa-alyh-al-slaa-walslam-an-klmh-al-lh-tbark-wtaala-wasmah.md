@@ -1,6 +1,6 @@
 ---
 title: "مِن خصائص سيّدنا موسى -عليه الصّلاة والسّلام- أن كلّمه الله تبارك وتعالى وأسمعه"
-status: draft
+status: published
 published_at: 2023-02-17
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

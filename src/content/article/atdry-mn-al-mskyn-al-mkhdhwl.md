@@ -1,6 +1,6 @@
 ---
 title: "أتدري من المسكين المخذول؟"
-status: draft
+status: published
 published_at: 2026-07-30
 person: awwab-bin-muhammad
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

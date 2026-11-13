@@ -1,6 +1,6 @@
 ---
 title: "هناك فرق شاسع بين سوء الأدب وبين إظهار حقيقة المخالف!"
-status: draft
+status: published
 published_at: 2023-08-25
 person: abu-umair-imran-al-zubaidi
 ---

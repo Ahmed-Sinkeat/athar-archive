@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال كُتب قبل أقل من 24 ساعة"
-status: draft
+status: published
 published_at: 2023-11-04
 person: abu-jafar-al-khalifi
 ---

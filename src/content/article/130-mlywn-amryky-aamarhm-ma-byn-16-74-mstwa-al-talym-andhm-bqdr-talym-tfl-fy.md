@@ -1,6 +1,6 @@
 ---
 title: "١٣٠ مليون أمريكي أعمارهم ما بين (١٦ - ٧٤) مستوى التعليم عندهم \"بقدر تعليم طفل في"
-status: draft
+status: published
 published_at: 2021-08-02
 person: abu-jafar-al-khalifi
 ---

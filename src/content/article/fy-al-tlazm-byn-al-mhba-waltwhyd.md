@@ -1,6 +1,6 @@
 ---
 title: "في التلازم بين المحبة والتوحيد"
-status: draft
+status: published
 published_at: 2026-01-15
 person: awwab-bin-muhammad
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "مما ينتشر في مواقع متعصبي البربر ( الأمازيغ ) رواية اختلقوها عن قتل عقبة بن نافع"
-status: draft
+status: published
 published_at: 2018-05-23
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

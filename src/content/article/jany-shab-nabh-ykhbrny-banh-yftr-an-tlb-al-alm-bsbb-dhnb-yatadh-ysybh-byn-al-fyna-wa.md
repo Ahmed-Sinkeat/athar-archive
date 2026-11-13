@@ -1,6 +1,6 @@
 ---
 title: "جاءني شاب نابه يخبرني بأنه يفتر عن طلب العلم بسبب ذنب يعتاده يصيبه بين الفينة وا"
-status: draft
+status: published
 published_at: 2018-11-28
 person: abu-jafar-al-khalifi
 ---

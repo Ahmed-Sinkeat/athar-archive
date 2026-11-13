@@ -1,6 +1,6 @@
 ---
 title: "قال التابعي ميمون بن مهران رحمه الله"
-status: draft
+status: published
 published_at: 2018-09-27
 person: abu-jafar-al-khalifi
 ---

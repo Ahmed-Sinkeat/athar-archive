@@ -1,6 +1,6 @@
 ---
 title: "في رحاب عقل أم المؤمنين عائشة وإنصافها"
-status: draft
+status: published
 published_at: 2019-12-01
 person: abu-jafar-al-khalifi
 ---

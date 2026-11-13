@@ -1,6 +1,6 @@
 ---
 title: "أبو القاسم الخوئي في محاضراته في أصول الفقه أثناء رده على بدعة الأشاعرة في الكلا"
-status: draft
+status: published
 published_at: 2022-09-27
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

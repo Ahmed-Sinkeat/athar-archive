@@ -1,6 +1,6 @@
 ---
 title: "المدرسة الثالثة"
-status: draft
+status: published
 published_at: 2020-05-18
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

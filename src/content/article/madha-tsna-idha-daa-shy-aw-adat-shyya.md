@@ -1,6 +1,6 @@
 ---
 title: "ماذا تصنع إذا ضاع شيء أو أضعت شيئا؟"
-status: draft
+status: published
 published_at: 2024-01-01
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

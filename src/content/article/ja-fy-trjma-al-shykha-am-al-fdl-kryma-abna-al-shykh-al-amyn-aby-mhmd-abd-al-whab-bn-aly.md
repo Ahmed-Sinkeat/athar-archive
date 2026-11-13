@@ -1,6 +1,6 @@
 ---
 title: "جاء في ترجمة الشيخة أم الفضل كريمة ابنة الشيخ الأمين أبي محمد عبد الوهاب بن علي"
-status: draft
+status: published
 published_at: 2017-10-13
 person: abu-jafar-al-khalifi
 ---

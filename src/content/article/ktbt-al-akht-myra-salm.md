@@ -1,6 +1,6 @@
 ---
 title: "كتبت الأخت ميرا سالم"
-status: draft
+status: published
 published_at: 2018-08-11
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

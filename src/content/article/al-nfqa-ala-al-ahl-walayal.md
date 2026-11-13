@@ -1,6 +1,6 @@
 ---
 title: "النفقة على الأهل والعيال"
-status: draft
+status: published
 published_at: 2023-10-01
 person: abu-abdillah-firas-al-ramli
 ---

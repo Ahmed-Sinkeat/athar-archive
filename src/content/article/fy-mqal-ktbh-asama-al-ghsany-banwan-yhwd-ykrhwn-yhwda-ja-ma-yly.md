@@ -1,6 +1,6 @@
 ---
 title: "في مقال كتبه أسامة الغساني بعنوان يهود يكرهون يهودا جاء ما يلي"
-status: draft
+status: published
 published_at: 2019-07-04
 person: abu-jafar-al-khalifi
 ---

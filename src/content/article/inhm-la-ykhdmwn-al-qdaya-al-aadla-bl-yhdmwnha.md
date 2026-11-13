@@ -1,6 +1,6 @@
 ---
 title: "إنهم لا يخدمون القضايا العادلة بل يهدمونها"
-status: draft
+status: published
 published_at: 2019-07-18
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

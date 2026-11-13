@@ -1,6 +1,6 @@
 ---
 title: "الحِجابُ وسيلةُ المرأة للاحتشام إن [اضطُرت] إلى الخروج مِن خِدرها"
-status: draft
+status: published
 published_at: 2022-11-06
 person: abu-umair-imran-al-zubaidi
 ---

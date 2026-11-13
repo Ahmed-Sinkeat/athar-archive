@@ -1,6 +1,6 @@
 ---
 title: "جاء في المقتبس من أنباء الأندلس في ترجمة القاضي إبراهيم بن العباس المرواني _ من"
-status: draft
+status: published
 published_at: 2018-01-21
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "طيِّب جمعتك بالصلاة على خليل الرحمن وجليسِه على عرشِه ﷺ."
-status: draft
+status: published
 published_at: 2026-04-10
 person: awwab-bin-muhammad
 ---

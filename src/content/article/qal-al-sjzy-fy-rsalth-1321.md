@@ -1,6 +1,6 @@
 ---
 title: "قال السِّجزي في رسالته (١٣٢/١)"
-status: draft
+status: published
 published_at: 2023-07-29
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

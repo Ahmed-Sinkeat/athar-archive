@@ -1,6 +1,6 @@
 ---
 title: "هؤلاء الكمايتة -نسبة إلى كيميت اسم مصر في اللغة المصرية القديمة-- خطيرون حقيقة"
-status: draft
+status: published
 published_at: 2025-10-31
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

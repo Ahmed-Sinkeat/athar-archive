@@ -1,6 +1,6 @@
 ---
 title: "ربي انصر أهل السنة في الشام على النصيرية الباطنية."
-status: draft
+status: published
 published_at: 2025-03-06
 person: abu-umair-imran-al-zubaidi
 ---

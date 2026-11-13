@@ -1,6 +1,6 @@
 ---
 title: "بالأمس لعبت مباراة في كرة القدم بين فلسطين وسوريا"
-status: draft
+status: published
 published_at: 2019-01-07
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-wala-wal-bara"]

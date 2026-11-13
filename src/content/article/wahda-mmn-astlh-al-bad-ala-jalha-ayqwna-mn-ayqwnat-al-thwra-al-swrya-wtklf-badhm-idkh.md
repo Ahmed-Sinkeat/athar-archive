@@ -1,6 +1,6 @@
 ---
 title: "واحدة ممن اصطلح البعض على جعلها أيقونة من أيقونات الثورة السورية وتكلف بعضهم إدخ"
-status: draft
+status: published
 published_at: 2018-07-26
 person: abu-jafar-al-khalifi
 ---

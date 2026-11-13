@@ -1,6 +1,6 @@
 ---
 title: "بقي خمس ساعات لانتهاء المهلة التي أعطتها الحكومة لقسد من أجل الموافقة على خضوعهم"
-status: draft
+status: published
 published_at: 2026-01-24
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

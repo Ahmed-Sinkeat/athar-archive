@@ -1,6 +1,6 @@
 ---
 title: "أكمل الفراغ ..."
-status: draft
+status: published
 published_at: 2022-10-15
 person: abu-jafar-al-khalifi
 ---

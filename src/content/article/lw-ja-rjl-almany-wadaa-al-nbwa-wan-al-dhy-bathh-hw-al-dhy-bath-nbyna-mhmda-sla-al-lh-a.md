@@ -1,6 +1,6 @@
 ---
 title: "لو جاء رجل ألماني وادعى النبوة وأن الذي بعثه هو الذي بعث نبينا محمداً صلى الله ع"
-status: draft
+status: published
 published_at: 2017-12-05
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

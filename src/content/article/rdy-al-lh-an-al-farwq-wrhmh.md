@@ -1,6 +1,6 @@
 ---
 title: "رضي الله عن الفاروق ورحمه"
-status: draft
+status: published
 published_at: 2023-09-30
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "منذ قليل مات عمي برصاصة طائشة استقرت في رأسه وهو جالس في حقله يرعى أرضه"
-status: draft
+status: published
 published_at: 2025-07-04
 person: abu-umair-imran-al-zubaidi
 ---

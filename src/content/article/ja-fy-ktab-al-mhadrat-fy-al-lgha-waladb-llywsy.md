@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب المحاضرات في اللغة والأدب لليوسي"
-status: draft
+status: published
 published_at: 2020-01-03
 person: abu-jafar-al-khalifi
 ---

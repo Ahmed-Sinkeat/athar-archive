@@ -1,6 +1,6 @@
 ---
 title: "ذكر التمسك بما جاء في الكتاب والسنة وبيان أن السنة وحي من الله عز وجل كالقرآن"
-status: draft
+status: published
 published_at: 2025-08-19
 person: abu-abdillah-firas-al-ramli
 ---

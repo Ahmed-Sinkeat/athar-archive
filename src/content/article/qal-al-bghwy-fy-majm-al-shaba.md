@@ -1,6 +1,6 @@
 ---
 title: "قال البغوي في معجم الصحابة"
-status: draft
+status: published
 published_at: 2018-05-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

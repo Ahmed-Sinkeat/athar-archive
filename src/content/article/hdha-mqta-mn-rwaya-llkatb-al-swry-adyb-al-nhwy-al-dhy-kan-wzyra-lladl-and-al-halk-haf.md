@@ -1,6 +1,6 @@
 ---
 title: "هذا مقطع من رواية للكاتب السوري أديب النحوي الذي كان وزيراً للعدل عند الهالك حاف"
-status: draft
+status: published
 published_at: 2024-02-13
 person: abu-jafar-al-khalifi
 ---

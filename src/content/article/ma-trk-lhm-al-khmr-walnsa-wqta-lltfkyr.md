@@ -1,6 +1,6 @@
 ---
 title: "ما ترك لهم الخمر والنساء وقتاً للتفكير!"
-status: draft
+status: published
 published_at: 2024-07-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

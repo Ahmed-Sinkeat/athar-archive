@@ -1,6 +1,6 @@
 ---
 title: "وخذ مثالاً فتجده يقول في البيان والتبيين"
-status: draft
+status: published
 published_at: 2020-02-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

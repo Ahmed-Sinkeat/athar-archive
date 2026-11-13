@@ -1,6 +1,6 @@
 ---
 title: "همَّة الأعمى الذي تزكى"
-status: draft
+status: published
 published_at: 2022-09-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

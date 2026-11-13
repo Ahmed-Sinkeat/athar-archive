@@ -1,6 +1,6 @@
 ---
 title: "الطبخ للمرأة هو مِن أخص خصوصياتها كزوجة وأم وأنثى قبل كل شيء؛ بل هو معيار مهم في"
-status: draft
+status: published
 published_at: 2023-03-07
 person: abu-umair-imran-al-zubaidi
 ---

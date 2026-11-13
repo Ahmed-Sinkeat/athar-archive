@@ -1,6 +1,6 @@
 ---
 title: "قال المروذي في أخبار الشيوخ وأخلاقهم سَمِعْتُ سُفْيَانَ بْنَ وَكِيعٍ يَقُولُ"
-status: draft
+status: published
 published_at: 2017-12-04
 person: abu-jafar-al-khalifi
 ---

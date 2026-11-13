@@ -1,6 +1,6 @@
 ---
 title: "مفارقة اشتراط شروط في النبي لا تُشترط في الإله!"
-status: draft
+status: published
 published_at: 2020-11-22
 person: abu-jafar-al-khalifi
 ---

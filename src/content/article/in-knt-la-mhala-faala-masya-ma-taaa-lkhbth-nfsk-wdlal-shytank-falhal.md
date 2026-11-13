@@ -1,6 +1,6 @@
 ---
 title: "إنْ كنتَ لا محالةَ فاعِلاً معصِية ما - طاعةً لخبثِ نفسِك وضلالِ شيطانِك - فالحال"
-status: draft
+status: published
 published_at: 2025-05-25
 person: awwab-bin-muhammad
 ---

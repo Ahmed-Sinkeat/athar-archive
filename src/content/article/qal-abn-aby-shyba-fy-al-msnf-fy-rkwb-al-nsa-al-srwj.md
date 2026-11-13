@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي شيبة في المصنف 77- فِي رُكُوبِ النِّسَاءِ السُّرُوج."
-status: draft
+status: published
 published_at: 2017-09-26
 person: abu-jafar-al-khalifi
 ---

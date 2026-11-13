@@ -1,6 +1,6 @@
 ---
 title: "بين صكوك الغفران واستغاثات القبورية.."
-status: draft
+status: published
 published_at: 2022-07-21
 person: abu-jafar-al-khalifi
 ---

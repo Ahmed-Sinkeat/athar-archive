@@ -1,6 +1,6 @@
 ---
 title: "هذا جزء من مقال لمحامية مصرية تنقل عن امرأة أمريكية نقدها للتطرف النسوي في قضايا"
-status: draft
+status: published
 published_at: 2026-06-03
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "عندما أذكر لك أثرًا عن صحابي أو تابعي أو إمام من أئمة الحديث في القرون الفاضلة"
-status: draft
+status: published
 published_at: 2024-04-21
 person: abu-umair-imran-al-zubaidi
 ---

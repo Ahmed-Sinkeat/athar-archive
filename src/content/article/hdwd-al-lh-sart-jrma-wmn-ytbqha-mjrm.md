@@ -1,6 +1,6 @@
 ---
 title: "حدود الله صارت جرما ومن يطبقها مجرم!"
-status: draft
+status: published
 published_at: 2025-01-05
 person: abu-umair-imran-al-zubaidi
 ---

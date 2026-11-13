@@ -1,6 +1,6 @@
 ---
 title: "عامة الشعب الأمريكي مديون ويسددون ديونهم للدولة."
-status: draft
+status: published
 published_at: 2024-03-29
 person: abu-jafar-al-khalifi
 ---

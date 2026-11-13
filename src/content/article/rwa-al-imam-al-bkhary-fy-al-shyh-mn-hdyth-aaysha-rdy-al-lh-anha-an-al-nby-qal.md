@@ -1,6 +1,6 @@
 ---
 title: "روى الإمام البخاري في الصحيح من حديث عائشة رضي الله عنها أن النبي ﷺ قال"
-status: draft
+status: published
 published_at: 2026-04-08
 person: awwab-bin-muhammad
 ---

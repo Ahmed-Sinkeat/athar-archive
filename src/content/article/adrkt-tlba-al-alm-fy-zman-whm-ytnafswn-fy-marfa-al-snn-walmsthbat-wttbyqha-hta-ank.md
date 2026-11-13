@@ -1,6 +1,6 @@
 ---
 title: "أدركت طلبة العلم في زمان وهم يتنافسون في معرفة السنن والمستحبات وتطبيقها حتى أنك"
-status: draft
+status: published
 published_at: 2018-04-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

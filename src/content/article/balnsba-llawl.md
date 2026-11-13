@@ -1,6 +1,6 @@
 ---
 title: "بالنسبة للأول"
-status: draft
+status: published
 published_at: 2024-01-26
 person: abu-umair-imran-al-zubaidi
 ---

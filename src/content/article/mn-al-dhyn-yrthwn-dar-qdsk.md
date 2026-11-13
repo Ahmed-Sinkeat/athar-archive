@@ -1,6 +1,6 @@
 ---
 title: "من الذين يرثون دار قدسك ؟"
-status: draft
+status: published
 published_at: 2024-02-06
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

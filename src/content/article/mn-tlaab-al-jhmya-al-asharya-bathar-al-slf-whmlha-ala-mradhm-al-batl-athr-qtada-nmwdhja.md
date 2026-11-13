@@ -1,6 +1,6 @@
 ---
 title: "من تلاعب الجهمية الأشعرية بآثار السلف وحملها على مرادهم الباطل «أثر قتادة نموذجا"
-status: draft
+status: published
 published_at: 2025-09-27
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

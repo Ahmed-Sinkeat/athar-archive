@@ -1,6 +1,6 @@
 ---
 title: "قال ابن عبدالبر في التمهيد (1/105) حدثنا عبد الواث بن سفيان قراءة مني عليه أن قا"
-status: draft
+status: published
 published_at: 2018-01-11
 person: abu-jafar-al-khalifi
 ---

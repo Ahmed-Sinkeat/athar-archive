@@ -1,6 +1,6 @@
 ---
 title: "كاشف الاستغاثة الشركية من القرآن الكريم..."
-status: draft
+status: published
 published_at: 2022-04-12
 person: abu-jafar-al-khalifi
 ---

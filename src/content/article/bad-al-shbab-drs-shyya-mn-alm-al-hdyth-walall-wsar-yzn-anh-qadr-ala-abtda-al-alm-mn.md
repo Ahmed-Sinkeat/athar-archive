@@ -1,6 +1,6 @@
 ---
 title: "بعض الشباب درس شيئاً من علم الحديث والعلل وصار يظن أنه قادر على ابتداء العلم من"
-status: draft
+status: published
 published_at: 2019-09-06
 person: abu-jafar-al-khalifi
 ---

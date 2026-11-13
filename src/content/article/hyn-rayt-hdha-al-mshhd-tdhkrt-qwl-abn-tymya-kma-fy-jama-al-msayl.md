@@ -1,6 +1,6 @@
 ---
 title: "حين رأيت هذا المشهد تذكرت قول ابن تيمية كما في «جامع المسائل» [5/300"
-status: draft
+status: published
 published_at: 2025-07-18
 person: abu-jafar-al-khalifi
 ---

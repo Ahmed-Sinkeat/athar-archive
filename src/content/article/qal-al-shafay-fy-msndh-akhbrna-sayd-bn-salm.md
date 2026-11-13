@@ -1,6 +1,6 @@
 ---
 title: "قال الشافعي في مسنده 955 - أَخْبَرَنَا سَعِيدُ بْنُ سَالِمٍ"
-status: draft
+status: published
 published_at: 2017-08-19
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الثنتين وسبعين فرقة النارية الضالة من أمة محمد ﷺ ليسوا كفارا؛ بل هم أهل أهواء وب"
-status: draft
+status: published
 published_at: 2025-03-09
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

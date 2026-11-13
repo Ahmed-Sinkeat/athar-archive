@@ -1,6 +1,6 @@
 ---
 title: "قال الطوفي في شرح مختصر الروضة"
-status: draft
+status: published
 published_at: 2020-02-20
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

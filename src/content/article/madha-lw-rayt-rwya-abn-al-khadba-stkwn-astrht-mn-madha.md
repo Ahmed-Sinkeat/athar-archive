@@ -1,6 +1,6 @@
 ---
 title: "ماذا لو رأيت رؤيا ابن الخاضبة ستكون استرحت من ماذا؟"
-status: draft
+status: published
 published_at: 2022-03-31
 person: abu-jafar-al-khalifi
 ---

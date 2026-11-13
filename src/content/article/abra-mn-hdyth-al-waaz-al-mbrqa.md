@@ -1,6 +1,6 @@
 ---
 title: "عبرة من حديث الواعظ المبرقع…"
-status: draft
+status: published
 published_at: 2022-06-14
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

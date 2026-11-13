@@ -1,6 +1,6 @@
 ---
 title: "في هذه الليلة لا تغفل عن عامل الخفاء..."
-status: draft
+status: published
 published_at: 2024-04-05
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "مهم كثيرًا يا معشر الشباب ...."
-status: draft
+status: published
 published_at: 2022-11-04
 person: abu-umair-imran-al-zubaidi
 ---

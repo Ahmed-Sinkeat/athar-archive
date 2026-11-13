@@ -1,6 +1,6 @@
 ---
 title: "تأثير ترك الصلاة أكبر بكثير من مجرد تركها على عظم هذا الجرم!"
-status: draft
+status: published
 published_at: 2024-08-03
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

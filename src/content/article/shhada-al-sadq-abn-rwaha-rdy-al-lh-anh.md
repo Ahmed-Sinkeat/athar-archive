@@ -1,6 +1,6 @@
 ---
 title: "شهادة الصادق ابن رواحة رضي الله عنه"
-status: draft
+status: published
 published_at: 2024-02-20
 person: abu-abdillah-firas-al-ramli
 ---

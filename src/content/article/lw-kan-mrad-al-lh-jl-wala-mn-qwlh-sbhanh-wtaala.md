@@ -1,6 +1,6 @@
 ---
 title: "لو كان مراد الله جل وعلا من قوله سبحانه وتعالى"
-status: draft
+status: published
 published_at: 2024-06-24
 person: abu-umair-imran-al-zubaidi
 ---

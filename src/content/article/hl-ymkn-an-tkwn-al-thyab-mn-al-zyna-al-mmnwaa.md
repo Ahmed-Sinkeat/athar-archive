@@ -1,6 +1,6 @@
 ---
 title: "هل يمكن أن تكون الثياب من الزينة الممنوعة؟"
-status: draft
+status: published
 published_at: 2021-02-24
 person: abu-jafar-al-khalifi
 ---

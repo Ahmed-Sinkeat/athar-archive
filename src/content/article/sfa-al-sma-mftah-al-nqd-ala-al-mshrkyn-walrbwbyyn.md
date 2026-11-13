@@ -1,6 +1,6 @@
 ---
 title: "صفة السمع مفتاح النقض على المشركين والربوبيين.."
-status: draft
+status: published
 published_at: 2021-04-08
 person: abu-jafar-al-khalifi
 ---

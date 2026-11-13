@@ -1,6 +1,6 @@
 ---
 title: "حكم الاستغاثة بالمخلوق عند السلف (كفر أوضح من الشمس)"
-status: draft
+status: published
 published_at: 2022-07-28
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

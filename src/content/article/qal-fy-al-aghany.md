@@ -1,6 +1,6 @@
 ---
 title: "قال في الأغاني"
-status: draft
+status: published
 published_at: 2018-02-11
 person: abu-jafar-al-khalifi
 ---

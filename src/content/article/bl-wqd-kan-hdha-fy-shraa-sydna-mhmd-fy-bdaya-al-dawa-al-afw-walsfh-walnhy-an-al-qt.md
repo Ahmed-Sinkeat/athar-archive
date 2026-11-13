@@ -1,6 +1,6 @@
 ---
 title: "بل وقد كان هذا في شرعة سيدنا محمد ﷺ في بداية الدعوة؛ العفو والصفح والنهي عن القت"
-status: draft
+status: published
 published_at: 2024-10-15
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

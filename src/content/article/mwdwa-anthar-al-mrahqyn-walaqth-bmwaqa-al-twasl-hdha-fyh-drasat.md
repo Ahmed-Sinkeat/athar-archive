@@ -1,6 +1,6 @@
 ---
 title: "موضوع انتحار المراهقين وعلاقته بمواقع التواصل هذا فيه دراسات."
-status: draft
+status: published
 published_at: 2025-03-31
 person: abu-jafar-al-khalifi
 ---

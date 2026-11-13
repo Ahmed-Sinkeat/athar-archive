@@ -1,6 +1,6 @@
 ---
 title: "من عجائب المتنبي ( حقا في كل واحد واد يهيمون )"
-status: draft
+status: published
 published_at: 2019-07-28
 person: abu-jafar-al-khalifi
 ---

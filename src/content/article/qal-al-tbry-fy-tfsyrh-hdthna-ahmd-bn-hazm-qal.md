@@ -1,6 +1,6 @@
 ---
 title: "قال الطبري في تفسيره 9883 - حدثنا أحمد بن حازم قال"
-status: draft
+status: published
 published_at: 2017-06-16
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

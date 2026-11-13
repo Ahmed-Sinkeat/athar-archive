@@ -1,6 +1,6 @@
 ---
 title: "قال إبراهيم بن أدهم العابد"
-status: draft
+status: published
 published_at: 2018-04-07
 person: abu-jafar-al-khalifi
 ---

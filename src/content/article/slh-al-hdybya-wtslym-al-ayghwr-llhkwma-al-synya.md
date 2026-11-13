@@ -1,6 +1,6 @@
 ---
 title: "صلح الحديبية وتسليم الأيغور للحكومة الصينية..."
-status: draft
+status: published
 published_at: 2021-12-22
 person: abu-jafar-al-khalifi
 ---

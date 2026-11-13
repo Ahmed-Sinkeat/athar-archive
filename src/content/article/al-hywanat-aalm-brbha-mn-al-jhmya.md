@@ -1,6 +1,6 @@
 ---
 title: "الحيوانات أعلم بربها من الجهمية"
-status: draft
+status: published
 published_at: 2026-01-15
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

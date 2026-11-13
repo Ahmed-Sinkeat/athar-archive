@@ -1,6 +1,6 @@
 ---
 title: "الجزار الصوفي الذي مكنه بعض العثمانيين من رقاب البشر"
-status: draft
+status: published
 published_at: 2019-01-23
 person: abu-jafar-al-khalifi
 ---

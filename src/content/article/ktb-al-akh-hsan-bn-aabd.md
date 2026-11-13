@@ -1,6 +1,6 @@
 ---
 title: "كتب الأخ حسان بن عابد"
-status: draft
+status: published
 published_at: 2018-12-22
 person: abu-jafar-al-khalifi
 ---

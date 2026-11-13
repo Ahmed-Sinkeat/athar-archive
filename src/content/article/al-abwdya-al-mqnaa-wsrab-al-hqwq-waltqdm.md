@@ -1,6 +1,6 @@
 ---
 title: "العبودية المقنَّعة وسراب الحقوق والتقدم!"
-status: draft
+status: published
 published_at: 2020-09-28
 person: abu-jafar-al-khalifi
 ---

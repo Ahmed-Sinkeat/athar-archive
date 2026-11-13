@@ -1,6 +1,6 @@
 ---
 title: "صاحبوا الصالحين لعلكم تكونوا معهم"
-status: draft
+status: published
 published_at: 2025-10-14
 person: abu-abdillah-firas-al-ramli
 ---

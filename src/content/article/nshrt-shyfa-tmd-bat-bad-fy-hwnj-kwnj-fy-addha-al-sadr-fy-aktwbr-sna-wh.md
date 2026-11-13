@@ -1,6 +1,6 @@
 ---
 title: "نشرت صحيفة \"تمد بات باد\" في هونج كونج, في عددها الصادر في 11 أكتوبر سنة 1966, وه"
-status: draft
+status: published
 published_at: 2017-07-14
 person: abu-jafar-al-khalifi
 ---

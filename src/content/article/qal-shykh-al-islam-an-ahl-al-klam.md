@@ -1,6 +1,6 @@
 ---
 title: "قال شيخ الإسلام عن أهل الكلام"
-status: draft
+status: published
 published_at: 2018-02-07
 person: abu-jafar-al-khalifi
 ---

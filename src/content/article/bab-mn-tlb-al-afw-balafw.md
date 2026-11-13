@@ -1,6 +1,6 @@
 ---
 title: "باب من طلب العفو بالعفو"
-status: draft
+status: published
 published_at: 2020-05-09
 person: abu-jafar-al-khalifi
 ---

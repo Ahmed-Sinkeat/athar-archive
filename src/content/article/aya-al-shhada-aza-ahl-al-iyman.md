@@ -1,6 +1,6 @@
 ---
 title: "آية الشهادة (عزاء أهل الإيمان)."
-status: draft
+status: published
 published_at: 2023-10-12
 person: abu-jafar-al-khalifi
 ---

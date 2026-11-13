@@ -1,6 +1,6 @@
 ---
 title: "فإما أن تتسق مع كلامك وطرحك السابق هنا أيضاً وتورد هذه الحجة الواهية على كلام ال"
-status: draft
+status: published
 published_at: 2025-03-05
 person: awwab-bin-muhammad
 ---

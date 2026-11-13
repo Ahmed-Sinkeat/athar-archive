@@ -1,6 +1,6 @@
 ---
 title: "قال اللواء ركن محمود شيث خطاب الموصلي في كتابه بين العقيدة والقيادة"
-status: draft
+status: published
 published_at: 2017-06-29
 person: abu-jafar-al-khalifi
 ---

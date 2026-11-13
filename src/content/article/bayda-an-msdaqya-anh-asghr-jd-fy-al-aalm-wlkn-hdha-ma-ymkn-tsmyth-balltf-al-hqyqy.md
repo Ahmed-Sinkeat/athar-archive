@@ -1,6 +1,6 @@
 ---
 title: "بعيدًا عن مصداقية أنه أصغر جد في العالم، ولكن هذا ما يمكن تسميته باللطف الحقيقي!"
-status: draft
+status: published
 published_at: 2023-09-20
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا الكلام ينطوي على كذب وتدليس وتهويل على عادة صابر مشهور"
-status: draft
+status: published
 published_at: 2025-10-05
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

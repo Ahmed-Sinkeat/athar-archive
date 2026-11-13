@@ -1,6 +1,6 @@
 ---
 title: "القول بخلق القرآن يقتضي نقص القرآن ومعقولية الاستدراك عليه"
-status: draft
+status: published
 published_at: 2026-08-16
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

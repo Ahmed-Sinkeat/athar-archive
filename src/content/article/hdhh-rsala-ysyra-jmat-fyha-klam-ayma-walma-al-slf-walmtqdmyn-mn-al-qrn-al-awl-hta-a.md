@@ -1,6 +1,6 @@
 ---
 title: "هذه رسالة يسيرة جمعت فيها كلام أئمة وعلماء السلف والمتقدمين من القرن الأول حتى ا"
-status: draft
+status: published
 published_at: 2025-03-10
 person: abu-abdillah-firas-al-ramli
 ---

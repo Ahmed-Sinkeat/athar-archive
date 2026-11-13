@@ -1,6 +1,6 @@
 ---
 title: "من دقيق فقه البخاري: هذا الحديث يخاطب التجار ابتداءً..."
-status: draft
+status: published
 published_at: 2025-11-06
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "والإنسان طبيعته الغفلة والنِّسيان لا سيَّما مع سير عجلةِ الزَّمان"
-status: draft
+status: published
 published_at: 2025-10-11
 person: awwab-bin-muhammad
 ---

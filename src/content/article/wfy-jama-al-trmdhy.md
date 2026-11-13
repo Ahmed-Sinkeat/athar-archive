@@ -1,6 +1,6 @@
 ---
 title: "وفِي جامع الترمذي"
-status: draft
+status: published
 published_at: 2020-09-07
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

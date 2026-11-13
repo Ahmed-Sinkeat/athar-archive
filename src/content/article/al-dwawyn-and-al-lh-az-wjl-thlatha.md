@@ -1,6 +1,6 @@
 ---
 title: "الدواوين عند الله عز وجل ثلاثة"
-status: draft
+status: published
 published_at: 2023-10-05
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

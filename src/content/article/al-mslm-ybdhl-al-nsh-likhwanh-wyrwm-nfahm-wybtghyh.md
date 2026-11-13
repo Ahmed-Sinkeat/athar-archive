@@ -1,6 +1,6 @@
 ---
 title: "المُسلِم يبذُل النُّصح لإخوانِه ويروم نفعَهم ويبتغِيه"
-status: draft
+status: published
 published_at: 2025-06-02
 person: awwab-bin-muhammad
 ---

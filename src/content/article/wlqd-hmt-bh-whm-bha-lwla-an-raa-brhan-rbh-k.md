@@ -1,6 +1,6 @@
 ---
 title: "وَلَقَدْ هَمَّتْ بِهِ ۖ وَهَمَّ بِهَا لَوْلَا أَن رَّأَىٰ بُرْهَانَ رَبِّهِ ۚ كَ"
-status: draft
+status: published
 published_at: 2024-09-02
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

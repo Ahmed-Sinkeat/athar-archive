@@ -1,6 +1,6 @@
 ---
 title: "أرسل لي أحد الأخوة تغرودة لأحدهم يستدل على انتهاء تأثير التيار الديني بوجود تجمه"
-status: draft
+status: published
 published_at: 2019-07-18
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

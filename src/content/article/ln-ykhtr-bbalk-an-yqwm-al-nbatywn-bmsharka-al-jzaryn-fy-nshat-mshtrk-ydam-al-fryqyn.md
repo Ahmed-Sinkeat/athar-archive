@@ -1,6 +1,6 @@
 ---
 title: "لن يخطر ببالك أن يقوم النباتيون بمشاركة الجزارين في نشاط مشترك يدعم الفريقين"
-status: draft
+status: published
 published_at: 2023-02-20
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-wala-wal-bara"]

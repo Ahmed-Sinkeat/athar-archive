@@ -1,6 +1,6 @@
 ---
 title: "يوم عرفة"
-status: draft
+status: published
 published_at: 2025-06-04
 person: awwab-bin-muhammad
 ---

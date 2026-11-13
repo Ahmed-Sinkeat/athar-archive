@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي شيبة في «المصنف"
-status: draft
+status: published
 published_at: 2024-01-21
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

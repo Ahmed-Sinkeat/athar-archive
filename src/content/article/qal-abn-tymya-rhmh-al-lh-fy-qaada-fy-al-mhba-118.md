@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية رحمه الله في قاعدة في المحبة (١/&rlm;١٨)"
-status: draft
+status: published
 published_at: 2023-07-27
 person: abu-abdillah-firas-al-ramli
 ---

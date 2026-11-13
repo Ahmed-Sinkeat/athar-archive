@@ -1,6 +1,6 @@
 ---
 title: "شيء من جحيم الحداثة برأسماليتها! (انهيار الصحة النفسية)"
-status: draft
+status: published
 published_at: 2020-08-07
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

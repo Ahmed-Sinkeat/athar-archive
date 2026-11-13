@@ -1,6 +1,6 @@
 ---
 title: "باب فيمن لم يقدِّر النعمة حق قدرها"
-status: draft
+status: published
 published_at: 2019-07-27
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "وقد رواه عن مسروق وهو تابعي مخضرم صلى خلف أبي بكر فإذا المفسرون المتقدمون أجمعوا"
-status: draft
+status: published
 published_at: 2020-07-23
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "مراجعة اجتماعية: لماذا كثيرا ما يصف أعضاء اللوبيات التطور بـ\" الحقيقة\""
-status: draft
+status: published
 published_at: 2018-09-02
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

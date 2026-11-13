@@ -1,6 +1,6 @@
 ---
 title: "إذا كان الشباب في الولايات المتحدة لم يمكن إقناعهم فكيف الأمر ببلداننا"
-status: draft
+status: published
 published_at: 2021-07-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

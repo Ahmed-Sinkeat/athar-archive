@@ -1,6 +1,6 @@
 ---
 title: "ما يمنع أحدكم ؟"
-status: draft
+status: published
 published_at: 2024-11-03
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

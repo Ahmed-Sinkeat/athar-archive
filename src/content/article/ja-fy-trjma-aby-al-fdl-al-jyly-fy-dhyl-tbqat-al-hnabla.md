@@ -1,6 +1,6 @@
 ---
 title: "جاء في ترجمة أبي الفضل الجيلي في ذيل طبقات الحنابلة"
-status: draft
+status: published
 published_at: 2017-05-18
 person: abu-jafar-al-khalifi
 ---

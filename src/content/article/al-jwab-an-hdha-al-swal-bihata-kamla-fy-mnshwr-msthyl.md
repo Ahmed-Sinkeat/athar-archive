@@ -1,6 +1,6 @@
 ---
 title: "الجواب عن هذا السؤال بإحاطة كاملة في منشور مستحيل"
-status: draft
+status: published
 published_at: 2022-11-24
 person: abu-umair-imran-al-zubaidi
 ---

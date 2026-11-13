@@ -1,6 +1,6 @@
 ---
 title: "طالب علم يستدل برواية كذاب في محل نزاع.."
-status: draft
+status: published
 published_at: 2021-12-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs", "al-imamah-was-sahabah"]

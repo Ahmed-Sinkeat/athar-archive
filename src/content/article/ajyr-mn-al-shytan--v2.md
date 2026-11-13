@@ -1,6 +1,6 @@
 ---
 title: "أجير من الشيطان"
-status: draft
+status: published
 published_at: 2024-02-10
 person: abu-abdillah-firas-al-ramli
 ---

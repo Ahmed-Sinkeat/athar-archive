@@ -1,6 +1,6 @@
 ---
 title: "ولا زالت الحيلة الإبليسية ناجعة مع كثير من الخلق."
-status: draft
+status: published
 published_at: 2020-05-01
 person: abu-jafar-al-khalifi
 ---

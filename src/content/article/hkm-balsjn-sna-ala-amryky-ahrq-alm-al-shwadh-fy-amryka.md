@@ -1,6 +1,6 @@
 ---
 title: "حكم بالسجن 15 سنة على أمريكي أحرق علم الشواذ في أمريكا"
-status: draft
+status: published
 published_at: 2019-12-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "انتشر مقطع للاعب كرة القدم الشهير مع صحفي يقول له أتذكر الخيط الذي أعطيته إياك ل"
-status: draft
+status: published
 published_at: 2018-06-29
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

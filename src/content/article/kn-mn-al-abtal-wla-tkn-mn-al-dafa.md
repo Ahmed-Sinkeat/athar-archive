@@ -1,6 +1,6 @@
 ---
 title: "كن من الأبطال ولا تكن من الضعفاء"
-status: draft
+status: published
 published_at: 2023-07-03
 person: abu-abdillah-firas-al-ramli
 ---

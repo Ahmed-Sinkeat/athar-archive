@@ -1,6 +1,6 @@
 ---
 title: "أَوَلَمْ يَرَوْا أَنَّا نَأْتِي الْأَرْضَ نَنقُصُهَا مِنْ أَطْرَافِهَا ۚ وَاللَّ"
-status: draft
+status: published
 published_at: 2024-12-04
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

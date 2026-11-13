@@ -1,6 +1,6 @@
 ---
 title: "وقال ابن تيمية في التسعينية"
-status: draft
+status: published
 published_at: 2021-08-17
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat", "al-wala-wal-bara", "al-sunnah-wal-bidah"]

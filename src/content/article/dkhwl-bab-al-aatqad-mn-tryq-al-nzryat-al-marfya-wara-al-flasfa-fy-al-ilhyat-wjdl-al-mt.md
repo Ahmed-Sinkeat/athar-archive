@@ -1,6 +1,6 @@
 ---
 title: "دخول باب الاعتقاد من طريق النظريات المعرفية وآراء الفلاسفة في الإلهيات وجدل المت"
-status: draft
+status: published
 published_at: 2026-07-28
 person: awwab-bin-muhammad
 topics: ["tahwid-al-ibada"]

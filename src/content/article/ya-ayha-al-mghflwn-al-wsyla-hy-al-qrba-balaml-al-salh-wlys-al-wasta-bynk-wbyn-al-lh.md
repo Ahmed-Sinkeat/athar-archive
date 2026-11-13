@@ -1,6 +1,6 @@
 ---
 title: "يا أيها المغفلون، الوسيلة هي القربة بالعمل الصالح وليس الواسطة بينك وبين الله!"
-status: draft
+status: published
 published_at: 2025-10-20
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

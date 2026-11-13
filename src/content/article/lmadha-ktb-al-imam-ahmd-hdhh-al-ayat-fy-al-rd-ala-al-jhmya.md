@@ -1,6 +1,6 @@
 ---
 title: "لماذا كتب الإمام أحمد هذه الآيات في الرد على الجهمية؟"
-status: draft
+status: published
 published_at: 2022-02-04
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

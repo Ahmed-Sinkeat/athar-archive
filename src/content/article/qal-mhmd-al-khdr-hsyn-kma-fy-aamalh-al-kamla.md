@@ -1,6 +1,6 @@
 ---
 title: "قال محمد الخضر حسين كما في أعماله الكاملة"
-status: draft
+status: published
 published_at: 2018-09-22
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

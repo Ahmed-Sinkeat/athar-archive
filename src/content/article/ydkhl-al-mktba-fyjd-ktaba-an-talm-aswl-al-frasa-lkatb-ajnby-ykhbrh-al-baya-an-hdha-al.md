@@ -1,6 +1,6 @@
 ---
 title: "يدخل المكتبة فيجد كتاباً عن تعلم أصول الفراسة لكاتب أجنبي يخبره البائع أن هذا ال"
-status: draft
+status: published
 published_at: 2018-12-08
 person: abu-jafar-al-khalifi
 ---

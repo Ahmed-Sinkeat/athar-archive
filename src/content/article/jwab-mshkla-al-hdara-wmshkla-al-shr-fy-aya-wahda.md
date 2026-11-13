@@ -1,6 +1,6 @@
 ---
 title: "جواب مشكلة الحضارة ومشكلة الشر في آية واحدة"
-status: draft
+status: published
 published_at: 2020-04-25
 person: abu-jafar-al-khalifi
 ---

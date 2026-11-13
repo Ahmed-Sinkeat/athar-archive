@@ -1,6 +1,6 @@
 ---
 title: "العاقل من يتبع الخير ويترك الشر"
-status: draft
+status: published
 published_at: 2024-01-07
 person: abu-abdillah-firas-al-ramli
 ---

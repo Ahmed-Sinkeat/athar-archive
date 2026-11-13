@@ -1,6 +1,6 @@
 ---
 title: "(مَنْ أَعْظَمُ النَّاسِ عَلَى المرأة حَقًّا؟)"
-status: draft
+status: published
 published_at: 2023-11-20
 person: abu-umair-imran-al-zubaidi
 topics: ["tazkiyat-al-nafs"]

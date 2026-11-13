@@ -1,6 +1,6 @@
 ---
 title: "إذا وضعت هذا العنوان في محرك البحث ( قوقل) فسيظهر لك مقال خلاصته"
-status: draft
+status: published
 published_at: 2019-09-03
 person: abu-jafar-al-khalifi
 ---

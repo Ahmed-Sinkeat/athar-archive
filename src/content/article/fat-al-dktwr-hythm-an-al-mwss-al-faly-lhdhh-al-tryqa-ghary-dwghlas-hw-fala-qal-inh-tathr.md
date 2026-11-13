@@ -1,6 +1,6 @@
 ---
 title: "فات الدكتور هيثم أن المؤسس الفعلي لهذه الطريقة غاري دوغلاس هو فعلاً قال إنه تأثر"
-status: draft
+status: published
 published_at: 2026-01-08
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ماذا يقال إذا عصفت الريح ؟"
-status: draft
+status: published
 published_at: 2023-09-13
 person: abu-abdillah-firas-al-ramli
 ---

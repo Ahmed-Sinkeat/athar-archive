@@ -1,6 +1,6 @@
 ---
 title: "كفار قريش ادعوا أنهم ينزهون الله عز وجل عن أن يرسل بشراً رسولاً"
-status: draft
+status: published
 published_at: 2018-09-14
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

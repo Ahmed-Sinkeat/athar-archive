@@ -1,6 +1,6 @@
 ---
 title: "هذا الاعتراف للدكتور فريد الأنصاري أطلع عليه لأول مرة وقد اغتبطت به كثيرا"
-status: draft
+status: published
 published_at: 2020-07-01
 person: abu-jafar-al-khalifi
 ---

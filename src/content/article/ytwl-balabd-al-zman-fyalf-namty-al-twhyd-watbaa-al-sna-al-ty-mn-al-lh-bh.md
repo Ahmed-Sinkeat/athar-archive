@@ -1,6 +1,6 @@
 ---
 title: "يطول بالعَبد الزَّمان فيألف نعمتَي التَّوحيد واتِّباع السُّنة التي مَنَّ الله به"
-status: draft
+status: published
 published_at: 2026-04-23
 person: awwab-bin-muhammad
 ---

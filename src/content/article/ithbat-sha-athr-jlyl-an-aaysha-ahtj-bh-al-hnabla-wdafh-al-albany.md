@@ -1,6 +1,6 @@
 ---
 title: "إثبات صحة أثر جليل عن عائشة احتج به الحنابلة وضعفه الألباني."
-status: draft
+status: published
 published_at: 2026-10-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

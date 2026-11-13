@@ -1,6 +1,6 @@
 ---
 title: "باب في ما يقول الرجل إذا خرج من بيته"
-status: draft
+status: published
 published_at: 2024-11-18
 person: abu-abdillah-firas-al-ramli
 ---

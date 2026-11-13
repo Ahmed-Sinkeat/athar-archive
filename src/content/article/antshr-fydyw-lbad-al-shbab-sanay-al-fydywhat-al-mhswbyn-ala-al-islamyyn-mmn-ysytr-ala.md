@@ -1,6 +1,6 @@
 ---
 title: "انتشر فيديو لبعض الشباب صانعي الفيديوهات المحسوبين على الإسلاميين ممن يسيطر على"
-status: draft
+status: published
 published_at: 2018-09-27
 person: abu-jafar-al-khalifi
 ---

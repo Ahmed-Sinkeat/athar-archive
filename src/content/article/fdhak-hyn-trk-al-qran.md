@@ -1,6 +1,6 @@
 ---
 title: "فذاك حين ترك القرآن"
-status: draft
+status: published
 published_at: 2023-05-29
 person: abu-abdillah-firas-al-ramli
 ---

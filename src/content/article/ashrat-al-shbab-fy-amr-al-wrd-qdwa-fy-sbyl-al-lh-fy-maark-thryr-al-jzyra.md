@@ -1,6 +1,6 @@
 ---
 title: "عشرات الشباب في عمر الورد قضوا في سبيل الله في معارك تحرير الجزيرة"
-status: draft
+status: published
 published_at: 2026-01-19
 person: abu-umair-imran-al-zubaidi
 ---

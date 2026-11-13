@@ -1,6 +1,6 @@
 ---
 title: "حين قرأت قصة هذا الشاب تذكرت بيت الشاعر"
-status: draft
+status: published
 published_at: 2020-02-19
 person: abu-jafar-al-khalifi
 ---

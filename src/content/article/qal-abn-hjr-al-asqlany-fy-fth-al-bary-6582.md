@@ -1,6 +1,6 @@
 ---
 title: "قال ابن حجر العسقلاني في فتح الباري (٦/٥٨٢)"
-status: draft
+status: published
 published_at: 2018-12-22
 person: abu-jafar-al-khalifi
 ---

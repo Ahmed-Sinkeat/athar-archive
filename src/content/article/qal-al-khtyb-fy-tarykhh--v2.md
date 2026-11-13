@@ -1,6 +1,6 @@
 ---
 title: "قال الخطيب في تاريخه"
-status: draft
+status: published
 published_at: 2020-01-25
 person: abu-jafar-al-khalifi
 ---

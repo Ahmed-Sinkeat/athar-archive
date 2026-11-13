@@ -1,6 +1,6 @@
 ---
 title: "تنبيه دقيق لشيخ الإسلام حول موافقة متأخري الأشعرية للمعتزلة..."
-status: draft
+status: published
 published_at: 2022-03-12
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "أغبَطُ الناس (يعني أكثرهم استحقاقا للغبطة وهي تمني أن تكون مثله)"
-status: draft
+status: published
 published_at: 2019-05-29
 person: abu-jafar-al-khalifi
 ---

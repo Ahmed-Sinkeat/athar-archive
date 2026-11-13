@@ -1,6 +1,6 @@
 ---
 title: "في المغرب المسلمون يتحاكمون إلى نظام عالماني في الأحوال الشخصية."
-status: draft
+status: published
 published_at: 2024-03-26
 person: abu-jafar-al-khalifi
 ---

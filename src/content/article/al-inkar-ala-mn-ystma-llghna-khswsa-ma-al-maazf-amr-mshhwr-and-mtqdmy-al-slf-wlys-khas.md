@@ -1,6 +1,6 @@
 ---
 title: "الإنكار على من يستمع للغناء خصوصا مع المعازف أمر مشهور عند متقدمي السلف وليس خاص"
-status: draft
+status: published
 published_at: 2019-01-07
 person: abu-jafar-al-khalifi
 ---

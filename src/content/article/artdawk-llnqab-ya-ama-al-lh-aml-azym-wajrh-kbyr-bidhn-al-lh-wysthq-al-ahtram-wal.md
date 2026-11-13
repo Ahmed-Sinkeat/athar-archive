@@ -1,6 +1,6 @@
 ---
 title: "ارتداؤك للنقاب يا أمةَ الله عملٌ عظيم وأجره كبير -بإذن الله- ويستحق الاحترام وال"
-status: draft
+status: published
 published_at: 2022-11-18
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "مختصر الإلحاد وتطبيقه العملي ( العالمانية بصورته الرأسمالية)"
-status: draft
+status: published
 published_at: 2018-06-21
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "المتحدث هنا هو كلاوس شواب"
-status: draft
+status: published
 published_at: 2022-02-08
 person: abu-jafar-al-khalifi
 ---

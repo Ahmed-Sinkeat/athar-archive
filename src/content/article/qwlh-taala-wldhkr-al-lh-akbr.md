@@ -1,6 +1,6 @@
 ---
 title: "قوله تعالى: { ولذكر الله أكبر }"
-status: draft
+status: published
 published_at: 2023-10-06
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

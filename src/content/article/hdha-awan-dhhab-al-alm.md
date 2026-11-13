@@ -1,6 +1,6 @@
 ---
 title: "هذا أوان ذهاب العلم"
-status: draft
+status: published
 published_at: 2024-02-17
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

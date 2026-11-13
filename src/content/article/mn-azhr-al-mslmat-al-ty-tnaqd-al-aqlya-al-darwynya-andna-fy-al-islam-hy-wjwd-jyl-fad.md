@@ -1,6 +1,6 @@
 ---
 title: "من أظهر المسلّمات التي تناقض العقلية الداروينية عندنا في الإسلام هي وجود جيل فاض"
-status: draft
+status: published
 published_at: 2023-06-11
 person: abu-umair-imran-al-zubaidi
 ---

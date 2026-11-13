@@ -1,6 +1,6 @@
 ---
 title: "الرجل الّذي يجعل مِن مواصفات الزوجة الّتي يريدها أن تكون [عاملة] هو أخطر مِن الن"
-status: draft
+status: published
 published_at: 2022-10-15
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "بذور الحداثة"
-status: draft
+status: published
 published_at: 2020-06-14
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

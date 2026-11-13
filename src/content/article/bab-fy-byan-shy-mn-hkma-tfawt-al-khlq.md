@@ -1,6 +1,6 @@
 ---
 title: "باب في بيان شيء من حكمة تفاوت الخلق"
-status: draft
+status: published
 published_at: 2026-01-03
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tahwid-al-ibada", "tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "في رحاب أهل الحديث"
-status: draft
+status: published
 published_at: 2019-02-01
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "الإمبراطور المغولي المنتسب للإسلام الذي يضرب به العالمانيون في الغرب المثل."
-status: draft
+status: published
 published_at: 2020-09-04
 person: abu-jafar-al-khalifi
 ---

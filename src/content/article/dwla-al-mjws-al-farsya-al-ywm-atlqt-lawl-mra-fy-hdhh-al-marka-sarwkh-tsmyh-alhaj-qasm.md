@@ -1,6 +1,6 @@
 ---
 title: "دولة المجوس الفارسية اليوم أطلقت لأول مرة في هذه المعركة صاروخ تسميه \"الحاج قاسم"
-status: draft
+status: published
 published_at: 2026-03-17
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "والمشكلة فيمن ليس نصرانيا أصلا ويحتفل بهذا العيد ويضع شجرة عيد الميلاد وعامة محق"
-status: draft
+status: published
 published_at: 2019-12-25
 person: abu-jafar-al-khalifi
 ---

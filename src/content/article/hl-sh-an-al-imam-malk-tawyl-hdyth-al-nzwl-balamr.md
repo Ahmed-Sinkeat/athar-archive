@@ -1,6 +1,6 @@
 ---
 title: "هل صح عن الإمام مالك تأويل حديث النزول بالأمر ؟"
-status: draft
+status: published
 published_at: 2024-02-18
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

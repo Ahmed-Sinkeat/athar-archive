@@ -1,6 +1,6 @@
 ---
 title: "قال ابن رجب في رسالة معاملة الظالم السارق"
-status: draft
+status: published
 published_at: 2018-07-07
 person: abu-jafar-al-khalifi
 ---

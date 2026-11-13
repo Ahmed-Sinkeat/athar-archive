@@ -1,6 +1,6 @@
 ---
 title: "فضل عشر ذي الحجة وتثبيت الأصول العقدية"
-status: draft
+status: published
 published_at: 2023-06-20
 person: abu-jafar-al-khalifi
 ---

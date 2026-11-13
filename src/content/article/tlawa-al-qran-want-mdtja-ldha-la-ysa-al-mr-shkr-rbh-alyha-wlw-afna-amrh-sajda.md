@@ -1,6 +1,6 @@
 ---
 title: "تلاوة القرآن وأنتَ مضطجع لذّة لا يسع المرء شكر ربه عليها ولو أفنى عُمُره ساجدًا"
-status: draft
+status: published
 published_at: 2023-04-06
 person: abu-umair-imran-al-zubaidi
 ---

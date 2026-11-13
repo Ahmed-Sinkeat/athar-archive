@@ -1,6 +1,6 @@
 ---
 title: "لحظة إدراك."
-status: draft
+status: published
 published_at: 2026-03-26
 person: abu-umair-imran-al-zubaidi
 ---

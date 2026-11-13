@@ -1,6 +1,6 @@
 ---
 title: "باب في استحباب قراءة الأحاديث على طهارة"
-status: draft
+status: published
 published_at: 2025-02-27
 person: abu-abdillah-firas-al-ramli
 ---

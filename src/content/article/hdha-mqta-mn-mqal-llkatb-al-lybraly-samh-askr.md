@@ -1,6 +1,6 @@
 ---
 title: "هذا مقطع من مقال للكاتب الليبرالي سامح عسكر"
-status: draft
+status: published
 published_at: 2023-09-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

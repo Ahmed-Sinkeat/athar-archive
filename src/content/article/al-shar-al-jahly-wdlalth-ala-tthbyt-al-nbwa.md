@@ -1,6 +1,6 @@
 ---
 title: "الشعر الجاهلي ودلالته على تثبيت النبوة"
-status: draft
+status: published
 published_at: 2019-09-26
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "أدري أنها مكررة"
-status: draft
+status: published
 published_at: 2024-10-13
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

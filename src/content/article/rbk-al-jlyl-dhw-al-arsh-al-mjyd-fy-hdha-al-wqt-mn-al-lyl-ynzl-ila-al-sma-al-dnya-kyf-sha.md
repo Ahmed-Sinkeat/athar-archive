@@ -1,6 +1,6 @@
 ---
 title: "ربك الجليل ذو العرش المجيد في هذا الوقت من اللّيل ينزل إلى السماء الدنيا -كيف شا"
-status: draft
+status: published
 published_at: 2023-05-27
 person: abu-umair-imran-al-zubaidi
 ---

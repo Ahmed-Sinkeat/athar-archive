@@ -1,6 +1,6 @@
 ---
 title: "حرص السلف الصالح على تعليم الصبيان العلم"
-status: draft
+status: published
 published_at: 2024-01-23
 person: abu-umair-imran-al-zubaidi
 ---

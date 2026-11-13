@@ -1,6 +1,6 @@
 ---
 title: "أول مرة أسمع باسم الشيخ الأنصاري بن إبراهيم"
-status: draft
+status: published
 published_at: 2024-02-05
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

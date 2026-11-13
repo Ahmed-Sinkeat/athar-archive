@@ -1,6 +1,6 @@
 ---
 title: "أرسل لي أحد الأخوة هذا"
-status: draft
+status: published
 published_at: 2019-02-28
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا خبر منشور في موقع يورابيا"
-status: draft
+status: published
 published_at: 2019-03-13
 person: abu-jafar-al-khalifi
 ---

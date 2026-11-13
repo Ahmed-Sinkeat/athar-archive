@@ -1,6 +1,6 @@
 ---
 title: "باب فيمن دافع البلاء من الولاة بإزالة المنكرات والرفق بالرعية."
-status: draft
+status: published
 published_at: 2020-04-13
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا المنشور حُذِف فعلًا كمثل منشور طاعة الزوج."
-status: draft
+status: published
 published_at: 2022-05-02
 person: abu-jafar-al-khalifi
 ---

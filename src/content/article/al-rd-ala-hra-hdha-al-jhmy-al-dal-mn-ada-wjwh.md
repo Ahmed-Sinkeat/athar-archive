@@ -1,6 +1,6 @@
 ---
 title: "الرد على هراء هذا الجهمي الضال من عدة وجوه"
-status: draft
+status: published
 published_at: 2024-03-25
 person: abu-umair-imran-al-zubaidi
 ---

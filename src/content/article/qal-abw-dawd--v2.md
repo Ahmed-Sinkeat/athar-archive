@@ -1,6 +1,6 @@
 ---
 title: "قال أبو داود"
-status: draft
+status: published
 published_at: 2018-11-01
 person: abu-jafar-al-khalifi
 ---

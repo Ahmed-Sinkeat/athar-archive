@@ -1,6 +1,6 @@
 ---
 title: "الحق أحيانا يكون مرا ويثقل والله على قائله قبل سامعه أو قارئه"
-status: draft
+status: published
 published_at: 2018-08-17
 person: abu-jafar-al-khalifi
 ---

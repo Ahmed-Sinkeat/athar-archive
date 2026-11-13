@@ -1,6 +1,6 @@
 ---
 title: "الوحيد الذي أصيب باختراق هو صاحب المنشور، فلا شك أنه جاء بها من مواقع الرافضة."
-status: draft
+status: published
 published_at: 2025-06-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "نقلا عن صفحة حصن المسلم في الفيس ( تنبيه الأخ الذي يديرها يعيش في هولندا )"
-status: draft
+status: published
 published_at: 2019-01-06
 person: abu-jafar-al-khalifi
 ---

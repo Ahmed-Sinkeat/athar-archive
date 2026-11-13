@@ -1,6 +1,6 @@
 ---
 title: "حتى أنك تجد فئة \"مسلمة\" عندها موقف معين من هذا الباب؛ حيث أنها تجيز الاستغاثة با"
-status: draft
+status: published
 published_at: 2025-02-18
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat", "tazkiyat-al-nafs"]

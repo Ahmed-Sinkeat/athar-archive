@@ -1,6 +1,6 @@
 ---
 title: "بحث في درجة تشيع عباد بن يعقوب الرواجني.."
-status: draft
+status: published
 published_at: 2021-08-30
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "رأيت عدداً من الأشعرية يتداولون هذه الصورة ويحتفون بها"
-status: draft
+status: published
 published_at: 2024-02-08
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

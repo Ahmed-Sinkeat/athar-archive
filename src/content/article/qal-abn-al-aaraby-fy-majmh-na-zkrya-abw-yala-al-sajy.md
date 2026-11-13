@@ -1,6 +1,6 @@
 ---
 title: "قال ابن الأعرابي في معجمه 1563 - نا زكريا أبو يعلى الساجي"
-status: draft
+status: published
 published_at: 2017-10-08
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

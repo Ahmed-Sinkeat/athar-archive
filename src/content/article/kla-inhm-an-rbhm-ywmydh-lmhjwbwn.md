@@ -1,6 +1,6 @@
 ---
 title: "كَلَّا إِنَّهُمْ عَن رَّبِّهِمْ يَوْمَئِذٍ لَّمَحْجُوبُونَ (15)"
-status: draft
+status: published
 published_at: 2025-10-16
 person: abu-umair-imran-al-zubaidi
 ---

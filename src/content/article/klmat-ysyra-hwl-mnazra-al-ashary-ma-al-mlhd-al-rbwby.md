@@ -1,6 +1,6 @@
 ---
 title: "كلمات يسيرة حول مناظرة الأشعري مع الملحد الربوبي."
-status: draft
+status: published
 published_at: 2020-07-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "السَّلام عليكم ورحمة الله وبركاته"
-status: draft
+status: published
 published_at: 2025-05-08
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran"]

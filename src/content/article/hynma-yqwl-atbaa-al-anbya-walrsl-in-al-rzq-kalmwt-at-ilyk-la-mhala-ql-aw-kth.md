@@ -1,6 +1,6 @@
 ---
 title: "حينما يقول أتباع الأنبياء والرسل إنّ الرزق كالموت آتٍ إليك لا محالة — قلَّ أو كث"
-status: draft
+status: published
 published_at: 2025-10-12
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

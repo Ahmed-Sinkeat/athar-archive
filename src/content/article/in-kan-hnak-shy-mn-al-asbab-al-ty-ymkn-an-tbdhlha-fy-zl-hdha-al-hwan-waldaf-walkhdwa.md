@@ -1,6 +1,6 @@
 ---
 title: "إن كان هناك شيء من الأسباب التي يمكن أن تبذلها في ظل هذا الهوان والضعف والخضوع؛"
-status: draft
+status: published
 published_at: 2023-10-12
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "سنن الإمام سعيد بن منصور (ولد ١٣٧ هـ) (ت ٢٢٧ هـ)"
-status: draft
+status: published
 published_at: 2023-06-11
 person: abu-abdillah-firas-al-ramli
 ---

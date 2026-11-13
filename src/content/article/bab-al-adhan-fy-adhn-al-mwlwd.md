@@ -1,6 +1,6 @@
 ---
 title: "باب الآذان في أذن المولود"
-status: draft
+status: published
 published_at: 2024-10-19
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

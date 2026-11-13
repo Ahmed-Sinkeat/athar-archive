@@ -1,6 +1,6 @@
 ---
 title: "حينما تغضب لله ورسوله يقولون لك : ألا تتحلى بأخلاق الرسول وحلمه؟"
-status: draft
+status: published
 published_at: 2025-07-10
 person: abu-umair-imran-al-zubaidi
 ---

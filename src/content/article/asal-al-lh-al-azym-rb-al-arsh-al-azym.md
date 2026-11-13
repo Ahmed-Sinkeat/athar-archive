@@ -1,6 +1,6 @@
 ---
 title: "أسأل الله العظيم رب العرش العظيم"
-status: draft
+status: published
 published_at: 2026-07-28
 person: abu-umair-imran-al-zubaidi
 ---

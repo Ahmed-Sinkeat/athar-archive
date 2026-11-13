@@ -1,6 +1,6 @@
 ---
 title: "العديد ممن يتكلم عن الفتوحات الإسلامية يصور العالم على أنه كان جنة أهلها متسالمو"
-status: draft
+status: published
 published_at: 2019-05-20
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

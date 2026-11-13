@@ -1,6 +1,6 @@
 ---
 title: "في أعراسنا كوارث ومخالفات شرعية يشيب لها شعر الرأس والله!!"
-status: draft
+status: published
 published_at: 2022-08-16
 person: abu-umair-imran-al-zubaidi
 ---

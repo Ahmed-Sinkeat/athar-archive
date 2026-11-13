@@ -1,6 +1,6 @@
 ---
 title: "هناك من يبلّغ عن القناة، لا أدري من هو، ولا على أي شيء بالتحديد؟"
-status: draft
+status: published
 published_at: 2025-02-06
 person: abu-umair-imran-al-zubaidi
 ---

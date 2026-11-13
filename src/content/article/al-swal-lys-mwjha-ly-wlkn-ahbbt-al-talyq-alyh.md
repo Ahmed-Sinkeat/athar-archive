@@ -1,6 +1,6 @@
 ---
 title: "السؤال ليس موجها لي، ولكن أحببت التعليق عليه."
-status: draft
+status: published
 published_at: 2024-08-07
 person: abu-umair-imran-al-zubaidi
 ---

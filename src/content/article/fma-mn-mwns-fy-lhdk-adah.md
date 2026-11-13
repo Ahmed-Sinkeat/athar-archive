@@ -1,6 +1,6 @@
 ---
 title: "فما من مؤنسٍ في لحدك عداه"
-status: draft
+status: published
 published_at: 2024-02-19
 person: abu-umair-imran-al-zubaidi
 ---

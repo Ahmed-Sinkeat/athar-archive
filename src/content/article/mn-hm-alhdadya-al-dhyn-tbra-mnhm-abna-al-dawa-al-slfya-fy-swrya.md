@@ -1,6 +1,6 @@
 ---
 title: "من هم #الحدادية الذين تبرأ منهم أبناء الدعوة السلفية في سوريا؟"
-status: draft
+status: published
 published_at: 2026-08-01
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat", "al-wala-wal-bara"]

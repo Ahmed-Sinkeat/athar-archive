@@ -1,6 +1,6 @@
 ---
 title: "ولعل بعض من يقرأ هذا الكلام يحسب أنه لابن تيمية أو لابن القيم أو لبعض من تأثر به"
-status: draft
+status: published
 published_at: 2019-05-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

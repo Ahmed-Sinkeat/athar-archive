@@ -1,6 +1,6 @@
 ---
 title: "أنا لا أفهم من يشعر بالشفقة أو الرأفة تجاه ما يفعله الشباب مع المجرمين الشبيحة ا"
-status: draft
+status: published
 published_at: 2024-12-29
 person: abu-umair-imran-al-zubaidi
 ---

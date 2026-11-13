@@ -1,6 +1,6 @@
 ---
 title: "ما أطيبه من ترغيب: قوموا إلى كفاراتكم"
-status: draft
+status: published
 published_at: 2022-02-13
 person: abu-jafar-al-khalifi
 ---

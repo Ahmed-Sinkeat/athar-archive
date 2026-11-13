@@ -1,6 +1,6 @@
 ---
 title: "اللجوء إلى ( التعبدية )"
-status: draft
+status: published
 published_at: 2020-07-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

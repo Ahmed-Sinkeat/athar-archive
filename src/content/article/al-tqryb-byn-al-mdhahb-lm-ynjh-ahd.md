@@ -1,6 +1,6 @@
 ---
 title: "التقريب بين المذاهب: لم ينجح أحد!"
-status: draft
+status: published
 published_at: 2021-09-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

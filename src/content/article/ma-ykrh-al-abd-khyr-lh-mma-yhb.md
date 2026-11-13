@@ -1,6 +1,6 @@
 ---
 title: "ما يكره العبد خير له مما يحب"
-status: draft
+status: published
 published_at: 2026-02-21
 person: abu-abdillah-firas-al-ramli
 ---

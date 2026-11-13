@@ -1,6 +1,6 @@
 ---
 title: "لا تعط الحكمة من لا يريدها"
-status: draft
+status: published
 published_at: 2024-03-19
 person: abu-abdillah-firas-al-ramli
 ---

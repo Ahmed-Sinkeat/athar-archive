@@ -1,6 +1,6 @@
 ---
 title: "قاعدة في القابليات الأخلاقية"
-status: draft
+status: published
 published_at: 2019-12-12
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "هذا خبر قبل عدة أعوام عن خلاف داخل الكيان الصهيوني"
-status: draft
+status: published
 published_at: 2023-10-23
 person: abu-jafar-al-khalifi
 ---

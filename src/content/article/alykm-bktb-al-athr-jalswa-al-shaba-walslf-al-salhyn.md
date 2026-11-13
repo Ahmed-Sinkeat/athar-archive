@@ -1,6 +1,6 @@
 ---
 title: "عليكم بكتب الأثر جالسوا الصحابة والسلف الصالحين"
-status: draft
+status: published
 published_at: 2023-05-24
 person: abu-abdillah-firas-al-ramli
 ---

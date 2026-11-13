@@ -1,6 +1,6 @@
 ---
 title: "من أغبى المخاوف هو الخوف من فناء الجنس البشري أو دمار الأرض بسبب كارثة \"طبيعية\""
-status: draft
+status: published
 published_at: 2023-09-20
 person: abu-umair-imran-al-zubaidi
 ---

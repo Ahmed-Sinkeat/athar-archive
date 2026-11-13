@@ -1,6 +1,6 @@
 ---
 title: "هذا تعليق حسن من امرأة على تلك المقاطع التي انتشرت لرقص فتيات في الثانوية في الش"
-status: draft
+status: published
 published_at: 2026-07-18
 person: abu-jafar-al-khalifi
 ---

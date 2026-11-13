@@ -1,6 +1,6 @@
 ---
 title: "يقول الناشط المؤيد لإسرائيل مايكل رابابورت إن غزة أصبحت \"جحيماً\" بسبب \"الأشخاص ا"
-status: draft
+status: published
 published_at: 2025-07-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

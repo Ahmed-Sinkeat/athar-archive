@@ -1,6 +1,6 @@
 ---
 title: "كيف أخشع في الصلاة؟!"
-status: draft
+status: published
 published_at: 2023-03-12
 person: abu-umair-imran-al-zubaidi
 ---

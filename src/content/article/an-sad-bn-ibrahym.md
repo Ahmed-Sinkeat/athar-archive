@@ -1,6 +1,6 @@
 ---
 title: "عن سعد بن إبراهيم"
-status: draft
+status: published
 published_at: 2023-10-07
 person: abu-abdillah-firas-al-ramli
 ---

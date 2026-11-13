@@ -1,6 +1,6 @@
 ---
 title: "قراءة في كتاب [ الجامع في عقائد ورسائل أهل السنة والأثر"
-status: draft
+status: published
 published_at: 2017-12-14
 person: abu-jafar-al-khalifi
 ---

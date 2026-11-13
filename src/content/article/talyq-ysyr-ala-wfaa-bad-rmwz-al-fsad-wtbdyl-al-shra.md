@@ -1,6 +1,6 @@
 ---
 title: "تعليق يسير على وفاة بعض رموز الفساد وتبديل الشرع"
-status: draft
+status: published
 published_at: 2019-07-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

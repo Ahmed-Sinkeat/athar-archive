@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الرحمن الميداني في أجنحة المكر الثلاثة"
-status: draft
+status: published
 published_at: 2017-06-18
 person: abu-jafar-al-khalifi
 ---

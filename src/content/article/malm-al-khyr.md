@@ -1,6 +1,6 @@
 ---
 title: "معلم الخير"
-status: draft
+status: published
 published_at: 2024-08-29
 person: abu-abdillah-firas-al-ramli
 ---

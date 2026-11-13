@@ -1,6 +1,6 @@
 ---
 title: "منذ أيام وأنا أفكر بعمل جليل يجلب أجرًا عظيمًا في هذه الأيام حتى إنني أعدت قراءة"
-status: draft
+status: published
 published_at: 2023-06-26
 person: abu-jafar-al-khalifi
 ---

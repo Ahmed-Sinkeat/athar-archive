@@ -1,6 +1,6 @@
 ---
 title: "وقال الشيخ كما في مجموع الفتاوى"
-status: draft
+status: published
 published_at: 2019-10-25
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

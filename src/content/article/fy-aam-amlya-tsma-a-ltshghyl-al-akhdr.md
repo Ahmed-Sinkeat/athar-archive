@@ -1,6 +1,6 @@
 ---
 title: "في عام 1949 عملية تسمى \"ا لتشغيل الأخضر"
-status: draft
+status: published
 published_at: 2017-06-23
 person: abu-jafar-al-khalifi
 ---

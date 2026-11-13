@@ -1,6 +1,6 @@
 ---
 title: "هل صح عن السلف أنهم كانوا يتركون مجالس العلم في رمضان"
-status: draft
+status: published
 published_at: 2020-04-21
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "قال البغوي في التهذيب في فقه الشافعي (7/279)"
-status: draft
+status: published
 published_at: 2018-02-27
 person: abu-jafar-al-khalifi
 ---

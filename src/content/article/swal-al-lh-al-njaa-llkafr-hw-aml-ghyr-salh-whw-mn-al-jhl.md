@@ -1,6 +1,6 @@
 ---
 title: "سؤال اللهَ النجاة للكافر هو عمل غير صالح وهو من الجهل!"
-status: draft
+status: published
 published_at: 2025-04-23
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

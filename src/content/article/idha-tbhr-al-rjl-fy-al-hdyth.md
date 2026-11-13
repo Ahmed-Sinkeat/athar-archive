@@ -1,6 +1,6 @@
 ---
 title: "إذا تبحر الرجل في الحديث"
-status: draft
+status: published
 published_at: 2024-08-10
 person: abu-abdillah-firas-al-ramli
 ---

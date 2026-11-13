@@ -1,6 +1,6 @@
 ---
 title: "من القرآن تخصم وتظن أن به تخاصم !"
-status: draft
+status: published
 published_at: 2020-05-27
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "جواب النبي ﷺ الذي قطع الطريق على أهل النفاق..."
-status: draft
+status: published
 published_at: 2023-12-09
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-iman"]

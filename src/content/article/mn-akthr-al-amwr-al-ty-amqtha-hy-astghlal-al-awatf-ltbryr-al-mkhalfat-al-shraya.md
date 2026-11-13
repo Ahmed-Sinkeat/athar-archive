@@ -1,6 +1,6 @@
 ---
 title: "من أكثر الأمور التي أمقتها هي استغلال العواطف لتبرير المخالفات الشرعية"
-status: draft
+status: published
 published_at: 2023-10-26
 person: abu-umair-imran-al-zubaidi
 ---

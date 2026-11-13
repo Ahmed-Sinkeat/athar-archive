@@ -1,6 +1,6 @@
 ---
 title: "بداية سورة العنكبوت وآخرها في خطبة ابن الزبير."
-status: draft
+status: published
 published_at: 2026-10-26
 person: abu-jafar-al-khalifi
 ---

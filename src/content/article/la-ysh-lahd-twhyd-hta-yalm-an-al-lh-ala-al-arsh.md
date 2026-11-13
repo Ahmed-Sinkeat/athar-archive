@@ -1,6 +1,6 @@
 ---
 title: "لا يصح لأحد توحيد حتى يعلم أن الله على العرش"
-status: draft
+status: published
 published_at: 2026-04-03
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "حتى لا يتسلّط عليك جهمي عابد للعدم لا تنسى أنّ أتباع الأنبياء والرسل يؤولون النص"
-status: draft
+status: published
 published_at: 2024-05-10
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

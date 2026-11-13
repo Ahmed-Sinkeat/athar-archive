@@ -1,6 +1,6 @@
 ---
 title: "فوشي بها أنها عندي فطلبت مني وحضرت وأنا في شدة وقد تغير لوني فقالت ما بدا لك وما"
-status: draft
+status: published
 published_at: 2019-12-28
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

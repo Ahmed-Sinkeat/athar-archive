@@ -1,6 +1,6 @@
 ---
 title: "قسمت الصلاة بيني وبين عبدي نصفين"
-status: draft
+status: published
 published_at: 2025-08-01
 person: abu-abdillah-firas-al-ramli
 ---

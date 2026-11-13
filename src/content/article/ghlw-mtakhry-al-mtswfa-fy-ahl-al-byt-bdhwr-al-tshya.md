@@ -1,6 +1,6 @@
 ---
 title: "غلو متأخري المتصوفة في أهل البيت (بذور التشيع)."
-status: draft
+status: published
 published_at: 2023-05-31
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "في رحاب الكوفيين في زمن التابعين"
-status: draft
+status: published
 published_at: 2019-11-11
 person: abu-jafar-al-khalifi
 ---

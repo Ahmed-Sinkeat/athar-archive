@@ -1,6 +1,6 @@
 ---
 title: "على غرار ذلك الوضاع الذي جاءه ولده يبكي وقد ضربه المعلم فقال والله لأخزينه ثم وض"
-status: draft
+status: published
 published_at: 2019-01-21
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

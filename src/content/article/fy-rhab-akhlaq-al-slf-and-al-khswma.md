@@ -1,6 +1,6 @@
 ---
 title: "في رحاب أخلاق السلف عند الخصومة"
-status: draft
+status: published
 published_at: 2020-02-22
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

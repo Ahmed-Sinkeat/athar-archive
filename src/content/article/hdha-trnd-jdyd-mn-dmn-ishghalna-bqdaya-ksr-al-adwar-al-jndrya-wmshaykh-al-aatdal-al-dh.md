@@ -1,6 +1,6 @@
 ---
 title: "هذا (ترند) جديد من ضمن إشغالنا بقضايا (كسر الأدوار الجندرية) ومشايخ الاعتدال الذ"
-status: draft
+status: published
 published_at: 2026-10-11
 person: abu-jafar-al-khalifi
 ---

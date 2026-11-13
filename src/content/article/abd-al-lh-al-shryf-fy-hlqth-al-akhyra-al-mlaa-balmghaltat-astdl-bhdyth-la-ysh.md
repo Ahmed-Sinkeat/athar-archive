@@ -1,6 +1,6 @@
 ---
 title: "عبد الله الشريف في حلقته الأخيرة الملأى بالمغالطات استدل بحديث لا يصح."
-status: draft
+status: published
 published_at: 2025-06-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-imamah-was-sahabah", "al-sunnah-wal-bidah"]

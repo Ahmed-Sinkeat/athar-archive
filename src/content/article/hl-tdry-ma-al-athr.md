@@ -1,6 +1,6 @@
 ---
 title: "هل تدرِي ما الأثر؟"
-status: draft
+status: published
 published_at: 2025-04-05
 person: awwab-bin-muhammad
 ---

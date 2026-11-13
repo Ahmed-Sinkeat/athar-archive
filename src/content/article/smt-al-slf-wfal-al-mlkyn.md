@@ -1,6 +1,6 @@
 ---
 title: "صمتُ السَّلف وفعل الملَكين"
-status: draft
+status: published
 published_at: 2025-07-03
 person: awwab-bin-muhammad
 ---

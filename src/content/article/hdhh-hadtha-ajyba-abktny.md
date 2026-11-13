@@ -1,6 +1,6 @@
 ---
 title: "هذه حادثة عجيبة أبكتني"
-status: draft
+status: published
 published_at: 2026-11-05
 person: abu-jafar-al-khalifi
 ---

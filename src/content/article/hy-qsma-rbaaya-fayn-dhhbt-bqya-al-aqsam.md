@@ -1,6 +1,6 @@
 ---
 title: "هي قسمة رباعية فأين ذهبت بقية الأقسام؟"
-status: draft
+status: published
 published_at: 2021-11-18
 person: abu-jafar-al-khalifi
 ---

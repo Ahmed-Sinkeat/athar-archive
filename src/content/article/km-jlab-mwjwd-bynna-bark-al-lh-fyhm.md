@@ -1,6 +1,6 @@
 ---
 title: "كم جُلَّاب موجود بيننا بارك الله فيهم :\")"
-status: draft
+status: published
 published_at: 2023-08-08
 person: abu-abdillah-firas-al-ramli
 ---

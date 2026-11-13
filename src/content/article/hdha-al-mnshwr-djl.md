@@ -1,6 +1,6 @@
 ---
 title: "هذا المنشور دجل."
-status: draft
+status: published
 published_at: 2024-11-26
 person: abu-jafar-al-khalifi
 ---

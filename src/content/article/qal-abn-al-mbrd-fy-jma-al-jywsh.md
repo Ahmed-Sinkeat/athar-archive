@@ -1,6 +1,6 @@
 ---
 title: "قال ابن المِبرد في جمع الجيوش"
-status: draft
+status: published
 published_at: 2024-02-05
 person: abu-umair-imran-al-zubaidi
 ---

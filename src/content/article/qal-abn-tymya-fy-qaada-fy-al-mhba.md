@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية في قاعدة في المحبة"
-status: draft
+status: published
 published_at: 2017-07-04
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

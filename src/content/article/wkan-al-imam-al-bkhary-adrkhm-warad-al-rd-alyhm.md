@@ -1,6 +1,6 @@
 ---
 title: "وكأن الإمام البخاري أدركهم وأراد الرد عليهم..."
-status: draft
+status: published
 published_at: 2024-04-13
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara", "al-sunnah-wal-bidah"]

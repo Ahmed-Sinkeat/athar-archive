@@ -1,6 +1,6 @@
 ---
 title: "القول في تأويل قوله جل ثناؤه"
-status: draft
+status: published
 published_at: 2025-02-28
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

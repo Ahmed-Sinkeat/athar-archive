@@ -1,6 +1,6 @@
 ---
 title: "وقد اتفقت الكلمة من المسلمين والكافرين أنّ الله في السماء"
-status: draft
+status: published
 published_at: 2024-01-08
 person: abu-umair-imran-al-zubaidi
 ---

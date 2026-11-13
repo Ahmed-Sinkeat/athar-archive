@@ -1,6 +1,6 @@
 ---
 title: "على سيرة الفتاة التي أزهقت روحها في مصر."
-status: draft
+status: published
 published_at: 2026-04-13
 person: abu-umair-imran-al-zubaidi
 ---

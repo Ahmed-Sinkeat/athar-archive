@@ -1,6 +1,6 @@
 ---
 title: "قول المفتونين: نشاهد المنكرات للاستمتاع ولا نتأثر"
-status: draft
+status: published
 published_at: 2024-02-03
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]

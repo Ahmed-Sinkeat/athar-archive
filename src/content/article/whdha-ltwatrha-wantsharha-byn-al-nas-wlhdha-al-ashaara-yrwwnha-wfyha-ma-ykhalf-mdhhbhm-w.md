@@ -1,6 +1,6 @@
 ---
 title: "وهذا لتواترها وانتشارها بين الناس ولهذا الأشاعرة يروونها وفيها ما يخالف مذهبهم و"
-status: draft
+status: published
 published_at: 2019-10-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

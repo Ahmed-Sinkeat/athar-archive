@@ -1,6 +1,6 @@
 ---
 title: "حديث المسلسل بالأولية وقصة موسى والخضر..."
-status: draft
+status: published
 published_at: 2023-12-22
 person: abu-jafar-al-khalifi
 ---

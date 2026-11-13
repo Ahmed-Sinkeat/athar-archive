@@ -1,6 +1,6 @@
 ---
 title: "مستفاد من بعض الإخوة"
-status: draft
+status: published
 published_at: 2025-06-09
 person: abu-jafar-al-khalifi
 ---

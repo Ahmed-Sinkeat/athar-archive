@@ -1,6 +1,6 @@
 ---
 title: "جاء شذرات الذهب في أخبار من ذهب في وفيات عام 796"
-status: draft
+status: published
 published_at: 2018-02-27
 person: abu-jafar-al-khalifi
 ---

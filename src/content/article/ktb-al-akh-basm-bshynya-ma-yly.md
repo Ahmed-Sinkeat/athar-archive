@@ -1,6 +1,6 @@
 ---
 title: "كتب الأخ باسم بشينية ما يلي"
-status: draft
+status: published
 published_at: 2019-12-29
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

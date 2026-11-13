@@ -1,6 +1,6 @@
 ---
 title: "كتب الأخ حسام بن سيف"
-status: draft
+status: published
 published_at: 2020-01-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

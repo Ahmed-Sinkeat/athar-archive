@@ -1,6 +1,6 @@
 ---
 title: "نقلاً عن صفحة د/ ياسر سليمان - باحث دكتوراة مصري مقيم بألمانيا"
-status: draft
+status: published
 published_at: 2019-06-10
 person: abu-jafar-al-khalifi
 ---

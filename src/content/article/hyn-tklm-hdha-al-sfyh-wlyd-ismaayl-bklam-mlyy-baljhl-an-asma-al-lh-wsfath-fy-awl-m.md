@@ -1,6 +1,6 @@
 ---
 title: "حين تكلم هذا السفيه وليد إسماعيل بكلام مليئ بالجهل عن أسماء الله وصفاته في أول م"
-status: draft
+status: published
 published_at: 2024-06-27
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

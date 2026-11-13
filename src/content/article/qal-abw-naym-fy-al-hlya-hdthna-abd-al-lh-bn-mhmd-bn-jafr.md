@@ -1,6 +1,6 @@
 ---
 title: "قال أبو نعيم في الحلية حدثنا عبد الله بن محمد بن جعفر"
-status: draft
+status: published
 published_at: 2018-07-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

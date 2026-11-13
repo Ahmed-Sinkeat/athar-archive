@@ -1,6 +1,6 @@
 ---
 title: "اليوم ارتفع ضغطي من أحدهم كان يسألني عن ملك اليمين"
-status: draft
+status: published
 published_at: 2023-05-18
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

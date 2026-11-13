@@ -1,6 +1,6 @@
 ---
 title: "كثير من أهل الذنوب أو الظلم يُبرِّرون ما يصنعون ببعض التبريرات"
-status: draft
+status: published
 published_at: 2021-08-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

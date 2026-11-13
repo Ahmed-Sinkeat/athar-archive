@@ -1,6 +1,6 @@
 ---
 title: "بماذا امتلأ جوفك؟ (الحديث الذي أخاف علماء اللغة)..."
-status: draft
+status: published
 published_at: 2024-11-14
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

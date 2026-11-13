@@ -1,6 +1,6 @@
 ---
 title: "التشويش على الأصول بحجة الاختلاف في بعض الفروع."
-status: draft
+status: published
 published_at: 2023-07-21
 person: abu-jafar-al-khalifi
 ---

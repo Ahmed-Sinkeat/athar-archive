@@ -1,6 +1,6 @@
 ---
 title: "في كل مرة يفشلون عسكريُا يلجئون إلى ضرب المستشفيات والأبرياء ويثخنون في المسلمين"
-status: draft
+status: published
 published_at: 2023-11-03
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الله بن الإمام أحمد بن حنبل"
-status: draft
+status: published
 published_at: 2023-07-13
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

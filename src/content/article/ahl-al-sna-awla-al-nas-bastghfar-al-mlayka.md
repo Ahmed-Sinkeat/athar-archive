@@ -1,6 +1,6 @@
 ---
 title: "أهل السنة أولى الناس باستغفار الملائكة"
-status: draft
+status: published
 published_at: 2021-07-14
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

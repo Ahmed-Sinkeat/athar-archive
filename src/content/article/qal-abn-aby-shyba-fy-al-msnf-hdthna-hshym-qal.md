@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي شيبة في المصنف 17924- حَدَّثَنَا هُشَيْمٌ قَالَ"
-status: draft
+status: published
 published_at: 2018-01-22
 person: abu-jafar-al-khalifi
 ---

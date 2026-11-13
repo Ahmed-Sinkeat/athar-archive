@@ -1,6 +1,6 @@
 ---
 title: "دعوة المسلم لأخيه في الله بظهر الغيب مستجابة"
-status: draft
+status: published
 published_at: 2023-05-10
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

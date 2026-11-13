@@ -1,6 +1,6 @@
 ---
 title: "علاج مثبطات الدعوة من القرآن الكريم."
-status: draft
+status: published
 published_at: 2020-08-17
 person: abu-jafar-al-khalifi
 ---

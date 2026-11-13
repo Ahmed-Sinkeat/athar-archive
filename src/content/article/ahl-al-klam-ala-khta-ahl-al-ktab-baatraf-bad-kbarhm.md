@@ -1,6 +1,6 @@
 ---
 title: "أهل الكلام على خطى أهل الكتاب باعتراف بعض كبارهم ..."
-status: draft
+status: published
 published_at: 2020-09-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

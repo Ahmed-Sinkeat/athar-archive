@@ -1,6 +1,6 @@
 ---
 title: "تعال يا فحل الفحول وأعطنا خطة مدروسة ومنهجية نعمل عليها حتى تتمكن هذه الشعوب الم"
-status: draft
+status: published
 published_at: 2023-10-12
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

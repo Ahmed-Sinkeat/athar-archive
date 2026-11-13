@@ -1,6 +1,6 @@
 ---
 title: "المنظمة الوطنية للمرأة"
-status: draft
+status: published
 published_at: 2024-11-08
 person: abu-jafar-al-khalifi
 ---

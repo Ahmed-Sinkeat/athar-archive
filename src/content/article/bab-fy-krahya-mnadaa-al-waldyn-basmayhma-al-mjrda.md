@@ -1,6 +1,6 @@
 ---
 title: "باب في كراهية مناداة الوالدين بأسمائهما المجردة"
-status: draft
+status: published
 published_at: 2025-09-20
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

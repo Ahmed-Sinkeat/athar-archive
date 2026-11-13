@@ -1,6 +1,6 @@
 ---
 title: "اطلبوا نعيما لا موت فيه ..."
-status: draft
+status: published
 published_at: 2023-07-15
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "٦) ليس عليك إنفاق المال للقراءة"
-status: draft
+status: published
 published_at: 2021-01-15
 person: abu-jafar-al-khalifi
 topics: ["adab-talab-al-ilm"]

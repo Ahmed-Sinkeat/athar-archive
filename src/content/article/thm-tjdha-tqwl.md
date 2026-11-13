@@ -1,6 +1,6 @@
 ---
 title: "ثم تجدها تقول"
-status: draft
+status: published
 published_at: 2020-10-10
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

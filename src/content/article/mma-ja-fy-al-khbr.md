@@ -1,6 +1,6 @@
 ---
 title: "مما جاء في الخبر"
-status: draft
+status: published
 published_at: 2021-12-07
 person: abu-jafar-al-khalifi
 ---

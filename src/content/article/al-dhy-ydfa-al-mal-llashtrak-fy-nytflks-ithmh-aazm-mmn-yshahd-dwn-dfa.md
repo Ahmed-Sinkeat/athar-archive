@@ -1,6 +1,6 @@
 ---
 title: "الذي يدفع المال للاشتراك في \"نيتفلكس\" إثمه أعظم ممن يشاهد دون دفع!"
-status: draft
+status: published
 published_at: 2023-08-18
 person: abu-umair-imran-al-zubaidi
 ---

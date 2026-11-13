@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال منشور في موقع قوة الإيجابية"
-status: draft
+status: published
 published_at: 2025-02-28
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

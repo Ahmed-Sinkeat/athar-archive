@@ -1,6 +1,6 @@
 ---
 title: "أكثر ما يقهرني في ظل ما يحدث الآن في محافظة السويداء وقتل عشرات المسلمين من قِبل"
-status: draft
+status: published
 published_at: 2025-07-15
 person: abu-umair-imran-al-zubaidi
 ---

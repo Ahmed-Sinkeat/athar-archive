@@ -1,6 +1,6 @@
 ---
 title: "هل إكراه الناس على أداء الفرائض سيجعلهم منافقين؟"
-status: draft
+status: published
 published_at: 2024-12-22
 person: abu-umair-imran-al-zubaidi
 ---

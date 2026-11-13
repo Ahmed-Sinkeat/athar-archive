@@ -1,6 +1,6 @@
 ---
 title: "فائدة نفيسة من شيخنا أبي جعفر رضي الله عنه."
-status: draft
+status: published
 published_at: 2024-09-02
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

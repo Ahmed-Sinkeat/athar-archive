@@ -1,6 +1,6 @@
 ---
 title: "طُعم إبليس الذي يُخرجهم به من الفطرة"
-status: draft
+status: published
 published_at: 2020-10-13
 person: abu-jafar-al-khalifi
 ---

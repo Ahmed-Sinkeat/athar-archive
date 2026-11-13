@@ -1,6 +1,6 @@
 ---
 title: "وَإِذْ قَالَ إِبْرَاهِيمُ رَبِّ اجْعَلْ هَٰذَا الْبَلَدَ آمِنًا وَاجْنُبْنِي وَب"
-status: draft
+status: published
 published_at: 2025-11-07
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

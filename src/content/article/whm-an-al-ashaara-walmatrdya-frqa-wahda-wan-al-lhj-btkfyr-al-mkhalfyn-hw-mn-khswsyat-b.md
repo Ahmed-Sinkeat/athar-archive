@@ -1,6 +1,6 @@
 ---
 title: "وهم أن الأشاعرة والماتردية فرقة واحدة وأن اللهج بتكفير المخالفين هو من خصوصيات ب"
-status: draft
+status: published
 published_at: 2018-11-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-sunnah-wal-bidah"]

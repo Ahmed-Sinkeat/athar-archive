@@ -1,6 +1,6 @@
 ---
 title: "أهل العلم يكتبون مالهم وما عليهم.."
-status: draft
+status: published
 published_at: 2022-06-27
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-sunnah-wal-bidah"]

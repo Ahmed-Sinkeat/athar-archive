@@ -1,6 +1,6 @@
 ---
 title: "لازم قولك يا جهمي أنّ الله تكلم بكلامٍ لا يقوى على استيعاب معناه عقول من خاطبهم"
-status: draft
+status: published
 published_at: 2024-03-18
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

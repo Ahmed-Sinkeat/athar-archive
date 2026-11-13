@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب مطالع البدور ومنازل السرور لعلي الغزولي البهائي"
-status: draft
+status: published
 published_at: 2019-12-28
 person: abu-jafar-al-khalifi
 ---

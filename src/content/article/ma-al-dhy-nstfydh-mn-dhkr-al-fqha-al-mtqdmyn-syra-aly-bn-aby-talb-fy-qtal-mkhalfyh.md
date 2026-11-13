@@ -1,6 +1,6 @@
 ---
 title: "ما الذي نستفيده من ذكر الفقهاء المتقدمين سيرة علي بن أبي طالب في قتال مخالفيه؟"
-status: draft
+status: published
 published_at: 2025-07-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

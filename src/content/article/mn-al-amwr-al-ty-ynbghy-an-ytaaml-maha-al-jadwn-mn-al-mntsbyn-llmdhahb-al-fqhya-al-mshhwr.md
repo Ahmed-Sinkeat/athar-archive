@@ -1,6 +1,6 @@
 ---
 title: "من الأمور التي ينبغي أن يتعامل معها الجادون من المنتسبين للمذاهب الفقهية المشهور"
-status: draft
+status: published
 published_at: 2019-09-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

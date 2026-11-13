@@ -1,6 +1,6 @@
 ---
 title: "الحمدلله رب العالمين والصلاة والسلام والسلام على نبينا محمد وعلى آله وصحبه أجمعي"
-status: draft
+status: published
 published_at: 2024-01-08
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

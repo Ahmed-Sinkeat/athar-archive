@@ -1,6 +1,6 @@
 ---
 title: "ما هي المشكلة مع الغارقين في الإعجاز العلمي في القرآن باعتبار أنه متعلق الحجية ل"
-status: draft
+status: published
 published_at: 2026-01-11
 person: abu-umair-imran-al-zubaidi
 ---

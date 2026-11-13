@@ -1,6 +1,6 @@
 ---
 title: "قال الكاتب ديفيد كلينجوفر (بالإنكليزية"
-status: draft
+status: published
 published_at: 2018-11-02
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "الصواب أن يقال"
-status: draft
+status: published
 published_at: 2026-01-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "في تركيا يوجد قانون في تجريم سب أتاتورك ولكن لا يوجد قانون في تجريم سب النبي صلى"
-status: draft
+status: published
 published_at: 2023-01-02
 person: abu-jafar-al-khalifi
 ---

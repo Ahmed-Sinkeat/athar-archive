@@ -1,6 +1,6 @@
 ---
 title: "لطيفة في الحكمة من تكنية الصبيان."
-status: draft
+status: published
 published_at: 2021-05-22
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

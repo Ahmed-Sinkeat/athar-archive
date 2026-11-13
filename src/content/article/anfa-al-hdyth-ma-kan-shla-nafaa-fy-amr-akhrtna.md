@@ -1,6 +1,6 @@
 ---
 title: "أنفع الحديث ما كان سهلا نافعا في أمر آخرتنا"
-status: draft
+status: published
 published_at: 2023-07-03
 person: abu-abdillah-firas-al-ramli
 ---

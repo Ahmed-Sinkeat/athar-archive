@@ -1,6 +1,6 @@
 ---
 title: "إنكار تفضيل الباري جل وعلا الرجال على النساء هو من جنس إنكار إبليس لفضل آدم ﷺ عل"
-status: draft
+status: published
 published_at: 2024-05-27
 person: abu-umair-imran-al-zubaidi
 ---

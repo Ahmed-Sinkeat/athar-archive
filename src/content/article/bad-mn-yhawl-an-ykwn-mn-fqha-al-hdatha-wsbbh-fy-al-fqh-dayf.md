@@ -1,6 +1,6 @@
 ---
 title: "بعض من يحاول أن يكون من فقهاء الحداثة وسببه في الفقه ضعيف"
-status: draft
+status: published
 published_at: 2019-02-04
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-wala-wal-bara"]

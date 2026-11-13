@@ -1,6 +1,6 @@
 ---
 title: "قال الله تعالى بعد أن ذكر سبحانه إباحة نكاح الإماء إن لم توجد حرائر مقدور على نك"
-status: draft
+status: published
 published_at: 2018-12-26
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

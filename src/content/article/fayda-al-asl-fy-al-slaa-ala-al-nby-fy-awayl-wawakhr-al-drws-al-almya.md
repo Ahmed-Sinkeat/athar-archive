@@ -1,6 +1,6 @@
 ---
 title: "فائدة: الأصل في الصلاة على النبي ﷺ في أوائل وأواخر الدروس العلمية…"
-status: draft
+status: published
 published_at: 2024-12-27
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

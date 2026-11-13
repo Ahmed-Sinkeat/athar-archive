@@ -1,6 +1,6 @@
 ---
 title: "جاء في شرح صحيح البخاري للشيخ ابن باز والذي طبع حديثاً [11/164"
-status: draft
+status: published
 published_at: 2026-03-01
 person: abu-jafar-al-khalifi
 ---

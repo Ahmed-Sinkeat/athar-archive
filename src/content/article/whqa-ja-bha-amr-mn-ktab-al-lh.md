@@ -1,6 +1,6 @@
 ---
 title: "وحقاً جاء بها عمر من كتاب الله"
-status: draft
+status: published
 published_at: 2019-01-05
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "إِنِّي وَجَدْتُ امْرَأَةً تَمْلِكُهُمْ وَأُوتِيَتْ مِنْ كُلِّ شَيْءٍ وَلَهَا عَر"
-status: draft
+status: published
 published_at: 2023-03-11
 person: abu-umair-imran-al-zubaidi
 ---

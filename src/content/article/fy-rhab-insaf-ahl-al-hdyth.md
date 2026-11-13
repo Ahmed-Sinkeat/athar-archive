@@ -1,6 +1,6 @@
 ---
 title: "في رحاب إنصاف أهل الحديث"
-status: draft
+status: published
 published_at: 2019-03-25
 person: abu-jafar-al-khalifi
 ---

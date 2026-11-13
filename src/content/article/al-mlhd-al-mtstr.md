@@ -1,6 +1,6 @@
 ---
 title: "الملحد المتستر"
-status: draft
+status: published
 published_at: 2019-04-22
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

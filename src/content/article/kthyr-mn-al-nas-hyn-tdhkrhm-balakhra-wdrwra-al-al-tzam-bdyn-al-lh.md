@@ -1,6 +1,6 @@
 ---
 title: "كثير من الناس حين تذكرهم بالآخرة وضرورة الالتزام بدين الله"
-status: draft
+status: published
 published_at: 2026-10-19
 person: abu-umair-imran-al-zubaidi
 ---

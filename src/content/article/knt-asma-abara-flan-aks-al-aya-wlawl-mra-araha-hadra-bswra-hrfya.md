@@ -1,6 +1,6 @@
 ---
 title: "كنت أسمع عبارة \"فلان عكَس الآية\" ولأول مرة أراها حاضرة بصورة حرفية."
-status: draft
+status: published
 published_at: 2024-06-30
 person: abu-jafar-al-khalifi
 ---

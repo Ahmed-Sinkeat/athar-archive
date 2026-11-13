@@ -1,6 +1,6 @@
 ---
 title: "مثل العالم والجاهل كمثل البَنَّاء والرَّقَّاص"
-status: draft
+status: published
 published_at: 2025-07-27
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

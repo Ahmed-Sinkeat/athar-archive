@@ -1,6 +1,6 @@
 ---
 title: "نجيب سايروس نصراني وليس ملحدا ويغفل تماما عن كون الحجاب شريعة في اليهودية والنصر"
-status: draft
+status: published
 published_at: 2019-11-11
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

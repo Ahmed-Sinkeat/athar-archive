@@ -1,6 +1,6 @@
 ---
 title: "يعذب الله الظالم بالظالم ثم يدخلهما النار جميعا"
-status: draft
+status: published
 published_at: 2025-06-13
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

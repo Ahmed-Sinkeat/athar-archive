@@ -1,6 +1,6 @@
 ---
 title: "حدثنا أبي ثنا أبو صالح كاتب الليث حدثني معاوية بن صالح عن علي بن أبي طلحة عن ابن"
-status: draft
+status: published
 published_at: 2025-02-20
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

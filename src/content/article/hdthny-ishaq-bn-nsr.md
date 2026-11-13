@@ -1,6 +1,6 @@
 ---
 title: "حدثني ‌إسحاق بن نصر"
-status: draft
+status: published
 published_at: 2023-09-01
 person: abu-umair-imran-al-zubaidi
 ---

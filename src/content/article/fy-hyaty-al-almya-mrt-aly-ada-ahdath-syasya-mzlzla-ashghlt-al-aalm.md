@@ -1,6 +1,6 @@
 ---
 title: "في حياتي العلمية مرت علي عدة أحداث سياسية مزلزلة أشغلت العالم .."
-status: draft
+status: published
 published_at: 2018-10-21
 person: abu-jafar-al-khalifi
 ---

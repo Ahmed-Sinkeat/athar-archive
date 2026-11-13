@@ -1,6 +1,6 @@
 ---
 title: "الشيعة الإمامية في هذا العصر دائما يتكلمون عن ثورة الحسين -رضي الله عنه - التي ي"
-status: draft
+status: published
 published_at: 2017-11-29
 person: abu-jafar-al-khalifi
 ---

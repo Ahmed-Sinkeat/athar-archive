@@ -1,6 +1,6 @@
 ---
 title: "بقدر ما يكون المجتمع متسامحا متوسعا في المباحات (=الزواج"
-status: draft
+status: published
 published_at: 2018-08-30
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

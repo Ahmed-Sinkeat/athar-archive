@@ -1,6 +1,6 @@
 ---
 title: "هذه الآيات تحثك على الدعوة ولا تصدك"
-status: draft
+status: published
 published_at: 2022-12-18
 person: abu-jafar-al-khalifi
 ---

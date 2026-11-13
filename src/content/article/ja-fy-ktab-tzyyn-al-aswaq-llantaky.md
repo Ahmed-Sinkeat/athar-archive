@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب تزيين الأسواق للأنطاكي"
-status: draft
+status: published
 published_at: 2020-01-02
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ما يجهله الكثيرون أنّ علاقة روسيا بسوريا ليست علاقة حادثة ولا يمكنك فكها بسهولة"
-status: draft
+status: published
 published_at: 2025-10-15
 person: abu-umair-imran-al-zubaidi
 ---

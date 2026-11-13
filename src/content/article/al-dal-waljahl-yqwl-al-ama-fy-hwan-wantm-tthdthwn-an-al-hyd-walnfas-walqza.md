@@ -1,6 +1,6 @@
 ---
 title: "الضال والجاهل يقول: الأمة في هوان وأنتم تتحدثون عن الحيض والنفاس والقزع."
-status: draft
+status: published
 published_at: 2025-09-16
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

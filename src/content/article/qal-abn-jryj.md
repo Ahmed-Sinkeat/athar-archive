@@ -1,6 +1,6 @@
 ---
 title: "قال ابن جريج"
-status: draft
+status: published
 published_at: 2025-09-27
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

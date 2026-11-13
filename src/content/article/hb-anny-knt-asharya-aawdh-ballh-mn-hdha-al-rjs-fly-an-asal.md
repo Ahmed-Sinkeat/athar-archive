@@ -1,6 +1,6 @@
 ---
 title: "هب أنني كنت أشعريا -أعوذ بالله من هذا الرجس- فلي أن أسأل"
-status: draft
+status: published
 published_at: 2025-05-11
 person: abu-umair-imran-al-zubaidi
 ---

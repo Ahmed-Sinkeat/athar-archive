@@ -1,6 +1,6 @@
 ---
 title: "تجارة تحرير المرأة، هل هي رابحة؟"
-status: draft
+status: published
 published_at: 2021-01-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "تعظيم الكفار وأنظمة حكمهم في مقابل المسلمين لما عندهم من حضارة وقوة وزخرف"
-status: draft
+status: published
 published_at: 2024-03-19
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

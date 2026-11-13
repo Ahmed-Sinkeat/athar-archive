@@ -1,6 +1,6 @@
 ---
 title: "كان هناك مجلة أدبية أمريكية اسمها باريس ريفيو أقامت لقاءات مع كبار الأدباء في ال"
-status: draft
+status: published
 published_at: 2026-07-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

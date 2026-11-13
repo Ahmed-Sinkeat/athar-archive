@@ -1,6 +1,6 @@
 ---
 title: "التعامل مع مخالفات النساء اليوم في ارتداء الزيّ الشرعي لا يكون ابتداءً في تحرير"
-status: draft
+status: published
 published_at: 2023-06-10
 person: abu-umair-imran-al-zubaidi
 ---

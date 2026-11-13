@@ -1,6 +1,6 @@
 ---
 title: "هذه الدول التي تكون المرأة في أغلبها؛ مديرة عملك"
-status: draft
+status: published
 published_at: 2021-04-06
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "قول عمر رضي الله عنه في غير ما مناسبة (دعني أضرب عنق هذا المنافق) دليل على ثبوت"
-status: draft
+status: published
 published_at: 2017-10-18
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

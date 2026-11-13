@@ -1,6 +1,6 @@
 ---
 title: "\"فإذا رأيتَ الرَجلَ ذوقُهُ وتشوُّقهُ إلى سماعِ الأبياتِ دونَ سماعِ الآيات"
-status: draft
+status: published
 published_at: 2023-08-20
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "\"فلقد أظهرت الدراسات الحديثة أنه بمجرد قيام الإنسان بسد احتياجاته الأساسية من ال"
-status: draft
+status: published
 published_at: 2018-02-02
 person: abu-jafar-al-khalifi
 ---

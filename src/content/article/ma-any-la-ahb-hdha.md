@@ -1,6 +1,6 @@
 ---
 title: "مع أني لا أحب هذا"
-status: draft
+status: published
 published_at: 2023-10-01
 person: abu-umair-imran-al-zubaidi
 ---

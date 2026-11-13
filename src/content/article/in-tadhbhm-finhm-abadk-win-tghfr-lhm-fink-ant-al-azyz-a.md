@@ -1,6 +1,6 @@
 ---
 title: "إن تعذبهم فإنهُمْ عِبَادُكَ وَإِنْ تَغْفِرْ لَهُمْ فَإِنَّكَ أَنْتَ الْعَزِيزُ ا"
-status: draft
+status: published
 published_at: 2018-04-13
 person: abu-jafar-al-khalifi
 ---

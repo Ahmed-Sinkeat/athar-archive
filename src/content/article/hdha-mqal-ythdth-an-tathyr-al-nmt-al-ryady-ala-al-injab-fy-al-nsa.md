@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال يتحدث عن تأثير النمط الرياضي على الإنجاب في النساء."
-status: draft
+status: published
 published_at: 2023-12-15
 person: abu-jafar-al-khalifi
 ---

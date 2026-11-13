@@ -1,6 +1,6 @@
 ---
 title: "قال محمد شحرور في مقاله عن التعامل مع السنة النبوية"
-status: draft
+status: published
 published_at: 2019-03-20
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

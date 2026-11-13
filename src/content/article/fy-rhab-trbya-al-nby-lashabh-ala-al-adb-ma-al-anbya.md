@@ -1,6 +1,6 @@
 ---
 title: "في رحاب تربية النبي ﷺ لأصحابه على الأدب مع الأنبياء."
-status: draft
+status: published
 published_at: 2020-08-27
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

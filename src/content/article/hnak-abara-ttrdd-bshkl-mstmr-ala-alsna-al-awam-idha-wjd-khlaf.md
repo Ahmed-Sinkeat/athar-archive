@@ -1,6 +1,6 @@
 ---
 title: "هناك عبارة تتردد بشكل مستمر على ألسنة العوام إذا وجد خلاف"
-status: draft
+status: published
 published_at: 2019-03-08
 person: abu-jafar-al-khalifi
 ---

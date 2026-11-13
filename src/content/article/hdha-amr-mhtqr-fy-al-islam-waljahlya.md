@@ -1,6 +1,6 @@
 ---
 title: "هذا أمر محتقر في الإسلام والجاهلية."
-status: draft
+status: published
 published_at: 2025-03-09
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "\"ستندمين إذا قررتِ في بيتك وتركت جامعتك وعملكِ، ولن تجدي من ينفق عليك\"."
-status: draft
+status: published
 published_at: 2024-01-03
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

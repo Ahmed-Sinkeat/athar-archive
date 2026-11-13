@@ -1,6 +1,6 @@
 ---
 title: "أحدهم أرسل لي مقاطع عن الرد على أصحاب الأرض المسطحة ونظرية المؤامرة وما أدري إيش"
-status: draft
+status: published
 published_at: 2025-02-20
 person: abu-umair-imran-al-zubaidi
 ---

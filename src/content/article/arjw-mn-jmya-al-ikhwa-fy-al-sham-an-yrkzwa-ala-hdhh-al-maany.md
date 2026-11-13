@@ -1,6 +1,6 @@
 ---
 title: "أرجو من جميع الإخوة في الشام أن يركزوا على هذه المعاني"
-status: draft
+status: published
 published_at: 2024-12-25
 person: abu-umair-imran-al-zubaidi
 ---

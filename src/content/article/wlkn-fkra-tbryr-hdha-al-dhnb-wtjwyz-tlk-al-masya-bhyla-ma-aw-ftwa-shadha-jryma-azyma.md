@@ -1,6 +1,6 @@
 ---
 title: "ولكن فكرة تبرير هذا الذنب وتجويز تلك المعصية بحيلة ما أو فتوى شاذة؛ جريمة عظيمة"
-status: draft
+status: published
 published_at: 2024-09-11
 person: abu-umair-imran-al-zubaidi
 ---

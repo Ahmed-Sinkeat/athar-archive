@@ -1,6 +1,6 @@
 ---
 title: "مِن أخص خصائص التوحيد ليس فقط أن تشهد بأن لا إله إلا الله؛ بل أن تبرأ إلى الله س"
-status: draft
+status: published
 published_at: 2023-03-08
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

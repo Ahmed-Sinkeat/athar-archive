@@ -1,6 +1,6 @@
 ---
 title: "حل الإشكالات وكشف الشبهات وتأثير الكوبرا"
-status: draft
+status: published
 published_at: 2022-11-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

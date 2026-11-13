@@ -1,6 +1,6 @@
 ---
 title: "قابلية العلمنة والذوبان في الفكر الشيعي الإمامي..."
-status: draft
+status: published
 published_at: 2026-03-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

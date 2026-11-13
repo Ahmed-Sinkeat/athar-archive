@@ -1,6 +1,6 @@
 ---
 title: "من أصدق العبارات التي سمعتها هي قول القائل \"شبابنا مبتلون بالدلع المعرفي\"!"
-status: draft
+status: published
 published_at: 2023-08-27
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال الشافعي في الأم وهو يتكلم عن إجارة الإبل"
-status: draft
+status: published
 published_at: 2018-03-18
 person: abu-jafar-al-khalifi
 ---

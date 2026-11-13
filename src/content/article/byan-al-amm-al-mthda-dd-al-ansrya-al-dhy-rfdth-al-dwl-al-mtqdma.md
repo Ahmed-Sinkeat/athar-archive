@@ -1,6 +1,6 @@
 ---
 title: "بيان الأمم المتحدة ضد العنصرية الذي رفضته الدول المتقدمة"
-status: draft
+status: published
 published_at: 2021-08-12
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري في \" الأدب المفرد \" ( رقم 777 )"
-status: draft
+status: published
 published_at: 2018-04-15
 person: abu-jafar-al-khalifi
 ---

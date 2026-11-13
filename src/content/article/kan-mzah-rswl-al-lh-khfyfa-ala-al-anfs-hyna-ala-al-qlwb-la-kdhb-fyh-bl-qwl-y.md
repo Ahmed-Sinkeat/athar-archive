@@ -1,6 +1,6 @@
 ---
 title: "كان مزاح رسول الله ﷺ خفيفاً على الأنفس هيِّناً على القلوب لا كـذِب فيه بل قولٌ ي"
-status: draft
+status: published
 published_at: 2025-05-18
 person: awwab-bin-muhammad
 ---

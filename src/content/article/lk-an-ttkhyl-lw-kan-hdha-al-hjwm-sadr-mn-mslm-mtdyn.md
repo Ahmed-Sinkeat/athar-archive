@@ -1,6 +1,6 @@
 ---
 title: "لك أن تتخيل لو كان هذا الهجوم صادر من مسلم متدين"
-status: draft
+status: published
 published_at: 2021-04-05
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

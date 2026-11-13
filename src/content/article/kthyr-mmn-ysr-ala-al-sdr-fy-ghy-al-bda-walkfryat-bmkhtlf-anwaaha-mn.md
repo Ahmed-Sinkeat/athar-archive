@@ -1,6 +1,6 @@
 ---
 title: "كثير ممن يُصِر على السَّدر في غيِّ البدع والكفريات بمختلف أنواعها من"
-status: draft
+status: published
 published_at: 2025-09-03
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]

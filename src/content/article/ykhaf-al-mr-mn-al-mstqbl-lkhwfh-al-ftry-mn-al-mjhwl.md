@@ -1,6 +1,6 @@
 ---
 title: "يخاف المرء من المستقبل لخوفه الفِطري من المجهول"
-status: draft
+status: published
 published_at: 2023-08-10
 person: abu-umair-imran-al-zubaidi
 ---

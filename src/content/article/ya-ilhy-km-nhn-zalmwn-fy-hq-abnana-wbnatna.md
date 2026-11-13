@@ -1,6 +1,6 @@
 ---
 title: "يا إلهي كم نحن ظالمون في حقّ أبناءنا وبناتنا!."
-status: draft
+status: published
 published_at: 2022-10-13
 person: abu-umair-imran-al-zubaidi
 ---

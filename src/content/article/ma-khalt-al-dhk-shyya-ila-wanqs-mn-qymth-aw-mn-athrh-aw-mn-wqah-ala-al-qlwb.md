@@ -1,6 +1,6 @@
 ---
 title: "ما خالط الضحكُ شيئًا إلّا وأنقص من قيمته أو من أثره أو من وقعه على القلوب!."
-status: draft
+status: published
 published_at: 2023-03-24
 person: abu-umair-imran-al-zubaidi
 ---

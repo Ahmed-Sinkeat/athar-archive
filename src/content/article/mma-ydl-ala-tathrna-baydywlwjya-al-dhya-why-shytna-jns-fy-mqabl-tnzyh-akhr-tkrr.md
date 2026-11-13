@@ -1,6 +1,6 @@
 ---
 title: "مما يدل على تأثرنا بأيديولوجيا الضحية ( وهي شيطنة جنس في مقابل تنزيه آخر ) تكرر"
-status: draft
+status: published
 published_at: 2020-01-06
 person: abu-jafar-al-khalifi
 ---

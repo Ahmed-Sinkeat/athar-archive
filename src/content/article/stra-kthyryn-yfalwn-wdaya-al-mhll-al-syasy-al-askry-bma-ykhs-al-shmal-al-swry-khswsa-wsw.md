@@ -1,6 +1,6 @@
 ---
 title: "سترى كثيرين يفعّلون وضعية المحلل السياسي العسكري بما يخص الشمال السوري خصوصا وسو"
-status: draft
+status: published
 published_at: 2024-11-28
 person: abu-umair-imran-al-zubaidi
 ---

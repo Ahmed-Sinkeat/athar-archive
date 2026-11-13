@@ -1,6 +1,6 @@
 ---
 title: "يلي بيسمع النسوان لما تقول لهم"
-status: draft
+status: published
 published_at: 2025-01-23
 person: abu-umair-imran-al-zubaidi
 ---

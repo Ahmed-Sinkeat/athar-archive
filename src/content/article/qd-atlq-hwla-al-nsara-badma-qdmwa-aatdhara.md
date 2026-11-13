@@ -1,6 +1,6 @@
 ---
 title: "قد أُطلِق هؤلاء النصارى بعدما قدَّموا اعتذارًا."
-status: draft
+status: published
 published_at: 2020-11-15
 person: abu-jafar-al-khalifi
 ---

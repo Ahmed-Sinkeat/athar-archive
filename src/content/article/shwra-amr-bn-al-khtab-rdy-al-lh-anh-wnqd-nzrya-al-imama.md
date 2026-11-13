@@ -1,6 +1,6 @@
 ---
 title: "شورى عمر بن الخطاب -رضي الله عنه- ونقض نظرية الإمامة."
-status: draft
+status: published
 published_at: 2023-07-01
 person: abu-jafar-al-khalifi
 ---

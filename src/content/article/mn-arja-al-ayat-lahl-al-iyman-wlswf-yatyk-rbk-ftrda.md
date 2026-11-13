@@ -1,6 +1,6 @@
 ---
 title: "من أرجى الآيات لأهل الإيمان: {ولسوف يعطيك ربك فترضى}..."
-status: draft
+status: published
 published_at: 2025-12-29
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

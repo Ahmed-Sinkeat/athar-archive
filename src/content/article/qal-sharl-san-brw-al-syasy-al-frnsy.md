@@ -1,6 +1,6 @@
 ---
 title: "قال شارل سان برو السياسي الفرنسي"
-status: draft
+status: published
 published_at: 2017-10-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

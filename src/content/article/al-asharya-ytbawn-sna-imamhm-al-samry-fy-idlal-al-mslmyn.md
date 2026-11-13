@@ -1,6 +1,6 @@
 ---
 title: "الأشعرية يتبعون سنة إمامهم السامري في إضلال المسلمين!"
-status: draft
+status: published
 published_at: 2025-08-16
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "من أقبح النساء تلك التي تذهب إلى الأسواق وتمازح البائعين وتخضع بالقول معهم وتكثر"
-status: draft
+status: published
 published_at: 2023-11-12
 person: abu-umair-imran-al-zubaidi
 ---

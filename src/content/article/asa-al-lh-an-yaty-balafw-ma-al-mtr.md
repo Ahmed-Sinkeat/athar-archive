@@ -1,6 +1,6 @@
 ---
 title: "عسى الله أن يأتي بالعفو مع المطر..."
-status: draft
+status: published
 published_at: 2025-11-21
 person: abu-jafar-al-khalifi
 ---

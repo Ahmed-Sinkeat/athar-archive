@@ -1,6 +1,6 @@
 ---
 title: "حكمة التشريع في الجمع بين الماء والتراب في حكم التطهير"
-status: draft
+status: published
 published_at: 2024-03-31
 person: abu-umair-imran-al-zubaidi
 ---

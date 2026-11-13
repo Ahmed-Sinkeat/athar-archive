@@ -1,6 +1,6 @@
 ---
 title: "ما زيادة الإيمان ونقصانه؟"
-status: draft
+status: published
 published_at: 2025-01-04
 person: abu-abdillah-firas-al-ramli
 ---

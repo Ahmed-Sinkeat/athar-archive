@@ -1,6 +1,6 @@
 ---
 title: "منذ قليل، جاءني أحدهم ليسأل عن منهجية فهم القرآن."
-status: draft
+status: published
 published_at: 2024-12-28
 person: abu-umair-imran-al-zubaidi
 ---

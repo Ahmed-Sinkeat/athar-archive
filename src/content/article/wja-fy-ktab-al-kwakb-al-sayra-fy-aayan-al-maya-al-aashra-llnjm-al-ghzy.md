@@ -1,6 +1,6 @@
 ---
 title: "وجاء في كتاب الكواكب السائرة في أعيان المائة العاشرة للنجم الغزي"
-status: draft
+status: published
 published_at: 2023-05-10
 person: abu-jafar-al-khalifi
 ---

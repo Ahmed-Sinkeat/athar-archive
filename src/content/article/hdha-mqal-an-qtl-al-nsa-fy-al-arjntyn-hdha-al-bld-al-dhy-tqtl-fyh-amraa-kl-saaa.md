@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال عن قتل النساء في الأرجنتين، هذا البلد الذي تقتل فيه امرأة كل 36 ساعة."
-status: draft
+status: published
 published_at: 2026-05-04
 person: abu-jafar-al-khalifi
 ---

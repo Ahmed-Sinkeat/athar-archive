@@ -1,6 +1,6 @@
 ---
 title: "لم يكن هناك متسع للحديث عن مثل هذا في ما سبق"
-status: draft
+status: published
 published_at: 2023-02-13
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

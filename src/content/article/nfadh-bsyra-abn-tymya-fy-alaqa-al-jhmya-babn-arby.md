@@ -1,6 +1,6 @@
 ---
 title: "نفاذ بصيرة ابن تيمية في علاقة الجهمية بابن عربي."
-status: draft
+status: published
 published_at: 2021-05-28
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

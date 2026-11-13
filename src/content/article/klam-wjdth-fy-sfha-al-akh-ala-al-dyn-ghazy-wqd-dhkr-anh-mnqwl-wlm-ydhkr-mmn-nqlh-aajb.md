@@ -1,6 +1,6 @@
 ---
 title: "كلام وجدته في صفحة الأخ علاء الدين غازي وقد ذكر أنه منقول ولم يذكر ممن نقله أعجب"
-status: draft
+status: published
 published_at: 2019-04-29
 person: abu-jafar-al-khalifi
 ---

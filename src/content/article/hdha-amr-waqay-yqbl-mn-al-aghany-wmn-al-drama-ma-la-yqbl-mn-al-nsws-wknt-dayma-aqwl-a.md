@@ -1,6 +1,6 @@
 ---
 title: "هذا أمر واقعي يقبل من الأغاني ومن الدراما ما لا يقبل من النصوص وكنت دائما أقول أ"
-status: draft
+status: published
 published_at: 2019-07-23
 person: abu-jafar-al-khalifi
 ---

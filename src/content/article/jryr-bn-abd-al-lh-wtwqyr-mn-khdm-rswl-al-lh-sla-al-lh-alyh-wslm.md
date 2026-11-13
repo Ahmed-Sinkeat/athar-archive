@@ -1,6 +1,6 @@
 ---
 title: "جرير بن عبد الله وتوقير من خدم رسول الله صلى الله عليه وسلم"
-status: draft
+status: published
 published_at: 2026-05-15
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

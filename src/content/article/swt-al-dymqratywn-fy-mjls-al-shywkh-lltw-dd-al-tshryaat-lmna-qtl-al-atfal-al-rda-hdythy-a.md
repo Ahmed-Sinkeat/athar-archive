@@ -1,6 +1,6 @@
 ---
 title: "صوت الديمقراطيون في مجلس الشيوخ للتو ضد التشريعات لمنع قتل الأطفال الرضع حديثي ا"
-status: draft
+status: published
 published_at: 2019-02-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

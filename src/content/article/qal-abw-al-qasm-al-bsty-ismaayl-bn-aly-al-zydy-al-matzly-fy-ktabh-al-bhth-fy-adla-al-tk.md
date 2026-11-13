@@ -1,6 +1,6 @@
 ---
 title: "قال أبو القاسم البستي إسماعيل بن علي الزيدي المعتزلي في كتابه البحث في أدلة التك"
-status: draft
+status: published
 published_at: 2019-01-18
 person: abu-jafar-al-khalifi
 ---

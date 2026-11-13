@@ -1,6 +1,6 @@
 ---
 title: "وأعطت العين للمرأة أشواقها المستبدة"
-status: draft
+status: published
 published_at: 2018-10-24
 person: abu-jafar-al-khalifi
 ---

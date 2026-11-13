@@ -1,6 +1,6 @@
 ---
 title: "كنت أتحدث مع أحد الأخوة وهو منزعج من مسألة أنّ الشاب حينما يتقدم لفتاة في العشري"
-status: draft
+status: published
 published_at: 2023-11-11
 person: abu-umair-imran-al-zubaidi
 ---

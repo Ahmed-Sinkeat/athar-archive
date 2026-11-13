@@ -1,6 +1,6 @@
 ---
 title: "الذي نستفيده هنا أن هذا الرجل الذي هو خريج مدرسة للعلوم الشرعية أصلاً وهي النظام"
-status: draft
+status: published
 published_at: 2018-08-04
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "عربات الكلاب في كوريا الجنوبية اليوم أكثر من عربات الأطفال، تخيل!"
-status: draft
+status: published
 published_at: 2025-09-12
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

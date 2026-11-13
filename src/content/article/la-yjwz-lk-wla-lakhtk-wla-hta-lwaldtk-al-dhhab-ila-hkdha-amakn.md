@@ -1,6 +1,6 @@
 ---
 title: "لا يجوز لكِ ولا لأختك ولا حتى لوالدتك الذهاب إلى هكذا أماكن"
-status: draft
+status: published
 published_at: 2023-12-30
 person: abu-umair-imran-al-zubaidi
 ---

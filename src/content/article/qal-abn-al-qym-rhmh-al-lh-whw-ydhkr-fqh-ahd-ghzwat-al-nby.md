@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم رحمه الله وهو يذكر فقه أحد غزوات النبي ﷺ"
-status: draft
+status: published
 published_at: 2023-07-16
 person: abu-abdillah-firas-al-ramli
 topics: ["al-iman", "al-sunnah-wal-bidah"]

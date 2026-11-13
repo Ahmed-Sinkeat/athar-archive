@@ -1,6 +1,6 @@
 ---
 title: "الأبناء المنسيون.."
-status: draft
+status: published
 published_at: 2022-02-19
 person: abu-jafar-al-khalifi
 ---

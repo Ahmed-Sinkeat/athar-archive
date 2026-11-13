@@ -1,6 +1,6 @@
 ---
 title: "السجود كاشفُ المشركين من المنتسبين للملة"
-status: draft
+status: published
 published_at: 2023-04-15
 person: abu-jafar-al-khalifi
 ---

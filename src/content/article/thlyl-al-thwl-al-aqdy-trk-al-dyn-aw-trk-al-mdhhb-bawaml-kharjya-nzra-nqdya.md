@@ -1,6 +1,6 @@
 ---
 title: "تحليل التحول العقدي (ترك الدين أو ترك المذهب) بعوامل خارجية (نظرة نقدية)."
-status: draft
+status: published
 published_at: 2024-02-04
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

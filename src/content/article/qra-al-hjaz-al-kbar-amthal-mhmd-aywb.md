@@ -1,6 +1,6 @@
 ---
 title: "قراء الحجاز الكبار أمثال محمد أيوب"
-status: draft
+status: published
 published_at: 2025-02-18
 person: abu-umair-imran-al-zubaidi
 ---

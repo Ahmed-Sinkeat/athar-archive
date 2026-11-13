@@ -1,6 +1,6 @@
 ---
 title: "في رحاب العابد الذي كانت محنته منحة"
-status: draft
+status: published
 published_at: 2022-12-03
 person: abu-jafar-al-khalifi
 ---

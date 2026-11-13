@@ -1,6 +1,6 @@
 ---
 title: "في الصحيح أن من الذين اختارهم عثمان لجمع المصحف على حرف واحد سعيد بن العاص"
-status: draft
+status: published
 published_at: 2018-02-20
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

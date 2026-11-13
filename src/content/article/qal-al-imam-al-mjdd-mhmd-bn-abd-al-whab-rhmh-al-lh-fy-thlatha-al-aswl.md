@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام المجدد محمد بن عبد الوهاب رحمه الله في «ثلاثةِ الأصول"
-status: draft
+status: published
 published_at: 2026-07-31
 person: awwab-bin-muhammad
 ---

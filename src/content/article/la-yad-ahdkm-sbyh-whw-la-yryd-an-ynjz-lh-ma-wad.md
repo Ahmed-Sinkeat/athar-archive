@@ -1,6 +1,6 @@
 ---
 title: "لا يعد أحدكم صبيه وهو لا يريد أن ينجز له ما وعد"
-status: draft
+status: published
 published_at: 2023-11-23
 person: abu-abdillah-firas-al-ramli
 ---

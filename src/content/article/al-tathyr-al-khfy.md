@@ -1,6 +1,6 @@
 ---
 title: "التأثير الخفي"
-status: draft
+status: published
 published_at: 2020-02-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

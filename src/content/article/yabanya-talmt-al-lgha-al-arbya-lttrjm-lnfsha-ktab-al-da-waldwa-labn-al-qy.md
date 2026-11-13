@@ -1,6 +1,6 @@
 ---
 title: "يابانية تعلمت اللُّغة العربية لتترجـم لنفسها كِتاب الدَّاء والدَّواء لابن القيِّ"
-status: draft
+status: published
 published_at: 2025-05-13
 person: awwab-bin-muhammad
 ---

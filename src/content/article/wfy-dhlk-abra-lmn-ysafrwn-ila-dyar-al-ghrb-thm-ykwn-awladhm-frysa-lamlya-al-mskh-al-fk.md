@@ -1,6 +1,6 @@
 ---
 title: "وفِي ذلك عبرة لمن يسافرون إلى ديار الغرب ثم يكون أولادهم فريسة لعملية المسخ الفك"
-status: draft
+status: published
 published_at: 2019-08-18
 person: abu-jafar-al-khalifi
 ---

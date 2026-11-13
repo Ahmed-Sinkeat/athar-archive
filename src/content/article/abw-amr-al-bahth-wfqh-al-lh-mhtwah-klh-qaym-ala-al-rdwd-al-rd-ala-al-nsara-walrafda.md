@@ -1,6 +1,6 @@
 ---
 title: "أبو عمر الباحث -وفقه الله- محتواه كله قائم على الردود؛ الرد على النصارى والرافضة"
-status: draft
+status: published
 published_at: 2024-01-17
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

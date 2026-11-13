@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري في صحيحه"
-status: draft
+status: published
 published_at: 2019-07-13
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

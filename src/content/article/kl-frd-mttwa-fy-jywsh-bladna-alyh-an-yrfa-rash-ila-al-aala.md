@@ -1,6 +1,6 @@
 ---
 title: "كل فرد \"متطوع\" في جيوش بلادنا عليه أن يرفع رأسه إلى الأعلى"
-status: draft
+status: published
 published_at: 2023-10-27
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لفت نظري وأنا أستمع لرد الأستاذ تامر اللبان على الأشعري الصوفي يسري جبر أن الأخي"
-status: draft
+status: published
 published_at: 2021-12-11
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

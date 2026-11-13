@@ -1,6 +1,6 @@
 ---
 title: "قال جورج بوش الجد في كتابه محمد صلى الله عليه وسلم مؤسس امبراطورية المسلمين ص٣٥٤"
-status: draft
+status: published
 published_at: 2017-12-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

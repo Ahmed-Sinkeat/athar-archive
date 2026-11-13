@@ -1,6 +1,6 @@
 ---
 title: "كراهية الشرب من فم الأسقية"
-status: draft
+status: published
 published_at: 2026-06-24
 person: abu-abdillah-firas-al-ramli
 ---

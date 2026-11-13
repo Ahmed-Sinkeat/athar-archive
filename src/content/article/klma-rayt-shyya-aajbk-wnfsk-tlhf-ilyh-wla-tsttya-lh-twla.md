@@ -1,6 +1,6 @@
 ---
 title: "كُلّما رأيتَ شيئًا أعجبكَ ونفسكَ تلهف إليه ولا تستطيع له طولًا"
-status: draft
+status: published
 published_at: 2023-03-19
 person: abu-umair-imran-al-zubaidi
 ---

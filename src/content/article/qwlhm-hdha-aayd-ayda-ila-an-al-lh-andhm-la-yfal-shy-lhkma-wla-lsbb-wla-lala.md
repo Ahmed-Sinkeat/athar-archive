@@ -1,6 +1,6 @@
 ---
 title: "قولهم هذا عائد أيضًا إلى أنّ الله عندهم لا يفعل شيء لحكمة، ولا لسبب ولا لعلة."
-status: draft
+status: published
 published_at: 2024-03-19
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

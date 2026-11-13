@@ -1,6 +1,6 @@
 ---
 title: "دومًا ما ننكر على النساء في هذا السياق"
-status: draft
+status: published
 published_at: 2024-01-05
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "مقاربة في مسألة التلازم بين التكفير والشهادة بالنار (في قول بعض العلماء).."
-status: draft
+status: published
 published_at: 2020-10-01
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

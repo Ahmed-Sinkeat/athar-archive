@@ -1,6 +1,6 @@
 ---
 title: "مع اقتراب شهر رمضان المبارك – أسأل الله أن يُبلغنا إياه جميعاً في صِحة وعافية"
-status: draft
+status: published
 published_at: 2026-02-13
 person: awwab-bin-muhammad
 ---

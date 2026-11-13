@@ -1,6 +1,6 @@
 ---
 title: "قول المرء لكم أنّ الكلام الذي تقولونه ظاهره النقد ولكنه ممزوج بالتحريض؛ أنه فتنة"
-status: draft
+status: published
 published_at: 2025-01-12
 person: abu-umair-imran-al-zubaidi
 ---

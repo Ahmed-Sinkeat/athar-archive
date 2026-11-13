@@ -1,6 +1,6 @@
 ---
 title: "أكثر شيء بيضحكني في حوارات الملا//حدة لما يحكولك بثقة عن وجود 4 آلاف دين"
-status: draft
+status: published
 published_at: 2023-01-10
 person: abu-umair-imran-al-zubaidi
 ---

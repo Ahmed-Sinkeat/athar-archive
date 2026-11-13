@@ -1,6 +1,6 @@
 ---
 title: "إن للعلم ثمنا"
-status: draft
+status: published
 published_at: 2026-01-17
 person: abu-abdillah-firas-al-ramli
 ---

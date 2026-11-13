@@ -1,6 +1,6 @@
 ---
 title: "والخلاصة أن هناك مسائل ظاهرة مطلقاً وهناك خفية وهناك مترددة والخفاء يراد به أنوا"
-status: draft
+status: published
 published_at: 2020-07-28
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

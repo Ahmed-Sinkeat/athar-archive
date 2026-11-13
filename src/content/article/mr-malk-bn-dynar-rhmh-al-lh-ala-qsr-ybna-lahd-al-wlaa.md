@@ -1,6 +1,6 @@
 ---
 title: "مر مالك بن دينار رحمه الله على قصر يبنى لأحد الولاة"
-status: draft
+status: published
 published_at: 2018-08-15
 person: abu-jafar-al-khalifi
 ---

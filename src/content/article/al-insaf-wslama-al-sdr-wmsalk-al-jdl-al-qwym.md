@@ -1,6 +1,6 @@
 ---
 title: "الإنصاف وسلامة الصدر ومسالك الجدل القويم..."
-status: draft
+status: published
 published_at: 2021-09-30
 person: abu-jafar-al-khalifi
 ---

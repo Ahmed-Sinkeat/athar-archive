@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام أبو القاسم الأصبهاني واصفاً حال هؤلاء العقلانيين في كتابه الحجة في بي"
-status: draft
+status: published
 published_at: 2017-06-30
 person: abu-jafar-al-khalifi
 ---

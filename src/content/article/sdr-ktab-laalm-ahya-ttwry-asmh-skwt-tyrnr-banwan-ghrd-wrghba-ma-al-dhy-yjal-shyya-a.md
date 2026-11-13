@@ -1,6 +1,6 @@
 ---
 title: "صدر كتاب لعالم أحياء تطوري اسمه سكوت تيرنر بعنوان غرض ورغبة ما الذي يجعل شيئاً ع"
-status: draft
+status: published
 published_at: 2018-04-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

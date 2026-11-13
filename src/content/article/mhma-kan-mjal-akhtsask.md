@@ -1,6 +1,6 @@
 ---
 title: "مهما كان مجال اختصاصك"
-status: draft
+status: published
 published_at: 2023-07-15
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

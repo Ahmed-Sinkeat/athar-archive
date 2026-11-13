@@ -1,6 +1,6 @@
 ---
 title: "موعظة من نصراني في الخمر!"
-status: draft
+status: published
 published_at: 2020-01-18
 person: abu-jafar-al-khalifi
 ---

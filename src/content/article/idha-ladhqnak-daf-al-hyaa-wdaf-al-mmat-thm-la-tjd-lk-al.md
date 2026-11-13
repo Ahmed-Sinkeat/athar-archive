@@ -1,6 +1,6 @@
 ---
 title: "إِذاً لَأَذَقْناكَ ضِعْفَ الْحَياةِ وَضِعْفَ الْمَماتِ ثُمَّ لا تَجِدُ لَكَ عَلَ"
-status: draft
+status: published
 published_at: 2017-06-29
 person: abu-jafar-al-khalifi
 ---

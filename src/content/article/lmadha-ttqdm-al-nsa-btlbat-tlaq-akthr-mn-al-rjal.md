@@ -1,6 +1,6 @@
 ---
 title: "\"لماذا تتقدم النساء بطلبات طلاق أكثر من الرجال\""
-status: draft
+status: published
 published_at: 2023-01-30
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

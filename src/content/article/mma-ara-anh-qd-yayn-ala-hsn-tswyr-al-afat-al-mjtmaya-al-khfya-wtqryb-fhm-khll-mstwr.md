@@ -1,6 +1,6 @@
 ---
 title: "مما أرى أنه قد يُعين على حسن تصوير الآفات المجتمعية الخفية وتقريب فهم خلل مُستور"
-status: draft
+status: published
 published_at: 2025-10-22
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

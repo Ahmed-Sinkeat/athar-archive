@@ -1,6 +1,6 @@
 ---
 title: "كتب أحمد أمين مقالاً في مجلة الرسالة في نعمة الألم وفيه"
-status: draft
+status: published
 published_at: 2018-02-04
 person: abu-jafar-al-khalifi
 ---

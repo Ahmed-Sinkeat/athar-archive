@@ -1,6 +1,6 @@
 ---
 title: "ما يقول الصائم إذا جُهل عليه أو شُتم"
-status: draft
+status: published
 published_at: 2026-02-19
 person: abu-abdillah-firas-al-ramli
 ---

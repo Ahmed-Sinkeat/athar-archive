@@ -1,6 +1,6 @@
 ---
 title: "تحكي الكاتبة (آن رويف) في كتاب لها عن الأمومة يحمل عنوانFruitful الذي نُشِرَ عام"
-status: draft
+status: published
 published_at: 2019-04-27
 person: abu-jafar-al-khalifi
 ---

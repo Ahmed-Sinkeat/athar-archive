@@ -1,6 +1,6 @@
 ---
 title: "أيمن البلوي نشر مقطعا يزعم أنه يرد فيه على الشيخ محمد في مسألة صورة الله تبارك و"
-status: draft
+status: published
 published_at: 2024-07-07
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "حليب الصراصير.. هذا ما ينصحنا به العلماء مؤخرًا!"
-status: draft
+status: published
 published_at: 2019-02-16
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

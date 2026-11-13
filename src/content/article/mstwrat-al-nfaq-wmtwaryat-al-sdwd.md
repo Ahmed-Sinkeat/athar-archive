@@ -1,6 +1,6 @@
 ---
 title: "مَستورات النِّفاق ومُتوَارِيات الصُّدود"
-status: draft
+status: published
 published_at: 2026-07-05
 person: awwab-bin-muhammad
 topics: ["mustalah-al-hadith"]

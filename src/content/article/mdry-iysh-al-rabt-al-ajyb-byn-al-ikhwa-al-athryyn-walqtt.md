@@ -1,6 +1,6 @@
 ---
 title: "مدري إيش الرابط العجيب بين الإخوة الأثريين والقطط!"
-status: draft
+status: published
 published_at: 2023-12-21
 person: abu-umair-imran-al-zubaidi
 ---

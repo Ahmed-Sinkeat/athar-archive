@@ -1,6 +1,6 @@
 ---
 title: "ما الفرق بين شعور المرء وهو واقف على صراط أدق من الشعر وأحد من السيف وتحته جهنم"
-status: draft
+status: published
 published_at: 2018-05-11
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

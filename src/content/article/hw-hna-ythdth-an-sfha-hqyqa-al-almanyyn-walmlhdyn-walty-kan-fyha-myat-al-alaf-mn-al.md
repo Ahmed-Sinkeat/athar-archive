@@ -1,6 +1,6 @@
 ---
 title: "هو هنا يتحدث عن صفحة حقيقة العلمانيين والملحدين والتي كان فيها مئات الآلاف من ال"
-status: draft
+status: published
 published_at: 2019-03-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

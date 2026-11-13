@@ -1,6 +1,6 @@
 ---
 title: "الأخ عبد الحكيم العمامي الليبي الشهير بمعاوية العمامي"
-status: draft
+status: published
 published_at: 2026-03-27
 person: abu-jafar-al-khalifi
 ---

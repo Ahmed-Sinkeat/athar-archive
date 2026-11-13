@@ -1,6 +1,6 @@
 ---
 title: "ظالم أم مظلوم!"
-status: draft
+status: published
 published_at: 2025-01-09
 person: abu-jafar-al-khalifi
 ---

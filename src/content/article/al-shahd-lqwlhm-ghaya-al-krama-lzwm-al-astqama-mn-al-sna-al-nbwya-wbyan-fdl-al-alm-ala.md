@@ -1,6 +1,6 @@
 ---
 title: "الشاهد لقولهم (غاية الكرامة لزوم الاستقامة) من السنة النبوية وبيان فضل العلم على"
-status: draft
+status: published
 published_at: 2025-01-10
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

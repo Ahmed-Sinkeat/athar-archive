@@ -1,6 +1,6 @@
 ---
 title: "قال الترمذي في جامعه"
-status: draft
+status: published
 published_at: 2022-10-09
 person: abu-jafar-al-khalifi
 ---

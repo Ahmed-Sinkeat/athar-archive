@@ -1,6 +1,6 @@
 ---
 title: "لو عرفوا الله حق المعرفة ما أشركوا به..."
-status: draft
+status: published
 published_at: 2021-02-05
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "هل سيلتزم الملحد مخلوقية العالم من إقراره بنظرية الإنفجار العظيم؟"
-status: draft
+status: published
 published_at: 2024-03-07
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

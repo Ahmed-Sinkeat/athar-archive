@@ -1,6 +1,6 @@
 ---
 title: "باب في تعظيم حق الله عز وجل"
-status: draft
+status: published
 published_at: 2022-10-27
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "\"لقد خذلتني النسوية وخذلت جيلي كله\""
-status: draft
+status: published
 published_at: 2026-10-30
 person: abu-jafar-al-khalifi
 ---

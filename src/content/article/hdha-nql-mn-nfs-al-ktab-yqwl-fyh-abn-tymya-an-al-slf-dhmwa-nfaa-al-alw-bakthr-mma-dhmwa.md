@@ -1,6 +1,6 @@
 ---
 title: "هذا نقل من نفس الكتاب يقول فيه ابن تيمية أن السلف ذموا نفاة العلو بأكثر مما ذموا"
-status: draft
+status: published
 published_at: 2019-01-29
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

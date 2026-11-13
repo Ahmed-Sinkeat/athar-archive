@@ -1,6 +1,6 @@
 ---
 title: "هل كان عند المتكلمين أدلة شرعية متينة؟ (بيان عمق فقه السلف)"
-status: draft
+status: published
 published_at: 2022-01-17
 person: abu-jafar-al-khalifi
 ---

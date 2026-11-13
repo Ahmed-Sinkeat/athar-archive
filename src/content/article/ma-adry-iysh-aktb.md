@@ -1,6 +1,6 @@
 ---
 title: "ما أدري إيش أكتب"
-status: draft
+status: published
 published_at: 2026-04-30
 person: abu-umair-imran-al-zubaidi
 ---

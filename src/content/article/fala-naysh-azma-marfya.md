@@ -1,6 +1,6 @@
 ---
 title: "فعلا نعيش أزمة معرفية"
-status: draft
+status: published
 published_at: 2019-02-18
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "الحياة القاسية مع تمسّكك بدينك = جهاد وعِِزة."
-status: draft
+status: published
 published_at: 2022-09-13
 person: abu-umair-imran-al-zubaidi
 ---

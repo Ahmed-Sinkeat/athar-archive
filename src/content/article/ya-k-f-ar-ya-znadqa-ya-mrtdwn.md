@@ -1,6 +1,6 @@
 ---
 title: "يا كـ ـفًـ ـار يا زنادقة يا مرتدّون!."
-status: draft
+status: published
 published_at: 2023-02-19
 person: abu-umair-imran-al-zubaidi
 ---

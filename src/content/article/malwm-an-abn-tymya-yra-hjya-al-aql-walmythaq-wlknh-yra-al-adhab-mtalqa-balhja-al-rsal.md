@@ -1,6 +1,6 @@
 ---
 title: "معلوم أن ابن تيمية يرى حجية العقل والميثاق ولكنه يرى العذاب متعلقا بالحجة الرسال"
-status: draft
+status: published
 published_at: 2020-09-12
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

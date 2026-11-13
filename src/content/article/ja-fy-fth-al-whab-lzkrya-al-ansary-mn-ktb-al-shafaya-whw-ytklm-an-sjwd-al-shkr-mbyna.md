@@ -1,6 +1,6 @@
 ---
 title: "جاء في فتح الوهاب لزكريا الأنصاري من كتب الشافعية وهو يتكلم عن سجود الشكر مبيناً"
-status: draft
+status: published
 published_at: 2018-01-02
 person: abu-jafar-al-khalifi
 ---

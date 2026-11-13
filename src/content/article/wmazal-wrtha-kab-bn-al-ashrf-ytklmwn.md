@@ -1,6 +1,6 @@
 ---
 title: "ومازال ورثة كعب بن الأشرف يتكلمون!"
-status: draft
+status: published
 published_at: 2021-07-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "تعرف إيش يلي يقهر بكلام هذا الزنديق؟"
-status: draft
+status: published
 published_at: 2025-07-21
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

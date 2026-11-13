@@ -1,6 +1,6 @@
 ---
 title: "قَالَ إِسْمَاعِيلُ الْقَاضِي هَذَا الْحَدِيثُ يَدُلُّ عَلَى أَنَّ لِلْإِمَامِ أَ"
-status: draft
+status: published
 published_at: 2017-06-26
 person: abu-jafar-al-khalifi
 ---

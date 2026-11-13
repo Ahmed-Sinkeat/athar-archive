@@ -1,6 +1,6 @@
 ---
 title: "هذا الفعل لا يخالف القانون عندهم ولو شاء أَن يتبرع لبعض أبنائه دون بعض لَفعل وكا"
-status: draft
+status: published
 published_at: 2019-11-07
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "استعينوا على الحفظ بترك المعاصي"
-status: draft
+status: published
 published_at: 2024-08-23
 person: abu-abdillah-firas-al-ramli
 ---

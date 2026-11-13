@@ -1,6 +1,6 @@
 ---
 title: "قال أبو نعيم في الحلية حَدَّثَنَا مُحَمَّدُ بْنُ عَلِيٍّ"
-status: draft
+status: published
 published_at: 2018-09-17
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "البارحة والآن وغدا"
-status: draft
+status: published
 published_at: 2025-07-18
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أنس بن مالك رضي الله عنه معضلة منكري السنة..."
-status: draft
+status: published
 published_at: 2022-03-09
 person: abu-jafar-al-khalifi
 ---

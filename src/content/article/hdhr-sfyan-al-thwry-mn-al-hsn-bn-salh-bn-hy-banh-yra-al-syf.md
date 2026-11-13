@@ -1,6 +1,6 @@
 ---
 title: "&rlm;حذر سفيان الثوري من الحسن بن صالح بن حي بأنه يرى السيف"
-status: draft
+status: published
 published_at: 2018-07-22
 person: abu-jafar-al-khalifi
 ---

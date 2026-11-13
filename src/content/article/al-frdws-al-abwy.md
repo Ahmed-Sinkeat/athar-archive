@@ -1,6 +1,6 @@
 ---
 title: "الفردوس الأبوي!"
-status: draft
+status: published
 published_at: 2025-09-25
 person: abu-umair-imran-al-zubaidi
 ---

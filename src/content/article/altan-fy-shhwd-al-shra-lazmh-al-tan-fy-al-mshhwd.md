@@ -1,6 +1,6 @@
 ---
 title: "\"الطعن في شهود الشرع لازمه الطعن في المشهود\"."
-status: draft
+status: published
 published_at: 2024-05-06
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

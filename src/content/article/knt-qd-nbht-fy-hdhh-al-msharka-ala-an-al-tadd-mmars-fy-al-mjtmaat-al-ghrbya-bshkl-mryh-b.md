@@ -1,6 +1,6 @@
 ---
 title: "كنت قد نبهت في هذه المشاركة على أن التعدد ممارس في المجتمعات الغربية بشكل مريح ب"
-status: draft
+status: published
 published_at: 2021-07-22
 person: abu-jafar-al-khalifi
 ---

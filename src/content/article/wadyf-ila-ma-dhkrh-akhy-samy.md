@@ -1,6 +1,6 @@
 ---
 title: "وأضيف إلى ما ذكره أخي سامي"
-status: draft
+status: published
 published_at: 2025-02-08
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

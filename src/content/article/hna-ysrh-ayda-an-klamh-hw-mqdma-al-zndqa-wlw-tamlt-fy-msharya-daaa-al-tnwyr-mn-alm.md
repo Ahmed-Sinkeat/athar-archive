@@ -1,6 +1,6 @@
 ---
 title: "هنا يصرح أيضاً أن كلامه هو مقدمة الزندقة ولو تأملت في مشاريع دعاة التنوير من علم"
-status: draft
+status: published
 published_at: 2018-04-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

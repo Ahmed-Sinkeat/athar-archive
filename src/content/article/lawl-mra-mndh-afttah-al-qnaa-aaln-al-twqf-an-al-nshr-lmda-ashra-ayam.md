@@ -1,6 +1,6 @@
 ---
 title: "لأول مرة منذ افتتاح القناة أعلن التوقف عن النشر لمدة عشرة أيام"
-status: draft
+status: published
 published_at: 2019-08-06
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية في اقتضاء الصراط المستقيم"
-status: draft
+status: published
 published_at: 2018-11-21
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
-title: "وهذه فائدة أفادني بها أخي [قتادة أبو ثور](https"
-status: draft
+title: "وهذه فائدة أفادني بها أخي قتادة أبو ثور"
+status: published
 published_at: 2025-01-18
 person: abu-abdillah-firas-al-ramli
 ---

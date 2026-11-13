@@ -1,6 +1,6 @@
 ---
-title: "بمناسبة [الصوتية الأخيرة عن الأدوار الجندرية](https://t.me/alkulife/10027) .."
-status: draft
+title: "بمناسبة الصوتية الأخيرة عن الأدوار الجندرية"
+status: published
 published_at: 2021-02-03
 person: abu-jafar-al-khalifi
 ---

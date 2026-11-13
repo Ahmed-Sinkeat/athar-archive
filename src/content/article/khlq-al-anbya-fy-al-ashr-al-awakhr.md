@@ -1,6 +1,6 @@
 ---
 title: "خلق الأنبياء في العشر الأواخر..."
-status: draft
+status: published
 published_at: 2026-03-11
 person: abu-jafar-al-khalifi
 ---

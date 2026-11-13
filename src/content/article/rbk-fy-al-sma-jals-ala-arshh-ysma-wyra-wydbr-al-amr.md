@@ -1,6 +1,6 @@
 ---
 title: "ربك في السماء، جالسٌ على عرشه يسمع ويرى ويدبر الأمر."
-status: draft
+status: published
 published_at: 2023-10-28
 person: abu-umair-imran-al-zubaidi
 ---

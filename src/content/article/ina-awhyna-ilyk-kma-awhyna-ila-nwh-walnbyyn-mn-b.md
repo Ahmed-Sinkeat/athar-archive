@@ -1,6 +1,6 @@
 ---
 title: "إِنَّا أَوْحَيْنَا إِلَيْكَ كَمَا أَوْحَيْنَا إِلَى نُوحٍ وَالنَّبِيِّينَ مِنْ ب"
-status: draft
+status: published
 published_at: 2023-03-18
 person: abu-umair-imran-al-zubaidi
 ---

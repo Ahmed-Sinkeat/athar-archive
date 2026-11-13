@@ -1,6 +1,6 @@
 ---
 title: "كلامه الأول عن سب الله عز وجل حسن غاية بالجملة (بغض النظر عن الحديث عن انتشار ال"
-status: draft
+status: published
 published_at: 2024-12-19
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

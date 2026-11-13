@@ -1,6 +1,6 @@
 ---
 title: "سمرين المدلس لا يتوقف عن العبث!"
-status: draft
+status: published
 published_at: 2024-05-31
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

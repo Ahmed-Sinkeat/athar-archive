@@ -1,6 +1,6 @@
 ---
 title: "كان لديّ نوع تشكك عندما هاجمته في ظل هذه الظروف العصبية"
-status: draft
+status: published
 published_at: 2023-10-20
 person: abu-umair-imran-al-zubaidi
 ---

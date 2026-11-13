@@ -1,6 +1,6 @@
 ---
 title: "أريد أن أستغلّ هذا الحدث المبارك في التنبيه إلى أمر مهم!"
-status: draft
+status: published
 published_at: 2023-10-07
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

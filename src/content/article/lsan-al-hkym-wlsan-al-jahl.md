@@ -1,6 +1,6 @@
 ---
 title: "لسان الحكيم ولسان الجاهل"
-status: draft
+status: published
 published_at: 2023-08-06
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

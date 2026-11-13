@@ -1,6 +1,6 @@
 ---
 title: "قوله تعالى: {ولا يزالون مختلفين إلا من رحم ربك}"
-status: draft
+status: published
 published_at: 2025-02-20
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

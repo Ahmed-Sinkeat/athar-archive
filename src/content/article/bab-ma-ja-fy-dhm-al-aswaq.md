@@ -1,6 +1,6 @@
 ---
 title: "باب ما جاء في ذم الأسواق"
-status: draft
+status: published
 published_at: 2023-05-20
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

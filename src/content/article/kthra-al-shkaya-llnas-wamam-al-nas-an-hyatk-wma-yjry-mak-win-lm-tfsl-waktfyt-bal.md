@@ -1,6 +1,6 @@
 ---
 title: "كثرة الشكاية للناس وأمام النّاس عن حياتك وما يجري معك -وإن لم تُفصّل واكتفيت بال"
-status: draft
+status: published
 published_at: 2023-04-23
 person: abu-umair-imran-al-zubaidi
 ---

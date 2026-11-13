@@ -1,6 +1,6 @@
 ---
 title: "ليس ابن باز وإنما كثير من أهل العلم صححوا الحديث الذي رواه كل من أبي ذر وأبي هري"
-status: draft
+status: published
 published_at: 2026-02-27
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

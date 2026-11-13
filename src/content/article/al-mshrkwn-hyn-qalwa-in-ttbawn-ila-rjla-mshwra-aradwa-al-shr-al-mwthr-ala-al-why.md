@@ -1,6 +1,6 @@
 ---
 title: "المشركون حين قالوا ( إن تتبعون إلا رجلاً مسحوراً ) أرادوا السحر المؤثر على الوحي"
-status: draft
+status: published
 published_at: 2018-09-09
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

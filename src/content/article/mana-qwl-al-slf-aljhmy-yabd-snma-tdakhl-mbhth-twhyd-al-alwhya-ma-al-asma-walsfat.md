@@ -1,6 +1,6 @@
 ---
 title: "معنى قول السلف (الجهمي يعبد صنما) تداخل مبحث توحيد الألوهية مع الأسماء والصفات."
-status: draft
+status: published
 published_at: 2023-06-23
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

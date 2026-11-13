@@ -1,6 +1,6 @@
 ---
 title: "قال الزبير بن بكار في جمهرة أنساب قريش وحدثني يوسف بن عباس قال"
-status: draft
+status: published
 published_at: 2017-08-03
 person: abu-jafar-al-khalifi
 ---

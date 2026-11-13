@@ -1,6 +1,6 @@
 ---
 title: "إذ أنّ لازم هذه المقالة الفاسدة أنّ حجج الله تبارك وتعالى النقلية في الكتاب والس"
-status: draft
+status: published
 published_at: 2023-08-14
 person: abu-umair-imran-al-zubaidi
 ---

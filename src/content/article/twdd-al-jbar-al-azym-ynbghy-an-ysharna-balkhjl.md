@@ -1,6 +1,6 @@
 ---
 title: "تودّد الجبار العظيم ينبغي أن يشعرنا بالخجل."
-status: draft
+status: published
 published_at: 2023-12-30
 person: abu-jafar-al-khalifi
 ---

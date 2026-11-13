@@ -1,6 +1,6 @@
 ---
 title: "جاء في جزء في حديث سفيان الثوري 117- عن مَنْصُور عن ربعي بن حراش عن امرأته عن أخ"
-status: draft
+status: published
 published_at: 2018-07-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

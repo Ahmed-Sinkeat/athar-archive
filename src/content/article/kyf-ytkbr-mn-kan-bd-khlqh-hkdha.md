@@ -1,6 +1,6 @@
 ---
 title: "كيف يتكبر من كان بدء خلقه هكذا ؟!"
-status: draft
+status: published
 published_at: 2023-07-22
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

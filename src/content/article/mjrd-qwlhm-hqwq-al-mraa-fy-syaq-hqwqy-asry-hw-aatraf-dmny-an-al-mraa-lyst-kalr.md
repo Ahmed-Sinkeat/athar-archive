@@ -1,6 +1,6 @@
 ---
 title: "مجرد قولهم ( حقوق المرأة ) في سياق حقوقي عصري هو اعتراف ضمني أن المرأة ليست كالر"
-status: draft
+status: published
 published_at: 2018-02-05
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

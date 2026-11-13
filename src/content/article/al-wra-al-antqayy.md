@@ -1,6 +1,6 @@
 ---
 title: "الورع الانتقائي."
-status: draft
+status: published
 published_at: 2021-03-20
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "جاء في ترجمة مُوسَى"
-status: draft
+status: published
 published_at: 2017-10-12
 person: abu-jafar-al-khalifi
 ---

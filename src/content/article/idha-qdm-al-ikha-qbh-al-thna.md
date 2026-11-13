@@ -1,6 +1,6 @@
 ---
 title: "إذا قدم الإخاء قبح الثناء"
-status: draft
+status: published
 published_at: 2023-11-13
 person: abu-abdillah-firas-al-ramli
 ---

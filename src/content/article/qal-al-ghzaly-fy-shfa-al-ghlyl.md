@@ -1,6 +1,6 @@
 ---
 title: "قال الغزالي في شفاء الغليل"
-status: draft
+status: published
 published_at: 2018-10-04
 person: abu-jafar-al-khalifi
 ---

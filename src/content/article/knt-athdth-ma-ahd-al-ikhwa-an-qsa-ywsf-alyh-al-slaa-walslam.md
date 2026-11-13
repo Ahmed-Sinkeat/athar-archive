@@ -1,6 +1,6 @@
 ---
 title: "كنت أتحدث مع أحد الإخوة عن قصة يوسف عليه الصلاة والسلام"
-status: draft
+status: published
 published_at: 2025-05-09
 person: abu-umair-imran-al-zubaidi
 ---

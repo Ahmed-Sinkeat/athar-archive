@@ -1,6 +1,6 @@
 ---
 title: "في الغرب لا يوجد شيء اسمه قسمة ميراث ثابتة فوصية الميت تحدد من يرث ومن لا يرث وف"
-status: draft
+status: published
 published_at: 2019-10-12
 person: abu-jafar-al-khalifi
 ---

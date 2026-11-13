@@ -1,6 +1,6 @@
 ---
 title: "لو قيل لك أن المدير يريدك وكنت للتو قد ارتكبت للتو ما يستوجب العقوبة أو العتاب و"
-status: draft
+status: published
 published_at: 2018-11-05
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

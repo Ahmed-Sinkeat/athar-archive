@@ -1,6 +1,6 @@
 ---
 title: "العلم بين اليوم والأمس"
-status: draft
+status: published
 published_at: 2023-05-20
 person: abu-abdillah-firas-al-ramli
 ---

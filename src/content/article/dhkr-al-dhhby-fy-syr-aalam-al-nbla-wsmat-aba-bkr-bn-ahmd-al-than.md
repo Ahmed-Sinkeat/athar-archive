@@ -1,6 +1,6 @@
 ---
 title: "ذكر الذهبي في سير أعلام النبلاء وسمعت أبا بكر بن أحمد الطحان"
-status: draft
+status: published
 published_at: 2019-01-21
 person: abu-jafar-al-khalifi
 ---

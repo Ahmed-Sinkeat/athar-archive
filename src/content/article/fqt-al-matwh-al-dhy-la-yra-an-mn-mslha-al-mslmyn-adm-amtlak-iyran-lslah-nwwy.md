@@ -1,6 +1,6 @@
 ---
 title: "فقط المعتوه الذي لا يرى أن من مصلحة المسلمين عدم امتلاك إيران لسلاح نووي."
-status: draft
+status: published
 published_at: 2025-06-17
 person: abu-umair-imran-al-zubaidi
 ---

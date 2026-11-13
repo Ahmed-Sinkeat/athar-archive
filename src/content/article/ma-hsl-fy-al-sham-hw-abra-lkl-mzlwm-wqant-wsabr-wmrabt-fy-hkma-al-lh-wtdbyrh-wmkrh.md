@@ -1,6 +1,6 @@
 ---
 title: "ما حصل في الشام هو عبرة لكل مظلوم وقانط وصابر ومرابط في حكمة الله وتدبيره ومكره"
-status: draft
+status: published
 published_at: 2024-12-30
 person: abu-umair-imran-al-zubaidi
 ---

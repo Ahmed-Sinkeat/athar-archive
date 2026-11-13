@@ -1,6 +1,6 @@
 ---
 title: "تعليم الصبيان التوحيد والعقيدة"
-status: draft
+status: published
 published_at: 2026-04-07
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada"]

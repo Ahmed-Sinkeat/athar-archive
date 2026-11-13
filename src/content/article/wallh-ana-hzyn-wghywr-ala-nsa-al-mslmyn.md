@@ -1,6 +1,6 @@
 ---
 title: "والله أنا حزين وغيور على نساء المسلمين."
-status: draft
+status: published
 published_at: 2024-06-12
 person: abu-umair-imran-al-zubaidi
 ---

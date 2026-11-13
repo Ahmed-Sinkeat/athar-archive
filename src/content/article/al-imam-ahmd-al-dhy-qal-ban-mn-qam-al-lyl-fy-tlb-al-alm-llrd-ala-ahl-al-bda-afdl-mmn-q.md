@@ -1,6 +1,6 @@
 ---
 title: "الإمام أحمد الذي قال بأن من قام الليل في طلب العلم للرد على أهل البدع أفضل ممن ق"
-status: draft
+status: published
 published_at: 2017-11-08
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "قال أبو نعيم في الحلية أَخْبَرَنَا الْقَاضِي أَبُو أَحْمَدَ مُحَمَّدُ بْنُ أَحْم"
-status: draft
+status: published
 published_at: 2017-05-31
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-iman", "al-sunnah-wal-bidah"]

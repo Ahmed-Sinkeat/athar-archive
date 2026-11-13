@@ -1,6 +1,6 @@
 ---
 title: "الرَّافضة كفار باتِّفاق \"المُسلمين\""
-status: draft
+status: published
 published_at: 2025-06-13
 person: awwab-bin-muhammad
 topics: ["al-firaq-war-rudud"]

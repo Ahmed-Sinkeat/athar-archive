@@ -1,6 +1,6 @@
 ---
 title: "هذه خريطة تبين موقف الدول الأوروبية من زنا المحارم اللون الأخضر هي الدول التي يم"
-status: draft
+status: published
 published_at: 2020-07-24
 person: abu-jafar-al-khalifi
 ---

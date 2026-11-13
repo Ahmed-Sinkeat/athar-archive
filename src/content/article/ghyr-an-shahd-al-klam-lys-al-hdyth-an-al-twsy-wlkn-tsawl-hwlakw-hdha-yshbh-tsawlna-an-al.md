@@ -1,6 +1,6 @@
 ---
 title: "غير أن شاهد الكلام ليس الحديث عن الطوسي ولكن تساؤل هولاكو هذا يشبه تساؤلنا عن ال"
-status: draft
+status: published
 published_at: 2019-06-20
 person: abu-jafar-al-khalifi
 ---

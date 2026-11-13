@@ -1,6 +1,6 @@
 ---
 title: "أهل البدع إنما يريدون دفن ما جاء به النبي ﷺ"
-status: draft
+status: published
 published_at: 2024-07-01
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

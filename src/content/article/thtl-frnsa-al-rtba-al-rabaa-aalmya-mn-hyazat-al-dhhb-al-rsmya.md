@@ -1,6 +1,6 @@
 ---
 title: "تحتل فرنسا الرتبة الرابعة عالميا من حيازات الذهب الرسمية"
-status: draft
+status: published
 published_at: 2019-06-12
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

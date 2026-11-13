@@ -1,6 +1,6 @@
 ---
 title: "قصيدة الحافظ أبو عبد الله الصوري في الرد على من طعن في الحديث وأهله"
-status: draft
+status: published
 published_at: 2025-07-17
 person: abu-abdillah-firas-al-ramli
 ---

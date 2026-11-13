@@ -1,6 +1,6 @@
 ---
 title: "السلامة في التسليم."
-status: draft
+status: published
 published_at: 2020-03-21
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

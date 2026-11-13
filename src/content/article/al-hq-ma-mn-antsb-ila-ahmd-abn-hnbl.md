@@ -1,6 +1,6 @@
 ---
 title: "الحق مع من انتسب إلى أحمد ابن حنبل"
-status: draft
+status: published
 published_at: 2022-11-06
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

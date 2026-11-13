@@ -1,6 +1,6 @@
 ---
 title: "عِظَم حق الزوج على امرأته"
-status: draft
+status: published
 published_at: 2023-10-02
 person: abu-abdillah-firas-al-ramli
 ---

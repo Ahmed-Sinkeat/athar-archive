@@ -1,6 +1,6 @@
 ---
 title: "في نفس الوقت ظهرت مصيبة الابتعاث مع سنوات الطفرة والنعمة"
-status: draft
+status: published
 published_at: 2017-08-30
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من هم أئمة الدين ؟"
-status: draft
+status: published
 published_at: 2026-06-28
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]

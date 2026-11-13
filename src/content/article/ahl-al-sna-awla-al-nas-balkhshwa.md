@@ -1,6 +1,6 @@
 ---
 title: "أهل السنة أولى الناس بالخشوع…"
-status: draft
+status: published
 published_at: 2021-04-13
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

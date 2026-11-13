@@ -1,6 +1,6 @@
 ---
 title: "فايز الكندري في مقطع أقل ما يقال عنه أنه عبثي"
-status: draft
+status: published
 published_at: 2025-01-21
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-asma-was-sifat", "al-sunnah-wal-bidah"]

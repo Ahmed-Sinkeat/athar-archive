@@ -1,6 +1,6 @@
 ---
 title: "ألد أعداء الحداثة ما هو قديم، وبقدر ابتعادك عن ذلك القديم رضوا عنك."
-status: draft
+status: published
 published_at: 2023-09-06
 person: abu-umair-imran-al-zubaidi
 ---

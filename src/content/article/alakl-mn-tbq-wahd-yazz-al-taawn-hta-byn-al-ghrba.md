@@ -1,6 +1,6 @@
 ---
 title: "\"الأكل من طبق واحد يعزز التعاون، حتى بين الغرباء\""
-status: draft
+status: published
 published_at: 2018-12-05
 person: abu-jafar-al-khalifi
 ---

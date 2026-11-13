@@ -1,6 +1,6 @@
 ---
 title: "من السنن الطيبة التي ما زالت باقية بحمد الله"
-status: draft
+status: published
 published_at: 2023-09-23
 person: abu-abdillah-firas-al-ramli
 ---

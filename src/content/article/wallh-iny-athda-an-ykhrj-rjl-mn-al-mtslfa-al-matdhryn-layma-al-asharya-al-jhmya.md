@@ -1,6 +1,6 @@
 ---
 title: "والله إني أتحدى أن يخرج رجل من المتسلفة المعتذرين لأئمة الأشعرية الجهمية"
-status: draft
+status: published
 published_at: 2025-12-08
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "al-wala-wal-bara", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "كلام الجهمية"
-status: draft
+status: published
 published_at: 2023-12-10
 person: abu-abdillah-firas-al-ramli
 ---

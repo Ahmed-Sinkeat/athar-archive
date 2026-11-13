@@ -1,6 +1,6 @@
 ---
 title: "كثيرون ستغضبهم هذه التغريدة، ويعلقون عليها بتعليقات مختلفة."
-status: draft
+status: published
 published_at: 2026-07-01
 person: abu-jafar-al-khalifi
 ---

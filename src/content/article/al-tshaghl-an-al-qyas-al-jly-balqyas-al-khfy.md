@@ -1,6 +1,6 @@
 ---
 title: "التشاغل عن القياس الجلي بالقياس الخفي."
-status: draft
+status: published
 published_at: 2026-04-20
 person: abu-jafar-al-khalifi
 ---

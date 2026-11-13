@@ -1,6 +1,6 @@
 ---
 title: "(فخرج على قومه في زينته) خروج المشاهير على حساباتهم أمام متابعيهم بأبهى زينة ليظ"
-status: draft
+status: published
 published_at: 2025-11-30
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

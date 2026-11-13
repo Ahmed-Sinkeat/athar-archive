@@ -1,6 +1,6 @@
 ---
 title: "تقضي ساعة تتزين أمام المرآة قبل الخروج.."
-status: draft
+status: published
 published_at: 2018-04-10
 person: abu-jafar-al-khalifi
 ---

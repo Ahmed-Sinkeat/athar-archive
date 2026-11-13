@@ -1,6 +1,6 @@
 ---
 title: "موعد بسط اليد الإلهي!"
-status: draft
+status: published
 published_at: 2020-12-03
 person: abu-jafar-al-khalifi
 ---

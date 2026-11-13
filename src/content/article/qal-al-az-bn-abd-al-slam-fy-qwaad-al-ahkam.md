@@ -1,6 +1,6 @@
 ---
 title: "قال العز بن عبد السلام في قواعد الأحكام (1/ 202)"
-status: draft
+status: published
 published_at: 2024-04-28
 person: abu-umair-imran-al-zubaidi
 ---

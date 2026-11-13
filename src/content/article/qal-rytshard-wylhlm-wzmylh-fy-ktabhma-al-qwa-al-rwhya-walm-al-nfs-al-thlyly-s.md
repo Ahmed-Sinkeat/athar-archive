@@ -1,6 +1,6 @@
 ---
 title: "قال ريتشارد ويلهلم وزميله في كتابهما القوى الروحية وعلم النفس التحليلي ص100"
-status: draft
+status: published
 published_at: 2017-10-21
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

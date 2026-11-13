@@ -1,6 +1,6 @@
 ---
 title: "هذا غير أمر الربا وانعدام التكافل وانتشار العقوق والفردانية وجريمة الإجهاض وأعظم"
-status: draft
+status: published
 published_at: 2019-06-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

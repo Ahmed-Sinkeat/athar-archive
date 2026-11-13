@@ -1,6 +1,6 @@
 ---
 title: "حين يكون الكلام على قائمة المنقولات الزوجية يطالبون بدليل على تحريمها"
-status: draft
+status: published
 published_at: 2022-09-03
 person: abu-jafar-al-khalifi
 ---

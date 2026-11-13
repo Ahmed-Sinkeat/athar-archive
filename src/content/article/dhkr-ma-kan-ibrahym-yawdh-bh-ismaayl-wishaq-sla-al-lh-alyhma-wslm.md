@@ -1,6 +1,6 @@
 ---
 title: "ذكر ما كان إبراهيم ﷺ يُعوذ به إسماعيل وإسحاق صلى الله عليهما وسلم"
-status: draft
+status: published
 published_at: 2025-11-02
 person: abu-abdillah-firas-al-ramli
 ---

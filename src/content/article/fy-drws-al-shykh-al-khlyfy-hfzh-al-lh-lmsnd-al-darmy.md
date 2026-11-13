@@ -1,6 +1,6 @@
 ---
 title: "في دروس الشيخ الخليفي حفظه الله لمسند الدارمي"
-status: draft
+status: published
 published_at: 2024-07-04
 person: abu-umair-imran-al-zubaidi
 ---

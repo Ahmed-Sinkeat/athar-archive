@@ -1,6 +1,6 @@
 ---
 title: "فكيف يعامل المخالف في هذه المسألة معاملة المخالف في المسائل الاجتهادية التي المخ"
-status: draft
+status: published
 published_at: 2021-11-25
 person: abu-jafar-al-khalifi
 ---

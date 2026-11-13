@@ -1,6 +1,6 @@
 ---
 title: "الأقاربُ ليسوا عقاربًا؛ بل أرحَامٌ فُرِضَ علينا وَصلُها"
-status: draft
+status: published
 published_at: 2023-06-21
 person: abu-umair-imran-al-zubaidi
 ---

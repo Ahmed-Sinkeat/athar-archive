@@ -1,6 +1,6 @@
 ---
 title: "الظلم باسم الإنصاف، والإفساد باسم المصلحة.."
-status: draft
+status: published
 published_at: 2021-08-17
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "لكل قوم وارث، يقبلونه من الكفار ولا يقبلونه من الوحي والسنة..."
-status: draft
+status: published
 published_at: 2024-03-13
 person: abu-jafar-al-khalifi
 ---

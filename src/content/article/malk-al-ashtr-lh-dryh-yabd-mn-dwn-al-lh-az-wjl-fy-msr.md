@@ -1,6 +1,6 @@
 ---
 title: "مالك الأشتر له ضريح يعبد من دون الله عز وجل في مصر"
-status: draft
+status: published
 published_at: 2025-03-11
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "جعفر الصادق أم الفخر الرازي؟"
-status: draft
+status: published
 published_at: 2019-06-28
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-imamah-was-sahabah"]

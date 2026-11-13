@@ -1,6 +1,6 @@
 ---
 title: "لماذا ينبغي أن يكونوا قدوات؟"
-status: draft
+status: published
 published_at: 2019-08-26
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "لماذا أورد ابن ماجه هذا الحديث في الرد على الجهمية؟"
-status: draft
+status: published
 published_at: 2022-09-04
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada", "al-asma-was-sifat"]

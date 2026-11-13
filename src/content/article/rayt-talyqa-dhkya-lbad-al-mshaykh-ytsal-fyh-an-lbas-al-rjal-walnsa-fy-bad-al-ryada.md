@@ -1,6 +1,6 @@
 ---
 title: "رأيت تعليقاً ذكياً لبعض المشايخ يتساءل فيه عن لباس الرجال والنساء في بعض الرياضا"
-status: draft
+status: published
 published_at: 2024-08-06
 person: abu-jafar-al-khalifi
 ---

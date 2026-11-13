@@ -1,6 +1,6 @@
 ---
 title: "واضح هنا أن الشيخ يرى أن الجهمية نفاة العلو ومخالفتهم في مسألة نظرية فيما يحسب ا"
-status: draft
+status: published
 published_at: 2019-10-08
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat", "al-sunnah-wal-bidah"]

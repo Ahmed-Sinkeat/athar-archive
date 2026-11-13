@@ -1,6 +1,6 @@
 ---
 title: "هل تبرج الزوجة نشوز يُبيح عقوبتها؟"
-status: draft
+status: published
 published_at: 2024-11-23
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "حتى لا يُفهم كلامي بشكل خاطئ أو موهم"
-status: draft
+status: published
 published_at: 2024-04-29
 person: abu-umair-imran-al-zubaidi
 ---

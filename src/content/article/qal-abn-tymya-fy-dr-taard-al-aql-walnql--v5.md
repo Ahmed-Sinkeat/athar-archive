@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية في درء تعارض العقل والنقل"
-status: draft
+status: published
 published_at: 2020-02-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-sunnah-wal-bidah"]

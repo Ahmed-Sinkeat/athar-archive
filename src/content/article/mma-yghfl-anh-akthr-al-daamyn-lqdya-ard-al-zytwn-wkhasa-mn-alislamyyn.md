@@ -1,6 +1,6 @@
 ---
 title: "مما يغفل عنه أكثر الداعمين لقضية أرض الزيتون وخاصة من \"الإسلاميين\"."
-status: draft
+status: published
 published_at: 2025-10-16
 person: abu-umair-imran-al-zubaidi
 topics: ["al-iman"]

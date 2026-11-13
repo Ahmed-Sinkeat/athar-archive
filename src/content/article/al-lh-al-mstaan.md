@@ -1,6 +1,6 @@
 ---
 title: "الله المستعان."
-status: draft
+status: published
 published_at: 2023-03-04
 person: abu-umair-imran-al-zubaidi
 ---

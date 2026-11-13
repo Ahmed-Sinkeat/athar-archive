@@ -1,6 +1,6 @@
 ---
 title: "جاء في «فتاوى الشهاب الرملي» [4/321"
-status: draft
+status: published
 published_at: 2025-12-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

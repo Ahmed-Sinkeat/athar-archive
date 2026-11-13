@@ -1,6 +1,6 @@
 ---
 title: "متى تنبُت حدائق قلبك؟"
-status: draft
+status: published
 published_at: 2021-01-05
 person: abu-jafar-al-khalifi
 ---

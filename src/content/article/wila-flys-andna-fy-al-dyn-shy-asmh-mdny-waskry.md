@@ -1,6 +1,6 @@
 ---
 title: "وإلا فليس عندنا في الدين شيء اسمه مدني وعسكري"
-status: draft
+status: published
 published_at: 2025-07-17
 person: abu-umair-imran-al-zubaidi
 ---

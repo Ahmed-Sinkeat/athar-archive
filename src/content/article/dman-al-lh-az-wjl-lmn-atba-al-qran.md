@@ -1,6 +1,6 @@
 ---
 title: "ضمان الله عز وجل لمن اتبع القرآن"
-status: draft
+status: published
 published_at: 2024-09-26
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

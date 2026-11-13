@@ -1,6 +1,6 @@
 ---
 title: "الراوي الذي تحرَّف اسم أبيه مرتين (وبيان إثبات مجاهد للرؤية)..."
-status: draft
+status: published
 published_at: 2024-09-11
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

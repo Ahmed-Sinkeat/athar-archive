@@ -1,6 +1,6 @@
 ---
 title: "حاليا لم يبقَ شيء تحت سيطرة النظام المجرم إلا مدينة حمص"
-status: draft
+status: published
 published_at: 2024-12-07
 person: abu-umair-imran-al-zubaidi
 ---

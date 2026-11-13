@@ -1,6 +1,6 @@
 ---
 title: "وهذه التقريرات الحسية لا تعني المشابهة أو المماثلة؛ إنما تأكيد للمعنى."
-status: draft
+status: published
 published_at: 2024-03-30
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لطيفة: حين يستدل المعتزلي بالقرآن على الأشعري!"
-status: draft
+status: published
 published_at: 2020-03-31
 person: abu-jafar-al-khalifi
 ---

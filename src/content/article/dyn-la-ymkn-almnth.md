@@ -1,6 +1,6 @@
 ---
 title: "دين لا يمكن علمنته"
-status: draft
+status: published
 published_at: 2020-11-03
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال محمد نجيب المطيعي في تكملة المجموع (18/77)"
-status: draft
+status: published
 published_at: 2018-02-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

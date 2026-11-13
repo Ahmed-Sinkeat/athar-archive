@@ -1,6 +1,6 @@
 ---
 title: "تخيل أنك دخلت إلى كنيسة فوجدتها منظمة جدا ومعطرة وفيها فريق استقبال بشوش غاية وم"
-status: draft
+status: published
 published_at: 2018-07-28
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "حين تقرأ هذا الكلام للوهلة الأولى تظنّ أنه كلام جميل ومنصف ووسطي يقف فيه كاتبه م"
-status: draft
+status: published
 published_at: 2023-03-10
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

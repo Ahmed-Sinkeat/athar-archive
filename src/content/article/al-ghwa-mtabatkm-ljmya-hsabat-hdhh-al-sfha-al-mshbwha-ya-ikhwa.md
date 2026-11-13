@@ -1,6 +1,6 @@
 ---
 title: "الغوا متابعتكم لجميع حسابات هذه الصفحة المشبوهة يا إخوة."
-status: draft
+status: published
 published_at: 2023-11-01
 person: abu-umair-imran-al-zubaidi
 ---

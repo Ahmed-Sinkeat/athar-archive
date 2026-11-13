@@ -1,6 +1,6 @@
 ---
 title: "نبي الله هود وعبء الإثبات."
-status: draft
+status: published
 published_at: 2021-04-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

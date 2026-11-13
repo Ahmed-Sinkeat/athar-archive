@@ -1,6 +1,6 @@
 ---
 title: "رِحلة أصبهان وأثر القرآن"
-status: draft
+status: published
 published_at: 2025-07-06
 person: awwab-bin-muhammad
 ---

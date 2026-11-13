@@ -1,6 +1,6 @@
 ---
 title: "ولو كنا سنأخذ باستدلال هؤلاء على التهوين من شأن مجالس السماع لاستدللنا على التهو"
-status: draft
+status: published
 published_at: 2021-03-11
 person: abu-jafar-al-khalifi
 ---

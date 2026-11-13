@@ -1,6 +1,6 @@
 ---
 title: "أشواق وشعر رقراق بين الفقيهة المالكية وابنها الأديب."
-status: draft
+status: published
 published_at: 2020-04-06
 person: abu-jafar-al-khalifi
 ---

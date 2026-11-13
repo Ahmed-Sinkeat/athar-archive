@@ -1,6 +1,6 @@
 ---
 title: "بدأ أخونا الشيخ الأنصاري بن إبراهيم -رحمه الله- هذا المجلس (وهو آخر مجلس له) بأخ"
-status: draft
+status: published
 published_at: 2024-02-04
 person: abu-jafar-al-khalifi
 ---

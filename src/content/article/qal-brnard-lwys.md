@@ -1,6 +1,6 @@
 ---
 title: "قال برنارد لويس"
-status: draft
+status: published
 published_at: 2019-03-18
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

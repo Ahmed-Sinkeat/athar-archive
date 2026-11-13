@@ -1,6 +1,6 @@
 ---
 title: "هل كان هؤلاء وهابية؟"
-status: draft
+status: published
 published_at: 2025-02-12
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

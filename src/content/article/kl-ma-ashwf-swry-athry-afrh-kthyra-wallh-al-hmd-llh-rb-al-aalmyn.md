@@ -1,6 +1,6 @@
 ---
 title: "كل ما أشوف سوري أثري أفرح كثيرُا والله، الحمد لله رب العالمين."
-status: draft
+status: published
 published_at: 2023-11-16
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

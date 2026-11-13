@@ -1,6 +1,6 @@
 ---
 title: "دراسة بعنوان"
-status: draft
+status: published
 published_at: 2025-02-08
 person: abu-jafar-al-khalifi
 ---

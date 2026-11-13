@@ -1,6 +1,6 @@
 ---
 title: "لطيفة: أثران تناقضت دلالتهما الفقهية واتفاقا على إثبات الفضيلة..."
-status: draft
+status: published
 published_at: 2025-05-28
 person: abu-jafar-al-khalifi
 ---

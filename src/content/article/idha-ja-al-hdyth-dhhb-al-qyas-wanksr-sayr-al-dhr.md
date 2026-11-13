@@ -1,6 +1,6 @@
 ---
 title: "إذا جاء الحديث ذهب القياس وانكسر سائر الدهر"
-status: draft
+status: published
 published_at: 2025-07-12
 person: abu-abdillah-firas-al-ramli
 ---

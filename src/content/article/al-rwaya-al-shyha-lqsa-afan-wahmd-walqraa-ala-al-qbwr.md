@@ -1,6 +1,6 @@
 ---
 title: "الرواية الصحيحة لقصة عفان وأحمد والقراءة على القبور."
-status: draft
+status: published
 published_at: 2021-05-17
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-sunnah-wal-bidah"]

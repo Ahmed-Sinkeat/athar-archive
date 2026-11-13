@@ -1,6 +1,6 @@
 ---
 title: "خرجت تعديلات في الشام على مادة الديانة الإسلامية (لست متأكدا تماما من الخبر"
-status: draft
+status: published
 published_at: 2025-01-01
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

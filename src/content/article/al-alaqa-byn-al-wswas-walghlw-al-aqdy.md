@@ -1,6 +1,6 @@
 ---
 title: "العلاقة بين الوسواس والغلو العقدي."
-status: draft
+status: published
 published_at: 2021-05-17
 person: abu-jafar-al-khalifi
 ---

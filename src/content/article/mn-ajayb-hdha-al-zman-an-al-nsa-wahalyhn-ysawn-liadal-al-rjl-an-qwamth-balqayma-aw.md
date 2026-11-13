@@ -1,6 +1,6 @@
 ---
 title: "من عجائب هذا الزمان أنّ النساء وأهاليهن يسعون لإعضال الرجل عن قوامته بالقائمة أو"
-status: draft
+status: published
 published_at: 2024-06-21
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "تدري ما كانت قصة نعيم التميمي هذا؟"
-status: draft
+status: published
 published_at: 2024-08-31
 person: abu-abdillah-firas-al-ramli
 ---

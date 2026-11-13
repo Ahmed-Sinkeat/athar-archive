@@ -1,6 +1,6 @@
 ---
 title: "مناقب مطمورة لأهل الحديث"
-status: draft
+status: published
 published_at: 2021-02-15
 person: abu-jafar-al-khalifi
 ---

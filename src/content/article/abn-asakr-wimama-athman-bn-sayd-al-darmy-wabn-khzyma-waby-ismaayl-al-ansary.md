@@ -1,6 +1,6 @@
 ---
 title: "ابن عساكر وإمامة عثمان بن سعيد الدارمي وابن خزيمة وأبي إسماعيل الأنصاري"
-status: draft
+status: published
 published_at: 2022-09-19
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

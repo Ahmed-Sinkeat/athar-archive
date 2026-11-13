@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الله بن أحمد في زوائد الزهد (٩٣٠)"
-status: draft
+status: published
 published_at: 2023-10-30
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

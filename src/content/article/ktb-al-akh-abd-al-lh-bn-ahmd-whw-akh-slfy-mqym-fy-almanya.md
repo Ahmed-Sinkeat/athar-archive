@@ -1,6 +1,6 @@
 ---
 title: "كتب الأخ عبد الله بن أحمد ( وهو أخ سلفي مقيم في ألمانيا )"
-status: draft
+status: published
 published_at: 2018-11-13
 person: abu-jafar-al-khalifi
 ---

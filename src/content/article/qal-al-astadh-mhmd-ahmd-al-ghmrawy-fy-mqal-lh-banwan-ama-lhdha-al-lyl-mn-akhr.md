@@ -1,6 +1,6 @@
 ---
 title: "قال الأستاذ محمد أحمد الغمراوي في مقال له بعنوان أما لهذا الليل من آخر"
-status: draft
+status: published
 published_at: 2018-02-17
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

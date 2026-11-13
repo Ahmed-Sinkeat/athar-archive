@@ -1,6 +1,6 @@
 ---
 title: "هذا المأبون الذي يخطب في الناس الآن"
-status: draft
+status: published
 published_at: 2023-11-03
 person: abu-umair-imran-al-zubaidi
 ---

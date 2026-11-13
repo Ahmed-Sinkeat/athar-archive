@@ -1,6 +1,6 @@
 ---
 title: "الطريق الأكاديمي المعاصر في الرد على المخالفين ومقالاتهم -وخاصة المخالفين في أصو"
-status: draft
+status: published
 published_at: 2025-02-16
 person: abu-umair-imran-al-zubaidi
 ---

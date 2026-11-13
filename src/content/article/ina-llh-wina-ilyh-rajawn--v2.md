@@ -1,6 +1,6 @@
 ---
 title: "إنَّا لله وإنا إليه راجعون"
-status: draft
+status: published
 published_at: 2018-12-15
 person: abu-jafar-al-khalifi
 ---

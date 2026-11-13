@@ -1,6 +1,6 @@
 ---
 title: "قال إبراهيم بن أدهم العابد رحمه الله"
-status: draft
+status: published
 published_at: 2018-03-31
 person: abu-jafar-al-khalifi
 ---

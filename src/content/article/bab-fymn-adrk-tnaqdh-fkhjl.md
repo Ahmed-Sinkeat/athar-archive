@@ -1,6 +1,6 @@
 ---
 title: "باب فيمن أدرك تناقضه فخجل"
-status: draft
+status: published
 published_at: 2022-12-11
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

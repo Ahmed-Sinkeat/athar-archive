@@ -1,6 +1,6 @@
 ---
 title: "وَالَّتِي أَحْصَنَتْ فَرْجَهَا فَنَفَخْنَا فِيهَا مِن رُّوحِنَا وَجَعَلْنَاهَا و"
-status: draft
+status: published
 published_at: 2024-11-20
 person: abu-umair-imran-al-zubaidi
 ---

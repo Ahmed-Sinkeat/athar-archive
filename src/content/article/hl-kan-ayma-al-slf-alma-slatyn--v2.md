@@ -1,6 +1,6 @@
 ---
 title: "هل كان أئمة السلف علماء سلاطين ؟"
-status: draft
+status: published
 published_at: 2017-09-12
 person: abu-jafar-al-khalifi
 ---

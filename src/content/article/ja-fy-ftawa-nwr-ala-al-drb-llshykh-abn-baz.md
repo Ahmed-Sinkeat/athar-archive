@@ -1,6 +1,6 @@
 ---
 title: "جاء في فتاوى نور على الدرب للشيخ ابن باز"
-status: draft
+status: published
 published_at: 2018-09-28
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "هذا قبل أربعة أيام"
-status: draft
+status: published
 published_at: 2022-07-15
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال صنع قرار قال"
-status: draft
+status: published
 published_at: 2024-12-12
 person: abu-umair-imran-al-zubaidi
 ---

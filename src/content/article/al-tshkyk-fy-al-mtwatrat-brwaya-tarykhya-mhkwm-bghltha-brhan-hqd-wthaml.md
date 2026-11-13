@@ -1,6 +1,6 @@
 ---
 title: "التشكيك في المتواترات برواية تاريخية محكوم بغلطها، برهان حقد وتحامل."
-status: draft
+status: published
 published_at: 2021-06-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "tazkiyat-al-nafs"]

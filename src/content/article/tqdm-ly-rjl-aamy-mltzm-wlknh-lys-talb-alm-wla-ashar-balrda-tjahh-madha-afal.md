@@ -1,6 +1,6 @@
 ---
 title: "\"تقدم لي رجل عامي ملتزم، ولكنه ليس طالب علم، ولا أشعر بالرضى تجاهه، ماذا أفعل؟\"."
-status: draft
+status: published
 published_at: 2024-07-03
 person: abu-umair-imran-al-zubaidi
 topics: ["adab-talab-al-ilm"]

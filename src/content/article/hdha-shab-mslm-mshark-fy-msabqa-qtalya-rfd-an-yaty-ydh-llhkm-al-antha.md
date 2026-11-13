@@ -1,6 +1,6 @@
 ---
 title: "هذا شاب مسلم مشارك في مسابقة قتالية، رفض أن يعطي يده للحكم الأنثى."
-status: draft
+status: published
 published_at: 2026-10-16
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "أنت في كرامة ونعمة لا تدري ما هي حتى تفقدها"
-status: draft
+status: published
 published_at: 2023-06-03
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "كلامه في هذا المقطع يخالف القرآن الذي يزعم اهتمامه به."
-status: draft
+status: published
 published_at: 2023-04-08
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

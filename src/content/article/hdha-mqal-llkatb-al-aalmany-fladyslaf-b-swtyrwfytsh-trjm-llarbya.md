@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال للكاتب العالماني فلاديسلاف ب. سوتيروفيتش تُرجِم للعربية."
-status: draft
+status: published
 published_at: 2023-01-21
 person: abu-jafar-al-khalifi
 ---

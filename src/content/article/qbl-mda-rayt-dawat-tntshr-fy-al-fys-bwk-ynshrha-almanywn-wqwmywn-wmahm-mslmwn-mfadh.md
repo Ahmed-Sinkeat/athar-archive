@@ -1,6 +1,6 @@
 ---
 title: "قبل مدة رأيت دعوات تنتشر في الفيس بوك ينشرها علمانيون وقوميون ومعهم مسلمون مفاده"
-status: draft
+status: published
 published_at: 2018-06-12
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

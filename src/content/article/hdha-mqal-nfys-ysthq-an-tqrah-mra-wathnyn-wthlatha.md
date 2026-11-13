@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال نفيس يستحق أن تقرأه مرة واثنين وثلاثة"
-status: draft
+status: published
 published_at: 2024-09-04
 person: abu-umair-imran-al-zubaidi
 ---

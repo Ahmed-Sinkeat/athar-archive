@@ -1,6 +1,6 @@
 ---
 title: "أرجو ألا يكون الخبر صحيحا وإن كان صحيحا فدعواتكم في هذه الليلة للمسلمات عامة وله"
-status: draft
+status: published
 published_at: 2020-05-21
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

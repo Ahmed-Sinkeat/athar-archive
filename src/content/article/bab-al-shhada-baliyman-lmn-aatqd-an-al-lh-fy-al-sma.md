@@ -1,6 +1,6 @@
 ---
 title: "باب الشهادة بالإيمان لمن اعتقد أن الله في السماء"
-status: draft
+status: published
 published_at: 2025-05-13
 person: abu-abdillah-firas-al-ramli
 ---

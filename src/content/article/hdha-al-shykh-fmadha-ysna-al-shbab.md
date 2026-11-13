@@ -1,6 +1,6 @@
 ---
 title: "هذا الشيخ فماذا يصنع الشباب ؟"
-status: draft
+status: published
 published_at: 2023-11-09
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

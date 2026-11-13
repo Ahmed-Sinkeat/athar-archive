@@ -1,6 +1,6 @@
 ---
 title: "اصبروا يا أهل الإسلام ولا تكونوا أجزع من الكـفار"
-status: draft
+status: published
 published_at: 2023-10-17
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

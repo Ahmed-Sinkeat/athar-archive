@@ -1,6 +1,6 @@
 ---
 title: "يعني فهمنا أنه لا غيرة عندكم على التوحيد والعقيدة"
-status: draft
+status: published
 published_at: 2024-10-02
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

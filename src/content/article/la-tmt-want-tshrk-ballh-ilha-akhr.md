@@ -1,6 +1,6 @@
 ---
 title: "لا تمت وأنت تشرك بالله إلهَا آخر"
-status: draft
+status: published
 published_at: 2023-12-16
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

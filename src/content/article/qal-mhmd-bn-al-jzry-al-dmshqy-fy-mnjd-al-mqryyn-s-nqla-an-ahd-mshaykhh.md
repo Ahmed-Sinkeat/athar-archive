@@ -1,6 +1,6 @@
 ---
 title: "قال محمد بن الجزري الدمشقي في \"منجد المقرئين\" (ص62) نقلًا عن أحد مشايخه"
-status: draft
+status: published
 published_at: 2020-09-30
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "لا أفهم كيف لعاقل يشهد الشهادتين وخالط قلبه مثقال ذرة من إيمان يشك في ردة الرافض"
-status: draft
+status: published
 published_at: 2025-06-17
 person: abu-umair-imran-al-zubaidi
 ---

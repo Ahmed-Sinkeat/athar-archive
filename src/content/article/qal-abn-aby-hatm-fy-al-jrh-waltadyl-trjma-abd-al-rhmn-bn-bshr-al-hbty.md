@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي حاتم في الجرح والتعديل [ ترجمة عبد الرحمن بن بشر الحبطي"
-status: draft
+status: published
 published_at: 2018-02-07
 person: abu-jafar-al-khalifi
 ---

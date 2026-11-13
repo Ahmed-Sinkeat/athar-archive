@@ -1,6 +1,6 @@
 ---
 title: "من يقرأ ويسمع تصريحات الإيرانيين قبل الحرب وأثناءها بمعزل عن أي شيء يظن أن إسرائ"
-status: draft
+status: published
 published_at: 2025-06-17
 person: abu-umair-imran-al-zubaidi
 ---

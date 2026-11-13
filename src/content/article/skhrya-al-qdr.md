@@ -1,6 +1,6 @@
 ---
 title: "\"سخرية القدر\"."
-status: draft
+status: published
 published_at: 2024-12-22
 person: abu-umair-imran-al-zubaidi
 ---

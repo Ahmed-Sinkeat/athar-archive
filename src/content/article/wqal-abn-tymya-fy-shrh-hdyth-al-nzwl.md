@@ -1,6 +1,6 @@
 ---
 title: "وقال ابن تيمية في شرح حديث النزول"
-status: draft
+status: published
 published_at: 2022-10-10
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

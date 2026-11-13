@@ -1,6 +1,6 @@
 ---
 title: "باب ما ذكر من تواضع الشافعي وخضوعه للحق وبذله النصح للعالم"
-status: draft
+status: published
 published_at: 2023-05-16
 person: abu-abdillah-firas-al-ramli
 ---

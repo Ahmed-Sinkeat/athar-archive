@@ -1,6 +1,6 @@
 ---
 title: "تأمَّل: \"مشاكل اقتصادية ناجمة عن انخفاض الهجرة\"."
-status: draft
+status: published
 published_at: 2020-11-08
 person: abu-jafar-al-khalifi
 ---

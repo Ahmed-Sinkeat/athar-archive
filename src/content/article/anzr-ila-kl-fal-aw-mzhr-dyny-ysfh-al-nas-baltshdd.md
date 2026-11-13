@@ -1,6 +1,6 @@
 ---
 title: "انظر إلى كلّ فعلٍ أو مظهرٍ ديني يصفه النّاس بالتشدّد"
-status: draft
+status: published
 published_at: 2023-01-06
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قول القائل: العلم سيكتشف كيت وكيت! (ويعني العلم التجريبي)"
-status: draft
+status: published
 published_at: 2018-02-26
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

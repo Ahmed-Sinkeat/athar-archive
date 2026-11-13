@@ -1,6 +1,6 @@
 ---
 title: "تعقيبا على فرح السذج بحلقة الدحيح عن خالد بن الوليد رضي الله عنه"
-status: draft
+status: published
 published_at: 2025-12-03
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

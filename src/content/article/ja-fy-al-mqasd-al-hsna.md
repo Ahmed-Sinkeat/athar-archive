@@ -1,6 +1,6 @@
 ---
 title: "جاء في المقاصد الحسنة"
-status: draft
+status: published
 published_at: 2017-10-29
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

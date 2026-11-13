@@ -1,6 +1,6 @@
 ---
 title: "الذي عنده مشكلة مع عبارة: السمع والطاعة لأمراء المسلمين في غير معصية."
-status: draft
+status: published
 published_at: 2024-12-14
 person: abu-umair-imran-al-zubaidi
 ---

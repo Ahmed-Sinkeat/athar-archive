@@ -1,6 +1,6 @@
 ---
 title: "لا أظنّ أنّه قد مر على الإنسان المسلم عبر التاريخ -من مختلف الشرائع- كما يمر علي"
-status: draft
+status: published
 published_at: 2023-10-09
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "عندما استذكر البخاري صاحبه الذي قتله الرافضة بروايته لغدر اليهود!"
-status: draft
+status: published
 published_at: 2026-04-09
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

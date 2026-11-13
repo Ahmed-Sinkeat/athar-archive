@@ -1,6 +1,6 @@
 ---
 title: "من لديه صاحب قد أوتيَ صوتًا عذبًا في تلاوة القرآن؛ لهو في نعيمٍ عظيم!."
-status: draft
+status: published
 published_at: 2023-05-31
 person: abu-umair-imran-al-zubaidi
 ---

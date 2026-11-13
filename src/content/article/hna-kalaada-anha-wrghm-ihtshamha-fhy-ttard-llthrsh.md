@@ -1,6 +1,6 @@
 ---
 title: "هنا كالعادة أنها ورغم إحتشامها فهي تتعرض للتحرش"
-status: draft
+status: published
 published_at: 2018-03-15
 person: abu-jafar-al-khalifi
 ---

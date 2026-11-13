@@ -1,6 +1,6 @@
 ---
 title: "\"وعلى عقائدهم من ترك دين من خذلهم\""
-status: draft
+status: published
 published_at: 2024-10-11
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

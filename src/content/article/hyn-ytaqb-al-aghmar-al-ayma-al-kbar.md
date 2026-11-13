@@ -1,6 +1,6 @@
 ---
 title: "حين يتعقب الأغمار الأئمة الكبار"
-status: draft
+status: published
 published_at: 2019-01-22
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

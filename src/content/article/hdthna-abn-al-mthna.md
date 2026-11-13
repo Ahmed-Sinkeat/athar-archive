@@ -1,6 +1,6 @@
 ---
 title: "حدثنا ابن المثنى"
-status: draft
+status: published
 published_at: 2025-03-05
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

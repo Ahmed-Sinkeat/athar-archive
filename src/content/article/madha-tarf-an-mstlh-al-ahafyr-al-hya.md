@@ -1,6 +1,6 @@
 ---
 title: "ماذا تعرف عن مصطلح ( الأحافير الحية ) ؟"
-status: draft
+status: published
 published_at: 2018-05-17
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

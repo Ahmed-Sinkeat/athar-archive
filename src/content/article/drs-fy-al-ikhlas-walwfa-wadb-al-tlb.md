@@ -1,6 +1,6 @@
 ---
 title: "درس في الإخلاص والوفاء وأدب الطلب ..."
-status: draft
+status: published
 published_at: 2019-07-03
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

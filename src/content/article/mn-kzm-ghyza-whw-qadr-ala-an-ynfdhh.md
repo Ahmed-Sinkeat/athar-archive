@@ -1,6 +1,6 @@
 ---
 title: "من كظم غيظا وهو قادر على أن ينفذه"
-status: draft
+status: published
 published_at: 2025-08-15
 person: abu-abdillah-firas-al-ramli
 ---

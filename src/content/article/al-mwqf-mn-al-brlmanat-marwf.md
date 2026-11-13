@@ -1,6 +1,6 @@
 ---
 title: "الموقف من البرلمانات معروف"
-status: draft
+status: published
 published_at: 2025-12-07
 person: abu-jafar-al-khalifi
 ---

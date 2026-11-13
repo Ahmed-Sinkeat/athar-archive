@@ -1,6 +1,6 @@
 ---
 title: "لكم ظلم أهل المدينة إلا من رحم ربي أبناء الريف والبادية."
-status: draft
+status: published
 published_at: 2025-07-17
 person: abu-umair-imran-al-zubaidi
 ---

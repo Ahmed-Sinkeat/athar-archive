@@ -1,6 +1,6 @@
 ---
 title: "ليس حديث أشد على الجهمية من هذا الحديث"
-status: draft
+status: published
 published_at: 2024-03-07
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

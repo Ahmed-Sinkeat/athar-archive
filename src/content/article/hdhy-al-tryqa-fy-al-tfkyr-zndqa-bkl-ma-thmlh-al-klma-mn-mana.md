@@ -1,6 +1,6 @@
 ---
 title: "هذي الطريقة في التفكير زندقة بكل ما تحمله الكلمة من معنى"
-status: draft
+status: published
 published_at: 2024-04-06
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-sunnah-wal-bidah"]

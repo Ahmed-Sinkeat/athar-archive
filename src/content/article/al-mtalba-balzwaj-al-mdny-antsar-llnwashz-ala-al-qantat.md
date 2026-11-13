@@ -1,6 +1,6 @@
 ---
 title: "المطالبة بالزواج المدني انتصار للنواشز على القانتات"
-status: draft
+status: published
 published_at: 2019-12-01
 person: abu-jafar-al-khalifi
 ---

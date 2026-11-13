@@ -1,6 +1,6 @@
 ---
 title: "الكل سمع قول نتنياهو أنه سيحقق نبوءة سفر أشعيا"
-status: draft
+status: published
 published_at: 2023-10-29
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

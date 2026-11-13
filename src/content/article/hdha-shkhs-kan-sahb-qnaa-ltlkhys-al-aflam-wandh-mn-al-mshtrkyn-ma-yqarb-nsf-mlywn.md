@@ -1,6 +1,6 @@
 ---
 title: "هذا شخص كان صاحب قناة لتلخيص الأفلام، وعنده من المشتركين ما يقارب نصف مليون."
-status: draft
+status: published
 published_at: 2025-03-05
 person: abu-jafar-al-khalifi
 ---

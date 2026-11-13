@@ -1,6 +1,6 @@
 ---
 title: "أكبر خطأٍ تقع فيه الفتاة المسلمة على مواقع التواصل الاجتماعي؛ هو ميلها العاطفي ت"
-status: draft
+status: published
 published_at: 2022-12-12
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "المثال الثاني"
-status: draft
+status: published
 published_at: 2022-01-31
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

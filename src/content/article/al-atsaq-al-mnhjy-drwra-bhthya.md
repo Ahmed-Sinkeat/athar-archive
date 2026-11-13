@@ -1,6 +1,6 @@
 ---
 title: "الاتساق المنهجي ضرورة بحثية"
-status: draft
+status: published
 published_at: 2019-12-10
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

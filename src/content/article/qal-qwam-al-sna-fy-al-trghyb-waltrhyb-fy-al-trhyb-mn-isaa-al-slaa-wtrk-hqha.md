@@ -1,6 +1,6 @@
 ---
 title: "قال قوام السنة في الترغيب والترهيب: في الترهيب من إساءة الصلاة وترك حقها"
-status: draft
+status: published
 published_at: 2026-02-13
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "اتفاق بين الدولة السورية وتنظيم قسد يفضي إلى اندماج قوات قسد في مؤسسات الدولة"
-status: draft
+status: published
 published_at: 2025-03-10
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

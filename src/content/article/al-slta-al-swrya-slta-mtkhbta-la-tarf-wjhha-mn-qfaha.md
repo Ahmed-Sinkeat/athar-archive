@@ -1,6 +1,6 @@
 ---
 title: "السلطة السورية سلطة متخبطة لا تعرف وجهها من قفاها"
-status: draft
+status: published
 published_at: 2025-07-19
 person: abu-umair-imran-al-zubaidi
 ---

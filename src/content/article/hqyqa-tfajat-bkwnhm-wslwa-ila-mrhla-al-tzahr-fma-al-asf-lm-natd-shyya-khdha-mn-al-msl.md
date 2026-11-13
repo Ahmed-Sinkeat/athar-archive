@@ -1,6 +1,6 @@
 ---
 title: "حقيقة تفاجأت بكونهم وصلوا إلى مرحلة التظاهر فمع الأسف لم نعتد شيئا كهذا من المسل"
-status: draft
+status: published
 published_at: 2019-06-21
 person: abu-jafar-al-khalifi
 ---

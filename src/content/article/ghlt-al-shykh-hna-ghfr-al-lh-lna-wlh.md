@@ -1,6 +1,6 @@
 ---
 title: "غلط الشيخ هنا غفر الله لنا وله"
-status: draft
+status: published
 published_at: 2024-08-02
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

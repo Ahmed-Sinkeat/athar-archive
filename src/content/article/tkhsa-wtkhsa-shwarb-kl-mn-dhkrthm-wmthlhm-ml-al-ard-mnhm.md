@@ -1,6 +1,6 @@
 ---
 title: "تخسى، وتخسى شوارب كل من ذكرتهم، ومثلهم ملء الأرض منهم!"
-status: draft
+status: published
 published_at: 2025-03-06
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

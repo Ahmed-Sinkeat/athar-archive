@@ -1,6 +1,6 @@
 ---
 title: "إن في القرآن لآيتين، ما أذنب عبد ذنبا، ثم تلاهما واستغفر الله إلا غفر له"
-status: draft
+status: published
 published_at: 2024-03-07
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

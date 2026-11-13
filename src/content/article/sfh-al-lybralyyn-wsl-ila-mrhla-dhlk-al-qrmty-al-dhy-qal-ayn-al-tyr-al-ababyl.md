@@ -1,6 +1,6 @@
 ---
 title: "سفه الليبراليين وصل إلى مرحلة ذلك القرمطي الذي قال : أين الطير الأبابيل"
-status: draft
+status: published
 published_at: 2018-12-30
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "من نفائس ابن تيمية: تكبير المسلمين في العيدين من دلائل النبوة..."
-status: draft
+status: published
 published_at: 2026-03-19
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "قال ابن سعد في الطبقات [2657"
-status: draft
+status: published
 published_at: 2017-10-18
 person: abu-jafar-al-khalifi
 ---

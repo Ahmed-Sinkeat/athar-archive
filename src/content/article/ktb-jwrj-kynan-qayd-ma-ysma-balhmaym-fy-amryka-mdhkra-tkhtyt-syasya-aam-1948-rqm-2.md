@@ -1,6 +1,6 @@
 ---
 title: "كتب جورج كينان قائد ما يسمى بالحمائم في أمريكا مذكرة تخطيط سياسية عام ١٩٤٨ رقم ٢"
-status: draft
+status: published
 published_at: 2017-08-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

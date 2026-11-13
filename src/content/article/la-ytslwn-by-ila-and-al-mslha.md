@@ -1,6 +1,6 @@
 ---
 title: "\"لا يتّصلون بي إلّا عِند المصلحة!\"."
-status: draft
+status: published
 published_at: 2022-10-04
 person: abu-umair-imran-al-zubaidi
 ---

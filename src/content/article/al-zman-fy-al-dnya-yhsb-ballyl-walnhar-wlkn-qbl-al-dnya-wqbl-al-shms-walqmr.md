@@ -1,6 +1,6 @@
 ---
 title: "الزمان في الدنيا يحسب بالليل والنهار ولكن قبل الدنيا وقبل الشمس والقمر"
-status: draft
+status: published
 published_at: 2018-04-20
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

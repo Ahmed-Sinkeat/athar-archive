@@ -1,6 +1,6 @@
 ---
 title: "أفضل صلاة المرء في بيته إلا الصلاة المكتوبة"
-status: draft
+status: published
 published_at: 2025-01-11
 person: abu-abdillah-firas-al-ramli
 ---

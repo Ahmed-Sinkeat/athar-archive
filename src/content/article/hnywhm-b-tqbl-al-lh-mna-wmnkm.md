@@ -1,6 +1,6 @@
 ---
 title: "هنِّئوهم بـ (تقبل الله منا ومنكم)."
-status: draft
+status: published
 published_at: 2020-12-26
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

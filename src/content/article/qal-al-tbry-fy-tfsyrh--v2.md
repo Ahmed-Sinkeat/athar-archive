@@ -1,6 +1,6 @@
 ---
 title: "قال الطبري في تفسيره"
-status: draft
+status: published
 published_at: 2021-04-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

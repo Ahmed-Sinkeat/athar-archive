@@ -1,6 +1,6 @@
 ---
 title: "مراقبة الشعب التي يتشدق بها البعض يمكن الإفلات منها بجعل جرائمك سرية"
-status: draft
+status: published
 published_at: 2017-07-21
 person: abu-jafar-al-khalifi
 ---

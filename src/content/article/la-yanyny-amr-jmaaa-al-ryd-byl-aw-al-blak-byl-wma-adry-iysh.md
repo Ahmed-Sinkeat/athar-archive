@@ -1,6 +1,6 @@
 ---
 title: "لا يعنيني أمر جماعة الريد بيل أو البلاك بيل وما أدري إيش."
-status: draft
+status: published
 published_at: 2024-06-02
 person: abu-umair-imran-al-zubaidi
 ---

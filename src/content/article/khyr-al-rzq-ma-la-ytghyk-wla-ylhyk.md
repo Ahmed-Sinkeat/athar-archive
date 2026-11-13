@@ -1,6 +1,6 @@
 ---
 title: "خير الرزق ما لا يطغيك ولا يلهيك"
-status: draft
+status: published
 published_at: 2026-01-10
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

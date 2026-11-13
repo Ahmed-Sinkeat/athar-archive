@@ -1,6 +1,6 @@
 ---
 title: "طبعًا صاحبة الهوى هذه لن تكمل الآية لأنّها تنقض كلامها في موضعين من نفس الآية"
-status: draft
+status: published
 published_at: 2024-05-27
 person: abu-umair-imran-al-zubaidi
 ---

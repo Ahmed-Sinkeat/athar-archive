@@ -1,6 +1,6 @@
 ---
 title: "قال ابن قدامة في المغني (5/ 127)"
-status: draft
+status: published
 published_at: 2026-09-11
 person: abu-jafar-al-khalifi
 ---

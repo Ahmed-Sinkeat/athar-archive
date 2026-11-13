@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال قديم نسبياً بعنوان (الحجة في إنهاء الدعم لدولة إسرائيل)."
-status: draft
+status: published
 published_at: 2023-11-15
 person: abu-jafar-al-khalifi
 ---

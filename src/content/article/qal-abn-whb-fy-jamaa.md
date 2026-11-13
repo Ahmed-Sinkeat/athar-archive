@@ -1,6 +1,6 @@
 ---
 title: "قال ابن وهب في جامعة [ 91"
-status: draft
+status: published
 published_at: 2018-02-28
 person: abu-jafar-al-khalifi
 ---

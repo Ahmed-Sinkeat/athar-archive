@@ -1,6 +1,6 @@
 ---
 title: "فائدة نفيسة في خبر (في كل أرض مثل إبراهيم)."
-status: draft
+status: published
 published_at: 2021-05-24
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

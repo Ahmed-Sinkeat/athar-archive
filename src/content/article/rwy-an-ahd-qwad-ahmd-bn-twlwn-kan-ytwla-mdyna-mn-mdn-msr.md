@@ -1,6 +1,6 @@
 ---
 title: "روي أن أحد قواد أحمد بن طولون كان يتولى مدينة من مدن مصر"
-status: draft
+status: published
 published_at: 2017-07-22
 person: abu-jafar-al-khalifi
 ---

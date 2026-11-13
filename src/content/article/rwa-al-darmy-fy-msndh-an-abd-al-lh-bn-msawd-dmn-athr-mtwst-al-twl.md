@@ -1,6 +1,6 @@
 ---
 title: "روى الدارمي في مسنده عن عبد الله بن مسعود ضمن أثر متوسط الطول"
-status: draft
+status: published
 published_at: 2018-11-26
 person: abu-jafar-al-khalifi
 ---

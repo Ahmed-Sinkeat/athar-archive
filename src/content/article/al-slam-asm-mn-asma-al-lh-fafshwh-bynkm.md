@@ -1,6 +1,6 @@
 ---
 title: "السلام اسم من أسماء الله فأفشوه بينكم"
-status: draft
+status: published
 published_at: 2025-10-27
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

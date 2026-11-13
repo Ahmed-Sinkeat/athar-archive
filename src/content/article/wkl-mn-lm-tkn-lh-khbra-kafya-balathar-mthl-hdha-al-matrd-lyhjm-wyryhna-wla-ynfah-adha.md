@@ -1,6 +1,6 @@
 ---
 title: "وكل من لم تكن له خبرة كافية بالآثار مثل هذا المعترض ليحجم ويريحنا ولا ينفعه اذا"
-status: draft
+status: published
 published_at: 2018-11-08
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

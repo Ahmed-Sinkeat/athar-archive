@@ -1,6 +1,6 @@
 ---
 title: "هذا في سويسرا فكيف بغيرها"
-status: draft
+status: published
 published_at: 2019-06-18
 person: abu-jafar-al-khalifi
 ---

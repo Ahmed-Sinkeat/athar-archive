@@ -1,6 +1,6 @@
 ---
 title: "عزيزي الشاب."
-status: draft
+status: published
 published_at: 2023-03-07
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

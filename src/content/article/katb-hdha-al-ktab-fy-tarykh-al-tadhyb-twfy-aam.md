@@ -1,6 +1,6 @@
 ---
 title: "كاتب هذا الكتاب في تاريخ التعذيب توفي عام 1987"
-status: draft
+status: published
 published_at: 2024-04-11
 person: abu-jafar-al-khalifi
 ---

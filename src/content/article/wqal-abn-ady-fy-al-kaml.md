@@ -1,6 +1,6 @@
 ---
 title: "وقال ابن عدي في الكامل"
-status: draft
+status: published
 published_at: 2023-01-03
 person: abu-jafar-al-khalifi
 ---

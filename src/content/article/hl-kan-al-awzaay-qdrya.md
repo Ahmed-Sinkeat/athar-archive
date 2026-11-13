@@ -1,6 +1,6 @@
 ---
 title: "هل كان الأوزاعي قدرياً؟"
-status: draft
+status: published
 published_at: 2023-09-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "خلاصة ضلال الضالين الطعن في صفتي العلم والقدرة.."
-status: draft
+status: published
 published_at: 2022-02-18
 person: abu-jafar-al-khalifi
 ---

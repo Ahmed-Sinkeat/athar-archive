@@ -1,6 +1,6 @@
 ---
 title: "هذه فائدة لطيفة من كتاب [مقالات في تناقضات الأشعرية] للباحث محمد براء ياسين"
-status: draft
+status: published
 published_at: 2021-01-28
 person: abu-jafar-al-khalifi
 ---

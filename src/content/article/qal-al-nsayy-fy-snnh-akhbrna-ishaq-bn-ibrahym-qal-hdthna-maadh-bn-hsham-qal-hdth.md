@@ -1,6 +1,6 @@
 ---
 title: "قال النسائي في سننه 401 - أخبرنا إسحاق بن إبراهيم قال حدثنا معاذ بن هشام قال حدث"
-status: draft
+status: published
 published_at: 2018-01-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

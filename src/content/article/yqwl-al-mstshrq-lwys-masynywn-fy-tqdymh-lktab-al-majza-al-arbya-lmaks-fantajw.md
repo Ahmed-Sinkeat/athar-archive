@@ -1,6 +1,6 @@
 ---
 title: "يقول المستشرق لويس ماسينيون في تقديمه لكتاب المعجزة العربية لماكس فانتاجو"
-status: draft
+status: published
 published_at: 2017-10-11
 person: abu-jafar-al-khalifi
 ---

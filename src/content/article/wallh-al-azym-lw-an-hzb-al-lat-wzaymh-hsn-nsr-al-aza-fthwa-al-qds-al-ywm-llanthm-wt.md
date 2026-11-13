@@ -1,6 +1,6 @@
 ---
 title: "والله العظيم لو أنّ حزب اللات وزعيمه حسن نصر العزى فتحوا القدس اليوم؛ للعنتهم وت"
-status: draft
+status: published
 published_at: 2023-10-30
 person: abu-umair-imran-al-zubaidi
 ---

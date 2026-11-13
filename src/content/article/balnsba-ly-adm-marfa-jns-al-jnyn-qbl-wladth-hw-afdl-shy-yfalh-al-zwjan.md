@@ -1,6 +1,6 @@
 ---
 title: "بالنسبة لي، عدم معرفة جنس الجنين قبل ولادته هو أفضل شيء يفعله الزوجان."
-status: draft
+status: published
 published_at: 2023-10-01
 person: abu-umair-imran-al-zubaidi
 ---

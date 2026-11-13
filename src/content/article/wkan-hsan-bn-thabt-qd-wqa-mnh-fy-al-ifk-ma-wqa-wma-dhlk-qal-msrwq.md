@@ -1,6 +1,6 @@
 ---
 title: "وكان حسان بن ثابت قد وقع منه في الإفك ما وقع ومع ذلك قال مسروق"
-status: draft
+status: published
 published_at: 2019-12-01
 person: abu-jafar-al-khalifi
 ---

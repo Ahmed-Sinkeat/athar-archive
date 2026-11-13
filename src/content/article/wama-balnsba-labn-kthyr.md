@@ -1,6 +1,6 @@
 ---
 title: "وأما بالنسبة لابن كثير"
-status: draft
+status: published
 published_at: 2024-09-02
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا جيسي كيلي (مقدم برامج يميني) يعلِّق على تشريع الإجهاض في الأرجنتين واحتفال ا"
-status: draft
+status: published
 published_at: 2020-12-17
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الساقي ليس يهوديا بل صحابي أنصاري معروف مترجم في كتب تراجم الصحابة قال أحمد في م"
-status: draft
+status: published
 published_at: 2020-09-06
 person: abu-jafar-al-khalifi
 ---

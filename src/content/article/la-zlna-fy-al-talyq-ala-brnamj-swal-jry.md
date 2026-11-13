@@ -1,6 +1,6 @@
 ---
 title: "لا زلنا في التعليق على برنامج سؤال جريء"
-status: draft
+status: published
 published_at: 2018-06-13
 person: abu-jafar-al-khalifi
 ---

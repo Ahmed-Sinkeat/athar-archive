@@ -1,6 +1,6 @@
 ---
 title: "إني أكره لنفسي ولكم الشكاية من الحال على مواقع التواصل."
-status: draft
+status: published
 published_at: 2024-06-04
 person: abu-umair-imran-al-zubaidi
 ---

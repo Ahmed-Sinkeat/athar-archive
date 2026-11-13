@@ -1,6 +1,6 @@
 ---
 title: "بس الرخويات مأكدين لي أنه لا فرق بين الرجل والمرأة"
-status: draft
+status: published
 published_at: 2026-03-26
 person: abu-umair-imran-al-zubaidi
 ---

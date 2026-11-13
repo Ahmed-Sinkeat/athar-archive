@@ -1,6 +1,6 @@
 ---
 title: "ذكر غير واحد من أئمة السلف رضي الله عنهم أن لقمان الحكيم كان عبدا أسودا غليظ الش"
-status: draft
+status: published
 published_at: 2025-12-21
 person: abu-umair-imran-al-zubaidi
 ---

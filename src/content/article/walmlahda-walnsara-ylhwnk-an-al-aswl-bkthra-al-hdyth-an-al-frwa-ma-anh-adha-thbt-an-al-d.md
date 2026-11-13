@@ -1,6 +1,6 @@
 ---
 title: "والملاحدة والنصارى يلهونك عن الأصول بكثرة الحديث عن الفروع مع أنه اذا ثبت أن الد"
-status: draft
+status: published
 published_at: 2018-10-17
 person: abu-jafar-al-khalifi
 ---

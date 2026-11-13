@@ -1,6 +1,6 @@
 ---
 title: "ما أشبه قولكم بقول أسلافكم من المشركين!"
-status: draft
+status: published
 published_at: 2025-10-27
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من أدلة صدق المحدثين رحمهم الله"
-status: draft
+status: published
 published_at: 2025-11-04
 person: abu-abdillah-firas-al-ramli
 ---

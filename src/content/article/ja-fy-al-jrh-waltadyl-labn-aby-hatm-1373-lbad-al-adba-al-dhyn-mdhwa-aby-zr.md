@@ -1,6 +1,6 @@
 ---
 title: "جاء في الجرح والتعديل لابن أبي حاتم (١/&rlm;٣٧٣) لبعض الآدباء الذين مدحوا أبي زر"
-status: draft
+status: published
 published_at: 2023-07-10
 person: abu-abdillah-firas-al-ramli
 ---

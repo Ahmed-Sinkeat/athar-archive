@@ -1,6 +1,6 @@
 ---
 title: "من أخطر الأمور في هذه الأحداث هي كمية الناس المتصدرة والتي تتحدث عنها"
-status: draft
+status: published
 published_at: 2023-11-10
 person: abu-umair-imran-al-zubaidi
 ---

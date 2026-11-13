@@ -1,6 +1,6 @@
 ---
 title: "نشرت الاندبندنت بتاريخ 19/1/2016 مقالا فيه أن 43 بالمائة من سكان بريطانيا فخورين"
-status: draft
+status: published
 published_at: 2018-03-02
 person: abu-jafar-al-khalifi
 ---

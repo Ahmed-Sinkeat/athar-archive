@@ -1,6 +1,6 @@
 ---
 title: "لهذا أقول دائماً"
-status: draft
+status: published
 published_at: 2024-09-10
 person: abu-jafar-al-khalifi
 ---

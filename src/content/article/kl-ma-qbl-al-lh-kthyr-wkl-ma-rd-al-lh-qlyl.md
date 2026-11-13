@@ -1,6 +1,6 @@
 ---
 title: "كل ما قبل الله كثير وكل ما رد الله قليل"
-status: draft
+status: published
 published_at: 2026-01-08
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

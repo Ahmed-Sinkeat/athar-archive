@@ -1,6 +1,6 @@
 ---
 title: "لماذا البدعة أحب إلى إبليس من المعصية ؟"
-status: draft
+status: published
 published_at: 2024-01-20
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

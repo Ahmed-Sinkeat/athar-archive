@@ -1,6 +1,6 @@
 ---
 title: "حينما تسُال: لماذا لم يحرم الله الرق؟"
-status: draft
+status: published
 published_at: 2025-07-29
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

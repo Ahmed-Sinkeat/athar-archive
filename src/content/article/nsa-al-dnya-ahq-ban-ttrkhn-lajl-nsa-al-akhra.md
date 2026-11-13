@@ -1,6 +1,6 @@
 ---
 title: "نساء الدنيا أحق بأن تتركهن لأجل نساء الآخرة"
-status: draft
+status: published
 published_at: 2023-09-15
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "نشرت البي بي سي أنه منذ العام 2005 إلى يومنا هذا حصلت 160 مليون حالة إجهاض بعد د"
-status: draft
+status: published
 published_at: 2017-06-13
 person: abu-jafar-al-khalifi
 ---

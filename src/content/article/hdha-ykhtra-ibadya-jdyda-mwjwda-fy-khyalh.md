@@ -1,6 +1,6 @@
 ---
 title: "هذا يخترع إباضية جديدة موجودة في خياله."
-status: draft
+status: published
 published_at: 2025-08-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "في غضون حملة ( نقد السلفية المعاصرة ) نجد أن هذا النقد هو بحاجة إلى نقد هو الآخر"
-status: draft
+status: published
 published_at: 2018-12-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "في كاليفورنيا قانون مقترح لتمكين النساء من قتل أطفالهن حتى بعد ٧ أيام من الولادة"
-status: draft
+status: published
 published_at: 2022-03-31
 person: abu-jafar-al-khalifi
 ---

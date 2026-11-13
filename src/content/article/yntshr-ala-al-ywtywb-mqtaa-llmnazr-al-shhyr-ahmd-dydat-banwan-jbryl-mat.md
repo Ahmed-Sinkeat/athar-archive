@@ -1,6 +1,6 @@
 ---
 title: "ينتشر على اليوتيوب مقطعا للمناظر الشهير أحمد ديدات بعنوان: جِبْرِيل مات."
-status: draft
+status: published
 published_at: 2018-11-13
 person: abu-jafar-al-khalifi
 ---

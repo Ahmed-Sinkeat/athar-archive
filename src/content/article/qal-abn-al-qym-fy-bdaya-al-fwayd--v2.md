@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم في بدائع الفوائد"
-status: draft
+status: published
 published_at: 2017-08-17
 person: abu-jafar-al-khalifi
 ---

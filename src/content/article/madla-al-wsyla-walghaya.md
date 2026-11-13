@@ -1,6 +1,6 @@
 ---
 title: "معضلة الوسيلة والغاية!"
-status: draft
+status: published
 published_at: 2020-12-05
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

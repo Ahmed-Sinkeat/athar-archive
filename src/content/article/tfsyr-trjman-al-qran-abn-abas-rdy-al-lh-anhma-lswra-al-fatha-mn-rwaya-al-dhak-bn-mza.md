@@ -1,6 +1,6 @@
 ---
 title: "تفسير ترجمان القرآن ابن عباس رضي الله عنهما لسورة الفاتحة من رواية الضحاك بن مزا"
-status: draft
+status: published
 published_at: 2026-04-11
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

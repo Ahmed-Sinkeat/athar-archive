@@ -1,6 +1,6 @@
 ---
 title: "حديث المسيء صلاته هل يمكننا العمل به اليوم؟"
-status: draft
+status: published
 published_at: 2021-05-21
 person: abu-jafar-al-khalifi
 ---

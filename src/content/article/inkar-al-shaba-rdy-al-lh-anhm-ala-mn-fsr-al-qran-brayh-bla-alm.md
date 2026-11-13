@@ -1,6 +1,6 @@
 ---
 title: "إنكار الصحابة رضي الله عنهم على من فسر القرآن برأيه بلا علم"
-status: draft
+status: published
 published_at: 2023-10-28
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

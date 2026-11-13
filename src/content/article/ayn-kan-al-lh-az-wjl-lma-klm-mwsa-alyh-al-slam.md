@@ -1,6 +1,6 @@
 ---
 title: "أين كان الله عز وجل لما كلم موسى عليه السلام ؟"
-status: draft
+status: published
 published_at: 2026-04-18
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

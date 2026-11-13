@@ -1,6 +1,6 @@
 ---
 title: "فائدة طيِّبة بعبارة جليلة مرَّت عليَّ وأنا أتصفَّح صحيح الإمام البخاري."
-status: draft
+status: published
 published_at: 2026-05-22
 person: awwab-bin-muhammad
 ---

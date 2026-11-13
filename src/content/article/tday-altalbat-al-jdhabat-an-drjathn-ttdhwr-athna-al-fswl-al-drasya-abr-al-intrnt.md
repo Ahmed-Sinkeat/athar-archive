@@ -1,6 +1,6 @@
 ---
 title: "تدعي \"الطالبات الجذابات أن درجاتهن تتدهور\" أثناء الفصول الدراسية عبر الإنترنت"
-status: draft
+status: published
 published_at: 2022-12-14
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

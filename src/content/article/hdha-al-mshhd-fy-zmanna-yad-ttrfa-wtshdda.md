@@ -1,6 +1,6 @@
 ---
 title: "هذا المشهد في زماننا يُعد تطرفًا وتشددًا!"
-status: draft
+status: published
 published_at: 2024-01-08
 person: abu-umair-imran-al-zubaidi
 ---

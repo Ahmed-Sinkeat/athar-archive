@@ -1,6 +1,6 @@
 ---
 title: "باب في رحمة بعض الفقهاء التي شملت حتى القمل !"
-status: draft
+status: published
 published_at: 2019-01-04
 person: abu-jafar-al-khalifi
 ---

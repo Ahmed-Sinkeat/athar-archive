@@ -1,6 +1,6 @@
 ---
 title: "يا عبد الله"
-status: draft
+status: published
 published_at: 2026-09-15
 person: awwab-bin-muhammad
 ---

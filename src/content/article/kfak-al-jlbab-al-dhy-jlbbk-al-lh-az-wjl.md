@@ -1,6 +1,6 @@
 ---
 title: "كفاك الجلباب الذي جلببك الله عز وجل"
-status: draft
+status: published
 published_at: 2024-01-03
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

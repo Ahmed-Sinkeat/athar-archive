@@ -1,6 +1,6 @@
 ---
 title: "قال أبو الخطاب الكلوذاني الحنبلي في كتابه التمهيد ( 3/70- 75)"
-status: draft
+status: published
 published_at: 2017-10-08
 person: abu-jafar-al-khalifi
 ---

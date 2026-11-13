@@ -1,6 +1,6 @@
 ---
 title: "قال ابن الأثير في اللباب في تهذيب الأنساب"
-status: draft
+status: published
 published_at: 2018-03-03
 person: abu-jafar-al-khalifi
 ---

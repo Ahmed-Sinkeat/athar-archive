@@ -1,6 +1,6 @@
 ---
 title: "الإعجاز الفريد في سورة العصر..."
-status: draft
+status: published
 published_at: 2019-06-09
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

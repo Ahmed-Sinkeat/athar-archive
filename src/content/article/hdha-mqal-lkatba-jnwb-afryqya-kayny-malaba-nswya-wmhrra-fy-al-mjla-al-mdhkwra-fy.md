@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال لكاتبة جنوب أفريقية (كايني مالابا) نسوية ومحرِّرة في المجلة المذكورة في"
-status: draft
+status: published
 published_at: 2024-08-28
 person: abu-jafar-al-khalifi
 ---

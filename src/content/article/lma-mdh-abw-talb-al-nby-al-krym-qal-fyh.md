@@ -1,6 +1,6 @@
 ---
 title: "لما مدح أبو طالب النبيَّ الكريم ﷺ قال فيه"
-status: draft
+status: published
 published_at: 2024-11-01
 person: abu-jafar-al-khalifi
 ---

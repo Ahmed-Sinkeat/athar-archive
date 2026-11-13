@@ -1,6 +1,6 @@
 ---
 title: "سر اقتران الإذن بالتحديث عن بني إسرائيل بالنهي عن الكذب على النبي ﷺ."
-status: draft
+status: published
 published_at: 2020-12-07
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وادّخار الكسب مِن المال يكون بالصدقة."
-status: draft
+status: published
 published_at: 2023-05-07
 person: abu-umair-imran-al-zubaidi
 ---

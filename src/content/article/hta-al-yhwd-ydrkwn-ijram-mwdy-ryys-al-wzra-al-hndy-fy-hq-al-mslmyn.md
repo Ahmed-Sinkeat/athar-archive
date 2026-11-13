@@ -1,6 +1,6 @@
 ---
 title: "حتى اليهود يدركون إجرام مودي (رئيس الوزراء الهندي) في حق المسلمين.."
-status: draft
+status: published
 published_at: 2021-09-27
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

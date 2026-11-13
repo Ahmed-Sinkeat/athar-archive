@@ -1,6 +1,6 @@
 ---
 title: "حول خِطاب التهنئة المعاصر"
-status: draft
+status: published
 published_at: 2025-12-25
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran"]

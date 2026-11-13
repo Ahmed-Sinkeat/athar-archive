@@ -1,6 +1,6 @@
 ---
 title: "كم من أمر معروف اليوم هو منكر عند من مضى"
-status: draft
+status: published
 published_at: 2023-05-26
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

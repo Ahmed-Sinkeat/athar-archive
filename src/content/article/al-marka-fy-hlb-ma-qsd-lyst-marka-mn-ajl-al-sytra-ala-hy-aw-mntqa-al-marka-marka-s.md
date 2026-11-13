@@ -1,6 +1,6 @@
 ---
 title: "المعركة في حلب مع قسد ليست معركة من أجل السيطرة على حي أو منطقة؛ المعركة معركة س"
-status: draft
+status: published
 published_at: 2026-01-07
 person: abu-umair-imran-al-zubaidi
 ---

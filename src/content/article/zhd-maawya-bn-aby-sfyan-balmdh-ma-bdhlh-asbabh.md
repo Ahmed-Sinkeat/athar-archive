@@ -1,6 +1,6 @@
 ---
 title: "زهد معاوية بن أبي سفيان بالمدح مع بذله أسبابه.."
-status: draft
+status: published
 published_at: 2021-12-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

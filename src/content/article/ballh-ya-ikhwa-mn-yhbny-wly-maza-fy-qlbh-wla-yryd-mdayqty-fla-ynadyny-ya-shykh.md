@@ -1,6 +1,6 @@
 ---
 title: "بالله يا إخوة، من يحبني ولي معزة في قلبه ولا يريد مضايقتي فلا يناديني \"يا شيخ\"."
-status: draft
+status: published
 published_at: 2024-04-02
 person: abu-umair-imran-al-zubaidi
 ---

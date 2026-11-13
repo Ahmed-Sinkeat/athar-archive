@@ -1,6 +1,6 @@
 ---
 title: "مِن أعظم دلائل النبوة: رأفته صلى الله عليه وسلم بالمؤمنين"
-status: draft
+status: published
 published_at: 2020-10-28
 person: abu-jafar-al-khalifi
 ---

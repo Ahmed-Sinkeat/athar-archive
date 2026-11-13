@@ -1,6 +1,6 @@
 ---
 title: "خاطرة حول أقدم كتاب حديثي وكاتبه (صحيفة همام بن منبه)"
-status: draft
+status: published
 published_at: 2019-11-08
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

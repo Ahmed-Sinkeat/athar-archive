@@ -1,6 +1,6 @@
 ---
 title: "ستر الكبر بادعاء الحيرة.."
-status: draft
+status: published
 published_at: 2021-09-17
 person: abu-jafar-al-khalifi
 ---

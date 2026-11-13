@@ -1,6 +1,6 @@
 ---
 title: "أكثر من مئتين قتيل من أهل السنة خلال أحداث الساحل الأخيرة على أيدي النصيرية"
-status: draft
+status: published
 published_at: 2025-03-09
 person: abu-umair-imran-al-zubaidi
 ---

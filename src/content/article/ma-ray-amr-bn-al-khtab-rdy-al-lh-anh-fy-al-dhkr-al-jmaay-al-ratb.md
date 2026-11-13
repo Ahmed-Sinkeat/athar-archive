@@ -1,6 +1,6 @@
 ---
 title: "ما رأي عمر بن الخطاب -رضي الله عنه- في الذكر الجماعي الراتب؟"
-status: draft
+status: published
 published_at: 2023-05-24
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

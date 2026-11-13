@@ -1,6 +1,6 @@
 ---
 title: "في إبطال العذر بإرادة التنزيه."
-status: draft
+status: published
 published_at: 2024-05-13
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

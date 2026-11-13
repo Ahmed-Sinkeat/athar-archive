@@ -1,6 +1,6 @@
 ---
 title: "أهل التخصص مهما فعلوا فلن يحصلوا مشاهداتك فليتك تأنيت قبل هذا الكلام."
-status: draft
+status: published
 published_at: 2025-12-05
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

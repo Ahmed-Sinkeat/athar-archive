@@ -1,6 +1,6 @@
 ---
 title: "من فقه البخاري في ترجمة معاوية بن أبي سفيان في التاريخ الكبير.."
-status: draft
+status: published
 published_at: 2022-02-17
 person: abu-jafar-al-khalifi
 ---

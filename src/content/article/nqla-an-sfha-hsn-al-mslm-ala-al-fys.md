@@ -1,6 +1,6 @@
 ---
 title: "نقلا عن صفحة حصن المسلم على الفيس"
-status: draft
+status: published
 published_at: 2019-01-05
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

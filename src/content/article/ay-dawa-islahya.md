@@ -1,6 +1,6 @@
 ---
 title: "أي دعوة إصلاحية"
-status: draft
+status: published
 published_at: 2024-10-30
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

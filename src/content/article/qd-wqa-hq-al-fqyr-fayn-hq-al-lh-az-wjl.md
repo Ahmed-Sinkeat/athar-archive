@@ -1,6 +1,6 @@
 ---
 title: "قد وقع حق الفقير فأين حق الله عز وجل؟"
-status: draft
+status: published
 published_at: 2023-09-26
 person: abu-jafar-al-khalifi
 ---

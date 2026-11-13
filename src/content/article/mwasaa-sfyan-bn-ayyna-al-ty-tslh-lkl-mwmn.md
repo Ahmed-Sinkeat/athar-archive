@@ -1,6 +1,6 @@
 ---
 title: "مواساة سفيان بن عيينة التي تصلح لكل مؤمن..."
-status: draft
+status: published
 published_at: 2026-02-25
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

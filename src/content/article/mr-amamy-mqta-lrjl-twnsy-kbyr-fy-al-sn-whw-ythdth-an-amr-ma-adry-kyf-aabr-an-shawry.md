@@ -1,6 +1,6 @@
 ---
 title: "مر أمامي مقطع لرجل تونسي كبير في السن وهو يتحدث عن ٱمر ما أدري كيف أعبر عن شعوري"
-status: draft
+status: published
 published_at: 2025-11-16
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "سبق لي أن انتقدت جوردان بيترسون في مقال بعنوان: دين لا يمكن علمنته."
-status: draft
+status: published
 published_at: 2022-07-14
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "al-wala-wal-bara"]

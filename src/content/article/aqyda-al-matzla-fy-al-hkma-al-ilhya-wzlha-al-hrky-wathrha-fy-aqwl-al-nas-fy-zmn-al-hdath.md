@@ -1,6 +1,6 @@
 ---
 title: "عقيدة المعتزلة في الحكمة الإلهية وظلها الحركي وأثرها في عقول الناس في زمن الحداث"
-status: draft
+status: published
 published_at: 2020-07-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

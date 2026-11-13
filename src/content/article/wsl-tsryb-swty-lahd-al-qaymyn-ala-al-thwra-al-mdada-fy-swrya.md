@@ -1,6 +1,6 @@
 ---
 title: "🔴 وصل | تسريب صوتي لأحد القائمين على الثورة المضادة في سوريا"
-status: draft
+status: published
 published_at: 2024-12-20
 person: abu-umair-imran-al-zubaidi
 ---

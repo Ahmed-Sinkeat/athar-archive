@@ -1,6 +1,6 @@
 ---
 title: "هذا ليس شرع الله، وإنما هو تلفيق بين شرع الله عز وجل والرأسمالية."
-status: draft
+status: published
 published_at: 2025-02-26
 person: abu-jafar-al-khalifi
 ---

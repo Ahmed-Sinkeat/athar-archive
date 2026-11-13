@@ -1,6 +1,6 @@
 ---
 title: "إِنَّ أَصْحَابَ الْجَنَّةِ الْيَوْمَ فِي شُغُلٍ فَاكِهُونَ (55) هُمْ وَأَزْوَاجُ"
-status: draft
+status: published
 published_at: 2023-01-20
 person: abu-umair-imran-al-zubaidi
 ---

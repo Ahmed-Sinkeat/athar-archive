@@ -1,6 +1,6 @@
 ---
 title: "مقطع عشوائي لرجل يسأل عن ملك اليمين فيقول: ما الفرق بين الزنا ووطء ملك اليمين!"
-status: draft
+status: published
 published_at: 2025-06-27
 person: abu-umair-imran-al-zubaidi
 ---

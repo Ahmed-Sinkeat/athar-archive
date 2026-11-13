@@ -1,6 +1,6 @@
 ---
 title: "متلازمة (هذا موجود في كتبهم)، كيف يغرِّر شيوخ الشيعة بعوامهم؟"
-status: draft
+status: published
 published_at: 2023-05-22
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

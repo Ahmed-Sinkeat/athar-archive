@@ -1,6 +1,6 @@
 ---
 title: "(أنا وكافل اليتيم في الجنة كهاتين) دليل نبوة لو تدبرت.."
-status: draft
+status: published
 published_at: 2021-06-27
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "فوائد جامع الترمذي (٤)"
-status: draft
+status: published
 published_at: 2024-07-07
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

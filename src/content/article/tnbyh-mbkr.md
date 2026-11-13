@@ -1,6 +1,6 @@
 ---
 title: "تنبيه مُبكِّر"
-status: draft
+status: published
 published_at: 2026-02-02
 person: awwab-bin-muhammad
 ---

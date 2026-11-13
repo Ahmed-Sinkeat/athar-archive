@@ -1,6 +1,6 @@
 ---
 title: "حديث (إن أبي وأباك في النار) ودليل النبوة!"
-status: draft
+status: published
 published_at: 2025-04-06
 person: abu-abdillah-firas-al-ramli
 ---

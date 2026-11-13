@@ -1,6 +1,6 @@
 ---
 title: "ما رفعه الله لا يخفضه بشر"
-status: draft
+status: published
 published_at: 2022-10-04
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "إما اتباع وحي وإما هوى لا ثالث لهما ..."
-status: draft
+status: published
 published_at: 2021-05-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

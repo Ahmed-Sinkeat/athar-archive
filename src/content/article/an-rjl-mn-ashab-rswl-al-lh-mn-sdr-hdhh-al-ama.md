@@ -1,6 +1,6 @@
 ---
 title: "عن رجل من أصحاب رسول الله ﷺ من صدر هذه الأمة"
-status: draft
+status: published
 published_at: 2023-05-10
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

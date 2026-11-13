@@ -1,6 +1,6 @@
 ---
 title: "ثلاث من أخلاق النبيين"
-status: draft
+status: published
 published_at: 2024-03-13
 person: abu-abdillah-firas-al-ramli
 ---

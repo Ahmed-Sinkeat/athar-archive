@@ -1,6 +1,6 @@
 ---
 title: "قال علي أحمد الجرجاوي المتوفى عام 1922 بالتاريخ النصراني في كتابه الرحلة اليابان"
-status: draft
+status: published
 published_at: 2019-08-03
 person: abu-jafar-al-khalifi
 ---

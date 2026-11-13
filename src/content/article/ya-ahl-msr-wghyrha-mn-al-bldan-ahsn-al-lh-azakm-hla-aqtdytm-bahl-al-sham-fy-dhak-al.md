@@ -1,6 +1,6 @@
 ---
 title: "يا أهل مصر وغيرها من البلدان -أحسن الله عزاءكم- هلا اقتديتم بأهل الشام في ذاك ال"
-status: draft
+status: published
 published_at: 2026-08-03
 person: abu-jafar-al-khalifi
 ---

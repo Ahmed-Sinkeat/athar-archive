@@ -1,6 +1,6 @@
 ---
 title: "والرواية الثالثة في الطبقات لابن سعد من طريق علي بن محمد"
-status: draft
+status: published
 published_at: 2020-08-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "وصف دولة إيران المجوسية \"بالإسلامية\" تقريرا للمعنى خيانة لله ورسوله!"
-status: draft
+status: published
 published_at: 2024-10-02
 person: abu-umair-imran-al-zubaidi
 ---

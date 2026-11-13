@@ -1,6 +1,6 @@
 ---
 title: "فئتان من الناس أتعجب منهما أشد العجب"
-status: draft
+status: published
 published_at: 2019-11-30
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

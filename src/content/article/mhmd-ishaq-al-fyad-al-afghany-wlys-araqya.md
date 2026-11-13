@@ -1,6 +1,6 @@
 ---
 title: "محمد إسحاق الفياض الأفغاني (وليس عراقيا)."
-status: draft
+status: published
 published_at: 2026-06-05
 person: abu-jafar-al-khalifi
 ---

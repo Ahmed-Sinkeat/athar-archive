@@ -1,6 +1,6 @@
 ---
 title: "أُحضر أحمد بن حنبل إلى المعتصم، فلما وقف بين يديه وسلم عليه،"
-status: draft
+status: published
 published_at: 2023-06-02
 person: abu-abdillah-firas-al-ramli
 ---

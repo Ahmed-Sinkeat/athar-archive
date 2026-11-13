@@ -1,6 +1,6 @@
 ---
 title: "مِن الّلطائف الّتي سمعتها مِن الدكتور فاضل السامرائي عن القرآن"
-status: draft
+status: published
 published_at: 2023-04-04
 person: abu-umair-imran-al-zubaidi
 ---

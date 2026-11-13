@@ -1,6 +1,6 @@
 ---
 title: "هل تنجح تجارة المشاهير في إسقاط العلماء الناصحين؟"
-status: draft
+status: published
 published_at: 2021-01-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]

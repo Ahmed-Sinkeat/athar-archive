@@ -1,6 +1,6 @@
 ---
 title: "هذا برهان على تجهمه، يعتبر ظواهر نصوص الصفات تجسيم."
-status: draft
+status: published
 published_at: 2024-01-19
 person: abu-umair-imran-al-zubaidi
 ---

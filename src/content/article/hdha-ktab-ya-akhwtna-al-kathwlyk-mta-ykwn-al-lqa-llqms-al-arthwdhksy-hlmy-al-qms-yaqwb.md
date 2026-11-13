@@ -1,6 +1,6 @@
 ---
 title: "هذا كتاب «يا أخوتنا الكاثوليك متى يكون اللقاء» للقمص الأرثوذكسي حلمي القمص يعقوب"
-status: draft
+status: published
 published_at: 2024-08-15
 person: abu-jafar-al-khalifi
 ---

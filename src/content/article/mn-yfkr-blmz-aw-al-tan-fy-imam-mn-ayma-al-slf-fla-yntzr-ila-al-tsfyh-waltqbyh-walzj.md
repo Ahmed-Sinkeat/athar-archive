@@ -1,6 +1,6 @@
 ---
 title: "من يفكر بلمز أو الطعن في إمام من أئمة السلف فلا ينتظر إلا التسفيه والتقبيح والزج"
-status: draft
+status: published
 published_at: 2024-03-04
 person: abu-umair-imran-al-zubaidi
 topics: ["al-wala-wal-bara"]

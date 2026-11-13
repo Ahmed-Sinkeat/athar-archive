@@ -1,6 +1,6 @@
 ---
 title: "معركتك ليست في عدم ارتكاب الذنب"
-status: draft
+status: published
 published_at: 2023-02-03
 person: abu-umair-imran-al-zubaidi
 ---

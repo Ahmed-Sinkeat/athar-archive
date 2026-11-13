@@ -1,6 +1,6 @@
 ---
 title: "لماذا لا يعاملون المشايخ بهذا الشكل؟ (أهواء العوام التي تحكم الساحة العلمية)."
-status: draft
+status: published
 published_at: 2023-04-24
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "adab-talab-al-ilm"]

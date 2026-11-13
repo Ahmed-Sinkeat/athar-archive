@@ -1,6 +1,6 @@
 ---
 title: "من عظم رحمه ربنا الرحمن الرحيم خشي جبريل عليه السلام أن تصيب فرعون وهو الذي فعل"
-status: draft
+status: published
 published_at: 2023-07-25
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

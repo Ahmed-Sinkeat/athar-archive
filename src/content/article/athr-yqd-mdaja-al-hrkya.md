@@ -1,6 +1,6 @@
 ---
 title: "أثر يقض مضاجع الحركية!"
-status: draft
+status: published
 published_at: 2025-03-10
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-qadr"]

@@ -1,6 +1,6 @@
 ---
 title: "الحديث الضعيف خير من آراء الرجال"
-status: draft
+status: published
 published_at: 2024-01-22
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

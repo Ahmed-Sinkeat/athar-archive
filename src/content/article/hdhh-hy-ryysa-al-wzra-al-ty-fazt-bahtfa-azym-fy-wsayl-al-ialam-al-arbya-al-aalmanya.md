@@ -1,6 +1,6 @@
 ---
 title: "هذه هي رئيسة الوزراء التي فازت باحتفاء عظيم في وسائل الإعلام العربية العالمانية"
-status: draft
+status: published
 published_at: 2020-05-21
 person: abu-jafar-al-khalifi
 ---

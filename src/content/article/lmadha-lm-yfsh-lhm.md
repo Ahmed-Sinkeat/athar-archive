@@ -1,6 +1,6 @@
 ---
 title: "لماذا لم يُفصِح لهم؟"
-status: draft
+status: published
 published_at: 2025-04-08
 person: abu-jafar-al-khalifi
 ---

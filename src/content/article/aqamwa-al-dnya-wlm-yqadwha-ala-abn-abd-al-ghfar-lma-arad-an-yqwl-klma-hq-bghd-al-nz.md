@@ -1,6 +1,6 @@
 ---
 title: "أقاموا الدنيا ولم يقعدوها على ابن عبد الغفار لما أراد أن يقول كلمة حق - بغض النظ"
-status: draft
+status: published
 published_at: 2026-03-02
 person: abu-umair-imran-al-zubaidi
 ---

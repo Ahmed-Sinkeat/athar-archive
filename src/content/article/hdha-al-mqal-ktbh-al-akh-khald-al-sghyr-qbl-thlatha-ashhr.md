@@ -1,6 +1,6 @@
 ---
 title: "هذا المقال كتبه الأخ خالد الصغير قبل ثلاثة أشهر."
-status: draft
+status: published
 published_at: 2024-12-25
 person: abu-jafar-al-khalifi
 ---

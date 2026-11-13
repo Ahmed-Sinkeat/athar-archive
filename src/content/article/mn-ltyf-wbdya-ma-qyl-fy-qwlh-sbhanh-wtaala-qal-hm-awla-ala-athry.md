@@ -1,6 +1,6 @@
 ---
 title: "مِن لطيف وبديع ما قيل في قوله سبحانه وتعالى {قَالَ هُمْ أُولَاءِ عَلَىٰ أَثَرِي"
-status: draft
+status: published
 published_at: 2023-06-17
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "والله إن هذا لدين!"
-status: draft
+status: published
 published_at: 2020-10-25
 person: abu-jafar-al-khalifi
 ---

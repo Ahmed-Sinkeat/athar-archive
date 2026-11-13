@@ -1,6 +1,6 @@
 ---
 title: "اقتراحات لرسائل علمية"
-status: draft
+status: published
 published_at: 2020-08-05
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

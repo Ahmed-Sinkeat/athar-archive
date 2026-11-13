@@ -1,6 +1,6 @@
 ---
 title: "بحث في الملك الذي نصفه من نار ونصفه من ثلج!"
-status: draft
+status: published
 published_at: 2026-07-04
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

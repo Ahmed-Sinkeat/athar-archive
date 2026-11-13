@@ -1,6 +1,6 @@
 ---
 title: "لا أدري كم مرة سأعير عن كراهتي لتصدر النساء للحديث في أمور الدين والمجتمع!"
-status: draft
+status: published
 published_at: 2024-01-07
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

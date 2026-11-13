@@ -1,6 +1,6 @@
 ---
 title: "خنازير الشبيحة المختبئين في اللاذقية قاموا بكمين لجنود هيئة تحرير الشام"
-status: draft
+status: published
 published_at: 2024-12-14
 person: abu-umair-imran-al-zubaidi
 ---

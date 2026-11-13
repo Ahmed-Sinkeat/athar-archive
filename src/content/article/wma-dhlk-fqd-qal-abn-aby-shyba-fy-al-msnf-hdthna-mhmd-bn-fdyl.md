@@ -1,6 +1,6 @@
 ---
 title: "ومع ذلك فقد قال ابن أبي شيبة في المصنف 33404- \"حدثنا محمد بن فضيل"
-status: draft
+status: published
 published_at: 2020-10-18
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "هذه جملة ما تكلم فيه الألباني من أحاديث صحيح البخاري أحاديث تعد على الأصابع وعدد"
-status: draft
+status: published
 published_at: 2019-03-25
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

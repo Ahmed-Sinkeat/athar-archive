@@ -1,6 +1,6 @@
 ---
 title: "بيّنا موقفنا ومنهجنا"
-status: draft
+status: published
 published_at: 2023-08-02
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لا يحل لك أن تدخل إلى داري بعد هذا أبدا"
-status: draft
+status: published
 published_at: 2026-04-15
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

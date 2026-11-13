@@ -1,6 +1,6 @@
 ---
 title: "قام النظام الرأسمالي القذر باتخاذ جميع الإجراءات الممكنة حتى يُخرج النساء من خدو"
-status: draft
+status: published
 published_at: 2024-02-05
 person: abu-umair-imran-al-zubaidi
 ---

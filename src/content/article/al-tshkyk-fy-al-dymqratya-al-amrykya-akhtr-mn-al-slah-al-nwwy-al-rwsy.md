@@ -1,6 +1,6 @@
 ---
 title: "التشكيك في الديمقراطية الأمريكية أخطر من السلاح النووي الروسي!"
-status: draft
+status: published
 published_at: 2022-10-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "طالب الملحد سيد القمني الدول الغربية باحتلال دولنا لكي ينقلوا لنا التطور والتقدم"
-status: draft
+status: published
 published_at: 2018-07-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

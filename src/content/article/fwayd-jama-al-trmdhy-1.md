@@ -1,6 +1,6 @@
 ---
 title: "فوائد جامع الترمذي (١)"
-status: draft
+status: published
 published_at: 2024-06-09
 person: abu-abdillah-firas-al-ramli
 ---

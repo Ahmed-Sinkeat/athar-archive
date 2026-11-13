@@ -1,6 +1,6 @@
 ---
 title: "كل كافر لا يحض على طعام المسكين..."
-status: draft
+status: published
 published_at: 2022-05-24
 person: abu-jafar-al-khalifi
 ---

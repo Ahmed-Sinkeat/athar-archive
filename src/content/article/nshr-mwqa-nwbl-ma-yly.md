@@ -1,6 +1,6 @@
 ---
 title: "نشر موقع نوبل ما يلي"
-status: draft
+status: published
 published_at: 2018-10-03
 person: abu-jafar-al-khalifi
 ---

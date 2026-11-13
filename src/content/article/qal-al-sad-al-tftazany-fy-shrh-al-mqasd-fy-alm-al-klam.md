@@ -1,6 +1,6 @@
 ---
 title: "قال السعد التفتازاني في شرح المقاصد في علم الكلام (2/ 246)"
-status: draft
+status: published
 published_at: 2021-09-07
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

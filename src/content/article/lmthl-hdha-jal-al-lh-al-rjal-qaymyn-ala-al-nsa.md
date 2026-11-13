@@ -1,6 +1,6 @@
 ---
 title: "لمثل هذا جعل الله الرجال قائمين على النساء"
-status: draft
+status: published
 published_at: 2024-06-23
 person: abu-umair-imran-al-zubaidi
 topics: ["al-imamah-was-sahabah"]

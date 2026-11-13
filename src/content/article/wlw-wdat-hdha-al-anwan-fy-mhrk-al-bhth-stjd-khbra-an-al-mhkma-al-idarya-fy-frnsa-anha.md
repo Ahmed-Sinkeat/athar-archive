@@ -1,6 +1,6 @@
 ---
 title: "ولو وضعت هذا العنوان في محرك البحث ستجد خبراً عن المحكمة الإدارية في فرنسا أنها"
-status: draft
+status: published
 published_at: 2018-06-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

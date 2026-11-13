@@ -1,6 +1,6 @@
 ---
 title: "المواظبة على أذكار الصباح والمساء مع استحضار معانيها واستشعار أنها حرزك وحصنك ال"
-status: draft
+status: published
 published_at: 2025-07-27
 person: abu-umair-imran-al-zubaidi
 ---

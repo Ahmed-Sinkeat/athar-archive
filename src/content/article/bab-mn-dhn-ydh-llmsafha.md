@@ -1,6 +1,6 @@
 ---
 title: "باب من دهن يده للمصافحة"
-status: draft
+status: published
 published_at: 2024-05-04
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

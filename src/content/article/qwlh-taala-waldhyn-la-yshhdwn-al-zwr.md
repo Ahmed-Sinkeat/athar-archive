@@ -1,6 +1,6 @@
 ---
 title: "قوله تعالى: { والذين لا يشهدون الزور }"
-status: draft
+status: published
 published_at: 2023-12-24
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

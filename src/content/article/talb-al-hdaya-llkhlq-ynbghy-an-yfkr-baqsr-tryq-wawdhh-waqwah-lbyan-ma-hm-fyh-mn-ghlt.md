@@ -1,6 +1,6 @@
 ---
 title: "طالب الهداية للخلق ينبغي أن يفكر بأقصر طريق وأوضحه وأقواه لبيان ما هم فيه من غلط"
-status: draft
+status: published
 published_at: 2019-06-19
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

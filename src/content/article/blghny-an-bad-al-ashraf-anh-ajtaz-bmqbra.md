@@ -1,6 +1,6 @@
 ---
 title: "\"بلغني عن بعض الأشراف أنه اجتاز بمقبرة"
-status: draft
+status: published
 published_at: 2023-07-10
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من الفروع الفقهية العجيبة التي يجهلها كثيرون هذا الفرع"
-status: draft
+status: published
 published_at: 2017-09-07
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هي أكثر الوحي فكيف نستهين بها؟"
-status: draft
+status: published
 published_at: 2022-03-15
 person: abu-jafar-al-khalifi
 ---

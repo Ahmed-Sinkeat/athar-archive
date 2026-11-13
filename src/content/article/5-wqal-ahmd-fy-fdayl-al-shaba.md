@@ -1,6 +1,6 @@
 ---
 title: "٥- وقال أحمد في فضائل الصحابة"
-status: draft
+status: published
 published_at: 2024-03-01
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

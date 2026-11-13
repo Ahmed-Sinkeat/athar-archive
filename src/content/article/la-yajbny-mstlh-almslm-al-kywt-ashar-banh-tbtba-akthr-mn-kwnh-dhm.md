@@ -1,6 +1,6 @@
 ---
 title: "لا يعجبني مصطلح \"المسلم الكيوت\" أشعر بأنه طبطبة أكثر من كونه ذم."
-status: draft
+status: published
 published_at: 2023-12-22
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

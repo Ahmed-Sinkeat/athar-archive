@@ -1,6 +1,6 @@
 ---
 title: "كتبت الكاتبة والصحفية الامريكية الكاثوليكية “جوانا فرانسيس” في إحدى مقالاتها تحت"
-status: draft
+status: published
 published_at: 2018-08-26
 person: abu-jafar-al-khalifi
 ---

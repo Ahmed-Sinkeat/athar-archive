@@ -1,6 +1,6 @@
 ---
 title: "فأين حرية الرأي؟"
-status: draft
+status: published
 published_at: 2021-01-09
 person: abu-jafar-al-khalifi
 ---

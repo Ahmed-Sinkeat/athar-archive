@@ -1,6 +1,6 @@
 ---
 title: "كم مرة تشككت في أمر شرعي حتى اذا جاءك متخصصون بأبحاث غربية تؤكد المعلومة الشرعية"
-status: draft
+status: published
 published_at: 2018-11-21
 person: abu-jafar-al-khalifi
 ---

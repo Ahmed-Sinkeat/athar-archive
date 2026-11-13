@@ -1,6 +1,6 @@
 ---
 title: "اللهم ثقة كثقة هاجر"
-status: draft
+status: published
 published_at: 2020-02-23
 person: abu-jafar-al-khalifi
 ---

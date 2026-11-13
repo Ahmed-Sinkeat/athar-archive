@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي شيبة في المصنف [ 35869"
-status: draft
+status: published
 published_at: 2020-03-12
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

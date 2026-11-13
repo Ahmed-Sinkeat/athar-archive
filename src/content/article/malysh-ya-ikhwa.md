@@ -1,6 +1,6 @@
 ---
 title: "معليش يا إخوة."
-status: draft
+status: published
 published_at: 2024-03-05
 person: abu-umair-imran-al-zubaidi
 ---

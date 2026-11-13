@@ -1,6 +1,6 @@
 ---
 title: "شيء من التفقه في نصرة قول الجمهور في عدم إجزاء إخراج زكاة الفطر نقداً"
-status: draft
+status: published
 published_at: 2019-06-02
 person: abu-jafar-al-khalifi
 ---

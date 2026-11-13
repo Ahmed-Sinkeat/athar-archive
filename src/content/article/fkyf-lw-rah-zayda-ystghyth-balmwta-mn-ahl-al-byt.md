@@ -1,6 +1,6 @@
 ---
 title: "فكيف لو رآه زائدة يستغيث بالموتى من أهل البيت؟"
-status: draft
+status: published
 published_at: 2022-01-24
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "أبيات للبحتري حين قرأها صاحبي التميمي تذكّر شيخ الإسلام ولو كنتُ مكانه لانتابني"
-status: draft
+status: published
 published_at: 2017-10-19
 person: abu-jafar-al-khalifi
 ---

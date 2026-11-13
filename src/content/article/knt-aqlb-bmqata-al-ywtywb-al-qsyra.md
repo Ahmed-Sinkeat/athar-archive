@@ -1,6 +1,6 @@
 ---
 title: "كُنتُ أُقلّب بمقاطع اليوتيوب القصيرة"
-status: draft
+status: published
 published_at: 2023-07-31
 person: abu-umair-imran-al-zubaidi
 ---

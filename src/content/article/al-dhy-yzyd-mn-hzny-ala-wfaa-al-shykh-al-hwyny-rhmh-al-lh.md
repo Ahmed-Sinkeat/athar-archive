@@ -1,6 +1,6 @@
 ---
 title: "الذي يزيد من حزني على وفاة الشيخ الحويني رحمه الله"
-status: draft
+status: published
 published_at: 2025-03-17
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

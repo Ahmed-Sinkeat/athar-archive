@@ -1,6 +1,6 @@
 ---
 title: "كل شيء حولك يدل على الوحدانية والغائية من الخلق مما يعني بشكل مباشر أو غير مباشر"
-status: draft
+status: published
 published_at: 2019-05-28
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

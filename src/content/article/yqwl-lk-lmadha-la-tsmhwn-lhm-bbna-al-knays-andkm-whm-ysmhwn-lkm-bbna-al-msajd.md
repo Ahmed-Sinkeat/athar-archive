@@ -1,6 +1,6 @@
 ---
 title: "يقول لك : لماذا لا تسمحون لهم ببناء الكنائس عندكم وهم يسمحون لكم ببناء المساجد ؟"
-status: draft
+status: published
 published_at: 2019-03-31
 person: abu-jafar-al-khalifi
 ---

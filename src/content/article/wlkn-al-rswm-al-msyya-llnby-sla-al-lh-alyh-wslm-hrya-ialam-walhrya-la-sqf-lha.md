@@ -1,6 +1,6 @@
 ---
 title: "ولكن الرسوم المسيئة للنبي صلى الله عليه وسلم حرية إعلام والحريّة لا سقف لها"
-status: draft
+status: published
 published_at: 2019-05-09
 person: abu-jafar-al-khalifi
 ---

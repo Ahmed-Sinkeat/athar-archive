@@ -1,6 +1,6 @@
 ---
 title: "الذي عنده حساسية من حدّتي في الرد، فلا يتابع ما أنشر حتى لا يتأذى حسه المرهف!"
-status: draft
+status: published
 published_at: 2024-01-05
 person: abu-umair-imran-al-zubaidi
 ---

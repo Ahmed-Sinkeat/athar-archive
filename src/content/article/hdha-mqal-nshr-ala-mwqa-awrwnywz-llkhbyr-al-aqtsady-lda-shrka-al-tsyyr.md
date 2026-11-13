@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال نشر على موقع أورونيوز للخبير الاقتصادي لدى شركة التسيير"
-status: draft
+status: published
 published_at: 2019-04-21
 person: abu-jafar-al-khalifi
 ---

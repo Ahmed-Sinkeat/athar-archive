@@ -1,6 +1,6 @@
 ---
 title: "جاء في ترجمة يحيى بن معين من تهذيب الكمال"
-status: draft
+status: published
 published_at: 2018-02-18
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

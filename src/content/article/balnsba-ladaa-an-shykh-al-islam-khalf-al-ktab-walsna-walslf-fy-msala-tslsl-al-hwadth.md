@@ -1,6 +1,6 @@
 ---
 title: "بالنسبة لادعاء أنّ شيخ الإسلام خالف الكتاب والسنة والسلف في مسألة تسلسل الحوادث!"
-status: draft
+status: published
 published_at: 2024-05-05
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "فائدة استفدتها من أخي الحبيب الغيث الشامي في نقض تشييئ مفهوم المكان"
-status: draft
+status: published
 published_at: 2024-03-21
 person: abu-umair-imran-al-zubaidi
 ---

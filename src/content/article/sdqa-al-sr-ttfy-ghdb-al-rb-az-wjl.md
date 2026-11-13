@@ -1,6 +1,6 @@
 ---
 title: "صدقة السر تطفئ غضب الرب عز وجل"
-status: draft
+status: published
 published_at: 2025-12-10
 person: abu-abdillah-firas-al-ramli
 ---

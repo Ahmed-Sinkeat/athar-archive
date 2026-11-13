@@ -1,6 +1,6 @@
 ---
 title: "هذا هارون كانج"
-status: draft
+status: published
 published_at: 2026-03-02
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

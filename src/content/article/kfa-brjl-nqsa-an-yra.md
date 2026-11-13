@@ -1,6 +1,6 @@
 ---
 title: "كفى برجل نقصا أن يرى ..."
-status: draft
+status: published
 published_at: 2023-07-22
 person: abu-abdillah-firas-al-ramli
 ---

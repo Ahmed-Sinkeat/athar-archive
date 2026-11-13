@@ -1,6 +1,6 @@
 ---
 title: "بشرى لمحاربي الحداثة ومعلمي الناس الخير.."
-status: draft
+status: published
 published_at: 2021-04-18
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

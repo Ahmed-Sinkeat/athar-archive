@@ -1,6 +1,6 @@
 ---
 title: "الطهور نصف الإيمان"
-status: draft
+status: published
 published_at: 2025-11-07
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

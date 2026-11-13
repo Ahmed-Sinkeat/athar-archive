@@ -1,6 +1,6 @@
 ---
 title: "بين آية الأحزاب وآية النور، هل تناقض المفسرون؟ ولم هذا الإرباك؟"
-status: draft
+status: published
 published_at: 2026-10-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

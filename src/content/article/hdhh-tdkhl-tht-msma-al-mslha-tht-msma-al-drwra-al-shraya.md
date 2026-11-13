@@ -1,6 +1,6 @@
 ---
 title: "هذه تدخل تحت مسمى المصلحة؟ تحت مسمى الضرورة الشرعية؟"
-status: draft
+status: published
 published_at: 2025-10-08
 person: abu-umair-imran-al-zubaidi
 ---

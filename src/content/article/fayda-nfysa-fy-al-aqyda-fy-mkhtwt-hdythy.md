@@ -1,6 +1,6 @@
 ---
 title: "فائدة نفيسة في العقيدة في مخطوط حديثي"
-status: draft
+status: published
 published_at: 2019-12-16
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

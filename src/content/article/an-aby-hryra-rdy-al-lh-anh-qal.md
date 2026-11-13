@@ -1,6 +1,6 @@
 ---
 title: "عن أبي هريرة رضي الله عنه قال"
-status: draft
+status: published
 published_at: 2023-01-08
 person: abu-umair-imran-al-zubaidi
 ---

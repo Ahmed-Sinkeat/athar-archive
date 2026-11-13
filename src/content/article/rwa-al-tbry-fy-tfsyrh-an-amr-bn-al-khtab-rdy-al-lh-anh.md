@@ -1,6 +1,6 @@
 ---
 title: "روى الطبري في تفسيره عن عمر بن الخطاب رضي الله عنه"
-status: draft
+status: published
 published_at: 2024-12-29
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

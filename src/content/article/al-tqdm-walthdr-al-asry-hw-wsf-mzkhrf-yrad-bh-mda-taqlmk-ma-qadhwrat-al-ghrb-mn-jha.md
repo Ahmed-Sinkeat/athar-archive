@@ -1,6 +1,6 @@
 ---
 title: "التقدّم والتحضّر العصري هو وصف مزخرف يراد به مدى تأقلمك مع قاذورات الغرب من جهة"
-status: draft
+status: published
 published_at: 2023-08-28
 person: abu-umair-imran-al-zubaidi
 ---

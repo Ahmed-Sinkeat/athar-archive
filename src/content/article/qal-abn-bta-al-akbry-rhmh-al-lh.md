@@ -1,6 +1,6 @@
 ---
 title: "قال ابن بطة العكبري رحمه الله"
-status: draft
+status: published
 published_at: 2023-06-14
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

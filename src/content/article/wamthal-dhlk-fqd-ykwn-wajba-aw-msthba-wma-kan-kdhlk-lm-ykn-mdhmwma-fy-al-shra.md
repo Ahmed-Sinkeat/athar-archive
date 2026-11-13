@@ -1,6 +1,6 @@
 ---
 title: "وأمثال ذلك فقد يكون واجبا أو مستحبا وما كان كذلك لم يكن مذموما في الشرع \""
-status: draft
+status: published
 published_at: 2017-08-24
 person: abu-jafar-al-khalifi
 ---

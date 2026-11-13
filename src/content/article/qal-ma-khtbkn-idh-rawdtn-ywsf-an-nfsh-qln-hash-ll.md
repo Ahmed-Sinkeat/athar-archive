@@ -1,6 +1,6 @@
 ---
 title: "قَالَ مَا خَطْبُكُنَّ إِذْ رَاوَدْتُنَّ يُوسُفَ عَنْ نَفْسِهِ قُلْنَ حَاشَ لِلَّ"
-status: draft
+status: published
 published_at: 2025-05-06
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

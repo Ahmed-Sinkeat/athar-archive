@@ -1,6 +1,6 @@
 ---
 title: "لعنة الله على القبورية والأشاعرة الجهمية أعداء الله والدين!"
-status: draft
+status: published
 published_at: 2024-01-29
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "نقلا عن بعض الأخوة"
-status: draft
+status: published
 published_at: 2018-05-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

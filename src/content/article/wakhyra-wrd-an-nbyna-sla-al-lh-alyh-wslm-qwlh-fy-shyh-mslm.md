@@ -1,6 +1,6 @@
 ---
 title: "وأخيراً ورد عن نبينا صلى الله عليه وسلم قوله في صحيح مسلم"
-status: draft
+status: published
 published_at: 2019-09-27
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

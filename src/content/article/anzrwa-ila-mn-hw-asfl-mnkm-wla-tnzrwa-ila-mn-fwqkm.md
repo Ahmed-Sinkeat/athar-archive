@@ -1,6 +1,6 @@
 ---
 title: "انظروا إلى من هو أسفل منكم، ولا تنظروا إلى من فوقكم"
-status: draft
+status: published
 published_at: 2024-03-09
 person: abu-abdillah-firas-al-ramli
 ---

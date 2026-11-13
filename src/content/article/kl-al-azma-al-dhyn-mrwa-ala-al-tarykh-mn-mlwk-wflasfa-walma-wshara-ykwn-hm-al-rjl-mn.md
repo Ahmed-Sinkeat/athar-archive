@@ -1,6 +1,6 @@
 ---
 title: "كل العظماء الذين مروا على التاريخ من ملوك وفلاسفة وعلماء وشعراء يكون هم الرجل من"
-status: draft
+status: published
 published_at: 2017-05-14
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أحد السفهاء يبدي امتعاضه على ما يجري بين المسلمين والرافضة من ردود ومناظرات ونحو"
-status: draft
+status: published
 published_at: 2024-12-27
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

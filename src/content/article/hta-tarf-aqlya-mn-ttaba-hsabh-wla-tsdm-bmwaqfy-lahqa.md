@@ -1,6 +1,6 @@
 ---
 title: "حتى تعرف عقلية من تتابع حسابه ولا تُصدم بمواقفي لاحقًا"
-status: draft
+status: published
 published_at: 2023-05-17
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

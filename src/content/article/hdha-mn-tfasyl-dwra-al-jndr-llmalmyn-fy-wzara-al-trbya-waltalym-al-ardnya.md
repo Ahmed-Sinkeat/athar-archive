@@ -1,6 +1,6 @@
 ---
 title: "هذا من تفاصيل دورة الجندر للمعلمين في وزارة التربية والتعليم الأردنية."
-status: draft
+status: published
 published_at: 2021-10-24
 person: abu-jafar-al-khalifi
 ---

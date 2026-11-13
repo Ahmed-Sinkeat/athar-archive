@@ -1,6 +1,6 @@
 ---
 title: "قال ابن خلدون في تاريخه (1/798)"
-status: draft
+status: published
 published_at: 2017-12-28
 person: abu-jafar-al-khalifi
 ---

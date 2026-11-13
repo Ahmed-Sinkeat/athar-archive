@@ -1,6 +1,6 @@
 ---
 title: "تسبيحة واحدة خير مما أوتي آل داود"
-status: draft
+status: published
 published_at: 2025-05-05
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

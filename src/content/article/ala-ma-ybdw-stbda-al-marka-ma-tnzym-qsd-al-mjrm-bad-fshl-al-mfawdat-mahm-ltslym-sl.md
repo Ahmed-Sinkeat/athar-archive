@@ -1,6 +1,6 @@
 ---
 title: "على ما يبدو ستبدأ المعركة مع تنظيم \"قسد\" المجرم بعد فشل المفاوضات معهم لتسليم سل"
-status: draft
+status: published
 published_at: 2025-01-19
 person: abu-umair-imran-al-zubaidi
 ---

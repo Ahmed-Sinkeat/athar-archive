@@ -1,6 +1,6 @@
 ---
 title: "هذا بحث جميل ومفصل في صفة الجلوس"
-status: draft
+status: published
 published_at: 2023-12-18
 person: abu-umair-imran-al-zubaidi
 ---

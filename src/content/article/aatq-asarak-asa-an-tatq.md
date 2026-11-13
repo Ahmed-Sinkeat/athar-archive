@@ -1,6 +1,6 @@
 ---
 title: "أعتق أساراك عسى أن تُعتَق"
-status: draft
+status: published
 published_at: 2023-03-23
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

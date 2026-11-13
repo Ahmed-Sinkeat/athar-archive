@@ -1,6 +1,6 @@
 ---
 title: "إسماعيل بن عبيد الله بن أبي المهاجر"
-status: draft
+status: published
 published_at: 2017-06-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "من دلائل صدق المحدثين: رواية أهل الأمصار لأحاديث فضل مكة والمدينة..."
-status: draft
+status: published
 published_at: 2025-09-18
 person: abu-jafar-al-khalifi
 ---

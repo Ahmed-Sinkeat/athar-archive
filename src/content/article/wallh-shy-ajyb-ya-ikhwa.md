@@ -1,6 +1,6 @@
 ---
 title: "والله شيء عجيب يا إخوة!"
-status: draft
+status: published
 published_at: 2025-02-03
 person: abu-umair-imran-al-zubaidi
 ---

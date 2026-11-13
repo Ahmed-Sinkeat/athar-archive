@@ -1,6 +1,6 @@
 ---
 title: "الفكر الباطني كما يقول الكتاب!"
-status: draft
+status: published
 published_at: 2026-09-21
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

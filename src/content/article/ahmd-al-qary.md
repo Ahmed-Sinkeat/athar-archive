@@ -1,6 +1,6 @@
 ---
 title: "أحمد القاري"
-status: draft
+status: published
 published_at: 2017-12-05
 person: abu-jafar-al-khalifi
 ---

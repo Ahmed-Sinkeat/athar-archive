@@ -1,6 +1,6 @@
 ---
 title: "قال الشيخ عبد الله بن محمد بن حميد المتوفى عام 1402 في رسالته التلفاز وحكمه في ا"
-status: draft
+status: published
 published_at: 2019-07-21
 person: abu-jafar-al-khalifi
 ---

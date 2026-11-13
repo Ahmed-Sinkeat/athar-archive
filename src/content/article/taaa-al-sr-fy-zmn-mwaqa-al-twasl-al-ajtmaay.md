@@ -1,6 +1,6 @@
 ---
 title: "طاعة السر في زمن مواقع التواصل الاجتماعي..."
-status: draft
+status: published
 published_at: 2025-08-25
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

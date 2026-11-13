@@ -1,6 +1,6 @@
 ---
 title: "علي بن ربن الطبري طبيب نصراني أسلم وهو أستاذ محمد بن زكريا الرازي الطبيب الشهير"
-status: draft
+status: published
 published_at: 2017-07-02
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

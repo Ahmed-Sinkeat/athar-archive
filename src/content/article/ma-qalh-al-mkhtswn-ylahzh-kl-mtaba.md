@@ -1,6 +1,6 @@
 ---
 title: "ما قاله المختصون يلاحظه كل متابع.."
-status: draft
+status: published
 published_at: 2021-03-22
 person: abu-jafar-al-khalifi
 ---

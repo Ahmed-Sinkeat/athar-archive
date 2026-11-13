@@ -1,6 +1,6 @@
 ---
 title: "طلب العلم \"الحديث والأثر\" خير من الصلاة والصيام وعصمة من الضلال والبدع لاسيما في"
-status: draft
+status: published
 published_at: 2023-07-28
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "من كان هكذا فهو من الذين يسلم عليهم إن شاء الله"
-status: draft
+status: published
 published_at: 2023-09-08
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

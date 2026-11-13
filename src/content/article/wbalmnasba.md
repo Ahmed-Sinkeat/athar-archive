@@ -1,6 +1,6 @@
 ---
 title: "وبالمناسبة."
-status: draft
+status: published
 published_at: 2026-03-17
 person: abu-umair-imran-al-zubaidi
 ---

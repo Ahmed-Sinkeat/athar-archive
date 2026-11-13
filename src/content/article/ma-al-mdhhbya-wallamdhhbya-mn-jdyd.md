@@ -1,6 +1,6 @@
 ---
 title: "مع المذهبية واللامذهبية من جديد !"
-status: draft
+status: published
 published_at: 2020-05-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "adab-talab-al-ilm"]

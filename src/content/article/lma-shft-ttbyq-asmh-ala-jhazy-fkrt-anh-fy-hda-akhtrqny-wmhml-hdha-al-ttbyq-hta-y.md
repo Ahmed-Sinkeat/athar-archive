@@ -1,6 +1,6 @@
 ---
 title: "لما شفت تطبيق اسمه \"X\" على جهازي فكرت أنه في حدا اخترقني ومحمل هذا التطبيق حتى ي"
-status: draft
+status: published
 published_at: 2023-09-01
 person: abu-umair-imran-al-zubaidi
 ---

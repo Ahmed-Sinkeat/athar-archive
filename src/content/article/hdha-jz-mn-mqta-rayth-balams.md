@@ -1,6 +1,6 @@
 ---
 title: "هذا جزء من مقطع رأيته بالأمس"
-status: draft
+status: published
 published_at: 2026-09-21
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

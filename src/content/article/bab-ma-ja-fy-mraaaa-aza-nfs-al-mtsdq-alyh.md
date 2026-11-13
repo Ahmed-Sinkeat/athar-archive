@@ -1,6 +1,6 @@
 ---
 title: "باب ما جاء في مراعاة عزة نفس المتصدق عليه.."
-status: draft
+status: published
 published_at: 2022-03-23
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "اقتراح ابن تيمية الذي لا يطبق!"
-status: draft
+status: published
 published_at: 2021-03-21
 person: abu-jafar-al-khalifi
 topics: ["al-iman", "al-sunnah-wal-bidah"]

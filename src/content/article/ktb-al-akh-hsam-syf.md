@@ -1,6 +1,6 @@
 ---
 title: "كتب الأخ حسام سيف"
-status: draft
+status: published
 published_at: 2018-10-30
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

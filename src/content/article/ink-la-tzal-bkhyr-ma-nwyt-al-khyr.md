@@ -1,6 +1,6 @@
 ---
 title: "إنك لا تزال بخير ما نويت الخير"
-status: draft
+status: published
 published_at: 2023-12-03
 person: abu-abdillah-firas-al-ramli
 ---

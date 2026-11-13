@@ -1,6 +1,6 @@
 ---
 title: "أعتقد أنّ أسوء شيءٍ فعلناه نحن الرجال مِن دعاة وطلبة عِلم وعوام -إلا من رحم ربي"
-status: draft
+status: published
 published_at: 2023-03-15
 person: abu-umair-imran-al-zubaidi
 ---

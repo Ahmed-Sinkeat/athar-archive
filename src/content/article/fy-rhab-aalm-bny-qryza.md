@@ -1,6 +1,6 @@
 ---
 title: "في رحاب عالم بني قريظة !"
-status: draft
+status: published
 published_at: 2019-11-29
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

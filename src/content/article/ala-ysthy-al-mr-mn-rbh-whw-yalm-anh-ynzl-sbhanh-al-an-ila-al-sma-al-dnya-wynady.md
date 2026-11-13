@@ -1,6 +1,6 @@
 ---
 title: "ألا يستحي المرء من ربه وهو يعلم أنه ينزل سبحانه الآن إلى السماء الدنيا وينادي"
-status: draft
+status: published
 published_at: 2023-11-11
 person: abu-umair-imran-al-zubaidi
 ---

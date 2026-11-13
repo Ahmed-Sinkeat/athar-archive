@@ -1,6 +1,6 @@
 ---
 title: "هذه أبيات رأيت بعض الصوفية المعاصرين ينشدونها فتعجبت غاية"
-status: draft
+status: published
 published_at: 2019-04-08
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

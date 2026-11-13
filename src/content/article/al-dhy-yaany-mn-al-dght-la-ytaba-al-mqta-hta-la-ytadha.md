@@ -1,6 +1,6 @@
 ---
 title: "الذي يعاني من الضغط لا يتابع المقطع حتى لا يتأذى"
-status: draft
+status: published
 published_at: 2024-07-08
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

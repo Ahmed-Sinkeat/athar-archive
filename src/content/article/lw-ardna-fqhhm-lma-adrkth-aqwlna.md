@@ -1,6 +1,6 @@
 ---
 title: "لو أردنا فقههم لما أدركته عقولنا"
-status: draft
+status: published
 published_at: 2024-03-15
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "قال العلائي كما في مجموع رسائله ص110"
-status: draft
+status: published
 published_at: 2018-07-05
 person: abu-jafar-al-khalifi
 ---

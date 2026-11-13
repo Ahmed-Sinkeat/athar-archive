@@ -1,6 +1,6 @@
 ---
 title: "تنزيه أم المؤمنين عن سلوك أهل الريب والانحراف العقائدي …"
-status: draft
+status: published
 published_at: 2020-01-15
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah", "adab-talab-al-ilm"]

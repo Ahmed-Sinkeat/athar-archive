@@ -1,6 +1,6 @@
 ---
 title: "فائدة للدعاة من سورة النصر..."
-status: draft
+status: published
 published_at: 2024-04-20
 person: abu-jafar-al-khalifi
 ---

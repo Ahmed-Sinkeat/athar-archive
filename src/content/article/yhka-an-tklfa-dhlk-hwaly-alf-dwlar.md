@@ -1,6 +1,6 @@
 ---
 title: "يحكى أنّ تكلفة ذلك حوالي 25 ألف دولار."
-status: draft
+status: published
 published_at: 2025-11-17
 person: abu-umair-imran-al-zubaidi
 ---

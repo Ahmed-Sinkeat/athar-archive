@@ -1,6 +1,6 @@
 ---
 title: "كنت قد شاهدت مقطعًا قصيرًا منذ فترة للشيخ عثمان الخميس -حفظه الله- يجيب فيه عن س"
-status: draft
+status: published
 published_at: 2024-02-19
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

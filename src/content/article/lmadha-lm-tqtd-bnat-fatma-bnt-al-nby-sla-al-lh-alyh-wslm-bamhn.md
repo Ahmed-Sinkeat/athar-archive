@@ -1,6 +1,6 @@
 ---
 title: "لماذا لم تقتدِ بنات فاطمة بنت النبي صلى الله عليه وسلم بأمهن؟"
-status: draft
+status: published
 published_at: 2021-11-23
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

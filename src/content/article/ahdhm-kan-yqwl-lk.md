@@ -1,6 +1,6 @@
 ---
 title: "أحدهم كان يقول لك"
-status: draft
+status: published
 published_at: 2024-12-09
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال التابعي مكحول"
-status: draft
+status: published
 published_at: 2023-09-02
 person: abu-abdillah-firas-al-ramli
 ---

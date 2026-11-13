@@ -1,6 +1,6 @@
 ---
 title: "من عجائب تيار لعن الظلام"
-status: draft
+status: published
 published_at: 2017-09-13
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

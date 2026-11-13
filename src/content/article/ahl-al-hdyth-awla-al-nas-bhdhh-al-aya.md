@@ -1,6 +1,6 @@
 ---
 title: "أهل الحديث أولى الناس بهذه الآية.."
-status: draft
+status: published
 published_at: 2021-05-12
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

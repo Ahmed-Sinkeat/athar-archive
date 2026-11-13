@@ -1,6 +1,6 @@
 ---
 title: "يقول الله تعالى عن نبيه يوسف"
-status: draft
+status: published
 published_at: 2018-05-26
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

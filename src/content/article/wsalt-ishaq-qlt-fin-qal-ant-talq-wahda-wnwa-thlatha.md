@@ -1,6 +1,6 @@
 ---
 title: "وسألت إسحاق: قلتُ: فإن قال: أنت طالق واحدة، ونوى ثلاثًا؟"
-status: draft
+status: published
 published_at: 2023-12-02
 person: abu-umair-imran-al-zubaidi
 ---

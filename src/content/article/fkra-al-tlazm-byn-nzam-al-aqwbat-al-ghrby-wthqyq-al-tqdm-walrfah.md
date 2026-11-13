@@ -1,6 +1,6 @@
 ---
 title: "فكرة التلازم بين نظام العقوبات الغربي وتحقيق التقدم والرفاه.."
-status: draft
+status: published
 published_at: 2023-05-08
 person: abu-jafar-al-khalifi
 ---

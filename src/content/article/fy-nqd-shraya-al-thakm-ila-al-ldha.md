@@ -1,6 +1,6 @@
 ---
 title: "في نقضِ شرعية التحاكم إلى اللَّذة"
-status: draft
+status: published
 published_at: 2025-10-20
 person: awwab-bin-muhammad
 ---

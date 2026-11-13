@@ -1,6 +1,6 @@
 ---
 title: "البرهان على أن القبورية هم ورثة الجهمية (شبهة أعوذ بدانيال)."
-status: draft
+status: published
 published_at: 2023-09-09
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

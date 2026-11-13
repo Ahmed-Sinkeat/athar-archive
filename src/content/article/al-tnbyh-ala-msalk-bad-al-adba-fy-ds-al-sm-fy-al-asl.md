@@ -1,6 +1,6 @@
 ---
 title: "التنبيه على مسالك بعض الأدباء في دس السم في العسل"
-status: draft
+status: published
 published_at: 2019-11-12
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

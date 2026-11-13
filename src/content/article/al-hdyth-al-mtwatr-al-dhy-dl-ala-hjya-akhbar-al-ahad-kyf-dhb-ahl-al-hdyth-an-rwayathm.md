@@ -1,6 +1,6 @@
 ---
 title: "الحديث المتواتر الذي دل على حجية أخبار الآحاد (كيف ذبَّ أهل الحديث عن رواياتهم)"
-status: draft
+status: published
 published_at: 2022-11-09
 person: abu-jafar-al-khalifi
 ---

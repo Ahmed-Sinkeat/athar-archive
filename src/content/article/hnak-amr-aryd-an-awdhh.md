@@ -1,6 +1,6 @@
 ---
 title: "هناك أمر أريد أن أوضحه."
-status: draft
+status: published
 published_at: 2024-01-22
 person: abu-umair-imran-al-zubaidi
 ---

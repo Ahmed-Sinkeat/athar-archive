@@ -1,6 +1,6 @@
 ---
 title: "أعلم ان الكتابة في هذا الموضوع ينفر منها كثيرون ويرون أننا ننشغل عما هو أهم ولكن"
-status: draft
+status: published
 published_at: 2018-04-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

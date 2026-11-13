@@ -1,6 +1,6 @@
 ---
 title: "تدبُّر في آية يكشف نقطة ضعف في التفسيرات التطورية"
-status: draft
+status: published
 published_at: 2020-11-16
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

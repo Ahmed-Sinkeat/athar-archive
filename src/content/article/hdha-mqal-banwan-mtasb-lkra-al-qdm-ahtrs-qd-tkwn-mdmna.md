@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال بعنوان: متعصب لكرة القدم؟ احترس، قد تكون مدمنًا"
-status: draft
+status: published
 published_at: 2022-11-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

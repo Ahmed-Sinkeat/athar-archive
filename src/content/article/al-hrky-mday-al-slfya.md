@@ -1,6 +1,6 @@
 ---
 title: "الحركي مدّعي السلفية"
-status: draft
+status: published
 published_at: 2026-06-07
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "المتبع للسنة اليوم ..."
-status: draft
+status: published
 published_at: 2023-08-06
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada"]

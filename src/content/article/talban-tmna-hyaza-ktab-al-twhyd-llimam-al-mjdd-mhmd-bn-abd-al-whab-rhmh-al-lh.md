@@ -1,6 +1,6 @@
 ---
 title: "طالبان تمنع حيازة كتاب التوحيد للإمام المجدد محمد بن عبد الوهاب رحمه الله."
-status: draft
+status: published
 published_at: 2025-01-15
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

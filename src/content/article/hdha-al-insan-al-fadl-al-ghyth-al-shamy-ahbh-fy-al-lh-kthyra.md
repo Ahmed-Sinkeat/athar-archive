@@ -1,6 +1,6 @@
 ---
 title: "هذا الإنسان الفاضل الغيث الشامي أحبه في الله كثيرًا"
-status: draft
+status: published
 published_at: 2023-09-22
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "كلام نفيس ومُختصر وبيّن للشيخ وليد السعيدان حفظه الله في تأدية زكاة الفِطر طعامً"
-status: draft
+status: published
 published_at: 2023-04-17
 person: abu-umair-imran-al-zubaidi
 ---

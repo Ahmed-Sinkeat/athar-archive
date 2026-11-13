@@ -1,6 +1,6 @@
 ---
 title: "\"أعتقد أن كثيرًا منا يتمنون لو نشأُوا كمسلمين\"."
-status: draft
+status: published
 published_at: 2022-08-16
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

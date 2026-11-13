@@ -1,6 +1,6 @@
 ---
 title: "الهدية الجليلة والنعمة الجزيلة: كفارات الهموم والأحزان"
-status: draft
+status: published
 published_at: 2022-08-06
 person: abu-jafar-al-khalifi
 ---

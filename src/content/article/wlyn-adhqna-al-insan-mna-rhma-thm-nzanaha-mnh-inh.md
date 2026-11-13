@@ -1,6 +1,6 @@
 ---
 title: "وَلَئِنْ أَذَقْنَا الْإِنْسَانَ مِنَّا رَحْمَةً ثُمَّ نَزَعْنَاهَا مِنْهُ إِنَّه"
-status: draft
+status: published
 published_at: 2025-04-13
 person: abu-umair-imran-al-zubaidi
 ---

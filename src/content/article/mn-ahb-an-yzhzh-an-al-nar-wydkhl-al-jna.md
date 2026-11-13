@@ -1,6 +1,6 @@
 ---
 title: "من أحب أن يزحزح عن النار ويدخل الجنة"
-status: draft
+status: published
 published_at: 2026-03-14
 person: abu-abdillah-firas-al-ramli
 ---

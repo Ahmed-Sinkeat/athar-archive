@@ -1,6 +1,6 @@
 ---
 title: "هذا المقال أضعه هنا بمناسبة خوض بعض الناس فيما لا يحسّن"
-status: draft
+status: published
 published_at: 2018-03-18
 person: abu-jafar-al-khalifi
 ---

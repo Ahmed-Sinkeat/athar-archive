@@ -1,6 +1,6 @@
 ---
 title: "عن كردوس بن عمرو -وكان يقرأ الكتب- قال"
-status: draft
+status: published
 published_at: 2023-05-22
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

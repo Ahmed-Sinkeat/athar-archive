@@ -1,6 +1,6 @@
 ---
 title: "وقفة يسيرة مع الإمامية في مواقيت الصلاة.."
-status: draft
+status: published
 published_at: 2019-06-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

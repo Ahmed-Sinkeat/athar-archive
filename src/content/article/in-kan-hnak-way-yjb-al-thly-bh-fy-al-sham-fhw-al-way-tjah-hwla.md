@@ -1,6 +1,6 @@
 ---
 title: "إن كان هناك وعي يجب التحلّي به في الشام، فهو الوعي تجاه هؤلاء!"
-status: draft
+status: published
 published_at: 2024-12-27
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

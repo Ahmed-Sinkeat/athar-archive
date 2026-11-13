@@ -1,6 +1,6 @@
 ---
 title: "قال كونفوشيوس في الفصل السابع من كتاب الحوار"
-status: draft
+status: published
 published_at: 2018-02-27
 person: abu-jafar-al-khalifi
 ---

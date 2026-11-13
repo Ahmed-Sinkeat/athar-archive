@@ -1,6 +1,6 @@
 ---
 title: "النبي صلى الله عليه وسلم يعده بشرى ويعدونه فتنة."
-status: draft
+status: published
 published_at: 2022-11-30
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

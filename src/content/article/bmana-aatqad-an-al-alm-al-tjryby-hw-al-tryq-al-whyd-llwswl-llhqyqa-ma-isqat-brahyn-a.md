@@ -1,6 +1,6 @@
 ---
 title: "بمعنى اعتقاد أن العلم التجريبي هو الطريق الوحيد للوصول للحقيقة مع إسقاط براهين ا"
-status: draft
+status: published
 published_at: 2019-12-30
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

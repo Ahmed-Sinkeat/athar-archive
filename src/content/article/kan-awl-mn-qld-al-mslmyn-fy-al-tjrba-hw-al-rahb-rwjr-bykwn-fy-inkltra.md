@@ -1,6 +1,6 @@
 ---
 title: "كان أول من قلد المسلمين في التجربة هو الراهب (روجر بيكون) في إنكلترا"
-status: draft
+status: published
 published_at: 2017-06-26
 person: abu-jafar-al-khalifi
 ---

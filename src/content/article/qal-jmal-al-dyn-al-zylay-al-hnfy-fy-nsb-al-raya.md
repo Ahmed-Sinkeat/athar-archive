@@ -1,6 +1,6 @@
 ---
 title: "قال جمال الدين الزيلعي الحنفي في نصب الراية"
-status: draft
+status: published
 published_at: 2018-10-13
 person: abu-jafar-al-khalifi
 ---

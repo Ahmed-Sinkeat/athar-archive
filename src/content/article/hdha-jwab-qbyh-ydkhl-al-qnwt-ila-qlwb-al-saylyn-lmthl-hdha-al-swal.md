@@ -1,6 +1,6 @@
 ---
 title: "هذا جوابٌ قبيح يُدخِلُ القنوط إلى قلوب السائلين لمثل هذا السؤال"
-status: draft
+status: published
 published_at: 2023-03-23
 person: abu-umair-imran-al-zubaidi
 ---

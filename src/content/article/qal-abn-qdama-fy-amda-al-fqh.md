@@ -1,6 +1,6 @@
 ---
 title: "قال ابن قدامة في «عمدة الفقه"
-status: draft
+status: published
 published_at: 2025-10-10
 person: abu-jafar-al-khalifi
 ---

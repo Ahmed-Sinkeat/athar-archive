@@ -1,6 +1,6 @@
 ---
 title: "انقدَح هذا عندي أثناء قراءتي مقدمة تحقيق المناقب للآبري"
-status: draft
+status: published
 published_at: 2025-08-18
 person: awwab-bin-muhammad
 ---

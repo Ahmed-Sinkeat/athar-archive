@@ -1,6 +1,6 @@
 ---
 title: "حين كان في الأمراء حياء"
-status: draft
+status: published
 published_at: 2017-06-29
 person: abu-jafar-al-khalifi
 ---

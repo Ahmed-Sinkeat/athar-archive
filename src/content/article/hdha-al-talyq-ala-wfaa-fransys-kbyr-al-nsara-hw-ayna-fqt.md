@@ -1,6 +1,6 @@
 ---
 title: "هذا التعليق على وفاة فرانسيس كبير النصارى هو عينة فقط."
-status: draft
+status: published
 published_at: 2025-04-21
 person: abu-jafar-al-khalifi
 ---

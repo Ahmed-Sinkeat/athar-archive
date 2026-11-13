@@ -1,6 +1,6 @@
 ---
 title: "إن كان يحقّ لي أن أقول حكمةً تعينك على المضي في هذه الدّنيا والتعامل مع خطوبها"
-status: draft
+status: published
 published_at: 2023-04-22
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وقفة مع كلمة للذهبي حول شدة ابن تيمية.."
-status: draft
+status: published
 published_at: 2021-12-24
 person: abu-jafar-al-khalifi
 ---

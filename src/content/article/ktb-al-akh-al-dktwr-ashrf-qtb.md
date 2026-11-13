@@ -1,6 +1,6 @@
 ---
 title: "كتب الأخ الدكتور أشرف قطب"
-status: draft
+status: published
 published_at: 2019-03-27
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

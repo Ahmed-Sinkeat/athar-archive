@@ -1,6 +1,6 @@
 ---
 title: "الآية التي قطعت جذور الشرك والتعطيل.."
-status: draft
+status: published
 published_at: 2022-06-15
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

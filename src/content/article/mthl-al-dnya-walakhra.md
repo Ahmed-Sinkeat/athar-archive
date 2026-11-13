@@ -1,6 +1,6 @@
 ---
 title: "مثل الدنيا والآخرة"
-status: draft
+status: published
 published_at: 2023-12-16
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

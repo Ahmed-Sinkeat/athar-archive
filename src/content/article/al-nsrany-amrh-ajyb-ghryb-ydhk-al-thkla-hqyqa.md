@@ -1,6 +1,6 @@
 ---
 title: "النصراني أمره عجيب غريب يضحك الثكلى حقيقة!"
-status: draft
+status: published
 published_at: 2025-10-12
 person: abu-umair-imran-al-zubaidi
 ---

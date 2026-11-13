@@ -1,6 +1,6 @@
 ---
 title: "باسم بشينية يسلك سبيل الملاحدة في التشويش"
-status: draft
+status: published
 published_at: 2024-03-06
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

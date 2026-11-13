@@ -1,6 +1,6 @@
 ---
 title: "لا توجد بذرة أخبث ولا أفتك بالإسلام وأهله من بذرة حصر معنى العبودية في فعل المأم"
-status: draft
+status: published
 published_at: 2025-02-13
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

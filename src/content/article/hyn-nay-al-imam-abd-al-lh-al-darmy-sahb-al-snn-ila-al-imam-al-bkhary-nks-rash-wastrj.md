@@ -1,6 +1,6 @@
 ---
 title: "حين نُعي الإمام عبد الله الدارمي صاحب السنن إلى الإمام البخاري نكَّس رأسه واسترج"
-status: draft
+status: published
 published_at: 2025-03-17
 person: abu-jafar-al-khalifi
 ---

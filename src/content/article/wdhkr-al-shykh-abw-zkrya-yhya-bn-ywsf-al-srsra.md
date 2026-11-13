@@ -1,6 +1,6 @@
 ---
 title: "وذكر الشيخ أبو زكريا يحيى بن يوسف الصرصرى"
-status: draft
+status: published
 published_at: 2023-08-22
 person: abu-umair-imran-al-zubaidi
 ---

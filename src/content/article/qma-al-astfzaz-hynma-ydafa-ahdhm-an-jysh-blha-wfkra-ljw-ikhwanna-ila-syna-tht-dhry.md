@@ -1,6 +1,6 @@
 ---
 title: "قمة الاستفزاز حينما يدافع أحدهم عن جيش بلحة وفكرة لجوء إخواننا إلى سيناء تحت ذري"
-status: draft
+status: published
 published_at: 2023-11-05
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ليست تساؤلات وإنما خلل في التفكير! (إعادة نشر مع تعديلات)"
-status: draft
+status: published
 published_at: 2020-02-02
 person: abu-jafar-al-khalifi
 ---

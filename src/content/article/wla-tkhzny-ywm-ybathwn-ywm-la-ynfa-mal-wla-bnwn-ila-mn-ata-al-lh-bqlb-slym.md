@@ -1,6 +1,6 @@
 ---
 title: "ولا تخزني يوم يبعثون * يوم لا ينفع مال ولا بنون * إلا من أتى الله بقلب سليم"
-status: draft
+status: published
 published_at: 2025-11-23
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

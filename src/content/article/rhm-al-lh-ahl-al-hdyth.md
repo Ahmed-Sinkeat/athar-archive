@@ -1,6 +1,6 @@
 ---
 title: "رحم الله أهل الحديث"
-status: draft
+status: published
 published_at: 2024-05-23
 person: abu-abdillah-firas-al-ramli
 ---

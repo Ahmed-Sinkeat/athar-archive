@@ -1,6 +1,6 @@
 ---
 title: "اللهم آمين، بشرى خير بإذن الله."
-status: draft
+status: published
 published_at: 2026-09-07
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

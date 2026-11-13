@@ -1,6 +1,6 @@
 ---
 title: "تفسير الإمام ابن الإمام عبد الرحمن ابن أبي حاتم نعمة من نعم الله علينا حقا."
-status: draft
+status: published
 published_at: 2025-02-24
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

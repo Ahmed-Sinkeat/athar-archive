@@ -1,6 +1,6 @@
 ---
 title: "باب في الاحتجاج في إكفار الأشعرية"
-status: draft
+status: published
 published_at: 2024-04-18
 person: abu-abdillah-firas-al-ramli
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "ما جاء في كراهية وضع اليد اليمنى على العضد الأيسر والعكس في قيام الصلاة"
-status: draft
+status: published
 published_at: 2025-10-30
 person: abu-abdillah-firas-al-ramli
 ---

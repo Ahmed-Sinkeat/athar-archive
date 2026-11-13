@@ -1,6 +1,6 @@
 ---
 title: "قد بيَّن الأستاذ جميل أكبر في كتابه \"قصّ الحق\" إشكالية موضوع \"المال العام\" في ال"
-status: draft
+status: published
 published_at: 2020-09-25
 person: abu-jafar-al-khalifi
 ---

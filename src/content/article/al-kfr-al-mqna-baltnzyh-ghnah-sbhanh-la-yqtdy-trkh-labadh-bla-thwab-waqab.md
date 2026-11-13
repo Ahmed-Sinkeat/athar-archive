@@ -1,6 +1,6 @@
 ---
 title: "الكفر المقنَّع بالتنزيه (غناه سبحانه لا يقتضي تركه لعباده بلا ثواب وعقاب)!"
-status: draft
+status: published
 published_at: 2021-06-15
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من دعاء ابن مسعود رضي الله عنه"
-status: draft
+status: published
 published_at: 2024-09-21
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

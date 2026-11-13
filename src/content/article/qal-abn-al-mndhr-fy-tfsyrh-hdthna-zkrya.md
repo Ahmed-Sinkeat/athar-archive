@@ -1,6 +1,6 @@
 ---
 title: "قال ابن المنذر في تفسيره 29 - حَدَّثَنَا زَكَرِيَّا"
-status: draft
+status: published
 published_at: 2017-07-12
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

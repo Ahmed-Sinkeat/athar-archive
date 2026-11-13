@@ -1,6 +1,6 @@
 ---
 title: "الثقة التي عند هذا الرجل تصيب المرء بالغثيان!"
-status: draft
+status: published
 published_at: 2025-12-05
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الذعر النسوي من نتائج محاكمة جوني ديب مع طليقته.."
-status: draft
+status: published
 published_at: 2022-06-06
 person: abu-jafar-al-khalifi
 ---

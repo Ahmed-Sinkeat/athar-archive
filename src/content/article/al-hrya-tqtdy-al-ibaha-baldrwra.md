@@ -1,6 +1,6 @@
 ---
 title: "الحريّة تقتضي الإباحة بالضرورة!."
-status: draft
+status: published
 published_at: 2022-09-24
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "نمطان في التفكير لو تخلصنا منهما سنرتاح كثيراً"
-status: draft
+status: published
 published_at: 2018-09-23
 person: abu-jafar-al-khalifi
 ---

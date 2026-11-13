@@ -1,6 +1,6 @@
 ---
 title: "هذه ملاحظة مهمة للغاية، جزى الله أخي أحمد كل خير، لا أدري كيف فاتت كثير منا."
-status: draft
+status: published
 published_at: 2023-12-15
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "al-asma-was-sifat"]

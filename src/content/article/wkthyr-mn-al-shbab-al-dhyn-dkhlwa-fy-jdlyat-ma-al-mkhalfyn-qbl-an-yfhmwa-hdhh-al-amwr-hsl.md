@@ -1,6 +1,6 @@
 ---
 title: "وكثير من الشباب الذين دخلوا في جدليات مع المخالفين قبل أن يفهموا هذه الأمور حصل"
-status: draft
+status: published
 published_at: 2021-07-31
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

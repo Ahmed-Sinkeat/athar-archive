@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الله الشرقاوي الشافعي في فتح المبدي شرح مختصر الزبيدي (3/249- 250)"
-status: draft
+status: published
 published_at: 2017-09-19
 person: abu-jafar-al-khalifi
 ---

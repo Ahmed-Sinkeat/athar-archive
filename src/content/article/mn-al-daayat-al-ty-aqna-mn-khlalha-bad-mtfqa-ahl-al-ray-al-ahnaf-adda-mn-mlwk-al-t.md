@@ -1,6 +1,6 @@
 ---
 title: "من الدعايات التي أقنع من خلالها بعض متفقة أهل الرأي ( الأحناف) عدداً من ملوك الت"
-status: draft
+status: published
 published_at: 2017-11-24
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هناك أمور إعجازية محددة يمكن الحديث عنها في القرآن الكريم لإثبات أنه كلام رب الع"
-status: draft
+status: published
 published_at: 2025-05-03
 person: abu-umair-imran-al-zubaidi
 ---

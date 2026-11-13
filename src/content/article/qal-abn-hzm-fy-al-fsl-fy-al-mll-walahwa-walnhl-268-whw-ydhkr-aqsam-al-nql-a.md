@@ -1,6 +1,6 @@
 ---
 title: "قال ابن حزم في الفصل في الملل والأهواء والنحل (٢/&rlm;٦٨) وهو يذكر أقسام النقل ع"
-status: draft
+status: published
 published_at: 2024-04-15
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

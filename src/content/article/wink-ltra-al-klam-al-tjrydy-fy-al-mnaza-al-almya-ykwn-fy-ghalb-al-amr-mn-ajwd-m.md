@@ -1,6 +1,6 @@
 ---
 title: "وإنَّك لترى الكلام التجريديَّ في المَنازِع العلمية يكون في غالب الأمر مِن أجود م"
-status: draft
+status: published
 published_at: 2026-07-19
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "يعني حتى لو افترضنا جدلًا صحة ما ينسبه هذا المتعالم"
-status: draft
+status: published
 published_at: 2024-04-28
 person: abu-umair-imran-al-zubaidi
 ---

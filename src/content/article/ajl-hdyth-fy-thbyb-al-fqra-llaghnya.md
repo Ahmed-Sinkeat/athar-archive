@@ -1,6 +1,6 @@
 ---
 title: "أجلُّ حديث في تحبيب الفقراء للأغنياء..."
-status: draft
+status: published
 published_at: 2025-04-17
 person: abu-jafar-al-khalifi
 ---

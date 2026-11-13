@@ -1,6 +1,6 @@
 ---
 title: "فقه السلف في إصلاح الشباب واستلالهم من أصحاب السوء"
-status: draft
+status: published
 published_at: 2024-07-19
 person: abu-abdillah-firas-al-ramli
 ---

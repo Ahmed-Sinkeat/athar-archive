@@ -1,6 +1,6 @@
 ---
 title: "إنما نريد لهم الرحمة..."
-status: draft
+status: published
 published_at: 2021-01-30
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

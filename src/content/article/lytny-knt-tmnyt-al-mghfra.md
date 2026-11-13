@@ -1,6 +1,6 @@
 ---
 title: "ليتني كنتُ تمنَّيت المغفِرة"
-status: draft
+status: published
 published_at: 2025-04-29
 person: awwab-bin-muhammad
 ---

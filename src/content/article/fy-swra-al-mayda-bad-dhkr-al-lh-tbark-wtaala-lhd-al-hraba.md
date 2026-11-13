@@ -1,6 +1,6 @@
 ---
 title: "في سورة المائدة؛ بعد ذكر الله تبارك وتعالى لحد الحرابة"
-status: draft
+status: published
 published_at: 2025-04-27
 person: abu-umair-imran-al-zubaidi
 ---

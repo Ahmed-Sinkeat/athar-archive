@@ -1,6 +1,6 @@
 ---
 title: "الفزع الصبياني من الشبهات"
-status: draft
+status: published
 published_at: 2019-06-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

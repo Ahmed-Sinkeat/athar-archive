@@ -1,6 +1,6 @@
 ---
 title: "آية واحدة تنقض مبادئ المواطنة"
-status: draft
+status: published
 published_at: 2024-03-11
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

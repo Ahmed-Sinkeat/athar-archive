@@ -1,6 +1,6 @@
 ---
 title: "نشر أحد التربويين البريطانيين واسمه بفرلي شو نشرة يهاجم فيها التعليم الاختلاطي و"
-status: draft
+status: published
 published_at: 2017-12-07
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "بين ترائي الناس للهلال ورؤية الله عز وجل يوم القيامة.."
-status: draft
+status: published
 published_at: 2023-03-21
 person: abu-jafar-al-khalifi
 ---

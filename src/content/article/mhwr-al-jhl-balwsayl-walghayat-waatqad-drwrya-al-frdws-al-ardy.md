@@ -1,6 +1,6 @@
 ---
 title: "محور الجهل بالوسائل والغايات واعتقاد ضرورية الفردوس الأرضي"
-status: draft
+status: published
 published_at: 2019-01-31
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-sunnah-wal-bidah"]

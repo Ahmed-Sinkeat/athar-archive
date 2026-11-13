@@ -1,6 +1,6 @@
 ---
 title: "من اللطائف.."
-status: draft
+status: published
 published_at: 2023-06-14
 person: abu-abdillah-firas-al-ramli
 ---

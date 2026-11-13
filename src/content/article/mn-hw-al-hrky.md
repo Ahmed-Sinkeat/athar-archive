@@ -1,6 +1,6 @@
 ---
 title: "من هو الحركي؟!"
-status: draft
+status: published
 published_at: 2023-10-28
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

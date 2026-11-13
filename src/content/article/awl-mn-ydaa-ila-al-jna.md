@@ -1,6 +1,6 @@
 ---
 title: "أول من يدعى إلى الجنة"
-status: draft
+status: published
 published_at: 2023-10-03
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "الدليل على كفالة طالب العلم من حال أبي هريرة رضي الله عنه..."
-status: draft
+status: published
 published_at: 2025-11-02
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah", "adab-talab-al-ilm"]

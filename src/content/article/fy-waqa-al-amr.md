@@ -1,6 +1,6 @@
 ---
 title: "في واقع الأمر"
-status: draft
+status: published
 published_at: 2023-05-03
 person: abu-umair-imran-al-zubaidi
 ---

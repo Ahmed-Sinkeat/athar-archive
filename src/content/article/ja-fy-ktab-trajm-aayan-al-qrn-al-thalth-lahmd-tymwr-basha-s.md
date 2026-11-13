@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب \"تراجم أعيان القرن الثالث\" لأحمد تيمور باشا (ص 75)"
-status: draft
+status: published
 published_at: 2018-09-19
 person: abu-jafar-al-khalifi
 ---

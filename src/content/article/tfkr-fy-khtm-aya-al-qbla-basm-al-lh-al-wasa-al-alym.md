@@ -1,6 +1,6 @@
 ---
 title: "تفكر في ختم آية القبلة باسم الله الواسع العليم."
-status: draft
+status: published
 published_at: 2026-04-24
 person: abu-jafar-al-khalifi
 ---

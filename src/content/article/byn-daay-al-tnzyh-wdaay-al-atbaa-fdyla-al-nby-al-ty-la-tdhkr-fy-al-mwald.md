@@ -1,6 +1,6 @@
 ---
 title: "بين داعي التنزيه وداعي الاتباع (فضيلة النبي ﷺ التي لا تُذكر في الموالد)"
-status: draft
+status: published
 published_at: 2022-10-08
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "القرينان الخشوع للحق والتواضع للخلق"
-status: draft
+status: published
 published_at: 2021-09-29
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

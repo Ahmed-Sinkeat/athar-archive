@@ -1,6 +1,6 @@
 ---
 title: "ذاك شيء قرن بالتوحيد"
-status: draft
+status: published
 published_at: 2025-09-30
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "صحيح أنّ هناك فارق من حيث إثباتك لوجود الصفة حقيقة كونك تقول بأنه خلق هذا العالم"
-status: draft
+status: published
 published_at: 2024-05-05
 person: abu-umair-imran-al-zubaidi
 ---

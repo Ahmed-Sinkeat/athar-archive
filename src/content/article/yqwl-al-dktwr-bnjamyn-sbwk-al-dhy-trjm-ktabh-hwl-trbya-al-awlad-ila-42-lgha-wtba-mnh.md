@@ -1,6 +1,6 @@
 ---
 title: "يقول الدكتور بنجامين سبوك الذي ترجم كتابه حول تربية الأولاد إلى ٤٢ لغة وطبع منه"
-status: draft
+status: published
 published_at: 2017-10-17
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من ترك النظر ابتغاء وجه الله عز وجل"
-status: draft
+status: published
 published_at: 2023-09-22
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

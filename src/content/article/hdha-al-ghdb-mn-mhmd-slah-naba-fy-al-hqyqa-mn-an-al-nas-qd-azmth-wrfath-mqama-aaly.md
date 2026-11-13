@@ -1,6 +1,6 @@
 ---
 title: "هذا الغضب من محمد صلاح نابع في الحقيقة من أنّ الناس قد عظّمته ورفعته مقامًا عالي"
-status: draft
+status: published
 published_at: 2023-10-11
 person: abu-umair-imran-al-zubaidi
 ---

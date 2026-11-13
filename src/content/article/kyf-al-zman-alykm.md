@@ -1,6 +1,6 @@
 ---
 title: "كيف الزمان عليكم؟"
-status: draft
+status: published
 published_at: 2023-10-29
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

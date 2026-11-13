@@ -1,6 +1,6 @@
 ---
 title: "قال يحيى بن معين كما في تاريخه رواية ابن محرز (2/&rlm;63)"
-status: draft
+status: published
 published_at: 2024-01-01
 person: abu-umair-imran-al-zubaidi
 ---

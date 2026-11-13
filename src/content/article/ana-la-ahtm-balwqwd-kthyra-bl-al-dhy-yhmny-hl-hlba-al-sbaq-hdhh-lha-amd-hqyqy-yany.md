@@ -1,6 +1,6 @@
 ---
 title: "أنا لا أهتم بالوقود كثيراً بل الذي يهمني هل حلبة السباق هذه لها أمدٌ حقيقي يعني"
-status: draft
+status: published
 published_at: 2020-08-15
 person: abu-jafar-al-khalifi
 ---

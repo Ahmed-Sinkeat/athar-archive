@@ -1,6 +1,6 @@
 ---
 title: "علاج الآفات التي تعتري الدعاة من القرآن الكريم"
-status: draft
+status: published
 published_at: 2020-11-19
 person: abu-jafar-al-khalifi
 ---

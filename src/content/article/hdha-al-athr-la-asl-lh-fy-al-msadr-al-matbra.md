@@ -1,6 +1,6 @@
 ---
 title: "هذا الأثر لا أصل له في المصادر المعتبرة."
-status: draft
+status: published
 published_at: 2022-11-07
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

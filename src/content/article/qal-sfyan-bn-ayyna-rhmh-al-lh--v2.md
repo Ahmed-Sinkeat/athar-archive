@@ -1,6 +1,6 @@
 ---
 title: "قال سفيان بن عيينة -رحمه الله"
-status: draft
+status: published
 published_at: 2023-10-24
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "غياب مؤقت إن شاء الله، ولكن غالبًا سيكون لمدة أطول من المعتاد لظروف كثيرة."
-status: draft
+status: published
 published_at: 2023-10-04
 person: abu-umair-imran-al-zubaidi
 ---

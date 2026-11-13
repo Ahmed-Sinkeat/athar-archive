@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية"
-status: draft
+status: published
 published_at: 2024-04-21
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

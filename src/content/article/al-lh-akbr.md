@@ -1,6 +1,6 @@
 ---
 title: "الله أكبر!"
-status: draft
+status: published
 published_at: 2025-01-31
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

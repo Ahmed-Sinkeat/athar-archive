@@ -1,6 +1,6 @@
 ---
 title: "{هُوَ ٱللَّهُ ٱلَّذِي لَآ إِلَٰهَ إِلَّا هُوَۖ عَٰلِمُ ٱلۡغَيۡبِ وَٱلشَّهَٰدَةِ"
-status: draft
+status: published
 published_at: 2023-09-07
 person: abu-umair-imran-al-zubaidi
 ---

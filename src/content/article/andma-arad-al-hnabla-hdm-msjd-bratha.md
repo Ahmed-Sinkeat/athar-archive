@@ -1,6 +1,6 @@
 ---
 title: "عندما أراد الحنابلة هدم مسجد براثا."
-status: draft
+status: published
 published_at: 2023-10-01
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال الرملي الشافعي في نهاية المحتاج (8/72)"
-status: draft
+status: published
 published_at: 2018-01-27
 person: abu-jafar-al-khalifi
 ---

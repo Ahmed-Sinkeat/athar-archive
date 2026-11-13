@@ -1,6 +1,6 @@
 ---
 title: "إلى أَن قال الشيخ"
-status: draft
+status: published
 published_at: 2019-11-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

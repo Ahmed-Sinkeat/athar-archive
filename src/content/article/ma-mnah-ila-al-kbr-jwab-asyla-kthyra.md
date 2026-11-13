@@ -1,6 +1,6 @@
 ---
 title: "ما منعه إلا الكِبْر (جواب أسئلة كثيرة)."
-status: draft
+status: published
 published_at: 2024-02-28
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هل قال الشافعي -رحمه الله- هذا الكلام عن معاوية بن أبي سفيان -رضي الله عنهما-؟"
-status: draft
+status: published
 published_at: 2021-02-12
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

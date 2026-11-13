@@ -1,6 +1,6 @@
 ---
 title: "قد يبدو لك أن هذه صورة معدلة بالذكاء الاصطناعي أو الفوتوشوب"
-status: draft
+status: published
 published_at: 2025-09-01
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

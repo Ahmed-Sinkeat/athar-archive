@@ -1,6 +1,6 @@
 ---
 title: "هذا في كتاب فاطمة في نهج البلاغة لنبيل الحسني الكربلائي التشكيك في مكان دفن النب"
-status: draft
+status: published
 published_at: 2020-01-15
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وهنا أيضا تتمة للرد على المساكين الذين يجعلون فصاما نكدًا بين اكتشاف اللقاح للأم"
-status: draft
+status: published
 published_at: 2020-03-25
 person: abu-jafar-al-khalifi
 ---

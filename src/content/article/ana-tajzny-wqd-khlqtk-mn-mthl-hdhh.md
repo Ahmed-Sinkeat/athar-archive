@@ -1,6 +1,6 @@
 ---
 title: "أنى تعجزني وقد خلقتك من مثل هذه"
-status: draft
+status: published
 published_at: 2025-01-01
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

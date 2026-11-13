@@ -1,6 +1,6 @@
 ---
 title: "فوائد جامع الترمذي (٠)"
-status: draft
+status: published
 published_at: 2024-06-09
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

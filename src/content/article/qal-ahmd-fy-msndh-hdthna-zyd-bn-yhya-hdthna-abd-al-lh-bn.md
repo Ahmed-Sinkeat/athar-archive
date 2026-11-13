@@ -1,6 +1,6 @@
 ---
 title: "قال أحمد في مسنده 22714- حَدَّثنا زَيْدُ بْنُ يَحْيَى حَدَّثنا عَبْدُ اللهِ بْنُ"
-status: draft
+status: published
 published_at: 2017-10-27
 person: abu-jafar-al-khalifi
 ---

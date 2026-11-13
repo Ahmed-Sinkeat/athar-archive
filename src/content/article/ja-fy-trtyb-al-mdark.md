@@ -1,6 +1,6 @@
 ---
 title: "جاء في ترتيب المدارك"
-status: draft
+status: published
 published_at: 2019-04-12
 person: abu-jafar-al-khalifi
 ---

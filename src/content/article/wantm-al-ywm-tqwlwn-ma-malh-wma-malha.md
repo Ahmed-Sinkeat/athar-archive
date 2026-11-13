@@ -1,6 +1,6 @@
 ---
 title: "وأنتم اليوم تقولون: ما ماله وما مالها؟"
-status: draft
+status: published
 published_at: 2025-07-08
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الأنبياء آباء بنات"
-status: draft
+status: published
 published_at: 2023-06-06
 person: abu-abdillah-firas-al-ramli
 ---

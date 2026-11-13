@@ -1,6 +1,6 @@
 ---
 title: "وَجَعَلْنَا عَلَىٰ قُلُوبِهِمْ أَكِنَّةً أَن يَفْقَهُوهُ وَفِي آذَانِهِمْ وَقْرً"
-status: draft
+status: published
 published_at: 2025-06-28
 person: abu-umair-imran-al-zubaidi
 ---

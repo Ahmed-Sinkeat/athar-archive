@@ -1,6 +1,6 @@
 ---
 title: "هذا مقتطف من تقرير منظمة الصحة العالمية عن الانتحار"
-status: draft
+status: published
 published_at: 2022-10-16
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

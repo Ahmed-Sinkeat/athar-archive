@@ -1,6 +1,6 @@
 ---
 title: "حتى أن من طرائف القراءات المجتزأة لمحاولة إيجاد نموذج امرأة قوية"
-status: draft
+status: published
 published_at: 2021-03-15
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

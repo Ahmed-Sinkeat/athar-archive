@@ -1,6 +1,6 @@
 ---
 title: "انظر إلى أحب ما تريد أن يجاورك في قبرك فاعمل به"
-status: draft
+status: published
 published_at: 2025-11-26
 person: abu-abdillah-firas-al-ramli
 ---

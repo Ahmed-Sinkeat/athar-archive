@@ -1,6 +1,6 @@
 ---
 title: "هل يفهمون المذهبية حقا ؟!"
-status: draft
+status: published
 published_at: 2020-06-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "هذه دراسة فريدة من نوعها أشارت إليها هذه الباحثة: سماثا باندايا"
-status: draft
+status: published
 published_at: 2022-11-14
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

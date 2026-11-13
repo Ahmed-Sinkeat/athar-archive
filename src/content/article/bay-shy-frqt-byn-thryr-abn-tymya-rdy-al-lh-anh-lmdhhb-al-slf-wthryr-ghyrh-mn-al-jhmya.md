@@ -1,6 +1,6 @@
 ---
 title: "بأي شيء فرقت بين تحرير ابن تيمية رضي الله عنه لمذهب السلف وتحرير غيره من الجهمية"
-status: draft
+status: published
 published_at: 2025-10-21
 person: abu-umair-imran-al-zubaidi
 topics: ["adab-talab-al-ilm"]

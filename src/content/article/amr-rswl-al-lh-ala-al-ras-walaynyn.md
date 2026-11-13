@@ -1,6 +1,6 @@
 ---
 title: "أمر رسول الله ﷺ على الرأس والعينين"
-status: draft
+status: published
 published_at: 2026-08-02
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "اقتراح لمن يجيبون على بعض تساؤلات الشباب"
-status: draft
+status: published
 published_at: 2018-11-11
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

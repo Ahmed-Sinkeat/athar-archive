@@ -1,6 +1,6 @@
 ---
 title: "سبحان الله يأتي الأمر في الوحي فيكون الأخذ به الطريق الأيسر والأسمح فالله يعلم و"
-status: draft
+status: published
 published_at: 2020-06-28
 person: abu-jafar-al-khalifi
 ---

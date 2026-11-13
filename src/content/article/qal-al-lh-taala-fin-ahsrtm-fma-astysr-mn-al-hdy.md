@@ -1,6 +1,6 @@
 ---
 title: "قال الله تعالى: {فَإِنْ أُحْصِرْتُمْ فَمَا اسْتَيْسَرَ مِنَ الْهَدْيِ}."
-status: draft
+status: published
 published_at: 2019-02-08
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا يؤكد ما ذكرته في صوتية إشكالات في منظومة الوظيفة أَن نظام الوظيفة العصري هو"
-status: draft
+status: published
 published_at: 2019-11-24
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لا تنسَ؛ هذا كله بعِلم الله، وكتابة الله، وخلق الله، ومشيئة الله، وتقدير الله."
-status: draft
+status: published
 published_at: 2023-10-15
 person: abu-umair-imran-al-zubaidi
 ---

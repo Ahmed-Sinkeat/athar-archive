@@ -1,6 +1,6 @@
 ---
 title: "المرء يفور الدم في رأسه ألهمنا الله الصبر."
-status: draft
+status: published
 published_at: 2026-06-05
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

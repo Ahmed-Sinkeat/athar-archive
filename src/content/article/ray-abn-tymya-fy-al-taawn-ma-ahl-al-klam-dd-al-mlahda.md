@@ -1,6 +1,6 @@
 ---
 title: "رأي ابن تيمية في التعاون مع أهل الكلام ضد الملاحدة.."
-status: draft
+status: published
 published_at: 2022-02-21
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "آراء فلسفية يا زنديق"
-status: draft
+status: published
 published_at: 2024-01-19
 person: abu-umair-imran-al-zubaidi
 ---

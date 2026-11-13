@@ -1,6 +1,6 @@
 ---
 title: "أمَّروا السنة على أنفسكم ولا تُأمَّروا الهوى"
-status: draft
+status: published
 published_at: 2025-08-02
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

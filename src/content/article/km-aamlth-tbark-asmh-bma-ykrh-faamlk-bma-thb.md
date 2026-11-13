@@ -1,6 +1,6 @@
 ---
 title: "كم عاملته تبارك اسمه بما يكره فعاملك بما تحب"
-status: draft
+status: published
 published_at: 2024-12-18
 person: abu-abdillah-firas-al-ramli
 ---

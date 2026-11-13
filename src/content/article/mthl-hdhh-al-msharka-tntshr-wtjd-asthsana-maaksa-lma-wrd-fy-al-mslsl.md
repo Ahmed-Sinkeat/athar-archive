@@ -1,6 +1,6 @@
 ---
 title: "مثل هذه المشاركة تنتشر وتجد استحسانًا معاكسة لما ورد في المسلسل."
-status: draft
+status: published
 published_at: 2023-04-03
 person: abu-jafar-al-khalifi
 ---

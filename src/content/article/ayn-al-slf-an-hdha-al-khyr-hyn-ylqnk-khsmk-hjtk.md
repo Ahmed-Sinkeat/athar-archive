@@ -1,6 +1,6 @@
 ---
 title: "أين السلف عن هذا الخير؟ (حين يلقِّنك خصمك حجتك)."
-status: draft
+status: published
 published_at: 2021-01-26
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

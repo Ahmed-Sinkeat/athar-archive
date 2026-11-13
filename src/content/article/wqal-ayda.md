@@ -1,6 +1,6 @@
 ---
 title: "وقال أيضاً (16/ 213)"
-status: draft
+status: published
 published_at: 2021-08-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-iman"]

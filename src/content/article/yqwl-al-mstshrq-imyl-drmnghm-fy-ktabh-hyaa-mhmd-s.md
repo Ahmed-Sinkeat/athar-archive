@@ -1,6 +1,6 @@
 ---
 title: "يقول المستشرق إميل درمنغم في كتابه حياة محمد ص330"
-status: draft
+status: published
 published_at: 2018-12-31
 person: abu-jafar-al-khalifi
 ---

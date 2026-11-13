@@ -1,6 +1,6 @@
 ---
 title: "خبر منشور في البي بي سي العربية والأجنبية"
-status: draft
+status: published
 published_at: 2019-01-14
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

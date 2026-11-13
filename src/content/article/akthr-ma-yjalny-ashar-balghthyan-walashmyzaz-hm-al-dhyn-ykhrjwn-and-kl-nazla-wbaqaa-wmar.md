@@ -1,6 +1,6 @@
 ---
 title: "أكثر ما يجعلني أشعر بالغثيان والاشمئزاز هم الذين يخرجون عند كل نازلة وباقعة ومعر"
-status: draft
+status: published
 published_at: 2026-03-04
 person: abu-umair-imran-al-zubaidi
 ---

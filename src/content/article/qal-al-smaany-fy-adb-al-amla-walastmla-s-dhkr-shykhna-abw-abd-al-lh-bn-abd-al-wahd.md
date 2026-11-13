@@ -1,6 +1,6 @@
 ---
 title: "قال السمعاني في أدب الاملاء والاستملاء ص116 ذكر شيخنا أبو عبد الله بن عبد الواحد"
-status: draft
+status: published
 published_at: 2017-11-23
 person: abu-jafar-al-khalifi
 ---

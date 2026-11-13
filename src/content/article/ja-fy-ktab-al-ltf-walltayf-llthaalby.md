@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب اللطف واللطائف للثعالبي"
-status: draft
+status: published
 published_at: 2019-10-20
 person: abu-jafar-al-khalifi
 ---

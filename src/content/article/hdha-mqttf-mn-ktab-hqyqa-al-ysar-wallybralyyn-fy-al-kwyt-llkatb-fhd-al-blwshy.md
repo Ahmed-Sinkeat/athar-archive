@@ -1,6 +1,6 @@
 ---
 title: "هذا مقتطف من كتاب حقيقة اليسار والليبراليين في الكويت للكاتب فهد البلوشي"
-status: draft
+status: published
 published_at: 2023-03-01
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

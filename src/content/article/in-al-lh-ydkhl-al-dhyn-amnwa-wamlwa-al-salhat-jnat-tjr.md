@@ -1,6 +1,6 @@
 ---
 title: "إِنَّ اللَّهَ يُدْخِلُ الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ جَنَّاتٍ تَجْر"
-status: draft
+status: published
 published_at: 2026-07-14
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

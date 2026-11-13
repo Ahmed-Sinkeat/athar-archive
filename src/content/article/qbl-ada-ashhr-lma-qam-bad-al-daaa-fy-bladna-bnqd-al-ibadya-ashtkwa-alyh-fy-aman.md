@@ -1,6 +1,6 @@
 ---
 title: "قبل عدة أشهر لما قام بعض الدعاة في بلادنا بنقد الإباضية اشتكوا عليه في عمان"
-status: draft
+status: published
 published_at: 2026-03-02
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "(قل هو من عند أنفسكم)"
-status: draft
+status: published
 published_at: 2025-09-18
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

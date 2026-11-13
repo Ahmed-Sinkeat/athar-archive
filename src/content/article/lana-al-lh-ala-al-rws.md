@@ -1,6 +1,6 @@
 ---
 title: "لعنة الله على الروس."
-status: draft
+status: published
 published_at: 2024-11-29
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ابن سيرين الّذي حُطّ مِن قدره ولا يعرف النّاس عنه إلّا أنه مجرّد مفسّر أحلام!."
-status: draft
+status: published
 published_at: 2022-12-22
 person: abu-umair-imran-al-zubaidi
 topics: ["tazkiyat-al-nafs"]

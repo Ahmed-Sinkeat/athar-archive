@@ -1,6 +1,6 @@
 ---
 title: "هذا القول لم يمثل قمعاً للقول الخاطئ في تفضيل علي على عثمان"
-status: draft
+status: published
 published_at: 2021-09-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

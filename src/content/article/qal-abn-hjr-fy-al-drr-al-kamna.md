@@ -1,6 +1,6 @@
 ---
 title: "قال ابن حجر في الدرر الكامنة"
-status: draft
+status: published
 published_at: 2018-11-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

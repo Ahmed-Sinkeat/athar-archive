@@ -1,6 +1,6 @@
 ---
 title: "يوم تجديد الميثاق (عرفة بين خطاب التكليف وخطاب التشريف)"
-status: draft
+status: published
 published_at: 2026-05-26
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

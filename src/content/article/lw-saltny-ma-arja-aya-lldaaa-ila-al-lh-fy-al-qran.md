@@ -1,6 +1,6 @@
 ---
 title: "لو سألتني: ما أرجى آية للدعاة إلى الله في القرآن؟"
-status: draft
+status: published
 published_at: 2019-10-29
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "” اقتباسات من الرسالة “"
-status: draft
+status: published
 published_at: 2025-12-24
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

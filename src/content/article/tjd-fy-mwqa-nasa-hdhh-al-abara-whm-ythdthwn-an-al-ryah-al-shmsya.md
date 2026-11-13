@@ -1,6 +1,6 @@
 ---
 title: "تجد في موقع ناسا هذه العبارة وهم يتحدثون عن الرياح الشمسية"
-status: draft
+status: published
 published_at: 2018-04-03
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الصراحة أمر جيد"
-status: draft
+status: published
 published_at: 2021-09-22
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-asma-was-sifat"]

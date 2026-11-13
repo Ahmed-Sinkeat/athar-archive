@@ -1,6 +1,6 @@
 ---
 title: "عليكم بالعتيق والقديم فهناكم الخير كله"
-status: draft
+status: published
 published_at: 2023-08-08
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

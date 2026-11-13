@@ -1,6 +1,6 @@
 ---
 title: "لو قامت حجة العالمانيين المنتسبن للملة لقامت حجة اليهود"
-status: draft
+status: published
 published_at: 2018-08-29
 person: abu-jafar-al-khalifi
 ---

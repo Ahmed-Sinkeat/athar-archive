@@ -1,6 +1,6 @@
 ---
 title: "مما يستدل به على معرفة خلق المرأة ودينها النظر إلى أمها وأبيها وأخيها"
-status: draft
+status: published
 published_at: 2024-08-12
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

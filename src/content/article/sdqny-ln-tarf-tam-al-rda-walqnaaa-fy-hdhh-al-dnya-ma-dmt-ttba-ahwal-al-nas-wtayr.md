@@ -1,6 +1,6 @@
 ---
 title: "صدّقني لن تعرف طعم الرضى والقناعة في هذه الدّنيا ما دمت تتبّع أحوال النّاس وتعير"
-status: draft
+status: published
 published_at: 2023-01-27
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "شيء من الآثار الجانبية للديمقراطية الليبرالية: زوال الوهم المدني!"
-status: draft
+status: published
 published_at: 2020-11-30
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

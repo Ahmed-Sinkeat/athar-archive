@@ -1,6 +1,6 @@
 ---
 title: "بعيدًا عن الدّين/ لا تُدخِل الدّين ....."
-status: draft
+status: published
 published_at: 2023-02-21
 person: abu-umair-imran-al-zubaidi
 ---

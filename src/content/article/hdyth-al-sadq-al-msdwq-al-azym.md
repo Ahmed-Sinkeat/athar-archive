@@ -1,6 +1,6 @@
 ---
 title: "حديث الصادق المصدوق العظيم"
-status: draft
+status: published
 published_at: 2023-08-05
 person: abu-abdillah-firas-al-ramli
 ---

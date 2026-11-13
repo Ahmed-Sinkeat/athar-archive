@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري في صحيحه 5844 - حَدَّثَنَا عَبْدُ اللَّهِ بْنُ مُحَمَّدٍ"
-status: draft
+status: published
 published_at: 2018-07-20
 person: abu-jafar-al-khalifi
 ---

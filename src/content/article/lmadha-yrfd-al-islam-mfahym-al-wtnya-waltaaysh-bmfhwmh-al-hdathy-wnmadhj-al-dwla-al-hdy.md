@@ -1,6 +1,6 @@
 ---
 title: "لماذا يرفض الإسلام مفاهيم الوطنية والتعايش -بمفهومه الحداثي- ونماذج الدولة الحدي"
-status: draft
+status: published
 published_at: 2023-06-20
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-wala-wal-bara"]

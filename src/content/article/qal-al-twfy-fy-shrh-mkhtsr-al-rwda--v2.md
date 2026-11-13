@@ -1,6 +1,6 @@
 ---
 title: "قال الطوفي في شرح مختصر الروضة"
-status: draft
+status: published
 published_at: 2021-09-18
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "هذه رسالة من أخ فاضل في غزة من طلاب العلم."
-status: draft
+status: published
 published_at: 2025-05-07
 person: abu-jafar-al-khalifi
 ---

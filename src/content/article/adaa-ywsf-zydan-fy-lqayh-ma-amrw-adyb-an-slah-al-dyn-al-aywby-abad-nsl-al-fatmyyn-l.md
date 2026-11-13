@@ -1,6 +1,6 @@
 ---
 title: "ادعى يوسف زيدان في لقائه مع عمرو أديب أن صلاح الدين الأيوبي أباد نسل الفاطميين ل"
-status: draft
+status: published
 published_at: 2018-04-18
 person: abu-jafar-al-khalifi
 ---

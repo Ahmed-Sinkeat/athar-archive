@@ -1,6 +1,6 @@
 ---
 title: "قال الخطيب في تاريخ مدينة السلام ( بغداد ) 7820- أمة الواحد"
-status: draft
+status: published
 published_at: 2017-06-20
 person: abu-jafar-al-khalifi
 ---

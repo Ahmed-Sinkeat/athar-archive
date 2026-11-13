@@ -1,6 +1,6 @@
 ---
 title: "روى الترمذي من حديث النعمان بن بشير رضي الله عنه أنَّ النبي ﷺ قال"
-status: draft
+status: published
 published_at: 2025-10-22
 person: awwab-bin-muhammad
 ---

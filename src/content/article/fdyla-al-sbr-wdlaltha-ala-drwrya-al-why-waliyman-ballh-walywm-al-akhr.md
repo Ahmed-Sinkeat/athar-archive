@@ -1,6 +1,6 @@
 ---
 title: "فضيلة الصبر ودلالتها على ضرورية الوحي والإيمان بالله واليوم الآخر..."
-status: draft
+status: published
 published_at: 2024-08-01
 person: abu-jafar-al-khalifi
 ---

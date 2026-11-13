@@ -1,6 +1,6 @@
 ---
 title: "لطيفة في حكمة اقتران اسم (الواحد) باسم (القهار) في معرض الرد على النصارى."
-status: draft
+status: published
 published_at: 2021-03-13
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "إن لم يسلم الربيع بن صبيح من نقدهم فمن يسلم؟"
-status: draft
+status: published
 published_at: 2022-11-17
 person: abu-jafar-al-khalifi
 ---

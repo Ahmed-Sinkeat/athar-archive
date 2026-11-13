@@ -1,6 +1,6 @@
 ---
 title: "النفسية بحاجة إلى طفل صغير لم يتجاوز العام من عمره"
-status: draft
+status: published
 published_at: 2023-07-05
 person: abu-umair-imran-al-zubaidi
 ---

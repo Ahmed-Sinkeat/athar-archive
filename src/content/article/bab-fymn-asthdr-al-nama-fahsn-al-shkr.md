@@ -1,6 +1,6 @@
 ---
 title: "باب فيمن استحضر النعمة فأحسن الشكر"
-status: draft
+status: published
 published_at: 2019-07-11
 person: abu-jafar-al-khalifi
 ---

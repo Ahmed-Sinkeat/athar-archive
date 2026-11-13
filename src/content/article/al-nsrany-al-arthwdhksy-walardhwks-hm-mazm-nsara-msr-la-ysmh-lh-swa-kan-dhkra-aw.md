@@ -1,6 +1,6 @@
 ---
 title: "النصراني الأرثوذكسي ( والأرذوكس هم معظم نصارى مصر ) لا يسمح له سواء كان ذكرا أو"
-status: draft
+status: published
 published_at: 2018-10-30
 person: abu-jafar-al-khalifi
 ---

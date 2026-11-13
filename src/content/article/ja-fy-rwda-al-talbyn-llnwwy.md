@@ -1,6 +1,6 @@
 ---
 title: "جاء في روضة الطالبين للنووي"
-status: draft
+status: published
 published_at: 2019-01-09
 person: abu-jafar-al-khalifi
 ---

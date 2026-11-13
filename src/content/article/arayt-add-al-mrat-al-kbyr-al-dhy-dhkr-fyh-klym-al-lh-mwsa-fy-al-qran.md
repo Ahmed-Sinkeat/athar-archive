@@ -1,6 +1,6 @@
 ---
 title: "أرأيت عدد المرات الكبير الذي ذكر فيه كليم الله موسى ﷺ في القرآن؟"
-status: draft
+status: published
 published_at: 2026-10-18
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الأشاعرة وخلق القرآن ( القصة التي يعرفها الجميع ويجهلها العاطفيون )."
-status: draft
+status: published
 published_at: 2019-01-14
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-sunnah-wal-bidah"]

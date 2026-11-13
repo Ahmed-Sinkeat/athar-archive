@@ -1,6 +1,6 @@
 ---
 title: "اقتبست مقالة في مجلة العالِم الجديد عام ٢٠٠٩ كلام اريك باتيست"
-status: draft
+status: published
 published_at: 2017-10-17
 person: abu-jafar-al-khalifi
 ---

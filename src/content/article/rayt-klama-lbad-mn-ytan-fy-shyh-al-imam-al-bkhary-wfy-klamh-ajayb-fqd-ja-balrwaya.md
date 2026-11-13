@@ -1,6 +1,6 @@
 ---
 title: "رأيت كلاماً لبعض من يطعن في صحيح الإمام البخاري وفي كلامه عجائب فقد جاء بالروايا"
-status: draft
+status: published
 published_at: 2018-11-10
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

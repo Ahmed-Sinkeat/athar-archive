@@ -1,6 +1,6 @@
 ---
 title: "كان رسولُ اللهِ صلَّى اللهُ عليه وسلَّمَ إذا أَصبَحَ يقولُ"
-status: draft
+status: published
 published_at: 2023-03-06
 person: abu-umair-imran-al-zubaidi
 ---

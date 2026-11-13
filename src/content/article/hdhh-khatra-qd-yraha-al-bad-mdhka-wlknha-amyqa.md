@@ -1,6 +1,6 @@
 ---
 title: "هذه خاطرة قد يراها البعض مضحكة ولكنها عميقة"
-status: draft
+status: published
 published_at: 2017-06-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

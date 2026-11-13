@@ -1,6 +1,6 @@
 ---
 title: "قال سعيد بن منصور في الزهد (٦٥٣٥)"
-status: draft
+status: published
 published_at: 2024-08-09
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

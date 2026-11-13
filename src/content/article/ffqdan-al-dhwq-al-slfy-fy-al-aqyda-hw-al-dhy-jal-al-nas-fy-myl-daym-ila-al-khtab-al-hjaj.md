@@ -1,6 +1,6 @@
 ---
 title: "ففُقدان الذوق السلفي في العقيدة هو الذي جعل الناس في ميلٍ دائم إلى الخطاب الحجاج"
-status: draft
+status: published
 published_at: 2019-09-24
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

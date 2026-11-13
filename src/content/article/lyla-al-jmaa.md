@@ -1,6 +1,6 @@
 ---
 title: "ليلةُ الجمُـعة"
-status: draft
+status: published
 published_at: 2025-05-01
 person: awwab-bin-muhammad
 ---

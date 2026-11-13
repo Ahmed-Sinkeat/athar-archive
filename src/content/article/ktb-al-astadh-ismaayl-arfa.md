@@ -1,6 +1,6 @@
 ---
 title: "كتب الأستاذ إسماعيل عرفة"
-status: draft
+status: published
 published_at: 2019-12-22
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

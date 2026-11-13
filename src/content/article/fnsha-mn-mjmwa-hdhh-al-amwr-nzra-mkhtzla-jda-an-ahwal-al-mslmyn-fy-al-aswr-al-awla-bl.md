@@ -1,6 +1,6 @@
 ---
 title: "فنشأ من مجموع هذه الأمور نظرة مختزلة جداً عن أحوال المسلمين في العصور الأولى بل"
-status: draft
+status: published
 published_at: 2019-11-14
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

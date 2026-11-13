@@ -1,6 +1,6 @@
 ---
 title: "بين إنسانية الإمام البخاري ووحشية الفلسفات الغربية"
-status: draft
+status: published
 published_at: 2020-03-30
 person: abu-jafar-al-khalifi
 ---

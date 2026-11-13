@@ -1,6 +1,6 @@
 ---
 title: "حاجة الناس للعلم"
-status: draft
+status: published
 published_at: 2024-07-06
 person: abu-abdillah-firas-al-ramli
 ---

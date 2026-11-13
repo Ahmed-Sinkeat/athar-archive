@@ -1,6 +1,6 @@
 ---
 title: "أمريكا ضربت منشآت إيران النووية للتو."
-status: draft
+status: published
 published_at: 2025-06-22
 person: abu-umair-imran-al-zubaidi
 ---

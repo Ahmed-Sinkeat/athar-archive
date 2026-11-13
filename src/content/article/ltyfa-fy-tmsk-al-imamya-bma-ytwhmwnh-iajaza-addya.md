@@ -1,6 +1,6 @@
 ---
 title: "لطيفة في تمسك الإمامية بما يتوهمونه إعجازاً عددياً!"
-status: draft
+status: published
 published_at: 2021-10-30
 person: abu-jafar-al-khalifi
 ---

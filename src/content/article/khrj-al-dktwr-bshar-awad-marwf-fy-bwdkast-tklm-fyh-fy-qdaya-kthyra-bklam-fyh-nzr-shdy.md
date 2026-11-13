@@ -1,6 +1,6 @@
 ---
 title: "خرج الدكتور بشار عواد معروف في بودكاست تكلم فيه في قضايا كثيرة بكلام فيه نظر شدي"
-status: draft
+status: published
 published_at: 2026-03-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

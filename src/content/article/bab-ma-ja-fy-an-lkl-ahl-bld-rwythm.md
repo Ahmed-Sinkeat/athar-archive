@@ -1,6 +1,6 @@
 ---
 title: "بابُ ما جاء في أنَّ لكلِّ أهل بلد رؤيتهم"
-status: draft
+status: published
 published_at: 2026-02-17
 person: awwab-bin-muhammad
 topics: ["mustalah-al-hadith"]

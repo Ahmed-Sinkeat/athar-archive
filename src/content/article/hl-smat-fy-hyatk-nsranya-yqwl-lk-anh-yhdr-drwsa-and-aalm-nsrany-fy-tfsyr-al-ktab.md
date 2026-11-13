@@ -1,6 +1,6 @@
 ---
 title: "هل سمعت في حياتك نصرانيا يقول لك أنه يحضر دروسا عند عالم نصراني في تفسير الكتاب"
-status: draft
+status: published
 published_at: 2018-07-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

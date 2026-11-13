@@ -1,6 +1,6 @@
 ---
 title: "كيف نقرأ القرآن في رمضان؟ (جواب من آية الصيام في القرآن)."
-status: draft
+status: published
 published_at: 2024-03-11
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال البيهقي في الزهد الكبير 318 - سمعت الشيخ الإمام أبا الطيب سهل بن محمد بن سلي"
-status: draft
+status: published
 published_at: 2017-06-27
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

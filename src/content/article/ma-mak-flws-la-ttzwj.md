@@ -1,6 +1,6 @@
 ---
 title: "ما معك فلوس لا تتزوج!"
-status: draft
+status: published
 published_at: 2024-08-01
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

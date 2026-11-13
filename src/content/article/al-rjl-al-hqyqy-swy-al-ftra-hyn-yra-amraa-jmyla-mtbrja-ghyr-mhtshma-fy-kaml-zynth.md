@@ -1,6 +1,6 @@
 ---
 title: "الرجل الحقيقي سويّ الفِطرة حين يرى امرأةً جميلة متبرّجة غير محتشمة في كامل زينته"
-status: draft
+status: published
 published_at: 2022-12-31
 person: abu-umair-imran-al-zubaidi
 ---

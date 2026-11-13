@@ -1,6 +1,6 @@
 ---
 title: "وكلامه ساقط فالطعن في رواياتهم التي يسميها معتبرة أيسر من الطعن في القرآن المتوا"
-status: draft
+status: published
 published_at: 2020-03-06
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

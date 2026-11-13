@@ -1,6 +1,6 @@
 ---
 title: "ملحظ تربوي دقيق من الصحابي أبي هريرة رضي الله عنه"
-status: draft
+status: published
 published_at: 2019-07-31
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

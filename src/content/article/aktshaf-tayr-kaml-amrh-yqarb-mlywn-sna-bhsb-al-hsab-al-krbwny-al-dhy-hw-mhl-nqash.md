@@ -1,6 +1,6 @@
 ---
 title: "اكتشاف طائر كامل عمره يقارب 99 مليون سنة ( بحسب الحساب الكربوني الذي هو محل نقاش"
-status: draft
+status: published
 published_at: 2018-03-03
 person: abu-jafar-al-khalifi
 ---

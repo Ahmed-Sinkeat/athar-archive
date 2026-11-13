@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام البخاري رحمه الله في كتابه قرة العينين برفع اليدين (٤٣)"
-status: draft
+status: published
 published_at: 2023-05-12
 person: abu-abdillah-firas-al-ramli
 ---

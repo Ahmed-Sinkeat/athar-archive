@@ -1,6 +1,6 @@
 ---
 title: "الماء والطعام نعمتان لا نكاد نفطن لهما"
-status: draft
+status: published
 published_at: 2023-11-09
 person: abu-umair-imran-al-zubaidi
 ---

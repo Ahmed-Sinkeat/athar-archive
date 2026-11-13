@@ -1,6 +1,6 @@
 ---
 title: "ولهذا لا يوجد في أئمة الفقه الذين يُرجع إليهم رافضي"
-status: draft
+status: published
 published_at: 2023-11-03
 person: abu-umair-imran-al-zubaidi
 topics: ["tazkiyat-al-nafs"]

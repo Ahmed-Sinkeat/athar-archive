@@ -1,6 +1,6 @@
 ---
 title: "هذه امرأة درزية قتلت لأنها أسلمت"
-status: draft
+status: published
 published_at: 2025-07-30
 person: abu-jafar-al-khalifi
 ---

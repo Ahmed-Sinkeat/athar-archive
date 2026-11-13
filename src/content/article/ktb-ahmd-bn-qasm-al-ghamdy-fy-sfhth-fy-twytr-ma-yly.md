@@ -1,6 +1,6 @@
 ---
 title: "كتب أحمد بن قاسم الغامدي في صفحته في تويتر ما يلي"
-status: draft
+status: published
 published_at: 2019-10-01
 person: abu-jafar-al-khalifi
 ---

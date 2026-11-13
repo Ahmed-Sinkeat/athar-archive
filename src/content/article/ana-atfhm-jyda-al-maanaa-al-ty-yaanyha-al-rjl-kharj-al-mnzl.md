@@ -1,6 +1,6 @@
 ---
 title: "أنا أتفهم جيدًا المعاناة التي يعانيها الرجل خارج المنزل"
-status: draft
+status: published
 published_at: 2023-10-02
 person: abu-umair-imran-al-zubaidi
 ---

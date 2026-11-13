@@ -1,6 +1,6 @@
 ---
 title: "ذكر البيان بأن الله جل وعلا جعل صفيه ﷺ أمنة أصحابه وأصحابه أمنة أمته."
-status: draft
+status: published
 published_at: 2025-10-26
 person: abu-abdillah-firas-al-ramli
 ---

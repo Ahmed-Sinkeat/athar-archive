@@ -1,6 +1,6 @@
 ---
 title: "باب فيمن قال لا يلزم العامي التمذهب إن كان لا يتتبع الرخص..."
-status: draft
+status: published
 published_at: 2021-08-07
 person: abu-jafar-al-khalifi
 ---

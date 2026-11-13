@@ -1,6 +1,6 @@
 ---
 title: "أقيسة الإمام البخاري (من فقه أهل الحديث)…"
-status: draft
+status: published
 published_at: 2024-08-12
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

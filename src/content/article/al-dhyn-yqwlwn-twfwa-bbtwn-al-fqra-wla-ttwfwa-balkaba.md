@@ -1,6 +1,6 @@
 ---
 title: "الذين يقولون \"طوفوا ببطون الفقراء ولا تطوفوا بالكعبة\""
-status: draft
+status: published
 published_at: 2019-08-14
 person: abu-jafar-al-khalifi
 ---

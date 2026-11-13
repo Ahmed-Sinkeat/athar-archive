@@ -1,6 +1,6 @@
 ---
 title: "وَمَا يَسْتَوِي الْبَحْرَانِ هَٰذَا عَذْبٌ فُرَاتٌ سَائِغٌ شَرَابُهُ وَهَٰذَا مِ"
-status: draft
+status: published
 published_at: 2026-04-18
 person: abu-umair-imran-al-zubaidi
 ---

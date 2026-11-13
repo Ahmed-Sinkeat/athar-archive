@@ -1,6 +1,6 @@
 ---
 title: "وفهم الناس للقرآن الكريم اليوم حجة ناطِقة"
-status: draft
+status: published
 published_at: 2025-05-15
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "يُغبط الدكتور إياد على ثباته وصبره ورباطة جأشه صدقا."
-status: draft
+status: published
 published_at: 2025-04-09
 person: abu-umair-imran-al-zubaidi
 ---

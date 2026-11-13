@@ -1,6 +1,6 @@
 ---
 title: "اعتراف لحنفي ماتردي بأن ممارسات متأخري الصوفية مع قبور الأولياء شرك ..."
-status: draft
+status: published
 published_at: 2021-06-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

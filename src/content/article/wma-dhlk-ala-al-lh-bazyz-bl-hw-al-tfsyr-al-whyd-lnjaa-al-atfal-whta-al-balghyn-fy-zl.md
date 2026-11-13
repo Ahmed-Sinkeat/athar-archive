@@ -1,6 +1,6 @@
 ---
 title: "وما ذلك على الله بعزيز؛ بل هو التفسير الوحيد لنجاة الأطفال وحتّى البالغين في ظلّ"
-status: draft
+status: published
 published_at: 2023-02-12
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

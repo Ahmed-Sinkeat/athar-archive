@@ -1,6 +1,6 @@
 ---
 title: "استدراك الفارابي على اجتماع الجيوش الإسلامية والعلو!"
-status: draft
+status: published
 published_at: 2021-01-12
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

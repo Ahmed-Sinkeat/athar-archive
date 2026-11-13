@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية في اقتضاء الصراط المستقيم"
-status: draft
+status: published
 published_at: 2022-03-03
 person: abu-jafar-al-khalifi
 ---

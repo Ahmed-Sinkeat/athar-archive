@@ -1,6 +1,6 @@
 ---
 title: "لقد ظهر في عام 1932 كتاب اسمه \"التفكير الجديد في أمر الإرساليات\" أصدرته لجنة من"
-status: draft
+status: published
 published_at: 2017-07-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

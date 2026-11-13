@@ -1,6 +1,6 @@
 ---
 title: "كنتُ سبق أن قررتُ قبل مدة في أثناء نقديَ نظائر فكرية مشابهة للتصريح أدناه"
-status: draft
+status: published
 published_at: 2026-10-11
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "tazkiyat-al-nafs"]

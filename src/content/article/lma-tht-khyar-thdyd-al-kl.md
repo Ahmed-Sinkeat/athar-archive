@@ -1,6 +1,6 @@
 ---
 title: "لما تحط خيار \"تحديد الكل\""
-status: draft
+status: published
 published_at: 2025-02-11
 person: abu-umair-imran-al-zubaidi
 ---

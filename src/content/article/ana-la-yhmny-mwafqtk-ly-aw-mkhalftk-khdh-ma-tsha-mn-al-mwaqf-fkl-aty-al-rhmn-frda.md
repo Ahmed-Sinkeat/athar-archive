@@ -1,6 +1,6 @@
 ---
 title: "أنا لا يهمني موافقتك لي أو مخالفتك، خذ ما تشاء من المواقف؛ فكلٌ آتي الرحمن فردا."
-status: draft
+status: published
 published_at: 2023-08-19
 person: abu-umair-imran-al-zubaidi
 ---

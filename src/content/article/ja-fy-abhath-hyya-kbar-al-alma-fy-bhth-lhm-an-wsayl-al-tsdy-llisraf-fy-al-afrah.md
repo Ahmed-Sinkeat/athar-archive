@@ -1,6 +1,6 @@
 ---
 title: "جاء في أبحاث هيئة كبار العلماء في بحث لهم عن وسائل التصدي للإسراف في الأفراح"
-status: draft
+status: published
 published_at: 2018-11-11
 person: abu-jafar-al-khalifi
 ---

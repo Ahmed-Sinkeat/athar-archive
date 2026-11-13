@@ -1,6 +1,6 @@
 ---
 title: "في (مفيد العلوم ومبيد الهموم) لجمال الدين الخوارزمي"
-status: draft
+status: published
 published_at: 2018-02-17
 person: abu-jafar-al-khalifi
 ---

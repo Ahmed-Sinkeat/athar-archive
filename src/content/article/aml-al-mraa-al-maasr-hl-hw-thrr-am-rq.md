@@ -1,6 +1,6 @@
 ---
 title: "عمل المرأة المعاصر هل هو (تحرر) أم (رق)!"
-status: draft
+status: published
 published_at: 2021-08-30
 person: abu-jafar-al-khalifi
 ---

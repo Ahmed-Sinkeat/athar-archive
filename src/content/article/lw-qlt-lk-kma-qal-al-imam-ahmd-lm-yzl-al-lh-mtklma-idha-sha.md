@@ -1,6 +1,6 @@
 ---
 title: "لو قلت لك كما قال الإمام أحمد : لم يزل الله متكلما إذا شاء ."
-status: draft
+status: published
 published_at: 2018-03-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

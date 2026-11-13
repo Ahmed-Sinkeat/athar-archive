@@ -1,6 +1,6 @@
 ---
 title: "سورة الملك المانعة من عذاب القبر"
-status: draft
+status: published
 published_at: 2024-12-30
 person: abu-abdillah-firas-al-ramli
 ---

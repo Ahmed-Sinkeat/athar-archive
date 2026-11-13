@@ -1,6 +1,6 @@
 ---
 title: "بلاغة الاقتران في القرآن ونقض قاعدة (أنت حر ما لم تضر)."
-status: draft
+status: published
 published_at: 2024-01-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "ويحكم أحبونا لله"
-status: draft
+status: published
 published_at: 2026-04-26
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "أكثر شيء يؤلم أن الناس لا تدرك صدق كلام أهل التوحيد والعقيدة إلا بعد سيل دماء ال"
-status: draft
+status: published
 published_at: 2025-07-17
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

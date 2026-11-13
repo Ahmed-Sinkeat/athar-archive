@@ -1,6 +1,6 @@
 ---
 title: "قال النسائي في الكبرى 2878 - أخبرنا محمد بن عبد الله بن عبد الحكم"
-status: draft
+status: published
 published_at: 2020-05-28
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

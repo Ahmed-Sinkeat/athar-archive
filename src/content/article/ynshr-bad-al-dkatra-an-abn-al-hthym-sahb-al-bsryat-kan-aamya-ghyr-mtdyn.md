@@ -1,6 +1,6 @@
 ---
 title: "ينشر بعض الدكاترة أن ابن الهثيم صاحب البصريات كان عامياً غير متدين"
-status: draft
+status: published
 published_at: 2018-04-23
 person: abu-jafar-al-khalifi
 ---

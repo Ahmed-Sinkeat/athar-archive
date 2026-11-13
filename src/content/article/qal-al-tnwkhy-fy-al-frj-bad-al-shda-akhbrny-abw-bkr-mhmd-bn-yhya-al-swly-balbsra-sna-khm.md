@@ -1,6 +1,6 @@
 ---
 title: "قال التنوخي في الفرج بعد الشدة أخبرني أبو بكر محمد بن يحيى الصولي بالبصرة سنة خم"
-status: draft
+status: published
 published_at: 2017-08-04
 person: abu-jafar-al-khalifi
 ---

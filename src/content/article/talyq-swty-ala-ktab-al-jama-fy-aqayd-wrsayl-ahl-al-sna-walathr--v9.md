@@ -1,6 +1,6 @@
 ---
 title: "تعليق صوتي على كتاب [ الجامع في عقائد ورسائل أهل السنة والأثر ] ( 38 )"
-status: draft
+status: published
 published_at: 2018-08-17
 person: abu-jafar-al-khalifi
 ---

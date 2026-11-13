@@ -1,6 +1,6 @@
 ---
 title: "لطيفة: شاهد ما ذكره العلماء من اعتبار النجاشي من الصحابة رضي الله عنهم."
-status: draft
+status: published
 published_at: 2026-07-09
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

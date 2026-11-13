@@ -1,6 +1,6 @@
 ---
 title: "كيف تحسد أحدا على الدنيا بعد هذا؟"
-status: draft
+status: published
 published_at: 2024-12-14
 person: abu-abdillah-firas-al-ramli
 ---

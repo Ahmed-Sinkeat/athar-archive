@@ -1,6 +1,6 @@
 ---
 title: "بل قولك هو غير الصحيح، ووصفك لهذه القصة بالباطلة هو الباطل!"
-status: draft
+status: published
 published_at: 2024-10-25
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

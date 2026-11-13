@@ -1,6 +1,6 @@
 ---
 title: "فإن قال قائل"
-status: draft
+status: published
 published_at: 2020-11-18
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

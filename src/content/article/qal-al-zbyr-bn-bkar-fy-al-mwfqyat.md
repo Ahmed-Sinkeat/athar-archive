@@ -1,6 +1,6 @@
 ---
 title: "قال الزبير بن بكار في الموفقيات"
-status: draft
+status: published
 published_at: 2018-09-25
 person: abu-jafar-al-khalifi
 ---

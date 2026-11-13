@@ -1,6 +1,6 @@
 ---
 title: "أهلًا بكم يا أحبّة."
-status: draft
+status: published
 published_at: 2022-08-15
 person: abu-umair-imran-al-zubaidi
 ---

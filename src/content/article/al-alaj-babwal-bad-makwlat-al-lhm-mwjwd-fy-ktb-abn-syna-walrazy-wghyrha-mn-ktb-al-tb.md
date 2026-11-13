@@ -1,6 +1,6 @@
 ---
 title: "العلاج بأبوال بعض مأكولات اللحم موجود في كتب ابن سينا والرازي وغيرها من كتب الطب"
-status: draft
+status: published
 published_at: 2019-02-26
 person: abu-jafar-al-khalifi
 ---

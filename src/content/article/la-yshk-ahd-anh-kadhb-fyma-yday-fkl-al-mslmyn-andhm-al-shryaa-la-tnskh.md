@@ -1,6 +1,6 @@
 ---
 title: "لا يشك أحد أنه كاذب فيما يدعي، فكل المسلمين عندهم الشريعة لا تنسخ."
-status: draft
+status: published
 published_at: 2026-09-20
 person: abu-jafar-al-khalifi
 ---

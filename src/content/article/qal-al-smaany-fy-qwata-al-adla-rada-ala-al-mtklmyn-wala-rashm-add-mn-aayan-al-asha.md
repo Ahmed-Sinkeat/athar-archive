@@ -1,6 +1,6 @@
 ---
 title: "قال السمعاني في قواطع الأدلة راداً على المتكلمين _ وعلى رأسهم عدد من أعيان الأشع"
-status: draft
+status: published
 published_at: 2017-08-18
 person: abu-jafar-al-khalifi
 ---

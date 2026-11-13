@@ -1,6 +1,6 @@
 ---
 title: "قال ديباك شوبرا وزميله رودولف إ تانزي في كتابهما الدماغ الخارق ص42"
-status: draft
+status: published
 published_at: 2019-01-12
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

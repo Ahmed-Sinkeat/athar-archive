@@ -1,6 +1,6 @@
 ---
 title: "شاهدت مقطعًا لحوار جرى بين بعض الإخوة على قناة أخينا الحبيب أحمد المنجاوي"
-status: draft
+status: published
 published_at: 2024-01-23
 person: abu-umair-imran-al-zubaidi
 ---

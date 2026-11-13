@@ -1,6 +1,6 @@
 ---
 title: "المدجنة جن جنونهم في الأونة الأخيرة!"
-status: draft
+status: published
 published_at: 2024-12-28
 person: abu-umair-imran-al-zubaidi
 ---

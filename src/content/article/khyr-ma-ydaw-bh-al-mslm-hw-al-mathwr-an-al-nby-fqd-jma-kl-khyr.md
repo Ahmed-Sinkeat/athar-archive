@@ -1,6 +1,6 @@
 ---
 title: "خيرُ ما يدعو به المُسلِم هو المأثور عن النبي ﷺ فقد جمع كلَّ خير"
-status: draft
+status: published
 published_at: 2025-06-04
 person: awwab-bin-muhammad
 ---

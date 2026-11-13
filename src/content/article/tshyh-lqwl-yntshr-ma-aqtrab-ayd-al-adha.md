@@ -1,6 +1,6 @@
 ---
 title: "تصحيح لقول ينتشِر مع اقتِراب عيد الأضحى"
-status: draft
+status: published
 published_at: 2025-06-02
 person: awwab-bin-muhammad
 ---

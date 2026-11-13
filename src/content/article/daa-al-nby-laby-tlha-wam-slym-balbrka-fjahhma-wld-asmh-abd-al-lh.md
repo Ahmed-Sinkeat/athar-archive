@@ -1,6 +1,6 @@
 ---
 title: "دعا النبي ﷺ لأبي طلحة وأم سليم بالبركة فجاءههما ولد اسمه عبد الله"
-status: draft
+status: published
 published_at: 2018-10-04
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

@@ -1,6 +1,6 @@
 ---
 title: "في مقابل الانسلاخ التدريجي عن الدين"
-status: draft
+status: published
 published_at: 2022-08-16
 person: abu-umair-imran-al-zubaidi
 ---

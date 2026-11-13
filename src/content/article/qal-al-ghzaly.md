@@ -1,6 +1,6 @@
 ---
 title: "قال الغزالي"
-status: draft
+status: published
 published_at: 2020-04-16
 person: abu-jafar-al-khalifi
 ---

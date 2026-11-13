@@ -1,6 +1,6 @@
 ---
 title: "عمرو بن العاص رضي الله عنه يحاسب نفسه وهكذا ينبغي أن نفعل"
-status: draft
+status: published
 published_at: 2020-08-14
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

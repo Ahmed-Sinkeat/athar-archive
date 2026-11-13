@@ -1,6 +1,6 @@
 ---
 title: "من يعرفني عن قرب يعلم أنني من أكسل الناس"
-status: draft
+status: published
 published_at: 2019-07-06
 person: abu-jafar-al-khalifi
 ---

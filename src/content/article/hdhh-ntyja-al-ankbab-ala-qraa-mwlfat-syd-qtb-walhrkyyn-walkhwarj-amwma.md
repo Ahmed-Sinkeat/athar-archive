@@ -1,6 +1,6 @@
 ---
 title: "هذه نتيجة الانكباب على قراءة مؤلفات سيد قطب والحركيين والخوارج عمومًا"
-status: draft
+status: published
 published_at: 2023-12-25
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

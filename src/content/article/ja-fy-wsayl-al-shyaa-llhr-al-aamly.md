@@ -1,6 +1,6 @@
 ---
 title: "جاء في وسائل الشيعة للحر العاملي"
-status: draft
+status: published
 published_at: 2017-09-30
 person: abu-jafar-al-khalifi
 ---

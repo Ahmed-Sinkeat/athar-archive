@@ -1,6 +1,6 @@
 ---
 title: "﴿وَاتَّخَذَ قَوْمُ مُوسَىٰ مِن بَعْدِهِ مِنْ حُلِيِّهِمْ عِجْلًا جَسَدًا لَّهُ خ"
-status: draft
+status: published
 published_at: 2023-06-07
 person: abu-umair-imran-al-zubaidi
 ---

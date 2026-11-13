@@ -1,6 +1,6 @@
 ---
 title: "فائدة في قوله تعالى: {كل شيء هالك إلا وجهه}"
-status: draft
+status: published
 published_at: 2024-06-25
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

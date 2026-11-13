@@ -1,6 +1,6 @@
 ---
 title: "وَمَا تِلْكَ بِيَمِينِكَ يَا مُوسَى (17) قَالَ هِيَ عَصَايَ أَتَوَكَّأُ عَلَيْهَ"
-status: draft
+status: published
 published_at: 2025-08-09
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

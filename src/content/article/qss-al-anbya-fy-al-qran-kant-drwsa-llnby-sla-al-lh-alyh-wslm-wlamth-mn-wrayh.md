@@ -1,6 +1,6 @@
 ---
 title: "قصص الأنبياء في القرآن كانت دروسا للنبي صلى الله عليه وسلم ولأمته من ورائه"
-status: draft
+status: published
 published_at: 2019-07-17
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الحكمة من خلق المتضادات والرحمة في ذلك."
-status: draft
+status: published
 published_at: 2020-05-15
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

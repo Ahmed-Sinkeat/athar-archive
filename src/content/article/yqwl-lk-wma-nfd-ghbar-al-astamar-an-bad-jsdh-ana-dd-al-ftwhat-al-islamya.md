@@ -1,6 +1,6 @@
 ---
 title: "يقول لك وما نفض غبار الاستعمار عن بعض جسده: أنا ضد الفتوحات الإسلامية"
-status: draft
+status: published
 published_at: 2018-01-19
 person: abu-jafar-al-khalifi
 ---

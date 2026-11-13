@@ -1,6 +1,6 @@
 ---
 title: "الله ورسوله أرحم بأولادك منك (الله عز وجل ورسوله أرحم بك من أبيك)"
-status: draft
+status: published
 published_at: 2023-01-01
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

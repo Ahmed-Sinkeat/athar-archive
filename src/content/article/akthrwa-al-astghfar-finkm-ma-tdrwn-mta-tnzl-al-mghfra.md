@@ -1,6 +1,6 @@
 ---
 title: "أكثروا الاستغفار فإنكم ما تدرون متى تنزل المغفرة"
-status: draft
+status: published
 published_at: 2024-04-19
 person: abu-abdillah-firas-al-ramli
 ---

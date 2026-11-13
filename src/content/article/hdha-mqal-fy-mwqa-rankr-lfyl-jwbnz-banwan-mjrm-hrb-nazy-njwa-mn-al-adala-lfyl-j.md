@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال في موقع رانكر لفيل جوبنز بعنوان 14 مجرم حرب نازي نجوا من العدالة لفيل ج"
-status: draft
+status: published
 published_at: 2019-04-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

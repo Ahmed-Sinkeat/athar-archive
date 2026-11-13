@@ -1,6 +1,6 @@
 ---
 title: "نقلا عن الأخوة في صفحة حصن الإسلام"
-status: draft
+status: published
 published_at: 2018-07-01
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

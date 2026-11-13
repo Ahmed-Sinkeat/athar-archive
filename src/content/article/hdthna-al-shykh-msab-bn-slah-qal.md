@@ -1,6 +1,6 @@
 ---
 title: "حدَّثنا الشيخ مُصعَب بن صلاح قال"
-status: draft
+status: published
 published_at: 2025-07-05
 person: awwab-bin-muhammad
 ---

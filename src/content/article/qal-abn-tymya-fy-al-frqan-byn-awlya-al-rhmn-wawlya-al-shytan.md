@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية في الفرقان بين أولياء الرحمن وأولياء الشيطان"
-status: draft
+status: published
 published_at: 2018-10-19
 person: abu-jafar-al-khalifi
 ---

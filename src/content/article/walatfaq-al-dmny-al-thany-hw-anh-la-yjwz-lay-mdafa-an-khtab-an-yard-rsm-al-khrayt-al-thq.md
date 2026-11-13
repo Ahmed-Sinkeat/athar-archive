@@ -1,6 +1,6 @@
 ---
 title: "والاتفاق الضمني الثاني هو أنه لا يجوز لأي مدافع عن خطاب أن يعرض رسم الخرائط الثق"
-status: draft
+status: published
 published_at: 2018-09-02
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

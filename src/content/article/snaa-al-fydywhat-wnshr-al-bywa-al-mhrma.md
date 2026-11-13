@@ -1,6 +1,6 @@
 ---
 title: "صناع الفيديوهات ونشر البيوع المحرمة"
-status: draft
+status: published
 published_at: 2019-12-09
 person: abu-jafar-al-khalifi
 ---

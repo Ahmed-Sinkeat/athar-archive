@@ -1,6 +1,6 @@
 ---
 title: "جاء في مسائل صالح بن أحمد عن أبيه 175 - سَمِعت أبي قَالَ دخل سُفْيَان بن عُيَيْن"
-status: draft
+status: published
 published_at: 2017-08-01
 person: abu-jafar-al-khalifi
 ---

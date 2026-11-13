@@ -1,6 +1,6 @@
 ---
 title: "وهناك أمر مهم أريد التنبيه إليه."
-status: draft
+status: published
 published_at: 2024-04-12
 person: abu-umair-imran-al-zubaidi
 topics: ["al-wala-wal-bara"]

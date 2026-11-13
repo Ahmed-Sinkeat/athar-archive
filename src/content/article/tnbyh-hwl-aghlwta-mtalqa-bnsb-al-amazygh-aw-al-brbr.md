@@ -1,6 +1,6 @@
 ---
 title: "تنبيه : حول أغلوطة متعلقة بنسب الأمازيغ أو البربر"
-status: draft
+status: published
 published_at: 2018-01-11
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

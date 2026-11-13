@@ -1,6 +1,6 @@
 ---
 title: "وضمرة بن ربيعة فيه كلام أصلاً"
-status: draft
+status: published
 published_at: 2021-09-25
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "أكثر الناس كلفاً بدفع حجية قول الصحابي في الفقه وإن لم يخالفه غيره المتكلمون الم"
-status: draft
+status: published
 published_at: 2017-09-14
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

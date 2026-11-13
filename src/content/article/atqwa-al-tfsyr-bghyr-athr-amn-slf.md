@@ -1,6 +1,6 @@
 ---
 title: "اتقوا التفسير بغير أثر عمن سلف"
-status: draft
+status: published
 published_at: 2023-07-24
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "دعاء لمن يشتكي من ضرسه"
-status: draft
+status: published
 published_at: 2024-03-16
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "كما أن الحكومة الألمانية موقِّعة على اتفاقية أمنية مع الحكومة المصرية"
-status: draft
+status: published
 published_at: 2021-01-02
 person: abu-jafar-al-khalifi
 ---

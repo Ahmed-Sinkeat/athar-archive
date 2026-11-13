@@ -1,6 +1,6 @@
 ---
 title: "وقد حصل لعطاء نحواً مما حصل لعائشة ففي مسند أحمد 25248 - ثنا أبو عبد الرحمن المق"
-status: draft
+status: published
 published_at: 2020-01-15
 person: abu-jafar-al-khalifi
 ---

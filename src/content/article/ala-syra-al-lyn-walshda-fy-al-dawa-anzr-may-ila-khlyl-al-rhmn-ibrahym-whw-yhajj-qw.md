@@ -1,6 +1,6 @@
 ---
 title: "على سيرة اللين والشدة في الدعوة؛ انظر معي إلى خليل الرحمن إبراهيم ﷺ وهو يحاجج قو"
-status: draft
+status: published
 published_at: 2025-09-05
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

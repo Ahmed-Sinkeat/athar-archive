@@ -1,6 +1,6 @@
 ---
 title: "من أدلة أن الاعتصام بالسنة وقاية من الكفر"
-status: draft
+status: published
 published_at: 2017-11-28
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

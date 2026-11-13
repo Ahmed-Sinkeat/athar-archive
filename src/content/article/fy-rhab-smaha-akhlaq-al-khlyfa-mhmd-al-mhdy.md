@@ -1,6 +1,6 @@
 ---
 title: "في رحاب سماحة أخلاق الخليفة محمد المهدي.."
-status: draft
+status: published
 published_at: 2021-04-04
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "tazkiyat-al-nafs"]

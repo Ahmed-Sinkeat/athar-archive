@@ -1,6 +1,6 @@
 ---
 title: "تعقيبا على نصيحة الشيخ عبد الرزاق المهدي للشيخ محمد بن شمس الدين هدانا الله وإيا"
-status: draft
+status: published
 published_at: 2026-08-04
 person: abu-umair-imran-al-zubaidi
 ---

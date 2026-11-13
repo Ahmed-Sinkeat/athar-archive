@@ -1,6 +1,6 @@
 ---
 title: "هذه ترجمة لخبر منشور في الاندبندنت ولن أضع الرابط لأن فيه صورا لنساء ويمكن الوقو"
-status: draft
+status: published
 published_at: 2018-06-10
 person: abu-jafar-al-khalifi
 ---

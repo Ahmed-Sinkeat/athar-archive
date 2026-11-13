@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية كما في «مجموع الفتاوى» [10/743"
-status: draft
+status: published
 published_at: 2026-02-18
 person: abu-jafar-al-khalifi
 ---

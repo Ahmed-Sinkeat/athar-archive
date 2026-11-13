@@ -1,6 +1,6 @@
 ---
 title: "أعمال إرهابية باسم نظرية التطور (معلومات مستفادة من قناة الأمة الوسط على اليوتيو"
-status: draft
+status: published
 published_at: 2018-11-18
 person: abu-jafar-al-khalifi
 ---

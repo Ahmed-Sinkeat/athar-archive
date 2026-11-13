@@ -1,6 +1,6 @@
 ---
 title: "ينظر عندنا للمخترعين على أنهم صفوة الخلق"
-status: draft
+status: published
 published_at: 2019-05-12
 person: abu-jafar-al-khalifi
 ---

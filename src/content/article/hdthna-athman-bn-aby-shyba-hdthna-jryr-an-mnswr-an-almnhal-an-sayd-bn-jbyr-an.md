@@ -1,6 +1,6 @@
 ---
 title: "حدثنا ‌عثمان بن أبي شيبة حدثنا ‌جرير عن ‌منصور عن ‌المنهال عن ‌سعيد بن جبير عن ‌"
-status: draft
+status: published
 published_at: 2023-07-06
 person: abu-umair-imran-al-zubaidi
 ---

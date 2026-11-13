@@ -1,6 +1,6 @@
 ---
 title: "بعض الناس غيرته ميتة ..."
-status: draft
+status: published
 published_at: 2023-08-02
 person: abu-abdillah-firas-al-ramli
 ---

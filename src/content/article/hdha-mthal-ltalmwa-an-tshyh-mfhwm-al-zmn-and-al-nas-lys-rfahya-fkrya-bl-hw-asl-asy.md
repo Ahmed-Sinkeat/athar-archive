@@ -1,6 +1,6 @@
 ---
 title: "هذا مثال لتعلموا أنّ تصحيح مفهوم الزمن عند الناس ليس رفاهية فكرية؛ بل هو أصل أصي"
-status: draft
+status: published
 published_at: 2023-09-19
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هلاك النساء في كشف شعورهن"
-status: draft
+status: published
 published_at: 2024-04-10
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "تارك الصلاة أعظم معصية واستهانة من إبليس"
-status: draft
+status: published
 published_at: 2025-12-20
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

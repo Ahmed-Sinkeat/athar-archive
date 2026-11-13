@@ -1,6 +1,6 @@
 ---
 title: "وكأنها نزلت اليوم !"
-status: draft
+status: published
 published_at: 2020-05-19
 person: abu-jafar-al-khalifi
 ---

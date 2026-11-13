@@ -1,6 +1,6 @@
 ---
 title: "الخلاصة في الفرق بين تفكير الإنسان المتدين قديماً وحديثاً ( أيا كان دينه ) والإن"
-status: draft
+status: published
 published_at: 2018-12-20
 person: abu-jafar-al-khalifi
 ---

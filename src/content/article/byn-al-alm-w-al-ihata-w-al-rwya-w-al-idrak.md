@@ -1,6 +1,6 @@
 ---
 title: "بين ( العلم ) و ( الإحاطة ) و ( الرؤية ) و ( الإدراك )"
-status: draft
+status: published
 published_at: 2019-05-19
 person: abu-jafar-al-khalifi
 ---

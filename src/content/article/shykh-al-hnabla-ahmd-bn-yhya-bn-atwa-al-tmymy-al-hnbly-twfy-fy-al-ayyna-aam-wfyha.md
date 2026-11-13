@@ -1,6 +1,6 @@
 ---
 title: "شيخ الحنابلة أحمد بن يحيى بن عطوة التميمي الحنبلي توفي في العيينة عام 938 وفيها"
-status: draft
+status: published
 published_at: 2018-12-30
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

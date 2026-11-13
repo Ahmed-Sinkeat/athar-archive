@@ -1,6 +1,6 @@
 ---
 title: "قال الرب جل جلاله"
-status: draft
+status: published
 published_at: 2025-02-07
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-sunnah-wal-bidah"]

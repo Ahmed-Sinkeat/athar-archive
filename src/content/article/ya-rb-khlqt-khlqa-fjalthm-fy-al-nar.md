@@ -1,6 +1,6 @@
 ---
 title: "يا رب خلقت خلقا فجعلتهم في النار"
-status: draft
+status: published
 published_at: 2026-05-03
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "tazkiyat-al-nafs"]

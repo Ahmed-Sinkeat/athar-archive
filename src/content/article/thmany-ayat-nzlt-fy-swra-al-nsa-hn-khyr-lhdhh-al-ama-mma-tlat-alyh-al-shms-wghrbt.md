@@ -1,6 +1,6 @@
 ---
 title: "ثماني آيات نزلت في سورة النساء، هن خير لهذه الأمة مما طلعت عليه الشمس وغربت"
-status: draft
+status: published
 published_at: 2023-05-29
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

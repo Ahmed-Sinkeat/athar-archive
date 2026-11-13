@@ -1,6 +1,6 @@
 ---
 title: "قال السيوطي في حسن المحاضرة في ترجمة السلطان شيخ المحموي (2/121)"
-status: draft
+status: published
 published_at: 2017-10-04
 person: abu-jafar-al-khalifi
 ---

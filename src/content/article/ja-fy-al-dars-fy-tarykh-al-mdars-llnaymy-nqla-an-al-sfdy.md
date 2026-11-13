@@ -1,6 +1,6 @@
 ---
 title: "جاء في الدارس في تاريخ المدارس للنعيمي نقلاً عن الصفدي"
-status: draft
+status: published
 published_at: 2018-02-12
 person: abu-jafar-al-khalifi
 ---

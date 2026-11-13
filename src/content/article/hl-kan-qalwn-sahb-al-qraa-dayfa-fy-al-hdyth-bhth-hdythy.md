@@ -1,6 +1,6 @@
 ---
 title: "هل كان قالون صاحب القراءة ضعيفاً في الحديث؟ (بحث حديثي)"
-status: draft
+status: published
 published_at: 2019-07-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

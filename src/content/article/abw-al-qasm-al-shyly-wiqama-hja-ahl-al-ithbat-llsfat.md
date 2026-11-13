@@ -1,6 +1,6 @@
 ---
 title: "أبو القاسم السهيلي وإقامة حجة أهل الإثبات للصفات"
-status: draft
+status: published
 published_at: 2020-07-12
 person: abu-jafar-al-khalifi
 ---

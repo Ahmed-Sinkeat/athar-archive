@@ -1,6 +1,6 @@
 ---
 title: "خشية الزيغ من ترك سنة النبي ﷺ"
-status: draft
+status: published
 published_at: 2025-04-11
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا تقرير منشور في صحيفة إسرائيل تايمز يشيد بحادثة مجهولة عند كثير من المسلمين و"
-status: draft
+status: published
 published_at: 2018-03-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

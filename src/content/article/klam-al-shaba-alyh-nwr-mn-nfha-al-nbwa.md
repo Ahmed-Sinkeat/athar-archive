@@ -1,6 +1,6 @@
 ---
 title: "كلام الصحابة عليه نور من نفحة النبوة"
-status: draft
+status: published
 published_at: 2023-06-12
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

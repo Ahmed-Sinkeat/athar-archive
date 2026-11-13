@@ -1,6 +1,6 @@
 ---
 title: "كنت قد تحدثت عن مثل هذا المزاح السمج سابقًا ولا بأس من التذكير."
-status: draft
+status: published
 published_at: 2023-06-29
 person: abu-umair-imran-al-zubaidi
 ---

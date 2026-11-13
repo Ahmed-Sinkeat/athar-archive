@@ -1,6 +1,6 @@
 ---
 title: "فائدة من بعض الأخوة"
-status: draft
+status: published
 published_at: 2018-12-03
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "\"إيلان بابيه\" الإسرائيلي الذي نقض الأساطير التي روَّجها الصهاينة لبناء دولتهم."
-status: draft
+status: published
 published_at: 2023-10-17
 person: abu-jafar-al-khalifi
 ---

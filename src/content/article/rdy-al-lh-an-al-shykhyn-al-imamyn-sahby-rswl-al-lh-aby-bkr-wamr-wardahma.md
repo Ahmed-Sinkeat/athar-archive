@@ -1,6 +1,6 @@
 ---
 title: "رضي الله عن الشيخين الإمامين صاحبيّ رسول الله ﷺ أبي بكر وعمر وأرضاهما."
-status: draft
+status: published
 published_at: 2023-12-17
 person: abu-umair-imran-al-zubaidi
 ---

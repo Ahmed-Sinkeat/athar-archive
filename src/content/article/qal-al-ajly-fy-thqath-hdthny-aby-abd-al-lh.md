@@ -1,6 +1,6 @@
 ---
 title: "قال العجلي في ثقاته حدثني أبي عبد الله"
-status: draft
+status: published
 published_at: 2017-10-10
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

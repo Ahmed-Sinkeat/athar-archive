@@ -1,6 +1,6 @@
 ---
 title: "وتقول الكاتبة سوزان جاي نابير (Susan J"
-status: draft
+status: published
 published_at: 2022-12-04
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

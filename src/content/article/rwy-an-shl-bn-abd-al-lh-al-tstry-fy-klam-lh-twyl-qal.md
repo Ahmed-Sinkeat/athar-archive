@@ -1,6 +1,6 @@
 ---
 title: "روي عن سهل بن عبد الله التستري في كلام له طويل قال"
-status: draft
+status: published
 published_at: 2018-09-07
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا قس كاثوليكي مات بسقوط الصليب عليه."
-status: draft
+status: published
 published_at: 2026-10-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "tahwid-al-ibada"]

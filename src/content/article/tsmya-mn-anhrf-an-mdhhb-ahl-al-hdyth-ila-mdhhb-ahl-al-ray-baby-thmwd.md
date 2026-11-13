@@ -1,6 +1,6 @@
 ---
 title: "تسمية من انحرف عن مذهب أهل الحديث إلى مذهب أهل الرأي بأبي ثمود"
-status: draft
+status: published
 published_at: 2023-07-19
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

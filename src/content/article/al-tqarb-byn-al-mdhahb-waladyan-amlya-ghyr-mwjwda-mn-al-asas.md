@@ -1,6 +1,6 @@
 ---
 title: "التقارب بين المذاهب والأديان عملية غير موجودة من الأساس..."
-status: draft
+status: published
 published_at: 2024-04-27
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

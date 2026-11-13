@@ -1,6 +1,6 @@
 ---
 title: "من أجمل التفصيل لقصة نشأة البدع في الأمة"
-status: draft
+status: published
 published_at: 2023-11-26
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

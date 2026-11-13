@@ -1,6 +1,6 @@
 ---
 title: "قال إسحاق بن منصور: قُلْتُ: الساعة التي تُرْجَى في يوم الجمعة، متى هي؟"
-status: draft
+status: published
 published_at: 2023-07-14
 person: abu-abdillah-firas-al-ramli
 ---

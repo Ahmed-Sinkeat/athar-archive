@@ -1,6 +1,6 @@
 ---
 title: "أربعة مذاهب فقهية وثلاثة مذاهب عقدية سنية..."
-status: draft
+status: published
 published_at: 2025-05-01
 person: abu-jafar-al-khalifi
 ---

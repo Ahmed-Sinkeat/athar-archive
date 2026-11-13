@@ -1,6 +1,6 @@
 ---
 title: "شفاعة الملائكة مفتاح علاج الكثير من الانحرافات العقدية والفكرية اليوم.."
-status: draft
+status: published
 published_at: 2021-12-08
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

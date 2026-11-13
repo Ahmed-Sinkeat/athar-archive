@@ -1,6 +1,6 @@
 ---
 title: "في طور الاستبسال في الدفاع عن الاحتفال بما يسمى رأس السنة الميلادية"
-status: draft
+status: published
 published_at: 2018-12-24
 person: abu-jafar-al-khalifi
 ---

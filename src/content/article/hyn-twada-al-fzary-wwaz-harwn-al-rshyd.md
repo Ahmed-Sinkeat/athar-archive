@@ -1,6 +1,6 @@
 ---
 title: "حين تواضع الفزاري ووعظ هارون الرشيد"
-status: draft
+status: published
 published_at: 2022-06-09
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

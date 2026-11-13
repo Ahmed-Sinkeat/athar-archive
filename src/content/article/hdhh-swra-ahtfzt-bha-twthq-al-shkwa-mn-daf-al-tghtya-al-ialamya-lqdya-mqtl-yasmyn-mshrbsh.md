@@ -1,6 +1,6 @@
 ---
 title: "هذه صورة احتفظت بها توثق الشكوى من ضعف التغطية الإعلامية لقضية مقتل ياسمين مشربش"
-status: draft
+status: published
 published_at: 2019-08-31
 person: abu-jafar-al-khalifi
 ---

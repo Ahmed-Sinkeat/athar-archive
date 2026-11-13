@@ -1,6 +1,6 @@
 ---
 title: "الأنبا شنودة يجيز العمليات الفدائية أو الانتحارية أو الاستشهادية ضد الوثنيين الم"
-status: draft
+status: published
 published_at: 2018-11-06
 person: abu-jafar-al-khalifi
 ---

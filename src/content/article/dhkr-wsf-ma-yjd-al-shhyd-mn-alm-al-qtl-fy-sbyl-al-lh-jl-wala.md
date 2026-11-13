@@ -1,6 +1,6 @@
 ---
 title: "ذكر وصف ما يجد الشهيد من ألم القتل في سبيل الله جل وعلا."
-status: draft
+status: published
 published_at: 2023-10-19
 person: abu-abdillah-firas-al-ramli
 ---

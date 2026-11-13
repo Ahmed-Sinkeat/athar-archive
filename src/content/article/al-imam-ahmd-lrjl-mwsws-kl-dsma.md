@@ -1,6 +1,6 @@
 ---
 title: "الإمام أحمد لرجل موسوس: كل دسماً!"
-status: draft
+status: published
 published_at: 2026-02-22
 person: abu-jafar-al-khalifi
 ---

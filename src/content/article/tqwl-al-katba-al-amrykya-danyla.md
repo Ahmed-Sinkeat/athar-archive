@@ -1,6 +1,6 @@
 ---
 title: "تقول الكاتبة الأمريكية دانيلا"
-status: draft
+status: published
 published_at: 2017-10-15
 person: abu-jafar-al-khalifi
 ---

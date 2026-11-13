@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب دعائم الإسلام لأبي حنيفة المغربي من علماء الإمامية (٢/٢٢٩)"
-status: draft
+status: published
 published_at: 2021-01-03
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "اعتراف آخر بأثر نظرية التطور في الإبادات الجماعية الاستعمارية."
-status: draft
+status: published
 published_at: 2020-09-05
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

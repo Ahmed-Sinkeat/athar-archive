@@ -1,6 +1,6 @@
 ---
 title: "أخذ من الصابئة المندائيين ومن المانوية واتهموه أنه كان مطلعاً على هرطقة الأبيوني"
-status: draft
+status: published
 published_at: 2018-06-13
 person: abu-jafar-al-khalifi
 topics: ["adab-talab-al-ilm"]

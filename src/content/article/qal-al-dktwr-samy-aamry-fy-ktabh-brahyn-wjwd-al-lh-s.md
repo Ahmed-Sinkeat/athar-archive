@@ -1,6 +1,6 @@
 ---
 title: "قال الدكتور سامي عامري في كتابه براهين وجود الله ص 338"
-status: draft
+status: published
 published_at: 2019-06-05
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

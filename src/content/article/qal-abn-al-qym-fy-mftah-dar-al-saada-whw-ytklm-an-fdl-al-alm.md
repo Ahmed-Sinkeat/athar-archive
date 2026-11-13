@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم في مفتاح دار السعادة وهو يتكلم عن فضل العلم"
-status: draft
+status: published
 published_at: 2019-07-16
 person: abu-jafar-al-khalifi
 ---

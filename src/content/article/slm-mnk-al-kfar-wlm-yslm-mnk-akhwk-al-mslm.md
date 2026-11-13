@@ -1,6 +1,6 @@
 ---
 title: "سلم منك الكفار ولم يسلم منك أخوك المسلم ؟"
-status: draft
+status: published
 published_at: 2026-04-01
 person: abu-abdillah-firas-al-ramli
 ---

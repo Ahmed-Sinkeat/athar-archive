@@ -1,6 +1,6 @@
 ---
 title: "مقرر الصف الرابع الابتدائي للقرآن والتهذيب تأليف عبد العليم حسين في مصر عام ١٩٣٠"
-status: draft
+status: published
 published_at: 2018-11-22
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

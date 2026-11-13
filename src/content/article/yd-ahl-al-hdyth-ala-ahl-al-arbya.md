@@ -1,6 +1,6 @@
 ---
 title: "يد أهل الحديث على أهل العربية."
-status: draft
+status: published
 published_at: 2020-08-16
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

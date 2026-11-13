@@ -1,6 +1,6 @@
 ---
 title: "من جميل ما لفت إليه ابن كثير رحمه الله في تفسيره"
-status: draft
+status: published
 published_at: 2026-03-08
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

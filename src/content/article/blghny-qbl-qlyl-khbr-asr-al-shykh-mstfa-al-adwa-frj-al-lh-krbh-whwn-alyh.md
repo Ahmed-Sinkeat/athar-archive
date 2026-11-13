@@ -1,6 +1,6 @@
 ---
 title: "بلغني قبل قليل خبر أسر الشيخ مصطفى العدوى، فرَّج الله كربه وهوَّن عليه."
-status: draft
+status: published
 published_at: 2025-11-03
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري في «الأدب المفرد"
-status: draft
+status: published
 published_at: 2025-10-16
 person: abu-jafar-al-khalifi
 ---

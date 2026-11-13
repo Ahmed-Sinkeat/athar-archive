@@ -1,6 +1,6 @@
 ---
 title: "عند الشيعة الإمامية المعاصرين كلف بتكثير المتشيعين الإمامية على مر التاريخ"
-status: draft
+status: published
 published_at: 2019-04-26
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-imamah-was-sahabah"]

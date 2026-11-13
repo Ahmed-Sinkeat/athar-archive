@@ -1,6 +1,6 @@
 ---
 title: "قال مالك- كما في التهذيب في اختصار المدونة"
-status: draft
+status: published
 published_at: 2018-07-18
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "عمومًا للمرة الثالثة، النعامة لا تدفن رأسها في الأرض إذا ما خافت!."
-status: draft
+status: published
 published_at: 2022-12-05
 person: abu-umair-imran-al-zubaidi
 ---

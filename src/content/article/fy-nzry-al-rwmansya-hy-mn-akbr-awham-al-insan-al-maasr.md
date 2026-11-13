@@ -1,6 +1,6 @@
 ---
 title: "في نظري، الرومانسية هي من أكبر أوهام الإنسان المعاصر!"
-status: draft
+status: published
 published_at: 2023-09-15
 person: abu-umair-imran-al-zubaidi
 ---

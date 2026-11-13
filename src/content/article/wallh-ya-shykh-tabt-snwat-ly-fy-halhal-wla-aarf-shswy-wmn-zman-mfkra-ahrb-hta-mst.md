@@ -1,6 +1,6 @@
 ---
 title: "( والله يا شيخ تعبت سنوات لي في هالحال ولا اعرف شسوي ومن زمان مفكرة أهرب حتى مست"
-status: draft
+status: published
 published_at: 2019-08-05
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ما أجرأ هؤلاء السفلة الأوباش على الله سبحانه وتعالى!"
-status: draft
+status: published
 published_at: 2024-03-06
 person: abu-umair-imran-al-zubaidi
 ---

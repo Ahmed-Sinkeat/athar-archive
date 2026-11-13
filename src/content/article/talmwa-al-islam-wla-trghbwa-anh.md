@@ -1,6 +1,6 @@
 ---
 title: "تعلموا الإسلام ولا ترغبوا عنه"
-status: draft
+status: published
 published_at: 2025-09-22
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

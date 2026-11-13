@@ -1,6 +1,6 @@
 ---
 title: "قال أبو الحسن المدائني في كتابه التعازي والمراثي 6- قال جويرية بن أسماء"
-status: draft
+status: published
 published_at: 2017-08-10
 person: abu-jafar-al-khalifi
 ---

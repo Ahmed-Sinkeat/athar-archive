@@ -1,6 +1,6 @@
 ---
 title: "شك الزنادقة في قوله: {إن عبادي ليس لك عليهم سلطان}"
-status: draft
+status: published
 published_at: 2023-11-11
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

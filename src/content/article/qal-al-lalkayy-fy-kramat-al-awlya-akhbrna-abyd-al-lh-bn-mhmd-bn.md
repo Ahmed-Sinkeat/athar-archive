@@ -1,6 +1,6 @@
 ---
 title: "قال اللالكائي في كرامات الأولياء 212 -أخبرنا عُبَيْدُ اللَّهِ بْنُ مُحَمَّدِ بْن"
-status: draft
+status: published
 published_at: 2018-11-28
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

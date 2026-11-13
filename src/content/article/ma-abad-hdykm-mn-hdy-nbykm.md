@@ -1,6 +1,6 @@
 ---
 title: "ما أبعد هديكم من هدي نبيكم ﷺ"
-status: draft
+status: published
 published_at: 2025-12-17
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

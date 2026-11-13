@@ -1,6 +1,6 @@
 ---
 title: "استدلال لطيف وجميل من الحافظ ابن كثير رحمه الله على جهاد الطلب."
-status: draft
+status: published
 published_at: 2024-09-24
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

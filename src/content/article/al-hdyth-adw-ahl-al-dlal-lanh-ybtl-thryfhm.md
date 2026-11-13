@@ -1,6 +1,6 @@
 ---
 title: "الحديث عدو أهل الضلال لأنه يبطل تحريفهم"
-status: draft
+status: published
 published_at: 2023-05-14
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "al-sunnah-wal-bidah"]

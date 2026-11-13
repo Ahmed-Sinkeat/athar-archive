@@ -1,6 +1,6 @@
 ---
 title: "قوله تعالى { فَأَرَدْنَا أَنْ يُبْدِلَهُمَا رَبُّهُمَا خَيْرًا مِنْهُ زَكَاةً وَ"
-status: draft
+status: published
 published_at: 2018-01-04
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

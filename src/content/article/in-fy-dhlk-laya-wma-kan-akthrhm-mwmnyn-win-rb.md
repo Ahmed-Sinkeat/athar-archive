@@ -1,6 +1,6 @@
 ---
 title: "إِنَّ فِي ذَلِكَ لَآَيَةً وَمَا كَانَ أَكْثَرُهُمْ مُؤْمِنِينَ (174) وَإِنَّ رَب"
-status: draft
+status: published
 published_at: 2024-03-31
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا الذي تقول عنه \"يا مربي الأجيال\" أنه تشدد وتسخر منه"
-status: draft
+status: published
 published_at: 2026-08-31
 person: abu-umair-imran-al-zubaidi
 ---

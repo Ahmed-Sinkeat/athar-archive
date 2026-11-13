@@ -1,6 +1,6 @@
 ---
 title: "الاعتقاد بأنّ اجتماع الحُبّ قبل الزواج مع النصيب سيجعل الحياة سعيدة"
-status: draft
+status: published
 published_at: 2022-12-20
 person: abu-umair-imran-al-zubaidi
 ---

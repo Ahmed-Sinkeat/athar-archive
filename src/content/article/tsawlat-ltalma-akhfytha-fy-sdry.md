@@ -1,6 +1,6 @@
 ---
 title: "تساؤلات لطالما أخفيتها في صدري"
-status: draft
+status: published
 published_at: 2020-06-12
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-asma-was-sifat"]

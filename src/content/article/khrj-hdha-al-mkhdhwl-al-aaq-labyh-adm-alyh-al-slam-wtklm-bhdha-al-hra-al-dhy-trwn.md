@@ -1,6 +1,6 @@
 ---
 title: "خرج هذا المخـذول العـاق لأبيه آدم عليه السلام، وتكلم بهذا الـهراء الذي ترون!"
-status: draft
+status: published
 published_at: 2023-07-22
 person: abu-abdillah-firas-al-ramli
 ---

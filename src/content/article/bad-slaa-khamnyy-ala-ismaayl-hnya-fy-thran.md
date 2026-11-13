@@ -1,6 +1,6 @@
 ---
 title: "بعد صلاة خامنئي على إسماعيل هنية في طهران"
-status: draft
+status: published
 published_at: 2024-08-03
 person: abu-jafar-al-khalifi
 ---

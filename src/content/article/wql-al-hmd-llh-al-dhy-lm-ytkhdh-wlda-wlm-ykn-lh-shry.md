@@ -1,6 +1,6 @@
 ---
 title: "وَقُلِ الْحَمْدُ لِلَّهِ الَّذِي لَمْ يَتَّخِذْ وَلَدًا وَلَمْ يَكُن لَّهُ شَرِي"
-status: draft
+status: published
 published_at: 2023-01-30
 person: abu-umair-imran-al-zubaidi
 ---

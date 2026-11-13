@@ -1,6 +1,6 @@
 ---
 title: "اليهود يحظرون الدعارة بل والزنا أيضا وبعض الناس يرقع لبعضهم إقرار الدعارة المجرم"
-status: draft
+status: published
 published_at: 2019-01-01
 person: abu-jafar-al-khalifi
 ---

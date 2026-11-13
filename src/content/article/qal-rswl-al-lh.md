@@ -1,6 +1,6 @@
 ---
 title: "قال رسول الله ﷺ"
-status: draft
+status: published
 published_at: 2023-08-09
 person: abu-umair-imran-al-zubaidi
 ---

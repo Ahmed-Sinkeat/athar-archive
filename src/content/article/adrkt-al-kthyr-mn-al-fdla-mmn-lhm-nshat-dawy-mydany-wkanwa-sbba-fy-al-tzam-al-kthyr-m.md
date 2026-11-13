@@ -1,6 +1,6 @@
 ---
 title: "أدركت الكثير من الفضلاء ممن لهم نشاط دعوي ميداني وكانوا سببًا في التزام الكثير م"
-status: draft
+status: published
 published_at: 2019-12-14
 person: abu-jafar-al-khalifi
 ---

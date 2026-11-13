@@ -1,6 +1,6 @@
 ---
 title: "صدقا لا أفهم كيف يفكر من يطرح هذا السؤال الذي أقل ما يقال عنه ساذج"
-status: draft
+status: published
 published_at: 2025-03-21
 person: abu-umair-imran-al-zubaidi
 ---

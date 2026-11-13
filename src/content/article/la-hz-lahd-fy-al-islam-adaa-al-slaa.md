@@ -1,6 +1,6 @@
 ---
 title: "لا حظ لأحد في الإسلام أضاع الصلاة"
-status: draft
+status: published
 published_at: 2025-07-28
 person: abu-abdillah-firas-al-ramli
 ---

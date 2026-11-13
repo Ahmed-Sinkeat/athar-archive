@@ -1,6 +1,6 @@
 ---
 title: "قال يحيى بن معاذ الرازي"
-status: draft
+status: published
 published_at: 2023-05-25
 person: abu-abdillah-firas-al-ramli
 topics: ["al-iman"]

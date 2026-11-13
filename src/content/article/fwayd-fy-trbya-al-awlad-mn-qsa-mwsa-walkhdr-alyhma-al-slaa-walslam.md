@@ -1,6 +1,6 @@
 ---
 title: "فوائد في تربية الأولاد من قصة موسى والخضر عليهما الصلاة والسلام.."
-status: draft
+status: published
 published_at: 2022-04-19
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

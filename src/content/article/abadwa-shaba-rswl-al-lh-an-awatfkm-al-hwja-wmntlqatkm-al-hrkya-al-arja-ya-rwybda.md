@@ -1,6 +1,6 @@
 ---
 title: "أبعدوا صحابة رسول الله ﷺ عن عواطفكم الهوجاء ومنطلقاتكم الحركية العرجاء يا رويبضة"
-status: draft
+status: published
 published_at: 2023-11-26
 person: abu-umair-imran-al-zubaidi
 ---

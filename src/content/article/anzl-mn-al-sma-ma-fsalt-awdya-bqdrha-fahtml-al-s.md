@@ -1,6 +1,6 @@
 ---
 title: "أَنزَلَ مِنَ السَّمَاءِ مَاءً فَسَالَتْ أَوْدِيَةٌ بِقَدَرِهَا فَاحْتَمَلَ السَّ"
-status: draft
+status: published
 published_at: 2025-05-18
 person: abu-umair-imran-al-zubaidi
 ---

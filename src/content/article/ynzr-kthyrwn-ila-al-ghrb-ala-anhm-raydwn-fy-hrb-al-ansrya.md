@@ -1,6 +1,6 @@
 ---
 title: "ينظر كثيرون إلى الغرب على أنهم رائدون في حرب العنصرية.."
-status: draft
+status: published
 published_at: 2019-05-06
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

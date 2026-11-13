@@ -1,6 +1,6 @@
 ---
 title: "خير الإخوان وشرهم"
-status: draft
+status: published
 published_at: 2026-06-21
 person: abu-abdillah-firas-al-ramli
 ---

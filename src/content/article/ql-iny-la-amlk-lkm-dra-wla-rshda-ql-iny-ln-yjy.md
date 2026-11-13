@@ -1,6 +1,6 @@
 ---
 title: "قُلْ إِنِّي لَا أَمْلِكُ لَكُمْ ضَرًّا وَلَا رَشَدًا (21) قُلْ إِنِّي لَنْ يُجِي"
-status: draft
+status: published
 published_at: 2017-10-28
 person: abu-jafar-al-khalifi
 ---

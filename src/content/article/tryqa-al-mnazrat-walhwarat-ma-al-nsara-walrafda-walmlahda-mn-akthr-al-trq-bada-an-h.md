@@ -1,6 +1,6 @@
 ---
 title: "طريقة المناظرات والحوارات مع النصارى والرافضة والملاحدة من أكثر الطرق بعدًا عن ه"
-status: draft
+status: published
 published_at: 2024-04-15
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الجواب الأثري على شبهة الآكل والمأكول"
-status: draft
+status: published
 published_at: 2020-06-18
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "باب في الاحتساب في نشر العلم عند انتشار الفتن (زاحموهم ولا تحقروا من المعروف شيئ"
-status: draft
+status: published
 published_at: 2021-12-06
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

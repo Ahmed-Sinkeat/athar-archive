@@ -1,6 +1,6 @@
 ---
 title: "فكرة (اللاانجابية) لها بعدان، أحدهما دنيوي وآخر وجدته حاضرًا عند بعض أهل التدين."
-status: draft
+status: published
 published_at: 2023-08-05
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

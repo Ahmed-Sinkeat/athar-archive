@@ -1,6 +1,6 @@
 ---
 title: "حول المدارس والجامعات"
-status: draft
+status: published
 published_at: 2024-02-09
 person: abu-umair-imran-al-zubaidi
 ---

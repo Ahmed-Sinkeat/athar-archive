@@ -1,6 +1,6 @@
 ---
 title: "ما الذي نستفيده من فتنة الصرخي؟"
-status: draft
+status: published
 published_at: 2022-04-15
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

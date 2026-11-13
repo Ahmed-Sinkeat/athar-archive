@@ -1,6 +1,6 @@
 ---
 title: "والحمدُ لله ربّ العالمين"
-status: draft
+status: published
 published_at: 2023-03-26
 person: abu-umair-imran-al-zubaidi
 ---

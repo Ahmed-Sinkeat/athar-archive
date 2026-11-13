@@ -1,6 +1,6 @@
 ---
 title: "مما يؤكد صحةَ ما ذكرته الدكتورة هيا القولُ المروي عن قبيصة بن ذؤيب"
-status: draft
+status: published
 published_at: 2026-08-09
 person: abu-jafar-al-khalifi
 ---

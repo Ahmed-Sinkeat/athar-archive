@@ -1,6 +1,6 @@
 ---
 title: "عليكم بالهدي الأول"
-status: draft
+status: published
 published_at: 2025-12-28
 person: abu-abdillah-firas-al-ramli
 ---

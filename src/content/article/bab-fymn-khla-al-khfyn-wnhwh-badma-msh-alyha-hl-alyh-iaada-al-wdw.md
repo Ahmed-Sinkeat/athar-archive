@@ -1,6 +1,6 @@
 ---
 title: "باب فيمن خلع الخفين ونحوه بعدما مسح عليها هل عليه إعادة الوضوء ؟"
-status: draft
+status: published
 published_at: 2024-12-09
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

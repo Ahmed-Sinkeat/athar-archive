@@ -1,6 +1,6 @@
 ---
 title: "عشاق الجاهلية أعف من نساك هذا الزمان"
-status: draft
+status: published
 published_at: 2023-06-24
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

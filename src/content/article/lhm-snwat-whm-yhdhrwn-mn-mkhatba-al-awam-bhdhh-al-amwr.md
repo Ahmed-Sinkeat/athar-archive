@@ -1,6 +1,6 @@
 ---
 title: "لهم سنوات وهم يحذرون من مخاطبة العوام بهذه الأمور"
-status: draft
+status: published
 published_at: 2026-03-09
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

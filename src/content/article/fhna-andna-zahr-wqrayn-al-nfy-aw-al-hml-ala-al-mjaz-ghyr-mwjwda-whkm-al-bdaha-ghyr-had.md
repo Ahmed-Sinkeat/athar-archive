@@ -1,6 +1,6 @@
 ---
 title: "فهنا عندنا ظاهر وقرائن النفي أو الحمل على المجاز غير موجودة وحكم البداهة غير حاض"
-status: draft
+status: published
 published_at: 2020-06-17
 person: abu-jafar-al-khalifi
 ---

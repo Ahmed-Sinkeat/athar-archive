@@ -1,6 +1,6 @@
 ---
 title: "عن الإمام الفضيل بن عياض -رضي الله عنه- قال"
-status: draft
+status: published
 published_at: 2022-08-24
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "انتبه حتى لا تقع في العقلية الوسواسية..."
-status: draft
+status: published
 published_at: 2021-07-25
 person: abu-jafar-al-khalifi
 ---

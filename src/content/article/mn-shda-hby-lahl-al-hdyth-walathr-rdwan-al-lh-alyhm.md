@@ -1,6 +1,6 @@
 ---
 title: "مِن شدّة حُبّي لأهل الحديث والأثر رضوان الله عليهم"
-status: draft
+status: published
 published_at: 2023-01-12
 person: abu-umair-imran-al-zubaidi
 ---

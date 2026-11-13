@@ -1,6 +1,6 @@
 ---
 title: "التحذير من انتقاص أمهات المؤمنين بحجة الدفاع عن سيد المرسلين لأبي جعفر الخليفي."
-status: draft
+status: published
 published_at: 2023-11-27
 person: abu-umair-imran-al-zubaidi
 topics: ["tazkiyat-al-nafs", "al-imamah-was-sahabah"]

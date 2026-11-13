@@ -1,6 +1,6 @@
 ---
 title: "أرأيتم ما فعله الصهاينة المجرمون بأهلنا في غزة فرج الله عنهم وانتقم من عدوهم؟"
-status: draft
+status: published
 published_at: 2024-09-28
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "إذا أراد الله بعبد خيرا عسله ..."
-status: draft
+status: published
 published_at: 2023-08-01
 person: abu-abdillah-firas-al-ramli
 ---

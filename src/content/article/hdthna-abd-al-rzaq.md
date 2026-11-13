@@ -1,6 +1,6 @@
 ---
 title: "7731 - حَدَّثَنَا عَبْدُ الرَّزَّاقِ"
-status: draft
+status: published
 published_at: 2024-01-09
 person: abu-umair-imran-al-zubaidi
 ---

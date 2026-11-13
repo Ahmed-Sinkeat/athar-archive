@@ -1,6 +1,6 @@
 ---
 title: "انبهار يتضمن اعترافاً بحقيقة مرة .."
-status: draft
+status: published
 published_at: 2020-08-21
 person: abu-jafar-al-khalifi
 ---

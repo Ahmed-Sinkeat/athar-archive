@@ -1,6 +1,6 @@
 ---
 title: "قال السبكي الصوفي الأشعري في كتابه السيف المسلول"
-status: draft
+status: published
 published_at: 2018-04-13
 person: abu-jafar-al-khalifi
 ---

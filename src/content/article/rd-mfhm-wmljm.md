@@ -1,6 +1,6 @@
 ---
 title: "رد مُفحم ومُلجم!"
-status: draft
+status: published
 published_at: 2024-01-12
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "قال القرافي المالكي في الذخيرة معللاً قولهم بعدم جواز أن تكون المرأة قاضية"
-status: draft
+status: published
 published_at: 2018-02-03
 person: abu-jafar-al-khalifi
 ---

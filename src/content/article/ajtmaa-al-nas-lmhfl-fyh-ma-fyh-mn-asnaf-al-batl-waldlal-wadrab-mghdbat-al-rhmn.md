@@ -1,6 +1,6 @@
 ---
 title: "اجتماعُ الناس لمحفِل فيه ما فيه مِن أصناف الباطل والضلال وأضرابِ مُغضِبات الرحمن"
-status: draft
+status: published
 published_at: 2026-09-27
 person: awwab-bin-muhammad
 ---

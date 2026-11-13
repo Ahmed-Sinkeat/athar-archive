@@ -1,6 +1,6 @@
 ---
 title: "هذا في الحلية لأبي نعيم وقد رأينا هذا عيانا فلا بد أن يكون هذا من أخبار الأنبياء"
-status: draft
+status: published
 published_at: 2017-08-27
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أنا لا أصدق أننا وصلنا إلى هذا الحد من الجنون!"
-status: draft
+status: published
 published_at: 2026-08-13
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أرسل إلي أحد الأخوة منشوراً لأحدهم يحاول الطعن في أبي هريرة وفي صحيح البخاري دفع"
-status: draft
+status: published
 published_at: 2019-02-24
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

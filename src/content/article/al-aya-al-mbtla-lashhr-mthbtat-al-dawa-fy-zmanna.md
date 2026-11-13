@@ -1,6 +1,6 @@
 ---
 title: "الآية المبطلة لأشهر مثبطات الدعوة في زماننا.."
-status: draft
+status: published
 published_at: 2021-08-09
 person: abu-jafar-al-khalifi
 ---

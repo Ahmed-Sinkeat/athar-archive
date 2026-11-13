@@ -1,6 +1,6 @@
 ---
 title: "ثغرك ثغرك لا تتركه لاستعجال النتائج فلست مسئولا عن ذلك وإنما عليك البلاغ ( أحب ا"
-status: draft
+status: published
 published_at: 2020-09-06
 person: abu-jafar-al-khalifi
 ---

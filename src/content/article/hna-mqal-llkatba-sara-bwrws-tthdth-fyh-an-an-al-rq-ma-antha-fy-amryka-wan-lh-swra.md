@@ -1,6 +1,6 @@
 ---
 title: "هنا مقال للكاتبة سارة بوروس تتحدث فيه عن أن الرّق ما انتهى في أمريكا وأن له صورة"
-status: draft
+status: published
 published_at: 2018-06-13
 person: abu-jafar-al-khalifi
 ---

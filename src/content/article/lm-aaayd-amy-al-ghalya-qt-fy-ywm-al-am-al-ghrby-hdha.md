@@ -1,6 +1,6 @@
 ---
 title: "لم أعايد أمي الغالية قط في يوم الأم الغربي هذا"
-status: draft
+status: published
 published_at: 2025-03-21
 person: abu-umair-imran-al-zubaidi
 ---

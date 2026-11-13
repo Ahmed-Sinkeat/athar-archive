@@ -1,6 +1,6 @@
 ---
 title: "آيات ينبغي أن تجعل في تصانيف براهين النبوة أو ربانية القرآن."
-status: draft
+status: published
 published_at: 2020-05-20
 person: abu-jafar-al-khalifi
 ---

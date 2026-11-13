@@ -1,6 +1,6 @@
 ---
 title: "الحكم بن عبد الرحمن بن محمد"
-status: draft
+status: published
 published_at: 2017-06-22
 person: abu-jafar-al-khalifi
 ---

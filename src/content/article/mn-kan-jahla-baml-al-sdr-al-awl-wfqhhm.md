@@ -1,6 +1,6 @@
 ---
 title: "(من كان جاهلاً بعمل الصدر الأول وفقههم"
-status: draft
+status: published
 published_at: 2023-05-08
 person: abu-umair-imran-al-zubaidi
 ---

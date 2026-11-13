@@ -1,6 +1,6 @@
 ---
 title: "قال البقاعي في \"نظم الدرر\" (496/4)"
-status: draft
+status: published
 published_at: 2018-03-03
 person: abu-jafar-al-khalifi
 ---

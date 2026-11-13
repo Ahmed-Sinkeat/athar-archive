@@ -1,6 +1,6 @@
 ---
 title: "باب في أن صلاة الجنازة لها تسليمة واحدة لا غير"
-status: draft
+status: published
 published_at: 2024-06-21
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

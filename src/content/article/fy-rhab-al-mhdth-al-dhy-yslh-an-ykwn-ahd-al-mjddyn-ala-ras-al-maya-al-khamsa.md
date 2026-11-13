@@ -1,6 +1,6 @@
 ---
 title: "في رحاب المحدث الذي يصلح أن يكون أحد المجددين على رأس المائة الخامسة"
-status: draft
+status: published
 published_at: 2020-08-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

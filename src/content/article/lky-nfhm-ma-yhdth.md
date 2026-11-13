@@ -1,6 +1,6 @@
 ---
 title: "لكي نفهم ما يحدث !"
-status: draft
+status: published
 published_at: 2019-06-28
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

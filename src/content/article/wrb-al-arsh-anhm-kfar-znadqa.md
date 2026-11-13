@@ -1,6 +1,6 @@
 ---
 title: "ورب العرش أنهم كفار زنادقة!"
-status: draft
+status: published
 published_at: 2024-03-02
 person: abu-umair-imran-al-zubaidi
 ---

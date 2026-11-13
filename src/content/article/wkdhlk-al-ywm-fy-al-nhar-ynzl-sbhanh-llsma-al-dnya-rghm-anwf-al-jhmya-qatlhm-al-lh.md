@@ -1,6 +1,6 @@
 ---
 title: "وكذلك اليوم في النهار ينزل سبحانه للسماء الدنيا رغم أنوف الجهمية قاتلهم الله"
-status: draft
+status: published
 published_at: 2023-06-27
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وتركه الجمعة يحمل على كون الإمام عنده واقع مبتدع عنده فقد روي عنه القول بترك الص"
-status: draft
+status: published
 published_at: 2019-11-21
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

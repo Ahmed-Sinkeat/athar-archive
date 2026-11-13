@@ -1,6 +1,6 @@
 ---
 title: "نعم، حذاؤه أطهر منك ومن كل المشركين لأنه مسلم."
-status: draft
+status: published
 published_at: 2023-10-28
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

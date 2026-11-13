@@ -1,6 +1,6 @@
 ---
 title: "قصة أولها عفة وآخرها عفو…"
-status: draft
+status: published
 published_at: 2024-08-27
 person: abu-jafar-al-khalifi
 ---

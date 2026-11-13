@@ -1,6 +1,6 @@
 ---
 title: "أسأل الله أن يجعلها حجة لي لا علي"
-status: draft
+status: published
 published_at: 2024-04-01
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من أخبار النساء الصالحات السخيات"
-status: draft
+status: published
 published_at: 2018-01-05
 person: abu-jafar-al-khalifi
 ---

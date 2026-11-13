@@ -1,6 +1,6 @@
 ---
 title: "عد الإمام البربهاري تعاهد الصلوات في جماعة من علامات السني المتبع"
-status: draft
+status: published
 published_at: 2017-09-07
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

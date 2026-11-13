@@ -1,6 +1,6 @@
 ---
 title: "باب فيمن برأ نفسه من الاعتزال ببراعة استهلالِه."
-status: draft
+status: published
 published_at: 2020-04-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

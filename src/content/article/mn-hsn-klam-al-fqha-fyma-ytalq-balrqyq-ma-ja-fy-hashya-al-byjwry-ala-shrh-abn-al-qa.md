@@ -1,6 +1,6 @@
 ---
 title: "من حسن كلام الفقهاء فيما يتعلق بالرقيق ما جاء في حاشية البيجوري على شرح ابن القا"
-status: draft
+status: published
 published_at: 2018-07-31
 person: abu-jafar-al-khalifi
 ---

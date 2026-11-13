@@ -1,6 +1,6 @@
 ---
 title: "أكتب إلى مالك: «قد جاء حطبُ جهنَّم»."
-status: draft
+status: published
 published_at: 2026-03-01
 person: awwab-bin-muhammad
 ---

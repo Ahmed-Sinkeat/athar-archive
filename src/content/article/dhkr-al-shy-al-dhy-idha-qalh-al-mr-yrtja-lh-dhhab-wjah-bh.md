@@ -1,6 +1,6 @@
 ---
 title: "ذكر الشيء الذي إذا قاله المرء يرتجى له ذهاب وجعه به"
-status: draft
+status: published
 published_at: 2024-12-15
 person: abu-abdillah-firas-al-ramli
 ---

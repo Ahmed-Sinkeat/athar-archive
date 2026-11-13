@@ -1,6 +1,6 @@
 ---
 title: "قال أحمد في الزهد 1102- حَدَّثَنَا عَفَّانُ"
-status: draft
+status: published
 published_at: 2018-01-10
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

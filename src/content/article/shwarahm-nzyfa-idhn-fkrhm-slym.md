@@ -1,6 +1,6 @@
 ---
 title: "شوارعهم نظيفة إذن فكرهم سليم"
-status: draft
+status: published
 published_at: 2022-10-31
 person: abu-jafar-al-khalifi
 ---

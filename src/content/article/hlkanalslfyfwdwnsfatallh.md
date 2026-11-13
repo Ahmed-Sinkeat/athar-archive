@@ -1,6 +1,6 @@
 ---
 title: "#هل_كان_السلف_يفوضون_صفات_الله؟ (1)."
-status: draft
+status: published
 published_at: 2023-07-05
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

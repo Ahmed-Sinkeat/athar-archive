@@ -1,6 +1,6 @@
 ---
 title: "أسئلة البداية والنهاية والأخلاق وسذاجة اللادينية"
-status: draft
+status: published
 published_at: 2022-11-05
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

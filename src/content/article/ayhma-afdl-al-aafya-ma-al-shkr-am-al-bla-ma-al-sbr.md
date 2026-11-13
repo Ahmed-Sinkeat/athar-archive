@@ -1,6 +1,6 @@
 ---
 title: "أيهما أفضل العافية مع الشكر أم البلاء مع الصبر ؟"
-status: draft
+status: published
 published_at: 2023-10-03
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "شاب ظاهره الخير انتحر بسبب دين عليه وتشديد من الدائنين (كذا بلغني"
-status: draft
+status: published
 published_at: 2025-02-19
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

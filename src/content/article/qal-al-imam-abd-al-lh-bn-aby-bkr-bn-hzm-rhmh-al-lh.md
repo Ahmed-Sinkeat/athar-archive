@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام عبد الله بن أبي بكر بن حزم رحمه الله"
-status: draft
+status: published
 published_at: 2023-09-01
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

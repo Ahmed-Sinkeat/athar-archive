@@ -1,6 +1,6 @@
 ---
 title: "قال ابن سعد في الطبقات 9949 - أَخبَرنا هشامٌ أَبو الوَليد الطَّيالِسيُّ"
-status: draft
+status: published
 published_at: 2017-11-11
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

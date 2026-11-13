@@ -1,6 +1,6 @@
 ---
 title: "الناظر في القرآن الكريم الذي نزل على النبي صلى الله عليه وسلم ليخاطب به خصوما عق"
-status: draft
+status: published
 published_at: 2019-08-14
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "جاء في جزء الحسن ابن شاذان 9 - حَدَّثَنَا أَحْمَدُ"
-status: draft
+status: published
 published_at: 2018-04-02
 person: abu-jafar-al-khalifi
 ---

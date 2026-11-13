@@ -1,6 +1,6 @@
 ---
 title: "تعالوا فلنُؤمِن ساعة"
-status: draft
+status: published
 published_at: 2025-10-24
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

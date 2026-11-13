@@ -1,6 +1,6 @@
 ---
 title: "إنما يستجاب لك لتزداد طمعاً"
-status: draft
+status: published
 published_at: 2023-06-27
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

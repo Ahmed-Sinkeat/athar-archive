@@ -1,6 +1,6 @@
 ---
 title: "كنت أتحدث مع أحد الإخوة الفضلاء ولفت انتباهي لمعنى باطل يروج له بعد انتصار الثور"
-status: draft
+status: published
 published_at: 2025-12-17
 person: abu-umair-imran-al-zubaidi
 ---

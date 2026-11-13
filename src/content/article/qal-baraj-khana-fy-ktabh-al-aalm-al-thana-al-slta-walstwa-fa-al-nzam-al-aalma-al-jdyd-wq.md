@@ -1,6 +1,6 @@
 ---
 title: "قال باراج خانا في كتابه العالم الثانى السلطة والسطوة فى النظام العالمى الجديد وق"
-status: draft
+status: published
 published_at: 2017-11-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

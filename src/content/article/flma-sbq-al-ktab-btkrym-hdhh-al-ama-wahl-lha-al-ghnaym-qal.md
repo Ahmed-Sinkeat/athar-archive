@@ -1,6 +1,6 @@
 ---
 title: "فلما سبق الكتاب بتكريم هذه الأمة وأحل لها الغنائم قال"
-status: draft
+status: published
 published_at: 2023-11-22
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "باب دفن الشعر والأظافر والدم"
-status: draft
+status: published
 published_at: 2024-02-11
 person: abu-abdillah-firas-al-ramli
 ---

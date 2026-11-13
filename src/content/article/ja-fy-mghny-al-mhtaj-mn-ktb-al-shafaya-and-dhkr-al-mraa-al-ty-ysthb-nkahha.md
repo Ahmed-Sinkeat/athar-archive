@@ -1,6 +1,6 @@
 ---
 title: "جاء في مغني المحتاج من كتب الشافعية عند ذكر المرأة التي يستحب نكاحها"
-status: draft
+status: published
 published_at: 2017-07-21
 person: abu-jafar-al-khalifi
 ---

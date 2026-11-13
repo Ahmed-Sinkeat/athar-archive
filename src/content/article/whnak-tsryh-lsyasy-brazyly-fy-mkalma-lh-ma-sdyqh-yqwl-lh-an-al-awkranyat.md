@@ -1,6 +1,6 @@
 ---
 title: "وهناك تصريح لسياسي برازيلي في مكالمة له مع صديقه يقول له عن الأوكرانيات"
-status: draft
+status: published
 published_at: 2022-03-14
 person: abu-jafar-al-khalifi
 ---

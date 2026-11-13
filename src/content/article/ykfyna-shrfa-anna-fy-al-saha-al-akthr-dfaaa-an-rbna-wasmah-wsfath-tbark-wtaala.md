@@ -1,6 +1,6 @@
 ---
 title: "يكفينا شرفًا أننا في الساحة الأكثر دفاعًا عن ربنا وأسماءه وصفاته تبارك وتعالى"
-status: draft
+status: published
 published_at: 2023-07-29
 person: abu-umair-imran-al-zubaidi
 ---

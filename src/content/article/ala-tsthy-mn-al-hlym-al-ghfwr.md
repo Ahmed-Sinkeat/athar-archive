@@ -1,6 +1,6 @@
 ---
 title: "ألا تستحي من الحليم الغفور؟"
-status: draft
+status: published
 published_at: 2021-04-27
 person: abu-jafar-al-khalifi
 ---

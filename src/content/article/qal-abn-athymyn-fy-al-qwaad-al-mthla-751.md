@@ -1,6 +1,6 @@
 ---
 title: "قال ابن عثيمين في القواعد المثلى (٧٥/١)"
-status: draft
+status: published
 published_at: 2025-06-16
 person: abu-abdillah-firas-al-ramli
 ---

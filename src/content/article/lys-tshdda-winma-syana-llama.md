@@ -1,6 +1,6 @@
 ---
 title: "ليس تشدداً وإنما صيانة للأمة !"
-status: draft
+status: published
 published_at: 2020-07-21
 person: abu-jafar-al-khalifi
 ---

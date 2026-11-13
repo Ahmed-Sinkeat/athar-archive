@@ -1,6 +1,6 @@
 ---
 title: "حينما تحفظ شيئا من كتاب الله تنبه إلى حركات الكلمات التي تقف عليها في وسط الآية."
-status: draft
+status: published
 published_at: 2025-10-08
 person: abu-umair-imran-al-zubaidi
 ---

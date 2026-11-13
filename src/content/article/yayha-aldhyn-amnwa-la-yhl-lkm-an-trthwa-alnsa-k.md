@@ -1,6 +1,6 @@
 ---
 title: "يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُواْ لَا يَحِلُّ لَكُمۡ أَن تَرِثُواْ ٱلنِّسَآءَ ك"
-status: draft
+status: published
 published_at: 2024-02-10
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

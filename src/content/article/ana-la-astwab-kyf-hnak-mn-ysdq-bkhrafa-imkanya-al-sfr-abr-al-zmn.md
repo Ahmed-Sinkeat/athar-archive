@@ -1,6 +1,6 @@
 ---
 title: "أنا لا أستوعب كيف هناك من يصدق بخرافة إمكانية السفر عبر الزمن!"
-status: draft
+status: published
 published_at: 2024-03-02
 person: abu-umair-imran-al-zubaidi
 ---

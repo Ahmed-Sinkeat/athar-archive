@@ -1,6 +1,6 @@
 ---
 title: "من الأفكار الدخيلة على مجتمعنا المسلم والتي يستحسنها عامة الناس اليوم هي قول الم"
-status: draft
+status: published
 published_at: 2025-10-11
 person: abu-umair-imran-al-zubaidi
 ---

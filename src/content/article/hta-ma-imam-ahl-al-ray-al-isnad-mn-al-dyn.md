@@ -1,6 +1,6 @@
 ---
 title: "حتى مع إمام أهل الرأي، الإسناد من الدين..."
-status: draft
+status: published
 published_at: 2021-02-10
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال بعنوان [كيف تمنع الكوميديا الرومانسية من تدمير حياتك العاطفية"
-status: draft
+status: published
 published_at: 2023-08-20
 person: abu-jafar-al-khalifi
 ---

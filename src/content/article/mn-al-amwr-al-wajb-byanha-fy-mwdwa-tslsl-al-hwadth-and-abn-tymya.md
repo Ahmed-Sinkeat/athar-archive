@@ -1,6 +1,6 @@
 ---
 title: "من الأمور الواجب بيانها في موضوع تسلسل الحوادث عند ابن تيمية"
-status: draft
+status: published
 published_at: 2018-03-18
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "تراوري يعيد التجربة الفرنسية في اللعب بورقة الرق."
-status: draft
+status: published
 published_at: 2026-07-24
 person: abu-jafar-al-khalifi
 ---

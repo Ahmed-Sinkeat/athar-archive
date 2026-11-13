@@ -1,6 +1,6 @@
 ---
 title: "\"بل أعنفه أشد التعنيف\""
-status: draft
+status: published
 published_at: 2022-09-09
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

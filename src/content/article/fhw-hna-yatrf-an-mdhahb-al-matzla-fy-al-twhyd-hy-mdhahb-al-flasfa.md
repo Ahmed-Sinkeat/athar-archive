@@ -1,6 +1,6 @@
 ---
 title: "فهو هنا يعترف أن مذاهب المعتزلة في التوحيد هي مذاهب الفلاسفة"
-status: draft
+status: published
 published_at: 2021-06-16
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-iman"]

@@ -1,6 +1,6 @@
 ---
 title: "(مناقشة كلام باسم بشينية في مقاله الثاني)"
-status: draft
+status: published
 published_at: 2024-03-04
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith", "al-imamah-was-sahabah", "al-sunnah-wal-bidah"]

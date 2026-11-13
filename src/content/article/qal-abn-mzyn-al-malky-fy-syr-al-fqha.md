@@ -1,6 +1,6 @@
 ---
 title: "قال ابن مُزَين المالكي في «سير الفقهاء"
-status: draft
+status: published
 published_at: 2026-02-06
 person: awwab-bin-muhammad
 ---

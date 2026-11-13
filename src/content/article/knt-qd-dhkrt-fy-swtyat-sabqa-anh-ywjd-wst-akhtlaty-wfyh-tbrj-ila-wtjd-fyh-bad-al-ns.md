@@ -1,6 +1,6 @@
 ---
 title: "كنت قد ذكرت في صوتيات سابقة أنه يوجد وسط اختلاطي وفيه تبرج إلا وتجد فيه بعض النس"
-status: draft
+status: published
 published_at: 2018-11-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

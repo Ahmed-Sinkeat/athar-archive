@@ -1,6 +1,6 @@
 ---
 title: "وفي استراليا فتاة تحولت لرجل وارتكبت جريمة فسجنت في سجن الرجال فتم اغتصابها ٢٠٠٠"
-status: draft
+status: published
 published_at: 2019-12-31
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الغرب ومعضلة تقديس الحرية الضارة (التدخين نموذجاً)..."
-status: draft
+status: published
 published_at: 2024-02-18
 person: abu-jafar-al-khalifi
 ---

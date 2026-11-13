@@ -1,6 +1,6 @@
 ---
 title: "قال سفيان بن عيينة رحمه الله"
-status: draft
+status: published
 published_at: 2023-05-15
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

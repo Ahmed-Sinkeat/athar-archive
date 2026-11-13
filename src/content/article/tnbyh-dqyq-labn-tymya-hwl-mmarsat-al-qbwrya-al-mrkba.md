@@ -1,6 +1,6 @@
 ---
 title: "تنبيه دقيق لابن تيمية حول ممارسات القبورية المركبة.."
-status: draft
+status: published
 published_at: 2021-08-25
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah", "adab-talab-al-ilm"]

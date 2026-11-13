@@ -1,6 +1,6 @@
 ---
 title: "هذا الإطلاق الذي أطلقه الدكتور ما قال به فقيه قط."
-status: draft
+status: published
 published_at: 2026-02-19
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "صار الأمر مملًا للغاية!"
-status: draft
+status: published
 published_at: 2024-10-03
 person: abu-umair-imran-al-zubaidi
 ---

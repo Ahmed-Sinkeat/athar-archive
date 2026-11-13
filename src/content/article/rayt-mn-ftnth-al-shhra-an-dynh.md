@@ -1,6 +1,6 @@
 ---
 title: "رأيت من فتنته الشهرة عن دينه"
-status: draft
+status: published
 published_at: 2018-06-08
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "\"أشارت دراسة إلى وجود علاقة بين ممارسة النشاط الموسيقي والمشكلات النفسية"
-status: draft
+status: published
 published_at: 2023-02-12
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

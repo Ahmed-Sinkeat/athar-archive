@@ -1,6 +1,6 @@
 ---
 title: "فوائد العبادات والطاعات والمجاهدة عليها في رمضان ليست مقتصرة على الأجر العظيم ال"
-status: draft
+status: published
 published_at: 2023-04-07
 person: abu-umair-imran-al-zubaidi
 ---

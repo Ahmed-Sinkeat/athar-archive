@@ -1,6 +1,6 @@
 ---
 title: "كلام ينقض آخره أوله!"
-status: draft
+status: published
 published_at: 2024-06-14
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

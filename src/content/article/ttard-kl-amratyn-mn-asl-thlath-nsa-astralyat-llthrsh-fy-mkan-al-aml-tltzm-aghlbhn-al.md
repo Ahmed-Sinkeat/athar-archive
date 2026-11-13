@@ -1,6 +1,6 @@
 ---
 title: "تتعرض كل امرأتين من أصل ثلاث نساء استراليات للتحرش في مكان العمل تلتزم أغلبهن ال"
-status: draft
+status: published
 published_at: 2018-12-11
 person: abu-jafar-al-khalifi
 ---

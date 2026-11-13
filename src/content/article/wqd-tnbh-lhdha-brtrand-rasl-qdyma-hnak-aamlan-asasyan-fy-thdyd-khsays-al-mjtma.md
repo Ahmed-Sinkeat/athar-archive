@@ -1,6 +1,6 @@
 ---
 title: "وقد تنبه لهذا برتراند راسل قديما ”هناك عاملان أساسيان في تحديد خصائص المجتمع"
-status: draft
+status: published
 published_at: 2022-02-05
 person: abu-jafar-al-khalifi
 ---

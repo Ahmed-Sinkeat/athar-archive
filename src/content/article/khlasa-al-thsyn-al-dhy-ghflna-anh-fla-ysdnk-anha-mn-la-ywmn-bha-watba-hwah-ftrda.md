@@ -1,6 +1,6 @@
 ---
 title: "خلاصة التحصين الذي غفلنا عنه: {فلا يصدنك عنها من لا يؤمن بها واتبع هواه فتردى}"
-status: draft
+status: published
 published_at: 2025-01-21
 person: abu-jafar-al-khalifi
 ---

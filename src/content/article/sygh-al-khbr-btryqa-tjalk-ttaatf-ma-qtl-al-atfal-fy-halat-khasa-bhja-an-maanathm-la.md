@@ -1,6 +1,6 @@
 ---
 title: "صِيغ الخبر بطريقة تجعلك تتعاطف مع قتل الأطفال في حالات خاصة بحجة أن معاناتهم لا"
-status: draft
+status: published
 published_at: 2023-04-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

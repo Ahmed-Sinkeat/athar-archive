@@ -1,6 +1,6 @@
 ---
 title: "عيد الأضحى لا ينبغي أن يمر دون أن نُذكّر بهذا الأثر الجليل!"
-status: draft
+status: published
 published_at: 2024-06-16
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا كلام لاثنتين من النسويات الصريحات"
-status: draft
+status: published
 published_at: 2022-01-09
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

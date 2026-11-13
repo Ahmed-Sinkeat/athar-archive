@@ -1,6 +1,6 @@
 ---
 title: "ثُمَّ رَدَدْناهُ أَسْفَلَ سافِلِينَ (5) إِلاَّ الَّذِينَ آمَنُوا وَعَمِلُوا الصّ"
-status: draft
+status: published
 published_at: 2018-02-04
 person: abu-jafar-al-khalifi
 ---

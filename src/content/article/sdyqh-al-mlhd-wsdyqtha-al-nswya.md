@@ -1,6 +1,6 @@
 ---
 title: "صديقه المُلحِد، وصديقتها النّسوية"
-status: draft
+status: published
 published_at: 2025-03-28
 person: awwab-bin-muhammad
 ---

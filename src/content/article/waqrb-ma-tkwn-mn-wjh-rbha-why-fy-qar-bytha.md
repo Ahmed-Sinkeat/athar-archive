@@ -1,6 +1,6 @@
 ---
 title: "وأقربُ ما تكونُ من وجهِ ربِّها وهي في قَعرِ بيتِها»."
-status: draft
+status: published
 published_at: 2022-10-18
 person: abu-umair-imran-al-zubaidi
 ---

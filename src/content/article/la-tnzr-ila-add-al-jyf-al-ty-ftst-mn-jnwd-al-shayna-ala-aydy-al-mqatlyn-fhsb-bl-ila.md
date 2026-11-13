@@ -1,6 +1,6 @@
 ---
 title: "لا تنظر إلى عدد الجيف التي فطست من جنود الصهاينة على أيدي المقاتلين فحسب؛ بل إلى"
-status: draft
+status: published
 published_at: 2023-12-22
 person: abu-umair-imran-al-zubaidi
 ---

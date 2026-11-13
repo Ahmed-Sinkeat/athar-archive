@@ -1,6 +1,6 @@
 ---
 title: "أصحاب النبي ﷺ كلهم أهل علم واجتهاد"
-status: draft
+status: published
 published_at: 2023-06-23
 person: abu-abdillah-firas-al-ramli
 ---

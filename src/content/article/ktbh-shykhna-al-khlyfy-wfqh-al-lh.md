@@ -1,6 +1,6 @@
 ---
 title: "كتبه شيخنا الخليفي وفقه الله."
-status: draft
+status: published
 published_at: 2024-03-31
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

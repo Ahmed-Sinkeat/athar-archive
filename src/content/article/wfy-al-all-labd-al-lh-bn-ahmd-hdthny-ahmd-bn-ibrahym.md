@@ -1,6 +1,6 @@
 ---
 title: "وفي العلل لعبد الله بن أحمد حدثني أحمد بن إبراهيم"
-status: draft
+status: published
 published_at: 2020-01-22
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

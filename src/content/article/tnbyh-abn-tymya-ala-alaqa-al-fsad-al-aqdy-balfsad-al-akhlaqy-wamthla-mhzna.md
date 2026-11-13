@@ -1,6 +1,6 @@
 ---
 title: "تنبيه ابن تيمية على علاقة الفساد العقدي بالفساد الأخلاقي وأمثلة محزنة.."
-status: draft
+status: published
 published_at: 2022-01-31
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

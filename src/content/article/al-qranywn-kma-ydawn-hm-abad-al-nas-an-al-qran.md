@@ -1,6 +1,6 @@
 ---
 title: "القرآنيون كما يدعون هم أبعد الناس عن القرآن"
-status: draft
+status: published
 published_at: 2023-06-14
 person: abu-abdillah-firas-al-ramli
 ---

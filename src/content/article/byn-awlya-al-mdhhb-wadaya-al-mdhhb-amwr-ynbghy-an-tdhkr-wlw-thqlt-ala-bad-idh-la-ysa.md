@@ -1,6 +1,6 @@
 ---
 title: "بين أولياء المذهب وأدعياء المذهب (أمور ينبغي أن تُذكر ولو ثقلت على بعض إذ لا يسع"
-status: draft
+status: published
 published_at: 2019-01-21
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

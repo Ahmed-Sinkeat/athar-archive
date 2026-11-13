@@ -1,6 +1,6 @@
 ---
 title: "جاء في التبصرة للخمي من كتب المالكية"
-status: draft
+status: published
 published_at: 2017-07-09
 person: abu-jafar-al-khalifi
 ---

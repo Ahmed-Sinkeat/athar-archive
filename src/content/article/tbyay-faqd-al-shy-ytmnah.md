@@ -1,6 +1,6 @@
 ---
 title: "طبيعي، فاقد الشيء يتمناه!"
-status: draft
+status: published
 published_at: 2026-03-18
 person: abu-umair-imran-al-zubaidi
 ---

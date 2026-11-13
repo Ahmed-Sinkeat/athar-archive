@@ -1,6 +1,6 @@
 ---
 title: "في رحاب التابعي الذي كان يشبَّه بالنبي صلى الله عليه وسلم."
-status: draft
+status: published
 published_at: 2020-05-25
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

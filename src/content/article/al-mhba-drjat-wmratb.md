@@ -1,6 +1,6 @@
 ---
 title: "المحبة درجات ومراتب"
-status: draft
+status: published
 published_at: 2025-10-09
 person: abu-umair-imran-al-zubaidi
 ---

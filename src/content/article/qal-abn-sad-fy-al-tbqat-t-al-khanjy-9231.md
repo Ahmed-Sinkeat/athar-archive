@@ -1,6 +1,6 @@
 ---
 title: "قال ابن سعد في الطبقات ط الخانجي (٩/&rlm;٢٣١)"
-status: draft
+status: published
 published_at: 2023-11-28
 person: abu-abdillah-firas-al-ramli
 ---

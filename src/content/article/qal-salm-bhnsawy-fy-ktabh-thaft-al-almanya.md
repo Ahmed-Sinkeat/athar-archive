@@ -1,6 +1,6 @@
 ---
 title: "قال سالم بهنساوي في كتابه تهافت العلمانية"
-status: draft
+status: published
 published_at: 2017-07-21
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

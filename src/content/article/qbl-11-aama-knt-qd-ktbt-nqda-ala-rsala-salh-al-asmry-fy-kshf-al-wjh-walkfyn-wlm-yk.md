@@ -1,6 +1,6 @@
 ---
 title: "قبل ١١ عاما كنت قد كتبت نقدًا على رسالة صالح الأسمري في كشف الوجه والكفين ولم يك"
-status: draft
+status: published
 published_at: 2019-11-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

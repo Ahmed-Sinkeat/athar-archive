@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي الدنيا في النفقة على العيال 105 - حَدَّثَنَا عُبَيْدُ اللَّهِ بْنُ ع"
-status: draft
+status: published
 published_at: 2018-07-26
 person: abu-jafar-al-khalifi
 ---

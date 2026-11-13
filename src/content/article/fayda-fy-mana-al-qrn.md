@@ -1,6 +1,6 @@
 ---
 title: "فائدة في معنى القرن"
-status: draft
+status: published
 published_at: 2024-02-27
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

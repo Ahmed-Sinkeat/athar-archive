@@ -1,6 +1,6 @@
 ---
 title: "ما تصنع إذا قيل ما فيك وما ليس فيك ؟"
-status: draft
+status: published
 published_at: 2024-05-12
 person: abu-abdillah-firas-al-ramli
 ---

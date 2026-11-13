@@ -1,6 +1,6 @@
 ---
 title: "الصحابة رضي الله عنهم لا يتركون ظاهر الكتاب والسنة إلا لشيء موقوف عندهم"
-status: draft
+status: published
 published_at: 2025-01-03
 person: abu-abdillah-firas-al-ramli
 ---

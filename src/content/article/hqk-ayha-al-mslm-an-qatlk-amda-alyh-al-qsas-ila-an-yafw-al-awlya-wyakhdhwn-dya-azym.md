@@ -1,6 +1,6 @@
 ---
 title: "حقك أيها المسلم أن قاتلك عمداً عليه القصاص إلا أن يعفو الأولياء ويأخذون دية عظيم"
-status: draft
+status: published
 published_at: 2017-12-17
 person: abu-jafar-al-khalifi
 ---

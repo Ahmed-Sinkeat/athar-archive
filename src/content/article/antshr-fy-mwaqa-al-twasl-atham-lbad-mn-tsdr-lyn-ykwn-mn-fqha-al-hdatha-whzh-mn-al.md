@@ -1,6 +1,6 @@
 ---
 title: "انتشر في مواقع التواصل اتهام لبعض من تصدر لئن يكون من فقهاء الحداثة _ وحظه من ال"
-status: draft
+status: published
 published_at: 2019-02-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

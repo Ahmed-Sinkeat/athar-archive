@@ -1,6 +1,6 @@
 ---
 title: "موعظة المطر!"
-status: draft
+status: published
 published_at: 2020-12-01
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

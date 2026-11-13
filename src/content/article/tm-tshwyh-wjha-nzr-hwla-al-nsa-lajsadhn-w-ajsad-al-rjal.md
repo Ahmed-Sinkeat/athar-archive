@@ -1,6 +1,6 @@
 ---
 title: "تم تشويه وجهة نظر هؤلاء النساء لأجسادهن و أجساد الرجال"
-status: draft
+status: published
 published_at: 2018-08-03
 person: abu-jafar-al-khalifi
 ---

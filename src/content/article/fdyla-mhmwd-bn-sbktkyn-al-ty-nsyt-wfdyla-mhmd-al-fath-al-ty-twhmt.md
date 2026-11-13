@@ -1,6 +1,6 @@
 ---
 title: "فضيلة محمود بن سُبُكتكين التي نُسيت وفضيلة محمد الفاتح التي تُوهِّمت..."
-status: draft
+status: published
 published_at: 2025-05-10
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

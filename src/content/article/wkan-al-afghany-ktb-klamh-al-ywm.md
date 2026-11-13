@@ -1,6 +1,6 @@
 ---
 title: "وكأن الأفغاني كتب كلامه اليوم!"
-status: draft
+status: published
 published_at: 2024-07-18
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "كنتُ أتعجّب من رؤيتي للأولاد ذكورًا وإناثًا في بعض العائلات عندما يخاطبون أباءهم"
-status: draft
+status: published
 published_at: 2022-08-17
 person: abu-umair-imran-al-zubaidi
 ---

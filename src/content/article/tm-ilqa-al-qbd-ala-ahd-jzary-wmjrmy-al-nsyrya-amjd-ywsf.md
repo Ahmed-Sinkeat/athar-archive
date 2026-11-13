@@ -1,6 +1,6 @@
 ---
 title: "تم إلقاء القبض على أحد جزاري ومجرمي النصيرية أمجد يوسف"
-status: draft
+status: published
 published_at: 2026-04-24
 person: abu-umair-imran-al-zubaidi
 ---

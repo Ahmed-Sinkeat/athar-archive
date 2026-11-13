@@ -1,6 +1,6 @@
 ---
 title: "جون ف مولوي هو قاضي أمريكي عمل في سلك القضاء والمحاماة خمسين عاماً أو أكثر"
-status: draft
+status: published
 published_at: 2018-01-07
 person: abu-jafar-al-khalifi
 ---

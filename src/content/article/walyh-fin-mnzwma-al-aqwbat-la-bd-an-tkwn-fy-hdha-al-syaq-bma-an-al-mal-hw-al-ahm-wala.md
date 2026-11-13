@@ -1,6 +1,6 @@
 ---
 title: "وعليه فإن منظومة العقوبات لا بد أن تكون في هذا السياق بما أن المال هو الأهم والع"
-status: draft
+status: published
 published_at: 2019-09-13
 person: abu-jafar-al-khalifi
 ---

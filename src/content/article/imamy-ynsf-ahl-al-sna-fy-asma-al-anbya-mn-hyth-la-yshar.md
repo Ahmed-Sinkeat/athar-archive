@@ -1,6 +1,6 @@
 ---
 title: "إمامي ينصف أهل السنة في عصمة الأنبياء من حيث لا يشعر"
-status: draft
+status: published
 published_at: 2020-04-06
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "الرافضة أسوأ أثرا في الإسلام من أهل الكفر من أهل الحرب"
-status: draft
+status: published
 published_at: 2025-06-13
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

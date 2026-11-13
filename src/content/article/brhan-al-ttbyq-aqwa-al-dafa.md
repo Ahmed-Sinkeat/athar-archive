@@ -1,6 +1,6 @@
 ---
 title: "برهان التطبيق أقوى الضعفاء"
-status: draft
+status: published
 published_at: 2019-07-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

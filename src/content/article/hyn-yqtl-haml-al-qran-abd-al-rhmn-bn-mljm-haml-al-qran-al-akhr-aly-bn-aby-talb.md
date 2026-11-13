@@ -1,6 +1,6 @@
 ---
 title: "حين يقتل حاملُ القرآن (عبد الرحمن بن ملجم) حاملَ القرآن الآخر (علي بن أبي طالب)"
-status: draft
+status: published
 published_at: 2025-07-06
 person: abu-jafar-al-khalifi
 ---

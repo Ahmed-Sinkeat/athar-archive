@@ -1,6 +1,6 @@
 ---
 title: "لا يضرك بأيهن بدأت"
-status: draft
+status: published
 published_at: 2026-04-03
 person: awwab-bin-muhammad
 topics: ["tahwid-al-ibada"]

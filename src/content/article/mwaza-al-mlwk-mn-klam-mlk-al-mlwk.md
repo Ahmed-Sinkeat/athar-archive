@@ -1,6 +1,6 @@
 ---
 title: "موعظة الملوك من كلام ملك الملوك..."
-status: draft
+status: published
 published_at: 2022-09-23
 person: abu-jafar-al-khalifi
 ---

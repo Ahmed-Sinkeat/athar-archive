@@ -1,6 +1,6 @@
 ---
 title: "قال الحافظ منصور بن المعتمر لأمه"
-status: draft
+status: published
 published_at: 2017-11-05
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال ابن قتيبة في كتابه تأويل مشكل القرآن مرجحاً أن الراسخين في العلم يعلمون المت"
-status: draft
+status: published
 published_at: 2017-11-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

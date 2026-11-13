@@ -1,6 +1,6 @@
 ---
 title: "اشرب هذا فإن لك في عاقبته خيرا"
-status: draft
+status: published
 published_at: 2026-04-28
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

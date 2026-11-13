@@ -1,6 +1,6 @@
 ---
 title: "احذروا يا إخوة كل الحذر ممن يلمز أو يقلل أو يستهين من خال المؤمنين صاحب رسول الل"
-status: draft
+status: published
 published_at: 2023-12-17
 person: abu-umair-imran-al-zubaidi
 ---

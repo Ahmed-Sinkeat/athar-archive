@@ -1,6 +1,6 @@
 ---
 title: "ولا زلنا في معضلة الدفاع الخطأ.."
-status: draft
+status: published
 published_at: 2021-02-27
 person: abu-jafar-al-khalifi
 ---

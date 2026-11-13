@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام البخاري في صحيحه 304 - حدثنا سعيد بن أبي مريم"
-status: draft
+status: published
 published_at: 2018-12-09
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

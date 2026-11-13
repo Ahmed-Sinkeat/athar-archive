@@ -1,6 +1,6 @@
 ---
 title: "من عجائب العدل والرحمة في الوحي"
-status: draft
+status: published
 published_at: 2026-04-17
 person: abu-jafar-al-khalifi
 ---

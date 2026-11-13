@@ -1,6 +1,6 @@
 ---
 title: "أتدري ما هو دليل أنّ خطر المشروع الرافضي الإيراني لا يقل خطرا - إن لم يكن أخطر"
-status: draft
+status: published
 published_at: 2026-03-18
 person: abu-umair-imran-al-zubaidi
 ---

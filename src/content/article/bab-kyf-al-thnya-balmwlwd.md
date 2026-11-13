@@ -1,6 +1,6 @@
 ---
 title: "باب كيف التهنئة بالمولود"
-status: draft
+status: published
 published_at: 2024-03-20
 person: abu-abdillah-firas-al-ramli
 ---

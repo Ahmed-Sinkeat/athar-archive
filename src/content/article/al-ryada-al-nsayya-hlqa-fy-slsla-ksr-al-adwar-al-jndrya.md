@@ -1,6 +1,6 @@
 ---
 title: "الرياضة النسائية: حلقة في سلسلة كسر الأدوار الجندرية."
-status: draft
+status: published
 published_at: 2023-08-06
 person: abu-jafar-al-khalifi
 ---

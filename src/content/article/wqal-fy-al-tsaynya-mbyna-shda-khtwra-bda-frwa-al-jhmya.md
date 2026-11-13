@@ -1,6 +1,6 @@
 ---
 title: "وقال في التسعينية مبينًا شدة خطورة بدع فروع الجهمية"
-status: draft
+status: published
 published_at: 2020-12-19
 person: abu-jafar-al-khalifi
 ---

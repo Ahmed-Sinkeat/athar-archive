@@ -1,6 +1,6 @@
 ---
 title: "وقال الغزالي في فيصل التفرقة بين الإسلام والزندقة ص٢٧"
-status: draft
+status: published
 published_at: 2021-01-24
 person: abu-jafar-al-khalifi
 ---

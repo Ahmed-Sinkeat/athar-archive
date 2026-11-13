@@ -1,6 +1,6 @@
 ---
 title: "طالما أنه قد أعطانا الحلوى، إذن لا يمكن أن يكون شريراً»."
-status: draft
+status: published
 published_at: 2025-12-28
 person: awwab-bin-muhammad
 topics: ["al-firaq-war-rudud", "al-asma-was-sifat", "al-iman"]

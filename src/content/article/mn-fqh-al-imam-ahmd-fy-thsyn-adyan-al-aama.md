@@ -1,6 +1,6 @@
 ---
 title: "من فقه الإمام أحمد في تحصين أديان العامة.."
-status: draft
+status: published
 published_at: 2021-09-28
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

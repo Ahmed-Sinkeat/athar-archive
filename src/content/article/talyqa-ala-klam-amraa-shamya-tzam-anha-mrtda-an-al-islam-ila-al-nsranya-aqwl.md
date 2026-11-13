@@ -1,6 +1,6 @@
 ---
 title: "تعليقا على كلام امرأة شامية تزعم أنها مرتدة عن الإسلام إلى النصرانية أقول"
-status: draft
+status: published
 published_at: 2017-11-22
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "اذا جاءك تنويري يقول عن نفسه مسلم ثم هو يعترض على بعض الأحكام المتعلقة بالكفار ف"
-status: draft
+status: published
 published_at: 2019-02-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "#إجابات 1"
-status: draft
+status: published
 published_at: 2023-12-28
 person: abu-umair-imran-al-zubaidi
 ---

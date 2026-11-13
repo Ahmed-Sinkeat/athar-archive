@@ -1,6 +1,6 @@
 ---
 title: "وقبله تم طرد طالب بريطاني من الفصل لأنه قال أنه لا يوجد سوى جنسين فقط علميا فأجا"
-status: draft
+status: published
 published_at: 2019-06-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

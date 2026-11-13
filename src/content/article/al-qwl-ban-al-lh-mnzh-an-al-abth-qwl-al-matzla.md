@@ -1,6 +1,6 @@
 ---
 title: "القول بأن الله منزه عن العبث قول المعتزلة!"
-status: draft
+status: published
 published_at: 2022-09-05
 person: abu-jafar-al-khalifi
 ---

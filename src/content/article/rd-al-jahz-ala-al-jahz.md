@@ -1,6 +1,6 @@
 ---
 title: "رد الجاحظ على الجاحظ"
-status: draft
+status: published
 published_at: 2020-01-31
 person: abu-jafar-al-khalifi
 ---

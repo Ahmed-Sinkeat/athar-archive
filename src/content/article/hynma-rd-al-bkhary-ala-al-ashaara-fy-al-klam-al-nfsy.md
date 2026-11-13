@@ -1,6 +1,6 @@
 ---
 title: "حينما رد البخاري على الأشاعرة في الكلام النفسي"
-status: draft
+status: published
 published_at: 2022-09-24
 person: abu-jafar-al-khalifi
 ---

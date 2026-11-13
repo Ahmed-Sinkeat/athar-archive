@@ -1,6 +1,6 @@
 ---
 title: "قال الشيخ سليمان بن عبد الله بن محمد بن عبد الوهاب ’ فإن قلت"
-status: draft
+status: published
 published_at: 2017-08-12
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

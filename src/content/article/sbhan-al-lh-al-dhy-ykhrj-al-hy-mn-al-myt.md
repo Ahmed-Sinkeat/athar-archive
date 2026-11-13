@@ -1,6 +1,6 @@
 ---
 title: "سبحان الله الذي يخرج الحي من الميت"
-status: draft
+status: published
 published_at: 2026-02-14
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

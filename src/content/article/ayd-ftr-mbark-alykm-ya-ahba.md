@@ -1,6 +1,6 @@
 ---
 title: "عيد فطر مبارك عليكم يا أحبة."
-status: draft
+status: published
 published_at: 2025-03-29
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

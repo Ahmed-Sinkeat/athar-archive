@@ -1,6 +1,6 @@
 ---
 title: "في بلادنا تم إصدار قانون صارم يتعلق بحزام الأمان بحيث اذا ضبطت وأنت لا ترتديه أث"
-status: draft
+status: published
 published_at: 2017-11-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

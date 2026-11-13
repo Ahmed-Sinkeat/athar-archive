@@ -1,6 +1,6 @@
 ---
 title: "جاء في الصلة لابن بشكوال قرأت بخط أبي علي الغساني رحمه الله"
-status: draft
+status: published
 published_at: 2017-11-18
 person: abu-jafar-al-khalifi
 ---

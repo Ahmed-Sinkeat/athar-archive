@@ -1,6 +1,6 @@
 ---
 title: "بين كرسي السبئية وأضرحة الأولياء (ما أشبه الليلة بالبارحة)..."
-status: draft
+status: published
 published_at: 2024-01-16
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "\"وهذا القول منقول في كتب الأشاعرة رضوان الله عليهم\""
-status: draft
+status: published
 published_at: 2023-12-14
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لعلَّ في منع الشيخ مصطفى العدوي - هوَّن الله عليه - مِن الإفتاء صفعة شديدة تُبصّ"
-status: draft
+status: published
 published_at: 2025-06-12
 person: awwab-bin-muhammad
 ---

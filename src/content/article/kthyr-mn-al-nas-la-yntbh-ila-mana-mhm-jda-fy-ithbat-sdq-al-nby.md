@@ -1,6 +1,6 @@
 ---
 title: "كثير من الناس لا ينتبه إلى معنى مهم جدا في إثبات صدق النبي ﷺ"
-status: draft
+status: published
 published_at: 2025-01-06
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

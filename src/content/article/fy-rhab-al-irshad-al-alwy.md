@@ -1,6 +1,6 @@
 ---
 title: "في رحاب الإرشاد العلوي"
-status: draft
+status: published
 published_at: 2019-12-19
 person: abu-jafar-al-khalifi
 ---

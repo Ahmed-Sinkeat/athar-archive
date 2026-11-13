@@ -1,6 +1,6 @@
 ---
 title: "هناك جرثومة وطنية مختبئة خلف إنكار مسألة هجرة إخواننا إلى سيناء يجب الوقوف عندها"
-status: draft
+status: published
 published_at: 2023-10-20
 person: abu-umair-imran-al-zubaidi
 ---

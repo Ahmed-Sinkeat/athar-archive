@@ -1,6 +1,6 @@
 ---
 title: "هذا من أشد العبث إذ ينسب للشافعي عقائد المتكلمين الأشاعرة!"
-status: draft
+status: published
 published_at: 2023-03-26
 person: abu-jafar-al-khalifi
 ---

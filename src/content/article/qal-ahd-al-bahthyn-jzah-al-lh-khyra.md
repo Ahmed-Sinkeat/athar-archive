@@ -1,6 +1,6 @@
 ---
 title: "قال أحد الباحثين جزاه الله خيرا"
-status: draft
+status: published
 published_at: 2018-12-03
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "التفويض مذهب احتيالي"
-status: draft
+status: published
 published_at: 2020-07-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

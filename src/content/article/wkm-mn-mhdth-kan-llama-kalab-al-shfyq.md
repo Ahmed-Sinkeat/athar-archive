@@ -1,6 +1,6 @@
 ---
 title: "وكم من محدث كان للأمة كالأب الشفيق..."
-status: draft
+status: published
 published_at: 2021-09-07
 person: abu-jafar-al-khalifi
 ---

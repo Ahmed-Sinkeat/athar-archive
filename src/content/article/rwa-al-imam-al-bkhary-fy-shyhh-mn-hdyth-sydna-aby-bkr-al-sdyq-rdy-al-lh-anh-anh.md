@@ -1,6 +1,6 @@
 ---
 title: "روى الإمام البخاري في صحيحه مِن حديث سيّدنا أبي بكر الصدّيق -رضي الله عنه- أنَّه"
-status: draft
+status: published
 published_at: 2023-03-28
 person: abu-umair-imran-al-zubaidi
 ---

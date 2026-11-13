@@ -1,6 +1,6 @@
 ---
 title: "لو كان الأمر للسماء والأرض لأطبقتا علينا جزاءً بما نقترفه فبهما في حق مليكهما"
-status: draft
+status: published
 published_at: 2023-09-12
 person: abu-umair-imran-al-zubaidi
 ---

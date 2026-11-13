@@ -1,6 +1,6 @@
 ---
 title: "ما لك وما عليك من عمرك"
-status: draft
+status: published
 published_at: 2023-10-01
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

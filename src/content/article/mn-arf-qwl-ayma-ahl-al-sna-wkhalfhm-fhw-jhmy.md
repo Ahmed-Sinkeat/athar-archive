@@ -1,6 +1,6 @@
 ---
 title: "من عرف قول أئمة أهل السنة وخالفهم فهو جهمي"
-status: draft
+status: published
 published_at: 2024-05-04
 person: abu-abdillah-firas-al-ramli
 ---

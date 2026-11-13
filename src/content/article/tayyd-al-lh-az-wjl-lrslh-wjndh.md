@@ -1,6 +1,6 @@
 ---
 title: "تأييد الله عز وجل لرسله وجنده"
-status: draft
+status: published
 published_at: 2024-04-05
 person: abu-abdillah-firas-al-ramli
 ---

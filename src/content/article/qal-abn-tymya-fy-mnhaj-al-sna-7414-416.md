@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية في منهاج السنة (٧/&rlm;٤١٤ - ٤١٦)"
-status: draft
+status: published
 published_at: 2025-06-13
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

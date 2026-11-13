@@ -1,6 +1,6 @@
 ---
 title: "وبقي أن نقول أن هذا الحديث مُتكلَّم فيه وقد أعله البخاري في تاريخه وتبعه البيهقي"
-status: draft
+status: published
 published_at: 2022-05-12
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

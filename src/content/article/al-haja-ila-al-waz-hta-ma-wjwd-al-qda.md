@@ -1,6 +1,6 @@
 ---
 title: "الحاجة إلى الوعظ حتى مع وجود القضاء..."
-status: draft
+status: published
 published_at: 2024-06-19
 person: abu-jafar-al-khalifi
 ---

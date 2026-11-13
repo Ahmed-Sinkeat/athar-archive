@@ -1,6 +1,6 @@
 ---
 title: "حديث يسير جليل لا يعرفه كثير من الناس، وفيه رد على الجهمية والأشاعرة"
-status: draft
+status: published
 published_at: 2023-07-07
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

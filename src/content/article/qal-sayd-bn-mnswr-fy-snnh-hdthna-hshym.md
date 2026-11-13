@@ -1,6 +1,6 @@
 ---
 title: "قال سعيد بن منصور في سننه 532- حَدَّثَنَا هُشَيْمٌ"
-status: draft
+status: published
 published_at: 2017-06-23
 person: abu-jafar-al-khalifi
 ---

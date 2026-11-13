@@ -1,6 +1,6 @@
 ---
 title: "في منهج الكفايات اللغوية في المملكة السعودية أساطير جلد الذات غير المثبتة تدرس ل"
-status: draft
+status: published
 published_at: 2018-09-24
 person: abu-jafar-al-khalifi
 ---

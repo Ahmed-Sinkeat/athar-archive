@@ -1,6 +1,6 @@
 ---
 title: "اللهم بك أصبحنا وبك أمسينا"
-status: draft
+status: published
 published_at: 2025-10-07
 person: abu-abdillah-firas-al-ramli
 ---

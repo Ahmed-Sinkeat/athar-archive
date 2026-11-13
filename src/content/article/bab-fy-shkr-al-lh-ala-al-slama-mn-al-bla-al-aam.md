@@ -1,6 +1,6 @@
 ---
 title: "باب في شكر الله على السلامة من البلاء العام"
-status: draft
+status: published
 published_at: 2020-05-06
 person: abu-jafar-al-khalifi
 ---

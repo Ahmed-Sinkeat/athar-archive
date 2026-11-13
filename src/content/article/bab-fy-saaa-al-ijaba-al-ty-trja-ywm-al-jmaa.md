@@ -1,6 +1,6 @@
 ---
 title: "باب في ساعة الإجابة التي ترجى يوم الجمعة"
-status: draft
+status: published
 published_at: 2023-05-12
 person: abu-abdillah-firas-al-ramli
 ---

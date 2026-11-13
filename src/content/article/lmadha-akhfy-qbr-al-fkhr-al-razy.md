@@ -1,6 +1,6 @@
 ---
 title: "لماذا أخفي قبر الفخر الرازي؟"
-status: draft
+status: published
 published_at: 2022-09-07
 person: abu-jafar-al-khalifi
 ---

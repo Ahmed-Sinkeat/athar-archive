@@ -1,6 +1,6 @@
 ---
 title: "أكثر شيء مضحك في مقطع محمد صلاح هي التعليقات!"
-status: draft
+status: published
 published_at: 2023-10-19
 person: abu-umair-imran-al-zubaidi
 ---

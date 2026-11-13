@@ -1,6 +1,6 @@
 ---
 title: "تأملوا هذا الاقتباس جيّدًا"
-status: draft
+status: published
 published_at: 2023-06-01
 person: abu-umair-imran-al-zubaidi
 ---

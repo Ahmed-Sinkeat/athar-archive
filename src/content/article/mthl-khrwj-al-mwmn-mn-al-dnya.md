@@ -1,6 +1,6 @@
 ---
 title: "مثل خروج المؤمن من الدنيا"
-status: draft
+status: published
 published_at: 2024-06-30
 person: abu-abdillah-firas-al-ramli
 ---

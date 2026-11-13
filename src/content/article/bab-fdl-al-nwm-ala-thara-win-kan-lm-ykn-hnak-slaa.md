@@ -1,6 +1,6 @@
 ---
 title: "باب فضل النوم على طهارة وإن كان لم يكن هناك صلاة"
-status: draft
+status: published
 published_at: 2024-06-04
 person: abu-abdillah-firas-al-ramli
 ---

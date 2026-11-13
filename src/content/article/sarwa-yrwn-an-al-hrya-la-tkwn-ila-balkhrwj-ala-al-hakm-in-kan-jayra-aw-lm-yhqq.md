@@ -1,6 +1,6 @@
 ---
 title: "صاروا يرون أنّ الحريّة لا تكون إلّا بالخروج على الحاكم إن كان جائرًا أو لم يُحقق"
-status: draft
+status: published
 published_at: 2022-10-19
 person: abu-umair-imran-al-zubaidi
 ---

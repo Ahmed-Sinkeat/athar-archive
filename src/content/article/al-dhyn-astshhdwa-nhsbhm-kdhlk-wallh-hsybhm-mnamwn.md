@@ -1,6 +1,6 @@
 ---
 title: "الذين استشهدوا -نحسبهم كذلك والله حسيبهم- مُنعّمون"
-status: draft
+status: published
 published_at: 2023-10-13
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال صالح (ابن الإمام أحمد)"
-status: draft
+status: published
 published_at: 2024-01-21
 person: abu-umair-imran-al-zubaidi
 ---

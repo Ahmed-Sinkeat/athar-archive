@@ -1,6 +1,6 @@
 ---
 title: "في قول الرجل لأخيه ما ليس فيه"
-status: draft
+status: published
 published_at: 2025-12-08
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

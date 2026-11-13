@@ -1,6 +1,6 @@
 ---
 title: "لماذا يُجعل النموذج الغربي معياراً للنقد؟"
-status: draft
+status: published
 published_at: 2018-07-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

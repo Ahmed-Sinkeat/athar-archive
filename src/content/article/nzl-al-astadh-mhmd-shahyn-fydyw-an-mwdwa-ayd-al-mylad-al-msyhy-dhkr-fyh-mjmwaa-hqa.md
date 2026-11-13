@@ -1,6 +1,6 @@
 ---
 title: "نزل الأستاذ محمد شاهين فيديو عن موضوع عيد الميلاد ( المسيحي ) ذكر فيه مجموعة حقا"
-status: draft
+status: published
 published_at: 2018-12-16
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

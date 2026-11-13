@@ -1,6 +1,6 @@
 ---
 title: "اعتراف هام لعلموي متعصب"
-status: draft
+status: published
 published_at: 2020-10-22
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

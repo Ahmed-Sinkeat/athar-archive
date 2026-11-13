@@ -1,6 +1,6 @@
 ---
 title: "أقسم بالله العلي العظيم اليوم اليوم في مقر إشهار الإسلام التقينا ببنت كانت مسيحي"
-status: draft
+status: published
 published_at: 2019-06-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

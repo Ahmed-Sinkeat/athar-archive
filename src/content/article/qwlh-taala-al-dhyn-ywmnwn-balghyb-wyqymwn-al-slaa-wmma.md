@@ -1,6 +1,6 @@
 ---
 title: "قوله تعالى ( الَّذِينَ يُؤْمِنُونَ بِالْغَيْبِ وَيُقِيمُونَ الصَّلَاةَ وَمِمَّا"
-status: draft
+status: published
 published_at: 2019-04-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

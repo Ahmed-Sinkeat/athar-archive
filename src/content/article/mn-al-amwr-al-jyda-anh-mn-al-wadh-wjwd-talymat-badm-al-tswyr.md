@@ -1,6 +1,6 @@
 ---
 title: "من الأمور الجيدة أنه من الواضح وجود تعليمات بعدم التصوير."
-status: draft
+status: published
 published_at: 2026-01-08
 person: abu-umair-imran-al-zubaidi
 ---

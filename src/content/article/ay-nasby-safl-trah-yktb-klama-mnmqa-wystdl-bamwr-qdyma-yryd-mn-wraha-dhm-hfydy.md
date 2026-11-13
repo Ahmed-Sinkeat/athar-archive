@@ -1,6 +1,6 @@
 ---
 title: "أي ناصبي سافل تراه يكتب كلامًا منمقًا ويستدل بأمور قديمة يريد من وراءها ذم حفيدي"
-status: draft
+status: published
 published_at: 2023-12-21
 person: abu-umair-imran-al-zubaidi
 ---

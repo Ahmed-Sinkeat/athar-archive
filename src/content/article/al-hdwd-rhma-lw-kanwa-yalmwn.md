@@ -1,6 +1,6 @@
 ---
 title: "الحدود رحمة لو كانوا يعلمون.."
-status: draft
+status: published
 published_at: 2022-04-02
 person: abu-jafar-al-khalifi
 ---

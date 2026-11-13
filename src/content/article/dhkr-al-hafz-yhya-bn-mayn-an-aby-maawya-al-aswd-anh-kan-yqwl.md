@@ -1,6 +1,6 @@
 ---
 title: "ذكر الحافظ يحيى بن معين عن أبي معاوية الأسود أنه كان يقول"
-status: draft
+status: published
 published_at: 2017-10-31
 person: abu-jafar-al-khalifi
 ---

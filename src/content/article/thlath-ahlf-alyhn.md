@@ -1,6 +1,6 @@
 ---
 title: "ثلاث أحلف عليهن"
-status: draft
+status: published
 published_at: 2026-05-02
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

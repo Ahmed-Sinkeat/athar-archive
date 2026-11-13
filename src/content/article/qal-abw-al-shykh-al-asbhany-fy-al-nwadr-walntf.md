@@ -1,6 +1,6 @@
 ---
 title: "قال أبو الشيخ الأصبهاني في النوادر والنتف"
-status: draft
+status: published
 published_at: 2019-05-10
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

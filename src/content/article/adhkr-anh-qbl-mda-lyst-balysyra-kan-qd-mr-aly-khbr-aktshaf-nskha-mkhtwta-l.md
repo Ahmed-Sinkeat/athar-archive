@@ -1,6 +1,6 @@
 ---
 title: "أذكر أنَّه قبل مدة - ليست باليسِيرة - كان قد مرَّ علي خبر اكتِشاف نسخةٍ مخطوطة ل"
-status: draft
+status: published
 published_at: 2025-04-26
 person: awwab-bin-muhammad
 topics: ["adab-talab-al-ilm"]

@@ -1,6 +1,6 @@
 ---
 title: "لماذا لا يقتصُّ الله للمؤمنين من الكفار في الدنيا عاجلًا وفي كل حال؟"
-status: draft
+status: published
 published_at: 2020-10-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

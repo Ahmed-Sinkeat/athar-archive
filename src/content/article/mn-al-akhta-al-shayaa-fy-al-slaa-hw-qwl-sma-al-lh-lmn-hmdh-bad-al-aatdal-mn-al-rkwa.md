@@ -1,6 +1,6 @@
 ---
 title: "من الأخطاء الشائعة في الصلاة هو قول \"سمع الله لمن حمده\" بعد الاعتدال من الركوع"
-status: draft
+status: published
 published_at: 2024-08-16
 person: abu-umair-imran-al-zubaidi
 ---

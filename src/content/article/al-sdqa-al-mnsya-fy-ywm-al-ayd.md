@@ -1,6 +1,6 @@
 ---
 title: "الصدقة المنسية في يوم العيد."
-status: draft
+status: published
 published_at: 2023-04-21
 person: abu-jafar-al-khalifi
 ---

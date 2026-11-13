@@ -1,6 +1,6 @@
 ---
 title: "القياس على خبر الواحد دون خبر الاثنين بين لهم قوة خبر الواحد عندنا وعندهم حتى أن"
-status: draft
+status: published
 published_at: 2018-05-07
 person: abu-jafar-al-khalifi
 ---

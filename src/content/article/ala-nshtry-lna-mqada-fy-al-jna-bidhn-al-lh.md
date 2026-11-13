@@ -1,6 +1,6 @@
 ---
 title: "ألا نشتري لنا مقعدًا في الجنّة بإذن الله؟!."
-status: draft
+status: published
 published_at: 2023-01-16
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

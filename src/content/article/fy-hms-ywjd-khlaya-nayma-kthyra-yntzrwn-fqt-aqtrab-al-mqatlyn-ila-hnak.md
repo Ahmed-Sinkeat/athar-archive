@@ -1,6 +1,6 @@
 ---
 title: "في حمص، يوجد خلايا نائمة كثيرة، ينتظرون فقط اقتراب المقاتلين إلى هناك."
-status: draft
+status: published
 published_at: 2024-11-30
 person: abu-umair-imran-al-zubaidi
 ---

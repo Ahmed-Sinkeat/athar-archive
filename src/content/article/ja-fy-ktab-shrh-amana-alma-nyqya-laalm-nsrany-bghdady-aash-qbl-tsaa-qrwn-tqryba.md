@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب شرح أمانة علماء نيقية لعالم نصراني بغدادي عاش قبل تسعة قرون تقريباً"
-status: draft
+status: published
 published_at: 2018-06-06
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-wala-wal-bara"]

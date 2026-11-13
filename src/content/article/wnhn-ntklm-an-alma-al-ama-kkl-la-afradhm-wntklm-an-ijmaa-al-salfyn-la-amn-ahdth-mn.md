@@ -1,6 +1,6 @@
 ---
 title: "ونحن نتكلم عن علماء الأمة ككل لا أفرادهم ونتكلم عن إجماع السالفين لا عمن أحدث من"
-status: draft
+status: published
 published_at: 2017-11-06
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

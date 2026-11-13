@@ -1,6 +1,6 @@
 ---
 title: "قال أبو عُبَيد"
-status: draft
+status: published
 published_at: 2025-10-11
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "كل شيء جميل في التيلجرام سوى نقطتين"
-status: draft
+status: published
 published_at: 2024-01-14
 person: abu-umair-imran-al-zubaidi
 ---

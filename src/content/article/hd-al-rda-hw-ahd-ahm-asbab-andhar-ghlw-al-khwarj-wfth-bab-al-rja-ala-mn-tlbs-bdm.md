@@ -1,6 +1,6 @@
 ---
 title: "حد الردة هو أحد أهم أسباب اندحار غلو الخوارج وفتح باب الرجاء على من تلبس بدم."
-status: draft
+status: published
 published_at: 2019-02-06
 person: abu-jafar-al-khalifi
 ---

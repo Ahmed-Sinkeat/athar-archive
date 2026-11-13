@@ -1,6 +1,6 @@
 ---
 title: "مِن الأمور الّتي يستعملها الجهميّة الأشعريّة وأشباههم في التشغيب على مسألة العلو"
-status: draft
+status: published
 published_at: 2023-04-27
 person: abu-umair-imran-al-zubaidi
 ---

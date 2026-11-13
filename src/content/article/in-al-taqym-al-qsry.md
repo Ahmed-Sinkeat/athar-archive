@@ -1,6 +1,6 @@
 ---
 title: "إن التعقيم القسري"
-status: draft
+status: published
 published_at: 2018-12-30
 person: abu-jafar-al-khalifi
 ---

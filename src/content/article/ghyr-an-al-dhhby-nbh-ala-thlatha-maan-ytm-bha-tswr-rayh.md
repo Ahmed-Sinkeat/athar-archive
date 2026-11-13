@@ -1,6 +1,6 @@
 ---
 title: "غير أن الذهبي نبَّه على ثلاثة معانٍ يتم بها تصوُّر رأيه"
-status: draft
+status: published
 published_at: 2021-12-24
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

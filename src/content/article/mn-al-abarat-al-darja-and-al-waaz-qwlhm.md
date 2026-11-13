@@ -1,6 +1,6 @@
 ---
 title: "من العبارات الدارجة عند الوعاظ قولهم"
-status: draft
+status: published
 published_at: 2026-11-07
 person: abu-jafar-al-khalifi
 ---

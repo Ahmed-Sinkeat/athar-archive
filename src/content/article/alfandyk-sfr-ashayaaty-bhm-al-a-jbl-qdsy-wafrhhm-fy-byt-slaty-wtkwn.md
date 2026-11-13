@@ -1,6 +1,6 @@
 ---
 title: "(الفانديك)( سفر اشعياء)(Is-56-7)(آتي بهم الى جبل قدسي وأفرحهم في بيت صلاتي وتكون"
-status: draft
+status: published
 published_at: 2018-01-22
 person: abu-jafar-al-khalifi
 ---

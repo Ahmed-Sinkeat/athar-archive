@@ -1,6 +1,6 @@
 ---
 title: "تثبيت السنة من طعونات الجهمية في الإمام مالك بن أنس.."
-status: draft
+status: published
 published_at: 2022-03-22
 person: abu-jafar-al-khalifi
 ---

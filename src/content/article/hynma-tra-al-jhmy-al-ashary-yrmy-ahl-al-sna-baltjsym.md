@@ -1,6 +1,6 @@
 ---
 title: "حينما ترى الجهمي الأشعري يرمي أهل السنة بالتجسيم"
-status: draft
+status: published
 published_at: 2026-05-29
 person: abu-umair-imran-al-zubaidi
 ---

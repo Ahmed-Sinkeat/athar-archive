@@ -1,6 +1,6 @@
 ---
 title: "عالم الغيب يريد الغيب (مبحث الإخلاص وعلاقته بإثبات النبوة والرد على المرجئة)"
-status: draft
+status: published
 published_at: 2024-05-28
 person: abu-jafar-al-khalifi
 ---

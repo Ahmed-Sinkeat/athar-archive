@@ -1,6 +1,6 @@
 ---
 title: "بين حدوث الأعيان وحلول الحوادث (ما جهله المتكلمون من بيان القرآن العظيم)."
-status: draft
+status: published
 published_at: 2022-12-29
 person: abu-jafar-al-khalifi
 ---

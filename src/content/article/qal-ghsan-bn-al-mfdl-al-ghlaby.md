@@ -1,6 +1,6 @@
 ---
 title: "قال غسان بن المفضل الغلابي"
-status: draft
+status: published
 published_at: 2018-04-14
 person: abu-jafar-al-khalifi
 ---

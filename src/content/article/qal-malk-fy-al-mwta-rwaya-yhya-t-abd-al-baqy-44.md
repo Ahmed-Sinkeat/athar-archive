@@ -1,6 +1,6 @@
 ---
 title: "قال مالك في الموطأ رواية يحيى ت عبد الباقي (٤٤)"
-status: draft
+status: published
 published_at: 2024-03-14
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

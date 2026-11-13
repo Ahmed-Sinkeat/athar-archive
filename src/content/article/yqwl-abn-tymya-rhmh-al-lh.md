@@ -1,6 +1,6 @@
 ---
 title: "يقول ابن تيمية رحمه الله"
-status: draft
+status: published
 published_at: 2018-01-24
 person: abu-jafar-al-khalifi
 ---

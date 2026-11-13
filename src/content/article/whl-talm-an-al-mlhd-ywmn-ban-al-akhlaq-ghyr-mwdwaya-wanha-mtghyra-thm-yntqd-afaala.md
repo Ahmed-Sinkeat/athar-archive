@@ -1,6 +1,6 @@
 ---
 title: "7-وهل تعلم أن الملحد يؤمن بأن الأخلاق غير موضوعية وأنها متغيرة ثم ينتقد أفعالاً"
-status: draft
+status: published
 published_at: 2017-10-01
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

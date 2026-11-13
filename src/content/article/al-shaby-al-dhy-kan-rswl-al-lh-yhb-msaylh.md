@@ -1,6 +1,6 @@
 ---
 title: "الصحابي الذي كان رسول الله ﷺ يحب مسائله"
-status: draft
+status: published
 published_at: 2023-06-03
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

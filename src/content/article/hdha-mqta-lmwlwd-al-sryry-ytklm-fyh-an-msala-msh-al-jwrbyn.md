@@ -1,6 +1,6 @@
 ---
 title: "هذا مقطع لمولود السريري يتكلم فيه عن مسألة مسح الجوربين."
-status: draft
+status: published
 published_at: 2022-08-22
 person: abu-jafar-al-khalifi
 ---

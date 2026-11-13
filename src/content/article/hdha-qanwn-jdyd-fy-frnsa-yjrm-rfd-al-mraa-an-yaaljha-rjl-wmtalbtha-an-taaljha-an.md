@@ -1,6 +1,6 @@
 ---
 title: "هذا قانون جديد في فرنسا يجرِّم رفض المرأة أن يعالجها رجل ومطالبتها أن تعالجها أن"
-status: draft
+status: published
 published_at: 2020-11-06
 person: abu-jafar-al-khalifi
 ---

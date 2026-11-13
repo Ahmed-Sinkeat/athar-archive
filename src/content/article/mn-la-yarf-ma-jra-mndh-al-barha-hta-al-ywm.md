@@ -1,6 +1,6 @@
 ---
 title: "من لا يعرف ما جرى منذ البارحة حتى اليوم"
-status: draft
+status: published
 published_at: 2025-03-07
 person: abu-umair-imran-al-zubaidi
 ---

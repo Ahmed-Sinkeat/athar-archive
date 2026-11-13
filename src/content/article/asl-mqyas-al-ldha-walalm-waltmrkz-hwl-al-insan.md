@@ -1,6 +1,6 @@
 ---
 title: "أصل مقياس اللذة والألم والتمركز حول الإنسان .."
-status: draft
+status: published
 published_at: 2020-07-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

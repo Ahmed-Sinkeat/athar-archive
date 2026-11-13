@@ -1,6 +1,6 @@
 ---
 title: "الجمع بين اللذة والشفاء (الجامع بين العسل والعلم الشرعي)."
-status: draft
+status: published
 published_at: 2023-07-07
 person: abu-jafar-al-khalifi
 ---

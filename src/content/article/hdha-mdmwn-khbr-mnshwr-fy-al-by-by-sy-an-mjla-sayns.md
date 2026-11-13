@@ -1,6 +1,6 @@
 ---
 title: "هذا مضمون خبر منشور في البي بي سي عن مجلة ساينس"
-status: draft
+status: published
 published_at: 2018-04-04
 person: abu-jafar-al-khalifi
 ---

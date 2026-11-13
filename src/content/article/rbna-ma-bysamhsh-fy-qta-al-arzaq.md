@@ -1,6 +1,6 @@
 ---
 title: "(ربنا ما بيسامحش في قطع الأرزاق)"
-status: draft
+status: published
 published_at: 2022-06-29
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "قال الرافعي في كلمة وكليمة"
-status: draft
+status: published
 published_at: 2018-02-06
 person: abu-jafar-al-khalifi
 ---

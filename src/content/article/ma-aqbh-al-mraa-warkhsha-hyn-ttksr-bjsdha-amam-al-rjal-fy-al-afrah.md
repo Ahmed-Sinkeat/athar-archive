@@ -1,6 +1,6 @@
 ---
 title: "ما أقبح المرأة وأرخصها حين تتكسّر بجسدها أمام الرجال في الأفراح!."
-status: draft
+status: published
 published_at: 2023-06-23
 person: abu-umair-imran-al-zubaidi
 ---

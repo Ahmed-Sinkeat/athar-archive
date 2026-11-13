@@ -1,6 +1,6 @@
 ---
 title: "وأما الشطر الثاني من العقيدة ( ولا نار )"
-status: draft
+status: published
 published_at: 2020-08-01
 person: abu-jafar-al-khalifi
 ---

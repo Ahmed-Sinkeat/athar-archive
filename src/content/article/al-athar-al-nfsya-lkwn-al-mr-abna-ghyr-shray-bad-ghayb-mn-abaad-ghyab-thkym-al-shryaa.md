@@ -1,6 +1,6 @@
 ---
 title: "الآثار النفسية لكون المرء ابنًا غير شرعي (بُعدٌ غائب من أبعاد غياب تحكيم الشريعة"
-status: draft
+status: published
 published_at: 2023-05-18
 person: abu-jafar-al-khalifi
 ---

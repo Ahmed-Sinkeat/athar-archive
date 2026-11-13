@@ -1,6 +1,6 @@
 ---
 title: "قال ابن جعدوية"
-status: draft
+status: published
 published_at: 2019-01-30
 person: abu-jafar-al-khalifi
 ---

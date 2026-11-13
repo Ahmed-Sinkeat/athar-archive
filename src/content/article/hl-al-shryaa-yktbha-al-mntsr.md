@@ -1,6 +1,6 @@
 ---
 title: "هل الشريعة يكتبها المنتصر ؟"
-status: draft
+status: published
 published_at: 2017-09-04
 person: abu-jafar-al-khalifi
 ---

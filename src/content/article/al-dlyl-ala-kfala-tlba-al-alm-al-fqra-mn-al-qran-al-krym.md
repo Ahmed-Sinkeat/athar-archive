@@ -1,6 +1,6 @@
 ---
 title: "الدليل على كفالة طلبة العلم الفقراء من القرآن الكريم.."
-status: draft
+status: published
 published_at: 2022-02-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

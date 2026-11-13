@@ -1,6 +1,6 @@
 ---
 title: "قال التابعيّ الجليل ميمون بن مهران رضي الله عنه (ت 117 هـ)"
-status: draft
+status: published
 published_at: 2023-01-17
 person: abu-umair-imran-al-zubaidi
 ---

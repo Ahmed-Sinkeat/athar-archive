@@ -1,6 +1,6 @@
 ---
 title: "فلسفة التقسيط والهوس الاستهلاكي."
-status: draft
+status: published
 published_at: 2021-03-18
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

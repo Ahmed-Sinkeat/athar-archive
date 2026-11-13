@@ -1,6 +1,6 @@
 ---
 title: "حقارة الشيطان يوم عرفة"
-status: draft
+status: published
 published_at: 2023-06-27
 person: abu-abdillah-firas-al-ramli
 ---

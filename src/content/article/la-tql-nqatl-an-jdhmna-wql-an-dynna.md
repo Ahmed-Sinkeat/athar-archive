@@ -1,6 +1,6 @@
 ---
 title: "لا تقل نقاتل عن جِذمنا وقل عن ديننا"
-status: draft
+status: published
 published_at: 2025-10-01
 person: abu-abdillah-firas-al-ramli
 ---

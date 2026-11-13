@@ -1,6 +1,6 @@
 ---
 title: "عندي شعور تجاه طائفة من الناس ليست بالقليلة وكأنّ عندهم زهد عجيب غريب في منازل ا"
-status: draft
+status: published
 published_at: 2025-11-25
 person: abu-umair-imran-al-zubaidi
 ---

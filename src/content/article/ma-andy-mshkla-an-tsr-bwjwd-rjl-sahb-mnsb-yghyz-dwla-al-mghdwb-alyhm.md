@@ -1,6 +1,6 @@
 ---
 title: "ما عندي مشكلة أن تُسر بوجود رجل صاحب منصب يغيظ دولة المغضوب عليهم"
-status: draft
+status: published
 published_at: 2025-11-05
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

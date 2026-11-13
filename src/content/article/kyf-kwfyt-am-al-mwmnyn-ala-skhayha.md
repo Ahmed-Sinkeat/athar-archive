@@ -1,6 +1,6 @@
 ---
 title: "كيف كوفئت أم المؤمنين على سخائها؟"
-status: draft
+status: published
 published_at: 2024-03-30
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

@@ -1,6 +1,6 @@
 ---
 title: "أكثر ما أزعجني البارحة في قصة هلاك ذلك اللاعب البرتغالي هو منشورات تجار القضية"
-status: draft
+status: published
 published_at: 2025-07-04
 person: abu-umair-imran-al-zubaidi
 ---

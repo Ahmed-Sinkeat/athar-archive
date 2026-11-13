@@ -1,6 +1,6 @@
 ---
 title: "بول بوت لا يمثل الإلحاد ولكن البحث لم يقف هاهنا!"
-status: draft
+status: published
 published_at: 2026-08-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

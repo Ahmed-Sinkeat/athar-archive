@@ -1,6 +1,6 @@
 ---
 title: "يصل المرء إلى درجة من العجز وانسداد الأبواب في وجهه من كل وجه إلى أن تخرج من صدر"
-status: draft
+status: published
 published_at: 2023-09-23
 person: abu-umair-imran-al-zubaidi
 ---

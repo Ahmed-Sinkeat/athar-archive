@@ -1,6 +1,6 @@
 ---
 title: "{عَسَى أَنْ يَبْعَثَكَ رَبُّكَ مَقَامًا مَحْمُودًا} الإسراء 79."
-status: draft
+status: published
 published_at: 2023-03-21
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

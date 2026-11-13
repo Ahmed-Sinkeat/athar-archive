@@ -1,6 +1,6 @@
 ---
 title: "إبراهيم الدسوقي المذكور هنا إذا رجعت إلى تراجمه القديمة ستجد معلومة متكررة."
-status: draft
+status: published
 published_at: 2023-06-13
 person: abu-jafar-al-khalifi
 ---

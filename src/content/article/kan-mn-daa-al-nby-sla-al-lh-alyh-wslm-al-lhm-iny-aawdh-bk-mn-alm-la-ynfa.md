@@ -1,6 +1,6 @@
 ---
 title: "كان من دعاء النبي صلى الله عليه وسلم : اللهم إني أعوذ بك من علم لا ينفع ."
-status: draft
+status: published
 published_at: 2018-09-07
 person: abu-jafar-al-khalifi
 ---

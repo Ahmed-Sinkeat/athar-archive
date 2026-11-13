@@ -1,6 +1,6 @@
 ---
 title: "هذا أمر أكتبه مواساة لنفسي لأمر ألم والله المستعان"
-status: draft
+status: published
 published_at: 2019-05-10
 person: abu-jafar-al-khalifi
 ---

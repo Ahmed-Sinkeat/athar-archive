@@ -1,6 +1,6 @@
 ---
 title: "إن تأملت في هذا علمت مدى التطفيف الذي يفعله بعضهم حين يصوِّر أهل السنة على أنهم"
-status: draft
+status: published
 published_at: 2021-11-14
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

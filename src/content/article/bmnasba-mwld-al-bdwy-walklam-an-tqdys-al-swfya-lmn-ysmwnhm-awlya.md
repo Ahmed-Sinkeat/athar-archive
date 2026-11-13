@@ -1,6 +1,6 @@
 ---
 title: "بمناسبة مولد البدوي والكلام عن تقديس الصوفية لمن يسمونهم أولياء"
-status: draft
+status: published
 published_at: 2025-10-22
 person: abu-jafar-al-khalifi
 ---

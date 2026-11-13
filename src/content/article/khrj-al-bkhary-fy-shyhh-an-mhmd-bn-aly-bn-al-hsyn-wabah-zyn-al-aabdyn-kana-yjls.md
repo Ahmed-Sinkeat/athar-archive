@@ -1,6 +1,6 @@
 ---
 title: "خرج البخاري في صحيحه أن محمد بن علي بن الحسين - وأباه - زين العابدين - كانا يجلس"
-status: draft
+status: published
 published_at: 2017-11-12
 person: abu-jafar-al-khalifi
 ---

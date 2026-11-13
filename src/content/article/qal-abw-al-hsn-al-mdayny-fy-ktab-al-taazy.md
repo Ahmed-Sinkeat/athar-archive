@@ -1,6 +1,6 @@
 ---
 title: "قال أبو الحسن المدائني في كتاب التعازي"
-status: draft
+status: published
 published_at: 2019-01-01
 person: abu-jafar-al-khalifi
 ---

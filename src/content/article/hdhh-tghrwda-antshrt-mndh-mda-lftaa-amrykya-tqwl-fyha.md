@@ -1,6 +1,6 @@
 ---
 title: "هذه تغرودة انتشرت منذ مدة لفتاة أمريكية تقول فيها"
-status: draft
+status: published
 published_at: 2019-11-01
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ومن الطرائف صاحب كتاب \"أحسن التقاسيم في معرفة الأقاليم\" أنه يرمي الحنابلة بالتشب"
-status: draft
+status: published
 published_at: 2021-09-24
 person: abu-jafar-al-khalifi
 ---

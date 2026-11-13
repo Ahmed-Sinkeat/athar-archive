@@ -1,6 +1,6 @@
 ---
 title: "لهذا أعيد وأنبه"
-status: draft
+status: published
 published_at: 2024-12-02
 person: abu-umair-imran-al-zubaidi
 ---

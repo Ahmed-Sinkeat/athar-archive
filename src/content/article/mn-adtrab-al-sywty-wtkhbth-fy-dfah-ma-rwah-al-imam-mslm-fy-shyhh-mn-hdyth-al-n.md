@@ -1,6 +1,6 @@
 ---
 title: "مِن اضطِّراب السيوطي وتخبُّطه في دفعِه ما رواه الإمام مسلم في صحيحه مِن حديث الن"
-status: draft
+status: published
 published_at: 2026-02-14
 person: awwab-bin-muhammad
 ---

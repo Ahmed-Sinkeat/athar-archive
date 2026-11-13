@@ -1,6 +1,6 @@
 ---
 title: "كأنهم من الفقه أنبياء"
-status: draft
+status: published
 published_at: 2025-08-24
 person: abu-abdillah-firas-al-ramli
 ---

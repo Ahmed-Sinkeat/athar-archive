@@ -1,6 +1,6 @@
 ---
 title: "من حِكم عدم إجابة الدعاء"
-status: draft
+status: published
 published_at: 2024-08-27
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

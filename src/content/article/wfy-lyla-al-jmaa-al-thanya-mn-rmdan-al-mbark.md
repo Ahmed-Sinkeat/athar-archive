@@ -1,6 +1,6 @@
 ---
 title: "وفي ليلة الجمعة الثانية من رمضان المبارك."
-status: draft
+status: published
 published_at: 2025-03-13
 person: abu-umair-imran-al-zubaidi
 ---

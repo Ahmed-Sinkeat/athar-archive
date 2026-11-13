@@ -1,6 +1,6 @@
 ---
 title: "سطح ثم ميع"
-status: draft
+status: published
 published_at: 2020-02-20
 person: abu-jafar-al-khalifi
 ---

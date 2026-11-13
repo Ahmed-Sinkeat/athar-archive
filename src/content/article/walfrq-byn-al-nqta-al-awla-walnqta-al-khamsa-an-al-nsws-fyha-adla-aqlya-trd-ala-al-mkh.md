@@ -1,6 +1,6 @@
 ---
 title: "والفرق بين النقطة الأولى والنقطة الخامسة أَن النصوص فيها أدلة عقلية ترد على المخ"
-status: draft
+status: published
 published_at: 2020-04-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

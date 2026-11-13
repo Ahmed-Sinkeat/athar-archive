@@ -1,6 +1,6 @@
 ---
 title: "وروى أبو داود في سننه عن أبي هريرة رضي الله عنه أنه تلا قوله تعالى"
-status: draft
+status: published
 published_at: 2023-08-12
 person: abu-umair-imran-al-zubaidi
 ---

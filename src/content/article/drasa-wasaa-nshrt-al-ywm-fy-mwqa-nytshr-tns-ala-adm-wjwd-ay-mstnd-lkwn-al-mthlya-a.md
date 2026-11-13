@@ -1,6 +1,6 @@
 ---
 title: "دراسة واسعة نُشرت اليوم في موقع (نيتشر) تنص على عدم وجود أي مستند لكون المثلية ا"
-status: draft
+status: published
 published_at: 2019-08-29
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

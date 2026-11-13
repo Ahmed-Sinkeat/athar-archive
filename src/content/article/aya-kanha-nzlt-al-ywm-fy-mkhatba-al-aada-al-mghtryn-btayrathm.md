@@ -1,6 +1,6 @@
 ---
 title: "آية كأنها نزلت اليوم في مخاطبة الأعداء المغترين بطائراتهم..."
-status: draft
+status: published
 published_at: 2023-11-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

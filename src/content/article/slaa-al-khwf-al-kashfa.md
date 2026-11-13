@@ -1,6 +1,6 @@
 ---
 title: "صلاة الخوف الكاشفة !"
-status: draft
+status: published
 published_at: 2019-06-22
 person: abu-jafar-al-khalifi
 ---

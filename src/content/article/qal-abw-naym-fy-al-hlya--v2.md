@@ -1,6 +1,6 @@
 ---
 title: "قال أبو نعيم في الحلية (5/210)"
-status: draft
+status: published
 published_at: 2017-09-21
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

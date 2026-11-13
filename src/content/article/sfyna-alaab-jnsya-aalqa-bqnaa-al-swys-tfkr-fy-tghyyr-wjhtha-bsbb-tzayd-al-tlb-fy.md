@@ -1,6 +1,6 @@
 ---
 title: "سفينة ألعاب جنسية عالقة بقناة السويس تفكِّر في تغيير وجهتها بسبب تزايد الطلب في"
-status: draft
+status: published
 published_at: 2021-03-29
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من جديد : التحامل غير المبرر على الأمويين."
-status: draft
+status: published
 published_at: 2020-07-11
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

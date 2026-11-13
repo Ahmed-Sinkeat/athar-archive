@@ -1,6 +1,6 @@
 ---
 title: "قال ابن قدامة المقدسي في المغني وهو يتكلم عن شهادة العبيد"
-status: draft
+status: published
 published_at: 2017-10-22
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هناك أمر عليك أن تفهمه جيدًا حتى تدرك الفرق بين زلة العالم وزندقة العالم في باب"
-status: draft
+status: published
 published_at: 2023-10-10
 person: abu-umair-imran-al-zubaidi
 ---

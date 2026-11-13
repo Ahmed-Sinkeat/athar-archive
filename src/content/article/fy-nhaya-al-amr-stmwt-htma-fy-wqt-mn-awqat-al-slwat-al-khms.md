@@ -1,6 +1,6 @@
 ---
 title: "في نهاية الأمر، ستموت حتمًا في وقتٍ من أوقات الصلوات الخمس!."
-status: draft
+status: published
 published_at: 2023-07-16
 person: abu-umair-imran-al-zubaidi
 ---

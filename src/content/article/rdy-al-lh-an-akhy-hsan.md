@@ -1,6 +1,6 @@
 ---
 title: "رضي الله عن أخي حسان"
-status: draft
+status: published
 published_at: 2024-01-21
 person: abu-umair-imran-al-zubaidi
 ---

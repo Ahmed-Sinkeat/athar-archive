@@ -1,6 +1,6 @@
 ---
 title: "جاء في ذيل طبقات الحنابلة"
-status: draft
+status: published
 published_at: 2017-07-04
 person: abu-jafar-al-khalifi
 ---

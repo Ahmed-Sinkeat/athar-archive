@@ -1,6 +1,6 @@
 ---
 title: "الترجيح بين المصالح الكلية العامة ومصلحة الأفراد وأثره في نقض الشبهات وبيان الحا"
-status: draft
+status: published
 published_at: 2022-03-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

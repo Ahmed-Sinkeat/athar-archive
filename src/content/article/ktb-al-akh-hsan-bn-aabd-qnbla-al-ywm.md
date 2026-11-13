@@ -1,6 +1,6 @@
 ---
 title: "كتب الأخ حسان بن عابد : قنبلة اليوم :)"
-status: draft
+status: published
 published_at: 2018-07-13
 person: abu-jafar-al-khalifi
 ---

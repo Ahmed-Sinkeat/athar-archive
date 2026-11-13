@@ -1,6 +1,6 @@
 ---
 title: "أنت عمي، والله عز وجل ربي.."
-status: draft
+status: published
 published_at: 2022-05-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

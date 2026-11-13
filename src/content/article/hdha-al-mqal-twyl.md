@@ -1,6 +1,6 @@
 ---
 title: "هذا المقال طويل"
-status: draft
+status: published
 published_at: 2023-07-30
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

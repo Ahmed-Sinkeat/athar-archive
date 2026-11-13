@@ -1,6 +1,6 @@
 ---
 title: "باب ما جاء في توقيرهم للعالم كتوقير الوالي العادل..."
-status: draft
+status: published
 published_at: 2025-11-14
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

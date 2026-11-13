@@ -1,6 +1,6 @@
 ---
 title: "تعليق على المنشور المشار إليه أعلاه"
-status: draft
+status: published
 published_at: 2020-11-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-sunnah-wal-bidah"]

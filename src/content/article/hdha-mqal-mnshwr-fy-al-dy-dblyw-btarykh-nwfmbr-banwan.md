@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال منشور في الدي دبليو بتاريخ 18 نوفمبر 2023 بعنوان"
-status: draft
+status: published
 published_at: 2023-11-29
 person: abu-jafar-al-khalifi
 ---

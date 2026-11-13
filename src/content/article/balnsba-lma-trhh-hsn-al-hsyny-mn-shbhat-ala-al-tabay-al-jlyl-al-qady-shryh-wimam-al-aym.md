@@ -1,6 +1,6 @@
 ---
 title: "بالنسبة لما طرحه حسن الحسيني من شبهات على التابعي الجليل القاضي شريح وإمام الأئم"
-status: draft
+status: published
 published_at: 2023-07-26
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

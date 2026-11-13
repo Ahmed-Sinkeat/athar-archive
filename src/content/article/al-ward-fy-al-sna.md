@@ -1,6 +1,6 @@
 ---
 title: "الوارد في السنة"
-status: draft
+status: published
 published_at: 2022-05-30
 person: abu-jafar-al-khalifi
 ---

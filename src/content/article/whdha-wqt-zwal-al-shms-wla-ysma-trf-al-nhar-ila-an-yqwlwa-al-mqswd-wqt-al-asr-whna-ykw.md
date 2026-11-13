@@ -1,6 +1,6 @@
 ---
 title: "وهذا وقت زوال الشمس ولا يسمى طرف النهار إلا ان يقولوا المقصود وقت العصر وهنا يكو"
-status: draft
+status: published
 published_at: 2019-06-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

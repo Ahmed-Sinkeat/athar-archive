@@ -1,6 +1,6 @@
 ---
 title: "وتقول إن حجم العينة الأكبر قد يساعد في تحديد تلك المتغيرات المفقودة"
-status: draft
+status: published
 published_at: 2019-08-29
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

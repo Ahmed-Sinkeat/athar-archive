@@ -1,6 +1,6 @@
 ---
 title: "هذا لقاء بالانجليزية مع أخ اسمه دانيال حقيقتجو"
-status: draft
+status: published
 published_at: 2019-08-18
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

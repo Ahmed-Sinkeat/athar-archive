@@ -1,6 +1,6 @@
 ---
 title: "أخونا إبراهيم رحمه الله توفي قبل سنة ونصف في غزة نسأل الله أن يتقبله من الشهداء."
-status: draft
+status: published
 published_at: 2025-07-22
 person: abu-umair-imran-al-zubaidi
 ---

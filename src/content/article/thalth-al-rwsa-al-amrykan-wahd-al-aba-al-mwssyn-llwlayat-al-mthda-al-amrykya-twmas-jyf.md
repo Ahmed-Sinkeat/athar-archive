@@ -1,6 +1,6 @@
 ---
 title: "ثالث الرؤساء الأمريكان وأحد الآباء المؤسسين للولايات المتحدة الأمريكية توماس جيف"
-status: draft
+status: published
 published_at: 2018-03-30
 person: abu-jafar-al-khalifi
 ---

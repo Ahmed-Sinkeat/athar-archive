@@ -1,6 +1,6 @@
 ---
 title: "في نيويورك يوجد تمثال لجراح امريكي ابيض كان يشتري النساء الافريقيات كعبيد ليقوم"
-status: draft
+status: published
 published_at: 2017-08-20
 person: abu-jafar-al-khalifi
 ---

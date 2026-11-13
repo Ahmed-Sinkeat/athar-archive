@@ -1,6 +1,6 @@
 ---
 title: "لا تصدق عدوك الشيطان !"
-status: draft
+status: published
 published_at: 2020-05-06
 person: abu-jafar-al-khalifi
 ---

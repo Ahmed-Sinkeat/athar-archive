@@ -1,6 +1,6 @@
 ---
 title: "أَوَلَا يَرَوْنَ أَنَّهُمْ يُفْتَنُونَ فِي كُلِّ عَامٍ مَّرَّةً أَوْ مَرَّتَيْنِ"
-status: draft
+status: published
 published_at: 2024-03-14
 person: abu-umair-imran-al-zubaidi
 ---

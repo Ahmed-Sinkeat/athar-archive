@@ -1,6 +1,6 @@
 ---
 title: "رحمة الله على حمزة الخطيب، منذ البارحة وهو على بالي."
-status: draft
+status: published
 published_at: 2023-11-02
 person: abu-umair-imran-al-zubaidi
 ---

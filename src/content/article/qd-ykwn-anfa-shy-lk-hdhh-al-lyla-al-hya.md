@@ -1,6 +1,6 @@
 ---
 title: "قد يكون أنفع شيء لك هذه الليلة الحياء..."
-status: draft
+status: published
 published_at: 2025-03-26
 person: abu-jafar-al-khalifi
 ---

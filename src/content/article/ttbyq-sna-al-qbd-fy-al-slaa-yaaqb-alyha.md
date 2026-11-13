@@ -1,6 +1,6 @@
 ---
 title: "تطبيق سنة القبض في الصلاة يعاقب عليها"
-status: draft
+status: published
 published_at: 2026-02-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

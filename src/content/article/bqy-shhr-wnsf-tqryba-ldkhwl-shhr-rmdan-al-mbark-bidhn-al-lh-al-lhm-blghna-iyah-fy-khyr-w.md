@@ -1,6 +1,6 @@
 ---
 title: "بقي شهر ونصف تقريبا لدخول شهر رمضان المبارك بإذن الله؛ اللهم بلغنا إياه في خير و"
-status: draft
+status: published
 published_at: 2026-01-05
 person: abu-umair-imran-al-zubaidi
 ---

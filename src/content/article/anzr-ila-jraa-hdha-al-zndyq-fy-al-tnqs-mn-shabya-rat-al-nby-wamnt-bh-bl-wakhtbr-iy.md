@@ -1,6 +1,6 @@
 ---
 title: "انظر إلى جرأة هذا الزنديق في التنقص من صحابية رأت النبي ﷺ وآمنت به؛ بل واختبر إي"
-status: draft
+status: published
 published_at: 2025-10-03
 person: abu-umair-imran-al-zubaidi
 ---

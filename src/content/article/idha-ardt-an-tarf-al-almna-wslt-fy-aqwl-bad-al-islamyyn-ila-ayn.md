@@ -1,6 +1,6 @@
 ---
 title: "إذا أردت أن تعرف العلمنة وصلت في عقول بعض الإسلاميين إلى أين"
-status: draft
+status: published
 published_at: 2018-08-20
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

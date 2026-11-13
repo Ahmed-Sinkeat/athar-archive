@@ -1,6 +1,6 @@
 ---
 title: "منذ أيّام ناقشتُ بعض أصدقائي حول عمل المرأة في الشريعة"
-status: draft
+status: published
 published_at: 2022-10-29
 person: abu-umair-imran-al-zubaidi
 ---

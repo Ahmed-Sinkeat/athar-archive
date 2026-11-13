@@ -1,6 +1,6 @@
 ---
 title: "لماذا هذا الخوف؟"
-status: draft
+status: published
 published_at: 2025-03-19
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال أبو داود في الزهد 305 - نا ابْنُ بَشَّارٍ"
-status: draft
+status: published
 published_at: 2017-05-28
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

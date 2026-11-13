@@ -1,6 +1,6 @@
 ---
 title: "في أقل من شهرين ثاني حادثة انتحار لملحدة شهيرة ناطقة بالعربية الأولى كانت سارة ح"
-status: draft
+status: published
 published_at: 2020-08-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

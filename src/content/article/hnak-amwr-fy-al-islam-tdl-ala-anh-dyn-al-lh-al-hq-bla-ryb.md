@@ -1,6 +1,6 @@
 ---
 title: "هناك أمور في الإسلام تدل على أنه دين الله الحق بلا ريب"
-status: draft
+status: published
 published_at: 2023-06-23
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

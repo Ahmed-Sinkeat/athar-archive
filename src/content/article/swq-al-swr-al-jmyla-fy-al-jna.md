@@ -1,6 +1,6 @@
 ---
 title: "سوق الصور الجميلة في الجنة.."
-status: draft
+status: published
 published_at: 2022-01-25
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

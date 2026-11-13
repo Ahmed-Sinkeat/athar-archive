@@ -1,6 +1,6 @@
 ---
 title: "كيف الطريق إلى الله ؟"
-status: draft
+status: published
 published_at: 2025-02-17
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

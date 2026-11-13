@@ -1,6 +1,6 @@
 ---
 title: "يخطر على بالي حينما أرى أحمقا يسخر من العرب قائلا"
-status: draft
+status: published
 published_at: 2025-05-31
 person: abu-umair-imran-al-zubaidi
 ---

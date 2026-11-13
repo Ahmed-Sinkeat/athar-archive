@@ -1,6 +1,6 @@
 ---
 title: "\"وَهَذَا مَذْهَبُ أَهْلِ السُّنَّةِ وَالْجَمَاعَةِ الَّذِينَ يَقُولُونَ"
-status: draft
+status: published
 published_at: 2023-10-30
 person: abu-umair-imran-al-zubaidi
 topics: ["al-iman"]

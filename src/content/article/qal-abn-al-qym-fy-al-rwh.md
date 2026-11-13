@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم في الروح"
-status: draft
+status: published
 published_at: 2019-07-15
 person: abu-jafar-al-khalifi
 topics: ["al-iman", "al-wala-wal-bara"]

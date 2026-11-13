@@ -1,6 +1,6 @@
 ---
 title: "هذا الرافضي الزنديق الذي على وجهه مسحة خنزير يرمي عمر بن الخطاب رضي الله عنه بأن"
-status: draft
+status: published
 published_at: 2023-04-09
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

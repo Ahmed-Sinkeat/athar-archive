@@ -1,6 +1,6 @@
 ---
 title: "ينبغي أن يكون الرجل عند زوجته وأهله كالصبي"
-status: draft
+status: published
 published_at: 2025-10-03
 person: abu-abdillah-firas-al-ramli
 ---

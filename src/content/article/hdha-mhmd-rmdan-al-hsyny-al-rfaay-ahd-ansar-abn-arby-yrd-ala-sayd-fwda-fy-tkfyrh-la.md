@@ -1,6 +1,6 @@
 ---
 title: "هذا محمد رمضان الحسيني الرفاعي أحد أنصار ابن عربي يرد على سعيد فودة في تكفيره لا"
-status: draft
+status: published
 published_at: 2026-07-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

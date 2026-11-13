@@ -1,6 +1,6 @@
 ---
 title: "هل حث الإمام الشافعي الفقراء على قلة الإنجاب؟"
-status: draft
+status: published
 published_at: 2020-05-05
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "إن كاد ليُضِلُّنا عن آلهتنا لولا أن صبرنا عليها [سورة الفرقان"
-status: draft
+status: published
 published_at: 2025-10-25
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

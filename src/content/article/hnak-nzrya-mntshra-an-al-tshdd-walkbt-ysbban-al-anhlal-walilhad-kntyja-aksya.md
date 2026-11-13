@@ -1,6 +1,6 @@
 ---
 title: "هناك نظرية منتشرة أن التشدد والكبت يسببان الانحلال والإلحاد كنتيجة عكسية"
-status: draft
+status: published
 published_at: 2018-08-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-sunnah-wal-bidah"]

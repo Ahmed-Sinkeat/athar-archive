@@ -1,6 +1,6 @@
 ---
 title: "رافضي يحتج على مستشرق فيقيم حجة السني!"
-status: draft
+status: published
 published_at: 2019-12-18
 person: abu-jafar-al-khalifi
 ---

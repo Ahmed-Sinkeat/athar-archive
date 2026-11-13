@@ -1,6 +1,6 @@
 ---
 title: "جاء في مغني المحتاج من كتب الشافعية"
-status: draft
+status: published
 published_at: 2018-01-07
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

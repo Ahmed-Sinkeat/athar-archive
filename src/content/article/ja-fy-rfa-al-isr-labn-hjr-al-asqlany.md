@@ -1,6 +1,6 @@
 ---
 title: "جاء في رفع الإصر لابن حجر العسقلاني"
-status: draft
+status: published
 published_at: 2018-03-02
 person: abu-jafar-al-khalifi
 ---

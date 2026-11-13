@@ -1,6 +1,6 @@
 ---
 title: "كراهة التسمية بجبرائيل وميكائيل وإسرافيل"
-status: draft
+status: published
 published_at: 2024-06-24
 person: abu-abdillah-firas-al-ramli
 ---

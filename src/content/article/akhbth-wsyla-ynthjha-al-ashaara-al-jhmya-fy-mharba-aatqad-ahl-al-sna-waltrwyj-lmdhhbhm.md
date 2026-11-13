@@ -1,6 +1,6 @@
 ---
 title: "أخبث وسيلة ينتهجها الأشاعرة الجهمية في محاربة اعتقاد أهل السنة والترويج لمذهبهم"
-status: draft
+status: published
 published_at: 2023-09-11
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "عند كل حدث أو مصيبة أو بلاء ينزل على جماعة أو أفراد من المسلمين يتكرر السؤال الم"
-status: draft
+status: published
 published_at: 2023-10-11
 person: abu-umair-imran-al-zubaidi
 ---

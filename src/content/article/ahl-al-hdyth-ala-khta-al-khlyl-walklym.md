@@ -1,6 +1,6 @@
 ---
 title: "أهل الحديث على خطى الخليل والكليم."
-status: draft
+status: published
 published_at: 2020-08-31
 person: abu-jafar-al-khalifi
 ---

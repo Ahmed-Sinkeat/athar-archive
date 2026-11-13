@@ -1,6 +1,6 @@
 ---
 title: "من الجيد أن تكون هناك سلسلة يعنون لها بعنوان أوهام المثقفين"
-status: draft
+status: published
 published_at: 2019-02-18
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

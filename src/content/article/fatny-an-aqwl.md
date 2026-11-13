@@ -1,6 +1,6 @@
 ---
 title: "فاتني أن أقول"
-status: draft
+status: published
 published_at: 2026-10-11
 person: awwab-bin-muhammad
 ---

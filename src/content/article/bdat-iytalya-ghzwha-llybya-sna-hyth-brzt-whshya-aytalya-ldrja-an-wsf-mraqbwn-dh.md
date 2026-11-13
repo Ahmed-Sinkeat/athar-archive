@@ -1,6 +1,6 @@
 ---
 title: "بدأت إيطاليا غزوها لليبيا سنة 1911 حيث برزت وحشية ايطاليا لدرجة ان وصف مراقبون ذ"
-status: draft
+status: published
 published_at: 2018-07-30
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

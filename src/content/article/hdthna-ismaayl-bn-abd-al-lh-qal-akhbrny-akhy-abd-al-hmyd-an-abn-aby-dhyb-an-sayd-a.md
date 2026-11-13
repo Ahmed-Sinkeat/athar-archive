@@ -1,6 +1,6 @@
 ---
 title: "حدثنا ‌إسماعيل بن عبد الله قال أخبرني أخي ‌عبد الحميد عن ‌ابن أبي ذئب عن ‌سعيد ا"
-status: draft
+status: published
 published_at: 2023-06-30
 person: abu-umair-imran-al-zubaidi
 ---

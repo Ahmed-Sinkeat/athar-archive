@@ -1,6 +1,6 @@
 ---
 title: "وهذه حجة على كل من يدعي توبات وهمية للرجل"
-status: draft
+status: published
 published_at: 2025-10-19
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

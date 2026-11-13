@@ -1,6 +1,6 @@
 ---
 title: "عن التابعي بكير بن الأخنس"
-status: draft
+status: published
 published_at: 2023-09-22
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "{ قُلْ بِفَضْلِ اللَّهِ وَبِرَحْمَتِهِ فَبِذَلِكَ فَلْيَفْرَحُوا هُوَ خَيْرٌ مِم"
-status: draft
+status: published
 published_at: 2019-03-26
 person: abu-jafar-al-khalifi
 ---

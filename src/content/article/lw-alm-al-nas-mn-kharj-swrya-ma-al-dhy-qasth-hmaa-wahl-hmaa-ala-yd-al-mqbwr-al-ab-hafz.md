@@ -1,6 +1,6 @@
 ---
 title: "لو علم الناس من خارج سوريا ما الذي قاسته حماة وأهل حماة على يد المقبور الأب حافظ"
-status: draft
+status: published
 published_at: 2024-12-05
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لماذا يوجد عدد قليل جدًا من مطوري البرامج من الإناث"
-status: draft
+status: published
 published_at: 2022-12-07
 person: abu-jafar-al-khalifi
 ---

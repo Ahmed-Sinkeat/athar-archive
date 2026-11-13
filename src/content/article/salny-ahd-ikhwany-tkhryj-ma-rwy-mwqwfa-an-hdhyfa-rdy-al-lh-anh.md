@@ -1,6 +1,6 @@
 ---
 title: "سألني أحد إخواني تخريج ما روي موقوفا عن حذيفة رضي الله عنه"
-status: draft
+status: published
 published_at: 2023-05-25
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "tazkiyat-al-nafs"]

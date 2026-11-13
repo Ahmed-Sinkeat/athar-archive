@@ -1,6 +1,6 @@
 ---
 title: "ما يخفف على المرء أنه كان قبل هذا بقليل في المسجد يصلي فريضة العصر."
-status: draft
+status: published
 published_at: 2025-07-05
 person: abu-umair-imran-al-zubaidi
 ---

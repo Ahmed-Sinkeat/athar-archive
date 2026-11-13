@@ -1,6 +1,6 @@
 ---
 title: "نسف شبهة الأخطاء اللغوية في القرآن"
-status: draft
+status: published
 published_at: 2018-05-31
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

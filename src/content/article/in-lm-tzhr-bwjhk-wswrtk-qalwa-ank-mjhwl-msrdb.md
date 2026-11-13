@@ -1,6 +1,6 @@
 ---
 title: "إن لم تظهر بوجهك وصورتك قالوا عنك مجهول مسردب."
-status: draft
+status: published
 published_at: 2024-06-28
 person: abu-umair-imran-al-zubaidi
 ---

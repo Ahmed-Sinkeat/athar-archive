@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب اختلاف مالك والشافعي من الأم ؛ فَقُلْت لِلشَّافِعِيِّ"
-status: draft
+status: published
 published_at: 2018-05-16
 person: abu-jafar-al-khalifi
 ---

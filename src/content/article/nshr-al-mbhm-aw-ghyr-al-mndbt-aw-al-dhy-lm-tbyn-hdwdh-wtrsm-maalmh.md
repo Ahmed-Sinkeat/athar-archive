@@ -1,6 +1,6 @@
 ---
 title: "نشرُ المُبهَم أو غير المُنضبِط أو الذي لم تُبيَّن حدوده وتُرسَم معالِمه"
-status: draft
+status: published
 published_at: 2025-06-01
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لن يفعلوا شيئا يا أبا عائشة الحبيب."
-status: draft
+status: published
 published_at: 2025-01-12
 person: abu-umair-imran-al-zubaidi
 ---

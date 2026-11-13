@@ -1,6 +1,6 @@
 ---
 title: "أن تطلب المدد والرزق والشفاء والكفاية مِن ذات رسول الله -صلّى الله عليه وسلّم- أ"
-status: draft
+status: published
 published_at: 2023-03-30
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

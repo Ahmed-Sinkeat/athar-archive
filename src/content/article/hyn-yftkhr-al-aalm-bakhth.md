@@ -1,6 +1,6 @@
 ---
 title: "حين يفتخر العالم بأخته"
-status: draft
+status: published
 published_at: 2018-01-20
 person: abu-jafar-al-khalifi
 ---

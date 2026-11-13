@@ -1,6 +1,6 @@
 ---
 title: "هذا آدم إلياسوف القاضي الشرعي لعاصمة الشيشان غروزني"
-status: draft
+status: published
 published_at: 2024-02-14
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

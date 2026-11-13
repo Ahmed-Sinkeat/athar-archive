@@ -1,6 +1,6 @@
 ---
 title: "الإخلاص في ظل هذا التفجّر للمشاهدات والتفاعلات والمتابعات بسبب الأحداث صعب للغاي"
-status: draft
+status: published
 published_at: 2023-10-20
 person: abu-umair-imran-al-zubaidi
 ---

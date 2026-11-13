@@ -1,6 +1,6 @@
 ---
 title: "صحيح البخاري مع المكرر ما بلغ عُشر ال ٤٠٠ ألف"
-status: draft
+status: published
 published_at: 2024-01-18
 person: abu-jafar-al-khalifi
 ---

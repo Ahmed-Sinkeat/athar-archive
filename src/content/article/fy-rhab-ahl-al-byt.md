@@ -1,6 +1,6 @@
 ---
 title: "في رحاب أهل البيت .."
-status: draft
+status: published
 published_at: 2019-07-15
 person: abu-jafar-al-khalifi
 ---

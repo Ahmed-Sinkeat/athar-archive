@@ -1,6 +1,6 @@
 ---
 title: "كل ما يريد المرء تجاهل هؤلاء يجبرونه على الرد عليهم لأنهم يتعرضون لأئمة السلف في"
-status: draft
+status: published
 published_at: 2024-04-28
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي حاتم"
-status: draft
+status: published
 published_at: 2019-02-02
 person: abu-jafar-al-khalifi
 ---

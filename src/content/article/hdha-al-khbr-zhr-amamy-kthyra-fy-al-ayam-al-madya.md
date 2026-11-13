@@ -1,6 +1,6 @@
 ---
 title: "هذا الخبر ظهر أمامي كثيراً في الأيام الماضية"
-status: draft
+status: published
 published_at: 2025-09-17
 person: abu-jafar-al-khalifi
 ---

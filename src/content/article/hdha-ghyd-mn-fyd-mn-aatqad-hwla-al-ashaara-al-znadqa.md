@@ -1,6 +1,6 @@
 ---
 title: "هذا غيض من فيض من اعتقاد هؤلاء الأشاعرة الزنادقة."
-status: draft
+status: published
 published_at: 2024-03-19
 person: abu-umair-imran-al-zubaidi
 ---

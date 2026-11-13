@@ -1,6 +1,6 @@
 ---
 title: "فضيلة ترجى للمسلمين الذين قضوا تحت القصف."
-status: draft
+status: published
 published_at: 2023-11-12
 person: abu-jafar-al-khalifi
 ---

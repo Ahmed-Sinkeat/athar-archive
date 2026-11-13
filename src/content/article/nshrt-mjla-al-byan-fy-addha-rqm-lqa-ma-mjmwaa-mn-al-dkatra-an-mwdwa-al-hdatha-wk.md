@@ -1,6 +1,6 @@
 ---
 title: "نشرت مجلة البيان في عددها رقم 191 لقاء مع مجموعة من الدكاترة عن موضوع الحداثة وك"
-status: draft
+status: published
 published_at: 2019-04-06
 person: abu-jafar-al-khalifi
 ---

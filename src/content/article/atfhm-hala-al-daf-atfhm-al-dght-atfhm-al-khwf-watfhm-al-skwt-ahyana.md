@@ -1,6 +1,6 @@
 ---
 title: "أتفهم حالة الضعف، أتفهم الضغط، أتفهم الخوف، وأتفهم السكوت أحيانا."
-status: draft
+status: published
 published_at: 2025-03-14
 person: abu-umair-imran-al-zubaidi
 ---

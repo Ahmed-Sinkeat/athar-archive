@@ -1,6 +1,6 @@
 ---
 title: "مشايخ وعلماء الكرد، هلا كنتم مثل يوسف بن الحسين الكردي؟"
-status: draft
+status: published
 published_at: 2026-01-20
 person: abu-jafar-al-khalifi
 ---

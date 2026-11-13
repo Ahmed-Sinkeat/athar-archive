@@ -1,6 +1,6 @@
 ---
 title: "دعاء دخول الشهر"
-status: draft
+status: published
 published_at: 2025-02-28
 person: abu-abdillah-firas-al-ramli
 ---

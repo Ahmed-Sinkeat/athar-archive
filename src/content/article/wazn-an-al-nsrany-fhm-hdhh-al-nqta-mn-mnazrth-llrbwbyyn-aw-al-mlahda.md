@@ -1,6 +1,6 @@
 ---
 title: "وأظن أنّ النصراني فهم هذه النقطة من مناظرته للربوبيين أو الملاحدة"
-status: draft
+status: published
 published_at: 2021-06-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

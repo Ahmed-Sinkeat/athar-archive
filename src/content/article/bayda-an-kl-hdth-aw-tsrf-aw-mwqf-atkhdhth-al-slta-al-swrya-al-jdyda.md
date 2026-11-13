@@ -1,6 +1,6 @@
 ---
 title: "بعيدا عن كل حدث أو تصرف أو موقف اتخذته السلطة السورية الجديدة"
-status: draft
+status: published
 published_at: 2025-02-09
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ينظر كثيرون للديمقراطية على أنها أفضل نظام لاختيار حاكم واللطيف أنها في بداية أم"
-status: draft
+status: published
 published_at: 2017-07-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

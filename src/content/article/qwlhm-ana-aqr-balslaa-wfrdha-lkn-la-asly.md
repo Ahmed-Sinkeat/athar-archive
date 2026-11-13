@@ -1,6 +1,6 @@
 ---
 title: "قولهم: أنا أقر بالصلاة وفرضها، لكن لا أصلي!"
-status: draft
+status: published
 published_at: 2023-06-01
 person: abu-abdillah-firas-al-ramli
 ---

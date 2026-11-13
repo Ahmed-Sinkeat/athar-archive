@@ -1,6 +1,6 @@
 ---
 title: "قال ياقوت الحموي في معجم البلدان وهو يتحدث عن مدينة باشغرد مدينة بين بين القسطنط"
-status: draft
+status: published
 published_at: 2017-12-26
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ماذا لو عاش المعاصرون في تلك الحقبة بعقلية عصرنا هل سيكتبون هذه الكتب؟"
-status: draft
+status: published
 published_at: 2024-08-25
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-imamah-was-sahabah", "al-sunnah-wal-bidah"]

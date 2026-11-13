@@ -1,6 +1,6 @@
 ---
 title: "حديث جليل في فضل الجمعة قلَّ أن يُذكر"
-status: draft
+status: published
 published_at: 2017-08-04
 person: abu-jafar-al-khalifi
 ---

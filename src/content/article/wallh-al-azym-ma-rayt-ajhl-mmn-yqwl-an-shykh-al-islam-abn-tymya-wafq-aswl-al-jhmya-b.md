@@ -1,6 +1,6 @@
 ---
 title: "والله العظيم ما رأيت أجهل ممن يقول أنّ شيخ الإسلام ابن تيمية وافق أصول الجهمية ب"
-status: draft
+status: published
 published_at: 2025-02-21
 person: abu-umair-imran-al-zubaidi
 ---

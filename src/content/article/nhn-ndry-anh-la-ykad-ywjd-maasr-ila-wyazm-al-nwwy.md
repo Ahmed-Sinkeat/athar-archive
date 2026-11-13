@@ -1,6 +1,6 @@
 ---
 title: "نحن ندري أنه لا يكاد يوجد معاصر إلا ويعظم النووي"
-status: draft
+status: published
 published_at: 2024-01-19
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

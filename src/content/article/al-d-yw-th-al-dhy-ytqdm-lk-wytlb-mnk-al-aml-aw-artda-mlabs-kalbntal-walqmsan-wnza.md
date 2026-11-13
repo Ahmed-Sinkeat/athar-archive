@@ -1,6 +1,6 @@
 ---
 title: "الد يو ث الذي يتقدم لكِ ويطلب منكِ العمل أو ارتداء ملابس كالبنطال والقمصان ونزع"
-status: draft
+status: published
 published_at: 2023-08-07
 person: abu-umair-imran-al-zubaidi
 ---

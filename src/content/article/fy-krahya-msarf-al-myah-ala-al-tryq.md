@@ -1,6 +1,6 @@
 ---
 title: "في كراهية مصارف المياه على الطريق"
-status: draft
+status: published
 published_at: 2024-04-12
 person: abu-abdillah-firas-al-ramli
 ---

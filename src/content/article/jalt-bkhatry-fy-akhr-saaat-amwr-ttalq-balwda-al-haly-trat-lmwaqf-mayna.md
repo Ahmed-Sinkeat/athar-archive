@@ -1,6 +1,6 @@
 ---
 title: "جالَتْ بخاطرِي في آخِر ساعات أمورٌ تتعلَّق بالوضعِ الحالي طرأَت لمواقِف مُعيَّنة"
-status: draft
+status: published
 published_at: 2025-04-06
 person: awwab-bin-muhammad
 ---

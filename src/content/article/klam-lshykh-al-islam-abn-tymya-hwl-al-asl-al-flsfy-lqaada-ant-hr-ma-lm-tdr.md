@@ -1,6 +1,6 @@
 ---
 title: "كلام لشيخ الإسلام ابن تيمية حول الأصل الفلسفي لقاعدة ”أنت حر ما لم تضر“."
-status: draft
+status: published
 published_at: 2021-06-02
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara", "al-sunnah-wal-bidah"]

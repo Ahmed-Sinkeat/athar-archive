@@ -1,6 +1,6 @@
 ---
 title: "مقاربة في فهم الإمام أحمد في التهنئة بالأعياد..."
-status: draft
+status: published
 published_at: 2021-08-10
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "(الله غفور رحيم) لا تقال وأنت قائمٌ على المعصية ومقبل عليها"
-status: draft
+status: published
 published_at: 2025-12-29
 person: abu-umair-imran-al-zubaidi
 ---

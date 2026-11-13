@@ -1,6 +1,6 @@
 ---
 title: "شهر كامل قد مر منذ أن نشر الجهمي الوضيع دعدوش حلقته التي طعن فيها في الإمام المج"
-status: draft
+status: published
 published_at: 2024-04-10
 person: abu-umair-imran-al-zubaidi
 ---

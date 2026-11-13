@@ -1,6 +1,6 @@
 ---
 title: "النية أبلغ من العمل"
-status: draft
+status: published
 published_at: 2024-06-02
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

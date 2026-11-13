@@ -1,6 +1,6 @@
 ---
 title: "قال أبو بكر الطرطوشي في كتاب بر الوالدين"
-status: draft
+status: published
 published_at: 2018-12-10
 person: abu-jafar-al-khalifi
 ---

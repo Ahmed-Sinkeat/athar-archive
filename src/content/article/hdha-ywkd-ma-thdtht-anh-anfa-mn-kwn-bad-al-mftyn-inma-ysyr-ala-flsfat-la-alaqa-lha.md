@@ -1,6 +1,6 @@
 ---
 title: "هذا يؤكد ما تحدثت عنه آنفًا من كون بعض المفتين إنما يسير على فلسفات لا علاقة لها"
-status: draft
+status: published
 published_at: 2021-10-13
 person: abu-jafar-al-khalifi
 ---

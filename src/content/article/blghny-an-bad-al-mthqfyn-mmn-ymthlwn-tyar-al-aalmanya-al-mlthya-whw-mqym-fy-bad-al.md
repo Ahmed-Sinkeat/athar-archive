@@ -1,6 +1,6 @@
 ---
 title: "بلغني عن بعض المثقفين ممن يمثلون تيار ( العالمانية الملتحية ) وهو مقيم في بعض ال"
-status: draft
+status: published
 published_at: 2019-01-04
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "الَّذِينَ كَفَرُوا وَصَدُّوا عَن سَبِيلِ اللَّهِ زِدْنَاهُمْ عَذَابًا فَوْقَ الْ"
-status: draft
+status: published
 published_at: 2025-06-15
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

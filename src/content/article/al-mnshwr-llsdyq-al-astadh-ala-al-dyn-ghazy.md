@@ -1,6 +1,6 @@
 ---
 title: "المنشور للصديق الأستاذ علاء الدين غازي"
-status: draft
+status: published
 published_at: 2020-10-08
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لا يحق للآباء أن يفرضوا عقيدتهم على الأبناء ولكن يحق لنا نحن أن نفرض عليهم ما يخ"
-status: draft
+status: published
 published_at: 2021-04-02
 person: abu-jafar-al-khalifi
 ---

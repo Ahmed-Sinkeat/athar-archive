@@ -1,6 +1,6 @@
 ---
 title: "والله كلما ذكرت لأحدهم أقوال أئمة السلف الصريحة واضحة الدلالة للأعجمي فضلًا عن ا"
-status: draft
+status: published
 published_at: 2023-10-02
 person: abu-umair-imran-al-zubaidi
 ---

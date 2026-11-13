@@ -1,6 +1,6 @@
 ---
 title: "الحرب على السلفية أو ما يسمى بالوهابية في الواقع هي حرب على ذات الإسلام وليست مج"
-status: draft
+status: published
 published_at: 2023-05-31
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

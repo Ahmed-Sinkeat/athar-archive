@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية في درء تعارض العقل والنقل (7/153)"
-status: draft
+status: published
 published_at: 2017-08-24
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

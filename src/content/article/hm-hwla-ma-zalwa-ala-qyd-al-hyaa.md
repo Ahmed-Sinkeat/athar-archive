@@ -1,6 +1,6 @@
 ---
 title: "هم هؤلاء ما زالوا على قيد الحياة؟!"
-status: draft
+status: published
 published_at: 2024-10-29
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

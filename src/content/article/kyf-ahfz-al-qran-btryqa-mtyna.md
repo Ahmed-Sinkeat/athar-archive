@@ -1,6 +1,6 @@
 ---
 title: "كيف أحفظ القرآن بطريقة متينة؟"
-status: draft
+status: published
 published_at: 2023-05-13
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

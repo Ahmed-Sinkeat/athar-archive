@@ -1,6 +1,6 @@
 ---
 title: "فإذا كان الأمر كذلك فالمسألة ما صارت أصلًا إلا لأن أدلتها عديدة ومتنوعة بِمَا يو"
-status: draft
+status: published
 published_at: 2021-01-13
 person: abu-jafar-al-khalifi
 ---

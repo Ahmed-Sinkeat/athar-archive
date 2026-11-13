@@ -1,6 +1,6 @@
 ---
 title: "هل تنكر يا أيّها المسلم أنّكم نشرتم دينكم في كثيرٍ مِن البلدان بالسيف؟!."
-status: draft
+status: published
 published_at: 2022-10-18
 person: abu-umair-imran-al-zubaidi
 ---

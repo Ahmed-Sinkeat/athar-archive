@@ -1,6 +1,6 @@
 ---
 title: "هذه صورة قيل إنها لرجل من أعيان القبائل في موريتانيا يقبل يد السفير الإيراني"
-status: draft
+status: published
 published_at: 2026-03-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "أما إن الفتنة قد تضاعفت اليوم!"
-status: draft
+status: published
 published_at: 2021-09-13
 person: abu-jafar-al-khalifi
 ---

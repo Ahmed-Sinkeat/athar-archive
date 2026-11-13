@@ -1,6 +1,6 @@
 ---
 title: "وكل إنسان ينتمي لمذهب معين يوجد عنده قواعد يحكم فيها على الأقوال بغض النظر عن ال"
-status: draft
+status: published
 published_at: 2021-09-24
 person: abu-jafar-al-khalifi
 ---

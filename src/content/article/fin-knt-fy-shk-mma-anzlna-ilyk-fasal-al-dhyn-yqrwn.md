@@ -1,6 +1,6 @@
 ---
 title: "فَإِن كُنتَ فِي شَكٍّ مِّمَّا أَنزَلْنَا إِلَيْكَ فَاسْأَلِ الَّذِينَ يَقْرَءُون"
-status: draft
+status: published
 published_at: 2025-04-15
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

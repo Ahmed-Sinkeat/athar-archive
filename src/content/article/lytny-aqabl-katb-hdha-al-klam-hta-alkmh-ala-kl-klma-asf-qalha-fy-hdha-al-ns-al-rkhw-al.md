@@ -1,6 +1,6 @@
 ---
 title: "ليتني أقابل كاتب هذا الكلام حتى ألكمه على كل كلمة آسف قالها في هذا النص الرخو ال"
-status: draft
+status: published
 published_at: 2023-12-23
 person: abu-umair-imran-al-zubaidi
 ---

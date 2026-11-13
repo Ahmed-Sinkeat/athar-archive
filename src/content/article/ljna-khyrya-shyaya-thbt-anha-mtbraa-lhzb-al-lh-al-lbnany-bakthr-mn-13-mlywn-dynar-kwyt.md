@@ -1,6 +1,6 @@
 ---
 title: "لجنة خيرية شيعية ثبت أنها متبرعة لحزب الله اللبناني بأكثر من ١٣ مليون دينار كويت"
-status: draft
+status: published
 published_at: 2025-01-14
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قاعدة حكم الحاكم يرفع الخلاف قاعدة متعلقة بالقضاء بمعنى أنه لو تحاكم أناس في نزا"
-status: draft
+status: published
 published_at: 2018-07-16
 person: abu-jafar-al-khalifi
 ---

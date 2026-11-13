@@ -1,6 +1,6 @@
 ---
 title: "لا يكونن أحدكم إمعة"
-status: draft
+status: published
 published_at: 2025-07-26
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

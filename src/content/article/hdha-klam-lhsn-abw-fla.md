@@ -1,6 +1,6 @@
 ---
 title: "هذا كلام لحسن (أبو فلة)"
-status: draft
+status: published
 published_at: 2025-05-16
 person: abu-jafar-al-khalifi
 ---

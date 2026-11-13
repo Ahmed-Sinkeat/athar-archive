@@ -1,6 +1,6 @@
 ---
 title: "اللهم إنا قد أطعناك في أحب الأشياء إليك"
-status: draft
+status: published
 published_at: 2026-04-02
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada"]

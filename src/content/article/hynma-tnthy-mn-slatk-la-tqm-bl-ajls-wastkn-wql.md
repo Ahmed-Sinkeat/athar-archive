@@ -1,6 +1,6 @@
 ---
 title: "حينما تنتهي مِن صلاتك لا تقم؛ بل اجلس واستكن وقل"
-status: draft
+status: published
 published_at: 2023-04-26
 person: abu-umair-imran-al-zubaidi
 ---

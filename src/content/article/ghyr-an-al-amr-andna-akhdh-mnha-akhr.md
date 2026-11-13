@@ -1,6 +1,6 @@
 ---
 title: "غير أن الأمر عندنا أخذ منحًى آخر"
-status: draft
+status: published
 published_at: 2019-12-30
 person: abu-jafar-al-khalifi
 ---

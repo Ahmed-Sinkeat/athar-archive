@@ -1,6 +1,6 @@
 ---
 title: "أبو عمر العابث وضع نفسه في مأزق لا مخرج له منه بأي حال؛ بل وإني أحسب أنّ الله سب"
-status: draft
+status: published
 published_at: 2025-01-07
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "الكائنات الأكثر جشعًا، دعاة التمييز الإيجابي، من يردن الغنم دون الغرم."
-status: draft
+status: published
 published_at: 2023-02-05
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

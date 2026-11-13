@@ -1,6 +1,6 @@
 ---
 title: ".مِن أجمل ما قرأت اليوم!."
-status: draft
+status: published
 published_at: 2022-12-28
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

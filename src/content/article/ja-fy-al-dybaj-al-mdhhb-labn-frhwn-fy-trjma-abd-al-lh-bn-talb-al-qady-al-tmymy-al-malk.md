@@ -1,6 +1,6 @@
 ---
 title: "جاء في الديباج المذهب لابن فرحون في ترجمة عبد الله بن طالب القاضي التميمي المالك"
-status: draft
+status: published
 published_at: 2018-09-21
 person: abu-jafar-al-khalifi
 ---

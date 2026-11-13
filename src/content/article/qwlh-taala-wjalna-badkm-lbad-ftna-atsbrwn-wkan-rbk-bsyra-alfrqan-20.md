@@ -1,6 +1,6 @@
 ---
 title: "قوله تعالى: ﴿وجعلنا بعضكم لبعض فتنة أتصبرون وكان ربك بصيرا﴾ [الفرقان: ٢٠"
-status: draft
+status: published
 published_at: 2026-01-02
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

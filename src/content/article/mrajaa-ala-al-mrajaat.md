@@ -1,6 +1,6 @@
 ---
 title: "مراجعة على المراجعات"
-status: draft
+status: published
 published_at: 2019-10-23
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-asma-was-sifat", "tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "هذا لاعب أجنبي صربي يقبلون رأسه ويمدحونه لانه يلعب بالهلال السعودي."
-status: draft
+status: published
 published_at: 2026-01-24
 person: abu-jafar-al-khalifi
 ---

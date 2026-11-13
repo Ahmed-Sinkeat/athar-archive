@@ -1,6 +1,6 @@
 ---
 title: "القذف المبطَّن عند النسويات."
-status: draft
+status: published
 published_at: 2021-04-25
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وقال الأنصاري في ذم الكلام 1265 - أخبرنا أحمد بن محمد بن العباس بن إسماعيل المقر"
-status: draft
+status: published
 published_at: 2021-09-01
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "قال أبو الشيخ في النوادر والنتف (مخطوط)"
-status: draft
+status: published
 published_at: 2019-02-13
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

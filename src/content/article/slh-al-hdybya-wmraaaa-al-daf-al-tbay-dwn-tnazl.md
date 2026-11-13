@@ -1,6 +1,6 @@
 ---
 title: "صلح الحديبية ومراعاة الضعف الطبعي دون تنازل"
-status: draft
+status: published
 published_at: 2019-06-24
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "إحدى الفوائد الجليلة المغفولِ عنها النادرِ ذكرها فيما يتعلَّق بالمتون المُختصرة"
-status: draft
+status: published
 published_at: 2026-07-06
 person: awwab-bin-muhammad
 topics: ["tahwid-al-ibada"]

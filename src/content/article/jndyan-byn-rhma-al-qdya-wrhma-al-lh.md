@@ -1,6 +1,6 @@
 ---
 title: "جنديان بين رحمة القضية ورحمة الله!"
-status: draft
+status: published
 published_at: 2024-02-27
 person: abu-umair-imran-al-zubaidi
 ---

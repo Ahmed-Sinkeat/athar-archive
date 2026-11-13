@@ -1,6 +1,6 @@
 ---
 title: "وفي ظلّ هذه البهجة العارمة الّتي اجتاحت قلوب المسلمين حول العالم"
-status: draft
+status: published
 published_at: 2023-01-28
 person: abu-umair-imran-al-zubaidi
 topics: ["al-wala-wal-bara"]

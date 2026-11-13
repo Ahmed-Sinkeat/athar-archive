@@ -1,6 +1,6 @@
 ---
 title: "لست مرتاحا أبدا للوسم المنتشر \"من يحرر يقرر\"."
-status: draft
+status: published
 published_at: 2024-12-21
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

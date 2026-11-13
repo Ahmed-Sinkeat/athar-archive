@@ -1,6 +1,6 @@
 ---
 title: "وأنا أقلب في ديوان الشاعر الجزائري محمد العيد آل خليفة وجدت ما يلي"
-status: draft
+status: published
 published_at: 2019-09-11
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

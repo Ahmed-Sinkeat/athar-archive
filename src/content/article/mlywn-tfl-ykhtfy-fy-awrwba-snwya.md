@@ -1,6 +1,6 @@
 ---
 title: "مليون طفل يختفي في أوروبا سنويا"
-status: draft
+status: published
 published_at: 2022-01-19
 person: abu-jafar-al-khalifi
 ---

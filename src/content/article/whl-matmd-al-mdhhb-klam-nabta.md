@@ -1,6 +1,6 @@
 ---
 title: "وهل معتمد المذهب كلام نابتة؟"
-status: draft
+status: published
 published_at: 2020-04-11
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

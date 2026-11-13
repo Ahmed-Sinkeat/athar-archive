@@ -1,6 +1,6 @@
 ---
 title: "متلازمة (أول امرأة) وإثبات ما يراد نفيه.."
-status: draft
+status: published
 published_at: 2021-04-27
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

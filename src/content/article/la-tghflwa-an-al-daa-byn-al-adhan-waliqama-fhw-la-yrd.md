@@ -1,6 +1,6 @@
 ---
 title: "لا تغفلوا عن الدعاء بين الآذان والإقامة فهو لا يرد"
-status: draft
+status: published
 published_at: 2023-07-06
 person: abu-abdillah-firas-al-ramli
 ---

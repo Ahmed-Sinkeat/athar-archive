@@ -1,6 +1,6 @@
 ---
 title: "نصيحة الإمام المجدد لرجل شافعي حول الأشعرية"
-status: draft
+status: published
 published_at: 2020-09-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-asma-was-sifat", "al-qadr"]

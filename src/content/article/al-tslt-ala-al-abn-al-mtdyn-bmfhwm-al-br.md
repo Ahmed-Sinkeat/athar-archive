@@ -1,6 +1,6 @@
 ---
 title: "التسلط على الابن المتدين بمفهوم البر!"
-status: draft
+status: published
 published_at: 2025-04-03
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "صحيح البخاري | باب من أحب الدفن في الأرض المقدسة أو نحوها"
-status: draft
+status: published
 published_at: 2023-10-18
 person: abu-abdillah-firas-al-ramli
 ---

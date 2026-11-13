@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام عبد الرحمن بن مهدي رضي الله عنه"
-status: draft
+status: published
 published_at: 2023-12-20
 person: abu-umair-imran-al-zubaidi
 ---

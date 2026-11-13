@@ -1,6 +1,6 @@
 ---
 title: "هذه أخت إندونيسية تعلق على تصرف مفتي الشيشان الحقير وما صحبه من ردود أفعال واسعة"
-status: draft
+status: published
 published_at: 2020-12-05
 person: abu-jafar-al-khalifi
 ---

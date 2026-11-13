@@ -1,6 +1,6 @@
 ---
 title: "لو وعد أهل النار أن تخفف عنهم يوما ..."
-status: draft
+status: published
 published_at: 2023-08-19
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "نشرُ إرجاء الجهمية في الأمة باسم المذاهب الفقهية الأربعة"
-status: draft
+status: published
 published_at: 2020-09-16
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

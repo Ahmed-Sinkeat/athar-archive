@@ -1,6 +1,6 @@
 ---
 title: "من فقه الإمام الشافعي في دفع الكرب والهم.."
-status: draft
+status: published
 published_at: 2023-02-28
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

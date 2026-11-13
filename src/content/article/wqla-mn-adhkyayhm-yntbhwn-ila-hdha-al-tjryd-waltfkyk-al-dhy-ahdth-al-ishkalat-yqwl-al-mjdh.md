@@ -1,6 +1,6 @@
 ---
 title: "وقلة من أذكيائهم ينتبهون إلى هذا التجريد والتفكيك الذي أحدث الإشكالات يقول المجذ"
-status: draft
+status: published
 published_at: 2020-06-24
 person: abu-jafar-al-khalifi
 ---

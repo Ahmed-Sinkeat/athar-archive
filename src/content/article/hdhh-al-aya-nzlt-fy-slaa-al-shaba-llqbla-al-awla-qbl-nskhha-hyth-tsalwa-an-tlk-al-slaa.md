@@ -1,6 +1,6 @@
 ---
 title: "هذه الآية نزلت في صلاة الصحابة للقبلة الأولى قبل نسخها حيث تساءلوا عن تلك الصلاة"
-status: draft
+status: published
 published_at: 2018-12-05
 person: abu-jafar-al-khalifi
 ---

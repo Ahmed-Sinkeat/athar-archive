@@ -1,6 +1,6 @@
 ---
 title: "يرى البعض انتكاسة بعض المشار إليهم بالبنان من أهل الدين باباً للفتنة والتشكُّك"
-status: draft
+status: published
 published_at: 2018-11-14
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tazkiyat-al-nafs"]

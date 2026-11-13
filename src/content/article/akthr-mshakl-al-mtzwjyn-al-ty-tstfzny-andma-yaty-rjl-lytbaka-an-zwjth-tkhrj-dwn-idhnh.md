@@ -1,6 +1,6 @@
 ---
 title: "أكثر مشاكل المتزوجين التي تستفزني عندما يأتي رجل ليتباكى أن زوجته تخرج دون إذنه"
-status: draft
+status: published
 published_at: 2023-10-02
 person: abu-umair-imran-al-zubaidi
 ---

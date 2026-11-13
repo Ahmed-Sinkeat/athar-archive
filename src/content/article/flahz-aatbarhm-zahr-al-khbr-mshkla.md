@@ -1,6 +1,6 @@
 ---
 title: "فلاحظ اعتبارهم ظاهر الخبر مشكلاً"
-status: draft
+status: published
 published_at: 2022-01-13
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "في نقد الشيخ الخليفي وفقه الله لخطبة عدنان إبراهيم بعد وفاة الهالك هوكينج؛ حيث د"
-status: draft
+status: published
 published_at: 2024-01-10
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

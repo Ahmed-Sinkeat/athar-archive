@@ -1,6 +1,6 @@
 ---
 title: "حجة متكررة في كلام العالمانيين وقدماء المشركين."
-status: draft
+status: published
 published_at: 2019-05-24
 person: abu-jafar-al-khalifi
 ---

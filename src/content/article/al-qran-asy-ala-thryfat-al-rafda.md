@@ -1,6 +1,6 @@
 ---
 title: "القرآن عصي على تحريفات الرافضة."
-status: draft
+status: published
 published_at: 2023-07-19
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-iman"]

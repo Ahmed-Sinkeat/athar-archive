@@ -1,6 +1,6 @@
 ---
 title: "بعيدا عن عبث النساء - إلا ما رحم ربي-- في مسألة التعدد."
-status: draft
+status: published
 published_at: 2025-08-16
 person: abu-umair-imran-al-zubaidi
 ---

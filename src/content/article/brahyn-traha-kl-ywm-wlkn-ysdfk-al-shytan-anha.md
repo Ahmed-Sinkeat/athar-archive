@@ -1,6 +1,6 @@
 ---
 title: "براهين تراها كل يوم ولكن يصدفك الشيطان عنها..."
-status: draft
+status: published
 published_at: 2021-02-21
 person: abu-jafar-al-khalifi
 ---

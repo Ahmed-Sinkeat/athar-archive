@@ -1,6 +1,6 @@
 ---
 title: "عطفًا على ما ذكرته آنفا من حتمية الفساد في النظام الرأسمالي علقت إحدى الأخوات بق"
-status: draft
+status: published
 published_at: 2020-09-29
 person: abu-jafar-al-khalifi
 ---

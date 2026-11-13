@@ -1,6 +1,6 @@
 ---
 title: "فخ المعنفات ومتلازمة الإنصاف عند البعض."
-status: draft
+status: published
 published_at: 2019-01-10
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "فصلوا وادعوا حتى ينكشف ما بكم."
-status: draft
+status: published
 published_at: 2023-10-28
 person: abu-jafar-al-khalifi
 ---

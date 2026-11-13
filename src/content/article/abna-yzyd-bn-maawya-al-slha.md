@@ -1,6 +1,6 @@
 ---
 title: "أبناء يزيد بن معاوية الصلحاء !"
-status: draft
+status: published
 published_at: 2019-06-30
 person: abu-jafar-al-khalifi
 ---

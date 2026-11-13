@@ -1,6 +1,6 @@
 ---
 title: "لن يغلب عسر يسرين يا أهل الإسلام فاصبروا"
-status: draft
+status: published
 published_at: 2023-10-11
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

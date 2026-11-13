@@ -1,6 +1,6 @@
 ---
 title: "هنا أحمد دعدوش يزعم أن الإمام أحمد ضخَّم مسألة القول بخلق القرآن."
-status: draft
+status: published
 published_at: 2024-07-04
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

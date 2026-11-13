@@ -1,6 +1,6 @@
 ---
 title: "موقف أدونيس ومَن استضافه يُلخِّص لي المشهد الليبرالي العربي."
-status: draft
+status: published
 published_at: 2023-04-01
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

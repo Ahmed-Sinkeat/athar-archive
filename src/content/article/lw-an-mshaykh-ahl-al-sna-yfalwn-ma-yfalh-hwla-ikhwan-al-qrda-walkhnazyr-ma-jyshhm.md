@@ -1,6 +1,6 @@
 ---
 title: "لو أنّ مشايخ أهل السنة يفعلون ما يفعله هؤلاء إخوان القردة والخنازير مع جيشهم"
-status: draft
+status: published
 published_at: 2024-12-13
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

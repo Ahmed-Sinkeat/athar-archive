@@ -1,6 +1,6 @@
 ---
 title: "أَفَلَا يَتَدَبَّرُونَ الْقُرْآنَ ۚ وَلَوْ كَانَ مِنْ عِندِ غَيْرِ اللَّهِ لَوَج"
-status: draft
+status: published
 published_at: 2025-09-05
 person: abu-umair-imran-al-zubaidi
 ---

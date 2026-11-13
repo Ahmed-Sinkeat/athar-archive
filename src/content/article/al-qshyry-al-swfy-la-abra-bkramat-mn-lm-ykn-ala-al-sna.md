@@ -1,6 +1,6 @@
 ---
 title: "القشيري الصوفي: لا عبرة بكرامات من لم يكن على السنة..."
-status: draft
+status: published
 published_at: 2025-07-26
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هنا خبر صاغته بعض الصحف عندنا صياغة أقل ما يقال عنها أنها حاثة على الرذيلة غير أ"
-status: draft
+status: published
 published_at: 2019-01-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "صلاة الظهر في جماعة خير من كل الفضل الذي تطلبون (والجمعة آكد).."
-status: draft
+status: published
 published_at: 2022-04-22
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

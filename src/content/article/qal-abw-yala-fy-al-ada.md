@@ -1,6 +1,6 @@
 ---
 title: "قال أبو يعلى في العدة ( 5/1571)"
-status: draft
+status: published
 published_at: 2018-01-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

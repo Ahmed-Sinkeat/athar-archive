@@ -1,6 +1,6 @@
 ---
 title: "جاء في جمهرة النسب للزبير بن بكار 1 / 378 في ترجمة هشام بن حكيم بن حزام"
-status: draft
+status: published
 published_at: 2017-07-15
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "جاء في حلية الأولياء وَسُئِلَ مُحَمَّدُ بْنُ عَلِيٍّ _ يعني الترمذي الشهير بالحك"
-status: draft
+status: published
 published_at: 2017-10-28
 person: abu-jafar-al-khalifi
 ---

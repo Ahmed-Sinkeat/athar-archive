@@ -1,6 +1,6 @@
 ---
 title: "هذه الفائدة منتشرة جدًّا بين طلبة العلم ويظن كثيرون أن الكلام المذكور لابن أبي د"
-status: draft
+status: published
 published_at: 2023-06-06
 person: abu-jafar-al-khalifi
 ---

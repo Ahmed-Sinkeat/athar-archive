@@ -1,6 +1,6 @@
 ---
 title: "بين التفاخر بأسانيد غير ضرورية والطعن في أصحاب الروايات الضرورية!"
-status: draft
+status: published
 published_at: 2020-09-30
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-iman"]

@@ -1,6 +1,6 @@
 ---
 title: "شبهة أم حكمة بالغة؟ (شبهة في منشأ الديانات)"
-status: draft
+status: published
 published_at: 2024-06-22
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

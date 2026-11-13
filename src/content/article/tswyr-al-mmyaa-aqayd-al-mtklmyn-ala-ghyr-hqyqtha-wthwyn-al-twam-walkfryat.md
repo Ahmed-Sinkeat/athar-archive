@@ -1,6 +1,6 @@
 ---
 title: "تصوير المُميِّعة عقائِد المُتكلِّمين على غير حقيقتِها وتهوين الطَّوام والكُفريات"
-status: draft
+status: published
 published_at: 2025-03-05
 person: awwab-bin-muhammad
 ---

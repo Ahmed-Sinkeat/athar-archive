@@ -1,6 +1,6 @@
 ---
 title: "جاء في رسالة بولس للعبرانيين يعني في العهد الجديد عهد المحبة"
-status: draft
+status: published
 published_at: 2018-04-30
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "يدورون مع الغرب حيث دار لأنهم أصحاب فكر حر"
-status: draft
+status: published
 published_at: 2018-10-25
 person: abu-jafar-al-khalifi
 ---

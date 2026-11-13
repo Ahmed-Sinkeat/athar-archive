@@ -1,6 +1,6 @@
 ---
 title: "تحرير المحافظات من رجس النظام في كفة."
-status: draft
+status: published
 published_at: 2024-12-06
 person: abu-umair-imran-al-zubaidi
 ---

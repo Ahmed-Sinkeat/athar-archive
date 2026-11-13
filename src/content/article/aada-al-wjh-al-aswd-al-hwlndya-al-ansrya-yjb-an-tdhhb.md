@@ -1,6 +1,6 @@
 ---
 title: "عادة الوجه الأسود الهولندية العنصرية.. يجب أن تذهب !!"
-status: draft
+status: published
 published_at: 2018-01-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

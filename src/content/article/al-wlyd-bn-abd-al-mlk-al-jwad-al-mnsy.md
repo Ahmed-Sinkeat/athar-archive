@@ -1,6 +1,6 @@
 ---
 title: "الوليد بن عبد الملك الجواد المنسي !"
-status: draft
+status: published
 published_at: 2020-02-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

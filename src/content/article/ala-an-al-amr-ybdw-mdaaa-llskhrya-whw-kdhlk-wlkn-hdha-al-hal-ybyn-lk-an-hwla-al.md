@@ -1,6 +1,6 @@
 ---
 title: "على أنّ الأمر يبدو مدعاة للسخرية -وهو كذلك- ولكن هذا الحال يبيّن لك أنّ هؤلاء ال"
-status: draft
+status: published
 published_at: 2023-06-13
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

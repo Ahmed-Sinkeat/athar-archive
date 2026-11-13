@@ -1,6 +1,6 @@
 ---
 title: "استخدم الجيش الاسلامي قديما فرقة تسمى بالنفاطة وهم الذين يستخدمون النفط في الحرب"
-status: draft
+status: published
 published_at: 2017-10-05
 person: abu-jafar-al-khalifi
 ---

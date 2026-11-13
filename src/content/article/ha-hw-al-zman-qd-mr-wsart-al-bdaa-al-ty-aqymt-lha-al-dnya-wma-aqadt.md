@@ -1,6 +1,6 @@
 ---
 title: "ها هو الزَّمان قد مـرَّ وصارَتْ البِدعة التي أُقِيمَتْ لها الدُّنيا وما أُقعِدَت"
-status: draft
+status: published
 published_at: 2025-09-09
 person: awwab-bin-muhammad
 topics: ["tahwid-al-ibada"]

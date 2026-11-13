@@ -1,6 +1,6 @@
 ---
 title: "۞ فَلْيُقَاتِلْ فِي سَبِيلِ اللَّهِ الَّذِينَ يَشْرُونَ الْحَيَاةَ الدُّنْيَا بِ"
-status: draft
+status: published
 published_at: 2023-10-10
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أسوء شيء قتال من لا تستطيع مواجهته وجها لوجه لأنه يطير فوق رأسك بطائرة أسرع من ا"
-status: draft
+status: published
 published_at: 2025-07-16
 person: abu-umair-imran-al-zubaidi
 ---

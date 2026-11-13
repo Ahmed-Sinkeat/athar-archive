@@ -1,6 +1,6 @@
 ---
 title: "التعامل مع الحُب بين الجنسين على أنه مجرد مشاعر وعواطف تهيج بها القلوب هو مِن أك"
-status: draft
+status: published
 published_at: 2023-02-28
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

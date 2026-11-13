@@ -1,6 +1,6 @@
 ---
 title: "نقد أحد علماء الإمامية لأعمال الشيعة في محرَّم عموماً وعاشوراء خصوصاً."
-status: draft
+status: published
 published_at: 2020-08-28
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من أظهر خيرا أمناه وقربناه، ومن أظهر شرا أبعدناه ولم نأمنه."
-status: draft
+status: published
 published_at: 2023-07-23
 person: abu-abdillah-firas-al-ramli
 ---

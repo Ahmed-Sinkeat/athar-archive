@@ -1,6 +1,6 @@
 ---
 title: "على سيرة البيان السخيف الذي نشره الفاجر في الخصومة عبد القادر البكور"
-status: draft
+status: published
 published_at: 2026-07-31
 person: abu-umair-imran-al-zubaidi
 ---

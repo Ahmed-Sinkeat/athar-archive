@@ -1,6 +1,6 @@
 ---
 title: "هذه صانعة محتوى أمريكية عندها أكثر من مليون متابع"
-status: draft
+status: published
 published_at: 2023-07-05
 person: abu-jafar-al-khalifi
 ---

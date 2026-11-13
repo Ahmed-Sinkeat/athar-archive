@@ -1,6 +1,6 @@
 ---
 title: "من عجائب الأشاعرة أنهم ينفون التعليل في أفعال الله"
-status: draft
+status: published
 published_at: 2018-02-13
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "نساء غربيات شهيرات يحملن النساء بعض مسئولية التحرش"
-status: draft
+status: published
 published_at: 2018-09-15
 person: abu-jafar-al-khalifi
 ---

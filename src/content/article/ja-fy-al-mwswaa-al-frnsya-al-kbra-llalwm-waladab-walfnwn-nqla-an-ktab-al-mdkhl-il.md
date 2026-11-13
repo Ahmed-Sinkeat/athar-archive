@@ -1,6 +1,6 @@
 ---
 title: "جاء في الموسوعة الفرنسية الكبرى للعلوم والآداب والفنون _ نقلاً عن كتاب المدخل إل"
-status: draft
+status: published
 published_at: 2017-09-26
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

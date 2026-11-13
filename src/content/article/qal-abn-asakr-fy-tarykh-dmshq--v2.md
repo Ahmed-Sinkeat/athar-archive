@@ -1,6 +1,6 @@
 ---
 title: "قال ابن عساكر في تاريخ دمشق (69/246)"
-status: draft
+status: published
 published_at: 2017-09-15
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هدم كل صنمٍ غرسته الرأسمالية ومنظمات حقوق البهائم البشرية في عقل الأنثى هدف رئيس"
-status: draft
+status: published
 published_at: 2023-09-23
 person: abu-umair-imran-al-zubaidi
 ---

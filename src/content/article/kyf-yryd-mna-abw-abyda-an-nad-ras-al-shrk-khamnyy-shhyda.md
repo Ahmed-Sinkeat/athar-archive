@@ -1,6 +1,6 @@
 ---
 title: "كيف يريد منا أبو عبيدة أن نعد رأس الشرك خامنئي شهيداً؟"
-status: draft
+status: published
 published_at: 2026-04-06
 person: abu-jafar-al-khalifi
 ---

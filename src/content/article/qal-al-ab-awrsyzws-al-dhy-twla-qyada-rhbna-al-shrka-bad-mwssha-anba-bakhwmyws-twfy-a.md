@@ -1,6 +1,6 @@
 ---
 title: "قال الأب أورسيزوس الذي تولى قيادة رهبنة الشركة بعد مؤسسها أنبا باخوميوس ( توفي ع"
-status: draft
+status: published
 published_at: 2017-11-04
 person: abu-jafar-al-khalifi
 ---

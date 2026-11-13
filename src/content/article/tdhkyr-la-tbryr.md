@@ -1,6 +1,6 @@
 ---
 title: "تذكير لا تبرير ..."
-status: draft
+status: published
 published_at: 2023-11-19
 person: abu-umair-imran-al-zubaidi
 ---

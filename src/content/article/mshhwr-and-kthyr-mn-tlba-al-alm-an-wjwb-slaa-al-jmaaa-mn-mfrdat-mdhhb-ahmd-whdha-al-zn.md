@@ -1,6 +1,6 @@
 ---
 title: "مشهور عند كثير من طلبة العلم أن وجوب صلاة الجماعة من مفردات مذهب أحمد وهذا الظن"
-status: draft
+status: published
 published_at: 2017-11-17
 person: abu-jafar-al-khalifi
 ---

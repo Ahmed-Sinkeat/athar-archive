@@ -1,6 +1,6 @@
 ---
 title: "إنكارك المنكر لا يأتي إلا بخير"
-status: draft
+status: published
 published_at: 2026-11-10
 person: awwab-bin-muhammad
 ---

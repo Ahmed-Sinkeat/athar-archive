@@ -1,6 +1,6 @@
 ---
 title: "يتردّدُ على لسان المحبّين والعاشقين قولهم"
-status: draft
+status: published
 published_at: 2022-10-15
 person: abu-umair-imran-al-zubaidi
 ---

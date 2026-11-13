@@ -1,6 +1,6 @@
 ---
 title: "لأن يقع من السماء أحب إليه من أن يخالف رسول الله صلى الله عليه وسلم"
-status: draft
+status: published
 published_at: 2025-10-25
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "في المكان الذي يحضر فيه الحنابلة، لا مكان لأهل البدع والزندقة."
-status: draft
+status: published
 published_at: 2024-01-24
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

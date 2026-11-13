@@ -1,6 +1,6 @@
 ---
 title: "فائدة في رواية حماد بن سلمة عن عمار بن أبي عمار."
-status: draft
+status: published
 published_at: 2021-08-19
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-imamah-was-sahabah"]

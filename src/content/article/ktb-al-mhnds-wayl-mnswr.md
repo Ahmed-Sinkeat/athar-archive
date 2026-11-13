@@ -1,6 +1,6 @@
 ---
 title: "كتب المهندس وائل منصور"
-status: draft
+status: published
 published_at: 2018-07-27
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

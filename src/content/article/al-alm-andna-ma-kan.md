@@ -1,6 +1,6 @@
 ---
 title: "العلم عندنا ما كان ..."
-status: draft
+status: published
 published_at: 2023-06-22
 person: abu-abdillah-firas-al-ramli
 ---

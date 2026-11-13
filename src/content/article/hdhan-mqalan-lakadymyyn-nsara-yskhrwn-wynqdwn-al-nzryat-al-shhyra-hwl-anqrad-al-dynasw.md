@@ -1,6 +1,6 @@
 ---
 title: "هذان مقالان لأكاديميين نصارى يسخرون وينقدون النظريات الشهيرة حول انقراض الديناصو"
-status: draft
+status: published
 published_at: 2018-04-09
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "آية {لئن شكرتم لأزيدنكم} في كل صلاة!"
-status: draft
+status: published
 published_at: 2023-11-10
 person: abu-jafar-al-khalifi
 ---

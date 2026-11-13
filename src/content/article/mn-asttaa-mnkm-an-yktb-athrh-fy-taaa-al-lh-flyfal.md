@@ -1,6 +1,6 @@
 ---
 title: "من استطاع منكم أن يكتب أثره في طاعة الله فليفعل"
-status: draft
+status: published
 published_at: 2025-01-30
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

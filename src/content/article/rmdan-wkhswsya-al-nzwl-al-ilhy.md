@@ -1,6 +1,6 @@
 ---
 title: "رمضان وخصوصية النزول الإلهي"
-status: draft
+status: published
 published_at: 2020-05-16
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

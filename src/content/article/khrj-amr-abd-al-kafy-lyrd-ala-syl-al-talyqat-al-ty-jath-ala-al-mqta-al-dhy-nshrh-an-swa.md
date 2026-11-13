@@ -1,6 +1,6 @@
 ---
 title: "خرج عمر عبد الكافي ليرد على سيل التعليقات التي جاءته على المقطع الذي نشره عن سؤا"
-status: draft
+status: published
 published_at: 2023-07-13
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

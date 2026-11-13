@@ -1,6 +1,6 @@
 ---
 title: "التعامل مع الأنظمة الطاغوتيّة اللّعينة بنفس الأسلوب والطريقة الّتي جرت منذ سنوات"
-status: draft
+status: published
 published_at: 2022-11-12
 person: abu-umair-imran-al-zubaidi
 ---

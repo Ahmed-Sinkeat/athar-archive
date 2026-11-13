@@ -1,6 +1,6 @@
 ---
 title: "من الأمور التي أقولها دائماً لمن يطرحون شبهات في ملف المرأة ليبرِّروا الإلحاد أو"
-status: draft
+status: published
 published_at: 2025-11-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

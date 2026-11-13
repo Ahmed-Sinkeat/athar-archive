@@ -1,6 +1,6 @@
 ---
 title: "ما الذي يرجوه الذين يدعمون الإلحاد؟"
-status: draft
+status: published
 published_at: 2026-10-15
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-iman"]

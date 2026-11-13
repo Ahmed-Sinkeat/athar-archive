@@ -1,6 +1,6 @@
 ---
 title: "صدق رؤيا المسلم في آخر الزمان"
-status: draft
+status: published
 published_at: 2024-12-17
 person: abu-abdillah-firas-al-ramli
 ---

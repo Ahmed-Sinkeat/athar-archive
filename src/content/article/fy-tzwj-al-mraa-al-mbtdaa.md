@@ -1,6 +1,6 @@
 ---
 title: "في تزوج المرأة المبتدعة"
-status: draft
+status: published
 published_at: 2023-12-21
 person: abu-abdillah-firas-al-ramli
 ---

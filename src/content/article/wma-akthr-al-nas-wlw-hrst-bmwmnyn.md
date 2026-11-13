@@ -1,6 +1,6 @@
 ---
 title: "( وما أكثر الناس ولو حرصت بمؤمنين )"
-status: draft
+status: published
 published_at: 2019-09-27
 person: abu-jafar-al-khalifi
 ---

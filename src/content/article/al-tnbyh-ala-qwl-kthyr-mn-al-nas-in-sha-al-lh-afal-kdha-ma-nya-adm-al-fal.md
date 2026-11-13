@@ -1,6 +1,6 @@
 ---
 title: "التنبيه على قول كثير من الناس: إن شاء الله أفعل كذا مع نية عدم الفعل"
-status: draft
+status: published
 published_at: 2025-10-28
 person: abu-abdillah-firas-al-ramli
 ---

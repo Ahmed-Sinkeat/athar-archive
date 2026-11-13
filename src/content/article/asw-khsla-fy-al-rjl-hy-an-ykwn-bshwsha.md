@@ -1,6 +1,6 @@
 ---
 title: "أسوء خُصلةٍ في الرجل هي أن يكون بشوشًا"
-status: draft
+status: published
 published_at: 2022-10-12
 person: abu-umair-imran-al-zubaidi
 ---

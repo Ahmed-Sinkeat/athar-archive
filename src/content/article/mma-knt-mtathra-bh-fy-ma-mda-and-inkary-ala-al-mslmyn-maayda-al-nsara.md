@@ -1,6 +1,6 @@
 ---
 title: "مما كنت متأثرًا به في ما مضى عند إنكاري على المسلمين معايدة النصارى"
-status: draft
+status: published
 published_at: 2023-12-22
 person: abu-umair-imran-al-zubaidi
 ---

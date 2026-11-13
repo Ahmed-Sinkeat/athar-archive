@@ -1,6 +1,6 @@
 ---
 title: "ليس من عادتي كتابة ردود مختصرة على شبهات هنا في القناة ولكنني أردت أن أضرب مثلاً"
-status: draft
+status: published
 published_at: 2018-02-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

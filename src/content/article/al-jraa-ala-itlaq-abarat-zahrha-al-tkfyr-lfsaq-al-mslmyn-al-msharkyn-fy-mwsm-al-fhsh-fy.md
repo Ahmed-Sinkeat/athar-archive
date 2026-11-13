@@ -1,6 +1,6 @@
 ---
 title: "الجرأة على إطلاق عبارات ظاهرها التكفير لفساق المسلمين المشاركين في موسم الفحش في"
-status: draft
+status: published
 published_at: 2023-10-29
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

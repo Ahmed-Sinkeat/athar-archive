@@ -1,6 +1,6 @@
 ---
 title: "ما أرى المقابر إلا زيارة"
-status: draft
+status: published
 published_at: 2025-12-03
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

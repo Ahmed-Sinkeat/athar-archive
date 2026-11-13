@@ -1,6 +1,6 @@
 ---
 title: "التنبيه على خطأ شائع في التعامل مع مخطوطات القرآن وكتب الحديث بقياسها على مخطوطا"
-status: draft
+status: published
 published_at: 2020-04-25
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

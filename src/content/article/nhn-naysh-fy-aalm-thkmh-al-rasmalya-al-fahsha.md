@@ -1,6 +1,6 @@
 ---
 title: "نحن نعيش في عالم تحكمه الرأسمالية الفاحشة"
-status: draft
+status: published
 published_at: 2023-10-14
 person: abu-umair-imran-al-zubaidi
 ---

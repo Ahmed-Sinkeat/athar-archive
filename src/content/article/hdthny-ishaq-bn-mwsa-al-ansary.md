@@ -1,6 +1,6 @@
 ---
 title: "حدثني إسحاق بن موسى الأنصاري"
-status: draft
+status: published
 published_at: 2023-06-29
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

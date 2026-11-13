@@ -1,6 +1,6 @@
 ---
 title: "أظنّ أنني كسائر المسلمين حاولت قدر المستطاع التضامن مع إخواننا في \"غ ز ة\" رغم تض"
-status: draft
+status: published
 published_at: 2023-10-10
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-iman", "al-wala-wal-bara"]

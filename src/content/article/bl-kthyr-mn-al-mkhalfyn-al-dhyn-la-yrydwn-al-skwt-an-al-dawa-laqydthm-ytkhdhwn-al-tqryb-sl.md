@@ -1,6 +1,6 @@
 ---
 title: "بل كثير من المخالفين الذين لا يريدون السكوت عن الدعوة لعقيدتهم يتخذون التقريب سل"
-status: draft
+status: published
 published_at: 2020-09-11
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

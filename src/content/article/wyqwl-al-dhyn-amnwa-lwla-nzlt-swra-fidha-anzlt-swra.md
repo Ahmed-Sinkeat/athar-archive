@@ -1,6 +1,6 @@
 ---
 title: "وَيَقُولُ الَّذِينَ آمَنُوا لَوْلَا نُزِّلَتْ سُورَةٌ ۖ فَإِذَا أُنزِلَتْ سُورَة"
-status: draft
+status: published
 published_at: 2026-07-17
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

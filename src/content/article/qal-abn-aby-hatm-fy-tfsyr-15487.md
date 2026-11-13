@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي حاتم في تفسير (١٥٤٨٧)"
-status: draft
+status: published
 published_at: 2023-07-27
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

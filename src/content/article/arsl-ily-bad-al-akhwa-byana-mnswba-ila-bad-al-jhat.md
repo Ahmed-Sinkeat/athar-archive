@@ -1,6 +1,6 @@
 ---
 title: "أرسل إلي بعض الأخوة بيانا منسوبا إلى بعض الجهات"
-status: draft
+status: published
 published_at: 2019-05-29
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

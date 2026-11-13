@@ -1,6 +1,6 @@
 ---
 title: "منتجات الدورة الشهرية وفهم رحمة الشريعة والفقهاء بالمرأة."
-status: draft
+status: published
 published_at: 2021-06-08
 person: abu-jafar-al-khalifi
 ---

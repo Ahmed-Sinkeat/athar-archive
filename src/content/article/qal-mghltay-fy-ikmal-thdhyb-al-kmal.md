@@ -1,6 +1,6 @@
 ---
 title: "قال مغلطاي في إكمال تهذيب الكمال"
-status: draft
+status: published
 published_at: 2020-06-20
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

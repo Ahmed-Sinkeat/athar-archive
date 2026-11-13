@@ -1,6 +1,6 @@
 ---
 title: "احذر دعوة رسول الله صلى الله عليه وسلم !"
-status: draft
+status: published
 published_at: 2020-06-03
 person: abu-jafar-al-khalifi
 ---

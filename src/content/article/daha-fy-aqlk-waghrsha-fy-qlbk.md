@@ -1,6 +1,6 @@
 ---
 title: "ضعها في عقلك واغرسها في قلبك"
-status: draft
+status: published
 published_at: 2023-01-19
 person: abu-umair-imran-al-zubaidi
 ---

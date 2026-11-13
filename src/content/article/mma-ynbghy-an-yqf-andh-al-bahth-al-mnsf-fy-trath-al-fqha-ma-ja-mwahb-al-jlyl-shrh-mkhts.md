@@ -1,6 +1,6 @@
 ---
 title: "مما ينبغي أن يقف عنده الباحث المنصف في تراث الفقهاء ما جاء مواهب الجليل شرح مختص"
-status: draft
+status: published
 published_at: 2017-12-31
 person: abu-jafar-al-khalifi
 ---

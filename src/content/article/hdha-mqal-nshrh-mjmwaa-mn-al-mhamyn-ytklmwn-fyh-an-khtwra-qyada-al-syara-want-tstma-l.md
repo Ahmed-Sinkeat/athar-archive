@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال نشره مجموعة من المحامين يتكلمون فيه عن خطورة قيادة السيارة وأنت تستمع ل"
-status: draft
+status: published
 published_at: 2022-11-03
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

@@ -1,6 +1,6 @@
 ---
 title: "قال أبو يعلى في مسنده 947 - حدثنا زحمويه"
-status: draft
+status: published
 published_at: 2019-07-10
 person: abu-jafar-al-khalifi
 ---

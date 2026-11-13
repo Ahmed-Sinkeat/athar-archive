@@ -1,6 +1,6 @@
 ---
 title: "نقل الوليد بن مسلم -رحمه الله- في كتاب الأيمان والنذور عن الإمام الأوزاعي -رضي ا"
-status: draft
+status: published
 published_at: 2022-08-20
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذه الحلقة يا إخوة غاية في الأهمية للدكتور إياد حفظه الله."
-status: draft
+status: published
 published_at: 2023-05-12
 person: abu-umair-imran-al-zubaidi
 ---

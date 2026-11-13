@@ -1,6 +1,6 @@
 ---
 title: "مَن توهَّم أنَّ الله سبحانه وتعالى قد يستبدِل عبادَه المُسلِمين الحُنفاء المُوحّ"
-status: draft
+status: published
 published_at: 2025-10-02
 person: awwab-bin-muhammad
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

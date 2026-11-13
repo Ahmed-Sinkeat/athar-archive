@@ -1,6 +1,6 @@
 ---
 title: "في تونس تراجع كبير في عقود الزواج رافقه تراجع كبير في المواليد."
-status: draft
+status: published
 published_at: 2022-10-16
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

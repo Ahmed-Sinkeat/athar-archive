@@ -1,6 +1,6 @@
 ---
 title: "لا تدعيهم يقيدون حريتك"
-status: draft
+status: published
 published_at: 2025-07-11
 person: awwab-bin-muhammad
 topics: ["al-firaq-war-rudud"]

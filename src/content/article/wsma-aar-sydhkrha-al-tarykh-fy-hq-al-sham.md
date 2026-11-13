@@ -1,6 +1,6 @@
 ---
 title: "وصمة عار سيذكرها التاريخ في حق الشام!"
-status: draft
+status: published
 published_at: 2026-08-01
 person: abu-umair-imran-al-zubaidi
 ---

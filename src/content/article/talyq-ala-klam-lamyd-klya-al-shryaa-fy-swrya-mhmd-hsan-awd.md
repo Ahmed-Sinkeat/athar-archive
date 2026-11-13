@@ -1,6 +1,6 @@
 ---
 title: "تعليق على كلام لعميد كلية الشريعة في سوريا محمد حسان عوض…"
-status: draft
+status: published
 published_at: 2024-10-23
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada", "adab-talab-al-ilm"]

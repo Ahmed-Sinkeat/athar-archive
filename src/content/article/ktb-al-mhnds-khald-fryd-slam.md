@@ -1,6 +1,6 @@
 ---
 title: "كتب المهندس خالد فريد سلام"
-status: draft
+status: published
 published_at: 2020-09-07
 person: abu-jafar-al-khalifi
 ---

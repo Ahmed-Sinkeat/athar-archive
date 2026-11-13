@@ -1,6 +1,6 @@
 ---
 title: "خاطرة حول وفاة صاحب كتاب حصن المسلم"
-status: draft
+status: published
 published_at: 2018-10-01
 person: abu-jafar-al-khalifi
 ---

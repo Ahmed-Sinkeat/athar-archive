@@ -1,6 +1,6 @@
 ---
 title: "يُكتب هذا في مكارِم الأخلاق"
-status: draft
+status: published
 published_at: 2025-05-12
 person: awwab-bin-muhammad
 ---

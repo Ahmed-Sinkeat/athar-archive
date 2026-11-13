@@ -1,6 +1,6 @@
 ---
 title: "ليتكم حقًّا تقتدون بشيخ الإسلام"
-status: draft
+status: published
 published_at: 2021-03-12
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ثنائية الغني القبيح والفقير الوسيم ودلالاتها…"
-status: draft
+status: published
 published_at: 2024-01-12
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "١- كذب عدنان إبراهيم على أبي هريرة في موضوع الأخوة الإنسانية"
-status: draft
+status: published
 published_at: 2017-06-01
 person: abu-jafar-al-khalifi
 ---

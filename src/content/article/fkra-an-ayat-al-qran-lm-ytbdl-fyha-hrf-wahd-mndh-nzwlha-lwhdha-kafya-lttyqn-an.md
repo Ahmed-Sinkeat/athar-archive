@@ -1,6 +1,6 @@
 ---
 title: "فكرة أنّ آيات القرآن لم يتبدّل فيها حرفٌ واحد منذ نزولها لوحدها كافية لتتيقّن أن"
-status: draft
+status: published
 published_at: 2023-04-28
 person: abu-umair-imran-al-zubaidi
 ---

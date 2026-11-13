@@ -1,6 +1,6 @@
 ---
 title: "معضلة الظهور والخفاء"
-status: draft
+status: published
 published_at: 2021-11-18
 person: abu-jafar-al-khalifi
 ---

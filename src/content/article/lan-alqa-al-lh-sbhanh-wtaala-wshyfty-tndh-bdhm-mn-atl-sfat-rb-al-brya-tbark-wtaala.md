@@ -1,6 +1,6 @@
 ---
 title: "لأن ألقى الله سبحانه وتعالى وصحيفتي تنضح بذم من عطل صفات رب البرية تبارك وتعالى"
-status: draft
+status: published
 published_at: 2023-08-31
 person: abu-umair-imran-al-zubaidi
 ---

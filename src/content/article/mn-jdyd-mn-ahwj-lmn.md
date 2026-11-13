@@ -1,6 +1,6 @@
 ---
 title: "من جديد: من أحوج لمن؟"
-status: draft
+status: published
 published_at: 2021-09-01
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وأما نقطة أن الشيخ يفرق بين مسائل الخلاف ومسائل الاجتهاد"
-status: draft
+status: published
 published_at: 2019-10-16
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

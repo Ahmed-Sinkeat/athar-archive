@@ -1,6 +1,6 @@
 ---
 title: "عندما تُقصّر أو تُسرف على نفسك في الذنوب"
-status: draft
+status: published
 published_at: 2023-05-16
 person: abu-umair-imran-al-zubaidi
 ---

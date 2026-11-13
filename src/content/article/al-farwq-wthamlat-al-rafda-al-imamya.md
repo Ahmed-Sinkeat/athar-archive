@@ -1,6 +1,6 @@
 ---
 title: "الفاروق وتحاملات الرافضة الإمامية"
-status: draft
+status: published
 published_at: 2019-10-13
 person: abu-jafar-al-khalifi
 ---

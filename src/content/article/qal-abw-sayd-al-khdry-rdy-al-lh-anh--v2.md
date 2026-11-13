@@ -1,6 +1,6 @@
 ---
 title: "قال أبو سعيد الخدري رضي الله عنه"
-status: draft
+status: published
 published_at: 2024-05-25
 person: abu-umair-imran-al-zubaidi
 ---

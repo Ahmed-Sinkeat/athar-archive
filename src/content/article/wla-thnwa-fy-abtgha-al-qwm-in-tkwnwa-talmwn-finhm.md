@@ -1,6 +1,6 @@
 ---
 title: "{وَلَا تَهِنُوا فِي ابْتِغَاءِ الْقَوْمِ ۖ إِن تَكُونُوا تَأْلَمُونَ فَإِنَّهُمْ"
-status: draft
+status: published
 published_at: 2023-10-09
 person: abu-umair-imran-al-zubaidi
 ---

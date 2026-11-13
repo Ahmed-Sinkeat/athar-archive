@@ -1,6 +1,6 @@
 ---
 title: "أكثر ما تعجبت منه البارحة بعد انتهاء مباراة مصر والأرجنتين"
-status: draft
+status: published
 published_at: 2026-07-08
 person: abu-umair-imran-al-zubaidi
 ---

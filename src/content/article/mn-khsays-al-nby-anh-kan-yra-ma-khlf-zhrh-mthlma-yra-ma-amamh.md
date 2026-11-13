@@ -1,6 +1,6 @@
 ---
 title: "مِن خصائص النبي ﷺ أنه كان يرى ما خلف ظهره مثلما يرى ما أمامه"
-status: draft
+status: published
 published_at: 2023-05-09
 person: abu-umair-imran-al-zubaidi
 ---

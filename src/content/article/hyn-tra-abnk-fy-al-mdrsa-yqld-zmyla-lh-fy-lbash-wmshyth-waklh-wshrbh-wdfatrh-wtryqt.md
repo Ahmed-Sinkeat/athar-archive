@@ -1,6 +1,6 @@
 ---
 title: "حين ترى ابنك في المدرسة يقلد زميلا له في لباسه ومشيته وأكله وشربه ودفاتره وطريقت"
-status: draft
+status: published
 published_at: 2018-10-28
 person: abu-jafar-al-khalifi
 ---

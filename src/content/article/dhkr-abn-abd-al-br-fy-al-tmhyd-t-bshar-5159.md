@@ -1,6 +1,6 @@
 ---
 title: "ذكر ابن عبد البر في التمهيد ت بشار (٥/&rlm;١٥٩)"
-status: draft
+status: published
 published_at: 2026-05-10
 person: abu-abdillah-firas-al-ramli
 ---

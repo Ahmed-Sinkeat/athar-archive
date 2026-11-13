@@ -1,6 +1,6 @@
 ---
 title: "قال جونثان بنثال وزميله جيرم بيليون في كتابهما الهلال الخيري"
-status: draft
+status: published
 published_at: 2017-10-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

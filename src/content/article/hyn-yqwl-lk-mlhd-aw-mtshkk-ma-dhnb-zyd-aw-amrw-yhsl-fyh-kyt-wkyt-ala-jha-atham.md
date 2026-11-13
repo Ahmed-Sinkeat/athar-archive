@@ -1,6 +1,6 @@
 ---
 title: "حين يقول لك ملحد أو متشكك ( ما ذنب زيد أو عمرو يحصل فيه كيت وكيت ) على جهة اتهام"
-status: draft
+status: published
 published_at: 2018-09-29
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

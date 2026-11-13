@@ -1,6 +1,6 @@
 ---
 title: "ما الفائدة من أبحاث جواز تهنئة النصارى بأعيادهم أو الاحتفال بالكريسمس؟"
-status: draft
+status: published
 published_at: 2021-12-27
 person: abu-jafar-al-khalifi
 ---

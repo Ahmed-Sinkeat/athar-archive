@@ -1,6 +1,6 @@
 ---
 title: "بمناسبة كلام بعض أدعياء الحنبلية عن حقيقة الخلاف بين الحنابلة والأشاعرة"
-status: draft
+status: published
 published_at: 2018-10-14
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

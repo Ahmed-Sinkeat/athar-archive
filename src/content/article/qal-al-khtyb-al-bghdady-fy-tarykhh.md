@@ -1,6 +1,6 @@
 ---
 title: "قال الخطيب البغدادي في تاريخه (15/647)"
-status: draft
+status: published
 published_at: 2017-11-04
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

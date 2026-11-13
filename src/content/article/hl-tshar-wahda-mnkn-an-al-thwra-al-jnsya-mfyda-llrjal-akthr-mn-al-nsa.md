@@ -1,6 +1,6 @@
 ---
 title: "هل تشعر واحدة منكن أن الثورة الجنسية مفيدة للرجال أكثر من النساء"
-status: draft
+status: published
 published_at: 2025-04-28
 person: abu-jafar-al-khalifi
 ---

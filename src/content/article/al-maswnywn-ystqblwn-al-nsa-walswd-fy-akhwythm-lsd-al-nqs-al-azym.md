@@ -1,6 +1,6 @@
 ---
 title: "الماسونيون يستقبلون النساء والسود في أخويتهم لسد النقص العظيم."
-status: draft
+status: published
 published_at: 2023-05-01
 person: abu-jafar-al-khalifi
 ---

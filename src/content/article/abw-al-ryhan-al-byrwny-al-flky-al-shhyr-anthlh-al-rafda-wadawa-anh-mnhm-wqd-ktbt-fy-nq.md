@@ -1,6 +1,6 @@
 ---
 title: "أبو الريحان البيروني الفلكي الشهير انتحله الرافضة وادعوا أنه منهم وقد كتبت في نق"
-status: draft
+status: published
 published_at: 2019-06-14
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

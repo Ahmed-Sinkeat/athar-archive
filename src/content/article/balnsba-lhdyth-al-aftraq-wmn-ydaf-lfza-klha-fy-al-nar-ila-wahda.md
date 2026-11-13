@@ -1,6 +1,6 @@
 ---
 title: "بالنسبة لحديث الافتراق ومن يُضعف لفظة \"كلها في النار إلا واحدة\"."
-status: draft
+status: published
 published_at: 2024-01-15
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "أصبحنا على فطرة الإسلام"
-status: draft
+status: published
 published_at: 2025-01-29
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "مِن مساوئ تعطيل التعدّد وإعساره هو اصطلاح المجتمع على مرحلة عمريّة محدّدة لزواج"
-status: draft
+status: published
 published_at: 2023-01-10
 person: abu-umair-imran-al-zubaidi
 ---

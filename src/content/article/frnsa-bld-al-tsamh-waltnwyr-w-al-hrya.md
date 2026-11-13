@@ -1,6 +1,6 @@
 ---
 title: "فرنسا … بلد التسامح والتنوير و الحرية"
-status: draft
+status: published
 published_at: 2018-11-18
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

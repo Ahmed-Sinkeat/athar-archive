@@ -1,6 +1,6 @@
 ---
 title: "بين عمق الوحي وسطحية القيم الغربية."
-status: draft
+status: published
 published_at: 2020-05-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

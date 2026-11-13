@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب نيل الابتهاج ل أحمد بابا بن أحمد بن الفقيه الحاج أحمد بن عمر بن محمد"
-status: draft
+status: published
 published_at: 2018-10-16
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

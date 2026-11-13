@@ -1,6 +1,6 @@
 ---
 title: "قال السمعاني في قواطع الأدلة وهو يعدد الأخبار التي تفيد القطع"
-status: draft
+status: published
 published_at: 2017-08-18
 person: abu-jafar-al-khalifi
 ---

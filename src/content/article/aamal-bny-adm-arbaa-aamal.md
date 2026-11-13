@@ -1,6 +1,6 @@
 ---
 title: "أعمال بني آدم أربعة أعمال"
-status: draft
+status: published
 published_at: 2026-09-11
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

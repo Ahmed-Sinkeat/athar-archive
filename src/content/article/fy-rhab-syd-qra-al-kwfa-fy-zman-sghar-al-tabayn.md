@@ -1,6 +1,6 @@
 ---
 title: "في رحاب سيد قراء الكوفة في زمان صغار التابعين"
-status: draft
+status: published
 published_at: 2019-12-09
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

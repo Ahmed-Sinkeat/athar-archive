@@ -1,6 +1,6 @@
 ---
 title: "أكفر من عبد الرحمن!"
-status: draft
+status: published
 published_at: 2022-01-08
 person: abu-jafar-al-khalifi
 ---

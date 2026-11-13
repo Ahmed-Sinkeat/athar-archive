@@ -1,6 +1,6 @@
 ---
 title: "شيوخ ابن عساكر من الحنابلة وأهل الحديث"
-status: draft
+status: published
 published_at: 2022-06-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

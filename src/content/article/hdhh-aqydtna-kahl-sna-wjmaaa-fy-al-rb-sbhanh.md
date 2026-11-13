@@ -1,6 +1,6 @@
 ---
 title: "هذه عقيدتنا كأهل سُنّة وجماعة في الربّ سبحانه"
-status: draft
+status: published
 published_at: 2022-12-25
 person: abu-umair-imran-al-zubaidi
 ---

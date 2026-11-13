@@ -1,6 +1,6 @@
 ---
 title: "لو سألتني ما الذي ترجوه من هذه المعركة؟"
-status: draft
+status: published
 published_at: 2024-12-02
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "تنبيه بمناسبة خطأ عبد الله الشريف في حلقته عن الصوفية.."
-status: draft
+status: published
 published_at: 2021-08-28
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "غاية الغايات (رؤية الله)"
-status: draft
+status: published
 published_at: 2020-09-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

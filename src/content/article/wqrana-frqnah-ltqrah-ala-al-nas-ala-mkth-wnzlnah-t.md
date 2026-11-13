@@ -1,6 +1,6 @@
 ---
 title: "وَقُرْآنًا فَرَقْنَاهُ لِتَقْرَأَهُ عَلَى النَّاسِ عَلَى مُكْثٍ وَنَزَّلْنَاهُ ت"
-status: draft
+status: published
 published_at: 2025-07-12
 person: abu-umair-imran-al-zubaidi
 ---

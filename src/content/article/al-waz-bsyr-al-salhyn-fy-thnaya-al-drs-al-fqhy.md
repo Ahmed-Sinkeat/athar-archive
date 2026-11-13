@@ -1,6 +1,6 @@
 ---
 title: "الوعظ بسِير الصالحين في ثنايا الدرس الفقهي!"
-status: draft
+status: published
 published_at: 2021-01-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

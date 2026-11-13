@@ -1,6 +1,6 @@
 ---
 title: "هذي إجابة الداعية خالد بهاء الدين وفقه الله."
-status: draft
+status: published
 published_at: 2024-05-17
 person: abu-umair-imran-al-zubaidi
 ---

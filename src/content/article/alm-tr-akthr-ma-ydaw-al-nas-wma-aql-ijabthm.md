@@ -1,6 +1,6 @@
 ---
 title: "ألم تر أكثر ما يدعو الناس، وما أقل إجابتهم؟"
-status: draft
+status: published
 published_at: 2024-02-04
 person: abu-abdillah-firas-al-ramli
 ---

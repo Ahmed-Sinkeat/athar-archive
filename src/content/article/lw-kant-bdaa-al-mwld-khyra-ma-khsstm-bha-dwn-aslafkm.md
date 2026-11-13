@@ -1,6 +1,6 @@
 ---
 title: "لو كانت بدعة المولد خيرا ما خصصتم بها دون أسلافكم"
-status: draft
+status: published
 published_at: 2023-09-21
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

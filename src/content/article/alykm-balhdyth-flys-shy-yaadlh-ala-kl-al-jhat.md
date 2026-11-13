@@ -1,6 +1,6 @@
 ---
 title: "علَيكُم بالحديث فليس شيء ** يُعادله على كل الجهاتِ"
-status: draft
+status: published
 published_at: 2023-07-23
 person: abu-abdillah-firas-al-ramli
 ---

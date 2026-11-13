@@ -1,6 +1,6 @@
 ---
 title: "هدم طاغوت تأمين المستقبل"
-status: draft
+status: published
 published_at: 2024-05-21
 person: abu-umair-imran-al-zubaidi
 ---

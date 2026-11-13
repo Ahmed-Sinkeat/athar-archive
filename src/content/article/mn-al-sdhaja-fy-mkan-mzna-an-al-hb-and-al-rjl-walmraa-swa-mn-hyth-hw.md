@@ -1,6 +1,6 @@
 ---
 title: "من السذاجة في مكان مظنة أنّ الحبّ عند الرجل والمرأة سواء من حيث هو!"
-status: draft
+status: published
 published_at: 2023-09-21
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

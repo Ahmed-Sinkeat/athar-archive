@@ -1,6 +1,6 @@
 ---
 title: "قال الكاتب الفرنسي مارك فلور باي في كتابه كتاب الرأسمالية ام الديموقراطية ص17 وه"
-status: draft
+status: published
 published_at: 2017-11-30
 person: abu-jafar-al-khalifi
 ---

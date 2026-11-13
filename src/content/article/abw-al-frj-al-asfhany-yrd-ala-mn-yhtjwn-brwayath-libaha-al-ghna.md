@@ -1,6 +1,6 @@
 ---
 title: "أبو الفرج الأصفهاني يرد على من يحتجون برواياته لإباحة الغناء!"
-status: draft
+status: published
 published_at: 2020-02-24
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

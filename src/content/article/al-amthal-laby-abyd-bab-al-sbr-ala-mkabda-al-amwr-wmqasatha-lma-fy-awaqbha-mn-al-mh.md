@@ -1,6 +1,6 @@
 ---
 title: "الأمثال لأبي عبيد | باب الصبر على مكابدة الأمور ومقاساتها لما في عواقبها من المح"
-status: draft
+status: published
 published_at: 2024-06-25
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

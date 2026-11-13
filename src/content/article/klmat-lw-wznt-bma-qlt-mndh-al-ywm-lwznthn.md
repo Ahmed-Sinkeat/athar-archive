@@ -1,6 +1,6 @@
 ---
 title: "كلمات لو وزنت بما قلت منذ اليوم لوزنتهن"
-status: draft
+status: published
 published_at: 2023-12-27
 person: abu-abdillah-firas-al-ramli
 ---

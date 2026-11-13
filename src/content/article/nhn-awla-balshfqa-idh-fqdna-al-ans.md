@@ -1,6 +1,6 @@
 ---
 title: "نحن أولى بالشفقة إذ فقدنا الأنس."
-status: draft
+status: published
 published_at: 2023-02-01
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "يا إخوتي جاء شهر الصيام وهو يوافي مرة كل عام"
-status: draft
+status: published
 published_at: 2024-03-09
 person: abu-abdillah-firas-al-ramli
 ---

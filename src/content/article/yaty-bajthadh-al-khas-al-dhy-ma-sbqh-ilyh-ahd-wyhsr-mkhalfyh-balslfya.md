@@ -1,6 +1,6 @@
 ---
 title: "يأتي باجتهاده الخاص الذي ما سبقه إليه أحد ويحصر مخالفيه بالسلفية"
-status: draft
+status: published
 published_at: 2022-03-05
 person: abu-jafar-al-khalifi
 ---

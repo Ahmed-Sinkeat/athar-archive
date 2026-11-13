@@ -1,6 +1,6 @@
 ---
 title: "كنت امتنعت عن الحديث عن الأمر لأنها فورة ساعات أو أيام ثم تنتهي."
-status: draft
+status: published
 published_at: 2026-07-08
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "فكذلك فكونوا إن شاء الله"
-status: draft
+status: published
 published_at: 2025-08-09
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

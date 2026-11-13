@@ -1,6 +1,6 @@
 ---
 title: "جاء في تفسير الرازي مفاتيح الغيب"
-status: draft
+status: published
 published_at: 2018-10-14
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

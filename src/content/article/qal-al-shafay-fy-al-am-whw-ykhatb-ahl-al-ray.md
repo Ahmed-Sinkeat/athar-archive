@@ -1,6 +1,6 @@
 ---
 title: "قال الشافعي في الأم وهو يخاطب أهل الرأي"
-status: draft
+status: published
 published_at: 2017-07-29
 person: abu-jafar-al-khalifi
 ---

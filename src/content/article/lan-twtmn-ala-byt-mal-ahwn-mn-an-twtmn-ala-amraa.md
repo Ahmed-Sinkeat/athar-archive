@@ -1,6 +1,6 @@
 ---
 title: "لأن تؤتمن على بيت مال أهون من أن تؤتمن على امرأة"
-status: draft
+status: published
 published_at: 2025-08-13
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "من يتفلسف في مخلوقية المكان والظرف والمظروف ونحو هذه المصطلحات التي لا فائدة منه"
-status: draft
+status: published
 published_at: 2025-10-25
 person: abu-umair-imran-al-zubaidi
 ---

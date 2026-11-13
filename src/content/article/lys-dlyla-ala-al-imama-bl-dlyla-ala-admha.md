@@ -1,6 +1,6 @@
 ---
 title: "ليس دليلا على الإمامة بل دليلا على عدمها..."
-status: draft
+status: published
 published_at: 2020-09-24
 person: abu-jafar-al-khalifi
 ---

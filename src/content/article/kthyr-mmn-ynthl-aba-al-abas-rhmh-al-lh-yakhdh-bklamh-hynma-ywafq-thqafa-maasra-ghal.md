@@ -1,6 +1,6 @@
 ---
 title: "كثير ممَّن ينتحِل أبا العباس رحمه الله يأخذ بكلامه حينما يُوافق ثقافة معاصرة غال"
-status: draft
+status: published
 published_at: 2026-09-02
 person: awwab-bin-muhammad
 ---

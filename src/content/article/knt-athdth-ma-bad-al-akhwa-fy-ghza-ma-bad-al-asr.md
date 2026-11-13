@@ -1,6 +1,6 @@
 ---
 title: "كنت أتحدث مع بعض الأخوة في غزة ما بعد العصر"
-status: draft
+status: published
 published_at: 2023-11-10
 person: abu-umair-imran-al-zubaidi
 ---

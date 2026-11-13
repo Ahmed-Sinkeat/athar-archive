@@ -1,6 +1,6 @@
 ---
 title: "لا زلت أذكر تهنئة بعض المهتوكين ممن يحوز لقب ( مفكر إسلامي ) بما سماه تحرير المو"
-status: draft
+status: published
 published_at: 2018-12-19
 person: abu-jafar-al-khalifi
 ---

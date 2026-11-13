@@ -1,6 +1,6 @@
 ---
 title: "العجيب هو ما يحصل على مواقع التواصل!"
-status: draft
+status: published
 published_at: 2023-12-05
 person: abu-umair-imran-al-zubaidi
 ---

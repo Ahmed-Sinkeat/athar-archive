@@ -1,6 +1,6 @@
 ---
 title: "وكأن النبي ﷺ كان ملجأ للمطلقات والأرامل وما تزوج غير الأبكار إلا لجبر خواطرهن"
-status: draft
+status: published
 published_at: 2025-09-12
 person: abu-umair-imran-al-zubaidi
 topics: ["al-imamah-was-sahabah"]

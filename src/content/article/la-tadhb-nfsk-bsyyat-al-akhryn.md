@@ -1,6 +1,6 @@
 ---
 title: "لا تعذب نفسك بسيئات الآخرين ..."
-status: draft
+status: published
 published_at: 2021-07-05
 person: abu-jafar-al-khalifi
 ---

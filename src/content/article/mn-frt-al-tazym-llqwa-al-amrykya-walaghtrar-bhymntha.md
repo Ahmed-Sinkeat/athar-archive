@@ -1,6 +1,6 @@
 ---
 title: "من فرط التعظيم للقوة الأمريكية والاغترار بهيمنتها"
-status: draft
+status: published
 published_at: 2024-12-01
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "اعترافات أشعرية بمخالفة الإمام البخاري لهم في صفة الكلام والصفات الفعلية."
-status: draft
+status: published
 published_at: 2021-03-09
 person: abu-jafar-al-khalifi
 ---

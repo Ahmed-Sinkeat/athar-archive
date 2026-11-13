@@ -1,6 +1,6 @@
 ---
 title: "باب في حذق المفتي.."
-status: draft
+status: published
 published_at: 2021-09-20
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

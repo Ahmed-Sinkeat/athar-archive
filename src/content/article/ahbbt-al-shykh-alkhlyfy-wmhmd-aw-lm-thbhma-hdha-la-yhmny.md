@@ -1,6 +1,6 @@
 ---
 title: "أحببت الشيخ ألخليفي ومحمد أو لم تحبهما، هذا لا يهمني."
-status: draft
+status: published
 published_at: 2024-03-12
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

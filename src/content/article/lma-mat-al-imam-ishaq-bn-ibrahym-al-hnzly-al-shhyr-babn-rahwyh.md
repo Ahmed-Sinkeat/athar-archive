@@ -1,6 +1,6 @@
 ---
 title: "لما مات الإمام إسحاق بن إبراهيم الحنظلي الشهير بابن راهويه"
-status: draft
+status: published
 published_at: 2018-07-21
 person: abu-jafar-al-khalifi
 ---

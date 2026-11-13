@@ -1,6 +1,6 @@
 ---
 title: "عدم قبول تحديد ليلة القدر عبر النجوم والحسابات الفلكية"
-status: draft
+status: published
 published_at: 2024-03-30
 person: abu-abdillah-firas-al-ramli
 ---

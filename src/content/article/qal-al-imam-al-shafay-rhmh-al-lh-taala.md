@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام الشَّافعي رحمه الله تعالى"
-status: draft
+status: published
 published_at: 2025-06-02
 person: awwab-bin-muhammad
 ---

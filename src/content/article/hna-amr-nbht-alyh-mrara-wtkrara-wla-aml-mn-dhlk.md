@@ -1,6 +1,6 @@
 ---
 title: "هنا أمر نبهت عليه مراراً وتكراراً، ولا أملُّ من ذلك."
-status: draft
+status: published
 published_at: 2024-03-28
 person: abu-jafar-al-khalifi
 ---

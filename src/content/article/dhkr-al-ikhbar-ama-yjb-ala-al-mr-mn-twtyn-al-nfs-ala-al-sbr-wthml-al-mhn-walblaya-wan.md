@@ -1,6 +1,6 @@
 ---
 title: "ذكر الإخبار عما يجب على المرء من توطين النفس على الصبر وتحمل المحن والبلايا وأن"
-status: draft
+status: published
 published_at: 2024-01-19
 person: abu-abdillah-firas-al-ramli
 ---

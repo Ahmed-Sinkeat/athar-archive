@@ -1,6 +1,6 @@
 ---
 title: "لِسانٌ عذب وثوبٌ قشِيب: الأصل المُشترَك في الضَّلال"
-status: draft
+status: published
 published_at: 2025-05-06
 person: awwab-bin-muhammad
 topics: ["al-firaq-war-rudud", "al-wala-wal-bara"]

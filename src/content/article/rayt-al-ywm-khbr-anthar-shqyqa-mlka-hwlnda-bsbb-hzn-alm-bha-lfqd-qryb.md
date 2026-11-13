@@ -1,6 +1,6 @@
 ---
 title: "رأيت الْيَوْمَ خبر انتحار شقيقة ملكة هولندا بسبب حزن ألم بها لفقد قريب"
-status: draft
+status: published
 published_at: 2018-06-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

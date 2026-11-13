@@ -1,6 +1,6 @@
 ---
 title: "قال أمية بن خالد"
-status: draft
+status: published
 published_at: 2025-05-17
 person: awwab-bin-muhammad
 ---

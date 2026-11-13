@@ -1,6 +1,6 @@
 ---
 title: "البركة أمر غيبي"
-status: draft
+status: published
 published_at: 2025-06-17
 person: awwab-bin-muhammad
 ---

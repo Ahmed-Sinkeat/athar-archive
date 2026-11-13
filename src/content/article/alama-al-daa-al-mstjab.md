@@ -1,6 +1,6 @@
 ---
 title: "علامة الدعاء المستجاب"
-status: draft
+status: published
 published_at: 2024-08-21
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

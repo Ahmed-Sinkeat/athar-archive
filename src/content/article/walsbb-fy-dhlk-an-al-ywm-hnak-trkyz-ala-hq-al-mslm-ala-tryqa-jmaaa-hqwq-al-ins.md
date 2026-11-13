@@ -1,6 +1,6 @@
 ---
 title: "والسبب في ذلك أن اليوم هناك تركيز على ( حق المسلم ) على طريقة جماعة ( حقوق الإنس"
-status: draft
+status: published
 published_at: 2020-03-01
 person: abu-jafar-al-khalifi
 ---

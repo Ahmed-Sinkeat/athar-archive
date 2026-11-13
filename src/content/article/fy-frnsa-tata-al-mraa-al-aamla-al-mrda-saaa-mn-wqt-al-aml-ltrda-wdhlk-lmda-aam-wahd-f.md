@@ -1,6 +1,6 @@
 ---
 title: "في فرنسا تعطى المرأة العاملة المرضع ساعة من وقت العمل لترضع وذلك لمدة عام واحد ف"
-status: draft
+status: published
 published_at: 2018-08-05
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

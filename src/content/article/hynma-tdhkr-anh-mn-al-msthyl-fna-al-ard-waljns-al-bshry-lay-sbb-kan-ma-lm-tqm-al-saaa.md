@@ -1,6 +1,6 @@
 ---
 title: "حينما تذكر أنه من المستحيل فناء الأرض والجنس البشري لأي سبب كان ما لم تقم الساعة"
-status: draft
+status: published
 published_at: 2025-05-29
 person: abu-umair-imran-al-zubaidi
 ---

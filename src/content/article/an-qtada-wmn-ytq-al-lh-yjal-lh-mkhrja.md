@@ -1,6 +1,6 @@
 ---
 title: "عن قتادة: ﴿ومن يتق الله يجعل له مخرجا﴾"
-status: draft
+status: published
 published_at: 2023-05-19
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "مر وقت طويل منذ آخر مرة تعقبت فيها حسناً السقاف"
-status: draft
+status: published
 published_at: 2025-01-01
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-asma-was-sifat"]

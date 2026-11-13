@@ -1,6 +1,6 @@
 ---
 title: "لو كان الهنود أو أهل الصين لهم السيادة العسكرية والاقتصادية في هذا الزمان لكنا ا"
-status: draft
+status: published
 published_at: 2019-12-30
 person: abu-jafar-al-khalifi
 ---

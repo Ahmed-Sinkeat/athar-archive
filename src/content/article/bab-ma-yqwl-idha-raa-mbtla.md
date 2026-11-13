@@ -1,6 +1,6 @@
 ---
 title: "\" باب: ما يقول إذا رأى مبتلى \""
-status: draft
+status: published
 published_at: 2023-05-17
 person: abu-abdillah-firas-al-ramli
 ---

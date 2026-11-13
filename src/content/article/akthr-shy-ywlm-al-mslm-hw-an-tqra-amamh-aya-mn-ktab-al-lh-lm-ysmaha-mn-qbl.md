@@ -1,6 +1,6 @@
 ---
 title: "أكثر شيءٍ يؤلم المسلم هو أن تُقرأ أمامه آيةٌ مِن كتاب الله لم يسمعها من قبل"
-status: draft
+status: published
 published_at: 2023-03-12
 person: abu-umair-imran-al-zubaidi
 ---

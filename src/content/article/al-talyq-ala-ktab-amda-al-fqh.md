@@ -1,6 +1,6 @@
 ---
 title: "التعليق على كتاب عمدة الفقه"
-status: draft
+status: published
 published_at: 2018-08-17
 person: abu-jafar-al-khalifi
 ---

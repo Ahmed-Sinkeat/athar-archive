@@ -1,6 +1,6 @@
 ---
 title: "قال الكاتبة الأمريكية إيدا لوشان في كتابها أزمة منتصف العمر الرائعة في ص26"
-status: draft
+status: published
 published_at: 2017-10-17
 person: abu-jafar-al-khalifi
 ---

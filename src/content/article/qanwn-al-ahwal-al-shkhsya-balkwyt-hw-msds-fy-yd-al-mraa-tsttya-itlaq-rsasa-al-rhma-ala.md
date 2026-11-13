@@ -1,6 +1,6 @@
 ---
 title: "قانون الأحوال الشخصية بالكويت هو مسدس في يد المرأة تستطيع إطلاق رصاصة الرحمة على"
-status: draft
+status: published
 published_at: 2021-04-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

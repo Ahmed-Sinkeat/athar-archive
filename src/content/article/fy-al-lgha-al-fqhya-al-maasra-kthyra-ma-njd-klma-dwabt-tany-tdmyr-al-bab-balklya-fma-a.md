@@ -1,6 +1,6 @@
 ---
 title: "في اللغة الفقهية المعاصرة كثيرا ما نجد كلمة ضوابط تعني تدمير الباب بالكلية فما أ"
-status: draft
+status: published
 published_at: 2017-09-27
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "يعرف البروفيسور الكندي جوردان بيترسون بآراءه العقلانية حول الفروقات بين الجنسين"
-status: draft
+status: published
 published_at: 2018-08-10
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "بما أنهم فقراء فلا نخاف على عقيدتهم ودخولهم في الشرك وسب الصحابة"
-status: draft
+status: published
 published_at: 2025-06-22
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

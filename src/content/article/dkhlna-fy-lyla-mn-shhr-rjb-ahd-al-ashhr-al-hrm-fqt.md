@@ -1,6 +1,6 @@
 ---
 title: "دخلنا في ليلة 12 من شهر رجب أحد الأشهر الحرم، فقط!"
-status: draft
+status: published
 published_at: 2025-12-31
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أنا أعلم عِلم اليقين أنّ كثيرًا مِن الناس حين يرون الكلام المتبادل بيننا كأهل سُ"
-status: draft
+status: published
 published_at: 2022-09-08
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat", "al-qadr"]

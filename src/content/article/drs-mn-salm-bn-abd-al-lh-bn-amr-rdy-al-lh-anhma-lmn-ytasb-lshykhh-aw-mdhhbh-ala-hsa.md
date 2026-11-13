@@ -1,6 +1,6 @@
 ---
 title: "درس من سالم بن عبد الله بن عمر -رضي الله عنهما- لمن يتعصب لشيخه أو مذهبه على حسا"
-status: draft
+status: published
 published_at: 2025-08-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

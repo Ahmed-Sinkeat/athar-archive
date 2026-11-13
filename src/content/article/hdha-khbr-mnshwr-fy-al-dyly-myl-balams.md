@@ -1,6 +1,6 @@
 ---
 title: "هذا خبر منشور في الديلي ميل بالأمس"
-status: draft
+status: published
 published_at: 2018-11-25
 person: abu-jafar-al-khalifi
 ---

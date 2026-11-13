@@ -1,6 +1,6 @@
 ---
 title: "العوام ليسوا دواب، والحجة شرطها القيام لا الإقناع!"
-status: draft
+status: published
 published_at: 2024-07-23
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لا يضرهم أن لا يعرفهم عمر ولكن الله يعرفهم!"
-status: draft
+status: published
 published_at: 2023-08-11
 person: abu-abdillah-firas-al-ramli
 ---

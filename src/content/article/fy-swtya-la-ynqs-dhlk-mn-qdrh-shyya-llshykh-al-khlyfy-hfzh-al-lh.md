@@ -1,6 +1,6 @@
 ---
 title: "في صوتية \"لا ينقص ذلك من قدره شيئا\" للشيخ الخليفي حفظه الله"
-status: draft
+status: published
 published_at: 2024-09-06
 person: abu-umair-imran-al-zubaidi
 ---

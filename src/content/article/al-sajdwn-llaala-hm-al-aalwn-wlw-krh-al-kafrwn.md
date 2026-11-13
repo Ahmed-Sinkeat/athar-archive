@@ -1,6 +1,6 @@
 ---
 title: "الساجدون للأعلى هم الأعلون ولو كره الكافرون..."
-status: draft
+status: published
 published_at: 2023-11-06
 person: abu-jafar-al-khalifi
 ---

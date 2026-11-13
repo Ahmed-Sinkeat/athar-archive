@@ -1,6 +1,6 @@
 ---
 title: "باب في صبر النبي ﷺ على أذى المشركين وتركه حظ نفسه بحلمه عنهم ودعائه لهم بالخير؛"
-status: draft
+status: published
 published_at: 2026-07-20
 person: abu-abdillah-firas-al-ramli
 ---

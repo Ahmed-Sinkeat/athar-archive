@@ -1,6 +1,6 @@
 ---
 title: "في الحقيقة هذا المقطع فيه اعتراف عزيز."
-status: draft
+status: published
 published_at: 2024-10-06
 person: abu-jafar-al-khalifi
 ---

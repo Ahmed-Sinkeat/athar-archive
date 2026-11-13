@@ -1,6 +1,6 @@
 ---
 title: "خُلاصةٌ لمن يعِي ويعقِل"
-status: draft
+status: published
 published_at: 2025-11-01
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال أمية بن عبد العزيز الأندلسي الداني المتوفى عام 529 في رسالته المصرية"
-status: draft
+status: published
 published_at: 2018-01-02
 person: abu-jafar-al-khalifi
 ---

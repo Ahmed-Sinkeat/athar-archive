@@ -1,6 +1,6 @@
 ---
 title: "قال الطبري في تفسيره 9231 - حدثني يعقوب قال"
-status: draft
+status: published
 published_at: 2017-06-15
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

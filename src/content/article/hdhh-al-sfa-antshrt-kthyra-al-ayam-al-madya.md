@@ -1,6 +1,6 @@
 ---
 title: "هذه الصفة انتشرت كثيراً الأيام الماضية"
-status: draft
+status: published
 published_at: 2026-03-25
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

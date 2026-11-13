@@ -1,6 +1,6 @@
 ---
 title: "كثير من المنتسبين للعلم في زماننا لا يدرون أنهم يسيرون على منهج \"الإنسانوية\""
-status: draft
+status: published
 published_at: 2020-10-18
 person: abu-jafar-al-khalifi
 ---

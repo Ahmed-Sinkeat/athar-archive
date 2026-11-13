@@ -1,6 +1,6 @@
 ---
 title: "من المعالجات التراثية العجيبة لمشكلة الشر."
-status: draft
+status: published
 published_at: 2020-03-14
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

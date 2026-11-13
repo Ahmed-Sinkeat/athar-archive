@@ -1,6 +1,6 @@
 ---
 title: "عن الفجوة الفكريّة بين الأجيال ..."
-status: draft
+status: published
 published_at: 2022-11-28
 person: abu-umair-imran-al-zubaidi
 ---

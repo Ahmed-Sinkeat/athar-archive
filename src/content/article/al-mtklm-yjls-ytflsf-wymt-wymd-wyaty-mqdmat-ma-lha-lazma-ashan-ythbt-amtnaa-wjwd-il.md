@@ -1,6 +1,6 @@
 ---
 title: "المتكلم يجلس يتفلسف ويمط ويمد ويعطي مقدمات ما لها لازمة عشان يثبت امتناع وجود إل"
-status: draft
+status: published
 published_at: 2025-10-13
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

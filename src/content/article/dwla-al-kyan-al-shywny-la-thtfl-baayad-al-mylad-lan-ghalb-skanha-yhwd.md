@@ -1,6 +1,6 @@
 ---
 title: "دولة الكيان الصهيوني لا تحتفل بأعياد الميلاد لأن غالب سكانها يهود."
-status: draft
+status: published
 published_at: 2024-12-26
 person: abu-jafar-al-khalifi
 ---

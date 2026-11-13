@@ -1,6 +1,6 @@
 ---
 title: "صحة حديث: سيكون في آخر أمتي رجال، يركبون على السروج كأشباه الرحال ..."
-status: draft
+status: published
 published_at: 2023-06-21
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

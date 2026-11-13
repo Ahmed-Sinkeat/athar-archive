@@ -1,6 +1,6 @@
 ---
 title: "شابهها يُشوِّه أدوار الأسرة ويُفسِد حالها إفساداً لا يُمارَى"
-status: draft
+status: published
 published_at: 2025-03-09
 person: awwab-bin-muhammad
 ---

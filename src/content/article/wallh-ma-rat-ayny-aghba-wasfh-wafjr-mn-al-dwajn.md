@@ -1,6 +1,6 @@
 ---
 title: "والله ما رأت عيني أغبى وأسفه وأفجر من الدواجن!"
-status: draft
+status: published
 published_at: 2026-08-12
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

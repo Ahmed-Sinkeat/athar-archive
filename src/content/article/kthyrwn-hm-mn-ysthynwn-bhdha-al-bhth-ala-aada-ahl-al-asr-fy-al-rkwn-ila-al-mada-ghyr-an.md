@@ -1,6 +1,6 @@
 ---
 title: "كثيرون هم مَن يستهينون بهذا البحث على عادة أهل العصر في الركون إلى المادة غير أن"
-status: draft
+status: published
 published_at: 2019-10-06
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الحركي القذر ليس فقط يهون ويهمش من العقيدة لأجل مشروعه أو توجهه السياسي؛ بل لا ي"
-status: draft
+status: published
 published_at: 2024-11-27
 person: abu-umair-imran-al-zubaidi
 ---

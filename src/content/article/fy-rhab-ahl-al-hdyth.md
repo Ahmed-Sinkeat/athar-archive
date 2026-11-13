@@ -1,6 +1,6 @@
 ---
 title: "في رحاب أهل الحديث"
-status: draft
+status: published
 published_at: 2018-10-18
 person: abu-jafar-al-khalifi
 ---

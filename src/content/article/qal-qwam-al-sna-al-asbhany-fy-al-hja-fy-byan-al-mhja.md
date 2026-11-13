@@ -1,6 +1,6 @@
 ---
 title: "قال قوام السنة الأصبهاني في الحجة في بيان المحجة"
-status: draft
+status: published
 published_at: 2017-08-21
 person: abu-jafar-al-khalifi
 ---

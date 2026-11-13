@@ -1,6 +1,6 @@
 ---
 title: "قالت الكاتبة الكنديّة المسلمة ((كاثرين بلّوك)) ((Katherine Bullock)) في مقدمة كت"
-status: draft
+status: published
 published_at: 2017-10-08
 person: abu-jafar-al-khalifi
 ---

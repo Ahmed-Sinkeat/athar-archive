@@ -1,6 +1,6 @@
 ---
 title: "تجاوزنا -تنزلا- مرحلة المخنثة العقدية تحت مظلة التحالف العسكري."
-status: draft
+status: published
 published_at: 2025-06-13
 person: abu-umair-imran-al-zubaidi
 ---

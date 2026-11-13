@@ -1,6 +1,6 @@
 ---
 title: "بحث تاريخي أم إيغار للصدور"
-status: draft
+status: published
 published_at: 2019-05-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

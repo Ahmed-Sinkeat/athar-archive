@@ -1,6 +1,6 @@
 ---
 title: "القصة هذه أشعلت مواقع التواصل الأيام الماضية وما كان لي نية أن أعلق عليها"
-status: draft
+status: published
 published_at: 2026-01-30
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

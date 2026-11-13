@@ -1,6 +1,6 @@
 ---
 title: "قوله تعالى: { إن الإنسان لربه لكنود }"
-status: draft
+status: published
 published_at: 2024-07-24
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

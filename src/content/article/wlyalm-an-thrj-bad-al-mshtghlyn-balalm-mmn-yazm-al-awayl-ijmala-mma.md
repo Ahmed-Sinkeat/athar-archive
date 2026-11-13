@@ -1,6 +1,6 @@
 ---
 title: "وليُعلَم أنَّ تحرُّج بعض المُشتغِلين بالعلم —ممَّن يُعظِّم الأوائل إجمالًا— مما"
-status: draft
+status: published
 published_at: 2026-07-04
 person: awwab-bin-muhammad
 ---

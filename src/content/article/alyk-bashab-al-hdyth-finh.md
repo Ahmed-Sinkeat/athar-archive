@@ -1,6 +1,6 @@
 ---
 title: "عليك بأصحاب الحديث فإنه"
-status: draft
+status: published
 published_at: 2023-05-18
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

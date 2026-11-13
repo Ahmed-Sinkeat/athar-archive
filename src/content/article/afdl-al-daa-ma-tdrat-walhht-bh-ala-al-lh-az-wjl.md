@@ -1,6 +1,6 @@
 ---
 title: "أفضل الدعاء ما تضرعت وألححت به على الله عز وجل"
-status: draft
+status: published
 published_at: 2025-04-10
 person: abu-abdillah-firas-al-ramli
 ---

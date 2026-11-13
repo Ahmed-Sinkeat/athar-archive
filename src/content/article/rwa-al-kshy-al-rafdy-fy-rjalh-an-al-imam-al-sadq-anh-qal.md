@@ -1,6 +1,6 @@
 ---
 title: "روى الكشي الرافضي في رجاله عن الإمام الصادق أنه قال"
-status: draft
+status: published
 published_at: 2017-11-03
 person: abu-jafar-al-khalifi
 ---

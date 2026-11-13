@@ -1,6 +1,6 @@
 ---
 title: "اختيار أخينا الغالي أبو عبد الرحمن -صاحب قناة وزارة الدفاع العقدي- لهذه الصوتية"
-status: draft
+status: published
 published_at: 2023-10-31
 person: abu-umair-imran-al-zubaidi
 ---

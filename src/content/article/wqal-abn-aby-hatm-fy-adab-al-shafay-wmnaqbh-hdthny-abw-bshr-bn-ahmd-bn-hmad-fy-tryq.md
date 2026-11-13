@@ -1,6 +1,6 @@
 ---
 title: "وقال ابن أبي حاتم في آداب الشافعي ومناقبه حدثني أبو بشر بن أحمد بن حماد في طريق"
-status: draft
+status: published
 published_at: 2020-02-13
 person: abu-jafar-al-khalifi
 ---

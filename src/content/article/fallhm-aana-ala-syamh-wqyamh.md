@@ -1,6 +1,6 @@
 ---
 title: "فاللهم أعنا على صيامه وقيامه"
-status: draft
+status: published
 published_at: 2026-02-17
 person: abu-umair-imran-al-zubaidi
 ---

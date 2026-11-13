@@ -1,6 +1,6 @@
 ---
 title: "لطيفة في تنبه المتقدمين لعلاقة السمنة المفرطة بضعف المقدرة على الإنجاب أو العقم"
-status: draft
+status: published
 published_at: 2019-12-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

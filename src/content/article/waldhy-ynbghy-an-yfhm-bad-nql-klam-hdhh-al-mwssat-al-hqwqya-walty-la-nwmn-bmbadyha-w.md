@@ -1,6 +1,6 @@
 ---
 title: "والذي ينبغي أن يفهم بعد نقل كلام هذه المؤسسات الحقوقية (والتي لا نؤمن بمبادئها و"
-status: draft
+status: published
 published_at: 2021-05-12
 person: abu-jafar-al-khalifi
 ---

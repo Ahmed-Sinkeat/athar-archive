@@ -1,6 +1,6 @@
 ---
 title: "جمعت مبلغ 18"
-status: draft
+status: published
 published_at: 2020-02-11
 person: abu-jafar-al-khalifi
 ---

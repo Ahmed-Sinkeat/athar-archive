@@ -1,6 +1,6 @@
 ---
 title: "قال مارتن إينديك _ مدير مركز سابان لسياسة الشرق الأوسط وهو يهودي_ في كتابه أبريا"
-status: draft
+status: published
 published_at: 2017-12-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "إذا رُزِقت ذات يومٍ ببنين وبنات"
-status: draft
+status: published
 published_at: 2023-02-05
 person: abu-umair-imran-al-zubaidi
 ---

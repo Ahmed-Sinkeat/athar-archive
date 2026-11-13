@@ -1,6 +1,6 @@
 ---
 title: "هكذا وعظ الحسن البصري الحجاج بن يوسف الثقفي !"
-status: draft
+status: published
 published_at: 2020-11-14
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "كتب الأخ أحمد دعدوش"
-status: draft
+status: published
 published_at: 2018-07-30
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

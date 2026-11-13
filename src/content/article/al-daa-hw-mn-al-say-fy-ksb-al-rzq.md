@@ -1,6 +1,6 @@
 ---
 title: "الدعاء هو من السعي في كسب الرزق"
-status: draft
+status: published
 published_at: 2026-06-02
 person: abu-umair-imran-al-zubaidi
 ---

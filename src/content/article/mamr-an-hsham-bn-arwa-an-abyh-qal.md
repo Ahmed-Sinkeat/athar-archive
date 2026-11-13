@@ -1,6 +1,6 @@
 ---
 title: "معمر عن هشام بن عروة عن أبيه قال"
-status: draft
+status: published
 published_at: 2018-12-21
 person: abu-jafar-al-khalifi
 ---

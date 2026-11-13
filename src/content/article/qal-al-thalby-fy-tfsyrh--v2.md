@@ -1,6 +1,6 @@
 ---
 title: "قال الثعلبي في تفسيره"
-status: draft
+status: published
 published_at: 2017-08-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

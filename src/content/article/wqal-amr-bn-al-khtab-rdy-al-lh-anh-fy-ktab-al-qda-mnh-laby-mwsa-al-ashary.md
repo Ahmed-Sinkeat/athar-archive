@@ -1,6 +1,6 @@
 ---
 title: "وقال عمر بن الخطاب رضي الله عنه (في كتاب القضاء منه لأبي موسى الأشعري)"
-status: draft
+status: published
 published_at: 2017-06-14
 person: abu-jafar-al-khalifi
 ---

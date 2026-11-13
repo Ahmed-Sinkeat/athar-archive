@@ -1,6 +1,6 @@
 ---
 title: "ذكر نظام الملك في كتابه سير الملوك أن السلطان السلجوقي محمود بن ملكشاه كان قد شر"
-status: draft
+status: published
 published_at: 2017-10-03
 person: abu-jafar-al-khalifi
 ---

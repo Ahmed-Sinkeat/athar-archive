@@ -1,6 +1,6 @@
 ---
 title: "لن أعلق طويلًا على العنوان المسيء للشرع (الإسلام تربى في بيت امرأة تاجرة) فالإسل"
-status: draft
+status: published
 published_at: 2022-09-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

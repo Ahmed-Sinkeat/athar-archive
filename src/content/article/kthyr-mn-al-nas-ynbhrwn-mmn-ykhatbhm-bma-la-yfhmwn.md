@@ -1,6 +1,6 @@
 ---
 title: "كثير من الناس ينبهرون ممن يخاطبهم بما لا يفهمون"
-status: draft
+status: published
 published_at: 2024-05-18
 person: abu-umair-imran-al-zubaidi
 ---

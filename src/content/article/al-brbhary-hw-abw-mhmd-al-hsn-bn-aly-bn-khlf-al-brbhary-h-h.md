@@ -1,6 +1,6 @@
 ---
 title: "البربهاري هو أبو محمد الحسن بن علي بن خلف البربهاري (233 هـ / 329 هـ)"
-status: draft
+status: published
 published_at: 2023-12-04
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

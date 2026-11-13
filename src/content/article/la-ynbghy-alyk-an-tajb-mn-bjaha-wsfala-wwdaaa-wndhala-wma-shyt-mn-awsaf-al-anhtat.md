@@ -1,6 +1,6 @@
 ---
 title: "لا ينبغي عليك أن تعجب من بجاحة وسفالة ووضاعة ونذالة - وما شئت من أوصاف الانحطاط"
-status: draft
+status: published
 published_at: 2026-02-03
 person: abu-umair-imran-al-zubaidi
 ---

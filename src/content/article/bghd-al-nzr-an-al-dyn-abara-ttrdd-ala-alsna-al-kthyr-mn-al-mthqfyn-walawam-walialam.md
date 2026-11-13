@@ -1,6 +1,6 @@
 ---
 title: "( بغض النظر عن الدين ) عبارة تتردد على ألسنة الكثير من المثقفين والعوام والإعلام"
-status: draft
+status: published
 published_at: 2018-09-27
 person: abu-jafar-al-khalifi
 ---

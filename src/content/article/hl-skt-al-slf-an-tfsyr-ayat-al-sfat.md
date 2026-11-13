@@ -1,6 +1,6 @@
 ---
 title: "هل سكت السلف عن تفسير آيات الصفات؟"
-status: draft
+status: published
 published_at: 2021-02-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

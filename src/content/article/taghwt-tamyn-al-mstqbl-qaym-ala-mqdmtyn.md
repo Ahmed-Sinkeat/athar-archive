@@ -1,6 +1,6 @@
 ---
 title: "طاغوت تأمين المستقبل قائم على مقدمتين"
-status: draft
+status: published
 published_at: 2024-05-21
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

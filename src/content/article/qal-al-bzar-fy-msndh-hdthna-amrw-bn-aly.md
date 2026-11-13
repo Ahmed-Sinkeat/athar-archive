@@ -1,6 +1,6 @@
 ---
 title: "قال البزار في مسنده 7513- حدثنا عمرو بن علي"
-status: draft
+status: published
 published_at: 2019-08-21
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

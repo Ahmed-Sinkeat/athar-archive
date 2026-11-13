@@ -1,6 +1,6 @@
 ---
 title: "محادثة إنسانٍ لك في أوقات حاجته لا يُسمّى استغلالًا؛ إنما هي نعمة قد رزقك الله إ"
-status: draft
+status: published
 published_at: 2023-10-29
 person: abu-umair-imran-al-zubaidi
 ---

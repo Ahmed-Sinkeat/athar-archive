@@ -1,6 +1,6 @@
 ---
 title: "ماذا لو رأى الليث بن سعد تمرد الفرق الباطنية في الشام؟"
-status: draft
+status: published
 published_at: 2025-07-16
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

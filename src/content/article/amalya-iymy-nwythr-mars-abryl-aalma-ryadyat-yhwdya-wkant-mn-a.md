@@ -1,6 +1,6 @@
 ---
 title: "أماليا إيمي نويثر (23 مارس 1882 - 14 أبريل 1935) عالمة رياضيات يهودية وكانت من ا"
-status: draft
+status: published
 published_at: 2017-10-12
 person: abu-jafar-al-khalifi
 ---

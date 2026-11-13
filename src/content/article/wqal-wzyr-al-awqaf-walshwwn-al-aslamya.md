@@ -1,6 +1,6 @@
 ---
 title: "وقال وزير الأوقاف والشؤون الاسلامية"
-status: draft
+status: published
 published_at: 2018-06-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

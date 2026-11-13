@@ -1,6 +1,6 @@
 ---
 title: "في تحريم الغناء"
-status: draft
+status: published
 published_at: 2023-06-10
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

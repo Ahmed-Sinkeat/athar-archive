@@ -1,6 +1,6 @@
 ---
 title: "أمثال ربنا وحججه وجيزة بليغة عظيمة سبحانه!"
-status: draft
+status: published
 published_at: 2025-06-09
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

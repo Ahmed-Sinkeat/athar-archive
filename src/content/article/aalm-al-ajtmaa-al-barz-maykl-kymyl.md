@@ -1,6 +1,6 @@
 ---
 title: "عالِم الاجتماع البارز \"Michael Kimmel\" مايكل كيميل"
-status: draft
+status: published
 published_at: 2018-11-06
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

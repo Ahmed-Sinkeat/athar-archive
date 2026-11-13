@@ -1,6 +1,6 @@
 ---
 title: "قال صالح بن الإمام أحمد رحمهما الله في \"كتابه المحنة\" (٦٠)"
-status: draft
+status: published
 published_at: 2023-07-15
 person: abu-abdillah-firas-al-ramli
 ---

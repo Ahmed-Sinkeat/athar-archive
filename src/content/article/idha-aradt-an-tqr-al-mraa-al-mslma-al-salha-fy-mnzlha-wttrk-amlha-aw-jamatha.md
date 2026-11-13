@@ -1,6 +1,6 @@
 ---
 title: "إذا أرادت أن تقر المرأة المسلمة الصالحة في منزلها وتترك عملها أو جامعتها"
-status: draft
+status: published
 published_at: 2023-12-20
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أعوذ بكلمات الله التآمّات مِن شرّ ما خلق. (ثلاث مرات)."
-status: draft
+status: published
 published_at: 2023-05-01
 person: abu-umair-imran-al-zubaidi
 ---

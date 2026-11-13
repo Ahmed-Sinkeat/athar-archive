@@ -1,6 +1,6 @@
 ---
 title: "سلسلة الشيخ أبو الفداء وفقه الله \"بيان منهج أهل السنة في التجريبييات\" من أنفع وأ"
-status: draft
+status: published
 published_at: 2023-08-26
 person: abu-umair-imran-al-zubaidi
 ---

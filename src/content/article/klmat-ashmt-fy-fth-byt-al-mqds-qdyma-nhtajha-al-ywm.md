@@ -1,6 +1,6 @@
 ---
 title: "كلمات أسهمت في فتح بيت المقدس قديمًا نحتاجها اليوم"
-status: draft
+status: published
 published_at: 2023-11-07
 person: abu-jafar-al-khalifi
 ---

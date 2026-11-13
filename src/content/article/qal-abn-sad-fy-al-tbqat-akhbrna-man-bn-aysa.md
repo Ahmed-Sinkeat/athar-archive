@@ -1,6 +1,6 @@
 ---
 title: "قال ابن سعد في الطبقات 3871- أَخبَرنا مَعنُ بن عيسَى"
-status: draft
+status: published
 published_at: 2017-11-15
 person: abu-jafar-al-khalifi
 ---

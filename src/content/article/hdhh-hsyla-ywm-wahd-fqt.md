@@ -1,6 +1,6 @@
 ---
 title: "هذه حصيلة يوم واحد فقط"
-status: draft
+status: published
 published_at: 2019-03-22
 person: abu-jafar-al-khalifi
 ---

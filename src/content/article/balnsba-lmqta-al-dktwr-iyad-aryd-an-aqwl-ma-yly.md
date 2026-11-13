@@ -1,6 +1,6 @@
 ---
 title: "بالنسبة لمقطع الدكتور إياد أريد أن أقول ما يلي"
-status: draft
+status: published
 published_at: 2024-01-15
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "مقال منشور في البي بي سي العربية بتاريخ ١٢ نوفمبر ٢٠١٨ بعنوان كيف تحمينا النسور"
-status: draft
+status: published
 published_at: 2019-01-19
 person: abu-jafar-al-khalifi
 ---

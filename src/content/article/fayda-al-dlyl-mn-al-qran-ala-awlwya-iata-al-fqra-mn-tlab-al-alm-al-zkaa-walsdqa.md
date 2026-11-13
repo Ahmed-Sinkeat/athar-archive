@@ -1,6 +1,6 @@
 ---
 title: "فائدة: الدليل من القرآن على أولوية إعطاء الفقراء من طلاب العلم الزكاة والصدقة..."
-status: draft
+status: published
 published_at: 2025-06-17
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "adab-talab-al-ilm"]

@@ -1,6 +1,6 @@
 ---
 title: "جعله حديثاً صحيحاً لأنه وافق هواه"
-status: draft
+status: published
 published_at: 2024-08-22
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

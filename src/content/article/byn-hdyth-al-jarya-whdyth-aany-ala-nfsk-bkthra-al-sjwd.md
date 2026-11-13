@@ -1,6 +1,6 @@
 ---
 title: "بين حديث الجارية وحديث (أعني على نفسك بكثرة السجود)."
-status: draft
+status: published
 published_at: 2021-08-08
 person: abu-jafar-al-khalifi
 ---

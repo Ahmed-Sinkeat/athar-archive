@@ -1,6 +1,6 @@
 ---
 title: "امرأة تركيّة [مسلمة] كانت تحت ركام الأنقاض هي وأطفالها لساعاتٍ وساعات."
-status: draft
+status: published
 published_at: 2023-02-08
 person: abu-umair-imran-al-zubaidi
 ---

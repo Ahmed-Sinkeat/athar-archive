@@ -1,6 +1,6 @@
 ---
 title: "وأما مسألة قضاء المرأة للصيام دون الصلاة"
-status: draft
+status: published
 published_at: 2020-04-26
 person: abu-jafar-al-khalifi
 ---

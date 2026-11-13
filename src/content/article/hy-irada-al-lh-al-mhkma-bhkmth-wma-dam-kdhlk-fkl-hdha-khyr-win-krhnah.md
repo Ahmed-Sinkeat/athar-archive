@@ -1,6 +1,6 @@
 ---
 title: "هي إرادة الله المُحكمة بحكمته، وما دام كذلك؛ فكّل هذا خير وإن كرهناه."
-status: draft
+status: published
 published_at: 2023-09-26
 person: abu-umair-imran-al-zubaidi
 ---

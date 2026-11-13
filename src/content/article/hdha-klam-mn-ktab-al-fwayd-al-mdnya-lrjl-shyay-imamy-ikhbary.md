@@ -1,6 +1,6 @@
 ---
 title: "هذا كلام من كتاب الفوائد المدنية لرجل شيعي إمامي إخباري"
-status: draft
+status: published
 published_at: 2022-09-22
 person: abu-jafar-al-khalifi
 ---

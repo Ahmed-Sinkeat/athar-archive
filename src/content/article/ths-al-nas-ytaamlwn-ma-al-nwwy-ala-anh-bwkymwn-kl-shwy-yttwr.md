@@ -1,6 +1,6 @@
 ---
 title: "تحس الناس يتعاملون مع النووي على أنه بوكيمون، كل شوي يتطور!"
-status: draft
+status: published
 published_at: 2024-08-11
 person: abu-umair-imran-al-zubaidi
 ---

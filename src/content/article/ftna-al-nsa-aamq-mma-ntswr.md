@@ -1,6 +1,6 @@
 ---
 title: "فتنة النساء أعمق مما نتصور"
-status: draft
+status: published
 published_at: 2020-08-07
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

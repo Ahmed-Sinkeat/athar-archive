@@ -1,6 +1,6 @@
 ---
 title: "أو زاد» اللفظ النبوي الذي تحته كنز مهمل..."
-status: draft
+status: published
 published_at: 2024-07-07
 person: abu-jafar-al-khalifi
 ---

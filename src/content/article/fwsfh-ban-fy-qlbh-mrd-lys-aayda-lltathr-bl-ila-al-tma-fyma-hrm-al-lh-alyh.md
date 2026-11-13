@@ -1,6 +1,6 @@
 ---
 title: "فوصفه بأنّ في قلبه مرض ليس عائدًا للتأثر؛ بل إلى الطمع فيما حرم الله عليه"
-status: draft
+status: published
 published_at: 2023-12-15
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال رجل لحاتم الأصم: ما تشتهِي؟"
-status: draft
+status: published
 published_at: 2025-06-19
 person: awwab-bin-muhammad
 ---

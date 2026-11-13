@@ -1,6 +1,6 @@
 ---
 title: "ولكن إبراهيـم — السكران — لا بواكي له"
-status: draft
+status: published
 published_at: 2025-06-29
 person: awwab-bin-muhammad
 ---

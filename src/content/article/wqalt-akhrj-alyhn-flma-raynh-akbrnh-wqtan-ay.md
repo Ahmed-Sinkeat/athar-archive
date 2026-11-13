@@ -1,6 +1,6 @@
 ---
 title: "وَقَالَتِ اخْرُجْ عَلَيْهِنَّ ۖ فَلَمَّا رَأَيْنَهُ أَكْبَرْنَهُ وَقَطَّعْنَ أَي"
-status: draft
+status: published
 published_at: 2025-05-04
 person: abu-umair-imran-al-zubaidi
 ---

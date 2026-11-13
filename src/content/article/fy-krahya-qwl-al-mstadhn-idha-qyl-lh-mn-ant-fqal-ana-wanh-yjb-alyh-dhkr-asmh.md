@@ -1,6 +1,6 @@
 ---
 title: "في كراهية قول المستأذن إذا قيل له: من أنت؟ فقال: أنا، وأنه يجب عليه ذكر اسمه"
-status: draft
+status: published
 published_at: 2024-09-07
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ظهر أن الحديث ضعيف عندها بعد 14 قرنا"
-status: draft
+status: published
 published_at: 2023-12-27
 person: abu-jafar-al-khalifi
 ---

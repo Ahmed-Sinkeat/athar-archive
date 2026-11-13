@@ -1,6 +1,6 @@
 ---
 title: "العرق الأبيض أحطُّ الأعراق داروينيًّا!"
-status: draft
+status: published
 published_at: 2020-10-16
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "حين يتفذلك المثقف ويريد أن يخلط بين كلام المعتزلة ومنهجه السوفسطائي في تكافؤ الأ"
-status: draft
+status: published
 published_at: 2021-11-22
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

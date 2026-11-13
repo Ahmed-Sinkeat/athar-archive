@@ -1,6 +1,6 @@
 ---
 title: "هذه تغريدة قبل عدة ساعات لماكرون الملعون يقول فيها إن كثيرًا من النساء يخفن من ر"
-status: draft
+status: published
 published_at: 2022-01-10
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هل نحن نُربّي أحرارًا أم خوارج؟!."
-status: draft
+status: published
 published_at: 2022-10-19
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

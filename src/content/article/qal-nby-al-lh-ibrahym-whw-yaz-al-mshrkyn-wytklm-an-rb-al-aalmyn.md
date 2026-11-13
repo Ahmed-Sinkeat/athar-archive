@@ -1,6 +1,6 @@
 ---
 title: "قال نبي الله إبراهيم وهو يعظ المشركين ويتكلم عن رب العالمين"
-status: draft
+status: published
 published_at: 2022-05-26
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

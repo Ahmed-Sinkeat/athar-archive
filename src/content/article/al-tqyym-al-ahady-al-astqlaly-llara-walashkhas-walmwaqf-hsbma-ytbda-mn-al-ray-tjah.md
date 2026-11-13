@@ -1,6 +1,6 @@
 ---
 title: "التقييم الأحادي الاستقلالي للآراء والأشخاص والمواقف حسبما يتبدَّى من الرأي تجاه"
-status: draft
+status: published
 published_at: 2026-10-31
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran"]

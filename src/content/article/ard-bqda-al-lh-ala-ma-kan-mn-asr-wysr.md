@@ -1,6 +1,6 @@
 ---
 title: "ارض بقضاء الله على ما كان من عسر ويسر"
-status: draft
+status: published
 published_at: 2025-04-15
 person: abu-abdillah-firas-al-ramli
 ---

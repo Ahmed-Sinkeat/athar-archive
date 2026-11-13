@@ -1,6 +1,6 @@
 ---
 title: "الوعظ الجبان (شيء مما يفعله الإعلام بعقولنا)."
-status: draft
+status: published
 published_at: 2023-04-13
 person: abu-jafar-al-khalifi
 ---

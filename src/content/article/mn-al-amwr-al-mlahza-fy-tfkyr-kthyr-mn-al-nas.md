@@ -1,6 +1,6 @@
 ---
 title: "مِن الأمور المُلاحظة في تفكير كثير مِن النًاس"
-status: draft
+status: published
 published_at: 2023-03-17
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وقفات مع كلام الدكتور محمد الحسن ولد الددو عن مفهوم أهل السنة والجماعة"
-status: draft
+status: published
 published_at: 2023-02-21
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

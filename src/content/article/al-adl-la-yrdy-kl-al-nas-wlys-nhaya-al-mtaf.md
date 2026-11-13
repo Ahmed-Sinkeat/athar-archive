@@ -1,6 +1,6 @@
 ---
 title: "العدل لا يرضي كل الناس وليس نهاية المطاف."
-status: draft
+status: published
 published_at: 2023-07-23
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

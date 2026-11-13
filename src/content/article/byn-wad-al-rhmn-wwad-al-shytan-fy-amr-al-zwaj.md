@@ -1,6 +1,6 @@
 ---
 title: "بين وعد الرحمن ووعد الشيطان في أمر الزواج."
-status: draft
+status: published
 published_at: 2026-11-09
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

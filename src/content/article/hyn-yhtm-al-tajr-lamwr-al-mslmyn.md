@@ -1,6 +1,6 @@
 ---
 title: "حين يهتم التاجر لأمور المسلمين !"
-status: draft
+status: published
 published_at: 2020-03-04
 person: abu-jafar-al-khalifi
 ---

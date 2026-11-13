@@ -1,6 +1,6 @@
 ---
 title: "هلكت وأهلكت (كلمة في موضوع الترحم والاستغفار)"
-status: draft
+status: published
 published_at: 2022-05-14
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

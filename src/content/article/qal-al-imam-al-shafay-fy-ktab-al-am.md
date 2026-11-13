@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام الشافعي في كتاب الأم (6/227)"
-status: draft
+status: published
 published_at: 2020-04-13
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

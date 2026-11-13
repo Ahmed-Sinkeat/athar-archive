@@ -1,6 +1,6 @@
 ---
 title: "حرية التعبير وحقوق الإنسان ظهر أنها خرافات شأنها شأن الخرافات الوثنية والمسيحية"
-status: draft
+status: published
 published_at: 2023-10-22
 person: abu-jafar-al-khalifi
 ---

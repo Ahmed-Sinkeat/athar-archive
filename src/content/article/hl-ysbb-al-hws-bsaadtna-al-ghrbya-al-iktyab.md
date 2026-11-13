@@ -1,6 +1,6 @@
 ---
 title: "هل يسبب الهوس بسعادتنا الغربية الإكتئاب"
-status: draft
+status: published
 published_at: 2018-09-11
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

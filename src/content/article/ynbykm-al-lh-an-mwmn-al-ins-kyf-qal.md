@@ -1,6 +1,6 @@
 ---
 title: "ينبئكم الله عن مؤمن الإنس كيف قال"
-status: draft
+status: published
 published_at: 2023-05-11
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

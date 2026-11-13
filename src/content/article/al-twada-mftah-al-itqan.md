@@ -1,6 +1,6 @@
 ---
 title: "التواضع مفتاح الإتقان"
-status: draft
+status: published
 published_at: 2020-09-01
 person: abu-jafar-al-khalifi
 ---

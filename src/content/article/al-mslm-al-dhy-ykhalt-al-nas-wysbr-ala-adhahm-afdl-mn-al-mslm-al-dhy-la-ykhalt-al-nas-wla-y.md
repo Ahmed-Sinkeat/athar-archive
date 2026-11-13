@@ -1,6 +1,6 @@
 ---
 title: "المسلم الذي يخالط الناس ويصبر على أذاهم أفضل من المسلم الذي لا يخالط الناس ولا ي"
-status: draft
+status: published
 published_at: 2024-02-06
 person: abu-abdillah-firas-al-ramli
 ---

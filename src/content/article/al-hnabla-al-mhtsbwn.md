@@ -1,6 +1,6 @@
 ---
 title: "الحنابلة المحتسبون"
-status: draft
+status: published
 published_at: 2019-01-28
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

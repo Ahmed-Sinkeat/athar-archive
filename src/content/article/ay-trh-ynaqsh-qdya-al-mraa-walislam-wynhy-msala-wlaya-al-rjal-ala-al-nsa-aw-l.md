@@ -1,6 +1,6 @@
 ---
 title: "\"أيّ طرح يُناقش قضيّة المرأة والإسلام ويُنحّي مسألة ولاية الرجال على النساء أو ل"
-status: draft
+status: published
 published_at: 2023-03-10
 person: abu-umair-imran-al-zubaidi
 ---

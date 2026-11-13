@@ -1,6 +1,6 @@
 ---
 title: "قال السلمي في ذكر النسوة المتعبدات"
-status: draft
+status: published
 published_at: 2018-04-13
 person: abu-jafar-al-khalifi
 ---

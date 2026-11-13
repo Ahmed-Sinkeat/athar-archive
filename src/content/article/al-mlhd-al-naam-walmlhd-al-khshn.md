@@ -1,6 +1,6 @@
 ---
 title: "الملحد الناعم والملحد الخشن"
-status: draft
+status: published
 published_at: 2021-09-30
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

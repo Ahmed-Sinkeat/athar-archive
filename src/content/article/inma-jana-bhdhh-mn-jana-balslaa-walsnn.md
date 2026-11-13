@@ -1,6 +1,6 @@
 ---
 title: "إنما جاءنا بهذه من جاءنا بالصلاة والسنن"
-status: draft
+status: published
 published_at: 2025-09-10
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

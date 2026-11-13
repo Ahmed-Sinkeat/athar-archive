@@ -1,6 +1,6 @@
 ---
 title: "جاء في روضة العقلاء لابن حبان"
-status: draft
+status: published
 published_at: 2017-12-12
 person: abu-jafar-al-khalifi
 ---

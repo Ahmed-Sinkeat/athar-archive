@@ -1,6 +1,6 @@
 ---
 title: "المنصر دافيد وودز سعيد بالقمصان التي اختارها بعض الملاكمين في السعودية (عليها شع"
-status: draft
+status: published
 published_at: 2024-05-19
 person: abu-jafar-al-khalifi
 ---

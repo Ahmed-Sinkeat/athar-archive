@@ -1,6 +1,6 @@
 ---
 title: "مِن المظاهر العجيبة والجميلة لتوافق شَرع الله تبارك وتعالى مع الفطرة"
-status: draft
+status: published
 published_at: 2023-03-27
 person: abu-umair-imran-al-zubaidi
 ---

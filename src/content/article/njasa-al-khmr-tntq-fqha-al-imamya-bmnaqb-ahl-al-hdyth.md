@@ -1,6 +1,6 @@
 ---
 title: "نجاسة الخمر تُنطِق فقهاء الإمامية بمناقب أهل الحديث..."
-status: draft
+status: published
 published_at: 2021-01-17
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الذي يقول لك: ولكن يا أخي هناك علماء تخرجوا من الأزهر، وهم على خير وصلاح."
-status: draft
+status: published
 published_at: 2023-10-02
 person: abu-umair-imran-al-zubaidi
 ---

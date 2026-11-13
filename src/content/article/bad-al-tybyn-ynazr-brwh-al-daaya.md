@@ -1,6 +1,6 @@
 ---
 title: "بعض الطيبين يناظر بروح الداعية"
-status: draft
+status: published
 published_at: 2020-01-23
 person: abu-jafar-al-khalifi
 ---

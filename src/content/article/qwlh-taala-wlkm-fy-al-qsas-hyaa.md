@@ -1,6 +1,6 @@
 ---
 title: "قوله تعالى: {ولكم في القصاص حياة}"
-status: draft
+status: published
 published_at: 2023-09-21
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

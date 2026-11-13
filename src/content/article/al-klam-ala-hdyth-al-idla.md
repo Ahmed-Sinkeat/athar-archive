@@ -1,6 +1,6 @@
 ---
 title: "الكلام على حديث الإدلاء"
-status: draft
+status: published
 published_at: 2025-11-28
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

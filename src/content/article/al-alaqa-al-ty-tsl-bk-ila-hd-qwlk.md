@@ -1,6 +1,6 @@
 ---
 title: "العِلاقة التي تصل بك إلى حد قولك"
-status: draft
+status: published
 published_at: 2023-06-04
 person: abu-umair-imran-al-zubaidi
 ---

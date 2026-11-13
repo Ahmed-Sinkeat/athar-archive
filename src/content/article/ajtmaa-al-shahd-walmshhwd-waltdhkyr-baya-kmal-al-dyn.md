@@ -1,6 +1,6 @@
 ---
 title: "اجتماع الشاهد والمشهود والتذكير بآية كمال الدين.."
-status: draft
+status: published
 published_at: 2022-07-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]

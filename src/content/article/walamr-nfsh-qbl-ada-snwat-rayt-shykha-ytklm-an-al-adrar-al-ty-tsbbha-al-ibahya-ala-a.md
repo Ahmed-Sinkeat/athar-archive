@@ -1,6 +1,6 @@
 ---
 title: "والأمر نفسه قبل عدة سنوات رأيت شيخاً يتكلم عن الأضرار التي تسببها الإباحية على ا"
-status: draft
+status: published
 published_at: 2019-11-28
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

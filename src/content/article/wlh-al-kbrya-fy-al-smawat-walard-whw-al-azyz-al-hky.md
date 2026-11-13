@@ -1,6 +1,6 @@
 ---
 title: "وَلَهُ الْكِبْرِيَاءُ فِي السَّمَاوَاتِ وَالْأَرْضِ ۖ وَهُوَ الْعَزِيزُ الْحَكِي"
-status: draft
+status: published
 published_at: 2023-04-24
 person: abu-umair-imran-al-zubaidi
 ---

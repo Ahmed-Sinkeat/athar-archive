@@ -1,6 +1,6 @@
 ---
 title: "بشرى لمن يقبعون تحت القصف من أهل غزة: «العبادة في الهرج كهجرة إليّ"
-status: draft
+status: published
 published_at: 2023-10-13
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ومع إنصافهم هذا لم يكونوا يجاملونهم؛ بل ترى في تراجمهم لهم أنّ فلان كان ثقة ثبت"
-status: draft
+status: published
 published_at: 2023-07-30
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

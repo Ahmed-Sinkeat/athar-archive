@@ -1,6 +1,6 @@
 ---
 title: "ومن الناس من يبهره نظم القرآن وسلاسته"
-status: draft
+status: published
 published_at: 2024-10-28
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

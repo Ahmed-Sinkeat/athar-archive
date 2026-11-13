@@ -1,6 +1,6 @@
 ---
 title: "القرآن عصي على التحريف…"
-status: draft
+status: published
 published_at: 2022-02-01
 person: abu-jafar-al-khalifi
 ---

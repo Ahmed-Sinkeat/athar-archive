@@ -1,6 +1,6 @@
 ---
 title: "قال الخطيب البغدادي في تاريخه أَخْبَرَنَا أَحْمَد بن علي المحتسب"
-status: draft
+status: published
 published_at: 2017-12-08
 person: abu-jafar-al-khalifi
 ---

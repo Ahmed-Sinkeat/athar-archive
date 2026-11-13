@@ -1,6 +1,6 @@
 ---
 title: "ما أرى في صلاح علاقة الزوجين أفضل مِن أن ينظر كٌُلّ مِنهما إلى الآخر على أنّه سب"
-status: draft
+status: published
 published_at: 2022-09-24
 person: abu-umair-imran-al-zubaidi
 ---

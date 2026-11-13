@@ -1,6 +1,6 @@
 ---
 title: "قال ابن الساعاتي الحنفي المتوفى عام 694 في كتابه البديع في أصول الفقه (2/44)"
-status: draft
+status: published
 published_at: 2017-09-18
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

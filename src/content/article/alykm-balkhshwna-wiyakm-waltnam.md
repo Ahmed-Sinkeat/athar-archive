@@ -1,6 +1,6 @@
 ---
 title: "عليكم بالخشونة وإياكم والتنعم"
-status: draft
+status: published
 published_at: 2024-11-10
 person: abu-abdillah-firas-al-ramli
 ---

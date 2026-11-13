@@ -1,6 +1,6 @@
 ---
 title: "عن أبي سعيد الخدري قال"
-status: draft
+status: published
 published_at: 2019-04-06
 person: abu-jafar-al-khalifi
 ---

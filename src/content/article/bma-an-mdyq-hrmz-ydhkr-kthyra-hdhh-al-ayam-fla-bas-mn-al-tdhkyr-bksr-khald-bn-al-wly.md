@@ -1,6 +1,6 @@
 ---
 title: "بما أنّ مضيق \"هرمز\" يذكر كثيرا هذه الأيام؛ فلا بأس من التذكير بكسر خالد بن الولي"
-status: draft
+status: published
 published_at: 2026-03-27
 person: abu-umair-imran-al-zubaidi
 ---

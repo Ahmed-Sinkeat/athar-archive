@@ -1,6 +1,6 @@
 ---
 title: "حينما ترى الثناء على البناء المنهجي وصاحبه من مختلف التيارات والتوجهات السلفية و"
-status: draft
+status: published
 published_at: 2024-01-19
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

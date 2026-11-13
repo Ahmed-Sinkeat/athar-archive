@@ -1,6 +1,6 @@
 ---
 title: "لا يعلم قدر النعمة إلا من يفقدها"
-status: draft
+status: published
 published_at: 2019-02-01
 person: abu-jafar-al-khalifi
 ---

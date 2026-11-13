@@ -1,6 +1,6 @@
 ---
 title: "كان يزيد الرقاشي العابد يدعو فيقول"
-status: draft
+status: published
 published_at: 2018-06-18
 person: abu-jafar-al-khalifi
 ---

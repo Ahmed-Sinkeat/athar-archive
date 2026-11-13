@@ -1,6 +1,6 @@
 ---
 title: "قال الكندي في أخبار الولاة والقضاة"
-status: draft
+status: published
 published_at: 2017-10-10
 person: abu-jafar-al-khalifi
 ---

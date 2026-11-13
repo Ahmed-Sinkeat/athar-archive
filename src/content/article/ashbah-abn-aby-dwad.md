@@ -1,6 +1,6 @@
 ---
 title: "أشباه ابن أبي دؤاد.."
-status: draft
+status: published
 published_at: 2021-08-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "tazkiyat-al-nafs"]

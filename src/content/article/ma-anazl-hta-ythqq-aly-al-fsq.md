@@ -1,6 +1,6 @@
 ---
 title: "ما أنعزل حتى يتحقق علي الفسق"
-status: draft
+status: published
 published_at: 2021-09-15
 person: abu-jafar-al-khalifi
 ---

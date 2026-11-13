@@ -1,6 +1,6 @@
 ---
 title: "فالبحث ليس في شعرات تنبت في الذقن بقدر ما هو حرص على قتل الاعتزاز بالهوية والافت"
-status: draft
+status: published
 published_at: 2019-08-14
 person: abu-jafar-al-khalifi
 ---

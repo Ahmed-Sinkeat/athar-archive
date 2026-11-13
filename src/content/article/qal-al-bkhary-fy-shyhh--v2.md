@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري في صحيحه"
-status: draft
+status: published
 published_at: 2025-10-18
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada"]

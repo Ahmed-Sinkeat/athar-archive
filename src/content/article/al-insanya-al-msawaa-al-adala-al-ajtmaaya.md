@@ -1,6 +1,6 @@
 ---
 title: "الإنسانية، المساواة، العدالة الاجتماعية"
-status: draft
+status: published
 published_at: 2019-04-25
 person: abu-jafar-al-khalifi
 ---

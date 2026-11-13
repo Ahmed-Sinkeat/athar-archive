@@ -1,6 +1,6 @@
 ---
 title: "نقض التلبيس بـ«ما فاتحتُ عامِّياً"
-status: draft
+status: published
 published_at: 2026-01-24
 person: awwab-bin-muhammad
 topics: ["al-firaq-war-rudud", "al-asma-was-sifat", "al-sunnah-wal-bidah"]

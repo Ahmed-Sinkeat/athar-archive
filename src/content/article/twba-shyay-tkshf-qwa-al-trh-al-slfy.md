@@ -1,6 +1,6 @@
 ---
 title: "توبة شيعي تكشف قوة الطرح السلفي ..."
-status: draft
+status: published
 published_at: 2021-06-18
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "tahwid-al-ibada"]

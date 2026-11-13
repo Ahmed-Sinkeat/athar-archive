@@ -1,6 +1,6 @@
 ---
 title: "الكلام المكتوب أعلاه كله في موقع يفترض أنه يرغب الناس في السفر ولاحظ أن الكاتبة"
-status: draft
+status: published
 published_at: 2019-08-02
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

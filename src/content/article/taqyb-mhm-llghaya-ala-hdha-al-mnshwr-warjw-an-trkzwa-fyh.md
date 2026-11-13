@@ -1,6 +1,6 @@
 ---
 title: "تعقيب مهم للغاية على هذا المنشور، وأرجو أن تُركزوا فيه."
-status: draft
+status: published
 published_at: 2023-05-06
 person: abu-umair-imran-al-zubaidi
 topics: ["adab-talab-al-ilm"]

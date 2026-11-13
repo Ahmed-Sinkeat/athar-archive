@@ -1,6 +1,6 @@
 ---
 title: "كنت أستغرب من كتاب الشيخ اليماني الشهير مقبل الوادعي ( الإلحاد الخميني في الحرمي"
-status: draft
+status: published
 published_at: 2026-09-17
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

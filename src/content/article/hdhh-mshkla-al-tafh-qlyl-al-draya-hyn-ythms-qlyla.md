@@ -1,6 +1,6 @@
 ---
 title: "هذه مشكلة التافه قليل الدراية حين يتحمس قليلاً"
-status: draft
+status: published
 published_at: 2026-06-21
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

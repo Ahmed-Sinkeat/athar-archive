@@ -1,6 +1,6 @@
 ---
 title: "كل شيء في كفّة"
-status: draft
+status: published
 published_at: 2023-08-08
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

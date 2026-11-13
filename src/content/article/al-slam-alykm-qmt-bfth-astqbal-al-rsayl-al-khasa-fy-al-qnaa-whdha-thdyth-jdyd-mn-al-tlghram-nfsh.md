@@ -1,6 +1,6 @@
 ---
 title: "السلام عليكم قمت بفتح استقبال الرسائل الخاصة في القناة، وهذا تحديث جديد من التلغرام نفسه واظنه أفضل من البوتات."
-status: draft
+status: published
 published_at: 2025-06-07
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هل هي شماتة أم عبرة حتى لا تتكرر المشكلة؟"
-status: draft
+status: published
 published_at: 2021-08-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tazkiyat-al-nafs", "al-iman"]

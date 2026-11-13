@@ -1,6 +1,6 @@
 ---
 title: "ابن تيمية: الإمام أحمد أقام الحجة على جهمية عصره!"
-status: draft
+status: published
 published_at: 2024-08-07
 person: abu-jafar-al-khalifi
 ---

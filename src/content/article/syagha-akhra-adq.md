@@ -1,6 +1,6 @@
 ---
 title: "صياغة أخرى أدق"
-status: draft
+status: published
 published_at: 2024-09-12
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

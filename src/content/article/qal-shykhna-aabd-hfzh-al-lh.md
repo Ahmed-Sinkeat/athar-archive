@@ -1,6 +1,6 @@
 ---
 title: "قال شيخنا عابد حفظه الله"
-status: draft
+status: published
 published_at: 2023-07-29
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

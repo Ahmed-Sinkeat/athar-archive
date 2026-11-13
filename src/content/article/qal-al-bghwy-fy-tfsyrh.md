@@ -1,6 +1,6 @@
 ---
 title: "قال البغوي في تفسيره"
-status: draft
+status: published
 published_at: 2018-03-06
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

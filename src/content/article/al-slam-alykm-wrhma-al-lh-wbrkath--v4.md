@@ -1,6 +1,6 @@
 ---
 title: "السّلام عليكم ورحمة الله وبركاته."
-status: draft
+status: published
 published_at: 2023-04-13
 person: abu-umair-imran-al-zubaidi
 ---

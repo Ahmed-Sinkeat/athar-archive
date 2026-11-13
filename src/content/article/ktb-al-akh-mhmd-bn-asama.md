@@ -1,6 +1,6 @@
 ---
 title: "كتب الأخ محمد بن أسامة"
-status: draft
+status: published
 published_at: 2018-12-19
 person: abu-jafar-al-khalifi
 ---

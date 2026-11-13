@@ -1,6 +1,6 @@
 ---
 title: "قال أبو عبيدة القاسم بن سلام المتوفى عام ٢٢٤ في الناسخ والمنسوخ 138 - أخبرنا علي"
-status: draft
+status: published
 published_at: 2021-09-19
 person: abu-jafar-al-khalifi
 ---

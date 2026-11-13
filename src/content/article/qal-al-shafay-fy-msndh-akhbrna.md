@@ -1,6 +1,6 @@
 ---
 title: "قال الشافعي في مسنده 213 - ( أخبرنا )"
-status: draft
+status: published
 published_at: 2017-09-20
 person: abu-jafar-al-khalifi
 ---

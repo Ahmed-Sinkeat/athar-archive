@@ -1,6 +1,6 @@
 ---
 title: "جزى الله الدكتور عيد كل خير على هذا المقطع الطيب في تعقيبه على فتوى الشيخ محمد ف"
-status: draft
+status: published
 published_at: 2025-01-08
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

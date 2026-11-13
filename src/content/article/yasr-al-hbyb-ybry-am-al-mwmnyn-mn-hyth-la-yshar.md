@@ -1,6 +1,6 @@
 ---
 title: "ياسر الحبيب يبرئ أم المؤمنين من حيث لا يشعر"
-status: draft
+status: published
 published_at: 2018-11-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

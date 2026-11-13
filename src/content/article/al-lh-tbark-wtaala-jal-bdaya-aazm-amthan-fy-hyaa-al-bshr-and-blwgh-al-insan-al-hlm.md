@@ -1,6 +1,6 @@
 ---
 title: "الله تبارك وتعالى جعل بداية أعظم امتحان في حياة البشر عند بلوغ الإنسان الحلم"
-status: draft
+status: published
 published_at: 2023-03-09
 person: abu-umair-imran-al-zubaidi
 ---

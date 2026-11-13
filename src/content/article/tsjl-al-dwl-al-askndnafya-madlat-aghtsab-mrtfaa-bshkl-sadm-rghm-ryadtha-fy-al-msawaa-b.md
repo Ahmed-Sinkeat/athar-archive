@@ -1,6 +1,6 @@
 ---
 title: "تسجل الدول الاسكندنافية معدلات اغتصاب مرتفعة بشكل صادم رغم ريادتها في المساواة ب"
-status: draft
+status: published
 published_at: 2019-04-11
 person: abu-jafar-al-khalifi
 ---

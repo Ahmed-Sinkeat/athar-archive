@@ -1,6 +1,6 @@
 ---
 title: "قال ابن طاهر المقدسي في مسألة العلو والنزول 10 - أَخْبَرَنَا أَبُو الْقَاسِمِ عَ"
-status: draft
+status: published
 published_at: 2017-09-12
 person: abu-jafar-al-khalifi
 ---

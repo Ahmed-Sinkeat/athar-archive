@@ -1,6 +1,6 @@
 ---
 title: "من الجيّد؛ بل والواجب أن تعلم أنك كرجل قوّام وولي أمر وصاحب القيادة في أسرتك."
-status: draft
+status: published
 published_at: 2023-09-28
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

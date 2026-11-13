@@ -1,6 +1,6 @@
 ---
 title: "لا يجب التهاون مع ساب الله تبارك وتعالى"
-status: draft
+status: published
 published_at: 2024-12-25
 person: abu-umair-imran-al-zubaidi
 ---

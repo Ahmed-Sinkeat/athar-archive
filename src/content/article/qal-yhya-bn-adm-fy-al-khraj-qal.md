@@ -1,6 +1,6 @@
 ---
 title: "قال يحيى بن آدم في الخراج 127 - قال"
-status: draft
+status: published
 published_at: 2017-11-13
 person: abu-jafar-al-khalifi
 ---

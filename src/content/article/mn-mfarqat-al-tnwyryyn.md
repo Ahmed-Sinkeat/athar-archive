@@ -1,6 +1,6 @@
 ---
 title: "من مفارقات التنويريين"
-status: draft
+status: published
 published_at: 2019-04-04
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

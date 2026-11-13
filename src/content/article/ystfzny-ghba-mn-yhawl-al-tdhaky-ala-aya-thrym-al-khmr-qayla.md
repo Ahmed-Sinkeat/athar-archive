@@ -1,6 +1,6 @@
 ---
 title: "يستفزني غباء من يحاول التذاكي على آية تحريم الخمر قائلا"
-status: draft
+status: published
 published_at: 2026-03-26
 person: abu-umair-imran-al-zubaidi
 ---

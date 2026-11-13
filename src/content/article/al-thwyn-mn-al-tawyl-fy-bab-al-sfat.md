@@ -1,6 +1,6 @@
 ---
 title: "التهوين من التأويل في باب الصفات"
-status: draft
+status: published
 published_at: 2024-05-08
 person: abu-umair-imran-al-zubaidi
 ---

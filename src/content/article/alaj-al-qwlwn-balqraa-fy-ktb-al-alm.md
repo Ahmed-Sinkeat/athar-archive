@@ -1,6 +1,6 @@
 ---
 title: "علاج القولون بالقراءة في كتب العلم."
-status: draft
+status: published
 published_at: 2022-08-31
 person: abu-jafar-al-khalifi
 ---

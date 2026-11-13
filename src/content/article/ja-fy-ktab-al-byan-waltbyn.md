@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب البيان والتبين"
-status: draft
+status: published
 published_at: 2020-01-30
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

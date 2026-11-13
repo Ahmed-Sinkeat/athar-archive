@@ -1,6 +1,6 @@
 ---
 title: "لماذا أورد ابن أبي شيبة هذه الآثار في باب النهي عن الصلاة عند قبر النبي ﷺ"
-status: draft
+status: published
 published_at: 2026-01-11
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-sunnah-wal-bidah"]

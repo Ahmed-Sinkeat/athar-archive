@@ -1,6 +1,6 @@
 ---
 title: "قال التابعيّ الإملم إبْراهِيم التيْمِيِّ"
-status: draft
+status: published
 published_at: 2023-06-05
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

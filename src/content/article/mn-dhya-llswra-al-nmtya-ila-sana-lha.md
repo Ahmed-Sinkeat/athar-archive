@@ -1,6 +1,6 @@
 ---
 title: "من ضحية للصورة النمطية إلى صانع لها.."
-status: draft
+status: published
 published_at: 2021-09-04
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-iman"]

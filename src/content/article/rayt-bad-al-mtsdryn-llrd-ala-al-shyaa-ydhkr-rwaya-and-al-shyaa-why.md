@@ -1,6 +1,6 @@
 ---
 title: "رأيت بعض المتصدرين للرد على الشيعة يذكر رواية عند الشيعة وهي"
-status: draft
+status: published
 published_at: 2024-11-08
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

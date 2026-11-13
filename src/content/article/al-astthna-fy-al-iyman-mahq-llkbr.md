@@ -1,6 +1,6 @@
 ---
 title: "الاستثناء في الإيمان ماحق للكبر.."
-status: draft
+status: published
 published_at: 2021-04-10
 person: abu-jafar-al-khalifi
 ---

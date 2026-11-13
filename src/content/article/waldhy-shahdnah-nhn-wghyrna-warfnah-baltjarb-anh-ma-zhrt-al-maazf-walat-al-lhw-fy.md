@@ -1,6 +1,6 @@
 ---
 title: "والذي شاهدناه نحن وغيرنا وعرفناه بالتجارب أنَّه ما ظهرت المعازفُ وآلات اللهو في"
-status: draft
+status: published
 published_at: 2025-06-27
 person: awwab-bin-muhammad
 ---

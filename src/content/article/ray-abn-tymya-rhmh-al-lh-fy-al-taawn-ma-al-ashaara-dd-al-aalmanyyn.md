@@ -1,6 +1,6 @@
 ---
 title: "رأي ابن تيمية -رحمه الله- في التعاون مع الأشاعرة ضد العالمانيين!"
-status: draft
+status: published
 published_at: 2020-09-21
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

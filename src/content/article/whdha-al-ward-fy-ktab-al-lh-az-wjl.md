@@ -1,6 +1,6 @@
 ---
 title: "وهذا الوارد في كتاب الله عز وجل"
-status: draft
+status: published
 published_at: 2026-04-08
 person: abu-jafar-al-khalifi
 ---

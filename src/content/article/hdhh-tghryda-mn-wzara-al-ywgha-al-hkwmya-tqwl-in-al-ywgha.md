@@ -1,6 +1,6 @@
 ---
 title: "هذه تغريدة من وزارة اليوغا الحكومية تقول إن اليوغا"
-status: draft
+status: published
 published_at: 2022-02-05
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

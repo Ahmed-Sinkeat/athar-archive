@@ -1,6 +1,6 @@
 ---
 title: "آفة العصر: توسيع باب الإعذار وتضييق باب العقوبة بالعاطفة..."
-status: draft
+status: published
 published_at: 2020-08-01
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "تجربة أخرى لامرأة اسمها إليزابيث مورجان وهي طبيبة تجميل أمريكية سجنت لأنها رفضت"
-status: draft
+status: published
 published_at: 2017-08-09
 person: abu-jafar-al-khalifi
 ---

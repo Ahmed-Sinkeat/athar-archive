@@ -1,6 +1,6 @@
 ---
 title: "من عجائب ما وقفت عليه من تناقضات البشر"
-status: draft
+status: published
 published_at: 2018-11-13
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-sunnah-wal-bidah"]

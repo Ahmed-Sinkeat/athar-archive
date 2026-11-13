@@ -1,6 +1,6 @@
 ---
 title: "إياكم والفخر بأقوام من فحم جهنم"
-status: draft
+status: published
 published_at: 2025-11-01
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "دعواتكم للشيخ عبد الرحمن، فهو من خيرة من عرفتهم ديناً وخُلُقاً."
-status: draft
+status: published
 published_at: 2025-04-05
 person: abu-jafar-al-khalifi
 ---

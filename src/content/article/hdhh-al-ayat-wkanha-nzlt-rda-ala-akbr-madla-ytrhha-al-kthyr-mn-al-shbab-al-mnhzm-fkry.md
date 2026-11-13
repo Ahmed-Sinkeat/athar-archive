@@ -1,6 +1,6 @@
 ---
 title: "هذه الآيات وكأنها نزلت ردًّا على أكبر معضلة يطرحها الكثير من الشباب المنهزم فكري"
-status: draft
+status: published
 published_at: 2018-04-11
 person: abu-jafar-al-khalifi
 ---

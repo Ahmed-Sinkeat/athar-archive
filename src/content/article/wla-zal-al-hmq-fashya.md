@@ -1,6 +1,6 @@
 ---
 title: "ولا زال الحمق فاشيًا"
-status: draft
+status: published
 published_at: 2021-01-20
 person: abu-jafar-al-khalifi
 ---

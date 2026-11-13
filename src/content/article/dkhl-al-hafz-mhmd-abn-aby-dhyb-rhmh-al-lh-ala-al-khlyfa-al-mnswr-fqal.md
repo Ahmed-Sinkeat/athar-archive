@@ -1,6 +1,6 @@
 ---
 title: "دخل الحافظ محمد ابن أبي ذئب رحمه الله على الخليفة المنصور فقال"
-status: draft
+status: published
 published_at: 2018-04-09
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "1 - المُحرّم - 1445 هجري."
-status: draft
+status: published
 published_at: 2023-07-18
 person: abu-umair-imran-al-zubaidi
 ---

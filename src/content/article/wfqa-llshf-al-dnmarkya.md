@@ -1,6 +1,6 @@
 ---
 title: "وفقا للصحف الدنماركية"
-status: draft
+status: published
 published_at: 2022-02-18
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

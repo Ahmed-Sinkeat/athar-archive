@@ -1,6 +1,6 @@
 ---
 title: "وقال الدقاق الأصبهاني في الرسالة وهو يتكلم عن أبي إسماعيل الأنصاري"
-status: draft
+status: published
 published_at: 2019-12-24
 person: abu-jafar-al-khalifi
 topics: ["al-iman", "al-sunnah-wal-bidah"]

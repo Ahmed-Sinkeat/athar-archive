@@ -1,6 +1,6 @@
 ---
 title: "قال الحسين المروزي في زوائد الزهد لابن المبارك 1365 - أخبرنا عيسى بن عمر قال"
-status: draft
+status: published
 published_at: 2017-12-25
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

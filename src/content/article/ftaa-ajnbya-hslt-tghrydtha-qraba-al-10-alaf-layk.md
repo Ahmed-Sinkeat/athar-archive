@@ -1,6 +1,6 @@
 ---
 title: "فتاة أجنبية حصلت تغريدتها قرابة ال١٠ آلاف لايك"
-status: draft
+status: published
 published_at: 2021-06-13
 person: abu-jafar-al-khalifi
 ---

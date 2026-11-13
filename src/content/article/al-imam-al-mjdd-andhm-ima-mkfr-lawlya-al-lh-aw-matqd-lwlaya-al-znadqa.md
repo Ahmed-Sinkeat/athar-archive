@@ -1,6 +1,6 @@
 ---
 title: "الإمام المجدد عندهم إما مكفر لأولياء الله أو معتقد لولاية الزنادقة.."
-status: draft
+status: published
 published_at: 2023-05-10
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "وقد فسر عكرمة الذين يؤذون الله ورسوله بأصحاب التصاوير وقد ورد في الحديث"
-status: draft
+status: published
 published_at: 2019-10-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

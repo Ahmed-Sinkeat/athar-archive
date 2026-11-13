@@ -1,6 +1,6 @@
 ---
 title: "ورد في الحديث : ( أكثروا علي من الصلاة يوم الجمعة فإن صلاتكم تبلغني )"
-status: draft
+status: published
 published_at: 2018-12-21
 person: abu-jafar-al-khalifi
 ---

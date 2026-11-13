@@ -1,6 +1,6 @@
 ---
 title: "سنن أبي داود | باب فضل نشر العلم"
-status: draft
+status: published
 published_at: 2023-07-22
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

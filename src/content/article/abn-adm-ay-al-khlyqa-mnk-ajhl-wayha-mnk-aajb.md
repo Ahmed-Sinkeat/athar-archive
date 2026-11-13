@@ -1,6 +1,6 @@
 ---
 title: "ابن آدم أي الخليقة منك أجهل وأيها منك أعجب؟"
-status: draft
+status: published
 published_at: 2025-03-18
 person: abu-abdillah-firas-al-ramli
 ---

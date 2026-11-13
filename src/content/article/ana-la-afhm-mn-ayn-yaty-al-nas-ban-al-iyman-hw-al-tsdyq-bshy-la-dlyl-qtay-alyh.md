@@ -1,6 +1,6 @@
 ---
 title: "أنا لا أفهم من أين يأتي الناس بأنّ الإيمان هو التصديق بشيء لا دليل قطعي عليه!"
-status: draft
+status: published
 published_at: 2025-06-24
 person: abu-umair-imran-al-zubaidi
 ---

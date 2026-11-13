@@ -1,6 +1,6 @@
 ---
 title: "رأيت هذا الفيديو لعبد الله الشريف هداه الله ينفِّر به من الحج"
-status: draft
+status: published
 published_at: 2025-05-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

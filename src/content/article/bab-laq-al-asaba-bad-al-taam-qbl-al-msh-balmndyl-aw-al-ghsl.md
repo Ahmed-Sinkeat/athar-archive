@@ -1,6 +1,6 @@
 ---
 title: "باب لعق الأصابع بعد الطعام قبل المسح بالمنديل أو الغسل"
-status: draft
+status: published
 published_at: 2024-02-23
 person: abu-abdillah-firas-al-ramli
 topics: ["al-iman"]

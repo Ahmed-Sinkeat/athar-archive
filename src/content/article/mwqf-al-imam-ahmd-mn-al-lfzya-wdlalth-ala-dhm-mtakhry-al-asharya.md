@@ -1,6 +1,6 @@
 ---
 title: "موقف الإمام أحمد من اللفظية ودلالته على ذم متأخري الأشعرية"
-status: draft
+status: published
 published_at: 2021-11-20
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

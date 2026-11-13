@@ -1,6 +1,6 @@
 ---
 title: "لا تجعلهم يدخلونك في عقائد الفلاسفة بحجة الاهتمام بقضايا الأمة..."
-status: draft
+status: published
 published_at: 2026-03-24
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

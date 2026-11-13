@@ -1,6 +1,6 @@
 ---
 title: "وعبد الله بن نافع صاحب مالك وهو مختص به غير أنه صاحب أوهام وأوهامه لا تسقط روايت"
-status: draft
+status: published
 published_at: 2022-01-06
 person: abu-jafar-al-khalifi
 ---

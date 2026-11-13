@@ -1,6 +1,6 @@
 ---
 title: "أصلًا هنا المشكلة، أنّ كثيرًا من الواقفين في صفوفنا ما زالوا في صفوفنا!"
-status: draft
+status: published
 published_at: 2023-10-30
 person: abu-umair-imran-al-zubaidi
 ---

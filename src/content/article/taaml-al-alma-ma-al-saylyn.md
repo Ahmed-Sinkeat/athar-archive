@@ -1,6 +1,6 @@
 ---
 title: "تعامل العلماء مع السائلين"
-status: draft
+status: published
 published_at: 2023-11-18
 person: abu-umair-imran-al-zubaidi
 ---

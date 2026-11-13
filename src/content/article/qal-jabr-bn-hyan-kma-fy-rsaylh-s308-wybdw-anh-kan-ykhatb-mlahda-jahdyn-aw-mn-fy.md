@@ -1,6 +1,6 @@
 ---
 title: "قال جابر بن حيّان كما في رسائله ص٣٠٨ ويبدو أنه كان يخاطب ملاحدة جاحدين أو من في"
-status: draft
+status: published
 published_at: 2018-04-17
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "جاء في رد المحتار (5/359)"
-status: draft
+status: published
 published_at: 2017-11-26
 person: abu-jafar-al-khalifi
 ---

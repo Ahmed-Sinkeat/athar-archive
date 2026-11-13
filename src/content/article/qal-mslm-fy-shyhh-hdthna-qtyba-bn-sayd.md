@@ -1,6 +1,6 @@
 ---
 title: "قال مسلم في صحيحه 7445- [82-2922] حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ"
-status: draft
+status: published
 published_at: 2017-12-25
 person: abu-jafar-al-khalifi
 ---

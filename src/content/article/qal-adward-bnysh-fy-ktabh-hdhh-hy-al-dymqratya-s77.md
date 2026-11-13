@@ -1,6 +1,6 @@
 ---
 title: "قال ادوارد بنيش في كتابه هذه هي الديمقراطية ص٧٧"
-status: draft
+status: published
 published_at: 2018-01-28
 person: abu-jafar-al-khalifi
 ---

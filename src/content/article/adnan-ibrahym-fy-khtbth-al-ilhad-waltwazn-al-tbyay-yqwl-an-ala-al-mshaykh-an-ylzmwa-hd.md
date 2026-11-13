@@ -1,6 +1,6 @@
 ---
 title: "عدنان إبراهيم في خطبته الإلحاد والتوازن الطبيعي يقول أن على المشايخ أن يلزموا حد"
-status: draft
+status: published
 published_at: 2017-06-28
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

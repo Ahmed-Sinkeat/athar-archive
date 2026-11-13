@@ -1,6 +1,6 @@
 ---
 title: "أولى خطوات إثبات نبوءة النبي صلى الله عليه وسلم فى الكتاب المقدس إثبات غضب الله"
-status: draft
+status: published
 published_at: 2019-08-05
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "في كتاب المسيح مشتهى الأجيال للأنبا بيشوي"
-status: draft
+status: published
 published_at: 2019-01-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

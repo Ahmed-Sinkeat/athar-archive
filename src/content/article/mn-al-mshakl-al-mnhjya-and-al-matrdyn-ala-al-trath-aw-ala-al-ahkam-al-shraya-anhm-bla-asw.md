@@ -1,6 +1,6 @@
 ---
 title: "من المشاكل المنهجية عند المعترضين على التراث أو على الأحكام الشرعية أنهم بلا أصو"
-status: draft
+status: published
 published_at: 2019-04-30
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذه الجاهلة تتحدث عن عدم وجود أي دليل على وجوب خدمة الزوجة لزوجها بكل ثقة!"
-status: draft
+status: published
 published_at: 2023-11-28
 person: abu-umair-imran-al-zubaidi
 ---

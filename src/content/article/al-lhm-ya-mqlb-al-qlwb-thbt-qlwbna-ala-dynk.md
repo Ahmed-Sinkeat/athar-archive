@@ -1,6 +1,6 @@
 ---
 title: "اللهم يا مقلب القلوب ثبت قلوبنا على دينك"
-status: draft
+status: published
 published_at: 2025-02-24
 person: abu-abdillah-firas-al-ramli
 ---

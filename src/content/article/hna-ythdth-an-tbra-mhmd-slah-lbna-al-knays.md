@@ -1,6 +1,6 @@
 ---
 title: "هنا يتحدث عن تبرع محمد صلاح لبناء الكنائس"
-status: draft
+status: published
 published_at: 2022-08-17
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

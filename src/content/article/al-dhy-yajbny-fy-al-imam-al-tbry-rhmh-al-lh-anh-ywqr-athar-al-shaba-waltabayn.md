@@ -1,6 +1,6 @@
 ---
 title: "الذي يعجبني في الإمام الطبري رحمه الله أنه يوقر آثار الصحابة والتابعين"
-status: draft
+status: published
 published_at: 2025-05-02
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

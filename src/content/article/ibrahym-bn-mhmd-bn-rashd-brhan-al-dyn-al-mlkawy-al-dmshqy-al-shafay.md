@@ -1,6 +1,6 @@
 ---
 title: "إبراهيم بن محمد بن راشد برهان الدين الملكاوي الدمشقي الشافعي."
-status: draft
+status: published
 published_at: 2026-05-02
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran"]

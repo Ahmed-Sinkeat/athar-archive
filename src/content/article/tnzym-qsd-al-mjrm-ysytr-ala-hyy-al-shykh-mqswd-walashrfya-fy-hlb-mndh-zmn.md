@@ -1,6 +1,6 @@
 ---
 title: "تنظيم قسد المجرم يسيطر على حيي الشيخ مقصود والأشرفية في حلب منذ زمن."
-status: draft
+status: published
 published_at: 2026-01-07
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

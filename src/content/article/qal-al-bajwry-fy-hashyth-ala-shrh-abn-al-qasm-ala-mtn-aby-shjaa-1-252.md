@@ -1,6 +1,6 @@
 ---
 title: "قال الباجوري في حاشيته على شرح ابن القاسم على متن أبي شجاع ( ١/ ٢٥٢)"
-status: draft
+status: published
 published_at: 2018-07-11
 person: abu-jafar-al-khalifi
 ---

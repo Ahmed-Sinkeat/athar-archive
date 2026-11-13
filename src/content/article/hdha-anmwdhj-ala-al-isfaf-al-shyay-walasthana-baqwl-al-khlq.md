@@ -1,6 +1,6 @@
 ---
 title: "هذا أنموذج على الإسفاف الشيعي والاستهانة بعقول الخلق."
-status: draft
+status: published
 published_at: 2025-12-27
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

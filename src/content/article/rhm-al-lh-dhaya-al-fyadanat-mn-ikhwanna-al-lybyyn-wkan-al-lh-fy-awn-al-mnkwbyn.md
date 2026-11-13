@@ -1,6 +1,6 @@
 ---
 title: "رحم الله ضحايا الفياضانات من إخواننا الليبيين، وكان الله في عون المنكوبين."
-status: draft
+status: published
 published_at: 2023-09-11
 person: abu-umair-imran-al-zubaidi
 ---

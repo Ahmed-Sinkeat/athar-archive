@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب رؤية لتغيير أمريكا الذي كتبه كلينتون قبيل حملته الانتخابية مع نائبة"
-status: draft
+status: published
 published_at: 2017-08-10
 person: abu-jafar-al-khalifi
 ---

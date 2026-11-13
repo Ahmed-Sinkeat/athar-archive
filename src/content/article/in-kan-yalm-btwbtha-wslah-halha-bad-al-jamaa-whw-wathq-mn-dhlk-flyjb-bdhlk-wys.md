@@ -1,6 +1,6 @@
 ---
 title: "1- إن كان يعلم بتوبتها وصلاح حالها بعد الجامعة وهو واثق مِن ذلك؛ فليُجب بذلك ويس"
-status: draft
+status: published
 published_at: 2022-12-12
 person: abu-umair-imran-al-zubaidi
 ---

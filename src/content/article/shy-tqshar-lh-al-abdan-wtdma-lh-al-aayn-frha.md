@@ -1,6 +1,6 @@
 ---
 title: "شيء تقشعر له الأبدان وتدمع له الأعين فرحا"
-status: draft
+status: published
 published_at: 2024-12-05
 person: abu-umair-imran-al-zubaidi
 ---

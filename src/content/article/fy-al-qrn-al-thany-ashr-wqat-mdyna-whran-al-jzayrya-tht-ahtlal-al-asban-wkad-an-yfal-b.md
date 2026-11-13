@@ -1,6 +1,6 @@
 ---
 title: "في القرن الثاني عشر وقعت مدينة وهران الجزائرية تحت احتلال الأسبان وكاد أن يفعل ب"
-status: draft
+status: published
 published_at: 2018-01-10
 person: abu-jafar-al-khalifi
 ---

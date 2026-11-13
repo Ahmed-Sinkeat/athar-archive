@@ -1,6 +1,6 @@
 ---
 title: "هذا ما يجتهد الدكتور حاتم العوني في نشره بين العوام بحماس شديد يغلب على حماسه في"
-status: draft
+status: published
 published_at: 2025-04-24
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

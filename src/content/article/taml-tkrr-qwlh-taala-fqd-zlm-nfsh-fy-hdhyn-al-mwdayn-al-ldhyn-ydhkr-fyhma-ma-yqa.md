@@ -1,6 +1,6 @@
 ---
 title: "تأمل تكرر قوله تعالى ( فقد ظلم نفسه ) في هذين الموضعين اللذين يذكر فيهما ما يقع"
-status: draft
+status: published
 published_at: 2018-05-19
 person: abu-jafar-al-khalifi
 ---

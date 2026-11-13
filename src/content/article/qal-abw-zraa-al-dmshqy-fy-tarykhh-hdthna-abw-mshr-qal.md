@@ -1,6 +1,6 @@
 ---
 title: "قال أبو زرعة الدمشقي في تاريخه حَدَّثَنَا أَبُو مُسْهِرٍ قال"
-status: draft
+status: published
 published_at: 2018-04-03
 person: abu-jafar-al-khalifi
 ---

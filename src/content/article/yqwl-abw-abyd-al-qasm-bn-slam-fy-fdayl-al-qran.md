@@ -1,6 +1,6 @@
 ---
 title: "يقول أبو عبيد القاسم بن سلام في \" فضائل القرآن 118 \""
-status: draft
+status: published
 published_at: 2017-10-08
 person: abu-jafar-al-khalifi
 ---

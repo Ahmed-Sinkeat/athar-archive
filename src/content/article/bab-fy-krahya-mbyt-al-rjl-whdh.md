@@ -1,6 +1,6 @@
 ---
 title: "باب في كراهية مبيت الرجل وحده"
-status: draft
+status: published
 published_at: 2024-12-11
 person: abu-abdillah-firas-al-ramli
 ---

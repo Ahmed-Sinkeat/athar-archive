@@ -1,6 +1,6 @@
 ---
 title: "في رحاب فيروز البطل !"
-status: draft
+status: published
 published_at: 2020-04-10
 person: abu-jafar-al-khalifi
 ---

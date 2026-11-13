@@ -1,6 +1,6 @@
 ---
 title: "يبقى \"عار\" تخلّف الأمة تيكتولوجيًا وعدم وصولها إلى القمر ذريتة تشنيع حتى تصل منت"
-status: draft
+status: published
 published_at: 2023-05-26
 person: abu-umair-imran-al-zubaidi
 ---

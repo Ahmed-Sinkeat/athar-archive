@@ -1,6 +1,6 @@
 ---
 title: "يسأله (أين الله؟) فإذا قال (في السماء) يذهب إلى صيدنايا!"
-status: draft
+status: published
 published_at: 2025-01-11
 person: abu-jafar-al-khalifi
 ---

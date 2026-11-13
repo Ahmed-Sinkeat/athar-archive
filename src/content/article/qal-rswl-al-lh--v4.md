@@ -1,6 +1,6 @@
 ---
 title: "قال رسول الله ﷺ"
-status: draft
+status: published
 published_at: 2026-02-08
 person: abu-jafar-al-khalifi
 ---

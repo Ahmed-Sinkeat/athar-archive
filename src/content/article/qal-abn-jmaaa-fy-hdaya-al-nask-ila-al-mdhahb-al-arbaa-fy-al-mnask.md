@@ -1,6 +1,6 @@
 ---
 title: "قال ابن جماعة في هداية الناسك إلى المذاهب الأربعة في المناسك"
-status: draft
+status: published
 published_at: 2019-03-04
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

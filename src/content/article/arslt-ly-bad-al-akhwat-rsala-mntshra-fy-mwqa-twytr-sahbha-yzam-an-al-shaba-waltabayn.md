@@ -1,6 +1,6 @@
 ---
 title: "أرسلت لي بعض الأخوات رسالة منتشرة في موقع تويتر صاحبها يزعم أن الصحابة والتابعين"
-status: draft
+status: published
 published_at: 2019-03-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

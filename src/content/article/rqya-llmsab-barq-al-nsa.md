@@ -1,6 +1,6 @@
 ---
 title: "رقية للمصاب بعرق النسا"
-status: draft
+status: published
 published_at: 2025-07-10
 person: abu-abdillah-firas-al-ramli
 ---

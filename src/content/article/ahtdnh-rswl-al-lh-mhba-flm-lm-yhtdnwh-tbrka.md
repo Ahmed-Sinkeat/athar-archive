@@ -1,6 +1,6 @@
 ---
 title: "احتضنه رسول الله ﷺ محبةً فلِمَ لم يحتضنوه تبركاً!"
-status: draft
+status: published
 published_at: 2024-10-25
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

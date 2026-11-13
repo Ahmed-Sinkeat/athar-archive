@@ -1,6 +1,6 @@
 ---
 title: "نجل السيستاني والاستغراب من الغلو بالصالحين المخالف للقرآن !"
-status: draft
+status: published
 published_at: 2020-03-30
 person: abu-jafar-al-khalifi
 ---

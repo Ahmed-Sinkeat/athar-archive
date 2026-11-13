@@ -1,6 +1,6 @@
 ---
 title: "إبطال التعنت بنقض سببه"
-status: draft
+status: published
 published_at: 2020-05-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

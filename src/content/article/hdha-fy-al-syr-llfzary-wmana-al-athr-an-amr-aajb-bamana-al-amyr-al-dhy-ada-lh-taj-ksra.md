@@ -1,6 +1,6 @@
 ---
 title: "هذا في السير للفزاري ومعنى الأثر أن عمر أعجب بأمانة الأمير الذي أدى له تاج كسرى"
-status: draft
+status: published
 published_at: 2017-11-25
 person: abu-jafar-al-khalifi
 ---

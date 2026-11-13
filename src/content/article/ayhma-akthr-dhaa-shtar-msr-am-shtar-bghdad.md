@@ -1,6 +1,6 @@
 ---
 title: "أيهما أكثر دهاءاً: شُطَّار مصر، أم شُطَّار بغداد؟"
-status: draft
+status: published
 published_at: 2026-04-06
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "عادة جاهلية كانت سبباً في دخول التتر لبلد الإسلام"
-status: draft
+status: published
 published_at: 2020-07-24
 person: abu-jafar-al-khalifi
 ---

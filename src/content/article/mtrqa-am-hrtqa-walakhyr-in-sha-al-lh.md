@@ -1,6 +1,6 @@
 ---
 title: "مطرقة أم هرطقة؟ (6) والأخير إن شاء الله."
-status: draft
+status: published
 published_at: 2024-04-05
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

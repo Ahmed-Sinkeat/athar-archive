@@ -1,6 +1,6 @@
 ---
 title: "من أخزى ما قرأت..."
-status: draft
+status: published
 published_at: 2026-02-11
 person: abu-jafar-al-khalifi
 ---

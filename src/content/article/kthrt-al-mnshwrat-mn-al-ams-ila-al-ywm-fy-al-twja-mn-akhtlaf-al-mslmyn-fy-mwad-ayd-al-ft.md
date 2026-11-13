@@ -1,6 +1,6 @@
 ---
 title: "كثُرت المنشورات من الأمس إلى اليوم في التوجع من اختلاف المسلمين في موعد عيد الفط"
-status: draft
+status: published
 published_at: 2019-06-04
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

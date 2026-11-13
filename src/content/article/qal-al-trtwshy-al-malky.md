@@ -1,6 +1,6 @@
 ---
 title: "قال الطرطوشي المالكي"
-status: draft
+status: published
 published_at: 2018-03-23
 person: abu-jafar-al-khalifi
 ---

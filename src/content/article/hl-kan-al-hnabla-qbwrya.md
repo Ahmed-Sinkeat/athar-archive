@@ -1,6 +1,6 @@
 ---
 title: "هل كان الحنابلة قبورية؟"
-status: draft
+status: published
 published_at: 2022-05-06
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

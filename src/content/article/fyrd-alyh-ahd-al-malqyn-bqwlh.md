@@ -1,6 +1,6 @@
 ---
 title: "فيرد عليه أحد المعلقين بقوله"
-status: draft
+status: published
 published_at: 2025-06-13
 person: abu-jafar-al-khalifi
 ---

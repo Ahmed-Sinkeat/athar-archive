@@ -1,6 +1,6 @@
 ---
 title: "ولكن ما عذرنا نحن إذا قام كاتبنا"
-status: draft
+status: published
 published_at: 2018-10-26
 person: abu-jafar-al-khalifi
 ---

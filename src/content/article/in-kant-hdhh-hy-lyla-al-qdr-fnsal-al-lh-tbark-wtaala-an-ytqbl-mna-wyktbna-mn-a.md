@@ -1,6 +1,6 @@
 ---
 title: "إن كانت هذه هي ليلة القدر؛ فنسأل الله تبارك وتعالى أن يتقبّل مِنّا ويكتبنا مِن ع"
-status: draft
+status: published
 published_at: 2023-04-18
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "يعلم الله أن الوحي هو عندنا المقياس وبموافقته نمدح وبمخالفته نذم غير أننا أحيانا"
-status: draft
+status: published
 published_at: 2018-07-27
 person: abu-jafar-al-khalifi
 ---

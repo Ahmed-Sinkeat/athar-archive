@@ -1,6 +1,6 @@
 ---
 title: "نقلا عن الأخ أبي عبد الله الشيباني"
-status: draft
+status: published
 published_at: 2018-12-05
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "أنفع الناس للناس من صان نفعهم للناس.."
-status: draft
+status: published
 published_at: 2022-12-23
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

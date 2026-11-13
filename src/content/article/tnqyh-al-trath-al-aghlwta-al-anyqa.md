@@ -1,6 +1,6 @@
 ---
 title: "تنقيح التراث ( الأغلوطة الأنيقة )."
-status: draft
+status: published
 published_at: 2020-08-29
 person: abu-jafar-al-khalifi
 ---

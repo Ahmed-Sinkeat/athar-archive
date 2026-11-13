@@ -1,6 +1,6 @@
 ---
 title: "نقصان الأمانة ينقص الإيمان"
-status: draft
+status: published
 published_at: 2024-12-30
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال الترمذي في جامعه [2404] - حدثنا سويد"
-status: draft
+status: published
 published_at: 2017-09-08
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

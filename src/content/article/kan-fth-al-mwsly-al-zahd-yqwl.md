@@ -1,6 +1,6 @@
 ---
 title: "كان فتح الموصلي الزاهد يقول"
-status: draft
+status: published
 published_at: 2018-05-23
 person: abu-jafar-al-khalifi
 ---

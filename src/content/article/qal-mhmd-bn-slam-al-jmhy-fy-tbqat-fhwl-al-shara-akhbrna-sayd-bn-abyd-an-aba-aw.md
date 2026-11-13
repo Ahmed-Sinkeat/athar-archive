@@ -1,6 +1,6 @@
 ---
 title: "قال محمد بن سلام الجمحي في طبقات فحول الشعراء 76 - أخبرنى سعيد بن عبيد عن أبى عو"
-status: draft
+status: published
 published_at: 2019-11-24
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

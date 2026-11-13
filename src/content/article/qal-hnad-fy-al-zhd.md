@@ -1,6 +1,6 @@
 ---
 title: "قال هناد في الزهد (463/2)"
-status: draft
+status: published
 published_at: 2024-01-23
 person: abu-umair-imran-al-zubaidi
 topics: ["tazkiyat-al-nafs"]

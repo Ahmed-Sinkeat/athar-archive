@@ -1,6 +1,6 @@
 ---
 title: "بيان عدم جواز تأخير ذبح الأضحية إلى يوم الثالث عشر 👆"
-status: draft
+status: published
 published_at: 2017-08-31
 person: abu-jafar-al-khalifi
 ---

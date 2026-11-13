@@ -1,6 +1,6 @@
 ---
 title: "لم يصح عند الإمام الشافعي حديث في زكاة الذهب وإنما صح عنده أحاديث في زكاة الفضة"
-status: draft
+status: published
 published_at: 2018-05-08
 person: abu-jafar-al-khalifi
 ---

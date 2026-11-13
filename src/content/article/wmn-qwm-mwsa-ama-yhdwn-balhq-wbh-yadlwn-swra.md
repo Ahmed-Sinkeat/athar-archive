@@ -1,6 +1,6 @@
 ---
 title: "وَمِن قَوْمِ مُوسَىٰ أُمَّةٌ يَهْدُونَ بِالْحَقِّ وَبِهِ يَعْدِلُونَ (159) سورة"
-status: draft
+status: published
 published_at: 2024-11-26
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

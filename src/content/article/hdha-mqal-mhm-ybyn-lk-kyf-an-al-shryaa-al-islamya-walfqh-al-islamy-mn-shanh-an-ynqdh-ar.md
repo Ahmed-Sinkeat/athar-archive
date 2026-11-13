@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال مهم يبين لك كيف أن الشريعة الإسلامية والفقه الإسلامي من شأنه أن ينقذ أر"
-status: draft
+status: published
 published_at: 2026-01-07
 person: abu-jafar-al-khalifi
 ---

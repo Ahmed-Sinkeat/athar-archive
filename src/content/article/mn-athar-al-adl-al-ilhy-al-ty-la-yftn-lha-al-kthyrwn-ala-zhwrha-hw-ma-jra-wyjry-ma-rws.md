@@ -1,6 +1,6 @@
 ---
 title: "من آثار العدل الإلهي التي لا يفطن لها الكثيرون على ظهورها هو ما جرى ويجري مع روس"
-status: draft
+status: published
 published_at: 2026-01-28
 person: abu-umair-imran-al-zubaidi
 ---

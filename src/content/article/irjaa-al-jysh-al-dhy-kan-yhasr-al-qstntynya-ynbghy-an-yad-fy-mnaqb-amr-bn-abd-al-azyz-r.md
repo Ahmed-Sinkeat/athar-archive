@@ -1,6 +1,6 @@
 ---
 title: "إرجاع الجيش الذي كان يحاصر القسطنطينية ينبغي أن يعد في مناقب عمر بن عبد العزيز ر"
-status: draft
+status: published
 published_at: 2025-07-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

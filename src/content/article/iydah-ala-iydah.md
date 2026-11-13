@@ -1,6 +1,6 @@
 ---
 title: "إيضاح على إيضاح"
-status: draft
+status: published
 published_at: 2019-10-11
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

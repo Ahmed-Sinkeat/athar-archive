@@ -1,6 +1,6 @@
 ---
 title: "هذا اللفظ يا كرام ليس من عندي؛ بل هو من كلام رسول الله ﷺ"
-status: draft
+status: published
 published_at: 2023-08-25
 person: abu-umair-imran-al-zubaidi
 ---

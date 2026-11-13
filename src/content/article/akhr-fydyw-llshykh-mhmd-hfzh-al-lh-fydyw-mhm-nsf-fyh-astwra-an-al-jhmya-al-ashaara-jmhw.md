@@ -1,6 +1,6 @@
 ---
 title: "آخر فيديو للشيخ محمد حفظه الله فيديو مهم نسف فيه أسطورة أن الجهمية الأشاعرة جمهو"
-status: draft
+status: published
 published_at: 2023-06-18
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

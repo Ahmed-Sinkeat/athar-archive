@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال للخبير الاقتصادي \"بيت إيفنز\" يتكلم فيه عن المقاطعة الاقتصادية للشركات ا"
-status: draft
+status: published
 published_at: 2023-12-06
 person: abu-jafar-al-khalifi
 ---

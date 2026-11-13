@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية في جامع المسائل"
-status: draft
+status: published
 published_at: 2019-03-22
 person: abu-jafar-al-khalifi
 ---

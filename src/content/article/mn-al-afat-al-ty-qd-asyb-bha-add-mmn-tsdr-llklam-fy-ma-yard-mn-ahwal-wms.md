@@ -1,6 +1,6 @@
 ---
 title: "مِن الآفات التي قد أصِيبَ بها عدد ممَّن تصدَّر للكلام في ما يعرِض مِن أحوال ومُس"
-status: draft
+status: published
 published_at: 2025-09-02
 person: awwab-bin-muhammad
 topics: ["al-firaq-war-rudud"]

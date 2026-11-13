@@ -1,6 +1,6 @@
 ---
 title: "خلاصة وعد الدجال: جنة أرضية دون عمل صالح أو عقيدة صحيحة!"
-status: draft
+status: published
 published_at: 2021-06-07
 person: abu-jafar-al-khalifi
 ---

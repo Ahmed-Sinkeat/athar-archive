@@ -1,6 +1,6 @@
 ---
 title: "من الحوادث في يوم عاشوراء العظيم *"
-status: draft
+status: published
 published_at: 2023-07-27
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

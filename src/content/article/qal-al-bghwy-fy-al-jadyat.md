@@ -1,6 +1,6 @@
 ---
 title: "قال البغوي في الجعديات 2232"
-status: draft
+status: published
 published_at: 2019-01-11
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

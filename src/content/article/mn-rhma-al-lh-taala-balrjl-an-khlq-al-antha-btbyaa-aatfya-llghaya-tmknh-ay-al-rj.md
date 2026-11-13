@@ -1,6 +1,6 @@
 ---
 title: "مِن رحمة الله تعالى بالرجل أن خلق الأنثى بطبيعةٍ عاطفيّة للغاية تُمكّنه -أي الرج"
-status: draft
+status: published
 published_at: 2022-11-28
 person: abu-umair-imran-al-zubaidi
 ---

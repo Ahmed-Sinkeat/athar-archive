@@ -1,6 +1,6 @@
 ---
 title: "خبر بئر الناقة لا يدل على التبرك لا من قريب ولا من بعيد."
-status: draft
+status: published
 published_at: 2025-01-18
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

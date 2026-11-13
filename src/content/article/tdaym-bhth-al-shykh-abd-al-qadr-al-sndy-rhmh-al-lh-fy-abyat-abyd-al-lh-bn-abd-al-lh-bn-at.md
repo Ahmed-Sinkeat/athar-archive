@@ -1,6 +1,6 @@
 ---
 title: "تدعيم بحث الشيخ عبد القادر السندي رحمه الله في أبيات عبيد الله بن عبد الله بن عت"
-status: draft
+status: published
 published_at: 2020-03-28
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

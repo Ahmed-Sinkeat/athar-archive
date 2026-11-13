@@ -1,6 +1,6 @@
 ---
 title: "علاج عقدة لطالما أقعدت كثيرين عن اتباع الحق.."
-status: draft
+status: published
 published_at: 2021-01-20
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "في رحاب الإمام الفقيه النجدي الذي حفظ لنا حديث الجارية"
-status: draft
+status: published
 published_at: 2019-12-07
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]

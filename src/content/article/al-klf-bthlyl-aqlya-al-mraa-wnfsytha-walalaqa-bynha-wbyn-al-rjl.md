@@ -1,6 +1,6 @@
 ---
 title: "الكلف بتحليل عقلية المرأة ونفسيتها والعلاقة بينها وبين الرجل"
-status: draft
+status: published
 published_at: 2025-12-26
 person: abu-umair-imran-al-zubaidi
 ---

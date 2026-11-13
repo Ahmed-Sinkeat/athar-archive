@@ -1,6 +1,6 @@
 ---
 title: "العلاج الخفي المنسي"
-status: draft
+status: published
 published_at: 2024-05-20
 person: abu-jafar-al-khalifi
 ---

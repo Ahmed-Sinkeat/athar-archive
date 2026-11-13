@@ -1,6 +1,6 @@
 ---
 title: "تخيل هذه الأسئلة مع رسول الله إن كان الله قد بعثه في عصرنا الحالي"
-status: draft
+status: published
 published_at: 2018-05-30
 person: abu-jafar-al-khalifi
 ---

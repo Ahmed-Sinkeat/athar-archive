@@ -1,6 +1,6 @@
 ---
 title: "من الفتن الخفية"
-status: draft
+status: published
 published_at: 2025-11-06
 person: abu-umair-imran-al-zubaidi
 ---

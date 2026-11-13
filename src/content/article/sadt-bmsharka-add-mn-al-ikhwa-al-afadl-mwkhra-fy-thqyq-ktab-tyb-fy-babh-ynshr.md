@@ -1,6 +1,6 @@
 ---
 title: "سعدتُ بمُشاركة عدد مِن الإخوة الأفاضل مُؤخراً في تحقيق كتاب طيِّب في بابه يُنشَر"
-status: draft
+status: published
 published_at: 2026-06-06
 person: awwab-bin-muhammad
 ---

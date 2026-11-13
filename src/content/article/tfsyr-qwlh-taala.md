@@ -1,6 +1,6 @@
 ---
 title: "تفسير قوله تعالى"
-status: draft
+status: published
 published_at: 2023-01-01
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

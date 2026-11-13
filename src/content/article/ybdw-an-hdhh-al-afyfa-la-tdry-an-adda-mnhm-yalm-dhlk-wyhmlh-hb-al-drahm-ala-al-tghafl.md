@@ -1,6 +1,6 @@
 ---
 title: "يبدو أن هذه العفيفة لا تدري أن عددا منهم يعلم ذلك ويحمله حب الدراهم على التغافل"
-status: draft
+status: published
 published_at: 2018-08-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

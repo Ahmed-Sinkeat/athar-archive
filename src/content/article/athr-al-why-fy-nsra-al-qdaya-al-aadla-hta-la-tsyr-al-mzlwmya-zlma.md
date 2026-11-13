@@ -1,6 +1,6 @@
 ---
 title: "أثر الوحي في نصرة القضايا العادلة (حتى لا تصير المظلومية ظلمًا)."
-status: draft
+status: published
 published_at: 2021-01-15
 person: abu-jafar-al-khalifi
 ---

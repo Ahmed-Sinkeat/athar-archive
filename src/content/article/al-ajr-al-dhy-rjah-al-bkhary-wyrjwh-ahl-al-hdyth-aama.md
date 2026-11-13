@@ -1,6 +1,6 @@
 ---
 title: "الأجر الذي رجاه البخاري ويرجوه أهل الحديث عامة..."
-status: draft
+status: published
 published_at: 2024-06-24
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

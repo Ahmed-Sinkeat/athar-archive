@@ -1,6 +1,6 @@
 ---
 title: "فإذا رآه أهل الجنة نسوا نعيم الجنة"
-status: draft
+status: published
 published_at: 2025-03-03
 person: abu-abdillah-firas-al-ramli
 ---

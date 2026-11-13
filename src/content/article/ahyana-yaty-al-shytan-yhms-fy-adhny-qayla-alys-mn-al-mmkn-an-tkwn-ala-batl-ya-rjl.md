@@ -1,6 +1,6 @@
 ---
 title: "أحيانا يأتي الشيطان يهمس في أذني قائلا: أليس من الممكن أن تكون على باطل يا رجل؟"
-status: draft
+status: published
 published_at: 2026-08-10
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "تظن أن التدخين يُهدِّئ الأعصاب؟ فكر مرة أخرى."
-status: draft
+status: published
 published_at: 2023-01-29
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "{لَّا تَجِدُ قَوْمًا يُؤْمِنُونَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ يُوَادُّونَ مَنْ"
-status: draft
+status: published
 published_at: 2024-12-19
 person: abu-umair-imran-al-zubaidi
 ---

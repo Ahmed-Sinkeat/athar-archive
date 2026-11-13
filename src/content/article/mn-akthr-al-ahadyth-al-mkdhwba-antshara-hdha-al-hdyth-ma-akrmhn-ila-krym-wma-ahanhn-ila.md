@@ -1,6 +1,6 @@
 ---
 title: "من أكثر الأحاديث المكذوبة انتشارًا هذا الحديث (ما أكرمهن إلا كريم وما أهانهن إلا"
-status: draft
+status: published
 published_at: 2022-06-22
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "شيء من الشجون الوهابية: حديث الأعمى المصلوب.."
-status: draft
+status: published
 published_at: 2021-11-14
 person: abu-jafar-al-khalifi
 ---

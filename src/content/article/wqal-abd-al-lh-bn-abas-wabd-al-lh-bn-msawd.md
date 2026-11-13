@@ -1,6 +1,6 @@
 ---
 title: "ـ وقال عبد الله بن عباس وعبد الله بن مسعود"
-status: draft
+status: published
 published_at: 2019-02-22
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

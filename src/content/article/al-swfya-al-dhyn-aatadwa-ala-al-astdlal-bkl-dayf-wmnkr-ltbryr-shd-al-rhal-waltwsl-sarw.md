@@ -1,6 +1,6 @@
 ---
 title: "الصوفية الذين اعتادوا على الاستدلال بكل ضعيف ومنكر لتبرير شد الرحال والتوسل صارو"
-status: draft
+status: published
 published_at: 2026-09-10
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

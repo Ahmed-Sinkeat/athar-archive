@@ -1,6 +1,6 @@
 ---
 title: "عجيب استحضاره لأمر النزول الإلهي في السَّحَر."
-status: draft
+status: published
 published_at: 2025-01-26
 person: abu-jafar-al-khalifi
 ---

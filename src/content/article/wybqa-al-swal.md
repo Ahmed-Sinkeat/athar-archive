@@ -1,6 +1,6 @@
 ---
 title: "ويبقى السؤال"
-status: draft
+status: published
 published_at: 2026-06-14
 person: abu-umair-imran-al-zubaidi
 ---

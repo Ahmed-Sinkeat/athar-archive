@@ -1,6 +1,6 @@
 ---
 title: "الوجه الآخر لجحيم الاختلاط المنفلت: دعاوى الاغتصاب الكيدية!"
-status: draft
+status: published
 published_at: 2021-01-21
 person: abu-jafar-al-khalifi
 ---

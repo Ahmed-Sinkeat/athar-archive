@@ -1,6 +1,6 @@
 ---
 title: "قال الأرموي المتكلم في التحصيل وهو يعضد حجة من يقول أن خبر الواحد الصحيح يفيد ال"
-status: draft
+status: published
 published_at: 2017-09-28
 person: abu-jafar-al-khalifi
 ---

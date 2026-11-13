@@ -1,6 +1,6 @@
 ---
 title: "قال الخلال في الأمر بالمعروف والنهي عن المنكر أَخْبَرَنِي أَبُو بَكْرٍ الْمَرُّو"
-status: draft
+status: published
 published_at: 2018-04-18
 person: abu-jafar-al-khalifi
 ---

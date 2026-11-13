@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي حاتم في الجرح والتعديل 1353 - سقر بن عبد الرحمن بن مالك بن مغول ابوب"
-status: draft
+status: published
 published_at: 2017-12-13
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وهل هذا إلا بمنزلة من يظنُّ أنَّ الرجلَ إذا كان عالمًا بأحوال الأبنية وأوضاعها"
-status: draft
+status: published
 published_at: 2019-08-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

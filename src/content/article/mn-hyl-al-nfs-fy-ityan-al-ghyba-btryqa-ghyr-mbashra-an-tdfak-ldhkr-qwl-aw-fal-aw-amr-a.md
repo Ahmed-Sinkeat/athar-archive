@@ -1,6 +1,6 @@
 ---
 title: "من حيل النفس في إتيان الغيبة بطريقة غير مباشرة أن تدفعك لذكر قول أو فعل أو أمر ع"
-status: draft
+status: published
 published_at: 2025-11-20
 person: abu-umair-imran-al-zubaidi
 ---

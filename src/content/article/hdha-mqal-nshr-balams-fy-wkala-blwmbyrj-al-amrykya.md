@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال نُشر بالأمس في وكالة بلومبيرج (Bloomberg) الأمريكية."
-status: draft
+status: published
 published_at: 2020-11-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

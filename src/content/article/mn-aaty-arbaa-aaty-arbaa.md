@@ -1,6 +1,6 @@
 ---
 title: "من أعطي أربعا أعطي أربعا"
-status: draft
+status: published
 published_at: 2026-05-05
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

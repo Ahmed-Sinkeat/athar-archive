@@ -1,6 +1,6 @@
 ---
 title: "علماً أن الشيخ يرى أن المعتزلة في مسائل الإيمان والقدر أقوم من الأشعرية الذين دخ"
-status: draft
+status: published
 published_at: 2022-03-12
 person: abu-jafar-al-khalifi
 ---

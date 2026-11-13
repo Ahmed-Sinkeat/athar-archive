@@ -1,6 +1,6 @@
 ---
 title: "تحذير واجب لإنقاذ ما يمكن إنقاذه.."
-status: draft
+status: published
 published_at: 2021-07-28
 person: abu-jafar-al-khalifi
 ---

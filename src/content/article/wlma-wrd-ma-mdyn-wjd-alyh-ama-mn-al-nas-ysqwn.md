@@ -1,6 +1,6 @@
 ---
 title: "{وَلَمَّا وَرَدَ مَاءَ مَدْيَنَ وَجَدَ عَلَيْهِ أُمَّةً مِّنَ النَّاسِ يَسْقُونَ"
-status: draft
+status: published
 published_at: 2022-10-13
 person: abu-umair-imran-al-zubaidi
 ---

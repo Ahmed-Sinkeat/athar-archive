@@ -1,6 +1,6 @@
 ---
 title: "\"وَقُرْبُ الله إِلَى جَمِيعِ ذَلِكَ وَاحِدٌ.\""
-status: draft
+status: published
 published_at: 2023-10-01
 person: abu-umair-imran-al-zubaidi
 ---

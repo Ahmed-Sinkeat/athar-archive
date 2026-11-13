@@ -1,6 +1,6 @@
 ---
 title: "قاعدة أصولية يقررها علماء الإمامية تبطل استدلالهم بحديث"
-status: draft
+status: published
 published_at: 2025-09-22
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-imamah-was-sahabah"]

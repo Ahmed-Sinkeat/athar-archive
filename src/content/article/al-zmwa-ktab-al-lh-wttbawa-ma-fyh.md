@@ -1,6 +1,6 @@
 ---
 title: "الزموا كتاب الله وتتبعوا ما فيه"
-status: draft
+status: published
 published_at: 2025-01-16
 person: abu-abdillah-firas-al-ramli
 ---

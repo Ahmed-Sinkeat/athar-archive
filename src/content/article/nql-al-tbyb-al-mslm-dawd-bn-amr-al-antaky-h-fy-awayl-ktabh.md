@@ -1,6 +1,6 @@
 ---
 title: "نقل الطبيب المسلم \"داود بن عمر الأنطاكي 000-1008هـ\" في أوائل كتابه"
-status: draft
+status: published
 published_at: 2017-06-18
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "رغم ما يُسقِم في هذه التنظِيرات مِن إجمال في المقبول مِن العلاقات مِن حيث كونها"
-status: draft
+status: published
 published_at: 2026-01-14
 person: awwab-bin-muhammad
 ---

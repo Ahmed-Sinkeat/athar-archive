@@ -1,6 +1,6 @@
 ---
 title: "قال أحمد في مسنده (١٠٩٩٦)"
-status: draft
+status: published
 published_at: 2023-10-27
 person: abu-abdillah-firas-al-ramli
 ---

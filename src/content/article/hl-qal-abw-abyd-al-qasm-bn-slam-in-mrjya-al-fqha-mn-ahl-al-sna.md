@@ -1,6 +1,6 @@
 ---
 title: "هل قال أبو عبيد القاسم بن سلام إن مرجئة الفقهاء من أهل السنة؟"
-status: draft
+status: published
 published_at: 2025-04-09
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "قال ابن عبد البر في التمهيد (24/186)"
-status: draft
+status: published
 published_at: 2017-12-12
 person: abu-jafar-al-khalifi
 ---

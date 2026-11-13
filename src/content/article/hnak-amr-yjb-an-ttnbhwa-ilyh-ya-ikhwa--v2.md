@@ -1,6 +1,6 @@
 ---
 title: "هناك أمر يجب أن تتنبهوا إليه يا إخوة"
-status: draft
+status: published
 published_at: 2024-08-03
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

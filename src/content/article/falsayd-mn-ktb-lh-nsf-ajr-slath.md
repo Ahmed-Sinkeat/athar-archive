@@ -1,6 +1,6 @@
 ---
 title: "فالسعيد من كُتب له نصف أجر صلاته!"
-status: draft
+status: published
 published_at: 2024-11-25
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

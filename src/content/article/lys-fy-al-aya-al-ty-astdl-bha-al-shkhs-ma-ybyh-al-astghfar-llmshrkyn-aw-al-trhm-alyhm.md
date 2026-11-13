@@ -1,6 +1,6 @@
 ---
 title: "ليس في الآية التي استدل بها الشخص ما يبيح الاستغفار للمشركين أو الترحم عليهم"
-status: draft
+status: published
 published_at: 2022-05-15
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

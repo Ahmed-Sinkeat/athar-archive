@@ -1,6 +1,6 @@
 ---
 title: "لا تعجلوا بحمد الناس ولا بذمهم"
-status: draft
+status: published
 published_at: 2025-11-24
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

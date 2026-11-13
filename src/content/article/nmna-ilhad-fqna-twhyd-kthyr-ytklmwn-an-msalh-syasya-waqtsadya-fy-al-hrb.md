@@ -1,6 +1,6 @@
 ---
 title: "\"نمنا إلحاد فقنا توحيد\" كثير يتكلمون عن مصالح سياسية واقتصادية في الحرب"
-status: draft
+status: published
 published_at: 2026-01-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

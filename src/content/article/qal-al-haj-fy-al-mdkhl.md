@@ -1,6 +1,6 @@
 ---
 title: "قال الحاج في المدخل"
-status: draft
+status: published
 published_at: 2017-06-20
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ابن تيمية والتعاون مع أهل الكلام ضد العدو المشترك"
-status: draft
+status: published
 published_at: 2022-10-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

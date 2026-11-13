@@ -1,6 +1,6 @@
 ---
 title: "قوله تعالى: ﴿وإذ ابتلى إبراهيم ربه بكلمات﴾"
-status: draft
+status: published
 published_at: 2024-06-17
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

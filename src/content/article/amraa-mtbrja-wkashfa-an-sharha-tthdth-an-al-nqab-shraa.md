@@ -1,6 +1,6 @@
 ---
 title: "امرأة متبرجة وكاشفة عن شعرها تتحدث عن النقاب شرعاً"
-status: draft
+status: published
 published_at: 2024-09-05
 person: abu-jafar-al-khalifi
 ---

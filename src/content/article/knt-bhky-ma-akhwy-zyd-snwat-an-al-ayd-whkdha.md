@@ -1,6 +1,6 @@
 ---
 title: "كنت بحكي مع أخوي زيد (9سنوات) عن العيد وهكذا"
-status: draft
+status: published
 published_at: 2023-04-21
 person: abu-umair-imran-al-zubaidi
 ---

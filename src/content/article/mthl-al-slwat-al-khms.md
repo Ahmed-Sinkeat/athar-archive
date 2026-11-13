@@ -1,6 +1,6 @@
 ---
 title: "مثل الصلوات الخمس"
-status: draft
+status: published
 published_at: 2026-03-30
 person: abu-abdillah-firas-al-ramli
 ---

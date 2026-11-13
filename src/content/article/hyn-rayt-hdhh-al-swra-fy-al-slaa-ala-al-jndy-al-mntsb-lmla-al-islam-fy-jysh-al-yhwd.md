@@ -1,6 +1,6 @@
 ---
 title: "حين رأيت هذه الصورة في الصلاة على الجندي المنتسب لملة الإسلام في جيش اليهود."
-status: draft
+status: published
 published_at: 2024-01-26
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

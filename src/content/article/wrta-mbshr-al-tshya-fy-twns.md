@@ -1,6 +1,6 @@
 ---
 title: "ورطة مبشر التشيع في تونس"
-status: draft
+status: published
 published_at: 2020-01-09
 person: abu-jafar-al-khalifi
 ---

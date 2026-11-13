@@ -1,6 +1,6 @@
 ---
 title: "فكيف لو رأى ابن تيمية ما فعل الرافضة في أموالهم اليوم؟"
-status: draft
+status: published
 published_at: 2026-03-31
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

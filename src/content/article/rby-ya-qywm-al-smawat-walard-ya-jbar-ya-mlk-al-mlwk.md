@@ -1,6 +1,6 @@
 ---
 title: "ربي يا قيوم السماوات والأرض، يا جبار، يا ملك الملوك"
-status: draft
+status: published
 published_at: 2025-03-18
 person: abu-umair-imran-al-zubaidi
 ---

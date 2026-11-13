@@ -1,6 +1,6 @@
 ---
 title: "المرأة الصالحة الصابرة على ما تلقاه من أهلها ومحيطها ومجتمعها تستحق كل تقدير وال"
-status: draft
+status: published
 published_at: 2024-01-11
 person: abu-umair-imran-al-zubaidi
 ---

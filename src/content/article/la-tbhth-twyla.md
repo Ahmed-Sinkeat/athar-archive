@@ -1,6 +1,6 @@
 ---
 title: "لا تبحث طويلا."
-status: draft
+status: published
 published_at: 2026-01-03
 person: abu-umair-imran-al-zubaidi
 ---

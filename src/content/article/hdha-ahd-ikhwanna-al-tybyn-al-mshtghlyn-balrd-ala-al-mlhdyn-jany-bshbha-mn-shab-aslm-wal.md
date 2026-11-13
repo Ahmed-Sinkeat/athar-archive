@@ -1,6 +1,6 @@
 ---
 title: "هذا أحد إخواننا الطيبين المشتغلين بالرد على الملحدين جاءني بشبهة من شاب أسلم وال"
-status: draft
+status: published
 published_at: 2020-03-09
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

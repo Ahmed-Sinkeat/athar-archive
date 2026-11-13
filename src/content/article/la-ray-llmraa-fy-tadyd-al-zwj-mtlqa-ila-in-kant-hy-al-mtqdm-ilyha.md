@@ -1,6 +1,6 @@
 ---
 title: "لا رأي للمرأة في تعديد الزوج مُطلقًا إلّا إن كانت هي المُتقَدّم إليها"
-status: draft
+status: published
 published_at: 2023-04-08
 person: abu-umair-imran-al-zubaidi
 ---

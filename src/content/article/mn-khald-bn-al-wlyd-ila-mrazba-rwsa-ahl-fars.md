@@ -1,6 +1,6 @@
 ---
 title: "من خالد بن الوليد إلى مرازبة (رؤساء) أهل فارس"
-status: draft
+status: published
 published_at: 2023-03-11
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "المكذّبون من قوم شعيب ﷺ، هم سلف الأشعرية الجهمية المفوّضة!"
-status: draft
+status: published
 published_at: 2024-04-08
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "أخي الشاب العازب"
-status: draft
+status: published
 published_at: 2023-09-28
 person: abu-umair-imran-al-zubaidi
 ---

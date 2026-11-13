@@ -1,6 +1,6 @@
 ---
 title: "ليس شماتة ولكن لتبديد الخرافة..."
-status: draft
+status: published
 published_at: 2021-01-26
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "هذا السؤال نابع عن إشكال جذري عند كثير من المسلمين في زماننا كنت قد تحدثت عنه سا"
-status: draft
+status: published
 published_at: 2026-04-12
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أنا فقط أريد أن أفهم، أخي المسلم السني الشامي، ما بك؟ ما دهاك؟!"
-status: draft
+status: published
 published_at: 2024-12-24
 person: abu-umair-imran-al-zubaidi
 ---

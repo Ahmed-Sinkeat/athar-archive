@@ -1,6 +1,6 @@
 ---
 title: "من أعجب الناس عندي ذلك الشخص الذي يفكر بتخليد اسمه في التاريخ مع أنه فان لن يشاه"
-status: draft
+status: published
 published_at: 2018-03-05
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "بعيدًا عن كم المخالفات الشرعية في هذا الموقف، والتي ننكرها جميعها ..."
-status: draft
+status: published
 published_at: 2023-07-31
 person: abu-umair-imran-al-zubaidi
 ---

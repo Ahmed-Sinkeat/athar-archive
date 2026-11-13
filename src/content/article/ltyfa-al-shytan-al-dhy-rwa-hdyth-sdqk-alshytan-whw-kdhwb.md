@@ -1,6 +1,6 @@
 ---
 title: "لطيفة: الشيطان الذي روى حديث: صدقك (الشيطان) وهو كذوب..."
-status: draft
+status: published
 published_at: 2026-01-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-imamah-was-sahabah"]

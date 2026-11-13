@@ -1,6 +1,6 @@
 ---
 title: "كلام حسن للمقريزي حول إنكار البدع (بمناسبة الجدل السنوي حول المولد)"
-status: draft
+status: published
 published_at: 2021-10-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

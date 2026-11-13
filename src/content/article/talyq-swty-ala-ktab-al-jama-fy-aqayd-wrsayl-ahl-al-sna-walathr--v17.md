@@ -1,6 +1,6 @@
 ---
 title: "تعليق صوتي على كتاب [ الجامع في عقائد ورسائل أهل السنة والأثر ] ( 46 )"
-status: draft
+status: published
 published_at: 2018-10-12
 person: abu-jafar-al-khalifi
 ---

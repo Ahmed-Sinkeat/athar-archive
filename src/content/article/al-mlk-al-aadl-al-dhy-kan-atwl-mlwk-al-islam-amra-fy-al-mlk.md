@@ -1,6 +1,6 @@
 ---
 title: "الملك العادل الذي كان أطول ملوك الإسلام عمرًا في الملك"
-status: draft
+status: published
 published_at: 2022-12-16
 person: abu-jafar-al-khalifi
 ---

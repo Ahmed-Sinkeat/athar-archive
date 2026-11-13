@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية كما في مجموع الفتاوى"
-status: draft
+status: published
 published_at: 2018-09-01
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

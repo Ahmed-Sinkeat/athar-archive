@@ -1,6 +1,6 @@
 ---
 title: "بشهادة غربية: الكتب الشرعية لا توصلك للقمر ولكنها تمنحك السعادة!!"
-status: draft
+status: published
 published_at: 2021-01-15
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

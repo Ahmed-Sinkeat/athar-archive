@@ -1,6 +1,6 @@
 ---
 title: "بالإضافة إلى وجوب تحكيم شريعة الله تبارك وتعالى"
-status: draft
+status: published
 published_at: 2024-12-20
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

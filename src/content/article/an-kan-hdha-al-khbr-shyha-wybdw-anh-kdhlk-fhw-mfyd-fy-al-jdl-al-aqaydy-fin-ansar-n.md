@@ -1,6 +1,6 @@
 ---
 title: "ان كان هذا الخبر صحيحا - ويبدو أنه كذلك - فهو مفيد في الجدل العقائدي فإن أنصار ن"
-status: draft
+status: published
 published_at: 2020-08-24
 person: abu-jafar-al-khalifi
 ---

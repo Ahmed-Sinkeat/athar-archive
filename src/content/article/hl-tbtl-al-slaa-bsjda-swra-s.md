@@ -1,6 +1,6 @@
 ---
 title: "هل تبطل الصلاة بسجدة سورة {ص}؟"
-status: draft
+status: published
 published_at: 2023-03-30
 person: abu-jafar-al-khalifi
 ---

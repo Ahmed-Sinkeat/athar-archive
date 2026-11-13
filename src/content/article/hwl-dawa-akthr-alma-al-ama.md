@@ -1,6 +1,6 @@
 ---
 title: "حول دعوى: أكثر علماء الأمة!"
-status: draft
+status: published
 published_at: 2020-09-13
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

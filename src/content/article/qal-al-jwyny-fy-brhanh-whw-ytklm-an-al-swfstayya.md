@@ -1,6 +1,6 @@
 ---
 title: "قال الجويني في برهانه وهو يتكلم عن السوفسطائية"
-status: draft
+status: published
 published_at: 2017-09-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

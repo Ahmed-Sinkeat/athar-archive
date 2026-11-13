@@ -1,6 +1,6 @@
 ---
 title: "عادة شركية جاهلية متعلقة بالشمس يفعلها بعض الناس اليوم"
-status: draft
+status: published
 published_at: 2025-07-09
 person: abu-abdillah-firas-al-ramli
 ---

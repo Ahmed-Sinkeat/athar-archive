@@ -1,6 +1,6 @@
 ---
 title: "الرؤية الشرعية من أظهر دلائل وجوب قرار المرأة في المنزل"
-status: draft
+status: published
 published_at: 2024-06-23
 person: abu-umair-imran-al-zubaidi
 ---

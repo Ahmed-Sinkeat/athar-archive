@@ -1,6 +1,6 @@
 ---
 title: "هذا باب من أبواب العلم ينبغي أن يسمى: غبن الأطباء أو غش الأطباء أو حيل الأطباء."
-status: draft
+status: published
 published_at: 2025-08-31
 person: abu-jafar-al-khalifi
 ---

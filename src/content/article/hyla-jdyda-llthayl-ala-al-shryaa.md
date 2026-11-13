@@ -1,6 +1,6 @@
 ---
 title: "حيلة جديدة للتحايل على الشريعة"
-status: draft
+status: published
 published_at: 2026-07-26
 person: abu-umair-imran-al-zubaidi
 ---

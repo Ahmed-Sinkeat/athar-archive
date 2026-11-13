@@ -1,6 +1,6 @@
 ---
 title: "هذا الرجل يريد أن يبرر العلاقات قبل الزواج"
-status: draft
+status: published
 published_at: 2022-08-11
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

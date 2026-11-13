@@ -1,6 +1,6 @@
 ---
 title: "حديث جليل في فضل سورة الإخلاص"
-status: draft
+status: published
 published_at: 2024-03-22
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

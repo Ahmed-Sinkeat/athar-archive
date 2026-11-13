@@ -1,6 +1,6 @@
 ---
 title: "النصيرية على أساس اليوم يطلعوا مظاهرات \"سلمية\" في الساحل يطالبوا بفيدرالية.."
-status: draft
+status: published
 published_at: 2025-12-28
 person: abu-umair-imran-al-zubaidi
 ---

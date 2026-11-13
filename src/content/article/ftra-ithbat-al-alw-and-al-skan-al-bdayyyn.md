@@ -1,6 +1,6 @@
 ---
 title: "فطرة إثبات العلو عند السكان البدائيين"
-status: draft
+status: published
 published_at: 2020-02-09
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

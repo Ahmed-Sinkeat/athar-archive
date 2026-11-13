@@ -1,6 +1,6 @@
 ---
 title: "هذا تحقيقٌ للأخوَّة والولاء وليس نقضاً لهما."
-status: draft
+status: published
 published_at: 2021-04-22
 person: abu-jafar-al-khalifi
 ---

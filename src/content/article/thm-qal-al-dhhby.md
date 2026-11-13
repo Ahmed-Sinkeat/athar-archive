@@ -1,6 +1,6 @@
 ---
 title: "ثم قال الذهبي"
-status: draft
+status: published
 published_at: 2017-09-25
 person: abu-jafar-al-khalifi
 ---

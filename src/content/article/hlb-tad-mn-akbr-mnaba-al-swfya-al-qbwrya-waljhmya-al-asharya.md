@@ -1,6 +1,6 @@
 ---
 title: "حلب تعد من أكبر منابع الصوفية القبورية والجهمية الأشعرية."
-status: draft
+status: published
 published_at: 2024-11-30
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "تزامن رقة القلب مع وقت نزول الرب من النِعم التي لا يُدركها أكثر الناس.."
-status: draft
+status: published
 published_at: 2024-01-10
 person: abu-umair-imran-al-zubaidi
 ---

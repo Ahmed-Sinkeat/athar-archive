@@ -1,6 +1,6 @@
 ---
 title: "حديث جليل تنكره الجهمية"
-status: draft
+status: published
 published_at: 2023-05-16
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]

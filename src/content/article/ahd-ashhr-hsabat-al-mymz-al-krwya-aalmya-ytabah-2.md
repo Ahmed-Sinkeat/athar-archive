@@ -1,6 +1,6 @@
 ---
 title: "أحد أشهر حسابات الميمز الكروية عالميًّا (يتابعه ٢"
-status: draft
+status: published
 published_at: 2022-12-25
 person: abu-jafar-al-khalifi
 ---

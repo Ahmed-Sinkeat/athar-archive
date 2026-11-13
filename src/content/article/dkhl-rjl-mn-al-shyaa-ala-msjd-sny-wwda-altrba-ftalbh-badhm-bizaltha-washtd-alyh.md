@@ -1,6 +1,6 @@
 ---
 title: "دخل رجل من الشيعة على مسجد سني ووضع (التربة)، فطالبه بعضهم بإزالتها واشتد عليه."
-status: draft
+status: published
 published_at: 2025-10-15
 person: abu-jafar-al-khalifi
 ---

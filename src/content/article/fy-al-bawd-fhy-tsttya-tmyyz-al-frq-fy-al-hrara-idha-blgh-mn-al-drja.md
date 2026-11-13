@@ -1,6 +1,6 @@
 ---
 title: "في البعوض فهي تستطيع تمييز الفرق في الحرارة إذا بلغ 1/300 من الدرجة"
-status: draft
+status: published
 published_at: 2017-07-12
 person: abu-jafar-al-khalifi
 ---

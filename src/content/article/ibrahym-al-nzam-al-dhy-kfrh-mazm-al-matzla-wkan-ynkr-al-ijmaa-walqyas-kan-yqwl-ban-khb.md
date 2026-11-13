@@ -1,6 +1,6 @@
 ---
 title: "إبراهيم النظام الذي كفره معظم المعتزلة وكان ينكر الإجماع والقياس كان يقول بأن خب"
-status: draft
+status: published
 published_at: 2017-10-16
 person: abu-jafar-al-khalifi
 ---

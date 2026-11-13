@@ -1,6 +1,6 @@
 ---
 title: "توضيح حول موضوع شهادة البدوي في كلام الفقهاء"
-status: draft
+status: published
 published_at: 2019-09-14
 person: abu-jafar-al-khalifi
 ---

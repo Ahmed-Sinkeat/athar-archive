@@ -1,6 +1,6 @@
 ---
 title: "نريد دراسة علمية وفقاً للمعايير التجريبية تحدثنا عن العين والحسد والمس!"
-status: draft
+status: published
 published_at: 2026-03-13
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

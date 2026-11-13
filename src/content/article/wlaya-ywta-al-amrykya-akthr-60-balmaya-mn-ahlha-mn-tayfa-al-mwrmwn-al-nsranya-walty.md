@@ -1,6 +1,6 @@
 ---
 title: "ولاية يوتا الأمريكية أكثر ٦٠ بالمائة من أهلها من طائفة المورمون النصرانية والتي"
-status: draft
+status: published
 published_at: 2017-10-16
 person: abu-jafar-al-khalifi
 ---

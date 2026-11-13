@@ -1,6 +1,6 @@
 ---
 title: "يا إخوة من أراد مساعدة إخواننا في ليبيا فدونكم رابط للتبرع"
-status: draft
+status: published
 published_at: 2023-09-12
 person: abu-umair-imran-al-zubaidi
 ---

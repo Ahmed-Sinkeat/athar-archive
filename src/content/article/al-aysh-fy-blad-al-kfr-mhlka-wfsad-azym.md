@@ -1,6 +1,6 @@
 ---
 title: "العيش في بلاد الكفر مهلكة وفساد عظيم"
-status: draft
+status: published
 published_at: 2024-02-11
 person: abu-umair-imran-al-zubaidi
 ---

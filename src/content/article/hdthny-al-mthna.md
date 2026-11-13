@@ -1,6 +1,6 @@
 ---
 title: "حدثني المثنى"
-status: draft
+status: published
 published_at: 2025-05-08
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

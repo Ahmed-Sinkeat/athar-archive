@@ -1,6 +1,6 @@
 ---
 title: "بعيدا عن السماجة في ضحكته، والثقة المثيرة للفثيان."
-status: draft
+status: published
 published_at: 2026-03-09
 person: abu-umair-imran-al-zubaidi
 ---

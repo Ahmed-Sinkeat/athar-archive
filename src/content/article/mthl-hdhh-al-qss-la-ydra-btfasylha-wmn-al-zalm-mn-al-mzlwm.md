@@ -1,6 +1,6 @@
 ---
 title: "مثل هذه القصص لا يدرى بتفاصيلها ومن الظالم من المظلوم"
-status: draft
+status: published
 published_at: 2025-11-22
 person: abu-jafar-al-khalifi
 ---

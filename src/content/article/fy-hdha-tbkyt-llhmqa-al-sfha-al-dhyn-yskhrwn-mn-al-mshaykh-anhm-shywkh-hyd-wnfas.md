@@ -1,6 +1,6 @@
 ---
 title: "في هذا تبكيت للحمقى السفهاء الذين يسخرون من المشايخ أنهم شيوخ حيض ونفاس."
-status: draft
+status: published
 published_at: 2024-01-20
 person: abu-umair-imran-al-zubaidi
 ---

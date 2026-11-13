@@ -1,6 +1,6 @@
 ---
 title: "تفنن عجيب للإمام الدارمي في مسنده (المشهور بسنن الدارمي وصوابه مسند الدارمي)"
-status: draft
+status: published
 published_at: 2022-06-16
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

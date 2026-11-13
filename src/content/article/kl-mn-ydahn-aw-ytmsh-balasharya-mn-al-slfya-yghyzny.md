@@ -1,6 +1,6 @@
 ---
 title: "كل من يداهن أو يتمسّح بالأشعرية من السلفية يغيظني"
-status: draft
+status: published
 published_at: 2023-06-13
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

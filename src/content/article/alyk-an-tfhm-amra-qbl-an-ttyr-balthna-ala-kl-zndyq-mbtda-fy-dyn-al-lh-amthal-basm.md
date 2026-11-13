@@ -1,6 +1,6 @@
 ---
 title: "عليك أن تفهم أمرًا قبل أن تطير بالثناء على كل زنديق مبتدع في دين الله أمثال باسم"
-status: draft
+status: published
 published_at: 2023-10-18
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

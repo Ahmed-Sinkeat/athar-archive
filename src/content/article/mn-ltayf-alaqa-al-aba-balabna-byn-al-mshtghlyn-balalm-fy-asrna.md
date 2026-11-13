@@ -1,6 +1,6 @@
 ---
 title: "من لطائف علاقة الآباء بالأبناء بين المشتغلين بالعلم في عصرنا"
-status: draft
+status: published
 published_at: 2018-10-27
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

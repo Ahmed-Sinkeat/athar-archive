@@ -1,6 +1,6 @@
 ---
 title: "قال ابن مفلح في الآداب الشرعية"
-status: draft
+status: published
 published_at: 2017-07-05
 person: abu-jafar-al-khalifi
 ---

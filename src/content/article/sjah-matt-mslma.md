@@ -1,6 +1,6 @@
 ---
 title: "سجاح ماتت مسلمة !"
-status: draft
+status: published
 published_at: 2019-07-11
 person: abu-jafar-al-khalifi
 ---

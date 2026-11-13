@@ -1,6 +1,6 @@
 ---
 title: "عجبي مِن الّذين صُدِموا واستاؤوا مِن انتقال الكا//فر النـ جـ ـس رونالدو إلى السع"
-status: draft
+status: published
 published_at: 2022-12-31
 person: abu-umair-imran-al-zubaidi
 ---

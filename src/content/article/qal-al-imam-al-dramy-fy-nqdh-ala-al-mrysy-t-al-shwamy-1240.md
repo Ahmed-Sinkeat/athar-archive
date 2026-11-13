@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام الدرامي في نقضه على المريسي ت الشوامي (١/&rlm;٢٤٠)"
-status: draft
+status: published
 published_at: 2024-04-21
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-imamah-was-sahabah"]

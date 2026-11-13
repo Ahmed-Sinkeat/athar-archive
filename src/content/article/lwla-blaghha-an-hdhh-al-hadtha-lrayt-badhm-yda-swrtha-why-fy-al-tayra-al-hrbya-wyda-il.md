@@ -1,6 +1,6 @@
 ---
 title: "لولا بلاغها عن هذه الحادثة لرأيت بعضهم يضع صورتها وهي في الطائرة الحربية ويضع إل"
-status: draft
+status: published
 published_at: 2019-03-08
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "دونكم رسالة قصيرة لأخيكم بعنوان"
-status: draft
+status: published
 published_at: 2025-08-24
 person: awwab-bin-muhammad
 topics: ["al-sunnah-wal-bidah"]

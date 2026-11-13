@@ -1,6 +1,6 @@
 ---
 title: "فتحت أبواب الجنان"
-status: draft
+status: published
 published_at: 2025-02-28
 person: abu-umair-imran-al-zubaidi
 ---

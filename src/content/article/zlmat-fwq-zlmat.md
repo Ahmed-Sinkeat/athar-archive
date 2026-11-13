@@ -1,6 +1,6 @@
 ---
 title: "ظلمات فوق ظلمات!"
-status: draft
+status: published
 published_at: 2024-06-20
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من الدعايات الظالمة تجاه مذهب الإمام أحمد أنه مذهب متشدد وهذه الدعاية زادت هذه ا"
-status: draft
+status: published
 published_at: 2018-08-09
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "سعدت بأن أرى خطابًا مثل هذا."
-status: draft
+status: published
 published_at: 2021-02-21
 person: abu-jafar-al-khalifi
 ---

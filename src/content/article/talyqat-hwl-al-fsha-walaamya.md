@@ -1,6 +1,6 @@
 ---
 title: "تعليقاتٌ حول الفُصحى والعامِّية"
-status: draft
+status: published
 published_at: 2025-05-15
 person: awwab-bin-muhammad
 ---

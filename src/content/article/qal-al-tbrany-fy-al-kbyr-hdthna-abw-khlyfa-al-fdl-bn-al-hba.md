@@ -1,6 +1,6 @@
 ---
 title: "قال الطبراني في الكبير 8335 - حَدَّثَنَا أَبُو خَلِيفَةَ الْفَضْلُ بْنُ الْحُبَا"
-status: draft
+status: published
 published_at: 2017-09-30
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

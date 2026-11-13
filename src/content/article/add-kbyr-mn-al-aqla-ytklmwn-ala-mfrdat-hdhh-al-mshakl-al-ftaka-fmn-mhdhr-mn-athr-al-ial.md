@@ -1,6 +1,6 @@
 ---
 title: "عدد كبير من العقلاء يتكلمون على مفردات هذه المشاكل الفتاكة فمن محذر من أثر الإعل"
-status: draft
+status: published
 published_at: 2019-12-11
 person: abu-jafar-al-khalifi
 ---

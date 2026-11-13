@@ -1,6 +1,6 @@
 ---
 title: "هذا الكلام في كتاب عن المسئولية الجنائية للطبيب فقهياً"
-status: draft
+status: published
 published_at: 2023-12-21
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

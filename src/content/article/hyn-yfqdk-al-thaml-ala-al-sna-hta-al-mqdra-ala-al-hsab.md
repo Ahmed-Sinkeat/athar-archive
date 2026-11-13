@@ -1,6 +1,6 @@
 ---
 title: "حين يُفقدك التحامل على السنة حتى المقدرة على الحساب !"
-status: draft
+status: published
 published_at: 2020-03-29
 person: abu-jafar-al-khalifi
 ---

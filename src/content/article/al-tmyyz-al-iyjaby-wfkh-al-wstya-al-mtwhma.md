@@ -1,6 +1,6 @@
 ---
 title: "التمييز الإيجابي وفخ الوسطية المتوهمة"
-status: draft
+status: published
 published_at: 2020-06-07
 person: abu-jafar-al-khalifi
 ---

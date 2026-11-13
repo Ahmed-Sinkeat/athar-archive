@@ -1,6 +1,6 @@
 ---
 title: "الزواج ليس شراكة بين الرجل والمرأة."
-status: draft
+status: published
 published_at: 2022-10-02
 person: abu-umair-imran-al-zubaidi
 ---

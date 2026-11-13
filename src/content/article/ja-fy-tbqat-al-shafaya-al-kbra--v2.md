@@ -1,6 +1,6 @@
 ---
 title: "جاء في طبقات الشافعية الكبرى"
-status: draft
+status: published
 published_at: 2018-02-13
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أصعب شيء في هذا الزمن هو أنّ المشكلة الشائعة بين الناس ليست مشكلة واحدة؛ بل منظو"
-status: draft
+status: published
 published_at: 2023-10-03
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

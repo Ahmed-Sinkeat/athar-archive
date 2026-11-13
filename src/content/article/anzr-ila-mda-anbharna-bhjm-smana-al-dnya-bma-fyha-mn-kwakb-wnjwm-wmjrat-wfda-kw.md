@@ -1,6 +1,6 @@
 ---
 title: "انظر إلى مدى انبهارنا بحجم سماءنا الدنيا بما فيها من كواكب ونجوم ومجرات وفضاء كو"
-status: draft
+status: published
 published_at: 2023-08-14
 person: abu-umair-imran-al-zubaidi
 ---

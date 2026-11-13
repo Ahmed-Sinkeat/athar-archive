@@ -1,6 +1,6 @@
 ---
 title: "من الإشاعات المنتشرة في عالمنا الإسلامي خصوصا بين النسويات"
-status: draft
+status: published
 published_at: 2018-07-28
 person: abu-jafar-al-khalifi
 ---

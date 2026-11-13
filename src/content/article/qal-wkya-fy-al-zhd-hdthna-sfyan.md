@@ -1,6 +1,6 @@
 ---
 title: "قال وكيع في الزهد 266 - حدثنا سفيان"
-status: draft
+status: published
 published_at: 2019-10-08
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs", "al-sunnah-wal-bidah"]

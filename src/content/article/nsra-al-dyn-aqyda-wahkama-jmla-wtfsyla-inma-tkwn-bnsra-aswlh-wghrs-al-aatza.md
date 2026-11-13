@@ -1,6 +1,6 @@
 ---
 title: "نُصرة الدِّين عقيدة وأحكاماً جملة وتفصيلاً إنَّما تكون بنُصرة أصوله وغرس الاعتزا"
-status: draft
+status: published
 published_at: 2025-11-17
 person: awwab-bin-muhammad
 ---

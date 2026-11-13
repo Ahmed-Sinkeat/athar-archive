@@ -1,6 +1,6 @@
 ---
 title: "ولا زالت حيل قهر الغيرة تتكرر"
-status: draft
+status: published
 published_at: 2020-07-14
 person: abu-jafar-al-khalifi
 ---

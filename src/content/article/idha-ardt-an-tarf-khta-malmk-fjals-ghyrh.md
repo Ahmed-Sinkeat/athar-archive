@@ -1,6 +1,6 @@
 ---
 title: "إذا أردت أن تعرف خطأ معلمك فجالس غيره"
-status: draft
+status: published
 published_at: 2025-10-21
 person: abu-abdillah-firas-al-ramli
 ---

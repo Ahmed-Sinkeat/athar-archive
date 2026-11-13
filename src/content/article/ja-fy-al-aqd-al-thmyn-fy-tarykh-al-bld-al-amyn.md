@@ -1,6 +1,6 @@
 ---
 title: "جاء في العقد الثمين في تاريخ البلد الأمين"
-status: draft
+status: published
 published_at: 2017-06-06
 person: abu-jafar-al-khalifi
 ---

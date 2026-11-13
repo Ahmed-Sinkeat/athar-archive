@@ -1,6 +1,6 @@
 ---
 title: "والله يا إخوة أقولها بصدق متجردًّا من شعور المحبة الذي في قلبي للشيخ أبي جعفر."
-status: draft
+status: published
 published_at: 2023-05-29
 person: abu-umair-imran-al-zubaidi
 ---

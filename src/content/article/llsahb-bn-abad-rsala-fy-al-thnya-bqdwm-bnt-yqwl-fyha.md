@@ -1,6 +1,6 @@
 ---
 title: "للصاحب بن عباد رسالة في التهنئة بقدوم بنت يقول فيها"
-status: draft
+status: published
 published_at: 2017-07-17
 person: abu-jafar-al-khalifi
 ---

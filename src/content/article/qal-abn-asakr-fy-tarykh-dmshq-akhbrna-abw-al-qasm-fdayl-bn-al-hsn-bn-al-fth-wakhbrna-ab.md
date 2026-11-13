@@ -1,6 +1,6 @@
 ---
 title: "قال ابن عساكر في تاريخ دمشق أخبرنا أبو القاسم فضائل بن الحسن بن الفتح وأخبرنا أب"
-status: draft
+status: published
 published_at: 2017-09-30
 person: abu-jafar-al-khalifi
 ---

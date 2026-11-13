@@ -1,6 +1,6 @@
 ---
 title: "قال الموصلي في الاختيار لتعليل المختار"
-status: draft
+status: published
 published_at: 2017-11-15
 person: abu-jafar-al-khalifi
 ---

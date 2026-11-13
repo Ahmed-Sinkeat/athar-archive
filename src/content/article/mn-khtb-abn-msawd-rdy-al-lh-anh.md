@@ -1,6 +1,6 @@
 ---
 title: "من خُطب ابن مسعود رضي الله عنه"
-status: draft
+status: published
 published_at: 2025-11-20
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "۞ أَلَمْ تَرَ إِلَى الَّذِينَ خَرَجُوا مِن دِيَارِهِمْ وَهُمْ أُلُوفٌ حَذَرَ الْ"
-status: draft
+status: published
 published_at: 2025-03-20
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

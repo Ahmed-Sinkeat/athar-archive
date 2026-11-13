@@ -1,6 +1,6 @@
 ---
 title: "قارن هذا مع ما في كتاب الأدب المفرد للإمام البخاري الذي تدمن الألسنة الآثمة الطع"
-status: draft
+status: published
 published_at: 2020-03-30
 person: abu-jafar-al-khalifi
 ---

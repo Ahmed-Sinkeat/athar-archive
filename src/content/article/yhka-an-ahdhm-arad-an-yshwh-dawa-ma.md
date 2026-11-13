@@ -1,6 +1,6 @@
 ---
 title: "يحكى أن أحدهم أراد أن يشوه دعوة ما"
-status: draft
+status: published
 published_at: 2018-05-27
 person: abu-jafar-al-khalifi
 ---

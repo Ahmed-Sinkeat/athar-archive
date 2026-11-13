@@ -1,6 +1,6 @@
 ---
 title: "(وللصحابة فهم في القرآن يخفى على أكثر المتأخرين"
-status: draft
+status: published
 published_at: 2017-07-01
 person: abu-jafar-al-khalifi
 ---

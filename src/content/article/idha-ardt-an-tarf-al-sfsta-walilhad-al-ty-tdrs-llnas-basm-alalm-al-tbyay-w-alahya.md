@@ -1,6 +1,6 @@
 ---
 title: "إذا أردت أن تعرف السفسطة والإلحاد التي تدرس للناس باسم (العلم الطبيعي) و (الأحيا"
-status: draft
+status: published
 published_at: 2026-05-18
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

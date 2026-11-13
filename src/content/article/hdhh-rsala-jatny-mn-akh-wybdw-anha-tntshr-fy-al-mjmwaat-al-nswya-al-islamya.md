@@ -1,6 +1,6 @@
 ---
 title: "هذه رسالة جاءتني من أخ ويبدو أنها تنتشر في المجموعات النسوية الإسلامية"
-status: draft
+status: published
 published_at: 2022-10-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-iman"]

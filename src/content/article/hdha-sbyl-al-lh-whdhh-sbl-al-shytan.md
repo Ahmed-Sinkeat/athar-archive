@@ -1,6 +1,6 @@
 ---
 title: "هذا سبيل الله وهذه سبل الشيطان"
-status: draft
+status: published
 published_at: 2025-07-24
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]

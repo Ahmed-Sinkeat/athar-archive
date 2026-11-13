@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية كما في الفتاوى الكبرى"
-status: draft
+status: published
 published_at: 2019-11-06
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

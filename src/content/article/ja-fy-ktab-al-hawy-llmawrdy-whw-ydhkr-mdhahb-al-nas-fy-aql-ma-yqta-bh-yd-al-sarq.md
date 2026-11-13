@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب الحاوي للماوردي وهو يذكر مذاهب الناس في أقل ما يقطع به يد السارق"
-status: draft
+status: published
 published_at: 2018-09-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

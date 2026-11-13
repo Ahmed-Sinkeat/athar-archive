@@ -1,6 +1,6 @@
 ---
 title: "هذا الحديث منكر لا يصح"
-status: draft
+status: published
 published_at: 2025-03-27
 person: abu-abdillah-firas-al-ramli
 ---

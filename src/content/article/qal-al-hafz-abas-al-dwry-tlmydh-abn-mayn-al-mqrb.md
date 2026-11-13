@@ -1,6 +1,6 @@
 ---
 title: "قال الحافظ عباس الدوري تلميذ ابن معين المقرب"
-status: draft
+status: published
 published_at: 2023-05-12
 person: abu-abdillah-firas-al-ramli
 ---

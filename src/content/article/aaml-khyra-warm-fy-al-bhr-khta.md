@@ -1,6 +1,6 @@
 ---
 title: "اعمل خيرًا وارمِ في البحر \"خطأ\""
-status: draft
+status: published
 published_at: 2023-08-06
 person: abu-umair-imran-al-zubaidi
 ---

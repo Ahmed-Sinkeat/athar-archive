@@ -1,6 +1,6 @@
 ---
 title: "1- النبي ﷺ والصحابة لم يتكلموا في إثبات وجود الله ردًا على الملاحدة"
-status: draft
+status: published
 published_at: 2024-03-30
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أنا لا أرى أبدًا التمنصف مع من ظهر لنا سوء خبيئته"
-status: draft
+status: published
 published_at: 2024-01-15
 person: abu-umair-imran-al-zubaidi
 ---

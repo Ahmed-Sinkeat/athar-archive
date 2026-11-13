@@ -1,6 +1,6 @@
 ---
 title: "ألا تحب أن تدعوا لك الجنة والنار ؟"
-status: draft
+status: published
 published_at: 2023-07-02
 person: abu-abdillah-firas-al-ramli
 ---

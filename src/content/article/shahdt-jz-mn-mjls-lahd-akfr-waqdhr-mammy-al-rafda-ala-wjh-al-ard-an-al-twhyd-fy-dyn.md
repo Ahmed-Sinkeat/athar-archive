@@ -1,6 +1,6 @@
 ---
 title: "شاهدت جزءً من مجلس لأحد أكفر وأقذر معممي الرافضة على وجه الأرض عن التوحيد في دين"
-status: draft
+status: published
 published_at: 2023-12-24
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "التلاوة التي لا أمل من نشرها، وخاصة في أوقات الشد العصبي."
-status: draft
+status: published
 published_at: 2023-07-27
 person: abu-umair-imran-al-zubaidi
 ---

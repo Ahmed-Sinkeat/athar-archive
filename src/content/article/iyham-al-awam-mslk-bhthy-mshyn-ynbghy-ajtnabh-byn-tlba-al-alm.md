@@ -1,6 +1,6 @@
 ---
 title: "إيهام العوام: مسلك بحثي مشين ينبغي اجتنابه بين طلبة العلم..."
-status: draft
+status: published
 published_at: 2021-05-08
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

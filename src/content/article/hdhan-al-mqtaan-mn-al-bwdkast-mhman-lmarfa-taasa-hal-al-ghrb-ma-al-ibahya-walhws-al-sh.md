@@ -1,6 +1,6 @@
 ---
 title: "هذان المقطعان من البودكاست مهمَّان لمعرفة تعاسة حال الغرب مع الإباحية والهوس الش"
-status: draft
+status: published
 published_at: 2024-12-04
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

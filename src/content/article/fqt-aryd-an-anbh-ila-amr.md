@@ -1,6 +1,6 @@
 ---
 title: "فقط أريد أن أنبه إلى أمر"
-status: draft
+status: published
 published_at: 2023-12-15
 person: abu-umair-imran-al-zubaidi
 ---

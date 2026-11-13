@@ -1,6 +1,6 @@
 ---
 title: "من وصف الله عز وجل بغير ما وصف به نفسه فقد أشرك"
-status: draft
+status: published
 published_at: 2025-03-18
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

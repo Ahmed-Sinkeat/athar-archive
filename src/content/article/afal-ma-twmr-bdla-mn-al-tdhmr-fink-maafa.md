@@ -1,6 +1,6 @@
 ---
 title: "افعل ما تؤمر بدلًا من التذمر فإنك معافى.."
-status: draft
+status: published
 published_at: 2022-04-11
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

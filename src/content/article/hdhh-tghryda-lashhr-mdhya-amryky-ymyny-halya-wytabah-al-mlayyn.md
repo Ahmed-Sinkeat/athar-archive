@@ -1,6 +1,6 @@
 ---
 title: "هذه تغريدة لأشهر مذيع أمريكي يميني حالياً ويتابعه الملايين"
-status: draft
+status: published
 published_at: 2024-08-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

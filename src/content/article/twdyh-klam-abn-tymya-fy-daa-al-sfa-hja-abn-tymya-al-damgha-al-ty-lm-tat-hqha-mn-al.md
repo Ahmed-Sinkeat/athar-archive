@@ -1,6 +1,6 @@
 ---
 title: "توضيح كلام ابن تيمية في دعاء الصفة (حجة ابن تيمية الدامغة التي لم تعط حقها من ال"
-status: draft
+status: published
 published_at: 2021-02-20
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "بعد يومين فقط"
-status: draft
+status: published
 published_at: 2025-01-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

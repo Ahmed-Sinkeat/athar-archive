@@ -1,6 +1,6 @@
 ---
 title: "علة خفية لحديث مشهور."
-status: draft
+status: published
 published_at: 2019-05-08
 person: abu-jafar-al-khalifi
 ---

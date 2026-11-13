@@ -1,6 +1,6 @@
 ---
 title: "نشر الأخوة في صفحة حصن المسلم في الفيس بوك ما يلي"
-status: draft
+status: published
 published_at: 2018-08-20
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ومما يُسلي المبتلى ببصره هو ما رواه النبي ﷺ عن رب العالمين جل وعلا"
-status: draft
+status: published
 published_at: 2024-08-27
 person: abu-umair-imran-al-zubaidi
 ---

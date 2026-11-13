@@ -1,6 +1,6 @@
 ---
 title: "ربما الشيء الوحيد الذي يعكر فرحة النصر هو رؤية أناس ليسوا مسلمين يُعظمون ويصبحون"
-status: draft
+status: published
 published_at: 2024-12-08
 person: abu-umair-imran-al-zubaidi
 ---

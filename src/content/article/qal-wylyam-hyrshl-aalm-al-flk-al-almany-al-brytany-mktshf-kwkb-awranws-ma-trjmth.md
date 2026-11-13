@@ -1,6 +1,6 @@
 ---
 title: "قال ويليام هيرشل عالم الفلك الألماني البريطاني مكتشف كوكب أورانوس ما ترجمته"
-status: draft
+status: published
 published_at: 2018-02-15
 person: abu-jafar-al-khalifi
 ---

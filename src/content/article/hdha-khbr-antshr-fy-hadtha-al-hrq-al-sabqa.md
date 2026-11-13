@@ -1,6 +1,6 @@
 ---
 title: "هذا خبر انتشر في حادثة الحرق السابقة"
-status: draft
+status: published
 published_at: 2023-06-29
 person: abu-jafar-al-khalifi
 ---

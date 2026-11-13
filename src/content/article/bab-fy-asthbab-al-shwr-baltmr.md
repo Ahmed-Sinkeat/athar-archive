@@ -1,6 +1,6 @@
 ---
 title: "باب في استحباب السحور بالتمر"
-status: draft
+status: published
 published_at: 2025-03-02
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "علق أخي الحبيب فراس وفقه الله على المنشور"
-status: draft
+status: published
 published_at: 2024-06-12
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

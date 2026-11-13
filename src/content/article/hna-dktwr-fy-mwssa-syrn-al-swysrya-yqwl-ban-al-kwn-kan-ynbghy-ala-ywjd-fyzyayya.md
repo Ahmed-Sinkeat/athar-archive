@@ -1,6 +1,6 @@
 ---
 title: "هنا دكتور في مؤسسة سيرن السويسرية يقول بأن الكون كان ينبغي ألا يوجد فيزيائياً ("
-status: draft
+status: published
 published_at: 2017-10-27
 person: abu-jafar-al-khalifi
 ---

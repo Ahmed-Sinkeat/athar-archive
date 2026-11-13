@@ -1,6 +1,6 @@
 ---
 title: "هذه ورقة علمية لمجموعة من النفسانيين الغربيين (جاي جي هال) و(تيموثي ج"
-status: draft
+status: published
 published_at: 2024-04-30
 person: abu-jafar-al-khalifi
 ---

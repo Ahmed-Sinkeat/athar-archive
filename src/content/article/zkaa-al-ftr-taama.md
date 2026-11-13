@@ -1,6 +1,6 @@
 ---
 title: "زكاةُ الفِطر طعاماً"
-status: draft
+status: published
 published_at: 2025-03-29
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran"]

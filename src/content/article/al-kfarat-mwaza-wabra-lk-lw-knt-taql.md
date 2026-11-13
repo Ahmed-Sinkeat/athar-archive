@@ -1,6 +1,6 @@
 ---
 title: "الكفارات موعظة وعبرة لك لو كنت تعقل."
-status: draft
+status: published
 published_at: 2023-03-03
 person: abu-jafar-al-khalifi
 ---

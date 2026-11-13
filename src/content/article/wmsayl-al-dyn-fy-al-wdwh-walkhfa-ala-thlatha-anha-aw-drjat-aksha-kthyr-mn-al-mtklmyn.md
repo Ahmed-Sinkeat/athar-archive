@@ -1,6 +1,6 @@
 ---
 title: "ومسائل الدين في الوضوح والخفاء على ثلاثة أنحاء أو درجات عكسها كثير من المتكلمين"
-status: draft
+status: published
 published_at: 2020-02-10
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

@@ -1,6 +1,6 @@
 ---
 title: "قول بعض الناس فيمن يظهر الفسق والشر لعله خير ممن يظهر الخير والتمسك بالسنة !"
-status: draft
+status: published
 published_at: 2024-01-18
 person: abu-abdillah-firas-al-ramli
 ---

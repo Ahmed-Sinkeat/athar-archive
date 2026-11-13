@@ -1,6 +1,6 @@
 ---
 title: "قال المعلمي في التنكيل ذاكراً القرائن على تشدد المحدثين في المرويات"
-status: draft
+status: published
 published_at: 2018-10-16
 person: abu-jafar-al-khalifi
 ---

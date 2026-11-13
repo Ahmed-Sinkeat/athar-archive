@@ -1,6 +1,6 @@
 ---
 title: "وأبو نعيم في الحلية أورد أخباراً ظاهرها إثبات العلو إذ هذا متواتر في النصوص وأخب"
-status: draft
+status: published
 published_at: 2020-07-16
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

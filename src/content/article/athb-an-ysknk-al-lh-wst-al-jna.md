@@ -1,6 +1,6 @@
 ---
 title: "أتحب أن يسكنك الله وسط الجنة؟"
-status: draft
+status: published
 published_at: 2026-03-25
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من الأمور التي تثير تعجبي قول عدد من الشافعية الأصوليين في مبحث الإجماع السكوتي"
-status: draft
+status: published
 published_at: 2018-11-09
 person: abu-jafar-al-khalifi
 ---

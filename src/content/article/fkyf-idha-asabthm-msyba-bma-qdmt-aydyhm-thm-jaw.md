@@ -1,6 +1,6 @@
 ---
 title: "{فَكَيْفَ إِذَا أَصَابَتْهُمْ مُصِيبَةٌ بِمَا قَدَّمَتْ أَيْدِيهِمْ ثُمَّ جَاءُو"
-status: draft
+status: published
 published_at: 2017-06-27
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

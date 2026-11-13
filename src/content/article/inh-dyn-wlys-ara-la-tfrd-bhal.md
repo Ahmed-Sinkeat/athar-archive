@@ -1,6 +1,6 @@
 ---
 title: "إنه دين وليس آراء لا تفرض بحال ..."
-status: draft
+status: published
 published_at: 2021-04-08
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "al-wala-wal-bara"]

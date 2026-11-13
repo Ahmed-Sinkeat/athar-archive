@@ -1,6 +1,6 @@
 ---
 title: "في حين أن ليس كل المساجين \"مجبرين\" على العمل"
-status: draft
+status: published
 published_at: 2018-06-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

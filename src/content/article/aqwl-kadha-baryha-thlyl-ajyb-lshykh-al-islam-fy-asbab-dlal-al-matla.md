@@ -1,6 +1,6 @@
 ---
 title: "عقول كادها باريها: تحليل عجيب لشيخ الإسلام في أسباب ضلال المعطلة.."
-status: draft
+status: published
 published_at: 2021-11-25
 person: abu-jafar-al-khalifi
 ---

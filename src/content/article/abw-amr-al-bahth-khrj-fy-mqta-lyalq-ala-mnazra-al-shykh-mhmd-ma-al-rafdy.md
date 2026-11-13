@@ -1,6 +1,6 @@
 ---
 title: "أبو عمر الباحث خرج في مقطع ليعلق على مناظرة الشيخ محمد مع الرافضي"
-status: draft
+status: published
 published_at: 2024-06-25
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

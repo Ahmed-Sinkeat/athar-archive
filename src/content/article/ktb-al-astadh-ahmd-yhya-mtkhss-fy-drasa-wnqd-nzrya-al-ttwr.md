@@ -1,6 +1,6 @@
 ---
 title: "كتب الأستاذ أحمد يحيى ( متخصص في دراسة ونقد نظرية التطور )"
-status: draft
+status: published
 published_at: 2018-06-28
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

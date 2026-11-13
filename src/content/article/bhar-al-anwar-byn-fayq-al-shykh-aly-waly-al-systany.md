@@ -1,6 +1,6 @@
 ---
 title: "“بحار الأنوار“ بين فائق الشيخ علي وعلي السيستاني.."
-status: draft
+status: published
 published_at: 2021-04-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

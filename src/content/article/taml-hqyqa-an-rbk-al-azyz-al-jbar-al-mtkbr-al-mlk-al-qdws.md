@@ -1,6 +1,6 @@
 ---
 title: "تأمل حقيقة أنّ ربك العزيز الجبار المتكبر الملك القدوس"
-status: draft
+status: published
 published_at: 2026-10-11
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "جاء في المدونة من كتب المالكية"
-status: draft
+status: published
 published_at: 2017-12-10
 person: abu-jafar-al-khalifi
 ---

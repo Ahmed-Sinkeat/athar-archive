@@ -1,6 +1,6 @@
 ---
 title: "هذا نقاش حول الإقامة في كندا، بين صانع محتوى وامرأة عراقية في كندا."
-status: draft
+status: published
 published_at: 2025-08-17
 person: abu-jafar-al-khalifi
 ---

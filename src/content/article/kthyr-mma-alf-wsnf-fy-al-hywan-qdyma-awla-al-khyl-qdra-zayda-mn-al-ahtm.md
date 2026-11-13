@@ -1,6 +1,6 @@
 ---
 title: "كثيرٌ مما أُلِّـف وصُنِّـف في الحيوان قديماً أولى الخيل قدراً زائداً مِن الاهتِم"
-status: draft
+status: published
 published_at: 2025-05-01
 person: awwab-bin-muhammad
 ---

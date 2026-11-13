@@ -1,6 +1,6 @@
 ---
 title: "كتاب الإمام الجليل أبو عبد الله البخاري رضي الله عنه"
-status: draft
+status: published
 published_at: 2023-05-11
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

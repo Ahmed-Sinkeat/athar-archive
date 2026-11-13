@@ -1,6 +1,6 @@
 ---
 title: "كما ذكرت في الصوتية على قناة التيلجرام منذ يومين"
-status: draft
+status: published
 published_at: 2024-06-17
 person: abu-umair-imran-al-zubaidi
 ---

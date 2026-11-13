@@ -1,6 +1,6 @@
 ---
 title: "مرّ أمامي البارحة هذا الأثر الجليل ..."
-status: draft
+status: published
 published_at: 2023-02-27
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

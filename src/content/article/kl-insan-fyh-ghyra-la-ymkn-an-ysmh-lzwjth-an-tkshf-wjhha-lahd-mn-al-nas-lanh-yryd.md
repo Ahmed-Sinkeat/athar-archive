@@ -1,6 +1,6 @@
 ---
 title: "\"كل إنسان فيه غيرة لا يمكن أن يسمح لزوجته أن تكشف وجهها لأحد من الناس؛ لأنه يريد"
-status: draft
+status: published
 published_at: 2023-09-16
 person: abu-umair-imran-al-zubaidi
 ---

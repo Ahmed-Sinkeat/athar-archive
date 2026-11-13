@@ -1,6 +1,6 @@
 ---
 title: "فقد مرَّ عليَّ نصٌّ طيِّب المعنى — مجملاً وإلا فعليه مُلاحظة — لأحد مَن يُظَنُّ"
-status: draft
+status: published
 published_at: 2025-08-26
 person: awwab-bin-muhammad
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

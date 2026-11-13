@@ -1,6 +1,6 @@
 ---
 title: "يدور هذا المقطع حول مهاجر بنغلاديشي يُدعى سام والذي أصبح مطورًا عقاريًا ناجحًا ف"
-status: draft
+status: published
 published_at: 2024-03-05
 person: abu-jafar-al-khalifi
 ---

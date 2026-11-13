@@ -1,6 +1,6 @@
 ---
 title: "صاحب الهوى لا يستقر على منهجية"
-status: draft
+status: published
 published_at: 2019-04-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-imamah-was-sahabah"]

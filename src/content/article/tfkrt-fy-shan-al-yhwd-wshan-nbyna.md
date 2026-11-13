@@ -1,6 +1,6 @@
 ---
 title: "تفكرت في شأن اليهود وشأن نبينا"
-status: draft
+status: published
 published_at: 2017-06-21
 person: abu-jafar-al-khalifi
 ---

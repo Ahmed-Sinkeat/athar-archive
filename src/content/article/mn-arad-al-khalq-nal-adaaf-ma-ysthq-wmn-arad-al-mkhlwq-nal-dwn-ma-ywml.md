@@ -1,6 +1,6 @@
 ---
 title: "من أراد الخالق نال أضعاف ما يستحق، ومن أراد المخلوق نال دون ما يؤمِّل..."
-status: draft
+status: published
 published_at: 2021-08-20
 person: abu-jafar-al-khalifi
 ---

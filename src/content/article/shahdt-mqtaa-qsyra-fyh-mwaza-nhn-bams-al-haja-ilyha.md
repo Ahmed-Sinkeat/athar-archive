@@ -1,6 +1,6 @@
 ---
 title: "شاهدت مقطعا قصيرا فيه موعظة نحن بأمس الحاجة إليها"
-status: draft
+status: published
 published_at: 2024-08-09
 person: abu-umair-imran-al-zubaidi
 ---

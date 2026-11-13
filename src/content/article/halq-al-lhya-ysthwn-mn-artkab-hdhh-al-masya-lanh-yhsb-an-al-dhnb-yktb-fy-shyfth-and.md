@@ -1,6 +1,6 @@
 ---
 title: "حالق اللحية يستهون من ارتكاب هذه المعصية لأنه يحسب أنّ الذنب يُكتب في صحيفته عند"
-status: draft
+status: published
 published_at: 2024-06-03
 person: abu-umair-imran-al-zubaidi
 ---

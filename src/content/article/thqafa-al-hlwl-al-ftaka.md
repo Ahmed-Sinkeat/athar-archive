@@ -1,6 +1,6 @@
 ---
 title: "ثقافة الحلول الفتاكة!"
-status: draft
+status: published
 published_at: 2020-09-15
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

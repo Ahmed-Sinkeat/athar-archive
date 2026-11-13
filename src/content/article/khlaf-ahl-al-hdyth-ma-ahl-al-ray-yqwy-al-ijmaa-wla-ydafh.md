@@ -1,6 +1,6 @@
 ---
 title: "خلاف أهل الحديث مع أهل الرأي يقوي الإجماع ولا يضعفه."
-status: draft
+status: published
 published_at: 2021-07-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

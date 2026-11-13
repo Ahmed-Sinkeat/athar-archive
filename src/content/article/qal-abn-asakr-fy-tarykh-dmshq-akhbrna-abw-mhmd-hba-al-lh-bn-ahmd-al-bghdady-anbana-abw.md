@@ -1,6 +1,6 @@
 ---
 title: "قال ابن عساكر في تاريخ دمشق أخبرنا أبو محمد هبة الله بن أحمد البغدادي أنبأنا أبو"
-status: draft
+status: published
 published_at: 2018-06-05
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

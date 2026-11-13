@@ -1,6 +1,6 @@
 ---
 title: "حديث عمر بن الخطاب في ذكر السوق وفضله"
-status: draft
+status: published
 published_at: 2025-01-04
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

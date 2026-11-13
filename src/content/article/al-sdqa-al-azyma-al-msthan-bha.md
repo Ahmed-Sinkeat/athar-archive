@@ -1,6 +1,6 @@
 ---
 title: "الصدقة العظيمة المستهان بها.."
-status: draft
+status: published
 published_at: 2021-12-13
 person: abu-jafar-al-khalifi
 ---

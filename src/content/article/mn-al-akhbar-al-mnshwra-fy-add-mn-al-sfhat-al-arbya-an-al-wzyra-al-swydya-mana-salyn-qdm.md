@@ -1,6 +1,6 @@
 ---
 title: "من الأخبار المنشورة في عدد من الصفحات العربية أن الوزيرة السويدية مانا سالين قدم"
-status: draft
+status: published
 published_at: 2018-05-09
 person: abu-jafar-al-khalifi
 ---

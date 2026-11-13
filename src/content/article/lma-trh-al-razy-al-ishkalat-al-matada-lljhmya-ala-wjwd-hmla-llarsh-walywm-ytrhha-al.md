@@ -1,6 +1,6 @@
 ---
 title: "لما طرح الرازي الإشكالات المعتادة للجهمية على وجود حملة للعرش _ واليوم يطرحها ال"
-status: draft
+status: published
 published_at: 2019-01-10
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "رأيتُ تداولاً وانتِشاراً لهذا الكلام أدناه"
-status: draft
+status: published
 published_at: 2025-06-21
 person: awwab-bin-muhammad
 ---

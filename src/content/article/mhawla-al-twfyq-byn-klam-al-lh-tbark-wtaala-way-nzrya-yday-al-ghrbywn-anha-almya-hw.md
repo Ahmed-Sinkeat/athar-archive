@@ -1,6 +1,6 @@
 ---
 title: "محاولة التوفيق بين كلام الله تبارك وتعالى وأي نظرية يدعي الغربيون أنها علمية هو"
-status: draft
+status: published
 published_at: 2023-08-25
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "رأيت عدة منشورات يتحدث أصحابها عن الفارق في محتوى منشوراتهم قبل الأحداث وبعدها."
-status: draft
+status: published
 published_at: 2023-10-29
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-wala-wal-bara"]

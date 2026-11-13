@@ -1,6 +1,6 @@
 ---
 title: "عليك أن تُدرك أنّ المرأة سليمة الفطرة تنجذب إلى الرجل القوي الذي يفرض نفسه عليها"
-status: draft
+status: published
 published_at: 2023-04-25
 person: abu-umair-imran-al-zubaidi
 ---

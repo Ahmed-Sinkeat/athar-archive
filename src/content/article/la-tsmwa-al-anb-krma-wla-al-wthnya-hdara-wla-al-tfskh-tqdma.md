@@ -1,6 +1,6 @@
 ---
 title: "لا تسموا العنب كرماً ولا الوثنية حضارة ولا التفسخ تقدما.."
-status: draft
+status: published
 published_at: 2021-04-07
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

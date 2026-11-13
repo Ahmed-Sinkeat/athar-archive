@@ -1,6 +1,6 @@
 ---
 title: "هنالك مغالطة خطيرة منتشرة بيننا كعوام مسلمين!."
-status: draft
+status: published
 published_at: 2022-10-06
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

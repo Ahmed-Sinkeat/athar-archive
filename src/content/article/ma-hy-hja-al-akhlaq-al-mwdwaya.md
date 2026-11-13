@@ -1,6 +1,6 @@
 ---
 title: "ما هي حجة الأخلاق الموضوعية ؟"
-status: draft
+status: published
 published_at: 2018-05-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

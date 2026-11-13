@@ -1,6 +1,6 @@
 ---
 title: "أذكر أنِّي كنتُ قد قرأتُ عِبارة جميلة للشَّيخ إبراهيم السَّكران طرِبت لها نفسِي"
-status: draft
+status: published
 published_at: 2025-03-05
 person: awwab-bin-muhammad
 ---

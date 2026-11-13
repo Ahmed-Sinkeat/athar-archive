@@ -1,6 +1,6 @@
 ---
 title: "علا، ارتفع، استقر، صعد، جلس."
-status: draft
+status: published
 published_at: 2023-12-24
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-asma-was-sifat"]

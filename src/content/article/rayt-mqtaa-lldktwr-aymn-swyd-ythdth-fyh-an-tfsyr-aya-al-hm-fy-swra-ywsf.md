@@ -1,6 +1,6 @@
 ---
 title: "رأيت مقطعًا للدكتور أيمن سويد يتحدث فيه عن تفسير آية الهم في سورة يوسف"
-status: draft
+status: published
 published_at: 2023-12-05
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

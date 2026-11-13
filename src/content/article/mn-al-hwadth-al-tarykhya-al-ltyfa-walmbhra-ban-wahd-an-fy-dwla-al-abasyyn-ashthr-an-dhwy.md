@@ -1,6 +1,6 @@
 ---
 title: "من الحوادث التاريخية اللطيفة والمبهرة بآن واحد أن في دولة العباسيين اشتهر أن ذوي"
-status: draft
+status: published
 published_at: 2017-12-07
 person: abu-jafar-al-khalifi
 ---

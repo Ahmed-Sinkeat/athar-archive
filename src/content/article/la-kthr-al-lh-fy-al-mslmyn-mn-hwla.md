@@ -1,6 +1,6 @@
 ---
 title: "لا كثر الله في المسلمين من هؤلاء"
-status: draft
+status: published
 published_at: 2024-11-11
 person: abu-abdillah-firas-al-ramli
 ---

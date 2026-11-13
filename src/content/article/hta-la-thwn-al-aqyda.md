@@ -1,6 +1,6 @@
 ---
 title: "حتَّى لا تهون العقِيدة"
-status: draft
+status: published
 published_at: 2025-03-05
 person: awwab-bin-muhammad
 ---

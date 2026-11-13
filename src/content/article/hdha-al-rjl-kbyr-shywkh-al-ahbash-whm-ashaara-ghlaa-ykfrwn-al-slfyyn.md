@@ -1,6 +1,6 @@
 ---
 title: "هذا الرجل كبير شيوخ الأحباش، وهم أشاعرةٌ غلاةٌ يكفرون السلفيين."
-status: draft
+status: published
 published_at: 2025-12-17
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

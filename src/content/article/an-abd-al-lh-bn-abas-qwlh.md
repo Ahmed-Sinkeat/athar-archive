@@ -1,6 +1,6 @@
 ---
 title: "عن عبد الله بن عباس قوله"
-status: draft
+status: published
 published_at: 2023-05-16
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "هل سمعتم بملِك طبيب ؟"
-status: draft
+status: published
 published_at: 2017-06-15
 person: abu-jafar-al-khalifi
 ---

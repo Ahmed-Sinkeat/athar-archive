@@ -1,6 +1,6 @@
 ---
 title: "قال الشيرازي في المعونة في الجدل"
-status: draft
+status: published
 published_at: 2019-06-11
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-asma-was-sifat"]

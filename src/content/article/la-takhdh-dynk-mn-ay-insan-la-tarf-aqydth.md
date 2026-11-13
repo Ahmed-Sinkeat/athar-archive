@@ -1,6 +1,6 @@
 ---
 title: "لا تأخذ دينك من أي إنسان لا تعرف عقيدته."
-status: draft
+status: published
 published_at: 2023-09-13
 person: abu-umair-imran-al-zubaidi
 ---

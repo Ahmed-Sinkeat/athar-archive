@@ -1,6 +1,6 @@
 ---
 title: "من [تستحل] التحاكم إلى القوانين الوضعية لأخذ ما لا يحق لها في دين الله من زوجها"
-status: draft
+status: published
 published_at: 2024-01-28
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "في ايرلندا الشمالية تم التصديق على قانون السماح بالإجهاض"
-status: draft
+status: published
 published_at: 2018-05-28
 person: abu-jafar-al-khalifi
 ---

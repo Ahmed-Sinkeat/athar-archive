@@ -1,6 +1,6 @@
 ---
 title: "كاشف الكبر الناقض لـ (تكافؤ الأدلة).."
-status: draft
+status: published
 published_at: 2021-09-23
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-asma-was-sifat"]

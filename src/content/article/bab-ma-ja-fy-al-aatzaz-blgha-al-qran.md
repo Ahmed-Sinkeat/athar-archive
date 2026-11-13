@@ -1,6 +1,6 @@
 ---
 title: "باب ما جاء في الاعتزاز بلغة القرآن.."
-status: draft
+status: published
 published_at: 2021-11-04
 person: abu-jafar-al-khalifi
 ---

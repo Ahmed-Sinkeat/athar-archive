@@ -1,6 +1,6 @@
 ---
 title: "تنبيه جميل من الإمام الطبري رحمه الله."
-status: draft
+status: published
 published_at: 2025-07-11
 person: abu-umair-imran-al-zubaidi
 ---

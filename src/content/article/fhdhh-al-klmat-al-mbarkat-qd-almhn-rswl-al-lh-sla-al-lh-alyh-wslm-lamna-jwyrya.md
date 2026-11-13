@@ -1,6 +1,6 @@
 ---
 title: "فهذه الكلمات المباركات قد علمهنّ رسول الله -صلّى الله عليه وسلّم- لأمّنا جويرية"
-status: draft
+status: published
 published_at: 2023-03-08
 person: abu-umair-imran-al-zubaidi
 ---

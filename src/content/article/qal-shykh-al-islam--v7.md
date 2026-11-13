@@ -1,6 +1,6 @@
 ---
 title: "قال شيخ الإسلام"
-status: draft
+status: published
 published_at: 2018-03-09
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "\"وكل الل عايز تجيب لها شبكة ب 50 ألف أو 100 ألف\"."
-status: draft
+status: published
 published_at: 2024-06-12
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

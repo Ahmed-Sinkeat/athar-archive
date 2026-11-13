@@ -1,6 +1,6 @@
 ---
 title: "هذه بروفيسورة مساعدة تخصص إلهيات."
-status: draft
+status: published
 published_at: 2024-02-23
 person: abu-jafar-al-khalifi
 ---

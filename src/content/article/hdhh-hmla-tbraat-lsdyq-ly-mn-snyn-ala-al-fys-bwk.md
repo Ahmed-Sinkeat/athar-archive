@@ -1,6 +1,6 @@
 ---
 title: "هذه حملة تبرعات لصديق لي من سنين على الفيس بوك"
-status: draft
+status: published
 published_at: 2025-08-06
 person: abu-jafar-al-khalifi
 ---

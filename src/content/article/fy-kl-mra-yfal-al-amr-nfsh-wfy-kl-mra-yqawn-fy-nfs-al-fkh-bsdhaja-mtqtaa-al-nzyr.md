@@ -1,6 +1,6 @@
 ---
 title: "في كل مرة يفعل الأمر نفسه، وفي كل مرة يقعون في نفس الفخ بسذاجة متقطعة النظير!."
-status: draft
+status: published
 published_at: 2023-05-20
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "al-wala-wal-bara"]

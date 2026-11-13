@@ -1,6 +1,6 @@
 ---
 title: "قال يحيى بن معاذ رحمه الله"
-status: draft
+status: published
 published_at: 2026-07-30
 person: awwab-bin-muhammad
 ---

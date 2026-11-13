@@ -1,6 +1,6 @@
 ---
 title: "جواب لغز تسلُّط الأعداء في آية {وكذلك نجزي المفترين}…"
-status: draft
+status: published
 published_at: 2023-12-26
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-sunnah-wal-bidah"]

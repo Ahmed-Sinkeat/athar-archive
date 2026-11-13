@@ -1,6 +1,6 @@
 ---
 title: "الانتقال من التملق إلى تبرير التعصب..."
-status: draft
+status: published
 published_at: 2021-08-23
 person: abu-jafar-al-khalifi
 ---

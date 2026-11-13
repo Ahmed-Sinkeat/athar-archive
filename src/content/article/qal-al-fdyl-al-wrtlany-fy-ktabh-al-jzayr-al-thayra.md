@@ -1,6 +1,6 @@
 ---
 title: "قال الفضيل الورتلاني في كتابه الجزائر الثائرة"
-status: draft
+status: published
 published_at: 2017-07-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

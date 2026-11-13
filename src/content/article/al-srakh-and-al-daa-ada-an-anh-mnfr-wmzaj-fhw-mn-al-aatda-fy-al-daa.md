@@ -1,6 +1,6 @@
 ---
 title: "الصراخ عند الدعاء عدا عن أنه منفر ومزعج فهو من الاعتداء في الدعاء."
-status: draft
+status: published
 published_at: 2025-10-31
 person: abu-umair-imran-al-zubaidi
 ---

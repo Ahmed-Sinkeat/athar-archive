@@ -1,6 +1,6 @@
 ---
 title: "\"الحرب على الارهاب استهداف ثقافي و ديني للإسلام"
-status: draft
+status: published
 published_at: 2018-09-21
 person: abu-jafar-al-khalifi
 ---

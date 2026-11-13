@@ -1,6 +1,6 @@
 ---
 title: "نسأل الله أن يتمم الأمر على ما فيه خير ومصلحة لعباده المسلمين"
-status: draft
+status: published
 published_at: 2025-10-08
 person: abu-umair-imran-al-zubaidi
 ---

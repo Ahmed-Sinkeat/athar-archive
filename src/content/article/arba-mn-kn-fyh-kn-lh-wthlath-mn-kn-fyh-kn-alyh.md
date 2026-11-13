@@ -1,6 +1,6 @@
 ---
 title: "أربع من كن فيه كن له وثلاث من كن فيه كن عليه"
-status: draft
+status: published
 published_at: 2025-03-26
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

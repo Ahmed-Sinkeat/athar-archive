@@ -1,6 +1,6 @@
 ---
 title: "قوم آثروا الآخرة الباقية على الدنيا الفانية"
-status: draft
+status: published
 published_at: 2024-08-18
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

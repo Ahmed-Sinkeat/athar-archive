@@ -1,6 +1,6 @@
 ---
 title: "كان الصمت مخيِّمًا عليهن حيال حادثة الصيدلي الذي قتله أهلُ زوجته بطريقة بشعة أما"
-status: draft
+status: published
 published_at: 2022-09-28
 person: abu-jafar-al-khalifi
 ---

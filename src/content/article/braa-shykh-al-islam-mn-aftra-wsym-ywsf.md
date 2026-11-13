@@ -1,6 +1,6 @@
 ---
 title: "براءة شيخ الإسلام من افتراء وسيم يوسف"
-status: draft
+status: published
 published_at: 2020-09-22
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

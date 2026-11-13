@@ -1,6 +1,6 @@
 ---
 title: "لن تتمكن هذه المرة من السخرية!"
-status: draft
+status: published
 published_at: 2020-03-22
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

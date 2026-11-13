@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب غواية الاسم لسعيد السريحي"
-status: draft
+status: published
 published_at: 2019-10-01
 person: abu-jafar-al-khalifi
 ---

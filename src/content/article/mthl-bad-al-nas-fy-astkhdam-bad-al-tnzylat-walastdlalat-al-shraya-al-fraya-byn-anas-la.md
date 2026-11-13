@@ -1,6 +1,6 @@
 ---
 title: "مثل بعض الناس في استخدام بعض التنزيلات والاستدلالات الشرعية الفرعية بين أناس لا"
-status: draft
+status: published
 published_at: 2018-10-22
 person: abu-jafar-al-khalifi
 ---

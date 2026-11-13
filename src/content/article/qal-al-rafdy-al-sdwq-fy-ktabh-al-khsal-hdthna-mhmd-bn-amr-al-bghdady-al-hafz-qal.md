@@ -1,6 +1,6 @@
 ---
 title: "قال الرافضي الصدوق في كتابه الخصال - حدثنا محمد بن عمر البغدادي الحافظ قال"
-status: draft
+status: published
 published_at: 2018-02-04
 person: abu-jafar-al-khalifi
 ---

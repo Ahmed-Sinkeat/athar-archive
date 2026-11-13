@@ -1,6 +1,6 @@
 ---
 title: "تمنيت لو أنني رأيت شخصًا واحدًا دافع عن البناء المنهجي دون أن يرمي من ينتقده بوا"
-status: draft
+status: published
 published_at: 2024-01-12
 person: abu-umair-imran-al-zubaidi
 ---

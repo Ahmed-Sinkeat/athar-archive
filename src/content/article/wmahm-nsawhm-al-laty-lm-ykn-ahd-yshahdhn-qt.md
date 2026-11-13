@@ -1,6 +1,6 @@
 ---
 title: "\"ومعهم نساؤهم اللاتي لم يكن أحد يشاهدهن قط"
-status: draft
+status: published
 published_at: 2024-06-04
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "تنفير عوام المسلمين من الأشاعرة سهل ويسير"
-status: draft
+status: published
 published_at: 2024-04-25
 person: abu-umair-imran-al-zubaidi
 ---

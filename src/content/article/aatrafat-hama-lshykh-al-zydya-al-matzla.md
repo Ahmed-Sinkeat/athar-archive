@@ -1,6 +1,6 @@
 ---
 title: "اعترافات هامة لشيخ الزيدية المعتزلة"
-status: draft
+status: published
 published_at: 2020-04-12
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

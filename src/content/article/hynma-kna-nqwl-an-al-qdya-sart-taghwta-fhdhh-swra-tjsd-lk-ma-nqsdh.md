@@ -1,6 +1,6 @@
 ---
 title: "حينما كنا نقول أنّ القضية صارت طاغوتًا فهذه صورة تجسّد لك ما نقصده!"
-status: draft
+status: published
 published_at: 2023-10-14
 person: abu-umair-imran-al-zubaidi
 ---

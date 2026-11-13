@@ -1,6 +1,6 @@
 ---
 title: "لا تكن كحاطب الليل"
-status: draft
+status: published
 published_at: 2023-11-02
 person: abu-abdillah-firas-al-ramli
 ---

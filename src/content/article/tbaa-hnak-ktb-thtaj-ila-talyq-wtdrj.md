@@ -1,6 +1,6 @@
 ---
 title: "طبعًا هناك كتب تحتاج إلى تعليق وتدرج"
-status: draft
+status: published
 published_at: 2023-12-12
 person: abu-umair-imran-al-zubaidi
 ---

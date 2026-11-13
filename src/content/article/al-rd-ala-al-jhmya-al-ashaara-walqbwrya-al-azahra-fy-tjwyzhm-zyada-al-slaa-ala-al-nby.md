@@ -1,6 +1,6 @@
 ---
 title: "الرد على الجهمية الأشاعرة والقبورية الأزاهرة في تجويزهم زيادة الصلاة على النبي ﷺ"
-status: draft
+status: published
 published_at: 2023-05-26
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

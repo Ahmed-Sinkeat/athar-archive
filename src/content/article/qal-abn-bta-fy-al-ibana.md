@@ -1,6 +1,6 @@
 ---
 title: "قال ابن بطة في الإبانة"
-status: draft
+status: published
 published_at: 2017-08-06
 person: abu-jafar-al-khalifi
 ---

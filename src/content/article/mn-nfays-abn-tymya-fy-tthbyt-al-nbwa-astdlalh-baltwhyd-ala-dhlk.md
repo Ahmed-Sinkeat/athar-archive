@@ -1,6 +1,6 @@
 ---
 title: "من نفائس ابن تيمية في تثبيت النبوة استدلاله بالتوحيد على ذلك"
-status: draft
+status: published
 published_at: 2018-12-05
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

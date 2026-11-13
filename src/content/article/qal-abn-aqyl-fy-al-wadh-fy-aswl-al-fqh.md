@@ -1,6 +1,6 @@
 ---
 title: "قال ابن عقيل في الواضح في أصول الفقه (1/409)"
-status: draft
+status: published
 published_at: 2017-10-07
 person: abu-jafar-al-khalifi
 ---

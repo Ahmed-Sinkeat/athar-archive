@@ -1,6 +1,6 @@
 ---
 title: "قبل أن تحدّثني عن الإسلام \"المعتدل"
-status: draft
+status: published
 published_at: 2025-01-26
 person: abu-umair-imran-al-zubaidi
 ---

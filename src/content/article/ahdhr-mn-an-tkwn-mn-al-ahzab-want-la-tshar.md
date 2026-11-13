@@ -1,6 +1,6 @@
 ---
 title: "احذر من أن تكون من الأحزاب وأنت لا تشعر.."
-status: draft
+status: published
 published_at: 2021-04-26
 person: abu-jafar-al-khalifi
 ---

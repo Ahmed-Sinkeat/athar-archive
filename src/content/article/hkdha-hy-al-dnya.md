@@ -1,6 +1,6 @@
 ---
 title: "هكذا هي الدنيا"
-status: draft
+status: published
 published_at: 2025-07-22
 person: abu-umair-imran-al-zubaidi
 ---

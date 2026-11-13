@@ -1,6 +1,6 @@
 ---
 title: "القول الذي أوله سفسطة وآخره زندقة وفر منه ابن تيمية ويحاول البعض استخراجه من كلا"
-status: draft
+status: published
 published_at: 2020-07-16
 person: abu-jafar-al-khalifi
 ---

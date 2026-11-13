@@ -1,6 +1,6 @@
 ---
 title: "اشتراط التعارف قبل الزواج والذي استورده كثير من المسلمين من الغرب قائم على ثلاثة"
-status: draft
+status: published
 published_at: 2024-08-11
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "قال ابن رجب في ذيل طبقات الحنابلة"
-status: draft
+status: published
 published_at: 2019-04-23
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

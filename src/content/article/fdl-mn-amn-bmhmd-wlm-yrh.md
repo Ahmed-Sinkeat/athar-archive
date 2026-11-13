@@ -1,6 +1,6 @@
 ---
 title: "فضل من آمن بمحمد ﷺ ولم يره"
-status: draft
+status: published
 published_at: 2023-06-20
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

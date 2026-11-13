@@ -1,6 +1,6 @@
 ---
 title: "تفكُّر في الحكمة من وجود سهم للعاملين عليها في مصارف الزكاة..."
-status: draft
+status: published
 published_at: 2024-02-02
 person: abu-jafar-al-khalifi
 ---

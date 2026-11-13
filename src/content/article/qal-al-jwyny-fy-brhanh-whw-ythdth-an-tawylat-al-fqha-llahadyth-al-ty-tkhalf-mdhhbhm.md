@@ -1,6 +1,6 @@
 ---
 title: "قال الجويني في برهانه وهو يتحدث عن تأويلات الفقهاء للأحاديث التي تخالف مذهبهم"
-status: draft
+status: published
 published_at: 2017-09-14
 person: abu-jafar-al-khalifi
 ---

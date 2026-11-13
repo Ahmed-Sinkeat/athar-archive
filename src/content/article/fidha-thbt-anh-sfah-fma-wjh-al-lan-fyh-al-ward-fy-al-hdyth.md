@@ -1,6 +1,6 @@
 ---
 title: "فإذا ثبت أنه سفاح فما وجه اللعن فيه الوارد في الحديث"
-status: draft
+status: published
 published_at: 2020-07-06
 person: abu-jafar-al-khalifi
 ---

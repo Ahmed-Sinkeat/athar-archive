@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الرزاق في المصنف [18030"
-status: draft
+status: published
 published_at: 2018-02-28
 person: abu-jafar-al-khalifi
 ---

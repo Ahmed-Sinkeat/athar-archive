@@ -1,6 +1,6 @@
 ---
 title: "في فيديو لرجل يحاول تصبير طفلتين عالقتين تحت الأنقاض ريثما يتمكنون مِن إخراجهما"
-status: draft
+status: published
 published_at: 2023-02-07
 person: abu-umair-imran-al-zubaidi
 ---

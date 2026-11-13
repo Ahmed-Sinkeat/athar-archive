@@ -1,6 +1,6 @@
 ---
 title: "هل يشكل عليك هذا الأثر؟"
-status: draft
+status: published
 published_at: 2022-07-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

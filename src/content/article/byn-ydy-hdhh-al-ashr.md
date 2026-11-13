@@ -1,6 +1,6 @@
 ---
 title: "بين يدي هذه العشر"
-status: draft
+status: published
 published_at: 2025-05-28
 person: awwab-bin-muhammad
 ---

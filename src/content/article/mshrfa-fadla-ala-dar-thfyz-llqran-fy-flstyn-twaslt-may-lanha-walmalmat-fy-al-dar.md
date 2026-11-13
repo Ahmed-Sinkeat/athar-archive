@@ -1,6 +1,6 @@
 ---
 title: "مشرفة فاضلة على دار تحفيظ للقرآن في فلسطين تواصلت معي؛ لأنها والمعلمات في الدار"
-status: draft
+status: published
 published_at: 2023-07-17
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "خصلتان لا يستقيم فيهما حسن الظن"
-status: draft
+status: published
 published_at: 2024-08-15
 person: abu-abdillah-firas-al-ramli
 ---

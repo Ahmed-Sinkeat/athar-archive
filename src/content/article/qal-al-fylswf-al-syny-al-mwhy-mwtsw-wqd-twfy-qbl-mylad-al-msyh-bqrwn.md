@@ -1,6 +1,6 @@
 ---
 title: "قال الفيلسوف الصيني الموهي موتسو _ وقد توفي قبل ميلاد المسيح بقرون _"
-status: draft
+status: published
 published_at: 2017-07-11
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

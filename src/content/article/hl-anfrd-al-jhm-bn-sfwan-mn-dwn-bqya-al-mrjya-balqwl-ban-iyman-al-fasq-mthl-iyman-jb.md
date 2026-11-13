@@ -1,6 +1,6 @@
 ---
 title: "هل انفرد الجهم بن صفوان من دون بقية المرجئة بالقول بأن إيمان الفاسق مثل إيمان جب"
-status: draft
+status: published
 published_at: 2023-01-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

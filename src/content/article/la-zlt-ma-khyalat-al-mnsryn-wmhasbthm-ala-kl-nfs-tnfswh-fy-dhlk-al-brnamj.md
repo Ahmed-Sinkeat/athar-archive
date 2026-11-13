@@ -1,6 +1,6 @@
 ---
 title: "لا زلت مع خيالات المنصرين ومحاسبتهم على كل نفس تنفسوه في ذلك البرنامج."
-status: draft
+status: published
 published_at: 2018-05-26
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

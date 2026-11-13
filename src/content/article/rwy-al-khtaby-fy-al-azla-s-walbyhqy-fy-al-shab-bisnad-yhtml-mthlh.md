@@ -1,6 +1,6 @@
 ---
 title: "روي الخطابي في العزلة [ ص 45 ] والبيهقي في الشعب بإسناد يحتمل مثله"
-status: draft
+status: published
 published_at: 2017-10-18
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

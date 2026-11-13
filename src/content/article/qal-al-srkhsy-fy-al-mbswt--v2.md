@@ -1,6 +1,6 @@
 ---
 title: "قال السرخسي في المبسوط (10/80)"
-status: draft
+status: published
 published_at: 2017-12-04
 person: abu-jafar-al-khalifi
 ---

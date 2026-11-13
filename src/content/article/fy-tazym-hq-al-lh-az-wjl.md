@@ -1,6 +1,6 @@
 ---
 title: "في تعظيم حق الله عز وجل..."
-status: draft
+status: published
 published_at: 2024-05-12
 person: abu-jafar-al-khalifi
 ---

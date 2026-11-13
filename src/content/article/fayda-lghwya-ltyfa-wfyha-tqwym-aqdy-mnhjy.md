@@ -1,6 +1,6 @@
 ---
 title: "فائدة لغوية لطيفة وفيها تقويم عقدي منهجي"
-status: draft
+status: published
 published_at: 2021-03-03
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا بالنسبة لي مفهوم تماما وأن ما يسمى بالعملية الديمقراطية هي مجرد تغيير ثانوي"
-status: draft
+status: published
 published_at: 2019-07-27
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

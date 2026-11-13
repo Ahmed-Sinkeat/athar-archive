@@ -1,6 +1,6 @@
 ---
 title: "الشفاء بنت عبد الله وكشف الانتقائية المنهجية..."
-status: draft
+status: published
 published_at: 2021-01-16
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

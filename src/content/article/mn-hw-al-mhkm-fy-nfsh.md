@@ -1,6 +1,6 @@
 ---
 title: "من هو المُحَكَّم في نفسه ؟"
-status: draft
+status: published
 published_at: 2026-09-18
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada", "tazkiyat-al-nafs"]

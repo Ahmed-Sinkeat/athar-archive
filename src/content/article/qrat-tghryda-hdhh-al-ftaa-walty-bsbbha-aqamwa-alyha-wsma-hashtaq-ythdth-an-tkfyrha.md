@@ -1,6 +1,6 @@
 ---
 title: "قرأت تغريدة هذه الفتاة والتي بسببها أقاموا عليها وسما (هاشتاق) يتحدث عن تكفيرها"
-status: draft
+status: published
 published_at: 2021-12-10
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

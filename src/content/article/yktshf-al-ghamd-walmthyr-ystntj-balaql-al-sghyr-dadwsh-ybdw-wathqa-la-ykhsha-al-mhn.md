@@ -1,6 +1,6 @@
 ---
 title: "يكتشف الغامض والمثير، يستنتج بالعقل الصغير، دعدوش يبدو واثقا، لا يخشى المِحن."
-status: draft
+status: published
 published_at: 2025-11-09
 person: abu-umair-imran-al-zubaidi
 ---

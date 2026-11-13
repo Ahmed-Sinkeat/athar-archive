@@ -1,6 +1,6 @@
 ---
 title: "صاحب الذكر المرفوع..."
-status: draft
+status: published
 published_at: 2020-10-23
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

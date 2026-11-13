@@ -1,6 +1,6 @@
 ---
 title: "قال الخطيب البغدادي في تاريخ مدينة السلام ( بغداد ) أَخْبَرَنَا أبو حاتم أحمد بن"
-status: draft
+status: published
 published_at: 2017-08-18
 person: abu-jafar-al-khalifi
 ---

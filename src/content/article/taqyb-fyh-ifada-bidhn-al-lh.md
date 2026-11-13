@@ -1,6 +1,6 @@
 ---
 title: "تعقيب فيه إفادة بإذن الله."
-status: draft
+status: published
 published_at: 2020-03-21
 person: abu-jafar-al-khalifi
 ---

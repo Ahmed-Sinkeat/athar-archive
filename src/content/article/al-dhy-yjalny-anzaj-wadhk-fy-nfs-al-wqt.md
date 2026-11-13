@@ -1,6 +1,6 @@
 ---
 title: "الذي يجعلني أنزعج وأضحك في نفس الوقت"
-status: draft
+status: published
 published_at: 2024-12-15
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

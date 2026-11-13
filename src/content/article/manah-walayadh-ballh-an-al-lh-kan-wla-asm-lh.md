@@ -1,6 +1,6 @@
 ---
 title: "معناه -والعياذ بالله- أنّ الله كان ولا اسم له"
-status: draft
+status: published
 published_at: 2024-01-31
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

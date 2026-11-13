@@ -1,6 +1,6 @@
 ---
 title: "انتشرت صورة مفاد ما فيها أنّ أحمد الشرع قام بتهتئة النصارى بعيدهم"
-status: draft
+status: published
 published_at: 2025-01-01
 person: abu-umair-imran-al-zubaidi
 ---

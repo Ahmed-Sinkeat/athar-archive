@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري في صحيحه 1402 - حَدَّثَنَا الْحَكَمُ بْنُ نَافِعٍ أَخْبَرَنَا شُعَيْ"
-status: draft
+status: published
 published_at: 2018-03-05
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

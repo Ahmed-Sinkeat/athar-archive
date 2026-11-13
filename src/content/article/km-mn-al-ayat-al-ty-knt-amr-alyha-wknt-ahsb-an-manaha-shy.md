@@ -1,6 +1,6 @@
 ---
 title: "كم من الآيات التي كنت أمر عليها وكنت أحسب أنّ معناها شيء"
-status: draft
+status: published
 published_at: 2025-05-20
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

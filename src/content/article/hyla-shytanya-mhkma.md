@@ -1,6 +1,6 @@
 ---
 title: "حيلة شيطانية محكمة."
-status: draft
+status: published
 published_at: 2020-09-09
 person: abu-jafar-al-khalifi
 ---

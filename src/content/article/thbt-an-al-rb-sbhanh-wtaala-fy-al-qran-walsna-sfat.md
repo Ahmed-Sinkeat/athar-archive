@@ -1,6 +1,6 @@
 ---
 title: "ثبت عن الربّ سبحانه وتعالى في القرآن والسُنّة صفات"
-status: draft
+status: published
 published_at: 2023-03-16
 person: abu-umair-imran-al-zubaidi
 ---

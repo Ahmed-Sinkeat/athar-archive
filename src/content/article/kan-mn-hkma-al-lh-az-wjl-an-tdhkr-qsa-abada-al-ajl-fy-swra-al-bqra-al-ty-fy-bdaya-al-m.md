@@ -1,6 +1,6 @@
 ---
 title: "كان من حكمة الله عز وجل أن تذكر قصة عبادة العجل في سورة البقرة التي في بداية الم"
-status: draft
+status: published
 published_at: 2018-05-17
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

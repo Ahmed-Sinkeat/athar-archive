@@ -1,6 +1,6 @@
 ---
 title: "في جامع الترمذي من حديث عبد الله بن عمر قال"
-status: draft
+status: published
 published_at: 2018-12-02
 person: abu-jafar-al-khalifi
 ---

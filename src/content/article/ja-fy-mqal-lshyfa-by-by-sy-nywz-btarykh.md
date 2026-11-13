@@ -1,6 +1,6 @@
 ---
 title: "جاء في مقال لصحيفة بي بي سي نيوز بتاريخ"
-status: draft
+status: published
 published_at: 2019-02-11
 person: abu-jafar-al-khalifi
 ---

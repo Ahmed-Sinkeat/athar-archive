@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي الدنيا في مكارم الأخلاق 375 - وَحَدَّثَنِي عُمَرُ بْنُ أَبِي مُعَاذٍ"
-status: draft
+status: published
 published_at: 2017-08-08
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "خونة التوحيد والعقيدة يحدثونك عن الأزهر وأنه حصن وقلعة المسلمين في مصر."
-status: draft
+status: published
 published_at: 2025-10-18
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

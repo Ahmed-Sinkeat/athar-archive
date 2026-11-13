@@ -1,6 +1,6 @@
 ---
 title: "أثنى كثيرون على تصرفه واعترض البعض"
-status: draft
+status: published
 published_at: 2026-09-02
 person: abu-jafar-al-khalifi
 ---

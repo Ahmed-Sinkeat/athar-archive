@@ -1,6 +1,6 @@
 ---
 title: "حالنا في فتن آخر الزمان"
-status: draft
+status: published
 published_at: 2023-08-29
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

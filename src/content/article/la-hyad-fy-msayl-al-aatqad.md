@@ -1,6 +1,6 @@
 ---
 title: "لا حياد في مسائل الاعتقاد"
-status: draft
+status: published
 published_at: 2022-10-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]

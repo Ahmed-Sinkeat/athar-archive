@@ -1,6 +1,6 @@
 ---
 title: "هناك مدخلٌ شيطاني يا إخوة علينا أن نتنبّه إليه ونستعيذ بالله منه!"
-status: draft
+status: published
 published_at: 2023-08-16
 person: abu-umair-imran-al-zubaidi
 topics: ["adab-talab-al-ilm"]

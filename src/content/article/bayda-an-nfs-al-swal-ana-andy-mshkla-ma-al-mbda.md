@@ -1,6 +1,6 @@
 ---
 title: "بعيدا عن نفس السؤال، أنا عندي مشكلة مع المبدأ!"
-status: draft
+status: published
 published_at: 2024-09-29
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

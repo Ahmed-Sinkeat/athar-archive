@@ -1,6 +1,6 @@
 ---
 title: "أنا فعلًا غير قادر على ضبط أعصابي في الأونة الأخيرة"
-status: draft
+status: published
 published_at: 2023-05-20
 person: abu-umair-imran-al-zubaidi
 ---

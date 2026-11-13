@@ -1,6 +1,6 @@
 ---
 title: "لا عبرة لكلام المعاصرينن كلهم لو اجتمعوا على رد أثر مجاهد في المقام المحمود."
-status: draft
+status: published
 published_at: 2024-02-29
 person: abu-umair-imran-al-zubaidi
 ---

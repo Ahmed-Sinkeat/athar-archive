@@ -1,6 +1,6 @@
 ---
 title: "من قواعد الفقهاء في باب السرقة أن كل من كان له شبهة حق في مال وسرق منه فإنه لا ت"
-status: draft
+status: published
 published_at: 2018-02-11
 person: abu-jafar-al-khalifi
 ---

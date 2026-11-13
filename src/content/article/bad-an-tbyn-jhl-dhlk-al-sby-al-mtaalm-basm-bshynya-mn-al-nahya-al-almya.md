@@ -1,6 +1,6 @@
 ---
 title: "بعد أن تبيّن جهل ذلك الصبي المتعالم باسم بشينية من الناحية العلمية"
-status: draft
+status: published
 published_at: 2024-03-02
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

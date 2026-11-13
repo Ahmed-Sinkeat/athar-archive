@@ -1,6 +1,6 @@
 ---
 title: "نشرت مجلة (nature) في عددها الصادر في شهر نوفمبر عام 2012 مقالاً بعنوان ( من خلا"
-status: draft
+status: published
 published_at: 2017-11-07
 person: abu-jafar-al-khalifi
 ---

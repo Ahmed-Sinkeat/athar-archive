@@ -1,6 +1,6 @@
 ---
 title: "من عجائب المفارقات هذه الأيام أنه يوجد دائماً كلام عن بني أمية وأثرهم على الأمة"
-status: draft
+status: published
 published_at: 2017-06-21
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

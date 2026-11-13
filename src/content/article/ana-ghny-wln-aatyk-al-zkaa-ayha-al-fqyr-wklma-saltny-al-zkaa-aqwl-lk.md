@@ -1,6 +1,6 @@
 ---
 title: "أنا غني ولن أعطيك الزكاة أيها الفقير وكلما سألتني الزكاة أقول لك"
-status: draft
+status: published
 published_at: 2018-04-20
 person: abu-jafar-al-khalifi
 ---

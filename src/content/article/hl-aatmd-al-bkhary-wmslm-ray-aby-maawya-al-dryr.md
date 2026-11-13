@@ -1,6 +1,6 @@
 ---
 title: "هل اعتمد البخاري ومسلم رأي أبي معاوية الضرير؟"
-status: draft
+status: published
 published_at: 2021-12-04
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

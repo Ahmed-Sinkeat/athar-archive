@@ -1,6 +1,6 @@
 ---
 title: "وقال الذهبي في تاريخ الإسلام في حوادث عام 420"
-status: draft
+status: published
 published_at: 2022-01-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

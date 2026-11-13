@@ -1,6 +1,6 @@
 ---
 title: "دخلت يوما على أبي عثمان بن القزاز وهو يعلق"
-status: draft
+status: published
 published_at: 2019-03-11
 person: abu-jafar-al-khalifi
 ---

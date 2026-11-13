@@ -1,6 +1,6 @@
 ---
 title: "متى ينتهي التدليس على ابن تيمية؟!"
-status: draft
+status: published
 published_at: 2021-03-11
 person: abu-jafar-al-khalifi
 ---

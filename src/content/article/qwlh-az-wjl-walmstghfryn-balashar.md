@@ -1,6 +1,6 @@
 ---
 title: "قوله عز وجل: {والمستغفرين بالأسحار}"
-status: draft
+status: published
 published_at: 2023-12-24
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

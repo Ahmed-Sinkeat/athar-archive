@@ -1,6 +1,6 @@
 ---
 title: "قُتِلَ أَصۡحَٰبُ ٱلۡأُخۡدُودِ * ٱلنَّارِ ذَاتِ ٱلۡوَقُودِ * إِذۡ هُمۡ عَلَيۡهَا"
-status: draft
+status: published
 published_at: 2023-06-11
 person: abu-umair-imran-al-zubaidi
 ---

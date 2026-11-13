@@ -1,6 +1,6 @@
 ---
 title: "فقهاء المدينة السبعة»."
-status: draft
+status: published
 published_at: 2022-12-22
 person: abu-umair-imran-al-zubaidi
 ---

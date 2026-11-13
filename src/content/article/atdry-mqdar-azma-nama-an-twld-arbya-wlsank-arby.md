@@ -1,6 +1,6 @@
 ---
 title: "أتدري مقدار عظمة نعمة أن تولد عربيا ولسانك عربي؟!"
-status: draft
+status: published
 published_at: 2025-09-14
 person: abu-umair-imran-al-zubaidi
 ---

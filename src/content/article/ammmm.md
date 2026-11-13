@@ -1,6 +1,6 @@
 ---
 title: "امممم"
-status: draft
+status: published
 published_at: 2025-07-24
 person: abu-umair-imran-al-zubaidi
 ---

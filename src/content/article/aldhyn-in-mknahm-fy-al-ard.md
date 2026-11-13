@@ -1,6 +1,6 @@
 ---
 title: "(الذين إن مكناهم في الأرض ...)"
-status: draft
+status: published
 published_at: 2025-09-14
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

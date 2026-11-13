@@ -1,6 +1,6 @@
 ---
 title: "لا أدري كم مرة سأكرر تعبيري عن مدى بغضي وكرهي لتصدر النساء وحديثهنّ في دين الله"
-status: draft
+status: published
 published_at: 2024-05-21
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

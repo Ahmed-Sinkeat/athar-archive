@@ -1,6 +1,6 @@
 ---
 title: "الذي لا يريد الجنة التي يُدخل الله سبحانه وتعالى إليها من تاب وأناب إليه؛ لأنه س"
-status: draft
+status: published
 published_at: 2024-01-31
 person: abu-umair-imran-al-zubaidi
 ---

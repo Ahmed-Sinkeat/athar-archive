@@ -1,6 +1,6 @@
 ---
 title: "خير أهل المسجد وشرهم"
-status: draft
+status: published
 published_at: 2025-11-21
 person: abu-abdillah-firas-al-ramli
 ---

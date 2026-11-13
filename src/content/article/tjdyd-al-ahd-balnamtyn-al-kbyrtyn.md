@@ -1,6 +1,6 @@
 ---
 title: "تجديد العهد بالنعمتين الكبيرتين"
-status: draft
+status: published
 published_at: 2020-03-15
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وصف الله تبارك وتعالى بصفات الكمال كالسمع والبصر والكلام والخلق مع إثبات بداية م"
-status: draft
+status: published
 published_at: 2023-08-17
 person: abu-umair-imran-al-zubaidi
 ---

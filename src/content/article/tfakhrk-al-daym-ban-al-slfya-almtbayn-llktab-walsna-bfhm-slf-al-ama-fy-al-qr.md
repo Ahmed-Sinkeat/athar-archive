@@ -1,6 +1,6 @@
 ---
 title: "تفاخرك الدائم بأنّ السلفيّة (المُتّبعين للكتاب والسُنّة بفهم سلف الأُمّة في القر"
-status: draft
+status: published
 published_at: 2022-09-25
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

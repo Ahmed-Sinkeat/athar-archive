@@ -1,6 +1,6 @@
 ---
 title: "لا يقنطك ذنبك ويبعدك عن طلب العلم."
-status: draft
+status: published
 published_at: 2023-12-16
 person: abu-jafar-al-khalifi
 ---

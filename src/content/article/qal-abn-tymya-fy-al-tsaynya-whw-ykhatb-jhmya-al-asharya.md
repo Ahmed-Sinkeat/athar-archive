@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية في التسعينية (2/694) وهو يخاطب جهمية الأشعرية"
-status: draft
+status: published
 published_at: 2021-02-18
 person: abu-jafar-al-khalifi
 ---

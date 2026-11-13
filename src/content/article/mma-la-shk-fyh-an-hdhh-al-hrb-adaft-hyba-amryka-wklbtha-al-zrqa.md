@@ -1,6 +1,6 @@
 ---
 title: "مما لا شك فيه، أنّ هذه الحرب أضعفت هيبة أمريكا وكلبتها الزرقاء."
-status: draft
+status: published
 published_at: 2026-03-21
 person: abu-umair-imran-al-zubaidi
 ---

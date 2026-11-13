@@ -1,6 +1,6 @@
 ---
 title: "قال ابن الجوزي في الثبات عند الممات وَأخْبرنَا عبد الوهاب بْنُ الْحَافِظِ قَالَ"
-status: draft
+status: published
 published_at: 2017-09-03
 person: abu-jafar-al-khalifi
 ---

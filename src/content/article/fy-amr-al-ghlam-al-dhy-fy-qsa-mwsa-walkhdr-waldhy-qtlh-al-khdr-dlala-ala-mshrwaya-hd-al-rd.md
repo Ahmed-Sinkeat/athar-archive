@@ -1,6 +1,6 @@
 ---
 title: "في أمر الغلام الذي في قصة موسى والخضر والذي قتله الخضر دلالة على مشروعية حد الرد"
-status: draft
+status: published
 published_at: 2018-11-04
 person: abu-jafar-al-khalifi
 ---

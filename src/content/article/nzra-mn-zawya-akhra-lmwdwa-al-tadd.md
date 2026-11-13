@@ -1,6 +1,6 @@
 ---
 title: "نظرة من زاوية أخرى لموضوع التعدد"
-status: draft
+status: published
 published_at: 2020-01-09
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

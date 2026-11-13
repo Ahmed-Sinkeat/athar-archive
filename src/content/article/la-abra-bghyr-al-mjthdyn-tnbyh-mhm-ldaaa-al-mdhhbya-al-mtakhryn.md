@@ -1,6 +1,6 @@
 ---
 title: "لا عبرة بغير المجتهدين (تنبيه مهم لدعاة المذهبية المتأخرين)"
-status: draft
+status: published
 published_at: 2022-10-12
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

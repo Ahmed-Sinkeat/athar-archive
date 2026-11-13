@@ -1,6 +1,6 @@
 ---
 title: "لا أدري إن كان ما أفكر به صحيحًا"
-status: draft
+status: published
 published_at: 2023-03-23
 person: abu-umair-imran-al-zubaidi
 ---

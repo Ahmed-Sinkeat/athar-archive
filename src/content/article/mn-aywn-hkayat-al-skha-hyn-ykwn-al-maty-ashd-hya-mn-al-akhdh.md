@@ -1,6 +1,6 @@
 ---
 title: "من عيون حكايات السخاء: حين يكون المعطي أشد حياءً من الآخذ.."
-status: draft
+status: published
 published_at: 2022-02-25
 person: abu-jafar-al-khalifi
 ---

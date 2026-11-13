@@ -1,6 +1,6 @@
 ---
 title: "عمومًا، الإبل لا تُخزّن المياه في سنامها \"الحدبة فوق ظهرها\"."
-status: draft
+status: published
 published_at: 2022-12-05
 person: abu-umair-imran-al-zubaidi
 ---

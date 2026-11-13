@@ -1,6 +1,6 @@
 ---
 title: "أرسل لي أحد الأخوة هذه الصورة مستغرباً"
-status: draft
+status: published
 published_at: 2021-09-09
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

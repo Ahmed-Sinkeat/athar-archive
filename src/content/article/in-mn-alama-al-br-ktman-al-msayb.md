@@ -1,6 +1,6 @@
 ---
 title: "إن من علامة البر كتمان المصائب"
-status: draft
+status: published
 published_at: 2025-11-03
 person: abu-abdillah-firas-al-ramli
 ---

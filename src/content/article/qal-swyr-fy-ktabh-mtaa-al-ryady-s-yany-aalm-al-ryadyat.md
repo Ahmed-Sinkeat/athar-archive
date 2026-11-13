@@ -1,6 +1,6 @@
 ---
 title: "قال سوير في كتابه متعة الرياضي ص56 _ 59 ( يعني عالم الرياضيات )"
-status: draft
+status: published
 published_at: 2017-10-26
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

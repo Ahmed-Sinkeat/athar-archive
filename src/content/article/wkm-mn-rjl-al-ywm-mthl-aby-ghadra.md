@@ -1,6 +1,6 @@
 ---
 title: "وكم من رجل اليوم مثل أبي غاضرة؟"
-status: draft
+status: published
 published_at: 2022-02-28
 person: abu-jafar-al-khalifi
 ---

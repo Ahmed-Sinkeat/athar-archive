@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال حديث لامرأة أمريكية مسلمة أصولها من بورتريكو، اسمها وندي دياز."
-status: draft
+status: published
 published_at: 2026-02-26
 person: abu-jafar-al-khalifi
 ---

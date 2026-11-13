@@ -1,6 +1,6 @@
 ---
 title: "۞ هُوَ الَّذِي خَلَقَكُم مِّن نَّفْسٍ وَاحِدَةٍ وَجَعَلَ مِنْهَا زَوْجَهَا لِيَس"
-status: draft
+status: published
 published_at: 2023-04-02
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

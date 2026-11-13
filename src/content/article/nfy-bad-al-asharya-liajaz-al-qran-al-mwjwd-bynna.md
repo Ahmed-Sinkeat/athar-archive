@@ -1,6 +1,6 @@
 ---
 title: "نفي بعض الأشعرية لإعجاز القرآن الموجود بيننا"
-status: draft
+status: published
 published_at: 2026-04-15
 person: abu-abdillah-firas-al-ramli
 ---

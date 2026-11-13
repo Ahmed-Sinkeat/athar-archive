@@ -1,6 +1,6 @@
 ---
 title: "قال رسول الله صلى الله عليه وسلم"
-status: draft
+status: published
 published_at: 2019-02-11
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

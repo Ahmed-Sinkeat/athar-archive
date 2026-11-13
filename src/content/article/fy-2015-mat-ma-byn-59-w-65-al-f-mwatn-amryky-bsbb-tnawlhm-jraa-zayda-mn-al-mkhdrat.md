@@ -1,6 +1,6 @@
 ---
 title: "في ٢٠١٥ مات ما بين ٥٩ و ٦٥ الف مواطن امريكي بسبب تناولهم جرعة زائدة من المخدرات"
-status: draft
+status: published
 published_at: 2018-11-12
 person: abu-jafar-al-khalifi
 ---
@@ -10,7 +10,6 @@ person: abu-jafar-al-khalifi
 
 [https://bit.ly/2qU64w5](https://bit.ly/2qU64w5)
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 اكثر من ٣٣ الف امريكي يموت سنوياً بسبب العنف المسلح.
 

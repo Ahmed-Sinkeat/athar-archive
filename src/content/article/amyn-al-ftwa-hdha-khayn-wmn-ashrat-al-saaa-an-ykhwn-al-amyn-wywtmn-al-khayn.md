@@ -1,6 +1,6 @@
 ---
 title: "أمين الفتوى هذا خائن، ومن اشراط الساعة أن يخون الأمين ويؤتمن الخائن."
-status: draft
+status: published
 published_at: 2026-08-20
 person: abu-jafar-al-khalifi
 ---

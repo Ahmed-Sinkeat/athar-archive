@@ -1,6 +1,6 @@
 ---
 title: "لا تظنن هذا الكلام مبالغًا به"
-status: draft
+status: published
 published_at: 2021-10-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

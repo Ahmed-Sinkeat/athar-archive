@@ -1,6 +1,6 @@
 ---
 title: "حجة ومنهج تفكير مغفول عنه وليس مجرد حقيقة تاريخية..."
-status: draft
+status: published
 published_at: 2024-09-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "أنا قد أتفهّم نفي الأشعريّة للتعبير عن معنى الاستواء بالجلوس"
-status: draft
+status: published
 published_at: 2023-05-02
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

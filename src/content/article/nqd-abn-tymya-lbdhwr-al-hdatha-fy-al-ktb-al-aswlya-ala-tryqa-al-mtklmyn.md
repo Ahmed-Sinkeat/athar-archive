@@ -1,6 +1,6 @@
 ---
 title: "نقد ابن تيمية لبذور الحداثة في الكتب الأصولية على طريقة المتكلمين..."
-status: draft
+status: published
 published_at: 2022-05-17
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "يذكر ابن الجوزي المتوفى عام ٥٩٧ في كتابه «أحكام النساء» أن أكثر الناس في زمانه ف"
-status: draft
+status: published
 published_at: 2024-02-01
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ملاحظة : هذا ذم لمن تعلق قلبه بامرأة ولو كانت زوجته، وليس كلاما رومنسيا شاعريا."
-status: draft
+status: published
 published_at: 2024-12-15
 person: abu-umair-imran-al-zubaidi
 ---

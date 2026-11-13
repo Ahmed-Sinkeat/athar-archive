@@ -1,6 +1,6 @@
 ---
 title: "هذه نصيحة أذكّر بها نفسي وإخواني."
-status: draft
+status: published
 published_at: 2023-12-26
 person: abu-umair-imran-al-zubaidi
 ---

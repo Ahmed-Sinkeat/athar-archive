@@ -1,6 +1,6 @@
 ---
 title: "استحضر هذه النية في تبرعك.."
-status: draft
+status: published
 published_at: 2023-02-10
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "فما برح حتى أدخل الناس الملاحدة والربوبيين في التسامح"
-status: draft
+status: published
 published_at: 2021-01-27
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

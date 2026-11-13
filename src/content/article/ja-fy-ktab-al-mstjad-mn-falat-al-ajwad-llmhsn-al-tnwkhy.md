@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب المستجاد من فعلات الأجواد للمحسن التنوخي"
-status: draft
+status: published
 published_at: 2019-10-12
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الله النديم في مجلة الأستاذ التي كانت تصدر عام 1892 ميلادي وهو متأثر بال"
-status: draft
+status: published
 published_at: 2018-07-25
 person: abu-jafar-al-khalifi
 ---

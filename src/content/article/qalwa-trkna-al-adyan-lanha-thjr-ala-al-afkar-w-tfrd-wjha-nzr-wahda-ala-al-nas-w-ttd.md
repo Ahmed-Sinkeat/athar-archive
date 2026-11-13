@@ -1,6 +1,6 @@
 ---
 title: "قالوا تركنا الأديان لأنها تحجر على الأفكار و تفرض وجهة نظر واحدة على الناس و تتد"
-status: draft
+status: published
 published_at: 2019-04-21
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

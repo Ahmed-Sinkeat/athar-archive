@@ -1,6 +1,6 @@
 ---
 title: "رب إني أسألك ببركة نزولك إلى السماء الدنيا في هذا الوقت من الليل أن تنجي إخواننا"
-status: draft
+status: published
 published_at: 2025-10-29
 person: abu-umair-imran-al-zubaidi
 ---

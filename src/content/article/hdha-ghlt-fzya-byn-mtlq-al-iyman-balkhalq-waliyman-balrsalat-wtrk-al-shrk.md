@@ -1,6 +1,6 @@
 ---
 title: "هذا غلط فظيع بين مطلق الإيمان بالخالق، والإيمان بالرسالات وترك الشرك."
-status: draft
+status: published
 published_at: 2025-11-03
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

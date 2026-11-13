@@ -1,6 +1,6 @@
 ---
 title: "ما تراه على الشاشات أو برامج التواصل الاجتماعي هو جزء من الحقيقة فقط فإياك أن تح"
-status: draft
+status: published
 published_at: 2020-07-17
 person: abu-jafar-al-khalifi
 ---

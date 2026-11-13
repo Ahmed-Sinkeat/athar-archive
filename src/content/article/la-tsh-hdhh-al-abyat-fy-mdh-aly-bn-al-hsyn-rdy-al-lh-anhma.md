@@ -1,6 +1,6 @@
 ---
 title: "لا تصح هذه الأبيات في مدح علي بن الحسين رضي الله عنهما."
-status: draft
+status: published
 published_at: 2020-06-20
 person: abu-jafar-al-khalifi
 ---

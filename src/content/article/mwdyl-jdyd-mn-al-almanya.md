@@ -1,6 +1,6 @@
 ---
 title: "\"موديل\" جديد من العلمانية"
-status: draft
+status: published
 published_at: 2018-03-16
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "أنا لا أختلف مع من يخطئ \"حسام\" في مسلكها العقدي والمنهجي والعسكري."
-status: draft
+status: published
 published_at: 2025-07-31
 person: abu-umair-imran-al-zubaidi
 ---

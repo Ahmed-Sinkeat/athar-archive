@@ -1,6 +1,6 @@
 ---
 title: "المنطقة الشرقية من سوريا خاصة الأرياف مظلومة منذ زمن طويل."
-status: draft
+status: published
 published_at: 2026-01-10
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

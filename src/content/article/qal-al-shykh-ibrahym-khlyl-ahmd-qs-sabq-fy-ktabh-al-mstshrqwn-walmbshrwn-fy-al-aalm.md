@@ -1,6 +1,6 @@
 ---
 title: "قال الشيخ إبراهيم خليل أحمد ( قس سابق ) في كتابه المستشرقون والمبشرون في العالم"
-status: draft
+status: published
 published_at: 2017-06-01
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

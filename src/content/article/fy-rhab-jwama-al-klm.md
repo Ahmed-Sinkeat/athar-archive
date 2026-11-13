@@ -1,6 +1,6 @@
 ---
 title: "في رحاب جوامع الكلم"
-status: draft
+status: published
 published_at: 2019-12-27
 person: abu-jafar-al-khalifi
 ---

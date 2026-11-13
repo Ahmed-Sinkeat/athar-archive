@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية كما في مجموع الفتاوى (20/ 330)"
-status: draft
+status: published
 published_at: 2021-12-13
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

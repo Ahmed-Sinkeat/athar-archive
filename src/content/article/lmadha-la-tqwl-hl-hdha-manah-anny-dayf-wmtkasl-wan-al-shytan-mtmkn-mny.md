@@ -1,6 +1,6 @@
 ---
 title: "لماذا لا تقول: هل هذا معناه أنني ضعيف ومتكاسل، وأنّ الشيطان متمكن مني؟!"
-status: draft
+status: published
 published_at: 2024-01-31
 person: abu-umair-imran-al-zubaidi
 ---

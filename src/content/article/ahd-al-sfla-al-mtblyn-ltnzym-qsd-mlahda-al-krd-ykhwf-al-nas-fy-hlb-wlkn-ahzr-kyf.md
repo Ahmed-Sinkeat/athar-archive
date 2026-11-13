@@ -1,6 +1,6 @@
 ---
 title: "أحد السفلة المطبلين لتنظيم قسد (ملاحدة الكرد) يخوف الناس في حلب، ولكن احزر كيف؟"
-status: draft
+status: published
 published_at: 2024-12-03
 person: abu-umair-imran-al-zubaidi
 ---

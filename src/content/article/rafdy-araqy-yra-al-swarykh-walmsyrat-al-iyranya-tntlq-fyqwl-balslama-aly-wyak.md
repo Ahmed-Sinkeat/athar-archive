@@ -1,6 +1,6 @@
 ---
 title: "رافضي عراقي يرى الصواريخ والمسيرات الإيرانية تنطلق فيقول : بالسلامة، علي وياك."
-status: draft
+status: published
 published_at: 2026-02-28
 person: abu-umair-imran-al-zubaidi
 ---

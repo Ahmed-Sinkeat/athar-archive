@@ -1,6 +1,6 @@
 ---
 title: "يتعجلون حب النبي ﷺ ولا يتأجلونه!"
-status: draft
+status: published
 published_at: 2026-08-21
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

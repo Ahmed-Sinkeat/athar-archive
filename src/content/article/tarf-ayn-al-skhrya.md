@@ -1,6 +1,6 @@
 ---
 title: "تعرف أين السخرية؟"
-status: draft
+status: published
 published_at: 2022-12-10
 person: abu-jafar-al-khalifi
 ---

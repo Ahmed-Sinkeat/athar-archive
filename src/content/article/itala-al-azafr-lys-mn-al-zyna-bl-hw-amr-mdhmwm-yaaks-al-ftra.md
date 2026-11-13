@@ -1,6 +1,6 @@
 ---
 title: "إطالة الأظافر ليس مِن الزينة؛ بل هو أمرٌ مذموم يُعاكس الفِطرة."
-status: draft
+status: published
 published_at: 2022-12-24
 person: abu-umair-imran-al-zubaidi
 ---

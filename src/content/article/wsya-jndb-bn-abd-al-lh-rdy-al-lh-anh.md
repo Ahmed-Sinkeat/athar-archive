@@ -1,6 +1,6 @@
 ---
 title: "وصية جندب بن عبد الله رضي الله عنه"
-status: draft
+status: published
 published_at: 2026-03-09
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الناس تتعامل مع المعركة على أنها لعبة بوبجي!"
-status: draft
+status: published
 published_at: 2026-01-08
 person: abu-umair-imran-al-zubaidi
 ---

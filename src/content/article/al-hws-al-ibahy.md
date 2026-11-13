@@ -1,6 +1,6 @@
 ---
 title: "الهوس الإباحي.."
-status: draft
+status: published
 published_at: 2021-02-21
 person: abu-jafar-al-khalifi
 ---

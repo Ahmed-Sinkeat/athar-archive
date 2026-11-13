@@ -1,6 +1,6 @@
 ---
 title: "باب في فضل سورة الكافرون"
-status: draft
+status: published
 published_at: 2025-06-10
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

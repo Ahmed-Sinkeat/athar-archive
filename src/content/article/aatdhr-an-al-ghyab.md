@@ -1,6 +1,6 @@
 ---
 title: "أعتذر عن الغياب"
-status: draft
+status: published
 published_at: 2023-07-23
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

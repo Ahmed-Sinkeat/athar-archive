@@ -1,6 +1,6 @@
 ---
 title: "قال مسلم 5408- [171"
-status: draft
+status: published
 published_at: 2017-08-03
 person: abu-jafar-al-khalifi
 ---

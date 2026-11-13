@@ -1,6 +1,6 @@
 ---
 title: "لا زلت أذكر حين جاء أحد تلاميذ سيد القمني ووضع دراسة حول جودة التعليم في العالم"
-status: draft
+status: published
 published_at: 2018-08-27
 person: abu-jafar-al-khalifi
 ---

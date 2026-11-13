@@ -1,6 +1,6 @@
 ---
 title: "في الحقيقة هذه منقبة عظيمة للشيخ الخليفي حفظه الله وتلاميذه؛ بل هي خصلة حميدة لا"
-status: draft
+status: published
 published_at: 2024-04-12
 person: abu-umair-imran-al-zubaidi
 topics: ["al-wala-wal-bara"]

@@ -1,6 +1,6 @@
 ---
 title: "ماذا لو كان كلامه صحيحًا؟"
-status: draft
+status: published
 published_at: 2021-10-26
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

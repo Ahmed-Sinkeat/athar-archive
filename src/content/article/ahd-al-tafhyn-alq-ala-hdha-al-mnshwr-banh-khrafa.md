@@ -1,6 +1,6 @@
 ---
 title: "أحد التافهين علق على هذا المنشور بأنه خرافة."
-status: draft
+status: published
 published_at: 2024-02-14
 person: abu-umair-imran-al-zubaidi
 ---

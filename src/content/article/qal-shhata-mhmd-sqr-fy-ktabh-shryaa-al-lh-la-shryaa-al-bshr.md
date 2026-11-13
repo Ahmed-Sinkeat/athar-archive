@@ -1,6 +1,6 @@
 ---
 title: "قال شحاتة محمد صقر في كتابه شريعة الله لا شريعة البشر"
-status: draft
+status: published
 published_at: 2017-07-04
 person: abu-jafar-al-khalifi
 ---

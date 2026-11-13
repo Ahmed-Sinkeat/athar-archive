@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال مكتوب قبل عدة سنوات عن أن الجانب المظلم من اليوتيوب قد يؤثر على صحة ابن"
-status: draft
+status: published
 published_at: 2023-06-04
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أدري بأنّ ما سأقوله مجرد كلام لن يتحقق وأمنية فارغة"
-status: draft
+status: published
 published_at: 2023-10-14
 person: abu-umair-imran-al-zubaidi
 ---

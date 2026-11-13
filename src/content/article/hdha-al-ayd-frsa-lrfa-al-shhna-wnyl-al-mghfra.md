@@ -1,6 +1,6 @@
 ---
 title: "هذا العيد فرصة لرفع الشحناء ونيل المغفرة ..."
-status: draft
+status: published
 published_at: 2021-05-13
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

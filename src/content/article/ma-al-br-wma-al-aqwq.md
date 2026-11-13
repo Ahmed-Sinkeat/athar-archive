@@ -1,6 +1,6 @@
 ---
 title: "ما البر وما العقوق؟"
-status: draft
+status: published
 published_at: 2024-04-27
 person: abu-abdillah-firas-al-ramli
 ---

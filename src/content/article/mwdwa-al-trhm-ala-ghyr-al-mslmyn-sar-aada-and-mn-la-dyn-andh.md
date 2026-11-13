@@ -1,6 +1,6 @@
 ---
 title: "موضوع الترحم على غير المسلمين صار عادة عند من لا دين عنده."
-status: draft
+status: published
 published_at: 2025-08-21
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "حفظ كرامة المؤمن من حفظ الشرع (وإذا سألت فاسأل الصالحين)."
-status: draft
+status: published
 published_at: 2023-01-16
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah", "adab-talab-al-ilm"]

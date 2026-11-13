@@ -1,6 +1,6 @@
 ---
-title: "الدولة الأكثر سخاء في العالم [(علاقة السخاء بالإيمان)](https"
-status: draft
+title: "الدولة الأكثر سخاء في العالم (علاقة السخاء بالإيمان)"
+status: published
 published_at: 2023-07-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

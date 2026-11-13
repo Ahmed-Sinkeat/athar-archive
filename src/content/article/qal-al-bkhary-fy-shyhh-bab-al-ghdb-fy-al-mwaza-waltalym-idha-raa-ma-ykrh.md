@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري في صحيحه: باب الغضب في الموعظة والتعليم إذا رأى ما يكره"
-status: draft
+status: published
 published_at: 2026-02-07
 person: abu-abdillah-firas-al-ramli
 ---

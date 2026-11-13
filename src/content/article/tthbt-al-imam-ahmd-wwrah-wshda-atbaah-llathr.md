@@ -1,6 +1,6 @@
 ---
 title: "تثبت الإمام أحمد وورعه وشدة اتباعه للأثر"
-status: draft
+status: published
 published_at: 2024-05-01
 person: abu-abdillah-firas-al-ramli
 ---

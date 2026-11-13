@@ -1,6 +1,6 @@
 ---
 title: "كان مما أهمني زمناً أن أجد مادة في التفسير ليست طويلة وتكون أثرية"
-status: draft
+status: published
 published_at: 2025-05-30
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "adab-talab-al-ilm"]

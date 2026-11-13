@@ -1,6 +1,6 @@
 ---
 title: "فائدة فيما ينبغي أن يقال لمن تكلم بالكفر..."
-status: draft
+status: published
 published_at: 2021-12-27
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

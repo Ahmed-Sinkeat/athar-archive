@@ -1,6 +1,6 @@
 ---
 title: "ليس الإحسان أن ..."
-status: draft
+status: published
 published_at: 2023-08-31
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "الجهاد مثله مثل أي عبادة فرضها الله سبحانه وتعالى كالصلاة والصيام والزكاة والحج؛"
-status: draft
+status: published
 published_at: 2024-10-19
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

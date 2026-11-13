@@ -1,6 +1,6 @@
 ---
 title: "هنا لا يتذكرون بطون الجوعى"
-status: draft
+status: published
 published_at: 2021-10-27
 person: abu-jafar-al-khalifi
 ---

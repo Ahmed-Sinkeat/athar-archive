@@ -1,6 +1,6 @@
 ---
 title: "مثل هذا الموقف يشكر"
-status: draft
+status: published
 published_at: 2026-01-11
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

@@ -1,6 +1,6 @@
 ---
 title: "العبرة ليست في عدد المرات التي ذُكر فيها استواء الله تبارك وتعالى على العرش"
-status: draft
+status: published
 published_at: 2025-09-07
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

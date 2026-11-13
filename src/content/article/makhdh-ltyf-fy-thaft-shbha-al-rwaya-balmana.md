@@ -1,6 +1,6 @@
 ---
 title: "مأخذ لطيف في تهافت شبهة الرواية بالمعنى"
-status: draft
+status: published
 published_at: 2020-08-12
 person: abu-jafar-al-khalifi
 ---

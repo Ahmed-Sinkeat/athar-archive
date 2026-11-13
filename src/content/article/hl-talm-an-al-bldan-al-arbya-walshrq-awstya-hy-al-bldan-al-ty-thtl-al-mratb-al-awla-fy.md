@@ -1,6 +1,6 @@
 ---
 title: "هل تعلم أن البلدان العربية والشرق اوسطية هي البلدان التي تحتل المراتب الأولى في"
-status: draft
+status: published
 published_at: 2020-07-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

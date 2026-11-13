@@ -1,6 +1,6 @@
 ---
 title: "هذه المواد يا إخوة هي ما بين يدي في مسألة الحاكمية وبيان منهج الخوارج والرد على"
-status: draft
+status: published
 published_at: 2023-12-26
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "ادع الله يوم سرائك لعله يستجيب لك يوم ضرائك"
-status: draft
+status: published
 published_at: 2024-08-02
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

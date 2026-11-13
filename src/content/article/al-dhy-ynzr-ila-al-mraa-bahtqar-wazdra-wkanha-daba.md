@@ -1,6 +1,6 @@
 ---
 title: "الذي ينظر إلى المرأة باحتقار وازدراء وكأنها دابة"
-status: draft
+status: published
 published_at: 2024-06-14
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "لو كنت سيافاً وجئت لتقطع رأس إنسان حتى إذا جئت لتضربه حرك رأسه بحيث لا يصيبه الس"
-status: draft
+status: published
 published_at: 2018-04-12
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

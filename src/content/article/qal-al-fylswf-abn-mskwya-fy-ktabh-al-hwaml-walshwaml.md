@@ -1,6 +1,6 @@
 ---
 title: "قال الفيلسوف ابن مسكوية في كتابه الهوامل والشوامل"
-status: draft
+status: published
 published_at: 2018-05-02
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "مدرسة ابتدائية للبنات كرَّمت الفتيات المحجبات."
-status: draft
+status: published
 published_at: 2023-05-04
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

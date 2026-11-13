@@ -1,6 +1,6 @@
 ---
 title: "كانوا لا يجاهلون أهل الجهل"
-status: draft
+status: published
 published_at: 2026-04-24
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

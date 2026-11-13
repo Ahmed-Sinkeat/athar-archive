@@ -1,6 +1,6 @@
 ---
 title: "أي خذلان وخزي وعار يوصل المرء إلى تبرير التعطيل والشرك من أجل بضعة زنادقة ركبوا"
-status: draft
+status: published
 published_at: 2024-08-24
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "شتّان بين من يتكلّم وهو في عافية وبين من يتكلّم وهو في رحم البلاء!."
-status: draft
+status: published
 published_at: 2023-02-11
 person: abu-umair-imran-al-zubaidi
 ---

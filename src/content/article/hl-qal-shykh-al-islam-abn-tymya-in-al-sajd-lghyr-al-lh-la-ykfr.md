@@ -1,6 +1,6 @@
 ---
 title: "هل قال شيخ الإسلام ابن تيمية إن الساجد لغير الله لا يكفر؟"
-status: draft
+status: published
 published_at: 2024-11-22
 person: abu-jafar-al-khalifi
 ---

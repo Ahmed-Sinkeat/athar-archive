@@ -1,6 +1,6 @@
 ---
 title: "\"فقه الواقع\""
-status: draft
+status: published
 published_at: 2025-02-23
 person: abu-umair-imran-al-zubaidi
 ---

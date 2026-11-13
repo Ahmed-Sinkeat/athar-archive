@@ -1,6 +1,6 @@
 ---
 title: "وفي الأوسط لابن المنذر 6631 - أخبرنا حاتم بن ميمون"
-status: draft
+status: published
 published_at: 2020-10-23
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

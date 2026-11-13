@@ -1,6 +1,6 @@
 ---
 title: "حدثنا أبو خيثمة"
-status: draft
+status: published
 published_at: 2023-05-29
 person: abu-umair-imran-al-zubaidi
 ---

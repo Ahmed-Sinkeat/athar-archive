@@ -1,6 +1,6 @@
 ---
 title: "{ولقد أرسلنا نوحا إلى قومه فلبث فيهم ألف سنة إلا خمسين عاما فأخذهم الطوفان وهم ظ"
-status: draft
+status: published
 published_at: 2025-12-04
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

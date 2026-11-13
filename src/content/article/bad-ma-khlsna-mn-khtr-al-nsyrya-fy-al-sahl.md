@@ -1,6 +1,6 @@
 ---
 title: "بعد ما خلصنا من خطر النصيرية في الساحل"
-status: draft
+status: published
 published_at: 2026-01-19
 person: abu-umair-imran-al-zubaidi
 ---

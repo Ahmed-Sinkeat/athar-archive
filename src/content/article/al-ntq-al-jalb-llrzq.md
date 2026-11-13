@@ -1,6 +1,6 @@
 ---
 title: "النطق الجالب للرزق..."
-status: draft
+status: published
 published_at: 2025-08-09
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

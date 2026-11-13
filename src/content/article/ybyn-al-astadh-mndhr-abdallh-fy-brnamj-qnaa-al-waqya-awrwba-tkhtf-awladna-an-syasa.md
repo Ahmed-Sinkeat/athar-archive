@@ -1,6 +1,6 @@
 ---
 title: "يبين الأستاذ منذر عبدالله في برنامج قناة الواقية (أوروبا تخطف أولادنا) أن سياسة"
-status: draft
+status: published
 published_at: 2022-02-11
 person: abu-jafar-al-khalifi
 ---

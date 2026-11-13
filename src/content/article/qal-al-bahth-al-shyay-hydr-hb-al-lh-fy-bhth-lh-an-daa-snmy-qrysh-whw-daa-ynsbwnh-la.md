@@ -1,6 +1,6 @@
 ---
 title: "قال الباحث الشيعي حيدر حب الله في بحث له عن دعاء صنمي قريش ( وهو دعاء ينسبونه لع"
-status: draft
+status: published
 published_at: 2019-06-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

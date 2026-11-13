@@ -1,6 +1,6 @@
 ---
 title: "والخلاف ليس بين فرقتين معلوم تباينهما كأهل الحديث والأشعرية مثلا؛ بل بين فرقتين"
-status: draft
+status: published
 published_at: 2026-07-28
 person: abu-umair-imran-al-zubaidi
 ---

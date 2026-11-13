@@ -1,6 +1,6 @@
 ---
 title: "على سيرة ما سيُسجله التاريخ -سلبًا أو إيجابًا- عن هذا الجيل من الأمة"
-status: draft
+status: published
 published_at: 2023-10-15
 person: abu-umair-imran-al-zubaidi
 ---

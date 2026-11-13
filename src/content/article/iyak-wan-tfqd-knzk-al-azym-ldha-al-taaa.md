@@ -1,6 +1,6 @@
 ---
 title: "إياك وأن تفقد كنزك العظيم ( لذة الطاعة )"
-status: draft
+status: published
 published_at: 2020-06-22
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

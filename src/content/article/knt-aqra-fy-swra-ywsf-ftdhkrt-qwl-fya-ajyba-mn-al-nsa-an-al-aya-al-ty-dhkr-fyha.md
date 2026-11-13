@@ -1,6 +1,6 @@
 ---
 title: "كنت أقرأ في سورة يوسف فتذكرت قول فئة عجيبة من النساء أنّ الآية التي ذكر فيها"
-status: draft
+status: published
 published_at: 2025-08-01
 person: abu-umair-imran-al-zubaidi
 ---

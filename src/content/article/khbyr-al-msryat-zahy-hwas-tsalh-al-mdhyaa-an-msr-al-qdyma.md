@@ -1,6 +1,6 @@
 ---
 title: "خبير المصريات زاهي حواس تسأله المذيعة عن مصر القديمة"
-status: draft
+status: published
 published_at: 2025-11-12
 person: abu-jafar-al-khalifi
 ---

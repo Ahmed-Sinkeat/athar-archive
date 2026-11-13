@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري بَاب الدَّلِيلِ عَلَى أَنَّ الْخُمُسَ لِنَوَائِبِ رَسُولِ اللَّهِ صَ"
-status: draft
+status: published
 published_at: 2017-06-26
 person: abu-jafar-al-khalifi
 ---

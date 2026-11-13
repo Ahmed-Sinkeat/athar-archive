@@ -1,6 +1,6 @@
 ---
 title: "أبياتٌ قد كتبها وأنشدها أحد المجاهدين في وداع والدته"
-status: draft
+status: published
 published_at: 2022-08-15
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

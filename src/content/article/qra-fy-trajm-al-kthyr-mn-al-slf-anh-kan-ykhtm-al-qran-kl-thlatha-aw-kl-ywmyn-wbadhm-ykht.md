@@ -1,6 +1,6 @@
 ---
 title: "قرأ في تراجم الكثير من السلف أنه كان يختم القرآن كل ثلاثة أو كل يومين وبعضهم يخت"
-status: draft
+status: published
 published_at: 2017-06-21
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "على سيرة اقتراب انطلاق كأس العالم."
-status: draft
+status: published
 published_at: 2026-06-03
 person: abu-umair-imran-al-zubaidi
 ---

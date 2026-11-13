@@ -1,6 +1,6 @@
 ---
 title: "وقد عاش عمرو بن دينار طويلاً وكان يحمل إلى المسجد حملاً ولا يتخلف عن الجماعة قال"
-status: draft
+status: published
 published_at: 2019-11-18
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

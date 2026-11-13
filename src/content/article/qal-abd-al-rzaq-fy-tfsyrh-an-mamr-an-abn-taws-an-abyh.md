@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الرزاق في تفسيره 2960 - عَنْ مَعْمَرٍ , عَنِ ابْنِ طَاوُسٍ , عَنْ أَبِيه"
-status: draft
+status: published
 published_at: 2018-02-13
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

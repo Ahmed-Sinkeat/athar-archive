@@ -1,6 +1,6 @@
 ---
 title: "ذلك الفرض علي وعلى من سمعه"
-status: draft
+status: published
 published_at: 2026-06-09
 person: abu-abdillah-firas-al-ramli
 ---

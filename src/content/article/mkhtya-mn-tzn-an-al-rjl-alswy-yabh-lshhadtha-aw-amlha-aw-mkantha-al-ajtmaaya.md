@@ -1,6 +1,6 @@
 ---
 title: "مخطئة من تظن أنّ الرجل [السوي] يأبه لشهادتها أو عملها أو مكانتها الاجتماعية!"
-status: draft
+status: published
 published_at: 2023-09-03
 person: abu-umair-imran-al-zubaidi
 ---

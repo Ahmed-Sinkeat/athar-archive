@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي الدنيا في صفة الجنة (٥٦)"
-status: draft
+status: published
 published_at: 2023-11-08
 person: abu-abdillah-firas-al-ramli
 ---

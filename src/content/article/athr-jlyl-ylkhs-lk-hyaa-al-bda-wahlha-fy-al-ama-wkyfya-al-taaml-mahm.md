@@ -1,6 +1,6 @@
 ---
 title: "أثر جليل يلخص لك حياة البدع وأهلها في الأمة وكيفية التعامل معهم"
-status: draft
+status: published
 published_at: 2023-06-29
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-sunnah-wal-bidah"]

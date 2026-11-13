@@ -1,6 +1,6 @@
 ---
 title: "ما الذي أبكى الحسن البصري في سورة يوسف عليه الصلاة والسلام؟"
-status: draft
+status: published
 published_at: 2025-03-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "tazkiyat-al-nafs"]

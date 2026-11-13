@@ -1,6 +1,6 @@
 ---
 title: "علق أحدهم على المنشور قائلا"
-status: draft
+status: published
 published_at: 2023-12-28
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

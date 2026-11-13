@@ -1,6 +1,6 @@
 ---
 title: "قال الطرطوشي في البدع والمحدثات"
-status: draft
+status: published
 published_at: 2022-03-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

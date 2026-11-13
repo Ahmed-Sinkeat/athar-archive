@@ -1,6 +1,6 @@
 ---
 title: "هم الجلساء لا يشقى بهم جليسهم"
-status: draft
+status: published
 published_at: 2024-12-06
 person: abu-abdillah-firas-al-ramli
 ---

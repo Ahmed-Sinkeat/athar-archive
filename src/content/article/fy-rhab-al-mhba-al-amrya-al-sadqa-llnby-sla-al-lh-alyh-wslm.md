@@ -1,6 +1,6 @@
 ---
 title: "في رحاب المحبة العمرية الصادقة للنبي صلى الله عليه وسلم"
-status: draft
+status: published
 published_at: 2020-10-28
 person: abu-jafar-al-khalifi
 ---

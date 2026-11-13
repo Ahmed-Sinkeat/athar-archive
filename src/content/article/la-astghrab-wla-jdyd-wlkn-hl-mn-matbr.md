@@ -1,6 +1,6 @@
 ---
 title: "لا استغراب ولا جديد ولكن هل من معتبر؟"
-status: draft
+status: published
 published_at: 2020-08-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

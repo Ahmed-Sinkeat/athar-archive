@@ -1,6 +1,6 @@
 ---
 title: "هذه الدراسة رأيتها تجول موقع إكس وهي من حساب (Shining Science)."
-status: draft
+status: published
 published_at: 2026-01-22
 person: abu-jafar-al-khalifi
 ---

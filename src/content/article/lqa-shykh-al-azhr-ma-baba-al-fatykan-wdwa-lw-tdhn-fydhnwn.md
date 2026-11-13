@@ -1,6 +1,6 @@
 ---
 title: "لقاء شيخ الأزهر مع بابا الفاتيكان ( ودوا لو تدهن فيدهنون )."
-status: draft
+status: published
 published_at: 2019-02-05
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

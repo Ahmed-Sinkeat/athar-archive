@@ -1,6 +1,6 @@
 ---
 title: "هذا كله تعليق على حادثة امرأة تزوجت رجلين في آن واحد، وقيل أنها خرجت بكفالة."
-status: draft
+status: published
 published_at: 2026-06-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "دليل جديد على براءة ابن الماجشون من إباحة المعازف."
-status: draft
+status: published
 published_at: 2020-12-29
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

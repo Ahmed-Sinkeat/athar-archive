@@ -1,6 +1,6 @@
 ---
 title: "لَا يَغُرَّنَّكَ تَقَلُّبُ الَّذِينَ كَفَرُوا فِي الْبِلَادِ (196) مَتَاعٌ قَلِي"
-status: draft
+status: published
 published_at: 2023-03-15
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

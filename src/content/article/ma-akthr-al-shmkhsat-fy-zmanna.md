@@ -1,6 +1,6 @@
 ---
 title: "ما أكثر الشمخصات في زماننا!"
-status: draft
+status: published
 published_at: 2025-09-07
 person: abu-abdillah-firas-al-ramli
 ---

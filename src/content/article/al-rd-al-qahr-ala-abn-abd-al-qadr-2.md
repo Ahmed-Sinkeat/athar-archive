@@ -1,6 +1,6 @@
 ---
 title: "الرد القاهر على ابن عبد القادر (٢)"
-status: draft
+status: published
 published_at: 2024-05-28
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-sunnah-wal-bidah"]

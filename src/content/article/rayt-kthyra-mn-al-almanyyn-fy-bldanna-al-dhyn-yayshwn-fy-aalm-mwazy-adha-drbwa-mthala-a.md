@@ -1,6 +1,6 @@
 ---
 title: "رأيت كثيرا من العلمانيين في بلداننا الذين يعيشون في عالم موازي اذا ضربوا مثالا ع"
-status: draft
+status: published
 published_at: 2018-05-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

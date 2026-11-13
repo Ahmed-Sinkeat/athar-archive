@@ -1,6 +1,6 @@
 ---
 title: "يبقى/تبقى طوال عُمره يُنادي بالتعرّي ويطالب به"
-status: draft
+status: published
 published_at: 2022-08-18
 person: abu-umair-imran-al-zubaidi
 ---

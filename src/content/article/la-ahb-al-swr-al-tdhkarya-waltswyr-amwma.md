@@ -1,6 +1,6 @@
 ---
 title: "لا أحب الصور التذكارية والتصوير عمومًا."
-status: draft
+status: published
 published_at: 2024-06-10
 person: abu-umair-imran-al-zubaidi
 ---

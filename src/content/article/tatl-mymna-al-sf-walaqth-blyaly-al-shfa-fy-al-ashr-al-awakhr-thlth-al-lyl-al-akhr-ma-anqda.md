@@ -1,6 +1,6 @@
 ---
 title: "تعطل ميمنة الصف وعلاقته بليالي الشفع في العشر الأواخر (ثلث الليل الآخر ما انقضى"
-status: draft
+status: published
 published_at: 2025-03-22
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

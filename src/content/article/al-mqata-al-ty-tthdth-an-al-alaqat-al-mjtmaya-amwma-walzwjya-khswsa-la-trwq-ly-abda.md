@@ -1,6 +1,6 @@
 ---
 title: "المقاطع التي تتحدث عن العلاقات المجتمعية عمومًا والزوجية خصوصًا لا تروق لي أبدًا"
-status: draft
+status: published
 published_at: 2023-05-28
 person: abu-umair-imran-al-zubaidi
 ---

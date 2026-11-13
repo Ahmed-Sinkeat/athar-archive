@@ -1,6 +1,6 @@
 ---
 title: "ويقول الشيخ كما في الفتاوى الكبرى (4/194)"
-status: draft
+status: published
 published_at: 2021-04-02
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "كثيرون يعرفون أن الإسلام وصل لأندونيسيا عن طريق التجار"
-status: draft
+status: published
 published_at: 2018-01-07
 person: abu-jafar-al-khalifi
 ---

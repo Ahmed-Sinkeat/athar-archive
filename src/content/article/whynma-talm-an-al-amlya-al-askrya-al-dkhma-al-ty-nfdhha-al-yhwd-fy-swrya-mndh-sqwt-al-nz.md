@@ -1,6 +1,6 @@
 ---
 title: "وحينما تعلم أنّ العملية العسكرية الضخمة التي نفذها اليهود في سوريا منذ سقوط النظ"
-status: draft
+status: published
 published_at: 2024-12-16
 person: abu-umair-imran-al-zubaidi
 ---

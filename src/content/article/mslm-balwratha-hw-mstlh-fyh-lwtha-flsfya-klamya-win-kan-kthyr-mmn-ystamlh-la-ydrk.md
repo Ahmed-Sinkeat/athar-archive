@@ -1,6 +1,6 @@
 ---
 title: "\"مسلم بالوراثة\" هو مصطلح فيه لوثة فلسفية كلامية وإن كان كثير ممن يستعمله لا يدرك"
-status: draft
+status: published
 published_at: 2025-01-26
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

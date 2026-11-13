@@ -1,6 +1,6 @@
 ---
 title: "إبطال عقيدة الإمامة عند الرافضة من آية جزاء الصيد"
-status: draft
+status: published
 published_at: 2023-04-23
 person: abu-jafar-al-khalifi
 ---

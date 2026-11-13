@@ -1,6 +1,6 @@
 ---
 title: "أقسم بالله لو كان لي سلطان لأمسكت كل تافه وتافهة قليلة عقل ودين وحياء وأوجعتهم ض"
-status: draft
+status: published
 published_at: 2024-05-23
 person: abu-umair-imran-al-zubaidi
 topics: ["al-imamah-was-sahabah"]

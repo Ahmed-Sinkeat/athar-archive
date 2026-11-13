@@ -1,6 +1,6 @@
 ---
 title: "الثالث: الاستدلال بالإجماع موجود في طبقة التابعين قبل طبقة أبي حنيفة ونظرائه!"
-status: draft
+status: published
 published_at: 2021-07-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

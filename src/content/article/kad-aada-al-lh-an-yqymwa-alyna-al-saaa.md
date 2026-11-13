@@ -1,6 +1,6 @@
 ---
 title: "كاد أعداء الله أن يقيموا علينا الساعة"
-status: draft
+status: published
 published_at: 2025-12-18
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

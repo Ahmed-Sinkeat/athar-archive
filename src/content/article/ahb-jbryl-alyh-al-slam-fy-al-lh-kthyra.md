@@ -1,6 +1,6 @@
 ---
 title: "أحب جبريل عليه السلام في الله كثيرا."
-status: draft
+status: published
 published_at: 2025-08-22
 person: abu-umair-imran-al-zubaidi
 ---

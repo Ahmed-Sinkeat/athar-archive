@@ -1,6 +1,6 @@
 ---
 title: "إليكم هذه المقالة من كاتبة نسوية سويدية اسمها يولا لانديقارد Ulla Lundegard تداف"
-status: draft
+status: published
 published_at: 2019-07-22
 person: abu-jafar-al-khalifi
 ---

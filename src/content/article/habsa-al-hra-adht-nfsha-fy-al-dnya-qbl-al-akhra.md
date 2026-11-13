@@ -1,6 +1,6 @@
 ---
 title: "حابسة الهرة آذت نفسها في الدنيا قبل الآخرة!"
-status: draft
+status: published
 published_at: 2026-08-11
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

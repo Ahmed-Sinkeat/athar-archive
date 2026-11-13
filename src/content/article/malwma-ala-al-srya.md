@@ -1,6 +1,6 @@
 ---
 title: "معلومة على السريع"
-status: draft
+status: published
 published_at: 2024-03-17
 person: abu-umair-imran-al-zubaidi
 ---

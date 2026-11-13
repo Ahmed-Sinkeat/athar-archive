@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال لجيمس كلير كاتب أمريكي معروف بكتابه «العادات الذرية"
-status: draft
+status: published
 published_at: 2025-11-11
 person: abu-jafar-al-khalifi
 ---

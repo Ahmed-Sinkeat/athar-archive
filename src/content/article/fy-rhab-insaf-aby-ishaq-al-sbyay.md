@@ -1,6 +1,6 @@
 ---
 title: "في رحاب إنصاف أبي إسحاق السبيعي"
-status: draft
+status: published
 published_at: 2020-04-05
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

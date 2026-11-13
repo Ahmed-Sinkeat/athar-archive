@@ -1,6 +1,6 @@
 ---
 title: "احذر أن تكون من وفدِ الشيطان..."
-status: draft
+status: published
 published_at: 2024-09-13
 person: abu-jafar-al-khalifi
 ---

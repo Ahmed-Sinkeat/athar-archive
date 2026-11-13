@@ -1,6 +1,6 @@
 ---
 title: "تقول دراسة جديدة نشرت قبل شهر تقريبا أن الكحول يقتل عددًا أكبر من الأشخاص على مس"
-status: draft
+status: published
 published_at: 2018-09-19
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "جاء في ترجمة أبي منصور الخياط الحنبلي في ذيل طبقات الحنابلة"
-status: draft
+status: published
 published_at: 2017-06-13
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وُضع في مصر قانون لتنظيم الفتوى، وضعه الأزهر."
-status: draft
+status: published
 published_at: 2025-06-11
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

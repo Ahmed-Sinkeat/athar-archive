@@ -1,6 +1,6 @@
 ---
 title: "لا أود التعليق على كلامها تفصيلًا"
-status: draft
+status: published
 published_at: 2024-06-13
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من جرائم دولة الاحتلال الصهيوني المنسية"
-status: draft
+status: published
 published_at: 2023-12-19
 person: abu-jafar-al-khalifi
 ---

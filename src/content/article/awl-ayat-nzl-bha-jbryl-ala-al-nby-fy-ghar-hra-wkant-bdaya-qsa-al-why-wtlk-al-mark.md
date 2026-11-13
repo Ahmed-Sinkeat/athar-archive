@@ -1,6 +1,6 @@
 ---
 title: "أول آيات نزل بها جبريل على النبي ﷺ في غار حراء وكانت بداية قصة الوحي وتلك المعرك"
-status: draft
+status: published
 published_at: 2019-09-25
 person: abu-jafar-al-khalifi
 ---

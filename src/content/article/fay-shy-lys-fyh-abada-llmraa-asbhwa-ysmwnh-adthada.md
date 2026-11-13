@@ -1,6 +1,6 @@
 ---
 title: "\"فأي شيء ليس فيه عبادة للمرأة أصبحوا يسمونه اضطهادًا\"!"
-status: draft
+status: published
 published_at: 2023-01-28
 person: abu-jafar-al-khalifi
 ---

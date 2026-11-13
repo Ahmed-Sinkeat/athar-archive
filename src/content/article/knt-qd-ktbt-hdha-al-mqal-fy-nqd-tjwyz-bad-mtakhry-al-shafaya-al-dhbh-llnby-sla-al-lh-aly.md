@@ -1,6 +1,6 @@
 ---
 title: "كنت قد كتبت هذا المقال في نقد تجويز بعض متأخري الشافعية الذبح للنبي صلى الله علي"
-status: draft
+status: published
 published_at: 2020-02-07
 person: abu-jafar-al-khalifi
 ---

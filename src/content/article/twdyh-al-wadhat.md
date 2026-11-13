@@ -1,6 +1,6 @@
 ---
 title: "توضيح الواضحات"
-status: draft
+status: published
 published_at: 2024-10-19
 person: abu-umair-imran-al-zubaidi
 ---

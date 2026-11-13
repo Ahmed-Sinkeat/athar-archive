@@ -1,6 +1,6 @@
 ---
 title: "ادْعُوا رَبَّكُمْ تَضَرُّعًا وَخُفْيَةً ۚ إِنَّهُ لَا يُحِبُّ الْمُعْتَدِينَ (55"
-status: draft
+status: published
 published_at: 2023-04-03
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

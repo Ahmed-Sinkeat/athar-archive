@@ -1,6 +1,6 @@
 ---
 title: "وَلَن تزالوا في البهيميَّة!"
-status: draft
+status: published
 published_at: 2020-09-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

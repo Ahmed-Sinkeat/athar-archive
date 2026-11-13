@@ -1,6 +1,6 @@
 ---
 title: "حماد بن أبي سليمان بداية حل اللغز.."
-status: draft
+status: published
 published_at: 2021-12-13
 person: abu-jafar-al-khalifi
 topics: ["al-iman", "al-sunnah-wal-bidah"]

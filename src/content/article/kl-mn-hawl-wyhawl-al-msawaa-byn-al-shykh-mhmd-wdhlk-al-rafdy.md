@@ -1,6 +1,6 @@
 ---
 title: "كل من حاول ويحاول المساواة بين الشيخ محمد وذلك الرافضي"
-status: draft
+status: published
 published_at: 2024-06-18
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-iman"]

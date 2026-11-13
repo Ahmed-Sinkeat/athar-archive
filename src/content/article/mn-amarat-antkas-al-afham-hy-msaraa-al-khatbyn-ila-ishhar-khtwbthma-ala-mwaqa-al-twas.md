@@ -1,6 +1,6 @@
 ---
 title: "من أمارات انتكاس الأفهام؛ هي مسارعة الخاطبين إلى إشهار خطوبتهما على مواقع التواص"
-status: draft
+status: published
 published_at: 2022-08-19
 person: abu-umair-imran-al-zubaidi
 ---

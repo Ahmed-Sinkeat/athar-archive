@@ -1,6 +1,6 @@
 ---
 title: "من دقيق فقه أهل الحديث: استدلال الإمام البخاري العجيب الذي فات ابن قدامة."
-status: draft
+status: published
 published_at: 2026-10-17
 person: abu-jafar-al-khalifi
 ---

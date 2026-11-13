@@ -1,6 +1,6 @@
 ---
 title: "هذا رجل فرنسي يعارض كون المرأة قاضية"
-status: draft
+status: published
 published_at: 2026-06-10
 person: abu-jafar-al-khalifi
 ---

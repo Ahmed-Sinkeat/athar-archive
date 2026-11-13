@@ -1,6 +1,6 @@
 ---
 title: "أهرب من متابعة الأخبار بشتى الطرق -دون فائدة- حتى لا يقتلني القهر من العجز عن فع"
-status: draft
+status: published
 published_at: 2024-03-01
 person: abu-umair-imran-al-zubaidi
 ---

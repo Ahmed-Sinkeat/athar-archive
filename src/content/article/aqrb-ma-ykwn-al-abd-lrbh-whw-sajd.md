@@ -1,6 +1,6 @@
 ---
 title: "أقرب ما يكون العبد لربه وهو ساجد"
-status: draft
+status: published
 published_at: 2024-04-10
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

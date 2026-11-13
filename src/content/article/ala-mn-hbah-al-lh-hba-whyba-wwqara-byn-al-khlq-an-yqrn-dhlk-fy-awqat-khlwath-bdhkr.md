@@ -1,6 +1,6 @@
 ---
 title: "على مَن حباه الله حباً وهيبة ووقاراً بين الخلق أن يقرِن ذلك في أوقات خلواته بذكر"
-status: draft
+status: published
 published_at: 2026-11-07
 person: awwab-bin-muhammad
 ---

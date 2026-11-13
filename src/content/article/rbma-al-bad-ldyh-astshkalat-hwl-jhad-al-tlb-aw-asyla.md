@@ -1,6 +1,6 @@
 ---
 title: "ربما البعض لديه استشكالات حول جهاد الطلب أو أسئلة"
-status: draft
+status: published
 published_at: 2023-12-13
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وإذا كانت امرأة قد دخلت النار في هرّةٍ حبسَتْها حتى ماتت جوعًا وعطشًا"
-status: draft
+status: published
 published_at: 2023-05-18
 person: abu-umair-imran-al-zubaidi
 ---

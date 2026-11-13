@@ -1,6 +1,6 @@
 ---
 title: "فهم وإن خالفوهم بالتكفير وقالوا لهم يلزم من هذا تكفير عموم عوام المسلمين فالواجب"
-status: draft
+status: published
 published_at: 2021-04-03
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

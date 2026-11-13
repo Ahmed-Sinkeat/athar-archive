@@ -1,6 +1,6 @@
 ---
 title: "قال الآجري في الشريعة 1844 - حدثنا الفريابي قال"
-status: draft
+status: published
 published_at: 2017-10-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

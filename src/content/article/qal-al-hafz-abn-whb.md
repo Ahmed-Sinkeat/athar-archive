@@ -1,6 +1,6 @@
 ---
 title: "قال الحافظ ابن وهب"
-status: draft
+status: published
 published_at: 2018-02-15
 person: abu-jafar-al-khalifi
 ---

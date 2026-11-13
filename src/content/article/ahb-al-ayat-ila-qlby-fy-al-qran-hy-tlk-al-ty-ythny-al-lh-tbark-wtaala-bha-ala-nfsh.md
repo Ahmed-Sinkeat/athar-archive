@@ -1,6 +1,6 @@
 ---
 title: "أحبُّ الآيات إلى قلبي في القرآن هي تلك التي يُثني الله تبارك وتعالى بها على نفسه"
-status: draft
+status: published
 published_at: 2023-05-15
 person: abu-umair-imran-al-zubaidi
 ---

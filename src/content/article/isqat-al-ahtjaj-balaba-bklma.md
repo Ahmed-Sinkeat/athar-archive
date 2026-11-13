@@ -1,6 +1,6 @@
 ---
 title: "إسقاط الاحتجاج بالآباء بكلمة"
-status: draft
+status: published
 published_at: 2020-05-25
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

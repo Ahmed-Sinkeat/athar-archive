@@ -1,6 +1,6 @@
 ---
 title: "مِن عجائب المُعرضين عن الزواج دون عِلاقة تعارف وحُب (عِلاقة مُحرّمة) قولهم"
-status: draft
+status: published
 published_at: 2023-02-17
 person: abu-umair-imran-al-zubaidi
 ---

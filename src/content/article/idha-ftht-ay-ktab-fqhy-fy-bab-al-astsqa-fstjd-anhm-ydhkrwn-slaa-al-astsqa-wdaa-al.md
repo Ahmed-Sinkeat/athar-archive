@@ -1,6 +1,6 @@
 ---
 title: "إذا فتحت أي كتاب فقهي في باب الاستسقاء فستجد أنهم يذكرون صلاة الاستسقاء ودعاء ال"
-status: draft
+status: published
 published_at: 2018-01-18
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

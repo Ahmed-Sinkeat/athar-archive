@@ -1,6 +1,6 @@
 ---
 title: "يا رب صبّرني واحفظ لي لساني عن قول كلامٍ قاسٍ في حق من يفتي بمثل هذا الفساد!."
-status: draft
+status: published
 published_at: 2023-05-01
 person: abu-umair-imran-al-zubaidi
 ---

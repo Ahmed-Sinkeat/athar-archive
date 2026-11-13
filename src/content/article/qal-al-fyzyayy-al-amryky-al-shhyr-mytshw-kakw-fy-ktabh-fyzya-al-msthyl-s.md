@@ -1,6 +1,6 @@
 ---
 title: "قال الفيزيائي الأمريكي الشهير ميتشو كاكو في كتابه فيزياء المستحيل ص96"
-status: draft
+status: published
 published_at: 2017-10-11
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا ما كتبه محمد إلهامي في مقتل سليماني والمهندس"
-status: draft
+status: published
 published_at: 2024-09-29
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

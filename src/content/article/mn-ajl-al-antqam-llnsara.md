@@ -1,6 +1,6 @@
 ---
 title: "من أجل الانتقام للنصارى"
-status: draft
+status: published
 published_at: 2026-10-26
 person: abu-umair-imran-al-zubaidi
 ---

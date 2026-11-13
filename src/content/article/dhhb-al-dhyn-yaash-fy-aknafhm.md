@@ -1,6 +1,6 @@
 ---
 title: "ذهب الذين يعاش في أكنافهم"
-status: draft
+status: published
 published_at: 2025-09-27
 person: abu-abdillah-firas-al-ramli
 ---

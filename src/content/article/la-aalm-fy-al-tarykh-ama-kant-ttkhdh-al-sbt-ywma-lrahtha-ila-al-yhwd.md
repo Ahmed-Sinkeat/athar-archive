@@ -1,6 +1,6 @@
 ---
 title: "لا أعلم في التاريخ أمة كانت تتخذ السبت يوما لراحتها إلا اليهود."
-status: draft
+status: published
 published_at: 2018-12-08
 person: abu-jafar-al-khalifi
 ---

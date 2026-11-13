@@ -1,6 +1,6 @@
 ---
 title: "\"أنا أحبه/أحبها، ولن أتزوج غيره/غيرها\"."
-status: draft
+status: published
 published_at: 2024-06-03
 person: abu-umair-imran-al-zubaidi
 ---

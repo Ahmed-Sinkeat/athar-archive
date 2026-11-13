@@ -1,6 +1,6 @@
 ---
 title: "رأيت كلامًا لأحد الجُهال يقول فيه"
-status: draft
+status: published
 published_at: 2023-12-03
 person: abu-umair-imran-al-zubaidi
 ---

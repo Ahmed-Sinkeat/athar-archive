@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري في خلق أفعال العباد"
-status: draft
+status: published
 published_at: 2023-06-23
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

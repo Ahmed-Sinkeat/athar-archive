@@ -1,6 +1,6 @@
 ---
 title: "هذا شخص في موقع (Quora) الأجنبي المشهور"
-status: draft
+status: published
 published_at: 2025-04-17
 person: abu-jafar-al-khalifi
 ---

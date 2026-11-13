@@ -1,6 +1,6 @@
 ---
 title: "ينشر عن العمل والأسلحة قبل يومين كاملين من تنفيذ الهجوم ومع ذلك لا يخضع لأي مراق"
-status: draft
+status: published
 published_at: 2019-03-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

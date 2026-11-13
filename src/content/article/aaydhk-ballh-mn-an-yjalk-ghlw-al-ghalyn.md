@@ -1,6 +1,6 @@
 ---
 title: "أعيذك بالله من أن يجعلك غلو الغالين"
-status: draft
+status: published
 published_at: 2025-04-05
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الكلام على حديث عكرمة بن عمار عن ضمضم بن جوس عن عبد الله بن حنظلة بن الراهب قال"
-status: draft
+status: published
 published_at: 2024-09-02
 person: abu-abdillah-firas-al-ramli
 ---

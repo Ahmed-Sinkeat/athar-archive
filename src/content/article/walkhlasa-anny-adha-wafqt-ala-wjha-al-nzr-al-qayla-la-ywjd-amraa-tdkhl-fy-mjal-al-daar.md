@@ -1,6 +1,6 @@
 ---
 title: "والخلاصة أنني اذا وافقت على وجهة النظر القائلة لا يوجد امرأة تدخل في مجال الدعار"
-status: draft
+status: published
 published_at: 2019-04-11
 person: abu-jafar-al-khalifi
 ---

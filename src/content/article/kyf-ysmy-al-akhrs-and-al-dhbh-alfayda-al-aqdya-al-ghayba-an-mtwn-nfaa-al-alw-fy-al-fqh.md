@@ -1,6 +1,6 @@
 ---
 title: "كيف يسمي الأخرس عند الذبح؟ (الفائدة العقدية الغائبة عن متون نفاة العلو في الفقه)"
-status: draft
+status: published
 published_at: 2023-06-28
 person: abu-jafar-al-khalifi
 ---

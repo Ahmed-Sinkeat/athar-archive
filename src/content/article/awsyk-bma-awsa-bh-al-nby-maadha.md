@@ -1,6 +1,6 @@
 ---
 title: "أوصيك بما أوصى به النبي ﷺ معاذا"
-status: draft
+status: published
 published_at: 2024-04-19
 person: abu-abdillah-firas-al-ramli
 ---

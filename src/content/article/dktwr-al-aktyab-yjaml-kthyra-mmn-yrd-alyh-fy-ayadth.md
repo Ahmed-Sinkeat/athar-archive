@@ -1,6 +1,6 @@
 ---
 title: "دكتور الاكتئاب يجامل كثيراً ممن يَرِد عليه في عيادته."
-status: draft
+status: published
 published_at: 2023-12-05
 person: abu-jafar-al-khalifi
 ---

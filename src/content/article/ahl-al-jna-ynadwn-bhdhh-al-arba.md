@@ -1,6 +1,6 @@
 ---
 title: "أهل الجنة يُنادَونَ بهذه الأربع"
-status: draft
+status: published
 published_at: 2026-04-18
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من فقه السلف في الترويح عن النفس.."
-status: draft
+status: published
 published_at: 2022-02-24
 person: abu-jafar-al-khalifi
 ---

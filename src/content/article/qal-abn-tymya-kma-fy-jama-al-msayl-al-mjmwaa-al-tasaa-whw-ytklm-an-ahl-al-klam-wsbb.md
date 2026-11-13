@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية كما في جامع المسائل المجموعة التاسعة وهو يتكلم عن أهل الكلام وسبب"
-status: draft
+status: published
 published_at: 2019-07-05
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara", "al-sunnah-wal-bidah"]

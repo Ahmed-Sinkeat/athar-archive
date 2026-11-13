@@ -1,6 +1,6 @@
 ---
 title: "قطعة قماش !"
-status: draft
+status: published
 published_at: 2019-02-26
 person: abu-jafar-al-khalifi
 ---

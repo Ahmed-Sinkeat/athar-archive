@@ -1,6 +1,6 @@
 ---
 title: "الدعوة للتصالح مع الفواحش باسم إسقاط ولاية النكاح..."
-status: draft
+status: published
 published_at: 2021-01-03
 person: abu-jafar-al-khalifi
 ---

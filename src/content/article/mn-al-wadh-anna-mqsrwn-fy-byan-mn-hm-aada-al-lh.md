@@ -1,6 +1,6 @@
 ---
 title: "من الواضح أننا مقصرون في بيان من هم \"أعداء الله\"!"
-status: draft
+status: published
 published_at: 2023-10-18
 person: abu-umair-imran-al-zubaidi
 ---

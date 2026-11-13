@@ -1,6 +1,6 @@
 ---
 title: "بعض إخواننا يستثقل موضوع ربط الكمام بالنقاب"
-status: draft
+status: published
 published_at: 2020-05-13
 person: abu-jafar-al-khalifi
 ---

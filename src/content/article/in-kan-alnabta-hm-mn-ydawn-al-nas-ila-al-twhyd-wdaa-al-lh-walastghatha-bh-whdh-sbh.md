@@ -1,6 +1,6 @@
 ---
 title: "إن كان \"النابتة\" هم من يدعون الناس إلى التوحيد ودعاء الله والاستغاثة به وحده سبح"
-status: draft
+status: published
 published_at: 2025-10-20
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

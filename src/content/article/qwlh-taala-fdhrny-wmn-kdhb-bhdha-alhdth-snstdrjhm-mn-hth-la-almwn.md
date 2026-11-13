@@ -1,6 +1,6 @@
 ---
 title: "قوله تعالى: ﴿فذرني ومن یكذب بهـٰذا ٱلحدیث سنستدرجهم من حیث لا یعلمون﴾"
-status: draft
+status: published
 published_at: 2023-06-13
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

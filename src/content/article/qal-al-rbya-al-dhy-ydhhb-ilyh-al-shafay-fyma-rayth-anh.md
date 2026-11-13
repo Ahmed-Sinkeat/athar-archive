@@ -1,6 +1,6 @@
 ---
 title: "(قَالَ الرَّبِيعُ) الَّذِي يَذْهَبُ إلَيْهِ الشَّافِعِيُّ فِيمَا رَأَيْته أَنَّه"
-status: draft
+status: published
 published_at: 2018-05-14
 person: abu-jafar-al-khalifi
 ---

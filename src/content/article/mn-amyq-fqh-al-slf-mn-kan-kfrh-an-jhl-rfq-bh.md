@@ -1,6 +1,6 @@
 ---
 title: "من عميق فقه السلف: من كان كفره عن جهل رُفِق به.."
-status: draft
+status: published
 published_at: 2022-01-30
 person: abu-jafar-al-khalifi
 ---

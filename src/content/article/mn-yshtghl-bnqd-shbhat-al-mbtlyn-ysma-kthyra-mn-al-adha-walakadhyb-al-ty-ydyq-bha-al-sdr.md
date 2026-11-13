@@ -1,6 +1,6 @@
 ---
 title: "من يشتغل بنقض شبهات المبطلين يسمع كثيرا من الأذى والأكاذيب التي يضيق بها الصدر"
-status: draft
+status: published
 published_at: 2018-04-26
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "النجاح الحقيقي، والإنجاز الأعظم، وتحقيق الذات الأسمى."
-status: draft
+status: published
 published_at: 2023-01-09
 person: abu-umair-imran-al-zubaidi
 ---

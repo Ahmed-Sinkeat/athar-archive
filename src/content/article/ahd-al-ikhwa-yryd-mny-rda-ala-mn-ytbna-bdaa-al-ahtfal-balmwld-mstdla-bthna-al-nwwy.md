@@ -1,6 +1,6 @@
 ---
 title: "أحد الإخوة يريد مني ردًا على من يتبنى بدعة الاحتفال بالمولد مستدلًا بثناء النووي"
-status: draft
+status: published
 published_at: 2023-09-27
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

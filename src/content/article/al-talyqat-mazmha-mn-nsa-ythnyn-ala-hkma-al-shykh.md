@@ -1,6 +1,6 @@
 ---
 title: "التعليقات معظمها من نساء يثنين على حكمة الشيخ."
-status: draft
+status: published
 published_at: 2025-03-28
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "القرآن خرج من الله.."
-status: draft
+status: published
 published_at: 2022-01-13
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

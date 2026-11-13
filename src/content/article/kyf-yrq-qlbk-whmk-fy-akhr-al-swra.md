@@ -1,6 +1,6 @@
 ---
 title: "كيف يرق قلبك وهمك في آخر السورة؟"
-status: draft
+status: published
 published_at: 2024-03-24
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

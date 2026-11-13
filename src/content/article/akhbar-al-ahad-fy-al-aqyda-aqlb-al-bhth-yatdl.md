@@ -1,6 +1,6 @@
 ---
 title: "أخبار الآحاد في العقيدة: اقلب البحث يعتدل!"
-status: draft
+status: published
 published_at: 2021-01-13
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]

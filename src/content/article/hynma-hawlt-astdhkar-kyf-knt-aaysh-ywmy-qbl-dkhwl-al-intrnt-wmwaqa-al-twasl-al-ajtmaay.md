@@ -1,6 +1,6 @@
 ---
 title: "حينما حاولت استذكار كيف كنت أعيش يومي قبل دخول الإنترنت ومواقع التواصل الاجتماعي"
-status: draft
+status: published
 published_at: 2024-11-15
 person: abu-umair-imran-al-zubaidi
 ---

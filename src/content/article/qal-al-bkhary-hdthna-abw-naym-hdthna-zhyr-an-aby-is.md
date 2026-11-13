@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري 3552 - حَدَّثَنَا أَبُو نُعَيْمٍ حَدَّثَنَا زُهَيْرٌ عَنْ أَبِي إِسْ"
-status: draft
+status: published
 published_at: 2017-08-03
 person: abu-jafar-al-khalifi
 ---

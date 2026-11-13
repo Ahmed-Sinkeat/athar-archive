@@ -1,6 +1,6 @@
 ---
 title: "أدركت الناس يَتَحاثُّون على الأعمال الصالحة"
-status: draft
+status: published
 published_at: 2026-07-12
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

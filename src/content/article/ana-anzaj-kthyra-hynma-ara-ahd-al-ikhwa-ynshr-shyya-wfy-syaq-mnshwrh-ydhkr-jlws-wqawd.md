@@ -1,6 +1,6 @@
 ---
 title: "أنا أنزعج كثيرًا حينما أرى أحد الإخوة ينشر شيئًا وفي سياق منشوره يذكر جلوس وقعود"
-status: draft
+status: published
 published_at: 2023-12-17
 person: abu-umair-imran-al-zubaidi
 ---

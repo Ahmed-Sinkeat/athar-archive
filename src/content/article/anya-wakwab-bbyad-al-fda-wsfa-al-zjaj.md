@@ -1,6 +1,6 @@
 ---
 title: "آنية وأكواب ببياض الفضة وصفاء الزجاج"
-status: draft
+status: published
 published_at: 2023-09-26
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

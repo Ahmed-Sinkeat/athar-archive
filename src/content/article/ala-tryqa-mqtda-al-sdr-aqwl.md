@@ -1,6 +1,6 @@
 ---
 title: "على طريقة مقتدى الصدر أقول"
-status: draft
+status: published
 published_at: 2025-07-01
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

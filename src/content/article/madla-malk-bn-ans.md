@@ -1,6 +1,6 @@
 ---
-title: "معضلة مالك بن أنس!](https://youtu.be/7--Ewcx8UzM?si=FEQ237IT79wpJTli)"
-status: draft
+title: "معضلة مالك بن أنس!"
+status: published
 published_at: 2024-11-28
 person: abu-umair-imran-al-zubaidi
 ---

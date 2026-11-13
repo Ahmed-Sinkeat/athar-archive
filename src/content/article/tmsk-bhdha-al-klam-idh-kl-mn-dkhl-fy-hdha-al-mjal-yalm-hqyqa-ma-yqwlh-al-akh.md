@@ -1,6 +1,6 @@
 ---
 title: "تمسك بهذا الكلام إذ كل من دخل في هذا المجال يعلم حقيقة ما يقوله الأخ"
-status: draft
+status: published
 published_at: 2019-03-11
 person: abu-jafar-al-khalifi
 ---

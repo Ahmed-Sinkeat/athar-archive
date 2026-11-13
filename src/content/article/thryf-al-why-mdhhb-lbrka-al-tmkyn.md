@@ -1,6 +1,6 @@
 ---
 title: "تحريف الوحي مُذهب لبركة التمكين.."
-status: draft
+status: published
 published_at: 2022-04-02
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

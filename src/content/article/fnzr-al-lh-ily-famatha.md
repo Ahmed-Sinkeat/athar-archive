@@ -1,6 +1,6 @@
 ---
 title: "فنظر الله إليَّ فأماتها!"
-status: draft
+status: published
 published_at: 2020-09-04
 person: abu-jafar-al-khalifi
 ---

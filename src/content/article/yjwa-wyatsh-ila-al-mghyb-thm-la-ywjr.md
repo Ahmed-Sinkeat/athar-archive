@@ -1,6 +1,6 @@
 ---
 title: "يجوع ويعطش إلى المغِيب ثم لا يُؤجَر؟!"
-status: draft
+status: published
 published_at: 2025-03-16
 person: awwab-bin-muhammad
 ---

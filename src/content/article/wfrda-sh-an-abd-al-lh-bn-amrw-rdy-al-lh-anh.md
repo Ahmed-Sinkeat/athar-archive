@@ -1,6 +1,6 @@
 ---
 title: "وفرضا صح أن عبد الله بن عمرو رضي الله عنه"
-status: draft
+status: published
 published_at: 2024-04-21
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

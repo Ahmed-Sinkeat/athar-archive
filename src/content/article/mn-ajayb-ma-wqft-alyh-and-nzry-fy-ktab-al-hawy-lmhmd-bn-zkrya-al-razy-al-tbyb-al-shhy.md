@@ -1,6 +1,6 @@
 ---
 title: "من عجائب ما وقفت عليه عند نظري في كتاب الحاوي لمحمد بن زكريا الرازي الطبيب الشهي"
-status: draft
+status: published
 published_at: 2019-02-22
 person: abu-jafar-al-khalifi
 ---

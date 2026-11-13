@@ -1,6 +1,6 @@
 ---
 title: "من البارحة إلى اليوم راسلني أخوة كثر في شأن سيد قطب وما قلته في حقه وكان مدار حد"
-status: draft
+status: published
 published_at: 2023-05-17
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

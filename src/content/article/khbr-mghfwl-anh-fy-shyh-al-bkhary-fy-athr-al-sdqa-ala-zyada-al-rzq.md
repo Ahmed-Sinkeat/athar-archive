@@ -1,6 +1,6 @@
 ---
 title: "خبر مغفول عنه في صحيح البخاري في أثر الصدقة على زيادة الرزق…"
-status: draft
+status: published
 published_at: 2025-05-09
 person: abu-jafar-al-khalifi
 ---

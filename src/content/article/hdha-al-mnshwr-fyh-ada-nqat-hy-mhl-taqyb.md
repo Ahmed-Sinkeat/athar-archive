@@ -1,6 +1,6 @@
 ---
 title: "هذا المنشور فيه عدة نقاط هي محل تعقيب"
-status: draft
+status: published
 published_at: 2022-04-28
 person: abu-jafar-al-khalifi
 ---

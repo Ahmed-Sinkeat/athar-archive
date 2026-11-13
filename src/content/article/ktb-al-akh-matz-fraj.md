@@ -1,6 +1,6 @@
 ---
 title: "كتب الأخ معتز فراج"
-status: draft
+status: published
 published_at: 2018-07-25
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs", "al-iman"]

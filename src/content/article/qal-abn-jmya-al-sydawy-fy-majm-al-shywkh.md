@@ -1,6 +1,6 @@
 ---
 title: "قال ابن جميع الصيداوي في «معجم الشيوخ"
-status: draft
+status: published
 published_at: 2026-01-26
 person: awwab-bin-muhammad
 ---

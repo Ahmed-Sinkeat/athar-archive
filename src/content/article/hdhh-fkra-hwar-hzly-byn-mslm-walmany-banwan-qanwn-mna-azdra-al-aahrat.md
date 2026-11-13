@@ -1,6 +1,6 @@
 ---
 title: "هذه فكرة حوار هزلي بين مسلم وعلماني بعنوان ( قانون منع ازدراء العاهرات )"
-status: draft
+status: published
 published_at: 2017-08-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

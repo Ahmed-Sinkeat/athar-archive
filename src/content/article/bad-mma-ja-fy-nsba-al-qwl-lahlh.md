@@ -1,6 +1,6 @@
 ---
 title: "بعضٌ مما جاء في نسبة القول لأهله"
-status: draft
+status: published
 published_at: 2025-06-20
 person: awwab-bin-muhammad
 ---

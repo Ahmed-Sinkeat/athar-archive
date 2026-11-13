@@ -1,6 +1,6 @@
 ---
 title: "روى الشيخان (الإمامان البخاري ومسلم) في صحيحيهما بسندهما إلى سيّدنا جابر بن عبد"
-status: draft
+status: published
 published_at: 2023-04-02
 person: abu-umair-imran-al-zubaidi
 ---

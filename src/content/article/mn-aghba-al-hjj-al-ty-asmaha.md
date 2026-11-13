@@ -1,6 +1,6 @@
 ---
 title: "من أغبى الحجج التي أسمعها"
-status: draft
+status: published
 published_at: 2026-04-11
 person: abu-umair-imran-al-zubaidi
 ---

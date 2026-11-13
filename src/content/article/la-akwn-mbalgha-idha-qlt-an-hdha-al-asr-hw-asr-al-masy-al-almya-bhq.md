@@ -1,6 +1,6 @@
 ---
 title: "لا أكون مبالغا إذا قلت أن هذا العصر هو عصر المآسي العلمية بحق .."
-status: draft
+status: published
 published_at: 2018-11-08
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

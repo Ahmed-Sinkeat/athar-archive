@@ -1,6 +1,6 @@
 ---
 title: "قال ابن جريج : حدثني بعض أهل المدينة حديث متثبت عندنا .."
-status: draft
+status: published
 published_at: 2018-01-12
 person: abu-jafar-al-khalifi
 ---

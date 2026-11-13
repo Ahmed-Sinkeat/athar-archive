@@ -1,6 +1,6 @@
 ---
 title: "منكري السنة دليل على صحتها !"
-status: draft
+status: published
 published_at: 2019-07-13
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

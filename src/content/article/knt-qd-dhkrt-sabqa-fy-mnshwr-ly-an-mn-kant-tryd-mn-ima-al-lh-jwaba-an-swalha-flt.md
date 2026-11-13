@@ -1,6 +1,6 @@
 ---
 title: "كنت قد ذكرت سابقًا في منشور لي أن من كانت تريد من إماء الله جوابًا عن سؤالها فلت"
-status: draft
+status: published
 published_at: 2023-10-24
 person: abu-umair-imran-al-zubaidi
 ---

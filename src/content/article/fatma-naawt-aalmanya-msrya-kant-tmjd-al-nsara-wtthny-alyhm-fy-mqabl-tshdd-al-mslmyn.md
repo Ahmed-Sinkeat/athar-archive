@@ -1,6 +1,6 @@
 ---
 title: "فاطمة ناعوت عالمانية مصرية كانت تمجد النصارى وتثني عليهم في مقابل تشدد المسلمين"
-status: draft
+status: published
 published_at: 2019-07-05
 person: abu-jafar-al-khalifi
 ---

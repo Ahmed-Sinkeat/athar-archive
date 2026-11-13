@@ -1,6 +1,6 @@
 ---
 title: "أتخشى الفقر وأنا ربك!!"
-status: draft
+status: published
 published_at: 2025-08-06
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "في نفس السورة - سورة الحج - التي قال فيها سبحانه"
-status: draft
+status: published
 published_at: 2026-03-20
 person: abu-umair-imran-al-zubaidi
 ---

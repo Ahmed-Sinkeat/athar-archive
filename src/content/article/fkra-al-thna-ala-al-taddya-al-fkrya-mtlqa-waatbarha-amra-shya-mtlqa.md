@@ -1,6 +1,6 @@
 ---
 title: "فكرة الثناء على التعددية الفكرية مطلقا واعتبارها أمرا صحيا مطلقا"
-status: draft
+status: published
 published_at: 2018-07-17
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

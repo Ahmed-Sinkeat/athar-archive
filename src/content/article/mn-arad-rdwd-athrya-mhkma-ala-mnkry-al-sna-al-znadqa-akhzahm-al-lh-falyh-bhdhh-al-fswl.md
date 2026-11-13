@@ -1,6 +1,6 @@
 ---
 title: "من أراد ردود أثرية محكمة على منكري السنة الزنادقة أخزاهم الله فعليه بهذه الفصول"
-status: draft
+status: published
 published_at: 2023-05-28
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الله بن عباس رضي الله عنهما"
-status: draft
+status: published
 published_at: 2023-07-21
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

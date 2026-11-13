@@ -1,6 +1,6 @@
 ---
 title: "هم يرون الاستغاثة بنفيسة وأيضاً بمريم كما قال علي جمعة"
-status: draft
+status: published
 published_at: 2026-03-21
 person: abu-jafar-al-khalifi
 ---

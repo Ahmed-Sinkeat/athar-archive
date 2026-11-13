@@ -1,6 +1,6 @@
 ---
 title: "دراسات لن تقرأ عنها في وسائل الإعلام العالمانية!"
-status: draft
+status: published
 published_at: 2020-12-08
 person: abu-jafar-al-khalifi
 ---

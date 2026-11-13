@@ -1,6 +1,6 @@
 ---
 title: "حقيقة الخلاف بعيداً عن التسطيح."
-status: draft
+status: published
 published_at: 2020-06-22
 person: abu-jafar-al-khalifi
 ---

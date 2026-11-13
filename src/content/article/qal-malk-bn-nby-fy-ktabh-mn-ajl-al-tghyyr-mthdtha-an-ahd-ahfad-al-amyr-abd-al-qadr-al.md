@@ -1,6 +1,6 @@
 ---
 title: "قال مالك بن نبي في كتابه من أجل التغيير متحدثا عن أحد أحفاد الأمير عبد القادر ال"
-status: draft
+status: published
 published_at: 2017-07-24
 person: abu-jafar-al-khalifi
 ---

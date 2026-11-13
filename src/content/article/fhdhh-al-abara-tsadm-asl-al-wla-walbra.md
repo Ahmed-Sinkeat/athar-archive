@@ -1,6 +1,6 @@
 ---
 title: "فهذه العبارة تصادم أصل الولاء والبراء"
-status: draft
+status: published
 published_at: 2025-03-22
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-wala-wal-bara"]

@@ -1,6 +1,6 @@
 ---
 title: "\"عيش حياتك، هي حياة وحدة، ليش الواحد كم مرة بيعيش؟\"."
-status: draft
+status: published
 published_at: 2025-11-29
 person: abu-umair-imran-al-zubaidi
 ---

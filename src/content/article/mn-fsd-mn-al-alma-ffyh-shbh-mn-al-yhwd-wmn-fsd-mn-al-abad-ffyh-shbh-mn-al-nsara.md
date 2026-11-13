@@ -1,6 +1,6 @@
 ---
 title: "من فسد من العلماء ففيه شبه من اليهود، ومن فسد من العباد ففيه شبه من النصارى"
-status: draft
+status: published
 published_at: 2026-04-09
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

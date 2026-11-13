@@ -1,6 +1,6 @@
 ---
 title: "ومِن هذا الباب وإن كنت كتمتُه زمناً لكراهيتي أن أذكر آثاراً قد يكون لي فيها هوى"
-status: draft
+status: published
 published_at: 2019-07-27
 person: abu-jafar-al-khalifi
 ---

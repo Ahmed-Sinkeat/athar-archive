@@ -1,6 +1,6 @@
 ---
 title: "هل أخذ الإمام مالك علم الكلام من شيخه ابن هرمز؟"
-status: draft
+status: published
 published_at: 2022-09-30
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

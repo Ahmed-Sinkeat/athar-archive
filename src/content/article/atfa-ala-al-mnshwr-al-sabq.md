@@ -1,6 +1,6 @@
 ---
 title: "عطفًا على المنشور السابق."
-status: draft
+status: published
 published_at: 2022-10-12
 person: abu-umair-imran-al-zubaidi
 ---

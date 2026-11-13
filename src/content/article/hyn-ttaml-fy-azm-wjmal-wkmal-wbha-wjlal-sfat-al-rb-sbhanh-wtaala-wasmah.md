@@ -1,6 +1,6 @@
 ---
 title: "حين تتأمّل في عِظم وجمال وكمال وبهاء وجلال صفات الرب سبحانه وتعالى وأسماءه"
-status: draft
+status: published
 published_at: 2023-08-15
 person: abu-umair-imran-al-zubaidi
 ---

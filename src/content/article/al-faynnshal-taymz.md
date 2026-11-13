@@ -1,6 +1,6 @@
 ---
 title: "الفايننشال تايمز"
-status: draft
+status: published
 published_at: 2023-10-19
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

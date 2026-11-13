@@ -1,6 +1,6 @@
 ---
 title: "فإن قلت: أحاديث النبي ﷺ ليست من طريق وكيع فقط."
-status: draft
+status: published
 published_at: 2024-03-02
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "فكان في نفي الإدراك من إثبات عظمته ما يكون مدحًا وصفة كمال"
-status: draft
+status: published
 published_at: 2023-08-19
 person: abu-umair-imran-al-zubaidi
 ---

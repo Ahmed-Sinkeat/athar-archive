@@ -1,6 +1,6 @@
 ---
 title: "لفت نظري في توبة هذا المطرب أمران"
-status: draft
+status: published
 published_at: 2021-05-16
 person: abu-jafar-al-khalifi
 ---

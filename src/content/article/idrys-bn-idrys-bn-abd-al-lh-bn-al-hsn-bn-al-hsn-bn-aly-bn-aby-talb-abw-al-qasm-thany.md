@@ -1,6 +1,6 @@
 ---
 title: "إدريس بن إدريس بن عبد الله بن الحسن بن الحسن بن علي بن أبي طالب أبو القاسم ثاني"
-status: draft
+status: published
 published_at: 2019-08-27
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

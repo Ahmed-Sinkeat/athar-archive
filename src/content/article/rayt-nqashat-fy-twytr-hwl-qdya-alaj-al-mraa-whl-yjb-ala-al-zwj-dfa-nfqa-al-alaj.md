@@ -1,6 +1,6 @@
 ---
 title: "رأيت نقاشات في تويتر حول قضية علاج المرأة وهل يجب على الزوج دفع نفقة العلاج"
-status: draft
+status: published
 published_at: 2019-03-27
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

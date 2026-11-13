@@ -1,6 +1,6 @@
 ---
 title: "من أين جاء الإمام أحمد بقوله: بر الوالدين كفارة للكبائر؟"
-status: draft
+status: published
 published_at: 2025-07-02
 person: abu-jafar-al-khalifi
 ---

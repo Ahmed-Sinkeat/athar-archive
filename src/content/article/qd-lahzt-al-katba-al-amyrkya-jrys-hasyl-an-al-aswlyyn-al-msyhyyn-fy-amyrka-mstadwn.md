@@ -1,6 +1,6 @@
 ---
 title: "قد لاحظت الكاتبة الأميركية جريس هاسيل \"أن الأصوليين المسيحيين في أميركا مستعدون"
-status: draft
+status: published
 published_at: 2017-07-19
 person: abu-jafar-al-khalifi
 ---

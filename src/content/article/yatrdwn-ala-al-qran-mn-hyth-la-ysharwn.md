@@ -1,6 +1,6 @@
 ---
 title: "يعترضون على القرآن من حيث لا يشعرون"
-status: draft
+status: published
 published_at: 2020-01-24
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

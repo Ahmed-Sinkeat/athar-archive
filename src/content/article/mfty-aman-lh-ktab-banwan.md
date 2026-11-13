@@ -1,6 +1,6 @@
 ---
 title: "مفتي عمان له كتاب بعنوان"
-status: draft
+status: published
 published_at: 2024-12-03
 person: abu-jafar-al-khalifi
 ---

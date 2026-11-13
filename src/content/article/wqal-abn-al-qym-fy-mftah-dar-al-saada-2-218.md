@@ -1,6 +1,6 @@
 ---
 title: "وقال ابن القيم في مفتاح دار السعادة (٢/ ٢١٨)"
-status: draft
+status: published
 published_at: 2021-03-04
 person: abu-jafar-al-khalifi
 ---

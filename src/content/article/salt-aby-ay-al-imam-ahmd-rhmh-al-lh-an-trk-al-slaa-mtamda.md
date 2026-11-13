@@ -1,6 +1,6 @@
 ---
 title: "سَأَلت أبي -أي الإمام أحمد- رَحمَه الله عَن ترك الصَّلَاة مُتَعَمدا"
-status: draft
+status: published
 published_at: 2023-05-07
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "حب قريش عثمان رضي الله عنه"
-status: draft
+status: published
 published_at: 2023-11-29
 person: abu-abdillah-firas-al-ramli
 ---

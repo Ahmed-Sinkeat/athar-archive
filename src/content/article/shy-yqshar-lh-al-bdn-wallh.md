@@ -1,6 +1,6 @@
 ---
 title: "شيء يقشعر له البدن والله"
-status: draft
+status: published
 published_at: 2024-12-19
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

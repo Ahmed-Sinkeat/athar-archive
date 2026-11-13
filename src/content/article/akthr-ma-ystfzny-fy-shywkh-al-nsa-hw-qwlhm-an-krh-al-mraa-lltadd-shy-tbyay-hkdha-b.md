@@ -1,6 +1,6 @@
 ---
 title: "أكثر ما يستفزّني في شيوخ النساء هو قولهم أنّ كره المرأة للتعدّد شيء طبيعي هكذا ب"
-status: draft
+status: published
 published_at: 2023-04-30
 person: abu-umair-imran-al-zubaidi
 ---

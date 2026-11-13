@@ -1,6 +1,6 @@
 ---
 title: "وقود الأمل (كلام مزعج ولكن ينبغي أن يقال)."
-status: draft
+status: published
 published_at: 2020-08-15
 person: abu-jafar-al-khalifi
 ---

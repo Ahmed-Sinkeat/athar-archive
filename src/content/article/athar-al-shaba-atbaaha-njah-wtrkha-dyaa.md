@@ -1,6 +1,6 @@
 ---
 title: "آثار الصحابة اتباعها نجاح وتركها ضياع"
-status: draft
+status: published
 published_at: 2023-07-20
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي حاتم في تفسيره 4644 - حَدَّثَنَا أَبُو سَعِيدٍ بْنُ يَحْيَى بْنِ سَع"
-status: draft
+status: published
 published_at: 2017-07-12
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

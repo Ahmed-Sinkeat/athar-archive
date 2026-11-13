@@ -1,6 +1,6 @@
 ---
 title: "البركة 2"
-status: draft
+status: published
 published_at: 2025-06-19
 person: awwab-bin-muhammad
 topics: ["al-sunnah-wal-bidah"]

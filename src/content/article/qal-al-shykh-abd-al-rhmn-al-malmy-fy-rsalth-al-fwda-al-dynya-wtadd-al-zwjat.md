@@ -1,6 +1,6 @@
 ---
 title: "قال الشيخ عبد الرحمن المعلمي في رسالته الفوضى الدينية وتعدد الزوجات"
-status: draft
+status: published
 published_at: 2018-05-29
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

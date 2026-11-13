@@ -1,6 +1,6 @@
 ---
 title: "حذاء المدخلي خيرٌ من ملء الأرض من الجهمية الأشعرية ولا مقارنة حتى!"
-status: draft
+status: published
 published_at: 2023-12-16
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-asma-was-sifat"]

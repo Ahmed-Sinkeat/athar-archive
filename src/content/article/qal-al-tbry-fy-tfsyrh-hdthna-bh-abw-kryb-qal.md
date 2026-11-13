@@ -1,6 +1,6 @@
 ---
 title: "قال الطبري في تفسيره 1451 - حدثنا به أبو كريب قال"
-status: draft
+status: published
 published_at: 2019-04-15
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "وقال ابن خلدون"
-status: draft
+status: published
 published_at: 2020-08-25
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

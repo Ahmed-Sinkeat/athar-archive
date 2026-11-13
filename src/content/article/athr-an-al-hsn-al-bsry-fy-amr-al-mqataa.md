@@ -1,6 +1,6 @@
 ---
 title: "أثر عن الحسن البصري في أمر المقاطعة."
-status: draft
+status: published
 published_at: 2023-10-24
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "= هذا لا يكاد يتكلم حتى يفتضح"
-status: draft
+status: published
 published_at: 2022-07-30
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

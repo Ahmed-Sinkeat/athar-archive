@@ -1,6 +1,6 @@
 ---
 title: "من نعمة الله على الشاب إذا تنسك"
-status: draft
+status: published
 published_at: 2025-08-03
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

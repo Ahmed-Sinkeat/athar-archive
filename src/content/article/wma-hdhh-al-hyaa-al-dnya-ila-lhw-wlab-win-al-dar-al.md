@@ -1,6 +1,6 @@
 ---
 title: "وَمَا هَٰذِهِ الْحَيَاةُ الدُّنْيَا إِلَّا لَهْوٌ وَلَعِبٌ ۚ وَإِنَّ الدَّارَ ال"
-status: draft
+status: published
 published_at: 2023-10-16
 person: abu-umair-imran-al-zubaidi
 ---

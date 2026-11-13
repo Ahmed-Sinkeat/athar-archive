@@ -1,6 +1,6 @@
 ---
 title: "هذا في كتاب علم الأدوية السريري ل P"
-status: draft
+status: published
 published_at: 2019-10-02
 person: abu-jafar-al-khalifi
 ---

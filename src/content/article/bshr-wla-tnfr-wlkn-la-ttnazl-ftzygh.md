@@ -1,6 +1,6 @@
 ---
 title: "بشِّر ولا تنفر ولكن لا تتنازل فتزيغ!"
-status: draft
+status: published
 published_at: 2021-08-11
 person: abu-jafar-al-khalifi
 ---

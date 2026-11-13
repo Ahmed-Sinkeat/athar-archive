@@ -1,6 +1,6 @@
 ---
 title: "هذه الصورة التي ترونها هي من كتاب الدكتور سامي عامري \"من خلق الله"
-status: draft
+status: published
 published_at: 2024-03-16
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-asma-was-sifat"]

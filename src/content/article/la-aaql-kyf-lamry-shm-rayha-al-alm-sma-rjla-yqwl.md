@@ -1,6 +1,6 @@
 ---
 title: "لا أعقل كيف لامرئ شم رائحة العلم سمع رجلا يقول"
-status: draft
+status: published
 published_at: 2025-09-24
 person: abu-umair-imran-al-zubaidi
 ---

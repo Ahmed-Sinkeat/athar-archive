@@ -1,6 +1,6 @@
 ---
 title: "تفكر في مسألة رؤية الأعمى لله عز وجل يوم القيامة."
-status: draft
+status: published
 published_at: 2023-05-16
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

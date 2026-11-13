@@ -1,6 +1,6 @@
 ---
 title: "فلو اكتفى ابن رشد بحديث رسول الله صلى الله عليه وسلم وقدمه على كلام أرسطو لما صر"
-status: draft
+status: published
 published_at: 2020-07-23
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]

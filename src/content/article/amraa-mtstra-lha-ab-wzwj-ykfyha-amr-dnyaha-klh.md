@@ -1,6 +1,6 @@
 ---
 title: "امرأة متسترة لها أب وزوج يكفيها أمر دنياها كله"
-status: draft
+status: published
 published_at: 2018-03-12
 person: abu-jafar-al-khalifi
 ---

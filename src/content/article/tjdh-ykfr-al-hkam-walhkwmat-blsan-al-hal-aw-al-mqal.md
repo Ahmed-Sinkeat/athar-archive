@@ -1,6 +1,6 @@
 ---
 title: "تجده يكفر الحكام والحكومات بلسان الحال أو المقال"
-status: draft
+status: published
 published_at: 2024-10-07
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

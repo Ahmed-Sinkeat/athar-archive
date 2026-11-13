@@ -1,6 +1,6 @@
 ---
 title: "ما قدّرت عادة العرب في أنهم لا ينهون الجُمل والكلام عموما بالوقوف على حرف متحرك"
-status: draft
+status: published
 published_at: 2026-08-07
 person: abu-umair-imran-al-zubaidi
 ---

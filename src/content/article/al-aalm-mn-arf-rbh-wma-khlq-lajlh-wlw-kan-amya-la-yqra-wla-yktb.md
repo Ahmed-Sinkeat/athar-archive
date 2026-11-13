@@ -1,6 +1,6 @@
 ---
 title: "العالِمُ مَن عرف ربّه وما خُلِقَ لأجله ولو كان أُمّيًّا لا يقرأ ولا يكتب."
-status: draft
+status: published
 published_at: 2023-02-16
 person: abu-umair-imran-al-zubaidi
 ---

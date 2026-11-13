@@ -1,6 +1,6 @@
 ---
 title: "تعلم قراءة القرآن قراءة سليمة صحيحة منضبطة بأحكام التجويد أمر مهم جدا."
-status: draft
+status: published
 published_at: 2024-10-19
 person: abu-umair-imran-al-zubaidi
 ---

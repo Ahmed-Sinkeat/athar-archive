@@ -1,6 +1,6 @@
 ---
 title: "انظر إلى غباء هذا الملحد (في نهاية المنشور تساؤل مهم)"
-status: draft
+status: published
 published_at: 2024-10-09
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "كانوا أهل حديث؛ ثم حنابلة؛ ثم بربهارية؛ ثم تيمية؛ ثم وهابية!"
-status: draft
+status: published
 published_at: 2021-09-24
 person: abu-jafar-al-khalifi
 ---

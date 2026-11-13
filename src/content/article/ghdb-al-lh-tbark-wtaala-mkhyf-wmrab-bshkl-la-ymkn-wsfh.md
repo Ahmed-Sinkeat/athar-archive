@@ -1,6 +1,6 @@
 ---
 title: "غضب الله تبارك وتعالى مخيف ومرعب بشكل لا يمكن وصفه."
-status: draft
+status: published
 published_at: 2025-08-27
 person: abu-umair-imran-al-zubaidi
 ---

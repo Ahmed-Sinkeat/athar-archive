@@ -1,6 +1,6 @@
 ---
 title: "كل من يُجيز لك الاحتفال بالعيد الوثني الكفري \"عيد الحُب\" = فهو ثرثار يُلبّس على"
-status: draft
+status: published
 published_at: 2023-02-12
 person: abu-umair-imran-al-zubaidi
 ---

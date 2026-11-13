@@ -1,6 +1,6 @@
 ---
 title: "أسفي صار يشتد من مثل هذه الأخبار أكثر مما مضى لأنه إذا كان قتل العشرات في مسجد ب"
-status: draft
+status: published
 published_at: 2019-05-12
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

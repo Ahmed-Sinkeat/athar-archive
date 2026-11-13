@@ -1,6 +1,6 @@
 ---
 title: "ما الذي تبقى من الحاكمية؟"
-status: draft
+status: published
 published_at: 2019-12-14
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-wala-wal-bara"]

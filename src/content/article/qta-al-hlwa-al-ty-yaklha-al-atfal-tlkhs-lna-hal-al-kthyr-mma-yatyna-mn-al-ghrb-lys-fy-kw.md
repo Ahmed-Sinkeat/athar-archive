@@ -1,6 +1,6 @@
 ---
 title: "قطع الحلوى التي يأكلها الأطفال تلخص لنا حال الكثير مما يأتينا من الغرب ليس في كو"
-status: draft
+status: published
 published_at: 2018-05-27
 person: abu-jafar-al-khalifi
 ---

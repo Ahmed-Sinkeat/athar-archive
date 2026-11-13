@@ -1,6 +1,6 @@
 ---
 title: "سخرية شيخ الإسلام من تطويلات الفلاسفة والمتكلمين"
-status: draft
+status: published
 published_at: 2021-07-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

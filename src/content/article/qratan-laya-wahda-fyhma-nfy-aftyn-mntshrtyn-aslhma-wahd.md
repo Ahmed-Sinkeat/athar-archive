@@ -1,6 +1,6 @@
 ---
 title: "قراءتان لآية واحدة فيهما نفي آفتين منتشرتين أصلهما واحد"
-status: draft
+status: published
 published_at: 2023-03-06
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]

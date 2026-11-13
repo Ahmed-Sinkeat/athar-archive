@@ -1,6 +1,6 @@
 ---
 title: "مسألة يكثر السؤال عنها في المواريث"
-status: draft
+status: published
 published_at: 2020-01-24
 person: abu-jafar-al-khalifi
 ---

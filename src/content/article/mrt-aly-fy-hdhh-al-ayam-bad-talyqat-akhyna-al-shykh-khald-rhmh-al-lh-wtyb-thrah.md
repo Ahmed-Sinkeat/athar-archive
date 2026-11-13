@@ -1,6 +1,6 @@
 ---
 title: "مرَّت عليَّ في هذه الأيام بعض تعليقات أخينا الشيخ خالد رحمه الله وطيَّب ثراه"
-status: draft
+status: published
 published_at: 2026-06-13
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وجاء فيها أيضاً نصيحة موجهة من من محمد بن عبد اللطيف"
-status: draft
+status: published
 published_at: 2018-01-16
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

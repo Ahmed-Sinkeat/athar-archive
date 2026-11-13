@@ -1,6 +1,6 @@
 ---
 title: "من خوفك خير ممن أمنك"
-status: draft
+status: published
 published_at: 2024-02-03
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

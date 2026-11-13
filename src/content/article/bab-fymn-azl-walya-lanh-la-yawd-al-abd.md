@@ -1,6 +1,6 @@
 ---
 title: "باب فيمن عزل واليًا لأنه لا يعود العبد!"
-status: draft
+status: published
 published_at: 2023-09-01
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

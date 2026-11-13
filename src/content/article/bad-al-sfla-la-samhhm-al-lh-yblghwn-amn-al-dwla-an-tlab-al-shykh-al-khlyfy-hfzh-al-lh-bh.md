@@ -1,6 +1,6 @@
 ---
 title: "بعض السفلة -لا سامحهم الله- يبلغون أمن الدولة عن طلاب الشيخ الخليفي حفظه الله بح"
-status: draft
+status: published
 published_at: 2023-11-13
 person: abu-umair-imran-al-zubaidi
 ---

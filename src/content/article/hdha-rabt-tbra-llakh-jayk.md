@@ -1,6 +1,6 @@
 ---
 title: "هذا رابط تبرع للأخ جايك"
-status: draft
+status: published
 published_at: 2024-07-06
 person: abu-jafar-al-khalifi
 ---

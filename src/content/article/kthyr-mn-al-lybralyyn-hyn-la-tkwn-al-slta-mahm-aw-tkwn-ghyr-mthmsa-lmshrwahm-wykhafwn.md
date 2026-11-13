@@ -1,6 +1,6 @@
 ---
 title: "كثير من الليبراليين حين لا تكون السلطة معهم أو تكون غير متحمسة لمشروعهم ويخافون"
-status: draft
+status: published
 published_at: 2019-08-01
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

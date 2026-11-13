@@ -1,6 +1,6 @@
 ---
 title: "{وَابْتَغِ فِيمَا آتَاكَ اللَّهُ الدَّارَ الْآخِرَةَ ۖ وَلَا تَنسَ نَصِيبَكَ مِن"
-status: draft
+status: published
 published_at: 2025-01-08
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

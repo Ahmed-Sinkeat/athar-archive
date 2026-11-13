@@ -1,6 +1,6 @@
 ---
 title: "وقد وافق ابن قدامة ابن تيمية أيضاً ونقله عن الفقهاء فقال كما في مجموع الفتاوى"
-status: draft
+status: published
 published_at: 2017-08-10
 person: abu-jafar-al-khalifi
 ---

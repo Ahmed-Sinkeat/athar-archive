@@ -1,6 +1,6 @@
 ---
 title: "يناير سمي على اسم الإله الروماني يانوس."
-status: draft
+status: published
 published_at: 2024-12-31
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

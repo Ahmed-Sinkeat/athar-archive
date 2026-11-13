@@ -1,6 +1,6 @@
 ---
 title: "كان أهل العلم يجمعون مثل هذه القصص ويضعونها في كتب"
-status: draft
+status: published
 published_at: 2025-07-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

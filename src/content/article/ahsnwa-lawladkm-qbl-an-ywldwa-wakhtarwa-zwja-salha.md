@@ -1,6 +1,6 @@
 ---
 title: "احسنوا لأولادكم قبل أن يولدوا واختاروا زوجا صالحا"
-status: draft
+status: published
 published_at: 2023-11-03
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

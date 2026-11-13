@@ -1,6 +1,6 @@
 ---
 title: "من أقنع الناس أن المسلسلات والأفلام المليئة بمشاهد لا يقرها دين ولا مروءة فيها ر"
-status: draft
+status: published
 published_at: 2019-05-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-wala-wal-bara"]

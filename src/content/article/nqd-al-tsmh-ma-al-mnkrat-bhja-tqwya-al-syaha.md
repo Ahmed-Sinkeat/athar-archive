@@ -1,6 +1,6 @@
 ---
 title: "نقض التسمح مع المنكرات بحجة تقوية السياحة.."
-status: draft
+status: published
 published_at: 2022-04-13
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "السيل الجارف في المديح والثناء المبالغ فيه من طائفة كبيرة من السوريين للرئيس أحم"
-status: draft
+status: published
 published_at: 2025-10-15
 person: abu-umair-imran-al-zubaidi
 ---

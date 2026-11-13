@@ -1,6 +1,6 @@
 ---
 title: "قال الحافظ ابن أبي الدنيا في مكارم الأخلاق [ 455"
-status: draft
+status: published
 published_at: 2018-03-21
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "هذه الفتاة تعلق على مسلسل أجنبي مليء بالمشاهدة الاباحية وقائم على قصة زنا محارم"
-status: draft
+status: published
 published_at: 2019-04-27
 person: abu-jafar-al-khalifi
 ---

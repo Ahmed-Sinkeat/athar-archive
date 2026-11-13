@@ -1,6 +1,6 @@
 ---
 title: "أنت تسب ابن تيمية وتظن نفسك تدافع عنه!"
-status: draft
+status: published
 published_at: 2020-12-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-asma-was-sifat", "al-wala-wal-bara"]

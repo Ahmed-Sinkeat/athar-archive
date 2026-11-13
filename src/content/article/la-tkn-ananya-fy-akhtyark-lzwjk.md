@@ -1,6 +1,6 @@
 ---
 title: "لا تكن أنانيًّا في اختيارك لزوجك!."
-status: draft
+status: published
 published_at: 2022-12-26
 person: abu-umair-imran-al-zubaidi
 ---

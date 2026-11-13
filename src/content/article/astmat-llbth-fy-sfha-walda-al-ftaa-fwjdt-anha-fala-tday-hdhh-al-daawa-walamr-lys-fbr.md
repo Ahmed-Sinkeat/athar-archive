@@ -1,6 +1,6 @@
 ---
 title: "استمعت للبث في صفحة والدة الفتاة فوجدت أنها فعلا تدعي هذه الدعاوى والأمر ليس فبر"
-status: draft
+status: published
 published_at: 2022-08-14
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

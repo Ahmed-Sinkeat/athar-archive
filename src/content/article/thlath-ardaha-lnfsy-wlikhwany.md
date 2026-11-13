@@ -1,6 +1,6 @@
 ---
 title: "ثلاث أرضاها لنفسي ولإخواني"
-status: draft
+status: published
 published_at: 2023-05-27
 person: abu-abdillah-firas-al-ramli
 ---

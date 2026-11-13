@@ -1,6 +1,6 @@
 ---
 title: "وقال المعاطي النوري ورفاقه في جمعهم في الجرح والتعديل"
-status: draft
+status: published
 published_at: 2021-09-18
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

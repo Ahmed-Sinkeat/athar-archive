@@ -1,6 +1,6 @@
 ---
 title: "ما أعظم الله سبحانه الغني عن العالمين وما أرحمه وأكرمه !"
-status: draft
+status: published
 published_at: 2017-07-31
 person: abu-jafar-al-khalifi
 ---

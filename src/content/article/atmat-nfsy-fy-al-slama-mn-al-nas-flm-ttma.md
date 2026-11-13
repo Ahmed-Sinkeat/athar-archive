@@ -1,6 +1,6 @@
 ---
 title: "أطمعت نفسي في السلامة من الناس فلم تطمع"
-status: draft
+status: published
 published_at: 2025-09-16
 person: abu-abdillah-firas-al-ramli
 ---

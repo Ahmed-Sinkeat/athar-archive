@@ -1,6 +1,6 @@
 ---
 title: "فائدة نسيت ذكرها قتادة الذي يستدل به المتكلم قد روي عنه إثبات جلوس الله عز وجل ا"
-status: draft
+status: published
 published_at: 2024-05-28
 person: abu-abdillah-firas-al-ramli
 ---

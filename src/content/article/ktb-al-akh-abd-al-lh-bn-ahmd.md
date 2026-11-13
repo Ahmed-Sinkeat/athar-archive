@@ -1,6 +1,6 @@
 ---
 title: "كتب الأخ عبد الله بن أحمد"
-status: draft
+status: published
 published_at: 2019-04-04
 person: abu-jafar-al-khalifi
 ---

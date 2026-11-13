@@ -1,6 +1,6 @@
 ---
 title: "هذه شكاية من بلاد الحرمين ورأيت نحوها لفتاة سودانية وأخرى مغربية وكذلك في الكويت"
-status: draft
+status: published
 published_at: 2018-07-28
 person: abu-jafar-al-khalifi
 ---

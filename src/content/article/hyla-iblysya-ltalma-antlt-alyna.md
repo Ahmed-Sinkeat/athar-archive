@@ -1,6 +1,6 @@
 ---
 title: "حيلة إبليسية لطالما انطلت علينا."
-status: draft
+status: published
 published_at: 2020-03-16
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "والسبب في قلة روايته ورعه فقد روى الدارمي في مسنده 268 - أخبرنا محمد بن كثير عن"
-status: draft
+status: published
 published_at: 2019-11-16
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

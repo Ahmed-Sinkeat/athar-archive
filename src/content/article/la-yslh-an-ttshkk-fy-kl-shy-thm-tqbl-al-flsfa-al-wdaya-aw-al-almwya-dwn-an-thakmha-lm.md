@@ -1,6 +1,6 @@
 ---
 title: "لا يصلح أن تتشكك في كل شيء ثم تقبل الفلسفة الوضعية أو العلموية دون أن تحاكمها لم"
-status: draft
+status: published
 published_at: 2018-10-09
 person: abu-jafar-al-khalifi
 ---

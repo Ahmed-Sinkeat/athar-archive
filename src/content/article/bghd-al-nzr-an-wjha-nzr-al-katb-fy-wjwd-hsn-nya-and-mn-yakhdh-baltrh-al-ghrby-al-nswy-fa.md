@@ -1,6 +1,6 @@
 ---
 title: "بغض النظر عن وجهة نظر الكاتب في وجود حسن نية عند من يأخذ بالطرح الغربي النسوي فا"
-status: draft
+status: published
 published_at: 2021-05-23
 person: abu-jafar-al-khalifi
 ---

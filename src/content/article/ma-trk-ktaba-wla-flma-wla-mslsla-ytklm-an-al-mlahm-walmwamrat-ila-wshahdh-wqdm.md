@@ -1,6 +1,6 @@
 ---
 title: "ما ترك كتابًا ولا فلمًا ولا مسلسلًا يتكلم عن الملاحم والمؤامرات إلا وشاهده وقدم"
-status: draft
+status: published
 published_at: 2024-03-30
 person: abu-umair-imran-al-zubaidi
 ---

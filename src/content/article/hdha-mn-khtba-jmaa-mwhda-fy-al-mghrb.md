@@ -1,6 +1,6 @@
 ---
 title: "هذا من خطبة جمعة موحدة في المغرب"
-status: draft
+status: published
 published_at: 2025-05-30
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

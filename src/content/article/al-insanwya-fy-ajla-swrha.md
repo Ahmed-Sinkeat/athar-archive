@@ -1,6 +1,6 @@
 ---
 title: "الإنسانوية في أجلى صورها."
-status: draft
+status: published
 published_at: 2025-10-24
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

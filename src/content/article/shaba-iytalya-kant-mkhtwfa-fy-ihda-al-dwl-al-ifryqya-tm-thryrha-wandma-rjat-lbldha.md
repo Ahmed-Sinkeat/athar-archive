@@ -1,6 +1,6 @@
 ---
 title: "شابة إيطالية كانت مخطوفة في إحدى الدول الإفريقية ؛ تم تحريرها وعندما رجعت لبلدها"
-status: draft
+status: published
 published_at: 2020-05-11
 person: abu-jafar-al-khalifi
 ---

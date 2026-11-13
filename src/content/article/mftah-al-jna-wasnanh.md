@@ -1,6 +1,6 @@
 ---
 title: "مفتاح الجنة وأسنانه"
-status: draft
+status: published
 published_at: 2023-12-02
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "التبكير إلى الجامع خير من إطعام جائع..."
-status: draft
+status: published
 published_at: 2024-10-03
 person: abu-jafar-al-khalifi
 ---

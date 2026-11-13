@@ -1,6 +1,6 @@
 ---
 title: "الشيخ محمد وهو يرد على عبد الله الشريف والددو في تحريفهم لمعنى حديث النبي ﷺ \"وإن"
-status: draft
+status: published
 published_at: 2024-01-09
 person: abu-umair-imran-al-zubaidi
 ---

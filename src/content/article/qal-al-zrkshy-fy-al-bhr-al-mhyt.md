@@ -1,6 +1,6 @@
 ---
 title: "قال الزركشي في البحر المحيط"
-status: draft
+status: published
 published_at: 2017-11-06
 person: abu-jafar-al-khalifi
 ---

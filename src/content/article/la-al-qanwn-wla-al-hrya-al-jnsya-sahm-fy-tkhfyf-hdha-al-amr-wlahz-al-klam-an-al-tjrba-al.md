@@ -1,6 +1,6 @@
 ---
 title: "لا القانون ولا الحرية الجنسية ساهم في تخفيف هذا الأمر ولاحظ الكلام عن التجربة ال"
-status: draft
+status: published
 published_at: 2019-09-22
 person: abu-jafar-al-khalifi
 ---

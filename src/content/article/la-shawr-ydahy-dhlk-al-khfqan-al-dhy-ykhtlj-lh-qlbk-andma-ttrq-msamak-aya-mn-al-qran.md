@@ -1,6 +1,6 @@
 ---
 title: "لا شعور يُضاهي ذلك الخفقان الذي يختلج له قلبك عندما تطرُق مسامعك آيةٌ من القرآن"
-status: draft
+status: published
 published_at: 2023-01-07
 person: abu-umair-imran-al-zubaidi
 ---

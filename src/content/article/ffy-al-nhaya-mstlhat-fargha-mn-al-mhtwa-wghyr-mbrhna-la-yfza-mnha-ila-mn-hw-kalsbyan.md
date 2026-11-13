@@ -1,6 +1,6 @@
 ---
 title: "ففي النهاية مصطلحات فارغة من المحتوى وغير مبرهنة لا يفزع منها إلا من هو كالصبيان"
-status: draft
+status: published
 published_at: 2019-06-26
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

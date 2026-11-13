@@ -1,6 +1,6 @@
 ---
 title: "وقيل لوهب بن منبه: أليس لا إله إلا الله مفتاح الجنة؟"
-status: draft
+status: published
 published_at: 2025-01-25
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

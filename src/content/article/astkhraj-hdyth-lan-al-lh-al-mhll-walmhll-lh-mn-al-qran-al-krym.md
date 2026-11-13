@@ -1,6 +1,6 @@
 ---
 title: "استخراج حديث (لعن الله المحلل والمحلل له) من القرآن الكريم"
-status: draft
+status: published
 published_at: 2020-07-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

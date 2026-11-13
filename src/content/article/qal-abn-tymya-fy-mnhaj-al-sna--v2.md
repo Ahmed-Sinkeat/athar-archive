@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية في منهاج السنة"
-status: draft
+status: published
 published_at: 2017-07-07
 person: abu-jafar-al-khalifi
 ---

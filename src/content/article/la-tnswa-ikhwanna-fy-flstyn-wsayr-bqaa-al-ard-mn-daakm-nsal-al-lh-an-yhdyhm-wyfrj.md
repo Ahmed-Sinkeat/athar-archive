@@ -1,6 +1,6 @@
 ---
 title: "لا تنسوا إخواننا في فلسطين وسائر بقاع الأرض من دعاءكم نسأل الله أن يهديهم ويفرج"
-status: draft
+status: published
 published_at: 2023-07-04
 person: abu-abdillah-firas-al-ramli
 ---

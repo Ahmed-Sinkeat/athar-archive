@@ -1,6 +1,6 @@
 ---
 title: "أفضل العبادة اتباع السنة"
-status: draft
+status: published
 published_at: 2025-01-22
 person: abu-abdillah-firas-al-ramli
 ---

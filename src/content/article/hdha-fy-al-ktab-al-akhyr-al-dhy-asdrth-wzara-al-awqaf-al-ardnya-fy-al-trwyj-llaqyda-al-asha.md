@@ -1,6 +1,6 @@
 ---
 title: "هذا في الكتاب الأخير الذي أصدرته وزارة الأوقاف الأردنية في الترويج للعقيدة الأشع"
-status: draft
+status: published
 published_at: 2026-05-06
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

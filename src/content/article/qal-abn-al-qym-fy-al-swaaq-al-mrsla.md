@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم في الصواعق المرسلة"
-status: draft
+status: published
 published_at: 2021-03-17
 person: abu-jafar-al-khalifi
 ---

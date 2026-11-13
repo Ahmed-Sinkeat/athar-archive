@@ -1,6 +1,6 @@
 ---
 title: "الحديث عن أقدمية من وطئ الأرض للتدليل على أحقية طرف ما بها كلام فارغ حقيقةً!"
-status: draft
+status: published
 published_at: 2023-10-30
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

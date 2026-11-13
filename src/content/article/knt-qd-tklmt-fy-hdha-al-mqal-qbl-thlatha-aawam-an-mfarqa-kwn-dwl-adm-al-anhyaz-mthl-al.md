@@ -1,6 +1,6 @@
 ---
 title: "كنت قد تكلمت في هذا المقال قبل ثلاثة أعوام عن مفارقة كون دول عدم الانحياز مثل ال"
-status: draft
+status: published
 published_at: 2021-08-21
 person: abu-jafar-al-khalifi
 ---

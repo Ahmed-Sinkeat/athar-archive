@@ -1,6 +1,6 @@
 ---
 title: "لماذا هذا التشويش على توبة الرجل؟"
-status: draft
+status: published
 published_at: 2021-12-21
 person: abu-jafar-al-khalifi
 ---

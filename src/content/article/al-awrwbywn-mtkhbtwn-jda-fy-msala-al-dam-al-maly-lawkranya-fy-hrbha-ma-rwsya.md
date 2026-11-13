@@ -1,6 +1,6 @@
 ---
 title: "الأوروبيون متخبطون جدا في مسألة الدعم المالي لأوكرانيا في حربها مع روسيا."
-status: draft
+status: published
 published_at: 2025-10-23
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

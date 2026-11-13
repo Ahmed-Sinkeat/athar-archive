@@ -1,6 +1,6 @@
 ---
 title: "الأسر المثقلة بالديون في أوروبا معرضة لخطر سجن المدينين في العصر الحديث"
-status: draft
+status: published
 published_at: 2023-02-19
 person: abu-jafar-al-khalifi
 ---

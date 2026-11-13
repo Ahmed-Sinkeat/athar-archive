@@ -1,6 +1,6 @@
 ---
 title: "وصف الذي يجري في الشام بأنه متفق عليه مع إسرائيل لإضعاف حزب اللات وإيران اللتان"
-status: draft
+status: published
 published_at: 2024-12-02
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

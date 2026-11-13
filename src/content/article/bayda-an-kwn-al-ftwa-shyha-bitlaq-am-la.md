@@ -1,6 +1,6 @@
 ---
 title: "بعيدا عن كون الفتوى صحيحة بإطلاق أم لا"
-status: draft
+status: published
 published_at: 2025-01-13
 person: abu-umair-imran-al-zubaidi
 ---

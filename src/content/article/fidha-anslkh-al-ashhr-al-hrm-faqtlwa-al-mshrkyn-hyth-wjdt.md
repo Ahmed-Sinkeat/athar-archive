@@ -1,6 +1,6 @@
 ---
 title: "فَإِذَا انسَلَخَ الْأَشْهُرُ الْحُرُمُ فَاقْتُلُوا الْمُشْرِكِينَ حَيْثُ وَجَدتّ"
-status: draft
+status: published
 published_at: 2023-02-21
 person: abu-umair-imran-al-zubaidi
 ---

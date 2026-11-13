@@ -1,6 +1,6 @@
 ---
 title: "وهذا باب سببه منظومة الأهداف المعلمنة التي قلبت موازين الولاء والبراء حيث أن الد"
-status: draft
+status: published
 published_at: 2020-08-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-wala-wal-bara"]

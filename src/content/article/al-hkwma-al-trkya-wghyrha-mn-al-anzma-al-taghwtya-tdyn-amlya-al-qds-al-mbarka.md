@@ -1,6 +1,6 @@
 ---
 title: "الحكومة التركيّة وغيرها مِن الأنظمة الطاغوتية تُدين عمليّة القدس المباركة."
-status: draft
+status: published
 published_at: 2023-01-28
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

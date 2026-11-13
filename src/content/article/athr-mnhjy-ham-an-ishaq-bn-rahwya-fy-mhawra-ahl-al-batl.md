@@ -1,6 +1,6 @@
 ---
 title: "أثر منهجي هام عن إسحاق بن راهوية في محاورة أهل الباطل."
-status: draft
+status: published
 published_at: 2020-06-23
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب الأصل للشيباني"
-status: draft
+status: published
 published_at: 2018-01-04
 person: abu-jafar-al-khalifi
 ---

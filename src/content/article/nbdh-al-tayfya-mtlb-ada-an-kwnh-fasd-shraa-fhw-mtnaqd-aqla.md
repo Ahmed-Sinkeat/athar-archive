@@ -1,6 +1,6 @@
 ---
 title: "نبذ الطائفية مطلب عدا عن كونه فاسد شرعا، فهو متناقض عقلا!"
-status: draft
+status: published
 published_at: 2024-12-10
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

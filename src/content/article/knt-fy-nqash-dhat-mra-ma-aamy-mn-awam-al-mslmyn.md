@@ -1,6 +1,6 @@
 ---
 title: "كنت في نقاش ذات مرة مع عامي من عوام المسلمين"
-status: draft
+status: published
 published_at: 2026-10-13
 person: abu-umair-imran-al-zubaidi
 ---

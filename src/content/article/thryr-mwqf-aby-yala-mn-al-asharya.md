@@ -1,6 +1,6 @@
 ---
 title: "تحرير موقف أبي يعلى من الأشعرية"
-status: draft
+status: published
 published_at: 2019-01-19
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

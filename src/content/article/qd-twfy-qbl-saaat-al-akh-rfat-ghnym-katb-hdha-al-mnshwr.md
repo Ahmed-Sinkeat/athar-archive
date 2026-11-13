@@ -1,6 +1,6 @@
 ---
 title: "قد توفي قبل ساعات الأخ رفعت غنيم كاتب هذا المنشور."
-status: draft
+status: published
 published_at: 2021-10-25
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

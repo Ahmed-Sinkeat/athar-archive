@@ -1,6 +1,6 @@
 ---
 title: "أسئلة علمية موجهة للذين يقولون أن الأشاعرة يوافقون الجهمية أو ينطبق عليهم كلام ا"
-status: draft
+status: published
 published_at: 2021-02-01
 person: abu-jafar-al-khalifi
 ---

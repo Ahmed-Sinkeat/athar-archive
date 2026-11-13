@@ -1,6 +1,6 @@
 ---
 title: "مِن الظواهر العجيبة عند بعض المسلمين -إن لم يكن غالبهم- أنّهم إذا رأوا انتصارًا"
-status: draft
+status: published
 published_at: 2022-09-28
 person: abu-umair-imran-al-zubaidi
 ---

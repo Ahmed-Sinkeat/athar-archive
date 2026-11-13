@@ -1,6 +1,6 @@
 ---
 title: "لا أحصي عدد من رأيت من حولي يثنون عليهم وقلت لهم بالحرف"
-status: draft
+status: published
 published_at: 2025-07-16
 person: abu-umair-imran-al-zubaidi
 ---

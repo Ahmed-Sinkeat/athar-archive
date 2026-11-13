@@ -1,6 +1,6 @@
 ---
 title: "الرموز والمُقدّسات الإسلاميّة تستمدّ قيمتها مِن الله تبارك وتعالى."
-status: draft
+status: published
 published_at: 2022-11-17
 person: abu-umair-imran-al-zubaidi
 ---

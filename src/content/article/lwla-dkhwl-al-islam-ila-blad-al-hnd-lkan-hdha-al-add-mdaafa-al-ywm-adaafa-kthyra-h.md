@@ -1,6 +1,6 @@
 ---
 title: "لولا دخول الإسلام إلى بلاد الهند لكان هذا العدد مضاعفا الْيَوْم أضعافا كثيرة ( ه"
-status: draft
+status: published
 published_at: 2019-07-18
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

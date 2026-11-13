@@ -1,6 +1,6 @@
 ---
 title: "من أعجب ما وصلني هو أنني كفرت حسن نصر اللات لأنني سوري ولأنه قتل المسلمين في سور"
-status: draft
+status: published
 published_at: 2024-10-11
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

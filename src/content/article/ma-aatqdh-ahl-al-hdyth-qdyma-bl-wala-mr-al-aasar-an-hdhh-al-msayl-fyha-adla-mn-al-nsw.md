@@ -1,6 +1,6 @@
 ---
 title: "ما اعتقده أهل الحديث قديماً بل وعلى مر الأعصار أن هذه المسائل فيها أدلة من النصو"
-status: draft
+status: published
 published_at: 2021-04-08
 person: abu-jafar-al-khalifi
 ---

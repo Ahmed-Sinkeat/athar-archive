@@ -1,6 +1,6 @@
 ---
 title: "هذا شاب مشتغل بما يسمى (علوم الطاقة) اسمه محمود المصري."
-status: draft
+status: published
 published_at: 2024-07-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

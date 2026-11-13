@@ -1,6 +1,6 @@
 ---
 title: "الشاهد لحديث (لا يدخل الجنة ديوث) من القرآن الكريم.."
-status: draft
+status: published
 published_at: 2022-01-05
 person: abu-jafar-al-khalifi
 ---

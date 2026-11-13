@@ -1,6 +1,6 @@
 ---
 title: "لو سألت رجلا من المتأثرين بطريقة عدنان إبراهيم ما تقول في ابن باجه وابن رشد والف"
-status: draft
+status: published
 published_at: 2017-11-05
 person: abu-jafar-al-khalifi
 ---

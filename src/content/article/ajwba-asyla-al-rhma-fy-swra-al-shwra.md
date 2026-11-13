@@ -1,6 +1,6 @@
 ---
 title: "أجوبة أسئلة الرحمة في سورة الشورى"
-status: draft
+status: published
 published_at: 2020-05-18
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من يدعو لأبنائه بهذا الدعاء؟"
-status: draft
+status: published
 published_at: 2019-01-28
 person: abu-jafar-al-khalifi
 ---

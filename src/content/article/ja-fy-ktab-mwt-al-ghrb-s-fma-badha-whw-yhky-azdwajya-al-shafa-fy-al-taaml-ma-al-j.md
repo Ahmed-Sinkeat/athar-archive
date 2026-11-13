@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب موت الغرب ص134 فما بعدها وهو يحكي ازدواجية الصحافة في التعامل مع الج"
-status: draft
+status: published
 published_at: 2019-11-30
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

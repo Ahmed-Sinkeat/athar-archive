@@ -1,6 +1,6 @@
 ---
 title: "يَوْمَ نَقُولُ لِجَهَنَّمَ هَلِ امْتَلَأْتِ وَتَقُولُ هَلْ مِن مَّزِيدٍ (30)"
-status: draft
+status: published
 published_at: 2023-10-17
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الذي يفتي بجواز مشاهدة كرة القدم هو مساهم فيما وصلت إليه الشعوب من سخف وجهل وحما"
-status: draft
+status: published
 published_at: 2024-01-24
 person: abu-umair-imran-al-zubaidi
 ---

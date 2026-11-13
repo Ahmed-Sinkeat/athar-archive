@@ -1,6 +1,6 @@
 ---
 title: "لو كان الحادث معكوسا لانطلقت صحفنا تتحدث عن ضرورة تجديد الخطاب الديني ولخرج ألف"
-status: draft
+status: published
 published_at: 2019-03-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

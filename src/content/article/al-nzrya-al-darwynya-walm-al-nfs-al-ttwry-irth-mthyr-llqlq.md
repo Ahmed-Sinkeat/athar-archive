@@ -1,6 +1,6 @@
 ---
 title: "النظرية الداروينية وعلم النفس التطوري - إرث مثير للقلق."
-status: draft
+status: published
 published_at: 2018-07-13
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "صلح الحديبية والرد على كل فرق أهل الباطل..."
-status: draft
+status: published
 published_at: 2024-04-04
 person: abu-jafar-al-khalifi
 ---

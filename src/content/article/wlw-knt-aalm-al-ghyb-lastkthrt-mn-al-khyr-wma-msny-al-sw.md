@@ -1,6 +1,6 @@
 ---
 title: "( ولو كنت أعلم الغيب لاستكثرت من الخير وما مسني السوء )"
-status: draft
+status: published
 published_at: 2019-05-24
 person: abu-jafar-al-khalifi
 ---

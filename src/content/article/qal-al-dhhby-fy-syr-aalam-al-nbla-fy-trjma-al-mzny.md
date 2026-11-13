@@ -1,6 +1,6 @@
 ---
 title: "قال الذهبي في سير أعلام النبلاء في ترجمة المزني"
-status: draft
+status: published
 published_at: 2019-01-12
 person: abu-jafar-al-khalifi
 ---

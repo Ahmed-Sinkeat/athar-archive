@@ -1,6 +1,6 @@
 ---
 title: "قال السرخسي الحنفي المتوفى عام 483 في أصوله ( 1/170)"
-status: draft
+status: published
 published_at: 2017-10-03
 person: abu-jafar-al-khalifi
 ---

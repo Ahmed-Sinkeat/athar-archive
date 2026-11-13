@@ -1,6 +1,6 @@
 ---
 title: "يقول المؤرخ فريلش"
-status: draft
+status: published
 published_at: 2018-11-23
 person: abu-jafar-al-khalifi
 ---

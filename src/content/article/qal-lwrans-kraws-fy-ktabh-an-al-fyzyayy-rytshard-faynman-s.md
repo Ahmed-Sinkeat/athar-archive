@@ -1,6 +1,6 @@
 ---
 title: "قال لورانس كراوس في كتابه عن الفيزيائي ريتشارد فاينمان ص67"
-status: draft
+status: published
 published_at: 2017-10-09
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

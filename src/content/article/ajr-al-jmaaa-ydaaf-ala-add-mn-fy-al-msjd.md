@@ -1,6 +1,6 @@
 ---
 title: "أجر الجماعة يضاعف على عدد من في المسجد"
-status: draft
+status: published
 published_at: 2024-03-27
 person: abu-abdillah-firas-al-ramli
 ---

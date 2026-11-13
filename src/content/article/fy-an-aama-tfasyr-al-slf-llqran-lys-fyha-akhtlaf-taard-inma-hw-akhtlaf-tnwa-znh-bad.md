@@ -1,6 +1,6 @@
 ---
 title: "في أن عامة تفاسير السلف للقرآن ليس فيها اختلاف تعارض إنما هو اختلاف تنوع ظنه بعض"
-status: draft
+status: published
 published_at: 2024-03-21
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

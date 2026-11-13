@@ -1,6 +1,6 @@
 ---
 title: "باب في الشدة على الشعراء إذا استهانوا بالثوابت الشرعية"
-status: draft
+status: published
 published_at: 2019-09-23
 person: abu-jafar-al-khalifi
 ---

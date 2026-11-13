@@ -1,6 +1,6 @@
 ---
 title: "جاء في تفسير مجمع البيان للطبرسي الرافضي"
-status: draft
+status: published
 published_at: 2017-10-28
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

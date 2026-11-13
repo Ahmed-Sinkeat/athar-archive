@@ -1,6 +1,6 @@
 ---
 title: "القصف العقائدي الذي يتعرض له أبناء المسلمين خصوصا في الغرب أشد وأمضى من القصف ال"
-status: draft
+status: published
 published_at: 2019-06-11
 person: abu-jafar-al-khalifi
 ---

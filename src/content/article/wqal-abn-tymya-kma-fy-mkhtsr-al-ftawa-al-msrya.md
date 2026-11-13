@@ -1,6 +1,6 @@
 ---
 title: "وقال ابن تيمية كما في مختصر الفتاوى المصرية"
-status: draft
+status: published
 published_at: 2017-11-10
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "نشر المقطع الأخير بعد أن هاجمه الجهمية الأشعرية واتهموه بأنه يحاول إرضاء الوهابي"
-status: draft
+status: published
 published_at: 2023-12-14
 person: abu-umair-imran-al-zubaidi
 ---

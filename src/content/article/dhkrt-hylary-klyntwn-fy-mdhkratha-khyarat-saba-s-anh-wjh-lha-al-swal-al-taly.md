@@ -1,6 +1,6 @@
 ---
 title: "ذكرت هيلاري كلينتون في مذكراتها خيارات صعبة ص 65 أنه وجه لها السؤال التالي"
-status: draft
+status: published
 published_at: 2017-12-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

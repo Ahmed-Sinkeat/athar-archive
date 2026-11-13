@@ -1,6 +1,6 @@
 ---
 title: "من الأحاديث التي اتفق المنتسبون للملة على تصديق أبي هريرة فيها فقد وجدت الكثير م"
-status: draft
+status: published
 published_at: 2019-11-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

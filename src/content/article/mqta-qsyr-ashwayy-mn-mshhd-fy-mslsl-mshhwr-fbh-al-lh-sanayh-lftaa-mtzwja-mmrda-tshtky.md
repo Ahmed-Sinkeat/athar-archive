@@ -1,6 +1,6 @@
 ---
 title: "مقطع قصير عشوائي من مشهد في مسلسل مشهور فبح الله صانعيه لفتاة متزوجة ممرضة تشتكي"
-status: draft
+status: published
 published_at: 2025-07-30
 person: abu-umair-imran-al-zubaidi
 ---

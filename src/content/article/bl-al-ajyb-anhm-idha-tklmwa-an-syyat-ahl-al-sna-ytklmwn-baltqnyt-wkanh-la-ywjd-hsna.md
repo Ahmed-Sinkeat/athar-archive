@@ -1,6 +1,6 @@
 ---
 title: "بل العجيب أنهم إذا تكلموا عن سيئات أهل السنة يتكلمون بالتقنيط وكأنه لا يوجد حسنا"
-status: draft
+status: published
 published_at: 2019-10-08
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

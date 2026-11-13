@@ -1,6 +1,6 @@
 ---
 title: "ما تنفعكم صلاتكم على النبي ﷺ وقد جئتم بسبب اللعن..."
-status: draft
+status: published
 published_at: 2024-06-28
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-asma-was-sifat", "al-iman"]

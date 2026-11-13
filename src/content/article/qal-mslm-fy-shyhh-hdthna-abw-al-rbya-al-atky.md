@@ -1,6 +1,6 @@
 ---
 title: "قال مسلم في صحيحه 7361- [19-2889] حَدَّثَنَا أَبُو الرَّبِيعِ الْعَتَكِيُّ"
-status: draft
+status: published
 published_at: 2017-12-07
 person: abu-jafar-al-khalifi
 ---

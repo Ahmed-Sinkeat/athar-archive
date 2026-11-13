@@ -1,6 +1,6 @@
 ---
 title: "اكرَه المعصِية لا العاصِي"
-status: draft
+status: published
 published_at: 2025-05-16
 person: awwab-bin-muhammad
 topics: ["mustalah-al-hadith", "al-wala-wal-bara"]

@@ -1,6 +1,6 @@
 ---
 title: "هو حنبلي ويتضايق جداً من مخالفة مشهور المذهب والمدرسة التي تدعي اتباع الدليل"
-status: draft
+status: published
 published_at: 2018-08-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

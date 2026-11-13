@@ -1,6 +1,6 @@
 ---
 title: "إن الرجل الذى يدعى العصمة"
-status: draft
+status: published
 published_at: 2020-06-19
 person: abu-jafar-al-khalifi
 ---

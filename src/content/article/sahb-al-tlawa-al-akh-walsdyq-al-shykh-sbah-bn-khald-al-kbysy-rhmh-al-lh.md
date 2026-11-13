@@ -1,6 +1,6 @@
 ---
 title: "صاحب التلاوة الأخ والصديق الشيخ صباح بن خالد الكبيسي رحمه الله."
-status: draft
+status: published
 published_at: 2024-09-28
 person: abu-jafar-al-khalifi
 ---

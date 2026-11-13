@@ -1,6 +1,6 @@
 ---
 title: "كتب الأستاذ إسماعيل عرفة"
-status: draft
+status: published
 published_at: 2020-03-08
 person: abu-jafar-al-khalifi
 ---

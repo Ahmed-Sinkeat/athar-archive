@@ -1,6 +1,6 @@
 ---
 title: "جاء في تكملة البحر الرائق للطوري الحنفي (8/205)"
-status: draft
+status: published
 published_at: 2017-11-20
 person: abu-jafar-al-khalifi
 ---

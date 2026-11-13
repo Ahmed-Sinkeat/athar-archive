@@ -1,6 +1,6 @@
 ---
 title: "بنظرك إلى هذه الصورة تعرف أنه حينما تجد من العلماء والمشايخ مَن يحرِصون على التو"
-status: draft
+status: published
 published_at: 2025-06-14
 person: awwab-bin-muhammad
 topics: ["tahwid-al-ibada", "al-wala-wal-bara"]

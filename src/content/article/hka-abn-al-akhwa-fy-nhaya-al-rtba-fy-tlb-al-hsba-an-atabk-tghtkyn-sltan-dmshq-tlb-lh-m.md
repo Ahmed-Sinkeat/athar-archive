@@ -1,6 +1,6 @@
 ---
 title: "حكى ابن الأخوة في نهاية الرتبة في طلب الحسبة أن أتابك طغتكين سلطان دمشق طلب له م"
-status: draft
+status: published
 published_at: 2017-10-03
 person: abu-jafar-al-khalifi
 ---

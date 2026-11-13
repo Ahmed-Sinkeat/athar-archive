@@ -1,6 +1,6 @@
 ---
 title: "( حسبي الله ونعم الوكيل )"
-status: draft
+status: published
 published_at: 2025-06-07
 person: awwab-bin-muhammad
 ---

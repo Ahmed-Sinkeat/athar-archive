@@ -1,6 +1,6 @@
 ---
 title: "295- - أَخْبَرَنِي أَبُو بَكْرٍ مُحَمَّدُ بْنُ الْحُسَيْنِ قَالَ"
-status: draft
+status: published
 published_at: 2023-12-09
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "في فضل نشر العلم ..."
-status: draft
+status: published
 published_at: 2023-09-18
 person: abu-abdillah-firas-al-ramli
 ---

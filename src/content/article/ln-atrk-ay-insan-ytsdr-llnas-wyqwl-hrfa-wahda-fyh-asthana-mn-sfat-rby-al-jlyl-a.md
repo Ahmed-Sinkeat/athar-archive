@@ -1,6 +1,6 @@
 ---
 title: "لن أترك أي إنسان يتصدر للناس ويقول حرفًا واحدًا فيه استهانة من صفات ربي الجليل ا"
-status: draft
+status: published
 published_at: 2023-11-16
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

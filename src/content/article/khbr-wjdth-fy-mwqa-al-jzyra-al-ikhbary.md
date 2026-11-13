@@ -1,6 +1,6 @@
 ---
 title: "خبر وجدته في موقع الجزيرة الإخباري"
-status: draft
+status: published
 published_at: 2019-04-28
 person: abu-jafar-al-khalifi
 ---

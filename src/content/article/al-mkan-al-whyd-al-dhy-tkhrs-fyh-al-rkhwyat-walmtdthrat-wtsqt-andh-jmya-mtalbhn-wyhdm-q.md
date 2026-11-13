@@ -1,6 +1,6 @@
 ---
 title: "المكان الوحيد الذي تخرس فيه الرخويات والمتدثرات وتسقط عنده جميع مطالبهن ويُهدم ق"
-status: draft
+status: published
 published_at: 2023-11-04
 person: abu-umair-imran-al-zubaidi
 ---

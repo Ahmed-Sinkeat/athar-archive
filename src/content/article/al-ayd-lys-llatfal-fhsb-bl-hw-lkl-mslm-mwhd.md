@@ -1,6 +1,6 @@
 ---
 title: "العيد ليس للأطفال فحسب؛ بل هو لكل مسلم موحد"
-status: draft
+status: published
 published_at: 2025-03-31
 person: abu-umair-imran-al-zubaidi
 ---

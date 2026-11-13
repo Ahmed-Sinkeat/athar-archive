@@ -1,6 +1,6 @@
 ---
 title: "هذه دراسة في تأثير البلاغة لخبيرة استراتيجية في التسويق اسمها ليا راي بيرك"
-status: draft
+status: published
 published_at: 2023-10-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

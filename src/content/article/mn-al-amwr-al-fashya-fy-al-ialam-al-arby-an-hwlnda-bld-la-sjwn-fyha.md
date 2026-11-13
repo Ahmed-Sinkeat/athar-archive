@@ -1,6 +1,6 @@
 ---
 title: "من الأمور الفاشية في الإعلام العربي أن هولندا بلد لا سجون فيها"
-status: draft
+status: published
 published_at: 2018-12-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

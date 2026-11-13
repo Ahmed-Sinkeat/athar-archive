@@ -1,6 +1,6 @@
 ---
 title: "فيصل القاسم وخلفته القذرة يحقرون من العشائر المسلمين ويقولون أنهم همج وبربر."
-status: draft
+status: published
 published_at: 2025-07-19
 person: abu-umair-imran-al-zubaidi
 ---

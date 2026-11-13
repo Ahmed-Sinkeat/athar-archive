@@ -1,6 +1,6 @@
 ---
 title: "كنت أشاهد مقطعًا لأحد المشايخ يجيب من يستعظمون ختم القرآن في ليلة واحدة وهكذا."
-status: draft
+status: published
 published_at: 2023-11-27
 person: abu-umair-imran-al-zubaidi
 ---

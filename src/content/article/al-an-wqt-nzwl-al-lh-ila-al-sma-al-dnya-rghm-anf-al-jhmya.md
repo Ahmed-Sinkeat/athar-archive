@@ -1,6 +1,6 @@
 ---
 title: "الآن وقت نزول الله ﷻ إلى السماء الدنيا رغم أنف الجهمية"
-status: draft
+status: published
 published_at: 2023-05-10
 person: abu-abdillah-firas-al-ramli
 ---

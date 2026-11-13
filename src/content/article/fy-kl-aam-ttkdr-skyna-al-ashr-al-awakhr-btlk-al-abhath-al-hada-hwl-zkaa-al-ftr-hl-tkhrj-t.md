@@ -1,6 +1,6 @@
 ---
 title: "في كل عام تتكدر سكينة العشر الأواخر بتلك الأبحاث الحادة حول زكاة الفطر هل تخرج ط"
-status: draft
+status: published
 published_at: 2018-06-08
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لاحظ ذكرَ (أبا بكر بن الحسن)."
-status: draft
+status: published
 published_at: 2024-07-13
 person: abu-jafar-al-khalifi
 ---

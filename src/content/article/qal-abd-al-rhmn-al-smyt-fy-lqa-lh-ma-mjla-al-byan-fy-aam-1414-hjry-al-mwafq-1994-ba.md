@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الرحمن السميط في لقاء له مع مجلة البيان في عام ١٤١٤ هجري الموافق ١٩٩٤ با"
-status: draft
+status: published
 published_at: 2019-02-09
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

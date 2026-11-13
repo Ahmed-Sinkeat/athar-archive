@@ -1,6 +1,6 @@
 ---
 title: "والآن مع عدة أسئلة خانقة للإمامية"
-status: draft
+status: published
 published_at: 2020-10-06
 person: abu-jafar-al-khalifi
 ---

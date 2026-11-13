@@ -1,6 +1,6 @@
 ---
 title: "أعرف شبانًا داعين إلى الله ويصرحون برغبتهم بالتعدد مرارُا"
-status: draft
+status: published
 published_at: 2023-11-13
 person: abu-umair-imran-al-zubaidi
 ---

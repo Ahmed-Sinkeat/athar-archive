@@ -1,6 +1,6 @@
 ---
 title: "فهُم بناء على هذا الواقع المشاهد طردوا هذا المعنى للمكان على كل شيء في الوجود"
-status: draft
+status: published
 published_at: 2023-08-08
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من جديد مع معضلة الغاية والوسيلة.."
-status: draft
+status: published
 published_at: 2021-04-12
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-wala-wal-bara", "al-sunnah-wal-bidah"]

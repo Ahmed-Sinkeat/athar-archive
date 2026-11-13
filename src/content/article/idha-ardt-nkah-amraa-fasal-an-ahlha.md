@@ -1,6 +1,6 @@
 ---
 title: "إذا أردت نكاح امرأة فاسأل عن أهلها"
-status: draft
+status: published
 published_at: 2025-01-06
 person: abu-abdillah-firas-al-ramli
 ---

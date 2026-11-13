@@ -1,6 +1,6 @@
 ---
 title: "ياسر قاضي واختبار عمر بن الخطاب -رضي الله عنه- في العقيدة"
-status: draft
+status: published
 published_at: 2021-02-19
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

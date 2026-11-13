@@ -1,6 +1,6 @@
 ---
 title: "يحدثك بحرقة عما يسميه تجسيم ابن تيمية أو الوهابية وما نقم عليهم سوى إثبات ظواهر"
-status: draft
+status: published
 published_at: 2018-01-22
 person: abu-jafar-al-khalifi
 ---

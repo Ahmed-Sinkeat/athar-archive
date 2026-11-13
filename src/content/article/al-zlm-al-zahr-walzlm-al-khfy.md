@@ -1,6 +1,6 @@
 ---
 title: "الظلم الظاهر والظلم الخفي.."
-status: draft
+status: published
 published_at: 2022-04-08
 person: abu-jafar-al-khalifi
 ---

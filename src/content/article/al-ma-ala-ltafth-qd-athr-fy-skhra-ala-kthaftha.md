@@ -1,6 +1,6 @@
 ---
 title: "الماء على لطافته قد أثر في صخرة على كثافتها"
-status: draft
+status: published
 published_at: 2024-07-10
 person: abu-abdillah-firas-al-ramli
 ---

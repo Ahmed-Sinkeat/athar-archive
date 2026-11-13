@@ -1,6 +1,6 @@
 ---
 title: "قال عبد القاهر البغدادي وقد توفي قبل ما يزيد على عشرة قرون في كتابه الفرق بين ال"
-status: draft
+status: published
 published_at: 2018-02-05
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

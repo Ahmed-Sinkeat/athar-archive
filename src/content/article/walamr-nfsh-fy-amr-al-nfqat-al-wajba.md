@@ -1,6 +1,6 @@
 ---
 title: "والأمر نفسه في أمر النفقات الواجبة؛"
-status: draft
+status: published
 published_at: 2021-07-08
 person: abu-jafar-al-khalifi
 ---

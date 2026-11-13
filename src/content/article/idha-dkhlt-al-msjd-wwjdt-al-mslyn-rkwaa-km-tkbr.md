@@ -1,6 +1,6 @@
 ---
 title: "إذا دخلت المسجد ووجدت المصلين ركوعا، كم تكبر؟"
-status: draft
+status: published
 published_at: 2024-01-21
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

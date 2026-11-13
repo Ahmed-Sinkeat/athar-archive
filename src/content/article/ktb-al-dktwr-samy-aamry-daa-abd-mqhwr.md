@@ -1,6 +1,6 @@
 ---
 title: "كتب الدكتور سامي عامري : دعاء عبد (مقهور)!"
-status: draft
+status: published
 published_at: 2018-07-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "الرسوم المتحركة وتقريب المفاهيم العقلية"
-status: draft
+status: published
 published_at: 2020-05-28
 person: abu-jafar-al-khalifi
 ---

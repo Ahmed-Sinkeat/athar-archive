@@ -1,6 +1,6 @@
 ---
 title: "يوجد نصراني صليبي اسمه طارق خوري أساء لسيف الله المسلول خالد بن الوليد وسلم ولم"
-status: draft
+status: published
 published_at: 2018-05-23
 person: abu-jafar-al-khalifi
 ---

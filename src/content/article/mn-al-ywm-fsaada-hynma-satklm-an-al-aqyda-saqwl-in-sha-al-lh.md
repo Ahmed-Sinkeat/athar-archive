@@ -1,6 +1,6 @@
 ---
 title: "من اليوم فصاعدًا حينما سأتكلم عن العقيدة سأقول -إن شاء الله"
-status: draft
+status: published
 published_at: 2024-03-14
 person: abu-umair-imran-al-zubaidi
 ---

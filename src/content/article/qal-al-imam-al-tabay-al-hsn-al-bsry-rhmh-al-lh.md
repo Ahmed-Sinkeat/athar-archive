@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام التابعي الحسن البصري رحمه الله"
-status: draft
+status: published
 published_at: 2018-06-26
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

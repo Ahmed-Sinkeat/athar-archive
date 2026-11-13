@@ -1,6 +1,6 @@
 ---
 title: "قال المروزي في تعظيم قدر الصلاة"
-status: draft
+status: published
 published_at: 2018-05-12
 person: abu-jafar-al-khalifi
 ---

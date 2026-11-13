@@ -1,6 +1,6 @@
 ---
 title: "\"المرأة المستقلة ماديا ستجعل الرجل يحترمها رغما عن أنفه\"."
-status: draft
+status: published
 published_at: 2026-08-12
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

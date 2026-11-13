@@ -1,6 +1,6 @@
 ---
 title: "عبد الله رشدي ترك التعطيل والشرك وصار يدعو للتوحيد"
-status: draft
+status: published
 published_at: 2025-10-04
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "هؤلاء الناس عندهم مزاجية عجيبة، يصححون ما يشاءون بحسب ما يرونه خادماً لقضيتهم."
-status: draft
+status: published
 published_at: 2025-08-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-sunnah-wal-bidah"]

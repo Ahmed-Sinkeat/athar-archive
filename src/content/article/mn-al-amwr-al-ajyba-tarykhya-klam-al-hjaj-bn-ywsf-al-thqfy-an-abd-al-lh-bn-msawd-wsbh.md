@@ -1,6 +1,6 @@
 ---
 title: "من الأمور العجيبة تاريخياً كلام الحجاج بن يوسف الثقفي عن عبد الله بن مسعود وسبه"
-status: draft
+status: published
 published_at: 2018-08-26
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

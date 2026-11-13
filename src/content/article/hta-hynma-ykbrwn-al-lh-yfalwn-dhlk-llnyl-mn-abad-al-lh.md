@@ -1,6 +1,6 @@
 ---
 title: "حتى حينما يكبرون الله يفعلون ذلك للنيل من عباد الله!"
-status: draft
+status: published
 published_at: 2024-12-05
 person: abu-umair-imran-al-zubaidi
 ---

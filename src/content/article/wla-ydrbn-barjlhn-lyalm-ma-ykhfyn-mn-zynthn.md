@@ -1,6 +1,6 @@
 ---
 title: "(ولا يضربن بأرجلهن ليُعلم ما يخفين من زينتهن)"
-status: draft
+status: published
 published_at: 2026-04-24
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الولاء والبراء من ضروريات أي دين وإذا استغنى إنسان عن هذا في دينه وأرخص دينه فلس"
-status: draft
+status: published
 published_at: 2017-12-25
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-wala-wal-bara"]

@@ -1,6 +1,6 @@
 ---
 title: "مِن الأمور الخطيرة هي اعتقاد أنّ هناك تشريع أو نظام حكم أفضل أو يضاهي حكم الله ت"
-status: draft
+status: published
 published_at: 2023-03-17
 person: abu-umair-imran-al-zubaidi
 ---

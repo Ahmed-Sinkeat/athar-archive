@@ -1,6 +1,6 @@
 ---
 title: "جامع مقالات أبي جعفر الخليفي في [ الدفاع عن السنة والإمام البخاري وأهل الحديث"
-status: draft
+status: published
 published_at: 2019-03-15
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

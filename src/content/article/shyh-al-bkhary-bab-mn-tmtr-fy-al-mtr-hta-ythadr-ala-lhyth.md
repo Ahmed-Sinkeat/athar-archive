@@ -1,6 +1,6 @@
 ---
 title: "صحيح البخاري | باب من تمطر في المطر حتى يتحادر على لحيته"
-status: draft
+status: published
 published_at: 2023-11-12
 person: abu-abdillah-firas-al-ramli
 ---

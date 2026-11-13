@@ -1,6 +1,6 @@
 ---
 title: "كان الإمام التابعي مجاهد رضي الله عنه يقول"
-status: draft
+status: published
 published_at: 2023-01-29
 person: abu-umair-imran-al-zubaidi
 ---

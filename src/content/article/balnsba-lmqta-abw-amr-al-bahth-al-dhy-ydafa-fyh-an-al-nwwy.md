@@ -1,6 +1,6 @@
 ---
 title: "بالنسبة لمقطع أبو عمر الباحث الذي يدافع فيه عن النووي"
-status: draft
+status: published
 published_at: 2024-02-15
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

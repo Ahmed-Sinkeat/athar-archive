@@ -1,6 +1,6 @@
 ---
 title: "\"من حسن قوامة الرجل أن يعي أنّ المرأة لا تعي كل ما تقول\"."
-status: draft
+status: published
 published_at: 2024-11-23
 person: abu-umair-imran-al-zubaidi
 ---

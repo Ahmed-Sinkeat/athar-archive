@@ -1,6 +1,6 @@
 ---
 title: "كنت أنظر في التعليقات على المناظرة في قناة الشيخ محمد حفظه الله."
-status: draft
+status: published
 published_at: 2024-07-01
 person: abu-umair-imran-al-zubaidi
 ---

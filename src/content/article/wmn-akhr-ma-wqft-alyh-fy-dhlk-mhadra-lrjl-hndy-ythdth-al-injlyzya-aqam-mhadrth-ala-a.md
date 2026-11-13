@@ -1,6 +1,6 @@
 ---
 title: "ومن آخر ما وقفت عليه في ذلك محاضرة لرجل هندي يتحدث الإنجليزية أقام محاضرته على أ"
-status: draft
+status: published
 published_at: 2019-10-12
 person: abu-jafar-al-khalifi
 ---

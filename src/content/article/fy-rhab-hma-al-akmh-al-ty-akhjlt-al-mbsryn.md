@@ -1,6 +1,6 @@
 ---
 title: "في رحاب همة الأكمه التي أخجلت المبصرين"
-status: draft
+status: published
 published_at: 2020-01-22
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

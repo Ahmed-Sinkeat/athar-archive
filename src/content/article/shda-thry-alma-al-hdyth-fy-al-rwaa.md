@@ -1,6 +1,6 @@
 ---
 title: "شدة تحري علماء الحديث في الرواة"
-status: draft
+status: published
 published_at: 2025-08-20
 person: abu-abdillah-firas-al-ramli
 ---

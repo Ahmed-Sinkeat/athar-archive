@@ -1,6 +1,6 @@
 ---
 title: "قال الشيخ أحمد شاكر كما في جمهرة مقالاته"
-status: draft
+status: published
 published_at: 2018-09-15
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-iman"]

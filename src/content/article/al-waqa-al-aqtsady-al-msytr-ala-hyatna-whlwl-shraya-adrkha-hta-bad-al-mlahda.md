@@ -1,6 +1,6 @@
 ---
 title: "الواقع الاقتصادي المسيطر على حياتنا وحلول شرعية أدركها حتى بعض الملاحدة !"
-status: draft
+status: published
 published_at: 2020-07-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

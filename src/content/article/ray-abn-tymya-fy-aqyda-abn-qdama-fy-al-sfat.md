@@ -1,6 +1,6 @@
 ---
 title: "رأي ابن تيمية في عقيدة ابن قدامة في الصفات"
-status: draft
+status: published
 published_at: 2020-08-10
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

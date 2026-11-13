@@ -1,6 +1,6 @@
 ---
 title: "من أجمل الأخبار التي سمعتها مؤخرًا."
-status: draft
+status: published
 published_at: 2023-12-08
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

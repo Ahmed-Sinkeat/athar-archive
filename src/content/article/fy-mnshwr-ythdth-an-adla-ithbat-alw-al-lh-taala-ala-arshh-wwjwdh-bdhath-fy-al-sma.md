@@ -1,6 +1,6 @@
 ---
 title: "في منشورٍ يتحدّث عن أدلة إثبات علوّ الله تعالى على عرشه ووجوده [بذاته] في السماء"
-status: draft
+status: published
 published_at: 2023-01-26
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

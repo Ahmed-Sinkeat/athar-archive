@@ -1,6 +1,6 @@
 ---
 title: "السويد وثقافة القطيع !"
-status: draft
+status: published
 published_at: 2020-07-18
 person: abu-jafar-al-khalifi
 ---

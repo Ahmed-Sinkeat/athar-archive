@@ -1,6 +1,6 @@
 ---
 title: "في غض البصر ..."
-status: draft
+status: published
 published_at: 2023-09-04
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

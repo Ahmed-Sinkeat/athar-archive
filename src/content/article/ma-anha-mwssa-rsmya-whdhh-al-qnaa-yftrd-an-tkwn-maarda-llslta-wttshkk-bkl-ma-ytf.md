@@ -1,6 +1,6 @@
 ---
 title: "مع أنها مؤسسة رسمية وهذه القناة يُفترض أن تكون مُعارِضة للسلطة وتتشكك بكل ما يتف"
-status: draft
+status: published
 published_at: 2021-12-01
 person: abu-jafar-al-khalifi
 ---

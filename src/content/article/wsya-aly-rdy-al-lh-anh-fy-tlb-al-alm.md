@@ -1,6 +1,6 @@
 ---
 title: "وصية علي رضي الله عنه في طلب العلم"
-status: draft
+status: published
 published_at: 2023-08-07
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs", "al-imamah-was-sahabah"]

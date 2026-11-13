@@ -1,6 +1,6 @@
 ---
 title: "المعوذتان وعلاقتهما بقصة البداية (قصة آدم وإبليس)..."
-status: draft
+status: published
 published_at: 2025-03-30
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "هذا الحكم الشديد ( في لبنان ) لا يوجد في الشريعة فلا قطع على السارق لأن المسروق"
-status: draft
+status: published
 published_at: 2019-01-03
 person: abu-jafar-al-khalifi
 ---

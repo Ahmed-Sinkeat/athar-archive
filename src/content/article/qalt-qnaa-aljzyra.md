@@ -1,6 +1,6 @@
 ---
 title: "قالت قناة \"الجزيرة\""
-status: draft
+status: published
 published_at: 2019-05-21
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

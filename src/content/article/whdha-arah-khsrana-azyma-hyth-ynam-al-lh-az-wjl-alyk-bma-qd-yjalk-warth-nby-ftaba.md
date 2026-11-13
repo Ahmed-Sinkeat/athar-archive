@@ -1,6 +1,6 @@
 ---
 title: "وهذا أراه خسراناً عظيماً حيث ينعم الله عز وجل عليك بما قد يجعلك (وارث نبي) فتأبى"
-status: draft
+status: published
 published_at: 2021-06-29
 person: abu-jafar-al-khalifi
 ---

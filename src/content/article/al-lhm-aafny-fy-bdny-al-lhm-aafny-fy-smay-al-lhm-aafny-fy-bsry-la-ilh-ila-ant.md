@@ -1,6 +1,6 @@
 ---
 title: "اللهم عافني في بدني، اللهم عافني في سمعي، اللهم عافني في بصري، لا إله إلا أنت."
-status: draft
+status: published
 published_at: 2024-11-16
 person: abu-umair-imran-al-zubaidi
 ---

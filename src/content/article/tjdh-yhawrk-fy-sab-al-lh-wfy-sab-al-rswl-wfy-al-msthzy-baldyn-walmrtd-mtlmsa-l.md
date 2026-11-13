@@ -1,6 +1,6 @@
 ---
 title: "تجده يحاورك في ساب الله وفِي ساب الرسول وفِي المستهزيء بالدِّين والمرتد متلمسا ل"
-status: draft
+status: published
 published_at: 2018-12-17
 person: abu-jafar-al-khalifi
 ---

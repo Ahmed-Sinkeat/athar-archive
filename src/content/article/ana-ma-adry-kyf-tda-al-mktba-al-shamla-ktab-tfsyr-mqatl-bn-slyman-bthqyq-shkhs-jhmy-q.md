@@ -1,6 +1,6 @@
 ---
 title: "أنا ما أدري كيف تضع المكتبة الشاملة كتاب تفسير مقاتل بن سليمان بتحقيق شخص جهمي ق"
-status: draft
+status: published
 published_at: 2026-05-31
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

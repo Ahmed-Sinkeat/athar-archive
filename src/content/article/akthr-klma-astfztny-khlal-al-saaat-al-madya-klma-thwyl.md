@@ -1,6 +1,6 @@
 ---
 title: "أكثر كلمة استفزتني خلال الساعات الماضية كلمة \"تهويل\"."
-status: draft
+status: published
 published_at: 2026-01-18
 person: abu-umair-imran-al-zubaidi
 ---

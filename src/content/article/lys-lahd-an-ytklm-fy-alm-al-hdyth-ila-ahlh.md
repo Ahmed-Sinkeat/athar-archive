@@ -1,6 +1,6 @@
 ---
 title: "ليس لأحد أن يتكلم في علم الحديث إلا أهله"
-status: draft
+status: published
 published_at: 2023-07-16
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

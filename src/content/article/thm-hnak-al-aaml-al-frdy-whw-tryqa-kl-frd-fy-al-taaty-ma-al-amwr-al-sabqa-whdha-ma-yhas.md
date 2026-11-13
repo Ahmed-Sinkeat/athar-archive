@@ -1,6 +1,6 @@
 ---
 title: "ثم هناك العامل الفردي وهو طريقة كل فرد في التعاطي مع الأمور السابقة وهذا ما يحاس"
-status: draft
+status: published
 published_at: 2020-05-31
 person: abu-jafar-al-khalifi
 ---

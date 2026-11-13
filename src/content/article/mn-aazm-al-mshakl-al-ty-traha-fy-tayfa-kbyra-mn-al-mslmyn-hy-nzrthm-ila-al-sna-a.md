@@ -1,6 +1,6 @@
 ---
 title: "مِن أعظم المشاكل الّتي تراها في طائفة كبيرة مِن المسلمين هي نظرتهم إلى السُنّة ا"
-status: draft
+status: published
 published_at: 2022-12-31
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

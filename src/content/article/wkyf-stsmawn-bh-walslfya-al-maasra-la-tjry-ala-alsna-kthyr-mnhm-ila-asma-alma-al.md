@@ -1,6 +1,6 @@
 ---
 title: "وكيف ستسمعون به والسلفية المعاصرة لا تجري على ألسنة كثير منهم إلا أسماء علماء ال"
-status: draft
+status: published
 published_at: 2023-07-26
 person: abu-umair-imran-al-zubaidi
 ---

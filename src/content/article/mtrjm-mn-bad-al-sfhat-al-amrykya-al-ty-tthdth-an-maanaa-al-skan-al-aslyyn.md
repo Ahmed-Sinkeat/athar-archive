@@ -1,6 +1,6 @@
 ---
 title: "مترجم من بعض الصفحات الأمريكية التي تتحدث عن معاناة السكان الأصليين"
-status: draft
+status: published
 published_at: 2018-08-27
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "روي عن الحسن بن صالح قال"
-status: draft
+status: published
 published_at: 2018-08-12
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

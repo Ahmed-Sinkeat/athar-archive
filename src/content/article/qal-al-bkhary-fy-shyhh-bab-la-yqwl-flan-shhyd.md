@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري في صحيحه: باب: لا يقول فلان شهيد"
-status: draft
+status: published
 published_at: 2025-10-15
 person: abu-abdillah-firas-al-ramli
 ---

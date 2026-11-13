@@ -1,6 +1,6 @@
 ---
 title: "أسباب وليست أعذارا.."
-status: draft
+status: published
 published_at: 2022-06-04
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

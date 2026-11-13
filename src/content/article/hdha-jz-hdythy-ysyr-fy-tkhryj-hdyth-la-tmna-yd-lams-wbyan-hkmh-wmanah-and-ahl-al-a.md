@@ -1,6 +1,6 @@
 ---
 title: "هذا جزء حديثي يسير في تخريج حديث «لا تمنع يد لامس» وبيان حكمه ومعناه عند أهل الع"
-status: draft
+status: published
 published_at: 2025-06-27
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

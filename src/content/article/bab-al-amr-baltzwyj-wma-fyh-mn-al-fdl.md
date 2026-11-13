@@ -1,6 +1,6 @@
 ---
 title: "باب الأمر بالتزويج وما فيه من الفضل"
-status: draft
+status: published
 published_at: 2025-12-26
 person: abu-abdillah-firas-al-ramli
 ---

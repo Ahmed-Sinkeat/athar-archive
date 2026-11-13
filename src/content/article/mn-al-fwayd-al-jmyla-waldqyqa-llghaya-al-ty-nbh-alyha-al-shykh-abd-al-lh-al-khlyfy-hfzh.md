@@ -1,6 +1,6 @@
 ---
 title: "مِن الفوائد الجميلة والدقيقة للغاية الّتي نبّه عليها الشيخ عبد الله الخليفي حفظه"
-status: draft
+status: published
 published_at: 2023-01-07
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-sunnah-wal-bidah"]

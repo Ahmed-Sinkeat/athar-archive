@@ -1,6 +1,6 @@
 ---
 title: "عمر الأشرف وعمر الأطرف"
-status: draft
+status: published
 published_at: 2022-08-15
 person: abu-jafar-al-khalifi
 ---

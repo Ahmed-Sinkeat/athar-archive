@@ -1,6 +1,6 @@
 ---
 title: "إحدى شركات ألعاب الفيديو أنزلت إصدارا تظهر فيه الأبطال الخارقين مثل الرجل العنكب"
-status: draft
+status: published
 published_at: 2020-04-26
 person: abu-jafar-al-khalifi
 ---

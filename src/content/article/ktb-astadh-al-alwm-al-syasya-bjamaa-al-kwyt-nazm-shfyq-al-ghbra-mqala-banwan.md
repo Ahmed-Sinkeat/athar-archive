@@ -1,6 +1,6 @@
 ---
 title: "كتب أستاذ العلوم السياسية بجامعة الكويت ناظم شفيق الغبرا مقالاً بعنوان"
-status: draft
+status: published
 published_at: 2018-07-12
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

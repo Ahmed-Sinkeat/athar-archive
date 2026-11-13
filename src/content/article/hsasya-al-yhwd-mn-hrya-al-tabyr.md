@@ -1,6 +1,6 @@
 ---
 title: "حساسية اليهود من حرية التعبير!"
-status: draft
+status: published
 published_at: 2020-11-19
 person: abu-jafar-al-khalifi
 ---

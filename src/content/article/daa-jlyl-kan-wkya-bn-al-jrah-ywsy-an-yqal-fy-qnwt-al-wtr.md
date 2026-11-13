@@ -1,6 +1,6 @@
 ---
 title: "دعاء جليل كان وكيع بن الجراح يوصي أن يقال في قنوت الوتر..."
-status: draft
+status: published
 published_at: 2026-03-15
 person: abu-jafar-al-khalifi
 ---

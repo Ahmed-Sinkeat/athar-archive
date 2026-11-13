@@ -1,6 +1,6 @@
 ---
 title: "قالت إحدى الكاتبات ( ولا ترغب بذكر اسمها )"
-status: draft
+status: published
 published_at: 2018-09-20
 person: abu-jafar-al-khalifi
 ---

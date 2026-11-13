@@ -1,6 +1,6 @@
 ---
 title: "أدعية تجمع لك دنياك وآخرتك"
-status: draft
+status: published
 published_at: 2023-10-20
 person: abu-abdillah-firas-al-ramli
 ---

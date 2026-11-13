@@ -1,6 +1,6 @@
 ---
 title: "ربٌ لا يُعرف مكانه ولا يُشار إليه"
-status: draft
+status: published
 published_at: 2024-02-19
 person: abu-umair-imran-al-zubaidi
 ---

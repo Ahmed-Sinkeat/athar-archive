@@ -1,6 +1,6 @@
 ---
 title: "كتب الأخ حسام الجويلي"
-status: draft
+status: published
 published_at: 2018-07-06
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أليست المخدرات موجودة في كل مكان لماذا هذا التحذير من الأطباء"
-status: draft
+status: published
 published_at: 2018-11-16
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا جزء من مقابلة مع مجرم أمريكي متهوِّد (كان نصرانياً ثم تهوَّد)"
-status: draft
+status: published
 published_at: 2025-06-28
 person: abu-jafar-al-khalifi
 ---

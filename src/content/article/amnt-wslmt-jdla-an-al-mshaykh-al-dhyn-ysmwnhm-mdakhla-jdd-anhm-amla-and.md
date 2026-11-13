@@ -1,6 +1,6 @@
 ---
 title: "آمنت وسَلّمت -جدلًا- أنً المشايخ الّذين يُسمّونهم [مداخلة جُدد] أنّهم عملاء عند"
-status: draft
+status: published
 published_at: 2022-10-20
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "وكأنَّ صاحبنا لم يقرأ القرآن يوما."
-status: draft
+status: published
 published_at: 2026-09-04
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

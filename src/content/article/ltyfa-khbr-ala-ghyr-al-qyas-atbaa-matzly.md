@@ -1,6 +1,6 @@
 ---
 title: "لطيفة: خبر على غير القياس اتباع معتزلي!"
-status: draft
+status: published
 published_at: 2020-02-01
 person: abu-jafar-al-khalifi
 ---

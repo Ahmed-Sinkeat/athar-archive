@@ -1,6 +1,6 @@
 ---
 title: "هذا الخبر ذكَّرني بالقصة المذكورة في إنجيل لوقا أن المسيح عليه الصلاة والسلام عا"
-status: draft
+status: published
 published_at: 2020-12-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

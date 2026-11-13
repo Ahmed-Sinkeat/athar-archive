@@ -1,6 +1,6 @@
 ---
 title: "هذا هندوسي تقليدي—هكذا يصف نفسه"
-status: draft
+status: published
 published_at: 2021-06-03
 person: abu-jafar-al-khalifi
 ---

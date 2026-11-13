@@ -1,6 +1,6 @@
 ---
 title: "هل أتاك نبأ شهداء بئر معونة"
-status: draft
+status: published
 published_at: 2018-07-08
 person: abu-jafar-al-khalifi
 ---

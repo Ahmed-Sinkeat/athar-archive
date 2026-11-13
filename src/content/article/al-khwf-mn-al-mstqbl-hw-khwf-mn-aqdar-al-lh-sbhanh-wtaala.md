@@ -1,6 +1,6 @@
 ---
 title: "الخوف من المستقبل هو خوفٌ من أقدار الله سبحانه وتعالى!"
-status: draft
+status: published
 published_at: 2023-11-19
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "مسألة في قول: \"القوامة تكليف وليست تشريفًا\" أنه تناقض؛ بل ويقتضي التشريف!"
-status: draft
+status: published
 published_at: 2024-02-24
 person: abu-umair-imran-al-zubaidi
 ---

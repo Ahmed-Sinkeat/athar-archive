@@ -1,6 +1,6 @@
 ---
 title: "باب قول النبي ﷺ ربنا آتنا في الدنيا حسنة"
-status: draft
+status: published
 published_at: 2023-07-10
 person: abu-abdillah-firas-al-ramli
 ---

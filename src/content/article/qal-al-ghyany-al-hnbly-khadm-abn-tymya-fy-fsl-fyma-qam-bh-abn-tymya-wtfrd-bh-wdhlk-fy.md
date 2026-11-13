@@ -1,6 +1,6 @@
 ---
 title: "قال الغياني الحنبلي خادم ابن تيمية في فصل فيما قام به ابن تيمية وتفرد به وذلك في"
-status: draft
+status: published
 published_at: 2018-04-16
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "جماعة مقارنة الأديان والرد على الشبهات ومن شاكلهم -إلا من رحم ربي- يتكلمون عنا ب"
-status: draft
+status: published
 published_at: 2024-04-17
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "صلوات ربّي وسلامه على سيّدنا جبريل"
-status: draft
+status: published
 published_at: 2023-04-01
 person: abu-umair-imran-al-zubaidi
 ---

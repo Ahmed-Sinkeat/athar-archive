@@ -1,6 +1,6 @@
 ---
 title: "بدء النحو في مجلس علي بن أبي طالب أم في مجلس معاوية بن أبي سفيان ؟"
-status: draft
+status: published
 published_at: 2019-09-23
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-iman"]

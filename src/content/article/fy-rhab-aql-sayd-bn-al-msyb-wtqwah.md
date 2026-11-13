@@ -1,6 +1,6 @@
 ---
 title: "في رحاب عقل سعيد بن المسيب وتقواه"
-status: draft
+status: published
 published_at: 2019-11-09
 person: abu-jafar-al-khalifi
 ---

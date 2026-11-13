@@ -1,6 +1,6 @@
 ---
 title: "ولهذا لما نهى الجهمية شيخ الإسلام عن التحديث بأخبار الصفات والإجابة في هذا الأمر"
-status: draft
+status: published
 published_at: 2019-12-07
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "اللهم اجعل لهم مراضع في الجنة!"
-status: draft
+status: published
 published_at: 2023-11-18
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

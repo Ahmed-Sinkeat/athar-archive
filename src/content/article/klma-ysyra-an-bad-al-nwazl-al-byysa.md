@@ -1,6 +1,6 @@
 ---
 title: "كلمة يسيرة عن بعض النوازل البئيسة."
-status: draft
+status: published
 published_at: 2026-07-28
 person: awwab-bin-muhammad
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "هل يجرؤ هذا التافه أن ينشر منشورا يقول فيه"
-status: draft
+status: published
 published_at: 2025-09-01
 person: abu-umair-imran-al-zubaidi
 ---

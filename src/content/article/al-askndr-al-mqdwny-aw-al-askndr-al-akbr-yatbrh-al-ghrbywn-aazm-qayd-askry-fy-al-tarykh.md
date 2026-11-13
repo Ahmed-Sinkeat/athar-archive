@@ -1,6 +1,6 @@
 ---
 title: "الاسكندر المقدوني أو الاسكندر الأكبر يعتبره الغربيون أعظم قائد عسكري في التاريخ"
-status: draft
+status: published
 published_at: 2018-11-14
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

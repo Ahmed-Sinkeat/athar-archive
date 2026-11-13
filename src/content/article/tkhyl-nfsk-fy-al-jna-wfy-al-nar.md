@@ -1,6 +1,6 @@
 ---
 title: "تخيل نفسك في الجنة وفي النار"
-status: draft
+status: published
 published_at: 2024-01-24
 person: abu-abdillah-firas-al-ramli
 ---

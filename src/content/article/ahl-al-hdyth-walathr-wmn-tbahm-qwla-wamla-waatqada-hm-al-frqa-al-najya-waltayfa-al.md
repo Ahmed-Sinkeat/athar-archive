@@ -1,6 +1,6 @@
 ---
 title: "أهل الحديث والأثر ومن تبعهم قولًا وعملَا واعتقادًا هم الفرقة الناجية والطائفة ال"
-status: draft
+status: published
 published_at: 2024-01-14
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

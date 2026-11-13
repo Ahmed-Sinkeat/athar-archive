@@ -1,6 +1,6 @@
 ---
 title: "مُملّين أقسم بالله!"
-status: draft
+status: published
 published_at: 2024-02-15
 person: abu-umair-imran-al-zubaidi
 ---

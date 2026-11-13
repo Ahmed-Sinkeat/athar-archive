@@ -1,6 +1,6 @@
 ---
 title: "هذه ورقة علمية عن (تسليع المرأة) في أمريكا وتايلاند للكاتبة كيدي جيلسون (وهي أكا"
-status: draft
+status: published
 published_at: 2023-03-16
 person: abu-jafar-al-khalifi
 ---

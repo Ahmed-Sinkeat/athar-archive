@@ -1,6 +1,6 @@
 ---
 title: "مروءة صاحب حديث…"
-status: draft
+status: published
 published_at: 2020-08-03
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا من كتاب العلم الممسوخ لجونثان ويلز وكنت دائما أقول أَن كلام علماء التشريح قد"
-status: draft
+status: published
 published_at: 2019-11-09
 person: abu-jafar-al-khalifi
 ---

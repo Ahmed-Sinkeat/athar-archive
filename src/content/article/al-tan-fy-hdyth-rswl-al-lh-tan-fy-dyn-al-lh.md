@@ -1,6 +1,6 @@
 ---
 title: "الطعن في حديث رسول الله ﷺ طعن في دين الله"
-status: draft
+status: published
 published_at: 2024-04-03
 person: abu-umair-imran-al-zubaidi
 ---

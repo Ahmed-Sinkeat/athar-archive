@@ -1,6 +1,6 @@
 ---
 title: "سبق المفردون"
-status: draft
+status: published
 published_at: 2025-07-02
 person: abu-abdillah-firas-al-ramli
 ---

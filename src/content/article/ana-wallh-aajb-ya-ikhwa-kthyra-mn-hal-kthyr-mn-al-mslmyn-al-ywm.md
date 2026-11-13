@@ -1,6 +1,6 @@
 ---
 title: "أنا والله أعجب يا إخوة كثيرا من حال كثير من المسلمين اليوم!"
-status: draft
+status: published
 published_at: 2025-07-03
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

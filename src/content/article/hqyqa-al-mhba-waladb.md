@@ -1,6 +1,6 @@
 ---
 title: "حقيقة المحبة والأدب"
-status: draft
+status: published
 published_at: 2024-03-25
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

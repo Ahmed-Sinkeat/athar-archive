@@ -1,6 +1,6 @@
 ---
 title: "بحث متخصص حول مبحث متعلق بالأسماء الحسنى"
-status: draft
+status: published
 published_at: 2020-01-01
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

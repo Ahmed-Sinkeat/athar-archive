@@ -1,6 +1,6 @@
 ---
 title: "مشهدان تخيليان لكن يشرحان الكثير"
-status: draft
+status: published
 published_at: 2020-03-09
 person: abu-jafar-al-khalifi
 ---

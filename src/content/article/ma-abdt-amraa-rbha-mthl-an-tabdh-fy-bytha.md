@@ -1,6 +1,6 @@
 ---
 title: "ما عبدت امرأة ربها مثل أن تعبده في بيتها"
-status: draft
+status: published
 published_at: 2024-12-19
 person: abu-abdillah-firas-al-ramli
 ---

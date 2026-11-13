@@ -1,6 +1,6 @@
 ---
 title: "من أدلة صدق المحدثين أنهم لا يحابون في الدين والحديث أحدا ولو كان أقرب الناس إلي"
-status: draft
+status: published
 published_at: 2024-03-02
 person: abu-abdillah-firas-al-ramli
 ---

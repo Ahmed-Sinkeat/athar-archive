@@ -1,6 +1,6 @@
 ---
 title: "الديمقراطية حكم الأغلبية."
-status: draft
+status: published
 published_at: 2019-05-11
 person: abu-jafar-al-khalifi
 ---

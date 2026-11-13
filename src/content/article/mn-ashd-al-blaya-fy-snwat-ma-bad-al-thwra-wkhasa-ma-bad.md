@@ -1,6 +1,6 @@
 ---
 title: "من أشد البلايا في سنوات ما بعد الثورة وخاصة ما بعد 30/ 6"
-status: draft
+status: published
 published_at: 2018-02-26
 person: abu-jafar-al-khalifi
 ---

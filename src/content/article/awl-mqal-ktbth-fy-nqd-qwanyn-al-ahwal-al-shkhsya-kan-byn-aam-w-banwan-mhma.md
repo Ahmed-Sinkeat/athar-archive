@@ -1,6 +1,6 @@
 ---
 title: "أول مقال كتبته في نقد قوانين الأحوال الشخصية كان بين عام 2012 و2011 بعنوان «مهما"
-status: draft
+status: published
 published_at: 2025-03-16
 person: abu-jafar-al-khalifi
 ---

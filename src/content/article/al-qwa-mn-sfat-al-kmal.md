@@ -1,6 +1,6 @@
 ---
 title: "القوة من صفات الكمال"
-status: draft
+status: published
 published_at: 2026-01-13
 person: abu-umair-imran-al-zubaidi
 ---

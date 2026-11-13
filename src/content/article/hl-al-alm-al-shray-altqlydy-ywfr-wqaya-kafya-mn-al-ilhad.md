@@ -1,6 +1,6 @@
 ---
 title: "هل العلم الشرعي (التقليدي) يوفر وقاية كافية من الإلحاد"
-status: draft
+status: published
 published_at: 2019-01-31
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "السفلة قطعوا كل شيء عن غ ز ة"
-status: draft
+status: published
 published_at: 2023-10-09
 person: abu-umair-imran-al-zubaidi
 ---

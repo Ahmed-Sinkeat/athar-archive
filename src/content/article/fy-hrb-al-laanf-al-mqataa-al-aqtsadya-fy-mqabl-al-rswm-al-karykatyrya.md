@@ -1,6 +1,6 @@
 ---
 title: "في حرب اللاعنف: المقاطعة الاقتصادية في مقابل الرسوم الكاريكاتيرية"
-status: draft
+status: published
 published_at: 2020-11-01
 person: abu-jafar-al-khalifi
 ---

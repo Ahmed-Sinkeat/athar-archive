@@ -1,6 +1,6 @@
 ---
 title: "باترك جنكن الوزير البريطاني للخدمة الاجتماعية في لقاء تلفازي له عام 1981 قال فيم"
-status: draft
+status: published
 published_at: 2017-10-13
 person: abu-jafar-al-khalifi
 ---

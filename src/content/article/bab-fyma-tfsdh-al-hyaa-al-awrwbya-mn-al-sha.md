@@ -1,6 +1,6 @@
 ---
 title: "باب فيما تفسده الحياة الأوروبية من الصحة !"
-status: draft
+status: published
 published_at: 2020-06-11
 person: abu-jafar-al-khalifi
 ---

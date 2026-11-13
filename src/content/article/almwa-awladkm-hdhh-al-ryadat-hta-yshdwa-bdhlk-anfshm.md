@@ -1,6 +1,6 @@
 ---
 title: "علموا أولادكم هذه الرياضات حتى يشدوا بذلك أنفسهم"
-status: draft
+status: published
 published_at: 2025-10-29
 person: abu-abdillah-firas-al-ramli
 ---

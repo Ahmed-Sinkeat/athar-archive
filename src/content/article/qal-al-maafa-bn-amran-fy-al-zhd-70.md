@@ -1,6 +1,6 @@
 ---
 title: "قال المعافى بن عمران في الزهد (٧٠)"
-status: draft
+status: published
 published_at: 2023-06-13
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

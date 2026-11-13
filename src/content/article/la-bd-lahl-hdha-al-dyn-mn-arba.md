@@ -1,6 +1,6 @@
 ---
 title: "لا بد لأهل هذا الدين من أربع"
-status: draft
+status: published
 published_at: 2025-11-06
 person: abu-abdillah-firas-al-ramli
 ---

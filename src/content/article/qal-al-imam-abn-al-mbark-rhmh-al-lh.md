@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام ابن المبارك رحمه الله"
-status: draft
+status: published
 published_at: 2023-08-01
 person: abu-abdillah-firas-al-ramli
 topics: ["al-iman"]

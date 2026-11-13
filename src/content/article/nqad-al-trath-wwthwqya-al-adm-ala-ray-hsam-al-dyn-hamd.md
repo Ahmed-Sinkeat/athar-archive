@@ -1,6 +1,6 @@
 ---
 title: "نقاد التراث ووثوقية العدم ( على رأي حسام الدين حامد )"
-status: draft
+status: published
 published_at: 2019-09-04
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

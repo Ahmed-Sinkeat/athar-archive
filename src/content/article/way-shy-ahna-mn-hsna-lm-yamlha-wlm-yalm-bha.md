@@ -1,6 +1,6 @@
 ---
 title: "وأي شيء أهنأ من حسنة لم يعملها، ولم يعلم بها"
-status: draft
+status: published
 published_at: 2024-12-28
 person: abu-abdillah-firas-al-ramli
 ---

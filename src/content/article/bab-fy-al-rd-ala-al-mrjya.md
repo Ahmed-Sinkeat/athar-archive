@@ -1,6 +1,6 @@
 ---
 title: "باب في الرد على المرجئة"
-status: draft
+status: published
 published_at: 2023-07-08
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

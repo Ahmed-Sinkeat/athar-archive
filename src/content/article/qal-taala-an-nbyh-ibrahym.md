@@ -1,6 +1,6 @@
 ---
 title: "قال تعالى عن نبيه إبراهيم"
-status: draft
+status: published
 published_at: 2018-06-26
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

@@ -1,6 +1,6 @@
 ---
 title: "وَلَمَّا فَصَلَتِ الْعِيرُ قَالَ أَبُوهُمْ إِنِّي لَأَجِدُ رِيحَ يُوسُفَ ۖ لَوْل"
-status: draft
+status: published
 published_at: 2025-05-07
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

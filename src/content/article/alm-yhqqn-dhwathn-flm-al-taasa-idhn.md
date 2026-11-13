@@ -1,6 +1,6 @@
 ---
 title: "ألم يحققن ذواتهن فلم التعاسة إذن؟"
-status: draft
+status: published
 published_at: 2021-08-28
 person: abu-jafar-al-khalifi
 ---

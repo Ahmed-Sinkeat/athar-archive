@@ -1,6 +1,6 @@
 ---
 title: "ثم ذكر الفوائد المستقبلية التي يزعمها دعاة السفر إلى الفضاء"
-status: draft
+status: published
 published_at: 2021-02-11
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "تعليقات الأجانب على وضع وزير الخارجية الأمريكي صليباً رمادياً على جبينه تدور على"
-status: draft
+status: published
 published_at: 2025-03-08
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

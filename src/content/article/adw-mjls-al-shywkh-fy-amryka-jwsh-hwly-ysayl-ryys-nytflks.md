@@ -1,6 +1,6 @@
 ---
 title: "عضو مجلس الشيوخ في أمريكا جوش هولي يسائل رئيس نيتفلكس"
-status: draft
+status: published
 published_at: 2026-02-05
 person: abu-jafar-al-khalifi
 ---

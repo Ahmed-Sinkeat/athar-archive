@@ -1,6 +1,6 @@
 ---
 title: "من أجل أن تتزين وتتعطر (خارج البيت) ولا تقر في بيتها"
-status: draft
+status: published
 published_at: 2024-12-11
 person: abu-umair-imran-al-zubaidi
 ---

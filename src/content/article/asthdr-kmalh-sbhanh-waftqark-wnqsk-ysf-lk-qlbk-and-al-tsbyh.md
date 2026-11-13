@@ -1,6 +1,6 @@
 ---
 title: "استحضر كماله سبحانه وافتقارك ونقصك يصفُ لك قلبك عند التسبيح..."
-status: draft
+status: published
 published_at: 2025-09-08
 person: abu-jafar-al-khalifi
 ---

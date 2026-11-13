@@ -1,6 +1,6 @@
 ---
 title: "حينما رأيت مقاطع تحرير المعتقلين من سجون المجرمين في حلب"
-status: draft
+status: published
 published_at: 2024-11-30
 person: abu-umair-imran-al-zubaidi
 ---

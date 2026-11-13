@@ -1,6 +1,6 @@
 ---
 title: "كلما تكلم في أهل الأثر بان جهله وما عنده من عور؛ سبحان ربي!"
-status: draft
+status: published
 published_at: 2026-01-25
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

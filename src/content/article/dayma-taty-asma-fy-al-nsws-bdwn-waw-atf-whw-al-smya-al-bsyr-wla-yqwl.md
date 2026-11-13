@@ -1,6 +1,6 @@
 ---
 title: "دائما تأتي أسماء في النصوص بدون واو عطف {وهو السميع البصير} ولا يقول"
-status: draft
+status: published
 published_at: 2017-06-20
 person: abu-jafar-al-khalifi
 ---

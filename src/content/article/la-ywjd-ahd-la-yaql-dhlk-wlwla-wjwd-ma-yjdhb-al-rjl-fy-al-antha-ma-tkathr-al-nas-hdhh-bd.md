@@ -1,6 +1,6 @@
 ---
 title: "لا يوجد أحد لا يعقل ذلك ولولا وجود ما يجذب الرجل في الأنثى ما تكاثر الناس هذه بد"
-status: draft
+status: published
 published_at: 2020-07-14
 person: abu-jafar-al-khalifi
 ---

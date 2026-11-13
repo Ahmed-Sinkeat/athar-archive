@@ -1,6 +1,6 @@
 ---
 title: "السيرافيُّ المتهم بالاعتزالِ وإثباتُ الصفات..."
-status: draft
+status: published
 published_at: 2020-12-15
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

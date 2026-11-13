@@ -1,6 +1,6 @@
 ---
 title: "مما علمته مؤخراً أن أصحاب القراءة بالمقامات يختارون أن تقرأ آيات النار بمقام الص"
-status: draft
+status: published
 published_at: 2025-11-25
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

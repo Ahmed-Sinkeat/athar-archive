@@ -1,6 +1,6 @@
 ---
 title: "آفات عصرية جنت على العلم"
-status: draft
+status: published
 published_at: 2019-12-21
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "adab-talab-al-ilm"]

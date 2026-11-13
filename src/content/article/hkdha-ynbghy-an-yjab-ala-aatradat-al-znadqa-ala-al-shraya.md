@@ -1,6 +1,6 @@
 ---
 title: "هكذا ينبغي أن يجاب على اعتراضات الزنادقة على الشرائع."
-status: draft
+status: published
 published_at: 2023-09-25
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وبناء على ما تقدم ذكره في هذا المنشور"
-status: draft
+status: published
 published_at: 2024-08-11
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

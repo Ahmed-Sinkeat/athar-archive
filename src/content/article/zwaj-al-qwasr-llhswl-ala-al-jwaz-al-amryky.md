@@ -1,6 +1,6 @@
 ---
 title: "زواج القواصر للحصول على الجواز الأمريكي"
-status: draft
+status: published
 published_at: 2019-01-15
 person: abu-jafar-al-khalifi
 ---

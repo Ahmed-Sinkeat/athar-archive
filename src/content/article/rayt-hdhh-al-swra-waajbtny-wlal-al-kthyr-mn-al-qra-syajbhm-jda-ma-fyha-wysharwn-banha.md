@@ -1,6 +1,6 @@
 ---
 title: "رأيت هذه الصورة وأعجبتني ولعل الكثير من القراء سيعجبهم جدا ما فيها ويشعرون بأنها"
-status: draft
+status: published
 published_at: 2019-08-15
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

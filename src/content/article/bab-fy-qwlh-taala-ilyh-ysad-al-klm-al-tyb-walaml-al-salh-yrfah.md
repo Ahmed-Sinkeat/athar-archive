@@ -1,6 +1,6 @@
 ---
 title: "باب في قوله تعالى: ﴿ إليه يصعد الكلم الطيب والعمل الصالح يرفعه﴾"
-status: draft
+status: published
 published_at: 2023-07-09
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]

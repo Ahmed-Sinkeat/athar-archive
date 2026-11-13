@@ -1,6 +1,6 @@
 ---
 title: "ما البديل؟"
-status: draft
+status: published
 published_at: 2025-11-04
 person: abu-umair-imran-al-zubaidi
 ---

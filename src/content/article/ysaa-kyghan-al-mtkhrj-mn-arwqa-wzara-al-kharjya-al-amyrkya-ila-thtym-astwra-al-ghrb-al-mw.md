@@ -1,6 +1,6 @@
 ---
 title: "يسعى كيغان المتخرج من أروقة وزارة الخارجية الأميركية إلى تحطيم أسطورة الغرب المو"
-status: draft
+status: published
 published_at: 2017-07-21
 person: abu-jafar-al-khalifi
 ---

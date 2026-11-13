@@ -1,6 +1,6 @@
 ---
 title: "لا أحصي عدد ما رأيت من عمليات التجميل البائسة لأطباء الأمة الحركيين لتجميل وجه إ"
-status: draft
+status: published
 published_at: 2025-06-17
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "فقال الشيخ كما في الفتاوى الكبرى (6/144) معلقاً على حديث (تفترق أمتي على بضع وسب"
-status: draft
+status: published
 published_at: 2021-07-01
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-asma-was-sifat", "al-sunnah-wal-bidah"]

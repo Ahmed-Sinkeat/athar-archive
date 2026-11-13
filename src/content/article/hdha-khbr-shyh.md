@@ -1,6 +1,6 @@
 ---
 title: "هذا خبر صحيح."
-status: draft
+status: published
 published_at: 2021-02-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

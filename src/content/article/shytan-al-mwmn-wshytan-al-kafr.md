@@ -1,6 +1,6 @@
 ---
 title: "شيطان المؤمن وشيطان الكافر"
-status: draft
+status: published
 published_at: 2024-07-28
 person: abu-abdillah-firas-al-ramli
 ---

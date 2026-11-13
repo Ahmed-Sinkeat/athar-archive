@@ -1,6 +1,6 @@
 ---
 title: "المسلمون أولى من شهود يهوه بالنفور من شجرة عيد الميلاد.."
-status: draft
+status: published
 published_at: 2021-12-18
 person: abu-jafar-al-khalifi
 ---

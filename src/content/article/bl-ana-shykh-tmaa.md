@@ -1,6 +1,6 @@
 ---
 title: "بل أنا شيخ طماع.."
-status: draft
+status: published
 published_at: 2021-12-30
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "باختصار التعزي بالله عز وجل وفهم القدر الفهم الصحيح ومعرفة الإنسان أنه بشر ناقص"
-status: draft
+status: published
 published_at: 2020-08-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "خروجا من الخلاف"
-status: draft
+status: published
 published_at: 2018-07-03
 person: abu-jafar-al-khalifi
 ---

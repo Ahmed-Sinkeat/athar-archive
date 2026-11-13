@@ -1,6 +1,6 @@
 ---
 title: "حينما فرَغ أحد علماء الأندلس مِن تفسير الآية الثانية والسبعين من سورة الأنفال وب"
-status: draft
+status: published
 published_at: 2026-03-31
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran"]

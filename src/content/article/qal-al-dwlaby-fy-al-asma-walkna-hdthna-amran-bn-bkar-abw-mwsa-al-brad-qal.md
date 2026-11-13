@@ -1,6 +1,6 @@
 ---
 title: "قال الدولابي في الأسماء والكنى 100393 - حدثنا عمران بن بكار أبو موسى البراد قال"
-status: draft
+status: published
 published_at: 2017-07-24
 person: abu-jafar-al-khalifi
 ---

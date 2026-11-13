@@ -1,6 +1,6 @@
 ---
 title: "هناك أمر يجب أن تتنبهوا إليه يا إخوة"
-status: draft
+status: published
 published_at: 2024-06-26
 person: abu-umair-imran-al-zubaidi
 ---

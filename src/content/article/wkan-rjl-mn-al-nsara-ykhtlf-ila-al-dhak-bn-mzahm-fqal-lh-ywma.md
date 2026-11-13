@@ -1,6 +1,6 @@
 ---
 title: "وكان رجل من النصارى يختلف إلى الضحاك بن مزاحم فقال له يوما"
-status: draft
+status: published
 published_at: 2025-07-25
 person: abu-umair-imran-al-zubaidi
 ---

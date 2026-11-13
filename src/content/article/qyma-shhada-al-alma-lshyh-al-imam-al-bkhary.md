@@ -1,6 +1,6 @@
 ---
 title: "قيمة شهادة العلماء لصحيح الإمام البخاري"
-status: draft
+status: published
 published_at: 2020-11-22
 person: abu-jafar-al-khalifi
 ---

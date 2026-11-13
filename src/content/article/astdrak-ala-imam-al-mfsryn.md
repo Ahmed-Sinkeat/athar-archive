@@ -1,6 +1,6 @@
 ---
 title: "استدراك على إمام المفسرين"
-status: draft
+status: published
 published_at: 2019-10-06
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "تأمل هذا الجدال القصير بين خطيب الأنبياء ﷺ وقومه."
-status: draft
+status: published
 published_at: 2025-10-14
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

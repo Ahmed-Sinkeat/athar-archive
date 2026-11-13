@@ -1,6 +1,6 @@
 ---
 title: "هذه كلمة من مقال للدكتور جعفر شيخ إدريس في مجلة البيان حين حطمت طالبان الأصنام ا"
-status: draft
+status: published
 published_at: 2019-03-16
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

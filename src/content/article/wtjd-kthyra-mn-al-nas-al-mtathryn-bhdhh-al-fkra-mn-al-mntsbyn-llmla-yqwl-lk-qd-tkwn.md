@@ -1,6 +1,6 @@
 ---
 title: "وتجد كثيراً من الناس المتأثرين بهذه الفكرة من المنتسبين للملة يقول لك ( قد تكون"
-status: draft
+status: published
 published_at: 2020-05-02
 person: abu-jafar-al-khalifi
 ---

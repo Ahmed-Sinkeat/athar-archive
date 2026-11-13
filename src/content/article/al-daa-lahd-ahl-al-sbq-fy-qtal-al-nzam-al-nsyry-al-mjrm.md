@@ -1,6 +1,6 @@
 ---
 title: "الدعاء لأحد أهل السبق في قتال النظام النصيري المجرم..."
-status: draft
+status: published
 published_at: 2025-06-05
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

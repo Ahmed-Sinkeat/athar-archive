@@ -1,6 +1,6 @@
 ---
 title: "باب في العالم يظهر عقيدته في كتاب أنساب..."
-status: draft
+status: published
 published_at: 2021-11-05
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "كل من يصور لك العقيدة والجهاد (نصرة قضايا الأمة) في طرفيّ ميزان فهو ضال مضل حركي"
-status: draft
+status: published
 published_at: 2024-10-07
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

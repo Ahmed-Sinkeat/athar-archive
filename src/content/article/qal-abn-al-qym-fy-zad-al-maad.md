@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم في «زاد المعاد» [3/138"
-status: draft
+status: published
 published_at: 2025-10-28
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

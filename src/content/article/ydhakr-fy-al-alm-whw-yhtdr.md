@@ -1,6 +1,6 @@
 ---
 title: "يذاكر في العلم وهو يحتضر."
-status: draft
+status: published
 published_at: 2019-01-13
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

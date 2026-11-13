@@ -1,6 +1,6 @@
 ---
 title: "في قصة موسى والخضر أعظم دليل على أن المجتهدين قد يختلفان ويكون أحدهما أحق بالصوا"
-status: draft
+status: published
 published_at: 2018-11-21
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وَقَالُوا اتَّخَذَ الرَّحْمَنُ وَلَدًا (88) لَقَدْ جِئْتُمْ شَيْئًا إِدًّا (89)"
-status: draft
+status: published
 published_at: 2024-12-24
 person: abu-umair-imran-al-zubaidi
 ---

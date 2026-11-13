@@ -1,6 +1,6 @@
 ---
 title: "الاستدلال بخبر الولد للفراش هنا باطل"
-status: draft
+status: published
 published_at: 2026-04-19
 person: abu-jafar-al-khalifi
 ---

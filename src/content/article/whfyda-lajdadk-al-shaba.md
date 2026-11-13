@@ -1,6 +1,6 @@
 ---
 title: "(وحفيداً لأجدادك الصحابة)"
-status: draft
+status: published
 published_at: 2024-12-06
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

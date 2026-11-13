@@ -1,6 +1,6 @@
 ---
 title: "هناك سردية شائعة بين من يدافعون عن العادة اليهُ دية في مصر، ألا وهي القائمة."
-status: draft
+status: published
 published_at: 2025-08-11
 person: abu-umair-imran-al-zubaidi
 ---

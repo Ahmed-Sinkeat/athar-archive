@@ -1,6 +1,6 @@
 ---
 title: "كنت قد قلت في مناسبات عديدة أن علم الحديث صار ألعوبة هذه الأيام"
-status: draft
+status: published
 published_at: 2019-10-09
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

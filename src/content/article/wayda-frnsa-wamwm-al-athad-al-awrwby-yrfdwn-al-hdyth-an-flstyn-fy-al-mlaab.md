@@ -1,6 +1,6 @@
 ---
 title: "وأيضاً فرنسا وعموم الاتحاد الأوروبي يرفضون الحديث عن فلسطين في الملاعب"
-status: draft
+status: published
 published_at: 2024-07-28
 person: abu-jafar-al-khalifi
 ---

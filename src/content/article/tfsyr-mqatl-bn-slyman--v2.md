@@ -1,6 +1,6 @@
 ---
 title: "تفسير مقاتل بن سليمان"
-status: draft
+status: published
 published_at: 2024-04-27
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

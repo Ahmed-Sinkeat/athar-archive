@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الرزاق في المصنف 1280 - عَنْ مَعْمَرٍ"
-status: draft
+status: published
 published_at: 2017-10-14
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

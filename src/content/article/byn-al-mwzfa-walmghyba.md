@@ -1,6 +1,6 @@
 ---
 title: "بين الموظفة والمغيَّبة!"
-status: draft
+status: published
 published_at: 2021-11-30
 person: abu-jafar-al-khalifi
 ---

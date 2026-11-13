@@ -1,6 +1,6 @@
 ---
 title: "هذا خبر يتداوله أصحاب طه الدليمي وصابر مشهور ويقولون"
-status: draft
+status: published
 published_at: 2026-03-18
 person: abu-jafar-al-khalifi
 ---

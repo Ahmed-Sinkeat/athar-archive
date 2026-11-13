@@ -1,6 +1,6 @@
 ---
 title: "حين يفطن الفقيه للأخوَّة في ثنايا الكلام عن الحقوق..."
-status: draft
+status: published
 published_at: 2024-02-10
 person: abu-jafar-al-khalifi
 ---

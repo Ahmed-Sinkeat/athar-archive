@@ -1,6 +1,6 @@
 ---
 title: "بلغاريا بلد أوروبي يعاني من أزمة ديمغرافية حادة إذ عدد السكان يتضاءل."
-status: draft
+status: published
 published_at: 2026-07-27
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

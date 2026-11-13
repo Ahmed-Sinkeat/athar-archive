@@ -1,6 +1,6 @@
 ---
 title: "قال الهادي التيمومي في كتابه مفهوم الاستعمار من العسكري إلى العولمة متحدثا عن ال"
-status: draft
+status: published
 published_at: 2019-10-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

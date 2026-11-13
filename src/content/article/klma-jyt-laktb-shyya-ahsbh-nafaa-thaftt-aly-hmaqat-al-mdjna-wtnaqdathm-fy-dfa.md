@@ -1,6 +1,6 @@
 ---
 title: "كلّما جئت لأكتب شيئًا أحسبه نافعًا؛ تهافتت عليّ حماقات المدجنة وتناقضاتهم في دفا"
-status: draft
+status: published
 published_at: 2023-07-25
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

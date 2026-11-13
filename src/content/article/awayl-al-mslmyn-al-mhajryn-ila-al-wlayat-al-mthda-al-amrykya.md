@@ -1,6 +1,6 @@
 ---
 title: "أوائل المسلمين المهاجرين إلى الولايات المتحدة الأمريكية"
-status: draft
+status: published
 published_at: 2018-07-05
 person: abu-jafar-al-khalifi
 ---

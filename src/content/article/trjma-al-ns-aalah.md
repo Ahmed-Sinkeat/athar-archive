@@ -1,6 +1,6 @@
 ---
 title: "ترجمة النص أعلاه"
-status: draft
+status: published
 published_at: 2020-03-13
 person: abu-jafar-al-khalifi
 ---

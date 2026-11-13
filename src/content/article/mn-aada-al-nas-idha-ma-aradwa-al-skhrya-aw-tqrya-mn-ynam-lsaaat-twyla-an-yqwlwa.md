@@ -1,6 +1,6 @@
 ---
 title: "من عادة الناس إذا ما أرادوا السخرية أو تقريع من ينام لساعات طويلة أن يقولوا"
-status: draft
+status: published
 published_at: 2026-01-04
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

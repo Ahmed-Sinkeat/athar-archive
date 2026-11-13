@@ -1,6 +1,6 @@
 ---
 title: "المثال الرابع"
-status: draft
+status: published
 published_at: 2020-01-15
 person: abu-jafar-al-khalifi
 ---

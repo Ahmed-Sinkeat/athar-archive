@@ -1,6 +1,6 @@
 ---
 title: "تلك الإصبع الفاردة أحب إلي من مائة ألف سيف"
-status: draft
+status: published
 published_at: 2025-06-04
 person: abu-abdillah-firas-al-ramli
 ---

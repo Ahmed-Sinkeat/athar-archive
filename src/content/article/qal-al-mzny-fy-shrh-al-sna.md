@@ -1,6 +1,6 @@
 ---
 title: "قال المزني في شرح السنة"
-status: draft
+status: published
 published_at: 2018-06-30
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "وَلَا تَحْسَبَنَّ اللَّهَ غَافِلًا عَمَّا يَعْمَلُ الظَّالِمُونَ ۚ إِنَّمَا يُؤَ"
-status: draft
+status: published
 published_at: 2025-05-27
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

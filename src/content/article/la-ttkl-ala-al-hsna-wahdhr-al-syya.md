@@ -1,6 +1,6 @@
 ---
 title: "لا تتكل على الحسنة واحذر السيئة"
-status: draft
+status: published
 published_at: 2025-07-21
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

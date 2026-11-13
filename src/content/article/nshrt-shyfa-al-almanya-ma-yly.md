@@ -1,6 +1,6 @@
 ---
 title: "نشرت صحيفة DW الألمانية - 20/11/2016 ما يلي"
-status: draft
+status: published
 published_at: 2018-09-06
 person: abu-jafar-al-khalifi
 ---

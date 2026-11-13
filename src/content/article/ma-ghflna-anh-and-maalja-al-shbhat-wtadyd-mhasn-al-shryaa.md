@@ -1,6 +1,6 @@
 ---
 title: "ما غفلنا عنه عند معالجة الشبهات وتعديد محاسن الشريعة."
-status: draft
+status: published
 published_at: 2019-12-30
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

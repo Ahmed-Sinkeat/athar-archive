@@ -1,6 +1,6 @@
 ---
 title: "في فوات الوفيات لابن شاكر في ترجمة أبي العباس ابن تيمية _ رحمه الله _ وهو معاصر"
-status: draft
+status: published
 published_at: 2018-12-13
 person: abu-jafar-al-khalifi
 ---

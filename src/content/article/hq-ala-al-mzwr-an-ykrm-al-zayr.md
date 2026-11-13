@@ -1,6 +1,6 @@
 ---
 title: "حق على المزور أن يكرم الزائر"
-status: draft
+status: published
 published_at: 2025-03-06
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

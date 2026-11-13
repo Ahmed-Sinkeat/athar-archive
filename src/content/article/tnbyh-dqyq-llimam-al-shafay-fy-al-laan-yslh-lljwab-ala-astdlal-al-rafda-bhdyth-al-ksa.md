@@ -1,6 +1,6 @@
 ---
 title: "تنبيه دقيق للإمام الشافعي في اللعان يصلح للجواب على استدلال الرافضة بحديث الكساء"
-status: draft
+status: published
 published_at: 2023-02-24
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

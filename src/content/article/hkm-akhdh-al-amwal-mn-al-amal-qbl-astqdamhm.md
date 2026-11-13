@@ -1,6 +1,6 @@
 ---
 title: "حكم أخذ الأموال من العمال قبل استقدامهم"
-status: draft
+status: published
 published_at: 2017-07-29
 person: abu-jafar-al-khalifi
 ---

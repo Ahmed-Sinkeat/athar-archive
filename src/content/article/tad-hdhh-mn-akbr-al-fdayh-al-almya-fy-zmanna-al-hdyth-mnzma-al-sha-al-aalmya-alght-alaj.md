@@ -1,6 +1,6 @@
 ---
 title: "تعد هذه من أكبر الفضائح العلمية في زماننا الحديث منظمة الصحة العالمية ألغت علاج"
-status: draft
+status: published
 published_at: 2020-06-05
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

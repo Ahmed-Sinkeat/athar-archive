@@ -1,6 +1,6 @@
 ---
 title: "لا أحِبّ أبدًا ذاك الزواج الّذي يكتفي الزوجين فيه بولدين -ذكورًا وإناثًا- أو ثلا"
-status: draft
+status: published
 published_at: 2023-03-16
 person: abu-umair-imran-al-zubaidi
 ---

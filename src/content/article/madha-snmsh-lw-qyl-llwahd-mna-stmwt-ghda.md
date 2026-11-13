@@ -1,6 +1,6 @@
 ---
 title: "ماذا سنمسح لو قيل للواحد منا: (ستموت غداً)؟"
-status: draft
+status: published
 published_at: 2024-12-21
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-sunnah-wal-bidah"]

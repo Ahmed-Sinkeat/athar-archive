@@ -1,6 +1,6 @@
 ---
 title: "طيب هذا واقع"
-status: draft
+status: published
 published_at: 2025-02-09
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

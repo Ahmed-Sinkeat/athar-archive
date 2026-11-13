@@ -1,6 +1,6 @@
 ---
 title: "كتب الأخ حسام سيف"
-status: draft
+status: published
 published_at: 2021-05-11
 person: abu-jafar-al-khalifi
 ---

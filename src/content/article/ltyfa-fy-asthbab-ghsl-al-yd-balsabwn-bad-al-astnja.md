@@ -1,6 +1,6 @@
 ---
 title: "لطيفة في استحباب غسل اليد بالصابون بعد الاستنجاء."
-status: draft
+status: published
 published_at: 2021-05-27
 person: abu-jafar-al-khalifi
 ---

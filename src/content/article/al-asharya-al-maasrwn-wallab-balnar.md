@@ -1,6 +1,6 @@
 ---
 title: "الأشعرية المعاصرون واللعب بالنار"
-status: draft
+status: published
 published_at: 2019-07-25
 person: abu-jafar-al-khalifi
 ---

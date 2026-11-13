@@ -1,6 +1,6 @@
 ---
 title: "حين تتضايق من عالم معين أو طالب علم بسبب موقف له كدر خاطرك أو صدمك أو رأيت فيه خ"
-status: draft
+status: published
 published_at: 2018-11-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-iman"]

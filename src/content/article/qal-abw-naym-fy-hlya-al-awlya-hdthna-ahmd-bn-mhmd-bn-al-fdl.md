@@ -1,6 +1,6 @@
 ---
 title: "قال أبو نعيم في حلية الأولياء حدثنا أحمد بن محمد بن الفضل"
-status: draft
+status: published
 published_at: 2018-06-26
 person: abu-jafar-al-khalifi
 ---

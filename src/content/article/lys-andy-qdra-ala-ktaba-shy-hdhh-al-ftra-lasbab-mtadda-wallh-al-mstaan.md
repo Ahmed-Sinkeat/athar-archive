@@ -1,6 +1,6 @@
 ---
 title: "ليس عندي قدرة على كتابة شيء هذه الفترة لأسباب متعددة، والله المستعان."
-status: draft
+status: published
 published_at: 2024-06-10
 person: abu-umair-imran-al-zubaidi
 ---

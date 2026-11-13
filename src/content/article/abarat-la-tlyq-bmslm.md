@@ -1,6 +1,6 @@
 ---
 title: "عبارات لا تليق بمسلم"
-status: draft
+status: published
 published_at: 2020-10-09
 person: abu-jafar-al-khalifi
 ---

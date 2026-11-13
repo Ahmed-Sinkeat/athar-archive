@@ -1,6 +1,6 @@
 ---
 title: "كان أحمد بن حنبل إذا نظر إلى نصراني غمَّض عينيه"
-status: draft
+status: published
 published_at: 2024-02-04
 person: abu-umair-imran-al-zubaidi
 ---

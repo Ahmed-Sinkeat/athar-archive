@@ -1,6 +1,6 @@
 ---
 title: "نقض شبهة الاستدلال بقاعدة (الضرورات تبيح المحظورات) للسماح بالمنكرات السياحية.."
-status: draft
+status: published
 published_at: 2022-03-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

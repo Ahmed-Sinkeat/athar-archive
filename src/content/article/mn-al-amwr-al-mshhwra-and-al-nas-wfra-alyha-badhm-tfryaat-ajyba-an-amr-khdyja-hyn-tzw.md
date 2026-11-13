@@ -1,6 +1,6 @@
 ---
 title: "من الأمور المشهورة عند الناس وفرع عليها بعضهم تفريعات عجيبة أن عمر خديجة حين تزو"
-status: draft
+status: published
 published_at: 2018-01-09
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "انشروا العلم وأكثروا الصلاة على النبي ﷺ يوم الجمعة"
-status: draft
+status: published
 published_at: 2025-08-22
 person: abu-abdillah-firas-al-ramli
 ---

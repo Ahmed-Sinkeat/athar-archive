@@ -1,6 +1,6 @@
 ---
 title: "قيل لرجل من يؤنسك؟"
-status: draft
+status: published
 published_at: 2023-08-23
 person: abu-abdillah-firas-al-ramli
 ---

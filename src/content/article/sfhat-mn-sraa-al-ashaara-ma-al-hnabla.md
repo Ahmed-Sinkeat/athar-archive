@@ -1,6 +1,6 @@
 ---
 title: "صفحات من صراع الأشاعرة مع الحنابلة.."
-status: draft
+status: published
 published_at: 2022-01-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]

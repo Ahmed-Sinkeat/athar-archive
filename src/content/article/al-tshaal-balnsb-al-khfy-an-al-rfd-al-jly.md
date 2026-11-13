@@ -1,6 +1,6 @@
 ---
 title: "التشاعل بالنصب الخفي عن الرفض الجلي"
-status: draft
+status: published
 published_at: 2020-01-18
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "مجلس لتذكر نعم الله عز وجل عليك."
-status: draft
+status: published
 published_at: 2026-07-29
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

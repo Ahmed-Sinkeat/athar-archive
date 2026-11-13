@@ -1,6 +1,6 @@
 ---
 title: "تحفة المودود بأحكام المولود لشيخ الإسلام ابن القيّم رضي الله عنه"
-status: draft
+status: published
 published_at: 2022-12-23
 person: abu-umair-imran-al-zubaidi
 ---

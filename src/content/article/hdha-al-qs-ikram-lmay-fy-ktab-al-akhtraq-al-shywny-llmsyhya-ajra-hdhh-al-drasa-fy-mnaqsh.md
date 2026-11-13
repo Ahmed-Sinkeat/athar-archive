@@ -1,6 +1,6 @@
 ---
 title: "هذا القس إكرام لمعي في كتاب الاختراق الصهيوني للمسيحية أجرى هذه الدراسة في مناقش"
-status: draft
+status: published
 published_at: 2020-01-25
 person: abu-jafar-al-khalifi
 ---

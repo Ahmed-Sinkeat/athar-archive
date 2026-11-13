@@ -1,6 +1,6 @@
 ---
 title: "المنهج العلمي أن يعزى الأثر إلى المصدر الأعلى المسند"
-status: draft
+status: published
 published_at: 2025-11-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

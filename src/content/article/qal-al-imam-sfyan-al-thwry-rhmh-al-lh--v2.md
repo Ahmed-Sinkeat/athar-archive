@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام سفيان الثوري رحمه الله"
-status: draft
+status: published
 published_at: 2023-07-11
 person: abu-abdillah-firas-al-ramli
 ---

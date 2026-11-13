@@ -1,6 +1,6 @@
 ---
 title: "إذا طردتها نقضتها!"
-status: draft
+status: published
 published_at: 2020-08-11
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat", "al-qadr", "al-sunnah-wal-bidah"]

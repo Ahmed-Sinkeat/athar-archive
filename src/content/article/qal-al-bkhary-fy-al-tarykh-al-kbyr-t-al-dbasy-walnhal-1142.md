@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري في التاريخ الكبير ت الدباسي والنحال (١/&rlm;١٤٢)"
-status: draft
+status: published
 published_at: 2023-11-25
 person: abu-abdillah-firas-al-ramli
 ---

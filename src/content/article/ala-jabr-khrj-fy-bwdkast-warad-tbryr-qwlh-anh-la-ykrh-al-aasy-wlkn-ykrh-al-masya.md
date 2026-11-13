@@ -1,6 +1,6 @@
 ---
 title: "علاء جابر خرج في بودكاست وأراد تبرير قوله أنه لا يكره العاصي ولكن يكره المعصية"
-status: draft
+status: published
 published_at: 2025-11-11
 person: abu-umair-imran-al-zubaidi
 ---

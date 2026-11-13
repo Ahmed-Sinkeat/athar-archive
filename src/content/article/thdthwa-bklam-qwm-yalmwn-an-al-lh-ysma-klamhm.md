@@ -1,6 +1,6 @@
 ---
 title: "تحدثوا بكلام قوم يعلمون أن الله يسمع كلامهم"
-status: draft
+status: published
 published_at: 2024-10-04
 person: abu-abdillah-firas-al-ramli
 ---

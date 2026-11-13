@@ -1,6 +1,6 @@
 ---
 title: "ما مرادك بالمنفعة التي فشلنا في بلوغها؟!"
-status: draft
+status: published
 published_at: 2025-11-14
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

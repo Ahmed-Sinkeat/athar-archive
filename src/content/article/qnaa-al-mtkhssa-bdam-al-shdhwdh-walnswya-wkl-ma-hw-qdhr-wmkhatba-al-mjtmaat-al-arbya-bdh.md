@@ -1,6 +1,6 @@
 ---
 title: "قناة DW المتخصصة بدعم الشذوذ والنسوية وكل ما هو قذر ومخاطبة المجتمعات العربية بذ"
-status: draft
+status: published
 published_at: 2022-08-09
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

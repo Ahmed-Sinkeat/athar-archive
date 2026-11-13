@@ -1,6 +1,6 @@
 ---
 title: "أسانيد الأشعرية بشهادة ابن حجر"
-status: draft
+status: published
 published_at: 2020-09-09
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "إسلام حمادة طبيب وصاحب محتوى تعليمي منتشر على التيك توك لطلاب الثانوية العامة وع"
-status: draft
+status: published
 published_at: 2026-02-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

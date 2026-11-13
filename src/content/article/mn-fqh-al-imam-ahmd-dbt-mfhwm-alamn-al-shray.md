@@ -1,6 +1,6 @@
 ---
 title: "من فقه الإمام أحمد ضبط مفهوم (الأمن الشرعي)."
-status: draft
+status: published
 published_at: 2023-08-27
 person: abu-jafar-al-khalifi
 ---

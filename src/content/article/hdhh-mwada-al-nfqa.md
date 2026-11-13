@@ -1,6 +1,6 @@
 ---
 title: "هذه مواضع النفقة !"
-status: draft
+status: published
 published_at: 2024-01-10
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

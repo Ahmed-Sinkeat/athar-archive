@@ -1,6 +1,6 @@
 ---
 title: "في الحقيقة أنّ تركيبة هذا السؤال خاطئة"
-status: draft
+status: published
 published_at: 2024-11-23
 person: abu-umair-imran-al-zubaidi
 ---

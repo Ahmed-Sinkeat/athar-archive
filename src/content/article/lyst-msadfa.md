@@ -1,6 +1,6 @@
 ---
 title: "ليست مصادفة!"
-status: draft
+status: published
 published_at: 2020-11-23
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "بين نهج الملائكة حين لم يفهموا الحكمة من الأمر الإلهي (سبحانك لا علم لنا إلا ما"
-status: draft
+status: published
 published_at: 2018-05-15
 person: abu-jafar-al-khalifi
 ---

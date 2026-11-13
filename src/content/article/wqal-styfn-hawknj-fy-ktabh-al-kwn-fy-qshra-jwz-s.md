@@ -1,6 +1,6 @@
 ---
 title: "وقال ستيفن هاوكنج في كتابه الكون في قشرة جوز ص44"
-status: draft
+status: published
 published_at: 2017-05-14
 person: abu-jafar-al-khalifi
 ---

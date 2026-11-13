@@ -1,6 +1,6 @@
 ---
 title: "إذا تعارض ظاهر حديثان عن رسول الله ﷺ ماذا نصنع؟"
-status: draft
+status: published
 published_at: 2024-06-11
 person: abu-abdillah-firas-al-ramli
 ---

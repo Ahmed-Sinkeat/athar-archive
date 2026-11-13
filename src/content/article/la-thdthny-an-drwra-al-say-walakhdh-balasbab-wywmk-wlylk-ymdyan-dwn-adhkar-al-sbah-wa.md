@@ -1,6 +1,6 @@
 ---
 title: "لا تحدّثني عن ضرورة السعي والأخذ بالأسباب ويومك وليلك يمضيان دون أذكار الصباح وا"
-status: draft
+status: published
 published_at: 2024-09-23
 person: abu-umair-imran-al-zubaidi
 ---

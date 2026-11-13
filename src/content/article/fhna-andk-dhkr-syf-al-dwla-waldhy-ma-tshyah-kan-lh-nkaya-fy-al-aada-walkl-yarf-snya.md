@@ -1,6 +1,6 @@
 ---
 title: "فهنا عندك ذكر سيف الدولة والذي مع تشيعه كان له نكاية في الأعداء والكل يعرف صنيع"
-status: draft
+status: published
 published_at: 2019-10-31
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قيل لحمدون القصار الزاهد"
-status: draft
+status: published
 published_at: 2018-09-08
 person: abu-jafar-al-khalifi
 ---

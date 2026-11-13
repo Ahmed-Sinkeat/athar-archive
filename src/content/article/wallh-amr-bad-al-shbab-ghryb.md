@@ -1,6 +1,6 @@
 ---
 title: "والله أمر بعض الشباب غريب!"
-status: draft
+status: published
 published_at: 2024-01-05
 person: abu-umair-imran-al-zubaidi
 ---

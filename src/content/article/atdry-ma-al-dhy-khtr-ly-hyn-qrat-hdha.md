@@ -1,6 +1,6 @@
 ---
 title: "أتدري ما الذي خطر لي حين قرأت هذا؟"
-status: draft
+status: published
 published_at: 2024-07-23
 person: abu-jafar-al-khalifi
 ---

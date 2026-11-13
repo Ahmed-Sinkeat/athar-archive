@@ -1,6 +1,6 @@
 ---
 title: "النبي ﷺ حينما قال لمعاذ رضي الله عنه: أفتان أنت يا معاذ."
-status: draft
+status: published
 published_at: 2025-09-01
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "توضح إحصاءات التنمر المدرسي في برنامج الإحصائيات المتحدة أن واحدًا من كل أربعة أ"
-status: draft
+status: published
 published_at: 2018-09-30
 person: abu-jafar-al-khalifi
 ---

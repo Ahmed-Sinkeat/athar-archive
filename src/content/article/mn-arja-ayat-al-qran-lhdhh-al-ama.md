@@ -1,6 +1,6 @@
 ---
 title: "من أرجى آيات القرآن لهذه الأمة"
-status: draft
+status: published
 published_at: 2026-01-20
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

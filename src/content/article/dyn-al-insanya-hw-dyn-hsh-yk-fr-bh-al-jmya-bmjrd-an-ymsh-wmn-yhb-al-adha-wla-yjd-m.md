@@ -1,6 +1,6 @@
 ---
 title: "دين الإنسانية هو دين هش يك - فر به الجميع بمجرد أن يمسّه ومن يحب الأذى ولا يجد م"
-status: draft
+status: published
 published_at: 2023-10-11
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "حينما أنكر السلفية على بدعتهم في تخصيص وقت وعدد ومدة معينة للصلاة على النبي ﷺ من"
-status: draft
+status: published
 published_at: 2023-05-30
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "\"سيُعوّضك الله\"."
-status: draft
+status: published
 published_at: 2022-08-19
 person: abu-umair-imran-al-zubaidi
 ---

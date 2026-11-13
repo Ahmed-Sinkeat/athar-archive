@@ -1,6 +1,6 @@
 ---
 title: "نشر عدد من الفضلاء هذا الخبر"
-status: draft
+status: published
 published_at: 2022-06-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

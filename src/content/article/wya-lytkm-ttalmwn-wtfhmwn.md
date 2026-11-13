@@ -1,6 +1,6 @@
 ---
 title: "ويا ليتكم تتعلّمون وتفهمون!"
-status: draft
+status: published
 published_at: 2025-01-19
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

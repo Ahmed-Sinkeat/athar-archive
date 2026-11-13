@@ -1,6 +1,6 @@
 ---
 title: "من بين كل الاحزاب"
-status: draft
+status: published
 published_at: 2018-09-12
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

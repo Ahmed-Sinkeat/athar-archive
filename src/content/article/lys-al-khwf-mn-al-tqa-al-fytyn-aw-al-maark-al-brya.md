@@ -1,6 +1,6 @@
 ---
 title: "ليس الخوف من التقاء الفئتين أو المعارك البرية."
-status: draft
+status: published
 published_at: 2024-11-30
 person: abu-umair-imran-al-zubaidi
 ---

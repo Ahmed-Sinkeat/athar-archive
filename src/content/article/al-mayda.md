@@ -1,6 +1,6 @@
 ---
 title: "المائدة - 94"
-status: draft
+status: published
 published_at: 2023-09-08
 person: abu-umair-imran-al-zubaidi
 ---

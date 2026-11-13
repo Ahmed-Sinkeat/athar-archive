@@ -1,6 +1,6 @@
 ---
 title: "باب إذا قام من مجلسه ثم عاد فهو أحق به]."
-status: draft
+status: published
 published_at: 2023-07-01
 person: abu-umair-imran-al-zubaidi
 ---

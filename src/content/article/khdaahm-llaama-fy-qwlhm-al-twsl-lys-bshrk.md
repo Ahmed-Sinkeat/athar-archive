@@ -1,6 +1,6 @@
 ---
 title: "خداعهم للعامة في قولهم: التوسل ليس بشرك"
-status: draft
+status: published
 published_at: 2023-06-04
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-asma-was-sifat", "al-sunnah-wal-bidah"]

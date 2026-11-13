@@ -1,6 +1,6 @@
 ---
 title: "ترى مَن اعتَاد التعرُّض إلى القِيم الدَّخيلة مِن مصادِر كالأفلام والأغاني والمُس"
-status: draft
+status: published
 published_at: 2025-03-05
 person: awwab-bin-muhammad
 ---

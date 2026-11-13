@@ -1,6 +1,6 @@
 ---
 title: "قال النووي في المجموع (8/157)"
-status: draft
+status: published
 published_at: 2018-02-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "أول ما نبدأ به في يوم عيدنا"
-status: draft
+status: published
 published_at: 2024-04-10
 person: abu-abdillah-firas-al-ramli
 ---

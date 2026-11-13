@@ -1,6 +1,6 @@
 ---
 title: "ربط التسليم بالأمر/النهي/الحكم الإلهي بالمنفعة أو انتفاء المضرّة أو الحكمة مِن و"
-status: draft
+status: published
 published_at: 2023-01-14
 person: abu-umair-imran-al-zubaidi
 ---

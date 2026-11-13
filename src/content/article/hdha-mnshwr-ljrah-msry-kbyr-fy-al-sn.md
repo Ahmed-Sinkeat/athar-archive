@@ -1,6 +1,6 @@
 ---
 title: "هذا منشور لجراح مصري كبير في السن"
-status: draft
+status: published
 published_at: 2025-04-22
 person: abu-jafar-al-khalifi
 ---

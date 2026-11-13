@@ -1,6 +1,6 @@
 ---
 title: "هي شعارات وردية عاطفية مُخدّرة توهم المستمع لها أنه قادر وهو ليس كذلك؛ فيبقى على"
-status: draft
+status: published
 published_at: 2023-10-23
 person: abu-umair-imran-al-zubaidi
 ---

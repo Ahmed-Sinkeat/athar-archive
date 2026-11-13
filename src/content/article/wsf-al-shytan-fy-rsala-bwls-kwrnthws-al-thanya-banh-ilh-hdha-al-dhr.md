@@ -1,6 +1,6 @@
 ---
 title: "وصف الشيطان في رسالة بولس (كورنثوس الثانية 4: 4) بأنه إله هذا الدهر"
-status: draft
+status: published
 published_at: 2018-10-29
 person: abu-jafar-al-khalifi
 ---

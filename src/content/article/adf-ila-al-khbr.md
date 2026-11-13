@@ -1,6 +1,6 @@
 ---
 title: "أضف إلى الخبر"
-status: draft
+status: published
 published_at: 2022-03-13
 person: abu-jafar-al-khalifi
 ---

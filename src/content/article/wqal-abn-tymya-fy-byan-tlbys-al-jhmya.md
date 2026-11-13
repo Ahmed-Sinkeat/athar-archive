@@ -1,6 +1,6 @@
 ---
 title: "وقال ابن تيمية في بيان تلبيس الجهمية (3/ 471)"
-status: draft
+status: published
 published_at: 2022-11-13
 person: abu-jafar-al-khalifi
 ---

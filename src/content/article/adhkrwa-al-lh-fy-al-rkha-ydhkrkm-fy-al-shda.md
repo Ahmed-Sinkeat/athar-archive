@@ -1,6 +1,6 @@
 ---
 title: "اذكروا الله في الرخاء يذكركم في الشدة"
-status: draft
+status: published
 published_at: 2025-04-18
 person: abu-abdillah-firas-al-ramli
 ---

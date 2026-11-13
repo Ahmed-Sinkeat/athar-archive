@@ -1,6 +1,6 @@
 ---
 title: "7- ذكر نقله عن رجل كوري حيلة من حيل المنصرين الخبيثة"
-status: draft
+status: published
 published_at: 2023-08-31
 person: abu-jafar-al-khalifi
 ---

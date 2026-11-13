@@ -1,6 +1,6 @@
 ---
 title: "كن كالسحاب…"
-status: draft
+status: published
 published_at: 2024-11-04
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

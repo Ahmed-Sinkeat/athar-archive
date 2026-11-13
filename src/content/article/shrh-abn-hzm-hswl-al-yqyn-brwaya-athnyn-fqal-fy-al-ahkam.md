@@ -1,6 +1,6 @@
 ---
 title: "شرح ابن حزم حصول اليقين برواية اثنين فقال في الأحكام"
-status: draft
+status: published
 published_at: 2017-08-17
 person: abu-jafar-al-khalifi
 ---

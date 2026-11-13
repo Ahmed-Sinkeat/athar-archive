@@ -1,6 +1,6 @@
 ---
 title: "تهكُّم ظريف من الذهبي !"
-status: draft
+status: published
 published_at: 2020-02-15
 person: abu-jafar-al-khalifi
 ---

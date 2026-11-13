@@ -1,6 +1,6 @@
 ---
 title: "لا أشاهد المقاطع الأليمة لإخواننا في غزة، لا أستطيع فعل هذا."
-status: draft
+status: published
 published_at: 2023-12-14
 person: abu-umair-imran-al-zubaidi
 ---

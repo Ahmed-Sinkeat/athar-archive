@@ -1,6 +1,6 @@
 ---
 title: "الآفة الثالثة"
-status: draft
+status: published
 published_at: 2019-12-05
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "فكيف إذا رأيتم الله عز وجل جهرة ؟"
-status: draft
+status: published
 published_at: 2024-02-02
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ما أقبح التمنصف"
-status: draft
+status: published
 published_at: 2026-01-31
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

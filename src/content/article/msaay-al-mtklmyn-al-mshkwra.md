@@ -1,6 +1,6 @@
 ---
 title: "مساعي المتكلمين المشكورة!"
-status: draft
+status: published
 published_at: 2021-03-25
 person: abu-jafar-al-khalifi
 ---

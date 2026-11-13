@@ -1,6 +1,6 @@
 ---
 title: "في غالب المجالس الّتي حضرتها وكان النّقاش فيها عن عاداتٍ وتقاليدٍ وقناعاتٍ فاسدة"
-status: draft
+status: published
 published_at: 2022-10-29
 person: abu-umair-imran-al-zubaidi
 ---

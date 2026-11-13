@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال مترجم من صحيفة الجارديان وهو منشور في ٦ مارس ٢٠١٧"
-status: draft
+status: published
 published_at: 2019-03-26
 person: abu-jafar-al-khalifi
 ---

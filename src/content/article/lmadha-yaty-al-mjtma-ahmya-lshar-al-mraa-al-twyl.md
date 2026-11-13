@@ -1,6 +1,6 @@
 ---
 title: "لماذا يعطي المجتمع أهمية لشعر المرأة الطويل؟"
-status: draft
+status: published
 published_at: 2023-01-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "ومن الفوائد التي وقفت عليها مؤخراً أن أبا عمر المقدسي (شقيق ابن قدامة الموفق الف"
-status: draft
+status: published
 published_at: 2021-09-26
 person: abu-jafar-al-khalifi
 ---

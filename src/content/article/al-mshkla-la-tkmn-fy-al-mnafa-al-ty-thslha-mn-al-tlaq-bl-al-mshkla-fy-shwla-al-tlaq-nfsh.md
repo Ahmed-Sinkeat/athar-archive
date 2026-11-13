@@ -1,6 +1,6 @@
 ---
 title: "المشكلة لا تكمن في المنافع التي تحصلها من الطلاق بل المشكلة في سهولة الطلاق نفسه"
-status: draft
+status: published
 published_at: 2022-07-20
 person: abu-jafar-al-khalifi
 ---

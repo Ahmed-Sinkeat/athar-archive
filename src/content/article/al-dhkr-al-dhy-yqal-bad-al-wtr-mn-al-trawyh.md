@@ -1,6 +1,6 @@
 ---
 title: "الذكر الذي يقال بعد الوتر من التراويح"
-status: draft
+status: published
 published_at: 2025-03-04
 person: abu-abdillah-firas-al-ramli
 ---

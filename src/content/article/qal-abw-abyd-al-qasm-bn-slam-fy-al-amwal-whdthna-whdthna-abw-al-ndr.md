@@ -1,6 +1,6 @@
 ---
 title: "قال أبو عبيد القاسم بن سلام في الأموال وَحَدَّثَنَا وَحَدَّثَنَا أَبُو النَّضْرِ"
-status: draft
+status: published
 published_at: 2018-03-17
 person: abu-jafar-al-khalifi
 ---

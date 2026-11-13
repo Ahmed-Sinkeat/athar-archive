@@ -1,6 +1,6 @@
 ---
 title: "ثم هم يحتجون في الاستغاثة بغير الله بحديث نظير له"
-status: draft
+status: published
 published_at: 2021-08-08
 person: abu-jafar-al-khalifi
 ---

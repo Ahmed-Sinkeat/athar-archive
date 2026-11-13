@@ -1,6 +1,6 @@
 ---
 title: "قرأت في جريدة الْيَوْم السابع كلاما لأسامة الأزهري عن الأهرام وتمثال أبي الهول و"
-status: draft
+status: published
 published_at: 2018-10-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

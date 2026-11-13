@@ -1,6 +1,6 @@
 ---
 title: "في رحاب صبر فاطمة ابنة سيد الخلق"
-status: draft
+status: published
 published_at: 2020-02-26
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أفادني أخي أبو عاصم نبيل الرياشي بهذا الأثر العجب"
-status: draft
+status: published
 published_at: 2019-03-08
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

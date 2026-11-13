@@ -1,6 +1,6 @@
 ---
 title: "قال الطبري في تفسيره 13198 - حدثنا بشر بن معاذ قال"
-status: draft
+status: published
 published_at: 2017-07-04
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

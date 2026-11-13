@@ -1,6 +1,6 @@
 ---
 title: "ومن هذا الباب ما ورد أن الرؤيا في المنام من المبشرات وأن رؤيا المؤمن تسره ولا تغ"
-status: draft
+status: published
 published_at: 2020-08-01
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

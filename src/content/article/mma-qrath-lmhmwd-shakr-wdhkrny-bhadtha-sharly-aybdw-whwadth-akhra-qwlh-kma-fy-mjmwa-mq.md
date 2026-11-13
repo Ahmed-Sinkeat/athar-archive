@@ -1,6 +1,6 @@
 ---
 title: "مما قرأته لمحمود شاكر وذكرني بحادثة شارلي ايبدو وحوادث أخرى قوله كما في مجموع مق"
-status: draft
+status: published
 published_at: 2018-10-26
 person: abu-jafar-al-khalifi
 ---

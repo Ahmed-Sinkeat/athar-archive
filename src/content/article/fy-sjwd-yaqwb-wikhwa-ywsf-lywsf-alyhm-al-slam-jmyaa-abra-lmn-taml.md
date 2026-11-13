@@ -1,6 +1,6 @@
 ---
 title: "في سجود يعقوب وإخوة يوسف ليوسف عليهم السلام جميعا عبرة لمن تأمل."
-status: draft
+status: published
 published_at: 2025-05-10
 person: abu-umair-imran-al-zubaidi
 ---

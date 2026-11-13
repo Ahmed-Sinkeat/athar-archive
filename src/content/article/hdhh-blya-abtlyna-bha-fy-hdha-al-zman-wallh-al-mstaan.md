@@ -1,6 +1,6 @@
 ---
 title: "هذه بلية ابتلينا بها في هذا الزمان والله المستعان."
-status: draft
+status: published
 published_at: 2023-12-02
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

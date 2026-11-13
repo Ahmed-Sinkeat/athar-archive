@@ -1,6 +1,6 @@
 ---
 title: "كم شخصاً تعرف يعاني من مشاكل في الإنجاب في مجتمعنا"
-status: draft
+status: published
 published_at: 2019-04-13
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "التفاؤل خصوصية إيمانية"
-status: draft
+status: published
 published_at: 2020-03-24
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "al-iman"]

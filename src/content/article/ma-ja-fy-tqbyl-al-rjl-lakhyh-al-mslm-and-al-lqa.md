@@ -1,6 +1,6 @@
 ---
 title: "ما جاء في تقبيل الرجل لأخيه المسلم عند اللقاء"
-status: draft
+status: published
 published_at: 2024-08-16
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

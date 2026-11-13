@@ -1,6 +1,6 @@
 ---
 title: "أحبك الله الذي أحببتني لأجله أخي"
-status: draft
+status: published
 published_at: 2023-12-29
 person: abu-umair-imran-al-zubaidi
 ---

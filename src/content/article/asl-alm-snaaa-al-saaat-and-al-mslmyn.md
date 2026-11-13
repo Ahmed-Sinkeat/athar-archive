@@ -1,6 +1,6 @@
 ---
 title: "أصل علم صناعة الساعات عند المسلمين"
-status: draft
+status: published
 published_at: 2017-12-27
 person: abu-jafar-al-khalifi
 ---

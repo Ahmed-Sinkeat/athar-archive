@@ -1,6 +1,6 @@
 ---
 title: "إن السنة سبقت فتياكم"
-status: draft
+status: published
 published_at: 2024-08-30
 person: abu-abdillah-firas-al-ramli
 ---

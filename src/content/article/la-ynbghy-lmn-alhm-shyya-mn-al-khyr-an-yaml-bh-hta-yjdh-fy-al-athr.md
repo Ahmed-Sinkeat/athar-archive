@@ -1,6 +1,6 @@
 ---
 title: "لا ينبغي لمن أُلهم شيئا من الخير أن يعمل به حتى يجده في الأثر"
-status: draft
+status: published
 published_at: 2026-03-21
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

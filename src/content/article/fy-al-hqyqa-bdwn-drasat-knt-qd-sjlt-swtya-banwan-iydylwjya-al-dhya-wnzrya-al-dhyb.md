@@ -1,6 +1,6 @@
 ---
 title: "في الحقيقة بدون دراسات كنت قد سجلت صوتية بعنوان (إيديلوجيا الضحية) و(نظرية الذئب"
-status: draft
+status: published
 published_at: 2026-04-13
 person: abu-jafar-al-khalifi
 ---

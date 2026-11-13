@@ -1,6 +1,6 @@
 ---
 title: "فائدة في غسل الوجه"
-status: draft
+status: published
 published_at: 2024-05-21
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "حين ترى في القرآن اعتراض الكفار على إرسال بشر منهم رسولا إليهم"
-status: draft
+status: published
 published_at: 2026-01-07
 person: abu-umair-imran-al-zubaidi
 ---

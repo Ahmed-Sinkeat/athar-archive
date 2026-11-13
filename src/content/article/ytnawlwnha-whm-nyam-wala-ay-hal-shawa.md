@@ -1,6 +1,6 @@
 ---
 title: "يتناولونها وهم نيام وعلى أي حال شاءوا"
-status: draft
+status: published
 published_at: 2025-11-15
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

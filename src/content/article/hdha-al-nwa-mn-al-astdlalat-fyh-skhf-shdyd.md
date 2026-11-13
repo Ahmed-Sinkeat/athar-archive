@@ -1,6 +1,6 @@
 ---
 title: "هذا النوع من الاستدلالات فيه سخف شديد"
-status: draft
+status: published
 published_at: 2026-06-11
 person: abu-jafar-al-khalifi
 ---

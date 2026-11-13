@@ -1,6 +1,6 @@
 ---
 title: "وأما القصور في فهم المذهبية فلأن الإلحاد إنما يقع لمن هو عامي أو شبه عامي في الغ"
-status: draft
+status: published
 published_at: 2020-06-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

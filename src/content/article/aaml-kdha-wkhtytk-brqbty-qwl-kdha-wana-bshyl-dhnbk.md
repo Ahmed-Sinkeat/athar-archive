@@ -1,6 +1,6 @@
 ---
 title: "\"اعمل كذا وخطيتك برقبتي، قول كذا وأنا بشيل ذنبك\"."
-status: draft
+status: published
 published_at: 2025-12-02
 person: abu-umair-imran-al-zubaidi
 ---

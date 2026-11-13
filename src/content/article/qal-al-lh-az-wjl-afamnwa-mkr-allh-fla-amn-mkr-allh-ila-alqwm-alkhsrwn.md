@@ -1,6 +1,6 @@
 ---
 title: "قال الله عز وجل: ﴿أفأمنوا مكر ٱلله فلا یأمن مكر ٱلله إلا ٱلقوم ٱلخـٰسرون﴾"
-status: draft
+status: published
 published_at: 2023-09-11
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

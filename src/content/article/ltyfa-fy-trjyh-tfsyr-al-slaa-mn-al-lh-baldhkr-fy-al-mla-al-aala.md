@@ -1,6 +1,6 @@
 ---
 title: "لطيفة في ترجيح تفسير الصلاة من الله بالذكر في الملأ الأعلى.."
-status: draft
+status: published
 published_at: 2021-03-05
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

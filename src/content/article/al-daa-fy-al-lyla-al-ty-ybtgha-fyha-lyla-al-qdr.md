@@ -1,6 +1,6 @@
 ---
 title: "الدعاء في الليلة التي يبتغى فيها ليلة القدر"
-status: draft
+status: published
 published_at: 2024-03-30
 person: abu-abdillah-firas-al-ramli
 ---

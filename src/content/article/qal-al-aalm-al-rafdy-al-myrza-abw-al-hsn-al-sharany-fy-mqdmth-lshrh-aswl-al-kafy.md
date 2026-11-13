@@ -1,6 +1,6 @@
 ---
 title: "قال العالم الرافضي الميرزا أبو الحسن الشعراني في مقدمته لشرح أصول الكافي"
-status: draft
+status: published
 published_at: 2017-11-06
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

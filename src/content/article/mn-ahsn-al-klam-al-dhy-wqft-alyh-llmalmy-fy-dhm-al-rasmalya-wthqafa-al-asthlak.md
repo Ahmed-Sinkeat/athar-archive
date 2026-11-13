@@ -1,6 +1,6 @@
 ---
 title: "من أحسن الكلام الذي وقفت عليه للمعلمي في ذم الرأسمالية وثقافة الاستهلاك."
-status: draft
+status: published
 published_at: 2018-10-19
 person: abu-jafar-al-khalifi
 ---

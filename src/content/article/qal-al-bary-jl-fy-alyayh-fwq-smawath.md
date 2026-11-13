@@ -1,6 +1,6 @@
 ---
 title: "قال الباري جل في عليائه فوق سماواته"
-status: draft
+status: published
 published_at: 2024-08-19
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "القول في المزامير ورد ما افتراه الصوفية على الشافعي"
-status: draft
+status: published
 published_at: 2025-08-06
 person: abu-abdillah-firas-al-ramli
 ---

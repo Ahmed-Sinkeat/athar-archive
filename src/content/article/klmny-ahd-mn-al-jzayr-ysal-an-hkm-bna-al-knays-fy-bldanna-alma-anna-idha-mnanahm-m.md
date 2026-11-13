@@ -1,6 +1,6 @@
 ---
 title: "كلمني أحد من الجزائر يسأل عن حكم بناء الكنائس في بلداننا علما أننا إذا منعناهم م"
-status: draft
+status: published
 published_at: 2018-12-09
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

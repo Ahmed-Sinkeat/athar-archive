@@ -1,6 +1,6 @@
 ---
 title: "في رحاب الفقيه الذي كان سبباً في تولية عمر بن عبد العزيز"
-status: draft
+status: published
 published_at: 2019-11-26
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "دخل الإمام أحمد ابن حنبل على قوم في المسجد، فقاموا له."
-status: draft
+status: published
 published_at: 2024-01-05
 person: abu-umair-imran-al-zubaidi
 ---

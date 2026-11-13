@@ -1,6 +1,6 @@
 ---
 title: "تأمل هذا الوجه من سورة لقمان، ماذا تلاحظ؟"
-status: draft
+status: published
 published_at: 2026-10-22
 person: abu-umair-imran-al-zubaidi
 ---

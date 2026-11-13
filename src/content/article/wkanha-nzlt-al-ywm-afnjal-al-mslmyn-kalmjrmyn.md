@@ -1,6 +1,6 @@
 ---
 title: "وكأنها نزلت اليوم {أفنجعل المسلمين كالمجرمين}.."
-status: draft
+status: published
 published_at: 2022-05-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

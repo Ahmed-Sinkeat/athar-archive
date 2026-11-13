@@ -1,6 +1,6 @@
 ---
 title: "معدن الشبهة: الركون للدنيا!"
-status: draft
+status: published
 published_at: 2020-11-26
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

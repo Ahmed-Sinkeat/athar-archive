@@ -1,6 +1,6 @@
 ---
 title: "\"الّذي يقول لك أنًك لن تصبح طالب عِلم إلّا بتعلّم عِلم الكلام"
-status: draft
+status: published
 published_at: 2023-03-29
 person: abu-umair-imran-al-zubaidi
 ---

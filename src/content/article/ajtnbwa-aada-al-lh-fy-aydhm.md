@@ -1,6 +1,6 @@
 ---
 title: "اجتنبوا أعـداء الله في عيدهم"
-status: draft
+status: published
 published_at: 2024-12-22
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

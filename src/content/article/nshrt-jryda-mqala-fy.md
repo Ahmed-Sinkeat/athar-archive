@@ -1,6 +1,6 @@
 ---
 title: "نشرت جريدة - Süddeutsche Zeitung - مقالاً في 05.06.2018"
-status: draft
+status: published
 published_at: 2018-06-21
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "جاء في رد المحتار لابن عابدين"
-status: draft
+status: published
 published_at: 2017-11-23
 person: abu-jafar-al-khalifi
 ---

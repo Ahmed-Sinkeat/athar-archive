@@ -1,6 +1,6 @@
 ---
 title: "نشر موقع مهاجر نيوز مقالًا باللغة العربية بعنوان"
-status: draft
+status: published
 published_at: 2021-01-19
 person: abu-jafar-al-khalifi
 ---

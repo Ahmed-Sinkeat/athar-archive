@@ -1,6 +1,6 @@
 ---
 title: "في الواقع لا خصوصية للمجتمع الكويتي."
-status: draft
+status: published
 published_at: 2025-02-04
 person: abu-jafar-al-khalifi
 ---

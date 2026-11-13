@@ -1,6 +1,6 @@
 ---
 title: "أنا فاشل!."
-status: draft
+status: published
 published_at: 2023-01-25
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

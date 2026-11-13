@@ -1,6 +1,6 @@
 ---
 title: "جواب سؤال عن تعارض حديثين"
-status: draft
+status: published
 published_at: 2021-02-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

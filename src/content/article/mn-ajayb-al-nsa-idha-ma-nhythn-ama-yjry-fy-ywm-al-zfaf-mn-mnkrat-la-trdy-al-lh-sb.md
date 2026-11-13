@@ -1,6 +1,6 @@
 ---
 title: "من عجائب النساء إذا ما نهيتهنّ عما يجري في يوم الزفاف من منكرات لا تُرضي الله سب"
-status: draft
+status: published
 published_at: 2024-01-24
 person: abu-umair-imran-al-zubaidi
 ---

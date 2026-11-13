@@ -1,6 +1,6 @@
 ---
 title: "قاعدة: كل من سب الأنبياء بشيء وقع فيه.."
-status: draft
+status: published
 published_at: 2022-06-09
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

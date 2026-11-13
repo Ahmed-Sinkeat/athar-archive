@@ -1,6 +1,6 @@
 ---
 title: "إذا أردت أن تعرف قيمة الكلمة والبيان في الدعوة"
-status: draft
+status: published
 published_at: 2018-11-15
 person: abu-jafar-al-khalifi
 ---

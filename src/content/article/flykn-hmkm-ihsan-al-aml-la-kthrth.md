@@ -1,6 +1,6 @@
 ---
 title: "فليكن همكم إحسان العمل لا كثرته"
-status: draft
+status: published
 published_at: 2024-01-11
 person: abu-abdillah-firas-al-ramli
 ---

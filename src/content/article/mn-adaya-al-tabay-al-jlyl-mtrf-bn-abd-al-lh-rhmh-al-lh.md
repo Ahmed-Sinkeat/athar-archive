@@ -1,6 +1,6 @@
 ---
 title: "من أدعية التابعي الجليل مطرف بن عبد الله رحمه الله"
-status: draft
+status: published
 published_at: 2026-01-21
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

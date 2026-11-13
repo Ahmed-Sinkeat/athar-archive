@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم في إعلام الموقعين مبيناً الحكمة من إباحة أربعة زوجات لا أكثر"
-status: draft
+status: published
 published_at: 2017-10-15
 person: abu-jafar-al-khalifi
 ---

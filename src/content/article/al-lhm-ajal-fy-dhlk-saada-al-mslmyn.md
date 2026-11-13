@@ -1,6 +1,6 @@
 ---
 title: "اللهم اجعل في ذلك سعادة المسلمين.."
-status: draft
+status: published
 published_at: 2022-02-11
 person: abu-jafar-al-khalifi
 ---

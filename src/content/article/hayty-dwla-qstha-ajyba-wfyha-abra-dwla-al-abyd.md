@@ -1,6 +1,6 @@
 ---
 title: "هايتي دولة قصتها عجيبة وفيها عبرة دولة العبيد !"
-status: draft
+status: published
 published_at: 2017-09-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "حوار الأنبياء صلوات ربي وسلامه عليهم مع الرب سبحانه وتعالى في القرآن شيء تقشعر ل"
-status: draft
+status: published
 published_at: 2025-08-14
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الاقتصاد الإسلامي"
-status: draft
+status: published
 published_at: 2019-04-21
 person: abu-jafar-al-khalifi
 ---

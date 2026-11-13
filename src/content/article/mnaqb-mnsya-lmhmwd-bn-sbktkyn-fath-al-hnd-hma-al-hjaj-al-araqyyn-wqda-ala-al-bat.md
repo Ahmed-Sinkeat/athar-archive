@@ -1,6 +1,6 @@
 ---
 title: "مناقب منسية لمحمود بن سبكتكين فاتح الهند (حمى الحُجَّاج العراقيين وقضى على الباط"
-status: draft
+status: published
 published_at: 2022-01-07
 person: abu-jafar-al-khalifi
 ---

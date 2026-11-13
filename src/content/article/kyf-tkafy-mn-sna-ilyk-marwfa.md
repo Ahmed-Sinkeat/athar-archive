@@ -1,6 +1,6 @@
 ---
 title: "كيف تكافئ من صنع إليك معروفا؟"
-status: draft
+status: published
 published_at: 2023-10-24
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لن تستطيع فهمَ كثيرٍ من أحكام الشريعة الإسلامية؛ ما لم يستقر في عقلك وقلبك أنّ ا"
-status: draft
+status: published
 published_at: 2022-08-17
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

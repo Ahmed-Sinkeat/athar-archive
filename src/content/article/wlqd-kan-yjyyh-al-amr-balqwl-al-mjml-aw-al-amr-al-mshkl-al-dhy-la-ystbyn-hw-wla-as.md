@@ -1,6 +1,6 @@
 ---
 title: "ولقد كان يجيئه الأمر بالقول المُجمَل أو الأمر المُشكِل الذي لا يستبِين هو ولا أص"
-status: draft
+status: published
 published_at: 2025-06-28
 person: awwab-bin-muhammad
 ---

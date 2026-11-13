@@ -1,6 +1,6 @@
 ---
 title: "قال الدكتور ملحم قربان في كتابه الواقعية السياسية \" قد يقرأ بعض المطلعين على تار"
-status: draft
+status: published
 published_at: 2019-09-17
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-wala-wal-bara"]

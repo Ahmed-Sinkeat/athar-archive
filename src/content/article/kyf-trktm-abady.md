@@ -1,6 +1,6 @@
 ---
 title: "كيف تركتم عبادي ؟"
-status: draft
+status: published
 published_at: 2023-08-28
 person: abu-abdillah-firas-al-ramli
 ---

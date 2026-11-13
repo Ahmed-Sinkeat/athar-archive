@@ -1,6 +1,6 @@
 ---
 title: "فعلى سبيل المثال"
-status: draft
+status: published
 published_at: 2022-05-05
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

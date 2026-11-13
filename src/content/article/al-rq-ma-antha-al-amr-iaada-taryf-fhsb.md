@@ -1,6 +1,6 @@
 ---
 title: "الرق ما انتهى، الأمر إعادة تعريف فحسب."
-status: draft
+status: published
 published_at: 2020-12-04
 person: abu-jafar-al-khalifi
 ---

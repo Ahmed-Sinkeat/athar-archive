@@ -1,6 +1,6 @@
 ---
 title: "مواسم الطاعات.. مواسم الفرح.."
-status: draft
+status: published
 published_at: 2022-07-01
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "tahwid-al-ibada"]

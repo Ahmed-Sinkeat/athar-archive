@@ -1,6 +1,6 @@
 ---
 title: "ضع هذا المقطع في عين -كل تافه منحط -ولا تنس نعلك في حلقه- يطبل لهذا القذر وحزبه"
-status: draft
+status: published
 published_at: 2024-09-23
 person: abu-umair-imran-al-zubaidi
 ---

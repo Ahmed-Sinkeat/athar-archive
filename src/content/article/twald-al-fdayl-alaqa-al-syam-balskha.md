@@ -1,6 +1,6 @@
 ---
 title: "توالد الفضائل (علاقة الصيام بالسخاء)."
-status: draft
+status: published
 published_at: 2021-04-12
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "فعلقت على كلامه المذكور أعلاه قائلا"
-status: draft
+status: published
 published_at: 2017-11-21
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

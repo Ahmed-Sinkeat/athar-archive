@@ -1,6 +1,6 @@
 ---
 title: "علاج آفتين عظيمتين في كلمات قليلة عظيمة."
-status: draft
+status: published
 published_at: 2022-09-09
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-sunnah-wal-bidah"]

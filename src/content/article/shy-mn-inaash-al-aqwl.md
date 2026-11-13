@@ -1,6 +1,6 @@
 ---
 title: "شيء من إنعاش العقول."
-status: draft
+status: published
 published_at: 2019-01-29
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

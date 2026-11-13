@@ -1,6 +1,6 @@
 ---
 title: "خلاصة عقيدة المعطلة: القرآن ليس كتاب هدى"
-status: draft
+status: published
 published_at: 2022-08-02
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

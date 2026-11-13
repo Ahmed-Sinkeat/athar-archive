@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري (٣٢٤٣)"
-status: draft
+status: published
 published_at: 2023-06-29
 person: abu-abdillah-firas-al-ramli
 ---

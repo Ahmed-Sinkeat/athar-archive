@@ -1,6 +1,6 @@
 ---
 title: "يستجاب دعاء أحدكم إذا أيقن الإجابة ولم يستعجل، ولا يدعو أحد إلا أعطي إحدى ثلاث"
-status: draft
+status: published
 published_at: 2023-10-22
 person: abu-abdillah-firas-al-ramli
 ---

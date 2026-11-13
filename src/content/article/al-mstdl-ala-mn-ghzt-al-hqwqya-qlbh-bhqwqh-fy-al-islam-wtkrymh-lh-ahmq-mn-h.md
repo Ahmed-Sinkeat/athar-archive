@@ -1,6 +1,6 @@
 ---
 title: "المُستدِل على مَن غزَت الحقوقية قلبَه بـ\"حقوقه في الإسلام وتكريمه له\" أحمقُ من ه"
-status: draft
+status: published
 published_at: 2026-09-06
 person: awwab-bin-muhammad
 ---

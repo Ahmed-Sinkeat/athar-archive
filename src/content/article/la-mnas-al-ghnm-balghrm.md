@@ -1,6 +1,6 @@
 ---
 title: "لا مناص، الغُنم بالغُرم!"
-status: draft
+status: published
 published_at: 2020-11-09
 person: abu-jafar-al-khalifi
 ---

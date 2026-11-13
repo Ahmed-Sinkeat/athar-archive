@@ -1,6 +1,6 @@
 ---
 title: "وهذا أمر ينبغي أن ينتبه له طلبة العلم وهو أن عدداً من المصنفين في التواريخ والأد"
-status: draft
+status: published
 published_at: 2021-05-07
 person: abu-jafar-al-khalifi
 ---

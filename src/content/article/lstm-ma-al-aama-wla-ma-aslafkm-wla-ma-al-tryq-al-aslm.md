@@ -1,6 +1,6 @@
 ---
 title: "لستم مع العامة ولا مع أسلافكم ولا مع الطريق الأسلم..."
-status: draft
+status: published
 published_at: 2021-02-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "tazkiyat-al-nafs"]

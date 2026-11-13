@@ -1,6 +1,6 @@
 ---
 title: "جزاه الله خيرا."
-status: draft
+status: published
 published_at: 2026-07-25
 person: abu-jafar-al-khalifi
 ---

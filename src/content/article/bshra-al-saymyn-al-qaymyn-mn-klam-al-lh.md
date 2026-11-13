@@ -1,6 +1,6 @@
 ---
 title: "بشرى الصائمين القائمين من كلام الله"
-status: draft
+status: published
 published_at: 2020-05-07
 person: abu-jafar-al-khalifi
 ---

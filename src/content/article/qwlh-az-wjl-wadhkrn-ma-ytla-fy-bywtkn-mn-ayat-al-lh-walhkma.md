@@ -1,6 +1,6 @@
 ---
 title: "قوله عز وجل: ﴿واذكرن ما يتلى في بيوتكن من آيات الله والحكمة﴾"
-status: draft
+status: published
 published_at: 2024-09-11
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

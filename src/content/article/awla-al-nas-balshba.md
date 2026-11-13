@@ -1,6 +1,6 @@
 ---
 title: "أولى الناس بالصحبة"
-status: draft
+status: published
 published_at: 2023-05-11
 person: abu-abdillah-firas-al-ramli
 ---

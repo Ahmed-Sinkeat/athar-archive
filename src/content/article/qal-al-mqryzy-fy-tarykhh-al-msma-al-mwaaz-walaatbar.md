@@ -1,6 +1,6 @@
 ---
 title: "قال المقريزي في تاريخه المسمى المواعظ والاعتبار"
-status: draft
+status: published
 published_at: 2017-12-19
 person: abu-jafar-al-khalifi
 ---

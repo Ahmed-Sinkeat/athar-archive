@@ -1,6 +1,6 @@
 ---
 title: "حذفت المنشور السابق لأنني غفلت عن كون أن هناك من الفضلاء من أفتى اجتهادًا وإن كا"
-status: draft
+status: published
 published_at: 2023-04-17
 person: abu-umair-imran-al-zubaidi
 ---

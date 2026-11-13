@@ -1,6 +1,6 @@
 ---
 title: "روي عن عبد الله بن أبي أوفى رضي الله عنه قال كنا عند النبي صلى الله عليه وسلم فأ"
-status: draft
+status: published
 published_at: 2017-08-20
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

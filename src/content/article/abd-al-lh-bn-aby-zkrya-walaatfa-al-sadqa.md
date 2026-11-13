@@ -1,6 +1,6 @@
 ---
 title: "عبد الله بن أبي زكريا والعاطفة الصادقة"
-status: draft
+status: published
 published_at: 2022-07-25
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

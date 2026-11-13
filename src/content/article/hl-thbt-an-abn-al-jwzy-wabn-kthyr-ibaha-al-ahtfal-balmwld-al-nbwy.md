@@ -1,6 +1,6 @@
 ---
 title: "هل ثبت عن ابن الجوزي وابن كثير إباحة الاحتفال بالمولد النبوي؟"
-status: draft
+status: published
 published_at: 2024-09-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

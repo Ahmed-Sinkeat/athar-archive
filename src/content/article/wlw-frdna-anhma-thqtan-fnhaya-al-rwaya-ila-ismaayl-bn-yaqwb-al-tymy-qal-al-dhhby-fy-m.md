@@ -1,6 +1,6 @@
 ---
 title: "ولو فرضنا أنهما ثقتان فنهاية الرواية إلى إسماعيل بن يعقوب التيمي قال الذهبي في م"
-status: draft
+status: published
 published_at: 2020-03-28
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "اعتراف خجول للعطار الشافعي بأن كلام الشافعي في حفص الفرد ينطبق على أصحابه الأشعر"
-status: draft
+status: published
 published_at: 2021-11-19
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]

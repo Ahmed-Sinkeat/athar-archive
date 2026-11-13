@@ -1,6 +1,6 @@
 ---
 title: "الحمدُ لله ربّ العالمين حمدًا كثيرًا طيّبًا مباركًا فيه."
-status: draft
+status: published
 published_at: 2023-04-19
 person: abu-umair-imran-al-zubaidi
 ---

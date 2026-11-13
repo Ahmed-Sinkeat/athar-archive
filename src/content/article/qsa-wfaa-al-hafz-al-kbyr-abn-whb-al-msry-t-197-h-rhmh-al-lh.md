@@ -1,6 +1,6 @@
 ---
 title: "قصة وفاة الحافظ الكبير ابن وهب المصري (ت ١٩٧ هـ) رحمه الله."
-status: draft
+status: published
 published_at: 2024-03-26
 person: abu-abdillah-firas-al-ramli
 ---

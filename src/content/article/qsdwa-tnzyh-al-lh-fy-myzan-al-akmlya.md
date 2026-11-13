@@ -1,6 +1,6 @@
 ---
 title: "\"قصدوا تنزيه الله\" في ميزان الأكمليّة!"
-status: draft
+status: published
 published_at: 2024-02-29
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أنا مستبشر بمفرمة قد تعرض لها إخوة القردة بإذن الله."
-status: draft
+status: published
 published_at: 2023-10-28
 person: abu-umair-imran-al-zubaidi
 ---

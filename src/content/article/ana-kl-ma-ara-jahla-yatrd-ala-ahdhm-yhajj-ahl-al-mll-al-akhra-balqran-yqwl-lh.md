@@ -1,6 +1,6 @@
 ---
 title: "أنا كل ما أرى جاهلا يعترض على أحدهم يحاجج أهل الملل الأخرى بالقرآن؛ يقول له"
-status: draft
+status: published
 published_at: 2025-09-05
 person: abu-umair-imran-al-zubaidi
 ---

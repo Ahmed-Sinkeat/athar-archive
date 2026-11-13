@@ -1,6 +1,6 @@
 ---
 title: "\"هل المسلمون هم فقط من سيدخلون الجنة؟\" أو \"هل الجنة حكر على المسلمين؟\"."
-status: draft
+status: published
 published_at: 2024-04-28
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

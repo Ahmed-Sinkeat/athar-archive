@@ -1,6 +1,6 @@
 ---
 title: "رأيت الإشعار حين نزل المقطع"
-status: draft
+status: published
 published_at: 2025-12-25
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

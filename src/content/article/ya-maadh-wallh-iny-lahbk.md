@@ -1,6 +1,6 @@
 ---
 title: "يا معاذ، والله إنّي لأُحِبًك»."
-status: draft
+status: published
 published_at: 2022-11-22
 person: abu-umair-imran-al-zubaidi
 ---

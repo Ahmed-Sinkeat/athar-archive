@@ -1,6 +1,6 @@
 ---
 title: "حفظ الخطيب البغدادي (ت ٤٦٣ هـ)؟"
-status: draft
+status: published
 published_at: 2023-06-07
 person: abu-abdillah-firas-al-ramli
 ---

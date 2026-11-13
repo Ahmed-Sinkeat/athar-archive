@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام ابن المبارك في الزهد (357)"
-status: draft
+status: published
 published_at: 2023-08-22
 person: abu-umair-imran-al-zubaidi
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "أكثر ما يغضبني حينما أسمع أحدهم يريد إخبار متابعيه عما يجري في الشام فيقول"
-status: draft
+status: published
 published_at: 2024-12-04
 person: abu-umair-imran-al-zubaidi
 ---

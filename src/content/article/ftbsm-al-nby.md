@@ -1,6 +1,6 @@
 ---
 title: "فتبسَّمَ النبيُّ ﷺ"
-status: draft
+status: published
 published_at: 2026-09-24
 person: awwab-bin-muhammad
 ---

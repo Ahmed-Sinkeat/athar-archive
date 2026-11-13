@@ -1,6 +1,6 @@
 ---
 title: "يقول \"أرنولد توينبي\""
-status: draft
+status: published
 published_at: 2017-07-15
 person: abu-jafar-al-khalifi
 ---

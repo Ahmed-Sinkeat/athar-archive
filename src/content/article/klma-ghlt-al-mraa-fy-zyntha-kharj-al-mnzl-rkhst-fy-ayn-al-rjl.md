@@ -1,6 +1,6 @@
 ---
 title: "كلما غلت المرأة في زينتها خارج المنزل، رخصت في عين الرجل."
-status: draft
+status: published
 published_at: 2024-05-25
 person: abu-umair-imran-al-zubaidi
 ---

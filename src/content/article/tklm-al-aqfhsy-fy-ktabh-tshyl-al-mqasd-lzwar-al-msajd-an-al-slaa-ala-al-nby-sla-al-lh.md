@@ -1,6 +1,6 @@
 ---
 title: "تكلم الأقفهسي في كتابه تسهيل المقاصد لزوار المساجد عن الصلاة على النبي صلى الله"
-status: draft
+status: published
 published_at: 2019-01-06
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

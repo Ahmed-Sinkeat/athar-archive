@@ -1,6 +1,6 @@
 ---
 title: "تغريدة الدكتور القطري نايف نهار صارت (ترند) عالميًّا"
-status: draft
+status: published
 published_at: 2022-11-22
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

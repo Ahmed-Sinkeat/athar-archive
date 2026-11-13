@@ -1,6 +1,6 @@
 ---
 title: "المُحب عليه أن يتقبّل محبوبه كما هو!."
-status: draft
+status: published
 published_at: 2023-06-11
 person: abu-umair-imran-al-zubaidi
 ---

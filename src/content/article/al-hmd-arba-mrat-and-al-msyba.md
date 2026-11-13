@@ -1,6 +1,6 @@
 ---
 title: "الحمد أربع مرات عند المصيبة"
-status: draft
+status: published
 published_at: 2026-08-29
 person: abu-abdillah-firas-al-ramli
 ---

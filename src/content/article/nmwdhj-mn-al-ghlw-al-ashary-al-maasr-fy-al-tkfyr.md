@@ -1,6 +1,6 @@
 ---
 title: "نموذج من الغلو الأشعري المعاصر في التكفير"
-status: draft
+status: published
 published_at: 2021-08-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-asma-was-sifat"]

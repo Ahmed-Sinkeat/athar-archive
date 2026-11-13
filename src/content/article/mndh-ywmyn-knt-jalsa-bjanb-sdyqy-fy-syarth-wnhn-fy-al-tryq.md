@@ -1,6 +1,6 @@
 ---
 title: "منذ يومين كنت جالسًا بجانب صديقي في سيارته ونحن في الطريق"
-status: draft
+status: published
 published_at: 2023-05-01
 person: abu-umair-imran-al-zubaidi
 ---

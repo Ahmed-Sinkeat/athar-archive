@@ -1,6 +1,6 @@
 ---
 title: "ومِن رحمةِ الله بعبادِه المُسلِمـين المُوحِّـدين المُحبِّين لنبيِّه ﷺ وصحابتِه ا"
-status: draft
+status: published
 published_at: 2025-06-13
 person: awwab-bin-muhammad
 ---

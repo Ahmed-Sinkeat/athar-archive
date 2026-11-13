@@ -1,6 +1,6 @@
 ---
 title: "هذا الكلام لا ينطبق على الخاطب الذي يُرى منه خضوع وتحكم والدته وأخواته به."
-status: draft
+status: published
 published_at: 2023-12-11
 person: abu-umair-imran-al-zubaidi
 ---

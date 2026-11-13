@@ -1,6 +1,6 @@
 ---
 title: "وعمومًا مرًة أخرى؛ الثور لا يهيّجه اللّون الأحمر لأنه أعمى ألوان أصلًا!."
-status: draft
+status: published
 published_at: 2022-12-05
 person: abu-umair-imran-al-zubaidi
 ---

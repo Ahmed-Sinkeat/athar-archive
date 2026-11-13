@@ -1,6 +1,6 @@
 ---
 title: "قال الصحفي الأمريكي غريغ بالاست في كتابه أفضل ديموقراطية يستطيع المال شرائها ص27"
-status: draft
+status: published
 published_at: 2017-12-10
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ضحك ربنا عز وجل من قنوطكم ويأسكم مع سرعة وقرب رحمته لكم وتغيير ما بكم من ضر.."
-status: draft
+status: published
 published_at: 2023-10-17
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

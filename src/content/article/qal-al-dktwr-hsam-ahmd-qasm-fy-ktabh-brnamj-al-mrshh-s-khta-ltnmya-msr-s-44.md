@@ -1,6 +1,6 @@
 ---
 title: "قال الدكتور حسام أحمد قاسم في كتابه برنامج المرشح (س) خطة لتنمية مصر ص ٤٤"
-status: draft
+status: published
 published_at: 2017-10-19
 person: abu-jafar-al-khalifi
 ---

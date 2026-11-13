@@ -1,6 +1,6 @@
 ---
 title: "الإيمان يعطي قيمة للحياة"
-status: draft
+status: published
 published_at: 2022-10-21
 person: abu-jafar-al-khalifi
 ---

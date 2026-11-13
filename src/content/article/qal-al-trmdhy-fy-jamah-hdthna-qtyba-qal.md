@@ -1,6 +1,6 @@
 ---
 title: "قال الترمذي في جامعه 2169 - حَدَّثَنَا قُتَيْبَةُ قَالَ"
-status: draft
+status: published
 published_at: 2017-07-24
 person: abu-jafar-al-khalifi
 ---

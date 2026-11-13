@@ -1,6 +1,6 @@
 ---
 title: "قال تعالى: (بَلْ أَتَيْنَاهُمْ بِذِكْرِهِمْ فَهُمْ عَنْ ذِكْرِهِمْ مُعْرِضُونَ)"
-status: draft
+status: published
 published_at: 2018-02-16
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "جاء في زاد المسير لابن الجوزي"
-status: draft
+status: published
 published_at: 2017-06-04
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

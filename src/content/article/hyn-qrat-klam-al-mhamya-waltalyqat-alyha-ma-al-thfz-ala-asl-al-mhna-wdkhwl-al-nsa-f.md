@@ -1,6 +1,6 @@
 ---
 title: "حين قرأت كلام المحامية والتعليقات عليها (مع التحفظ على أصل المهنة ودخول النساء ف"
-status: draft
+status: published
 published_at: 2023-04-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

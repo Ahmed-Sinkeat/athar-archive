@@ -1,6 +1,6 @@
 ---
 title: "أنفق يُنفق عليك من ربك الكريم"
-status: draft
+status: published
 published_at: 2024-01-04
 person: abu-abdillah-firas-al-ramli
 ---

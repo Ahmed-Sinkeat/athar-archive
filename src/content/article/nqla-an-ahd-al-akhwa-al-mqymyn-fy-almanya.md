@@ -1,6 +1,6 @@
 ---
 title: "نقلا عن أحد الأخوة المقيمين في ألمانيا"
-status: draft
+status: published
 published_at: 2018-12-21
 person: abu-jafar-al-khalifi
 ---

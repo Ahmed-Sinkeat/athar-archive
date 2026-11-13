@@ -1,6 +1,6 @@
 ---
 title: "قال الجويني في التلخيص في أصول الفقه (2/281-283)"
-status: draft
+status: published
 published_at: 2017-09-23
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

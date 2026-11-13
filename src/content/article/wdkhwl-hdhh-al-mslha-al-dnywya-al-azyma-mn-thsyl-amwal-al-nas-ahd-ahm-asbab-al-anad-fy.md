@@ -1,6 +1,6 @@
 ---
 title: "ودخول هذه المصلحة الدنيوية العظيمة من تحصيل أموال الناس أحد أهم أسباب العناد في"
-status: draft
+status: published
 published_at: 2020-10-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

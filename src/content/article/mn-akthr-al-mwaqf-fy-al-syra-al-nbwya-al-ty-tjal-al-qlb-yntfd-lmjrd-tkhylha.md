@@ -1,6 +1,6 @@
 ---
 title: "من أكثر المواقف في السيرة النبوية التي تجعل القلب ينتفض لمجرد تخيلها"
-status: draft
+status: published
 published_at: 2024-02-16
 person: abu-umair-imran-al-zubaidi
 ---

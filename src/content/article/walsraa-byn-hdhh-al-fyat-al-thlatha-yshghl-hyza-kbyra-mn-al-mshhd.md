@@ -1,6 +1,6 @@
 ---
 title: "والصراع بين هذه الفئات الثلاثة يشغل حيزًا كبيرًا من المشهد"
-status: draft
+status: published
 published_at: 2020-09-09
 person: abu-jafar-al-khalifi
 ---

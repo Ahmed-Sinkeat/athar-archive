@@ -1,6 +1,6 @@
 ---
 title: "تنزُّل أم تنازُل"
-status: draft
+status: published
 published_at: 2019-07-09
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

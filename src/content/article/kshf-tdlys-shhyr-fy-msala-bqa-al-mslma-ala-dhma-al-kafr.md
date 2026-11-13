@@ -1,6 +1,6 @@
 ---
 title: "كشف تدليس شهير في مسألة بقاء المسلمة على ذمة الكافر..."
-status: draft
+status: published
 published_at: 2020-11-18
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

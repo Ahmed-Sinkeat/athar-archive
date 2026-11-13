@@ -1,6 +1,6 @@
 ---
 title: "هيئة تحرير الشام تحركت بأمر أمريكي إسرائيلي لأنه يصب في مصلحة اليهود"
-status: draft
+status: published
 published_at: 2024-12-11
 person: abu-umair-imran-al-zubaidi
 ---

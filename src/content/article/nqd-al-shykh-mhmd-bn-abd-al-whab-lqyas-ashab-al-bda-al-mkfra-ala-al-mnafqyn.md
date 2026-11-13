@@ -1,6 +1,6 @@
 ---
 title: "نقد الشيخ محمد بن عبد الوهاب لقياس أصحاب البدع المكفرة على المنافقين.."
-status: draft
+status: published
 published_at: 2021-11-29
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-iman", "al-sunnah-wal-bidah"]

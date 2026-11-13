@@ -1,6 +1,6 @@
 ---
 title: "فنلندا دولة اسكندنافية والدول الاسكندنافية رأس الهرم الأوروبي هي أفضل دول أوروبا"
-status: draft
+status: published
 published_at: 2018-02-24
 person: abu-jafar-al-khalifi
 ---

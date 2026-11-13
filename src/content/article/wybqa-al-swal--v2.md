@@ -1,6 +1,6 @@
 ---
 title: "ويبقى السؤال"
-status: draft
+status: published
 published_at: 2026-07-29
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

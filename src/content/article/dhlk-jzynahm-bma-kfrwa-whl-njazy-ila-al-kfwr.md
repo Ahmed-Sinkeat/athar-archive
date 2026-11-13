@@ -1,6 +1,6 @@
 ---
 title: "ذَٰلِكَ جَزَيْنَاهُم بِمَا كَفَرُوا ۖ وَهَلْ نُجَازِي إِلَّا الْكَفُورَ (17)"
-status: draft
+status: published
 published_at: 2026-04-10
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

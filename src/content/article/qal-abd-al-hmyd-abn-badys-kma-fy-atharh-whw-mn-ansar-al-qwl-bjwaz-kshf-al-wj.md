@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الحميد ابن باديس كما في آثاره ( 1/132) وهو من أنصار القول بجواز كشف الوج"
-status: draft
+status: published
 published_at: 2018-09-06
 person: abu-jafar-al-khalifi
 ---

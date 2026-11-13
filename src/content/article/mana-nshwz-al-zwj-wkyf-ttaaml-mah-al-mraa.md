@@ -1,6 +1,6 @@
 ---
 title: "معنى نشوز الزوج، وكيف تتعامل معه المرأة؟"
-status: draft
+status: published
 published_at: 2023-12-03
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

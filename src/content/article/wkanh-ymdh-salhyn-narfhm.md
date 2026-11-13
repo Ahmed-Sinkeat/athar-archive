@@ -1,6 +1,6 @@
 ---
 title: "وكأنه يمدح صالحين نعرفهم."
-status: draft
+status: published
 published_at: 2020-01-26
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

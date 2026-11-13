@@ -1,6 +1,6 @@
 ---
 title: "أثناء سيرِك في الطَّريق احتسِب عند الله"
-status: draft
+status: published
 published_at: 2025-04-15
 person: awwab-bin-muhammad
 ---

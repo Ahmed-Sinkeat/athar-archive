@@ -1,6 +1,6 @@
 ---
 title: "هذا تعليق الدكتور جاسم الجزاع على اعتراض من اعترضوا عليه في وصفه لأبي بكر بـ(الم"
-status: draft
+status: published
 published_at: 2025-10-11
 person: abu-jafar-al-khalifi
 ---

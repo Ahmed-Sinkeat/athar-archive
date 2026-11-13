@@ -1,6 +1,6 @@
 ---
 title: "طلب العلم في عشر ذي الحجة وهو من أفضل الأعمال الصالحة"
-status: draft
+status: published
 published_at: 2024-06-08
 person: abu-abdillah-firas-al-ramli
 ---

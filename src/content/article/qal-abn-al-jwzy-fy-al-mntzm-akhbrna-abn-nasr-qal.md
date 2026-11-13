@@ -1,6 +1,6 @@
 ---
 title: "قال ابن الجوزي في المنتظم أخبرنا ابن ناصر قال"
-status: draft
+status: published
 published_at: 2017-11-17
 person: abu-jafar-al-khalifi
 ---

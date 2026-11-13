@@ -1,6 +1,6 @@
 ---
 title: "التنبيه على خطأ علمي شائع في توصيف مذاهب العلماء في التكفير"
-status: draft
+status: published
 published_at: 2020-11-04
 person: abu-jafar-al-khalifi
 ---

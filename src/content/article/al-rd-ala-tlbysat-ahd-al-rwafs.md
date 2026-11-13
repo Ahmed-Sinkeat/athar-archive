@@ -1,6 +1,6 @@
 ---
 title: "الرد على تلبيسات أحد الروافص"
-status: draft
+status: published
 published_at: 2024-06-18
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا رسم ساخر في إحدى الصحف الأمريكية تظهر فيه المرأة وهي تقدم أوراقها للعمل فيقو"
-status: draft
+status: published
 published_at: 2019-03-17
 person: abu-jafar-al-khalifi
 ---

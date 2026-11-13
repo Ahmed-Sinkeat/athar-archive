@@ -1,6 +1,6 @@
 ---
 title: "كان خمسة من الشبان والشابات"
-status: draft
+status: published
 published_at: 2019-11-30
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

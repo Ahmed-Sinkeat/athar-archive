@@ -1,6 +1,6 @@
 ---
 title: "أعطيت هذه الأمة ثلاثا لم يعطها إلا نبي"
-status: draft
+status: published
 published_at: 2025-03-07
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "فريقان متقابلان يستخدمان سد الذريعة"
-status: draft
+status: published
 published_at: 2019-01-25
 person: abu-jafar-al-khalifi
 ---

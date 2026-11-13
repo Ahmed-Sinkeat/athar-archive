@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام أحمد في الزهد [692"
-status: draft
+status: published
 published_at: 2018-01-12
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

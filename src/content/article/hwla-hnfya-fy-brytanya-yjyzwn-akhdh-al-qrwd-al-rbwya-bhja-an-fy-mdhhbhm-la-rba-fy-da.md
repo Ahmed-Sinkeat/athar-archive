@@ -1,6 +1,6 @@
 ---
 title: "هؤلاء حنفية في بريطانيا يجيزون أخذ القروض الربوية بحجة أن في مذهبهم لا ربا في دا"
-status: draft
+status: published
 published_at: 2023-07-17
 person: abu-jafar-al-khalifi
 ---

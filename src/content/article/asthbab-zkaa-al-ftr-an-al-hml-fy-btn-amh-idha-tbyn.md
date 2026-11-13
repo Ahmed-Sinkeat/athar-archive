@@ -1,6 +1,6 @@
 ---
 title: "استحباب زكاة الفطر عن الحمل في بطن أمه إذا تبين"
-status: draft
+status: published
 published_at: 2024-04-08
 person: abu-abdillah-firas-al-ramli
 ---

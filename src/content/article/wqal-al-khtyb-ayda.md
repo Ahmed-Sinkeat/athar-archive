@@ -1,6 +1,6 @@
 ---
 title: "وقال الخطيب أيضًا"
-status: draft
+status: published
 published_at: 2021-02-10
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا الرجل يكثر من الحديث في القضايا التاريخية"
-status: draft
+status: published
 published_at: 2023-03-13
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

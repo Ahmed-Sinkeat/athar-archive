@@ -1,6 +1,6 @@
 ---
 title: "من مهازل الطاعنين بالسنة ربطهم بين كعب الأحبار وصحيح البخاري علماً أنه لا يوجد ف"
-status: draft
+status: published
 published_at: 2018-02-06
 person: abu-jafar-al-khalifi
 ---

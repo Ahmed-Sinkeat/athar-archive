@@ -1,6 +1,6 @@
 ---
 title: "انظر في القرآن كله من أوله لأخره"
-status: draft
+status: published
 published_at: 2026-05-30
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال المروذي في أخبار الشيوخ وأخلاقهم"
-status: draft
+status: published
 published_at: 2024-01-15
 person: abu-umair-imran-al-zubaidi
 ---

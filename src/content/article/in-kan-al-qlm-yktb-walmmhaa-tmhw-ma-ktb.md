@@ -1,6 +1,6 @@
 ---
 title: "إن كان القلم يكتب، والمِمحاة تمحو ما كُتِب."
-status: draft
+status: published
 published_at: 2022-08-17
 person: abu-umair-imran-al-zubaidi
 ---

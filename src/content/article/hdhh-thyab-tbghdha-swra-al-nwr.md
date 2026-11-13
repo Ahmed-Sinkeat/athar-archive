@@ -1,6 +1,6 @@
 ---
 title: "هذه ثياب تبغضها سورة النور!"
-status: draft
+status: published
 published_at: 2023-11-22
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

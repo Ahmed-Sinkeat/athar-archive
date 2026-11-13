@@ -1,6 +1,6 @@
 ---
 title: "رئيس الحزب المسيحي الديمقراطي الألماني يقول في مناظرة في البوندس تاق حول الأوضاع"
-status: draft
+status: published
 published_at: 2022-03-23
 person: abu-jafar-al-khalifi
 ---

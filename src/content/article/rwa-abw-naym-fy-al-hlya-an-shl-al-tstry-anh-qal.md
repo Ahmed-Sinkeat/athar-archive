@@ -1,6 +1,6 @@
 ---
 title: "روى أبو نعيم في الحلية عن سهل التستري أنه قال"
-status: draft
+status: published
 published_at: 2018-04-04
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "مجرد البحث عن الحقيقة يقتضي الإيمان بثلاثة أمور"
-status: draft
+status: published
 published_at: 2017-09-09
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

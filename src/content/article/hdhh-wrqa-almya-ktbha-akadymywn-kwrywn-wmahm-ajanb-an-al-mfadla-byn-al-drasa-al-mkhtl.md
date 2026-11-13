@@ -1,6 +1,6 @@
 ---
 title: "هذه ورقة علمية كتبها آكاديميون كوريون ومعهم أجانب عن المفاضلة بين الدراسة المختل"
-status: draft
+status: published
 published_at: 2023-09-19
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

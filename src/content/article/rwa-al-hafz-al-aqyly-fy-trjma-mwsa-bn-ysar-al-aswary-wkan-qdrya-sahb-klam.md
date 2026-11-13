@@ -1,6 +1,6 @@
 ---
 title: "روى الحافظ العقيلي في ترجمة [ موسى بن يسار الأسواري ] وكان قدرياً صاحب كلام"
-status: draft
+status: published
 published_at: 2019-11-10
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

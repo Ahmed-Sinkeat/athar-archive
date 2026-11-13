@@ -1,6 +1,6 @@
 ---
 title: "ونسأل الله أن يسخر ما يجري في صالح عباده في دينهم ودنياهم"
-status: draft
+status: published
 published_at: 2026-03-23
 person: abu-umair-imran-al-zubaidi
 ---

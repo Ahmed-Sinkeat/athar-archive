@@ -1,6 +1,6 @@
 ---
 title: "في الواقع ابن تيمية لم يقل هذا في سادتك الأشعرية"
-status: draft
+status: published
 published_at: 2023-06-25
 person: abu-jafar-al-khalifi
 ---

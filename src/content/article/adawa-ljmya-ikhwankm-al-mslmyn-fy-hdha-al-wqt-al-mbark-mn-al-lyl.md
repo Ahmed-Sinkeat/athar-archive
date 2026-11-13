@@ -1,6 +1,6 @@
 ---
 title: "ادعوا لجميع إخوانكم المسلمين في هذا الوقت المبارك من الليل"
-status: draft
+status: published
 published_at: 2023-12-09
 person: abu-umair-imran-al-zubaidi
 ---

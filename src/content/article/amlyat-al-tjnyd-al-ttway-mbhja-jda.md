@@ -1,6 +1,6 @@
 ---
 title: "عمليات التجنيد التطوعي مبهجة جدا!"
-status: draft
+status: published
 published_at: 2024-12-27
 person: abu-umair-imran-al-zubaidi
 ---

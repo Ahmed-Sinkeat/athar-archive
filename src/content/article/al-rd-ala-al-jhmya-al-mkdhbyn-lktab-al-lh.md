@@ -1,6 +1,6 @@
 ---
 title: "الرد على الجهمية المكذبين لكتاب الله ﷻ"
-status: draft
+status: published
 published_at: 2023-07-03
 person: abu-abdillah-firas-al-ramli
 ---

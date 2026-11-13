@@ -1,6 +1,6 @@
 ---
 title: "هذا عنوان خبر منشور في الديلي منت قبل أسبوع تقريبا مفاده في ولاية كاليفورنيا تم"
-status: draft
+status: published
 published_at: 2018-06-02
 person: abu-jafar-al-khalifi
 ---

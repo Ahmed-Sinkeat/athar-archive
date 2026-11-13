@@ -1,6 +1,6 @@
 ---
 title: "آية يرتجف لها القلب مهابةً"
-status: draft
+status: published
 published_at: 2019-05-06
 person: abu-jafar-al-khalifi
 ---

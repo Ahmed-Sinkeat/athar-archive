@@ -1,6 +1,6 @@
 ---
 title: "هناك حيلة خبيثة يروجها بعض مرضى القلوب"
-status: draft
+status: published
 published_at: 2024-05-26
 person: abu-umair-imran-al-zubaidi
 ---

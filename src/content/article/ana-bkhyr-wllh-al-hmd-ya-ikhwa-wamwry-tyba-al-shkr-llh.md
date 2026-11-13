@@ -1,6 +1,6 @@
 ---
 title: "أنا بخير ولله الحمد يا إخوة، وأموري طيبة الشكر لله."
-status: draft
+status: published
 published_at: 2026-06-26
 person: abu-umair-imran-al-zubaidi
 ---

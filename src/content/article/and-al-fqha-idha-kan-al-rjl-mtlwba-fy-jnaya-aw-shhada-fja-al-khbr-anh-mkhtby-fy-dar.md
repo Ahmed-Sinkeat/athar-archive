@@ -1,6 +1,6 @@
 ---
 title: "عند الفقهاء إذا كان الرجل مطلوباً في جناية أو شهادة فجاء الخبر أنه مختبيء في دار"
-status: draft
+status: published
 published_at: 2018-04-17
 person: abu-jafar-al-khalifi
 ---

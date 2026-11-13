@@ -1,6 +1,6 @@
 ---
 title: "من دعاء النبيّ -صلّى الله عليه وسلّم- في سجوده"
-status: draft
+status: published
 published_at: 2023-01-27
 person: abu-umair-imran-al-zubaidi
 ---

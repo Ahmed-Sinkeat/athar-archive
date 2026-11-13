@@ -1,6 +1,6 @@
 ---
 title: "هذا في المنافق المستتر الذي تظهر منه فلتات فحسب"
-status: draft
+status: published
 published_at: 2021-11-29
 person: abu-jafar-al-khalifi
 topics: ["al-iman", "al-sunnah-wal-bidah"]

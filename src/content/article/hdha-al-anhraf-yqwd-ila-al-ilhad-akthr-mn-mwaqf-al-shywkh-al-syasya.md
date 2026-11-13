@@ -1,6 +1,6 @@
 ---
 title: "هذا الانحراف يقود إلى الإلحاد أكثر من مواقف الشيوخ السياسية!"
-status: draft
+status: published
 published_at: 2024-03-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

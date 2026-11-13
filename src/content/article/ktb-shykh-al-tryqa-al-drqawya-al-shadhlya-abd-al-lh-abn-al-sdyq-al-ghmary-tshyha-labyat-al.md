@@ -1,6 +1,6 @@
 ---
 title: "كتب شيخ الطريقة الدرقاوية الشاذلية عبد الله ابن الصديق الغماري تصحيحاً لأبيات ال"
-status: draft
+status: published
 published_at: 2018-12-19
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

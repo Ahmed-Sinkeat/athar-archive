@@ -1,6 +1,6 @@
 ---
 title: "نداء إلى مدخلي الشاملة يرجى إصلاح هذا الغلط."
-status: draft
+status: published
 published_at: 2019-09-20
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "قالت أمنا عائشة رضي الله عنها"
-status: draft
+status: published
 published_at: 2024-07-08
 person: abu-umair-imran-al-zubaidi
 ---

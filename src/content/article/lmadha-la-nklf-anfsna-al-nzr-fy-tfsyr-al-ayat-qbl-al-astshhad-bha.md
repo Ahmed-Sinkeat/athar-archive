@@ -1,6 +1,6 @@
 ---
 title: "لماذا لا نُكلّف أنفسنا النظر في تفسير الآيات قبل الاستشهاد بها؟"
-status: draft
+status: published
 published_at: 2024-07-02
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

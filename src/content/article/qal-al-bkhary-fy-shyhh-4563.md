@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري في صحيحه (٤٥٦٣)"
-status: draft
+status: published
 published_at: 2023-10-14
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

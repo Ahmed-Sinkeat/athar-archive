@@ -1,6 +1,6 @@
 ---
 title: "أَمَّنْ خَلَقَ السَّمَاوَاتِ وَالْأَرْضَ وَأَنْزَلَ لَكُمْ مِنَ السَّمَاءِ مَاءً"
-status: draft
+status: published
 published_at: 2024-11-19
 person: abu-umair-imran-al-zubaidi
 ---

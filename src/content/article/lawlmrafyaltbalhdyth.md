@@ -1,6 +1,6 @@
 ---
 title: "#لأول_مرة_في_الطب_الحديث"
-status: draft
+status: published
 published_at: 2018-03-19
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "آيات الحجرات التي برأت الصحابة ونقضت عقيدة الإمامة.."
-status: draft
+status: published
 published_at: 2022-05-01
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

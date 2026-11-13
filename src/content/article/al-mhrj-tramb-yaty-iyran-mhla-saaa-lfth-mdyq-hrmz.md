@@ -1,6 +1,6 @@
 ---
 title: "المهرج ترامب يعطي إيران مهلة 48 ساعة لفتح مضيق هرمز"
-status: draft
+status: published
 published_at: 2026-03-22
 person: abu-umair-imran-al-zubaidi
 ---

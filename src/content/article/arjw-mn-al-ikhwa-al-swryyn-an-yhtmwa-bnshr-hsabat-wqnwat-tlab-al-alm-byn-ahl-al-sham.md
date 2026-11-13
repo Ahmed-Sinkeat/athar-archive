@@ -1,6 +1,6 @@
 ---
 title: "أرجو من الإخوة السوريين أن يهتموا بنشر حسابات وقنوات طلاب العلم بين أهل الشام."
-status: draft
+status: published
 published_at: 2024-12-11
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "هل صح عن أبي عثمان الصابوني الثناء على الجويني؟"
-status: draft
+status: published
 published_at: 2022-11-04
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

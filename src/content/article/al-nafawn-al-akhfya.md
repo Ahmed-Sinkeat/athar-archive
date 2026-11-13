@@ -1,6 +1,6 @@
 ---
 title: "النافعون الأخفياء"
-status: draft
+status: published
 published_at: 2022-12-01
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs", "al-sunnah-wal-bidah"]

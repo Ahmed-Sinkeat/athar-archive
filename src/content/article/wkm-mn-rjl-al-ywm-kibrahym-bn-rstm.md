@@ -1,6 +1,6 @@
 ---
 title: "وكم من رجل اليوم كإبراهيم بن رستم؟"
-status: draft
+status: published
 published_at: 2022-03-19
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

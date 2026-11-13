@@ -1,6 +1,6 @@
 ---
 title: "موعظة من همة مستشرق!"
-status: draft
+status: published
 published_at: 2021-06-29
 person: abu-jafar-al-khalifi
 ---

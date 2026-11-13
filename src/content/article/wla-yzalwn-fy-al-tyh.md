@@ -1,6 +1,6 @@
 ---
 title: "ولا يزالون في التيه"
-status: draft
+status: published
 published_at: 2020-08-17
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

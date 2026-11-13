@@ -1,6 +1,6 @@
 ---
 title: "أسأل الله العظيم أن لا يأتي عليّ زمن من عمري يخطر لي فيه أن أتكلم في صحابة رسول"
-status: draft
+status: published
 published_at: 2026-06-02
 person: abu-umair-imran-al-zubaidi
 ---

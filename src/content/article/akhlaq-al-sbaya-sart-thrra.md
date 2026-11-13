@@ -1,6 +1,6 @@
 ---
 title: "أخلاق السبايا صارت تحرراً !"
-status: draft
+status: published
 published_at: 2020-02-08
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذه صورة من مولد البدوي وقد اجتمع فيه بلاء عظيم من الخرافات والشركيات"
-status: draft
+status: published
 published_at: 2025-10-18
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

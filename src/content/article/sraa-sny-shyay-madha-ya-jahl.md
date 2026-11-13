@@ -1,6 +1,6 @@
 ---
 title: "صراع سني شيعي ماذا يا جاهل؟"
-status: draft
+status: published
 published_at: 2024-04-14
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

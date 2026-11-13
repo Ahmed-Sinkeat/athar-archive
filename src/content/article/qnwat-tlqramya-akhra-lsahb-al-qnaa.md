@@ -1,6 +1,6 @@
 ---
 title: "قنوات تلقرامية أخرى لصاحب القناة"
-status: draft
+status: published
 published_at: 2021-06-30
 person: abu-jafar-al-khalifi
 ---

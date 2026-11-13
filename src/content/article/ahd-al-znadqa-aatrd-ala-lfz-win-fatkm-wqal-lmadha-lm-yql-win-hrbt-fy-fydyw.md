@@ -1,6 +1,6 @@
 ---
 title: "أحد الزنادقة اعترض على لفظ ( وإن فاتكم ) وقال لماذا لم يقل ( وإن هربت ) في فيديو"
-status: draft
+status: published
 published_at: 2018-02-18
 person: abu-jafar-al-khalifi
 ---

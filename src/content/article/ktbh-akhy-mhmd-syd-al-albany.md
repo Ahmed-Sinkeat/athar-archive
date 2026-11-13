@@ -1,6 +1,6 @@
 ---
 title: "كتبه أخي: محمد سيد الألباني."
-status: draft
+status: published
 published_at: 2023-12-16
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

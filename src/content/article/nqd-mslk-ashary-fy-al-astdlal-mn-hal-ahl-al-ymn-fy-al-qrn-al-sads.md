@@ -1,6 +1,6 @@
 ---
 title: "نقض مسلك أشعري في الاستدلال من حال أهل اليمن في القرن السادس."
-status: draft
+status: published
 published_at: 2023-05-03
 person: abu-jafar-al-khalifi
 ---

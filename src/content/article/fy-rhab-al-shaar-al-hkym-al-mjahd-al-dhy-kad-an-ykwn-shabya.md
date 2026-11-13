@@ -1,6 +1,6 @@
 ---
 title: "في رحاب الشاعر الحكيم المجاهد الذي كاد أن يكون صحابياً"
-status: draft
+status: published
 published_at: 2020-04-17
 person: abu-jafar-al-khalifi
 ---

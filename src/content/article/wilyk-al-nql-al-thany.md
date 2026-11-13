@@ -1,6 +1,6 @@
 ---
 title: "وإليك النقل الثاني"
-status: draft
+status: published
 published_at: 2020-11-04
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

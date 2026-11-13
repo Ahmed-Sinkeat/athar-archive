@@ -1,6 +1,6 @@
 ---
 title: "نقلا عن الأستاذ خالد فريد الإسلام _ وعذراً على استخدامه مصطلحات عامية _"
-status: draft
+status: published
 published_at: 2017-12-19
 person: abu-jafar-al-khalifi
 ---

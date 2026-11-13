@@ -1,6 +1,6 @@
 ---
 title: "باب ما جاء في هوس الجهمية!"
-status: draft
+status: published
 published_at: 2022-08-29
 person: abu-jafar-al-khalifi
 ---

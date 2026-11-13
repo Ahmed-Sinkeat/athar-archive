@@ -1,6 +1,6 @@
 ---
 title: "البرنامج المصري المسمى \"دولة التلاوة\" من أقذر البرامج التي يساء فيها للقرآن وقرا"
-status: draft
+status: published
 published_at: 2025-12-17
 person: abu-umair-imran-al-zubaidi
 ---

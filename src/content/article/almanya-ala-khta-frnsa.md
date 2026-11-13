@@ -1,6 +1,6 @@
 ---
 title: "ألمانيا على خطى فرنسا!"
-status: draft
+status: published
 published_at: 2021-07-16
 person: abu-jafar-al-khalifi
 ---

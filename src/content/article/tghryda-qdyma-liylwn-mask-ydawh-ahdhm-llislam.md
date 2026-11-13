@@ -1,6 +1,6 @@
 ---
 title: "تغريدة قديمة لإيلون ماسك يدعوه أحدهم للإسلام."
-status: draft
+status: published
 published_at: 2025-02-25
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

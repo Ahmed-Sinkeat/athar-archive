@@ -1,6 +1,6 @@
 ---
 title: "جاء في مزامير داود"
-status: draft
+status: published
 published_at: 2017-11-03
 person: abu-jafar-al-khalifi
 ---

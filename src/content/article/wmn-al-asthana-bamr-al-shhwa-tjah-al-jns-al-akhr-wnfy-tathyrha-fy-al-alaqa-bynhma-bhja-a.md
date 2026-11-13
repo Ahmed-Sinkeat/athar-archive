@@ -1,6 +1,6 @@
 ---
 title: "ومن الاستهانة بأمر الشهوة تجاه الجنس الآخر ونفي تأثيرها في العلاقة بينهما بحجة ع"
-status: draft
+status: published
 published_at: 2019-12-08
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

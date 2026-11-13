@@ -1,6 +1,6 @@
 ---
 title: "في رحاب الطلحات الأجواد"
-status: draft
+status: published
 published_at: 2020-04-20
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

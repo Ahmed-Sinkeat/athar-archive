@@ -1,6 +1,6 @@
 ---
 title: "بمناسبة نشر بعض الليبراليين العرب للنظام النباتي في الغذاء"
-status: draft
+status: published
 published_at: 2019-05-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

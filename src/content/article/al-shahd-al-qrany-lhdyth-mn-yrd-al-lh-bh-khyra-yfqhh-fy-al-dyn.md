@@ -1,6 +1,6 @@
 ---
 title: "الشاهد القرآني لحديث «من يرد الله به خيراً يفقهه في الدين»."
-status: draft
+status: published
 published_at: 2023-10-19
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

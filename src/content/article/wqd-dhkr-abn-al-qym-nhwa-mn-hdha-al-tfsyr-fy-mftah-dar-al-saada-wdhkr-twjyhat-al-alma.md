@@ -1,6 +1,6 @@
 ---
 title: "وقد ذكر ابن القيم نحواً من هذا التفسير في مفتاح دار السعادة وذكر توجيهات العلماء"
-status: draft
+status: published
 published_at: 2020-03-22
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "غير أن الذي لا ينبغي أن ننكره أن هذه النوعية من الكتاب قد أثرت على العديد من الإ"
-status: draft
+status: published
 published_at: 2020-02-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

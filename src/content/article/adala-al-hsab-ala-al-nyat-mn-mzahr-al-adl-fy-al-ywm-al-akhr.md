@@ -1,6 +1,6 @@
 ---
 title: "عدالة الحساب على النيات: من مظاهر العدل في اليوم الآخر."
-status: draft
+status: published
 published_at: 2026-10-24
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

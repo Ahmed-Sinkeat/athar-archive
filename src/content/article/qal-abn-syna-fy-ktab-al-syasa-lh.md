@@ -1,6 +1,6 @@
 ---
 title: "قال ابن سينا في كتاب السياسة له"
-status: draft
+status: published
 published_at: 2018-01-18
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "إن أردتَ هدم أمَّة وتخريب مُجتمعِها فعليك بثلاث أمور"
-status: draft
+status: published
 published_at: 2025-08-06
 person: awwab-bin-muhammad
 topics: ["al-sunnah-wal-bidah"]

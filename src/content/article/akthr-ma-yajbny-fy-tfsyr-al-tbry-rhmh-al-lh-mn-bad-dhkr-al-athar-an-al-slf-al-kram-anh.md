@@ -1,6 +1,6 @@
 ---
 title: "أكثر ما يعجبني في تفسير الطبري رحمه الله من بعد ذكر الآثار عن السلف الكرام؛ أنه"
-status: draft
+status: published
 published_at: 2025-09-06
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

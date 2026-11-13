@@ -1,6 +1,6 @@
 ---
 title: "بداية تزهد السري السقطي (التدين أساس كل خير وليس الإنسانية قبل التدين)"
-status: draft
+status: published
 published_at: 2022-05-18
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

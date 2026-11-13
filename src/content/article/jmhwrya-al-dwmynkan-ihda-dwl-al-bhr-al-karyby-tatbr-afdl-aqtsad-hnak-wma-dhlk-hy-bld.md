@@ -1,6 +1,6 @@
 ---
 title: "جمهورية الدومينكان إحدى دول البحر الكاريبي تعتبر أفضل اقتصاد هناك ومع ذلك هي بلد"
-status: draft
+status: published
 published_at: 2019-01-25
 person: abu-jafar-al-khalifi
 ---

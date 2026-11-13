@@ -1,6 +1,6 @@
 ---
 title: "سبحان الله ما أكثر هؤلاء و هم يقولون دع الخلق للخالق و الله يحاسب العباد ويعطلون"
-status: draft
+status: published
 published_at: 2017-07-06
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أَتُعلم الصحابة بالسنة لا أم لك؟"
-status: draft
+status: published
 published_at: 2024-12-03
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "القنوط مفتاح الانحلال وعلاجه: {لا تقنطوا من رحمة الله}..."
-status: draft
+status: published
 published_at: 2025-08-05
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-iman"]

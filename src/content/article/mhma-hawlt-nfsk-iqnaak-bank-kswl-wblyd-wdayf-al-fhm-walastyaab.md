@@ -1,6 +1,6 @@
 ---
 title: "مهما حاولت نفسك إقناعك بأنك كسول وبليد وضعيف الفهم والاستيعاب"
-status: draft
+status: published
 published_at: 2024-05-10
 person: abu-umair-imran-al-zubaidi
 ---

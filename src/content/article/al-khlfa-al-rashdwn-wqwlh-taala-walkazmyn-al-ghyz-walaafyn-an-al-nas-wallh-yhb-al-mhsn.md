@@ -1,6 +1,6 @@
 ---
 title: "الخلفاء الراشدون وقوله تعالى {والكاظمين الغيظ والعافين عن الناس والله يحب المحسن"
-status: draft
+status: published
 published_at: 2024-04-12
 person: abu-jafar-al-khalifi
 ---

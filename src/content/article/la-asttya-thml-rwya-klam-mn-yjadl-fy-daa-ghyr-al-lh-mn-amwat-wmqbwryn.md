@@ -1,6 +1,6 @@
 ---
 title: "لا أستطيع تحمل رؤية كلام من يجادل في دعاء غير الله من أموات ومقبورين."
-status: draft
+status: published
 published_at: 2025-10-18
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

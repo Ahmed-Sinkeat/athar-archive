@@ -1,6 +1,6 @@
 ---
 title: "في رحاب دقة أهل الحديث وإنصافهم"
-status: draft
+status: published
 published_at: 2020-03-11
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

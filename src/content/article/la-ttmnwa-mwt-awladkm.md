@@ -1,6 +1,6 @@
 ---
 title: "لا تتمنوا موت أولادكم"
-status: draft
+status: published
 published_at: 2024-03-01
 person: abu-abdillah-firas-al-ramli
 ---

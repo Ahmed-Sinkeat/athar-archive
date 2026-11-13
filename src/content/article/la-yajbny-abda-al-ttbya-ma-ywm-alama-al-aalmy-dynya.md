@@ -1,6 +1,6 @@
 ---
 title: "لا يُعجبني أبدًا التطبيع مع يوم \"الأَمَة\" العالمي دينيًا!."
-status: draft
+status: published
 published_at: 2023-03-08
 person: abu-umair-imran-al-zubaidi
 ---

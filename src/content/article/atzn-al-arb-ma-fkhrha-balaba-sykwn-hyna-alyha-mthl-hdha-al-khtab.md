@@ -1,6 +1,6 @@
 ---
 title: "أتظن العرب مع فخرها بالآباء سيكون هيناً عليها مثل هذا الخطاب"
-status: draft
+status: published
 published_at: 2019-09-16
 person: abu-jafar-al-khalifi
 ---

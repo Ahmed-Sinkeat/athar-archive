@@ -1,6 +1,6 @@
 ---
 title: "قال أبو داود في سننه 2567 - حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ حَدَّثَنَا اللَّي"
-status: draft
+status: published
 published_at: 2018-10-01
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "لا تَكتَفِ بالدعاء في مواقع التواصل.."
-status: draft
+status: published
 published_at: 2021-12-14
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

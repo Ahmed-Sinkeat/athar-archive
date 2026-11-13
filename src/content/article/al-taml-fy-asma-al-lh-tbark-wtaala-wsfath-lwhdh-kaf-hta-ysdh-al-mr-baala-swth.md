@@ -1,6 +1,6 @@
 ---
 title: "التأمّل في أسماء الله تبارك وتعالى وصفاته لوحده كافٍ حتى يصدح المرء بأعلى صوته"
-status: draft
+status: published
 published_at: 2023-08-29
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "جديدة هذي!"
-status: draft
+status: published
 published_at: 2026-04-05
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

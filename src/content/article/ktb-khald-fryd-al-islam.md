@@ -1,6 +1,6 @@
 ---
 title: "كتب خالد فريد الإسلام"
-status: draft
+status: published
 published_at: 2018-06-15
 person: abu-jafar-al-khalifi
 ---

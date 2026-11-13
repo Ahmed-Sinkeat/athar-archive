@@ -1,6 +1,6 @@
 ---
 title: "قال رسول الله ﷺ: «ليس منا من خبَّب امرأة على زوجها» [سنن أبي داود]."
-status: draft
+status: published
 published_at: 2024-06-10
 person: abu-jafar-al-khalifi
 ---

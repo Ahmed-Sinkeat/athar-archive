@@ -1,6 +1,6 @@
 ---
 title: "لكِ ألَّا تأكلي الجراد، ولكن ليس لك السخرية ممن يأكله أو مهاجمته."
-status: draft
+status: published
 published_at: 2021-11-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

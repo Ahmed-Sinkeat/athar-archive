@@ -1,6 +1,6 @@
 ---
 title: "هذا في كتاب مائدة النبي صلى الله عليه وسلم كأنك تراها لمحمد الناظر بن محمد طاهر"
-status: draft
+status: published
 published_at: 2019-11-08
 person: abu-jafar-al-khalifi
 ---

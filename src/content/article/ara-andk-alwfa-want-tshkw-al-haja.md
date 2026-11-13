@@ -1,6 +1,6 @@
 ---
 title: "أرى عندك ألوفا وأنت تشكو الحاجة ؟"
-status: draft
+status: published
 published_at: 2024-02-07
 person: abu-abdillah-firas-al-ramli
 ---

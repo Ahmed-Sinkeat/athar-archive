@@ -1,6 +1,6 @@
 ---
 title: "قام الأخ نبيه الصّباغ بعمل لقاء مع بارت إيرمان - أكثر ناقد نصي في الغرب للكتاب ا"
-status: draft
+status: published
 published_at: 2018-04-23
 person: abu-jafar-al-khalifi
 ---

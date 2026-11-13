@@ -1,6 +1,6 @@
 ---
 title: "أخطأت هنا يا كرام في الآية ونسيت كلمة \"رسلا\"."
-status: draft
+status: published
 published_at: 2024-07-05
 person: abu-umair-imran-al-zubaidi
 ---

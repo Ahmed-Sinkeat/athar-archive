@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية في درء التعارض"
-status: draft
+status: published
 published_at: 2017-07-20
 person: abu-jafar-al-khalifi
 ---

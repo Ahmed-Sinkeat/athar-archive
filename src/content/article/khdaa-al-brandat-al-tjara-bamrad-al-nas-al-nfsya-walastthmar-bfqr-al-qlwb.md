@@ -1,6 +1,6 @@
 ---
 title: "خدعة البراندات: التجارة بأمراض الناس النفسية والاستثمار بفقر القلوب..."
-status: draft
+status: published
 published_at: 2025-04-19
 person: abu-jafar-al-khalifi
 ---

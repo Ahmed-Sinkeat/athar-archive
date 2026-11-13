@@ -1,6 +1,6 @@
 ---
 title: "الدافع الطبعي والوازع الشرعي وفقه إنكار المنكرات المنتشرة."
-status: draft
+status: published
 published_at: 2023-08-24
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

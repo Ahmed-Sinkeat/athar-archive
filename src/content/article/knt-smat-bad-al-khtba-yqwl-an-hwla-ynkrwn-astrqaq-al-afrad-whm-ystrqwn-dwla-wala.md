@@ -1,6 +1,6 @@
 ---
 title: "كنت سمعت بعض الخطباء يقول أَن هؤلاء ينكرون استرقاق الأفراد وهم يسترقون دولا والآ"
-status: draft
+status: published
 published_at: 2020-03-10
 person: abu-jafar-al-khalifi
 ---

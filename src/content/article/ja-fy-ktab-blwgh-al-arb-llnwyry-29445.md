@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب بلوغ الأرب للنويري (٢٩/٤٤٥)"
-status: draft
+status: published
 published_at: 2020-05-04
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

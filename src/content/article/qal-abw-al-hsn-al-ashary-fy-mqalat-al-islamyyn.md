@@ -1,6 +1,6 @@
 ---
 title: "قال أبو الحسن الأشعري في مقالات الإسلاميين"
-status: draft
+status: published
 published_at: 2019-09-21
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "هكذا المراهقون يتبنون أفكارا دون العلم بلوازمها وهذا المنفتح سيأخذ أجرة انفتاحه"
-status: draft
+status: published
 published_at: 2018-07-30
 person: abu-jafar-al-khalifi
 ---

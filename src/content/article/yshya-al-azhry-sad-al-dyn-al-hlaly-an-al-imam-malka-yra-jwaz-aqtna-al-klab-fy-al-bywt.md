@@ -1,6 +1,6 @@
 ---
 title: "يشيع الأزهري سعد الدين الهلالي أن الإمام مالكا يرى جواز اقتناء الكلاب في البيوت"
-status: draft
+status: published
 published_at: 2018-05-20
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لقد فقِهَت الإلحاد ولم تفقه الدين (خلاصة قصة الفتاة العمانية الملحدة التي انتحرت"
-status: draft
+status: published
 published_at: 2020-12-18
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

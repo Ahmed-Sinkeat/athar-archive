@@ -1,6 +1,6 @@
 ---
 title: "تبديد أوهام الإمامية حول عصر الظهور"
-status: draft
+status: published
 published_at: 2020-11-06
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

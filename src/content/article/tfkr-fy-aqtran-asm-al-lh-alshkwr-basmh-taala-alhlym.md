@@ -1,6 +1,6 @@
 ---
 title: "تفكر في اقتران اسم الله (الشكور) باسمه تعالى (الحليم)"
-status: draft
+status: published
 published_at: 2022-02-13
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

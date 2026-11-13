@@ -1,6 +1,6 @@
 ---
 title: "حادثة المرأة التي قتلت أولادها (من جديد: أثر العقيدة السليمة على السوية النفسية)"
-status: draft
+status: published
 published_at: 2022-06-02
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

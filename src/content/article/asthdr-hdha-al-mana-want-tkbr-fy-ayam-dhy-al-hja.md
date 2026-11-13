@@ -1,6 +1,6 @@
 ---
 title: "استحضر هذا المعنى وأنت تكبر في أيام ذي الحجة..."
-status: draft
+status: published
 published_at: 2026-05-24
 person: abu-jafar-al-khalifi
 ---

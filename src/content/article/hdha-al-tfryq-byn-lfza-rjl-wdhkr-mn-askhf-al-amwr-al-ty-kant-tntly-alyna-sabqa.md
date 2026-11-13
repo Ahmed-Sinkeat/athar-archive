@@ -1,6 +1,6 @@
 ---
 title: "هذا التفريق بين لفظة رجل وذكر من أسخف الأمور التي كانت تنطلي علينا سابقًا"
-status: draft
+status: published
 published_at: 2023-09-30
 person: abu-umair-imran-al-zubaidi
 ---

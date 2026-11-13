@@ -1,6 +1,6 @@
 ---
 title: "الشيخ ابن عثيمين في تفسير سورة النساء مع أن الغرب غالبا إذا استخدموا كلمة \"السيد"
-status: draft
+status: published
 published_at: 2019-04-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

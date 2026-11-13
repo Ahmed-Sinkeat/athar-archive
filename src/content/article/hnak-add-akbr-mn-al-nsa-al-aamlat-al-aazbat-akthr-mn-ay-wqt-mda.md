@@ -1,6 +1,6 @@
 ---
 title: "\"هناك عدد أكبر من النساء العاملات العازبات أكثر من أي وقت مضى"
-status: draft
+status: published
 published_at: 2023-01-07
 person: abu-jafar-al-khalifi
 ---

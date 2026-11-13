@@ -1,6 +1,6 @@
 ---
 title: "قُل لَّوْ شَاءَ اللَّهُ مَا تَلَوْتُهُ عَلَيْكُمْ وَلَا أَدْرَاكُم بِهِ ۖ فَقَدْ"
-status: draft
+status: published
 published_at: 2025-04-06
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

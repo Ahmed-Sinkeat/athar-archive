@@ -1,6 +1,6 @@
 ---
 title: "مخيفة فكرة أن يأتي يوم ولا يذكرك أحد ولو بدعوة مغفرة!."
-status: draft
+status: published
 published_at: 2023-03-29
 person: abu-umair-imran-al-zubaidi
 ---

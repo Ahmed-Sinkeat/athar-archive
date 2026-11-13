@@ -1,6 +1,6 @@
 ---
 title: "أحد الشباب نشر منشورًا يترضى فيه على الحنابلة والشافعية والمالكية"
-status: draft
+status: published
 published_at: 2023-10-03
 person: abu-umair-imran-al-zubaidi
 ---

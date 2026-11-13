@@ -1,6 +1,6 @@
 ---
 title: "من الأمور التي ينبغي أن ينتبه لهذا المتمذهبون أن الكتب المذهبية المتأخرة فيها نو"
-status: draft
+status: published
 published_at: 2017-08-16
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

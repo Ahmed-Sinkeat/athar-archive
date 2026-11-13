@@ -1,6 +1,6 @@
 ---
 title: "قال بعضُ السلف"
-status: draft
+status: published
 published_at: 2024-01-16
 person: abu-abdillah-firas-al-ramli
 ---

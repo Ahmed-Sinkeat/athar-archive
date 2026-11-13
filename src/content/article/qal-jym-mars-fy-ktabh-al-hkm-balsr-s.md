@@ -1,6 +1,6 @@
 ---
 title: "قال جيم مارس في كتابه الحكم بالسر ص 94"
-status: draft
+status: published
 published_at: 2017-12-02
 person: abu-jafar-al-khalifi
 ---

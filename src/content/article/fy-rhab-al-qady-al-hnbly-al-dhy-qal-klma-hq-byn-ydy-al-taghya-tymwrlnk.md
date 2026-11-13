@@ -1,6 +1,6 @@
 ---
 title: "في رحاب القاضي الحنبلي الذي قال كلمة حق بين يدي الطاغية تيمورلنك..."
-status: draft
+status: published
 published_at: 2024-01-08
 person: abu-jafar-al-khalifi
 ---

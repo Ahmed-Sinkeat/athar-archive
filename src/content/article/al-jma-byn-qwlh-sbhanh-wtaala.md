@@ -1,6 +1,6 @@
 ---
 title: "الجمع بين قوله سبحانه وتعالى"
-status: draft
+status: published
 published_at: 2024-07-19
 person: abu-umair-imran-al-zubaidi
 ---

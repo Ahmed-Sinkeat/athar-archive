@@ -1,6 +1,6 @@
 ---
 title: "تأتي تستفتيك في شأن طلاق زوجها لها"
-status: draft
+status: published
 published_at: 2018-07-04
 person: abu-jafar-al-khalifi
 ---

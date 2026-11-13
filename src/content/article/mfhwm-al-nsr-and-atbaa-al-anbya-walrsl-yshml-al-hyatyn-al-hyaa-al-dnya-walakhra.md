@@ -1,6 +1,6 @@
 ---
 title: "مفهوم النصر عند أتباع الأنبياء والرسل يشمل الحياتين؛ الحياة الدنيا والأخرة."
-status: draft
+status: published
 published_at: 2024-12-05
 person: abu-umair-imran-al-zubaidi
 ---

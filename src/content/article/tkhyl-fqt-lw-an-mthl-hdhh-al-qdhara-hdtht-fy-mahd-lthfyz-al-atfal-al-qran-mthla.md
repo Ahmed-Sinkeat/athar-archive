@@ -1,6 +1,6 @@
 ---
 title: "تخيّل فقط لو أنّ مِثل هذه القذارة حدثت في معهد لتحفيظ الأطفال القرآن مثلًا"
-status: draft
+status: published
 published_at: 2023-02-14
 person: abu-umair-imran-al-zubaidi
 ---

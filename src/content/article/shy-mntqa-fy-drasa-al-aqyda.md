@@ -1,6 +1,6 @@
 ---
 title: "شيء مُنتقى في دراسة العقيدة"
-status: draft
+status: published
 published_at: 2025-04-13
 person: awwab-bin-muhammad
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "هذه القصة حصلت في الجزائر"
-status: draft
+status: published
 published_at: 2026-10-04
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

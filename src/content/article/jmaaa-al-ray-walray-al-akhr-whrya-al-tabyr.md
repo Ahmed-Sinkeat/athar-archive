@@ -1,6 +1,6 @@
 ---
 title: "جماعة الرأي والرأي الآخر وحرية التعبير"
-status: draft
+status: published
 published_at: 2019-06-17
 person: abu-jafar-al-khalifi
 ---

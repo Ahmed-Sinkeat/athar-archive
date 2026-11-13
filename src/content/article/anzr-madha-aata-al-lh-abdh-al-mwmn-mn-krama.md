@@ -1,6 +1,6 @@
 ---
 title: "انظر ماذا أعطى الله عبده المؤمن من كرامة"
-status: draft
+status: published
 published_at: 2025-08-16
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من أدلة صدق المحدثين ودقتهم أن صلاح الرواة لا يمنع بيان ضعفهم"
-status: draft
+status: published
 published_at: 2024-04-06
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

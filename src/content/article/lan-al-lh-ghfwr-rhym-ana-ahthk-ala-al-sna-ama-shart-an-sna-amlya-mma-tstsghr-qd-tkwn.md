@@ -1,6 +1,6 @@
 ---
 title: "لأن الله غفور رحيم أنا أحثك على السنة (أما شعرت أن سنة عملية مما تستصغر قد تكون"
-status: draft
+status: published
 published_at: 2025-08-14
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال أبو نعيم في الحلية"
-status: draft
+status: published
 published_at: 2018-06-18
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

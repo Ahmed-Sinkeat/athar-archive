@@ -1,6 +1,6 @@
 ---
 title: "مثل العلماء في الأرض كمثل النجوم في السماء"
-status: draft
+status: published
 published_at: 2026-01-04
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada", "tazkiyat-al-nafs"]

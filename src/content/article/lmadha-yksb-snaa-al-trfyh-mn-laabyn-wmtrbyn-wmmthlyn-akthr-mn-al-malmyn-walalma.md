@@ -1,6 +1,6 @@
 ---
 title: "لماذا يكسب صُنّاع الترفيه (من لاعبين ومطربين وممثلين) أكثر من المعلمين (والعلماء"
-status: draft
+status: published
 published_at: 2022-09-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

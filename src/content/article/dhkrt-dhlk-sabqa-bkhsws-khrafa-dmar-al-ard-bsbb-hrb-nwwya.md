@@ -1,6 +1,6 @@
 ---
 title: "ذكرت ذلك سابقا بخصوص خرافة دمار الأرض بسبب حرب نووية"
-status: draft
+status: published
 published_at: 2026-09-24
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

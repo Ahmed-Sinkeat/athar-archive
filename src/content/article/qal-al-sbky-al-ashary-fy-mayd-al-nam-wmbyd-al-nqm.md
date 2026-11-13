@@ -1,6 +1,6 @@
 ---
 title: "قال السبكي الأشعري في معيد النعم ومبيد النقم"
-status: draft
+status: published
 published_at: 2019-03-27
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

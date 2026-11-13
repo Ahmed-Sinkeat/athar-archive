@@ -1,6 +1,6 @@
 ---
 title: "حين يجيب الشيخ أو طالب العلم أو الداعية عن سؤال ما"
-status: draft
+status: published
 published_at: 2026-03-17
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat", "adab-talab-al-ilm"]

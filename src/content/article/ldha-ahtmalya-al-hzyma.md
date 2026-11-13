@@ -1,6 +1,6 @@
 ---
 title: "لذة احتمالية الهزيمة !"
-status: draft
+status: published
 published_at: 2020-07-25
 person: abu-jafar-al-khalifi
 ---

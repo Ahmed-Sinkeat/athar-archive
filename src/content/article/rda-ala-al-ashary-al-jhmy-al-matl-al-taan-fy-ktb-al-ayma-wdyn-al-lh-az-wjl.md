@@ -1,6 +1,6 @@
 ---
 title: "ردا على الأشعري الجهمي المعطل الطاعن في كتب الأئمة ودين الله عز وجل"
-status: draft
+status: published
 published_at: 2025-02-15
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "يقال أنّ من قتل الكافر موميكا هما رجلين من أهل الفلوجة الكرام، وتم أسرهما."
-status: draft
+status: published
 published_at: 2025-01-30
 person: abu-umair-imran-al-zubaidi
 ---

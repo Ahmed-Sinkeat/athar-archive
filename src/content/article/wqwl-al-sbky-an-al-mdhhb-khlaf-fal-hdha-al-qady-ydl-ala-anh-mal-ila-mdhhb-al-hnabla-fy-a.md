@@ -1,6 +1,6 @@
 ---
 title: "وقول السبكي أن المذهب خلاف فعل هذا القاضي يدل على أنه مال إلى مذهب الحنابلة في ا"
-status: draft
+status: published
 published_at: 2021-09-15
 person: abu-jafar-al-khalifi
 ---

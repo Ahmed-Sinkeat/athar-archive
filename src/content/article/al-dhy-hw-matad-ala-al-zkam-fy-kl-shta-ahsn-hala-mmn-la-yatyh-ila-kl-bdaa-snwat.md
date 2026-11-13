@@ -1,6 +1,6 @@
 ---
 title: "الذي هو معتاد على الزكام في كل شتاء أحسن حالًا ممن لا يأتيه إلا كل بضعة سنوات"
-status: draft
+status: published
 published_at: 2023-12-17
 person: abu-umair-imran-al-zubaidi
 ---

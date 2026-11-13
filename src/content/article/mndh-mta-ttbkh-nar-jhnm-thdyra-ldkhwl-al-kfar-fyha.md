@@ -1,6 +1,6 @@
 ---
 title: "منذ متى تُطبَخ نار جهنَّم تحضيراً لدخول الكُفَّــار فيها؟!"
-status: draft
+status: published
 published_at: 2025-04-24
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran"]

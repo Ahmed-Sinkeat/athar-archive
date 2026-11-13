@@ -1,6 +1,6 @@
 ---
 title: "هنا مقال يتحدث عن كون البشر لا يمكنهم العيش بدون بكتيريا"
-status: draft
+status: published
 published_at: 2018-04-14
 person: abu-jafar-al-khalifi
 ---

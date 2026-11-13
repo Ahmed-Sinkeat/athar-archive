@@ -1,6 +1,6 @@
 ---
 title: "ما أدري عن أي صوتية تتحدث أخي الكريم"
-status: draft
+status: published
 published_at: 2024-02-03
 person: abu-umair-imran-al-zubaidi
 ---

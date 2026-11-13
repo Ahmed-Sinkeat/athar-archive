@@ -1,6 +1,6 @@
 ---
 title: "في ناس تشعر أنّ عندهم وسواس أو تنطع لا أدري أيهما أدق لوصفهم!"
-status: draft
+status: published
 published_at: 2024-09-19
 person: abu-umair-imran-al-zubaidi
 ---

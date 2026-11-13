@@ -1,6 +1,6 @@
 ---
 title: "من سره أن يسبق الدائب المجتهد"
-status: draft
+status: published
 published_at: 2024-05-25
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

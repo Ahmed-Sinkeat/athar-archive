@@ -1,6 +1,6 @@
 ---
 title: "وقتادة لم يكن داعية إلى بدعته أصلُا"
-status: draft
+status: published
 published_at: 2024-01-26
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

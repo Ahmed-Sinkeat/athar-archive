@@ -1,6 +1,6 @@
 ---
 title: "مما يُغفَل ذكره في أمر السِّتر — مع أنه ذو شأن ولو انتُبِه إليه لغاب التساهُل وع"
-status: draft
+status: published
 published_at: 2025-06-29
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "\"أنا واثقٌ بابنتي\" ... \"لو وضعت زوجتي بين ألف رجل ستكون أرجل منهم\"."
-status: draft
+status: published
 published_at: 2023-03-13
 person: abu-umair-imran-al-zubaidi
 ---

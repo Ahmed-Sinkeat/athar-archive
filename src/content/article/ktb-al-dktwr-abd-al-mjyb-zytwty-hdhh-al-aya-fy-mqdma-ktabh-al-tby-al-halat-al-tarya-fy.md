@@ -1,6 +1,6 @@
 ---
 title: "كتب الدكتور عبد المجيب زيتوتي هذه الآية في مقدمة كتابه الطبي الحالات الطارئة في"
-status: draft
+status: published
 published_at: 2019-09-29
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

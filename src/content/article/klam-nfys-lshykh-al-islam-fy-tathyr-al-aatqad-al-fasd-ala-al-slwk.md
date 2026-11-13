@@ -1,6 +1,6 @@
 ---
 title: "كلام نفيس لشيخ الإسلام في تأثير الاعتقاد الفاسد على السلوك.."
-status: draft
+status: published
 published_at: 2022-06-23
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

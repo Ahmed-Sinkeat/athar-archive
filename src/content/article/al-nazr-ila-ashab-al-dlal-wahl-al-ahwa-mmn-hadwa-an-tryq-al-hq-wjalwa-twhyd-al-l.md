@@ -1,6 +1,6 @@
 ---
 title: "الناظر إلى أصحاب الضَّلال وأهل الأهواء ممَّن حادوا عن طريق الحق وجعلوا توحيد الل"
-status: draft
+status: published
 published_at: 2025-09-18
 person: awwab-bin-muhammad
 topics: ["tahwid-al-ibada", "al-wala-wal-bara"]

@@ -1,6 +1,6 @@
 ---
 title: "أعظم ما يمدح به النبي ﷺ -فداه روحي وأهلي- أن اتخذه الله خليلًا!"
-status: draft
+status: published
 published_at: 2023-09-06
 person: abu-umair-imran-al-zubaidi
 ---

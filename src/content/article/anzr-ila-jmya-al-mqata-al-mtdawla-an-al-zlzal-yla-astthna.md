@@ -1,6 +1,6 @@
 ---
 title: "انظر إلى جميع المقاطع المتداولة عن الزلزال يلا استثناء."
-status: draft
+status: published
 published_at: 2023-02-10
 person: abu-umair-imran-al-zubaidi
 ---

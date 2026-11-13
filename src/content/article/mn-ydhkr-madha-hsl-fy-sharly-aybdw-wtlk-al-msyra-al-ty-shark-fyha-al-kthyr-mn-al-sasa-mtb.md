@@ -1,6 +1,6 @@
 ---
 title: "من يذكر ماذا حصل في شارلي ايبدو وتلك المسيرة التي شارك فيها الكثير من الساسة متب"
-status: draft
+status: published
 published_at: 2018-06-05
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

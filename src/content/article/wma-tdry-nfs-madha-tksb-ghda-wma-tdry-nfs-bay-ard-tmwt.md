@@ -1,6 +1,6 @@
 ---
 title: "وما تدري نفسٌ ماذا تكسب غدا وما تدري نفسٌ بأي أرض تموت"
-status: draft
+status: published
 published_at: 2026-03-05
 person: abu-umair-imran-al-zubaidi
 ---

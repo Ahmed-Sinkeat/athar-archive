@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تغري بردي في النجوم الزاهرة"
-status: draft
+status: published
 published_at: 2019-01-04
 person: abu-jafar-al-khalifi
 ---

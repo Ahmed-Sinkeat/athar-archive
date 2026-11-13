@@ -1,6 +1,6 @@
 ---
 title: "وقد تفكرت طويلاً في الحكمة في تأخر حكم الجلد وجعل حكم الحبس قبله فظهر لي اليوم ح"
-status: draft
+status: published
 published_at: 2018-06-22
 person: abu-jafar-al-khalifi
 ---

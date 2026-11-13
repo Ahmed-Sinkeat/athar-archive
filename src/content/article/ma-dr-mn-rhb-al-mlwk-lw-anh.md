@@ -1,6 +1,6 @@
 ---
 title: "ما ضرَّ من رهبَ الملوكَ لو أنه"
-status: draft
+status: published
 published_at: 2020-01-23
 person: abu-jafar-al-khalifi
 ---

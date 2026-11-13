@@ -1,6 +1,6 @@
 ---
 title: "وقفت على منشور لإحدى الجاهلات التي تشنّع في أمر التعدّد وتقول للرجال بدل الحديث"
-status: draft
+status: published
 published_at: 2023-05-29
 person: abu-umair-imran-al-zubaidi
 ---

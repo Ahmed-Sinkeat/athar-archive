@@ -1,6 +1,6 @@
 ---
 title: "الشيخ عابد نحسبه على خير والله حسيبه بارك الله فيه وفي جهوده."
-status: draft
+status: published
 published_at: 2023-11-22
 person: abu-umair-imran-al-zubaidi
 ---

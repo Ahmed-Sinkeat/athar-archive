@@ -1,6 +1,6 @@
 ---
 title: "انظر إلى حمق الناخب الأمريكي، واستغلال الساسة الأمريكيين لهذا الحمق."
-status: draft
+status: published
 published_at: 2026-03-13
 person: abu-umair-imran-al-zubaidi
 ---

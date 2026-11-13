@@ -1,6 +1,6 @@
 ---
 title: "باب في الأمر بالقوة، وترك العجز، والاستعانة بالله، وتفويض المقادير لله"
-status: draft
+status: published
 published_at: 2025-01-17
 person: abu-abdillah-firas-al-ramli
 ---

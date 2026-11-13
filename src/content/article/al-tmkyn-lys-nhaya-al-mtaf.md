@@ -1,6 +1,6 @@
 ---
 title: "التمكين ليس نهاية المطاف"
-status: draft
+status: published
 published_at: 2020-05-22
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

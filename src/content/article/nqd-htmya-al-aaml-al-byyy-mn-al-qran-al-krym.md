@@ -1,6 +1,6 @@
 ---
 title: "نقض حتمية العامل البيئي من القرآن الكريم..."
-status: draft
+status: published
 published_at: 2024-06-17
 person: abu-jafar-al-khalifi
 ---

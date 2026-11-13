@@ -1,6 +1,6 @@
 ---
 title: "ما غفلنا عنه في أمر دعوة غير المسلمين (الكفار).."
-status: draft
+status: published
 published_at: 2022-05-11
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "قال مفتو الضلال: دم السوري على السوري حرام."
-status: draft
+status: published
 published_at: 2025-07-20
 person: abu-umair-imran-al-zubaidi
 ---

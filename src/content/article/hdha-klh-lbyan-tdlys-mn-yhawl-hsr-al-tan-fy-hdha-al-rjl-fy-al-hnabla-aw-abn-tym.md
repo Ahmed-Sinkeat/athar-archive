@@ -1,6 +1,6 @@
 ---
 title: "هذا كله لبيان تدليس من يحاول حصر الطعن في هذا الرجل في ( الحنابلة ) أو ( ابن تيم"
-status: draft
+status: published
 published_at: 2019-05-04
 person: abu-jafar-al-khalifi
 ---

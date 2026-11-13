@@ -1,6 +1,6 @@
 ---
 title: "ذم الله عز وجل للذين يبخلون بالعلم"
-status: draft
+status: published
 published_at: 2025-03-11
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

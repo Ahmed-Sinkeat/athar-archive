@@ -1,6 +1,6 @@
 ---
 title: "من أهم مقاصد الوحي تثبيت فؤاد النبي ﷺ بذكر ما لاقاه الأنبياء والصالحون من قبله ف"
-status: draft
+status: published
 published_at: 2018-05-31
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

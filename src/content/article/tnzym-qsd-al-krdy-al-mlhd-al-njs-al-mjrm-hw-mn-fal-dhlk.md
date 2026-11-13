@@ -1,6 +1,6 @@
 ---
 title: "تنظيم قسد الكردي الملحد النجس المجرم هو من فعل ذلك."
-status: draft
+status: published
 published_at: 2025-02-03
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

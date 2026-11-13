@@ -1,6 +1,6 @@
 ---
 title: "القوة الناعمة للأنمي الياباني"
-status: draft
+status: published
 published_at: 2022-12-04
 person: abu-jafar-al-khalifi
 ---

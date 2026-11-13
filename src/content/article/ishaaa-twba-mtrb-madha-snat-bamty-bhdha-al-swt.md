@@ -1,6 +1,6 @@
 ---
 title: "إشاعة توبة مطرب (ماذا صنعتَ بأمتي بهذا الصوت)"
-status: draft
+status: published
 published_at: 2023-01-22
 person: abu-jafar-al-khalifi
 ---

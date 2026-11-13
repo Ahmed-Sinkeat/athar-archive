@@ -1,6 +1,6 @@
 ---
 title: "على سيرة ارتفاع سعر الذهب بشكل جنوني؛ معلومة هكذا على السريع"
-status: draft
+status: published
 published_at: 2026-01-29
 person: abu-umair-imran-al-zubaidi
 ---

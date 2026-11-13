@@ -1,6 +1,6 @@
 ---
 title: "الكل مِن حولك عِظة"
-status: draft
+status: published
 published_at: 2026-07-06
 person: awwab-bin-muhammad
 ---

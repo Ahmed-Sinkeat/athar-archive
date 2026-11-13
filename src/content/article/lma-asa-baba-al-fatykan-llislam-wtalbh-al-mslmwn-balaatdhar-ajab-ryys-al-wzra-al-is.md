@@ -1,6 +1,6 @@
 ---
 title: "لما أساء بابا الفاتيكان للإسلام وطالبه المسلمون بالاعتذار أجاب رئيس الوزراء الإس"
-status: draft
+status: published
 published_at: 2017-07-25
 person: abu-jafar-al-khalifi
 ---

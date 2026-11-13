@@ -1,6 +1,6 @@
 ---
 title: "الوحيد البهبهاني يكشف تهافت المنهج الروائي عند الشيعة الإمامية..."
-status: draft
+status: published
 published_at: 2022-10-24
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

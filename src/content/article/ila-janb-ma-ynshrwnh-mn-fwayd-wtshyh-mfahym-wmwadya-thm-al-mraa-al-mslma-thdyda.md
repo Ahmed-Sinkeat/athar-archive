@@ -1,6 +1,6 @@
 ---
 title: "إلى جانب ما ينشرونه من فوائد وتصحيح مفاهيم ومواضيع تهم المرأة المسلمة تحديدُا."
-status: draft
+status: published
 published_at: 2024-01-18
 person: abu-umair-imran-al-zubaidi
 ---

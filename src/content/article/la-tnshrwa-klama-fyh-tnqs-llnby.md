@@ -1,6 +1,6 @@
 ---
 title: "لا تنشروا كلاما فيه تنقص للنبي ﷺ"
-status: draft
+status: published
 published_at: 2023-06-18
 person: abu-abdillah-firas-al-ramli
 ---

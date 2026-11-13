@@ -1,6 +1,6 @@
 ---
 title: "هل تدري ما الأثر؟"
-status: draft
+status: published
 published_at: 2024-04-02
 person: abu-abdillah-firas-al-ramli
 ---

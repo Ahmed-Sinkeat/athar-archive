@@ -1,6 +1,6 @@
 ---
 title: "خمس قصص تبين واقع المجتمع الغربي في ظل التفكك الأسري وسلطان الشهوة المطلقة.."
-status: draft
+status: published
 published_at: 2023-01-11
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

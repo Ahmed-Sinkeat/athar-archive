@@ -1,6 +1,6 @@
 ---
 title: "من صام ثلاثة أيام من كل شهر فقد صام الدهر كله"
-status: draft
+status: published
 published_at: 2023-06-10
 person: abu-abdillah-firas-al-ramli
 ---

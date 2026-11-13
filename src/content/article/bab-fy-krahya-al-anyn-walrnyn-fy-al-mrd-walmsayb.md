@@ -1,6 +1,6 @@
 ---
 title: "باب في كراهية الأنين والرّنين في المرض والمصائب"
-status: draft
+status: published
 published_at: 2023-07-10
 person: abu-abdillah-firas-al-ramli
 topics: ["al-iman"]

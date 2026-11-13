@@ -1,6 +1,6 @@
 ---
 title: "بمناسبة كلام خطيب النجف عن انتشار التشيع في الأزهر وأن الأزهر سيعلن تشيعه قريباً"
-status: draft
+status: published
 published_at: 2026-01-18
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أما كفاكِ يا نفسُ صعودًا ونزولًا بين صفحات هذا الأزرق ومنشوراته؟!."
-status: draft
+status: published
 published_at: 2023-07-11
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "منذ أيام كنت وصديقي عند مطعم نطلب عشاء"
-status: draft
+status: published
 published_at: 2024-10-23
 person: abu-umair-imran-al-zubaidi
 ---

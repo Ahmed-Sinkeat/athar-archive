@@ -1,6 +1,6 @@
 ---
 title: "ما عال من اقتصد» من السُّنة…"
-status: draft
+status: published
 published_at: 2024-06-01
 person: abu-jafar-al-khalifi
 ---

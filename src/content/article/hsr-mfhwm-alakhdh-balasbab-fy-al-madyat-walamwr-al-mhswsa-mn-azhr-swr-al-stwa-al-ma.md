@@ -1,6 +1,6 @@
 ---
 title: "حصر مفهوم \"الأخذ بالأسباب\" في المآدّيات والأمور المحسوسة من أظهر صور السطوة الما"
-status: draft
+status: published
 published_at: 2023-07-18
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

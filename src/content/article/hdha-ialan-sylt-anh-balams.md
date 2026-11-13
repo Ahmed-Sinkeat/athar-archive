@@ -1,6 +1,6 @@
 ---
 title: "هذا إعلان سئلت عنه بالأمس"
-status: draft
+status: published
 published_at: 2024-02-25
 person: abu-jafar-al-khalifi
 ---

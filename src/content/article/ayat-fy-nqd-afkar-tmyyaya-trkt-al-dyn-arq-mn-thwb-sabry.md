@@ -1,6 +1,6 @@
 ---
 title: "آيات في نقض أفكار تمييعية تركت الدين أرق من ثوب سابري"
-status: draft
+status: published
 published_at: 2023-01-19
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

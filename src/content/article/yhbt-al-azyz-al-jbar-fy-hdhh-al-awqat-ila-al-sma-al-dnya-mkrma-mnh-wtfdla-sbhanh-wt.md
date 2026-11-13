@@ -1,6 +1,6 @@
 ---
 title: "يهبط العزيز الجبار في هذه الأوقات إلى السماء الدنيا مكرمةً منه وتفضلًا سبحانه وت"
-status: draft
+status: published
 published_at: 2023-10-30
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الكلام على صحة حديث ثوبان عن النبي ﷺ أنه قال"
-status: draft
+status: published
 published_at: 2024-12-05
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

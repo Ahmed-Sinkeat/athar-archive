@@ -1,6 +1,6 @@
 ---
 title: "فائدة في الرد على الإمامية من قصة سليمان والجن"
-status: draft
+status: published
 published_at: 2021-03-24
 person: abu-jafar-al-khalifi
 ---

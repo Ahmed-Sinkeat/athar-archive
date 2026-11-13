@@ -1,6 +1,6 @@
 ---
 title: "جاء في المدونة ( وسألته _ يعني مالكاً _عن الرجل تكون له المرأة الحريصة المبالغة"
-status: draft
+status: published
 published_at: 2017-06-25
 person: abu-jafar-al-khalifi
 ---

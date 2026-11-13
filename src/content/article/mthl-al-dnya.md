@@ -1,6 +1,6 @@
 ---
 title: "مثل الدنيا"
-status: draft
+status: published
 published_at: 2024-05-14
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

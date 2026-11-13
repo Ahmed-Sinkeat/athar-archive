@@ -1,6 +1,6 @@
 ---
 title: "هذه الآية عجيبة في سبكها فإنه لا يوجد منكر للنبوة إلا وهو ينكر من خصائص الألوهية"
-status: draft
+status: published
 published_at: 2019-02-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

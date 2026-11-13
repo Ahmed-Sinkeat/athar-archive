@@ -1,6 +1,6 @@
 ---
 title: "قال الخطيب في تاريخ بغداد أَخْبَرَنِي مُحَمَّد بْن أَحْمَد بْن يَعْقُوب"
-status: draft
+status: published
 published_at: 2017-06-13
 person: abu-jafar-al-khalifi
 ---

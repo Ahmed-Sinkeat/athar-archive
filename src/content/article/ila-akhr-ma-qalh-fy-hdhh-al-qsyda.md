@@ -1,6 +1,6 @@
 ---
 title: "إلى آخر ما قاله في هذه القصيدة"
-status: draft
+status: published
 published_at: 2018-08-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

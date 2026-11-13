@@ -1,6 +1,6 @@
 ---
 title: "التدرج في اكتساب الفضائل، وعلاقة العفة بتعوُّد الوضوح"
-status: draft
+status: published
 published_at: 2020-11-10
 person: abu-jafar-al-khalifi
 ---

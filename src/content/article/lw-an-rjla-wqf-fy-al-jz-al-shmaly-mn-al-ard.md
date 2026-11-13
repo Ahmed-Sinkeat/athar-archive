@@ -1,6 +1,6 @@
 ---
 title: "لو أنّ رجلًا وقف في الجزء الشمالي من الأرض"
-status: draft
+status: published
 published_at: 2024-04-24
 person: abu-umair-imran-al-zubaidi
 ---

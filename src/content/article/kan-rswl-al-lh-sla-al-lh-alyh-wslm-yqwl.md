@@ -1,6 +1,6 @@
 ---
 title: "كانَ رَسولُ اللهِ صَلَّى اللَّهُ عليه وَسَلَّمَ يقولُ"
-status: draft
+status: published
 published_at: 2024-03-02
 person: abu-umair-imran-al-zubaidi
 ---

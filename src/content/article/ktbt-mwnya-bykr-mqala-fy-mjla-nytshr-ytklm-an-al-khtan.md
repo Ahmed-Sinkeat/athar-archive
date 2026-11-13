@@ -1,6 +1,6 @@
 ---
 title: "كتبت مونيا بيكر مقالاً في مجلة نيتشر 24/10/2012 يتكلم عن الختان"
-status: draft
+status: published
 published_at: 2017-11-03
 person: abu-jafar-al-khalifi
 ---

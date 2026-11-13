@@ -1,6 +1,6 @@
 ---
 title: "حتى إخوة يوسف كانوا ذوي صورة حسنة وجمال عليهم الصلاة والسلام جميعا."
-status: draft
+status: published
 published_at: 2025-05-07
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

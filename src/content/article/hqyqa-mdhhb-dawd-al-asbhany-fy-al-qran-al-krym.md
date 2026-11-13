@@ -1,6 +1,6 @@
 ---
 title: "حقيقة مذهب داود الأصبهاني في القرآن الكريم."
-status: draft
+status: published
 published_at: 2021-05-19
 person: abu-jafar-al-khalifi
 ---

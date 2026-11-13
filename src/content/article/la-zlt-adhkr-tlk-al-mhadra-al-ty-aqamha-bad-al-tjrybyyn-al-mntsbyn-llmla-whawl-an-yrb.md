@@ -1,6 +1,6 @@
 ---
 title: "لا زلت أذكر تلك المحاضرة التي أقامها بعض التجريبيين المنتسبين للملة وحاول أن يرب"
-status: draft
+status: published
 published_at: 2019-09-15
 person: abu-jafar-al-khalifi
 ---

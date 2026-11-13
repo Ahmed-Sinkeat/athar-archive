@@ -1,6 +1,6 @@
 ---
 title: "تنبيه حول موضوع الحزن على المنكرات والتألم لقضايا الأمة"
-status: draft
+status: published
 published_at: 2020-07-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

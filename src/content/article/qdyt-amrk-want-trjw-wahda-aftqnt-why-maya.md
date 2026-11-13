@@ -1,6 +1,6 @@
 ---
 title: "قضيت عمرك وأنت ترجو واحدة أفتقنط وهي مائة!"
-status: draft
+status: published
 published_at: 2025-03-24
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs", "al-sunnah-wal-bidah"]

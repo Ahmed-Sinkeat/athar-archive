@@ -1,6 +1,6 @@
 ---
 title: "وقال الظواهري بعد نقل كلام التفتازاني \" وبعد ما تقدم صار التطبيق غير متفق عليه ف"
-status: draft
+status: published
 published_at: 2019-07-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

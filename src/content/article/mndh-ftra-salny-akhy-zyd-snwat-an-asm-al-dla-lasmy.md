@@ -1,6 +1,6 @@
 ---
 title: "منذُ فترة سألني أخي زيد (9 سنوات) عن اسم الدلع لاسمي"
-status: draft
+status: published
 published_at: 2023-01-31
 person: abu-umair-imran-al-zubaidi
 ---

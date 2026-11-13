@@ -1,6 +1,6 @@
 ---
 title: "أنت تسيئ للشهداء -بإذن الله- بوضع الموسيقى على مقاطع جنائزهم أو مقاطع ذويهم وهم"
-status: draft
+status: published
 published_at: 2023-10-20
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لا يلدغ المؤمن من جحر واحد مرتين"
-status: draft
+status: published
 published_at: 2026-07-01
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "ذكر أبو نعيم من كتب محمد بن أسلم الطوسي الإمام رحمه الله أنه قال"
-status: draft
+status: published
 published_at: 2018-07-27
 person: abu-jafar-al-khalifi
 ---

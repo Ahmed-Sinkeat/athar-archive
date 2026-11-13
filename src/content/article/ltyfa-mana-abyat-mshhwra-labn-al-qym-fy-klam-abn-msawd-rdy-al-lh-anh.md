@@ -1,6 +1,6 @@
 ---
 title: "لطيفة: معنى أبيات مشهورة لابن القيم في كلام ابن مسعود رضي الله عنه."
-status: draft
+status: published
 published_at: 2026-06-28
 person: abu-jafar-al-khalifi
 ---

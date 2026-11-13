@@ -1,6 +1,6 @@
 ---
 title: "حيلة إبليس التي خدع بها كثيراً من الزهاد والوعظ!"
-status: draft
+status: published
 published_at: 2026-01-23
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "tazkiyat-al-nafs", "al-sunnah-wal-bidah"]

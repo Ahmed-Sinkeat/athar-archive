@@ -1,6 +1,6 @@
 ---
 title: "ما يبقى للمسلم بعد موته ؟"
-status: draft
+status: published
 published_at: 2026-01-01
 person: abu-abdillah-firas-al-ramli
 ---

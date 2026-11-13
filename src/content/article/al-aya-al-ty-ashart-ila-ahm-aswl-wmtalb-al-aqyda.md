@@ -1,6 +1,6 @@
 ---
 title: "الآية التي أشارت إلى أهم أصول ومطالب العقيدة"
-status: draft
+status: published
 published_at: 2023-02-18
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

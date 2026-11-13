@@ -1,6 +1,6 @@
 ---
 title: "حين يجتمع الخوف مع الشهوة!"
-status: draft
+status: published
 published_at: 2021-10-09
 person: abu-jafar-al-khalifi
 ---

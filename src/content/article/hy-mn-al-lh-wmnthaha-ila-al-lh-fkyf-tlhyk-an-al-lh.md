@@ -1,6 +1,6 @@
 ---
 title: "هي من الله ومنتهاها إلى الله فكيف تُلهيك عن الله.."
-status: draft
+status: published
 published_at: 2021-12-20
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال العمراني في البيان في مذهب الشافعي"
-status: draft
+status: published
 published_at: 2018-02-10
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "المعذرة هن كتابة أي شيء كما كنت أفعل فيما سبق"
-status: draft
+status: published
 published_at: 2023-11-09
 person: abu-umair-imran-al-zubaidi
 ---

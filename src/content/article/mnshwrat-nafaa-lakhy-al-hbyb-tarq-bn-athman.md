@@ -1,6 +1,6 @@
 ---
-title: "منشورات نافعة لأخي الحبيب [طارق بن عثمان](https"
-status: draft
+title: "منشورات نافعة لأخي الحبيب طارق بن عثمان"
+status: published
 published_at: 2024-04-01
 person: abu-abdillah-firas-al-ramli
 ---

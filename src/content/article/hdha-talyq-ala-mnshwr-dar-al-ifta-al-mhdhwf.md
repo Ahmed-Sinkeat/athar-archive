@@ -1,6 +1,6 @@
 ---
 title: "هذا تعليق على منشور دار الإفتاء المحذوف."
-status: draft
+status: published
 published_at: 2022-04-18
 person: abu-jafar-al-khalifi
 ---

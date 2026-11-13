@@ -1,6 +1,6 @@
 ---
 title: "بين ملاكم وفيلسوف في إدراك فضل الإسلام على النصرانية والليبرالية."
-status: draft
+status: published
 published_at: 2021-06-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

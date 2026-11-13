@@ -1,6 +1,6 @@
 ---
 title: "هذا أمر بدأ يطفو على السطح ورأيت أناسًا يناقشونه في مواقع التواصل الاجتماعي وهو"
-status: draft
+status: published
 published_at: 2022-07-07
 person: abu-jafar-al-khalifi
 ---

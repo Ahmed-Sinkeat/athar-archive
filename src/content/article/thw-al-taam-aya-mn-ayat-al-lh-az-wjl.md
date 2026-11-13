@@ -1,6 +1,6 @@
 ---
 title: "طهو الطعام آية من آيات الله عز وجل"
-status: draft
+status: published
 published_at: 2019-03-29
 person: abu-jafar-al-khalifi
 ---

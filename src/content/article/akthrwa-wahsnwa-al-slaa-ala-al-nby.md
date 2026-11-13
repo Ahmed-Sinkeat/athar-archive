@@ -1,6 +1,6 @@
 ---
 title: "أكثروا وأحسنوا الصلاة على النبي ﷺ"
-status: draft
+status: published
 published_at: 2024-03-08
 person: abu-abdillah-firas-al-ramli
 ---

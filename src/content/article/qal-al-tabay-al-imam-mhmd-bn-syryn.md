@@ -1,6 +1,6 @@
 ---
 title: "قال التابعي الإمام محمد بن سيرين"
-status: draft
+status: published
 published_at: 2018-04-27
 person: abu-jafar-al-khalifi
 ---

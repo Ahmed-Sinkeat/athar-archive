@@ -1,6 +1,6 @@
 ---
 title: "العدو الصهيوني يرصد كل ما هو مكشوف"
-status: draft
+status: published
 published_at: 2025-07-17
 person: abu-umair-imran-al-zubaidi
 ---

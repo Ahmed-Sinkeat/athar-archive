@@ -1,6 +1,6 @@
 ---
 title: "&rlm;صدر في مايو الماضي كتاب بعنوان \"لا كدمات ظاهرة\""
-status: draft
+status: published
 published_at: 2019-06-14
 person: abu-jafar-al-khalifi
 ---

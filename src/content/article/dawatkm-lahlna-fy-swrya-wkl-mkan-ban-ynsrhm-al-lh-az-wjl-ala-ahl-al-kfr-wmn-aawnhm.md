@@ -1,6 +1,6 @@
 ---
 title: "دعواتكم لأهلنا في سوريا وكل مكان بأن ينصرهم الله عز وجل على أهل الكفر ومن عاونهم"
-status: draft
+status: published
 published_at: 2025-07-19
 person: abu-abdillah-firas-al-ramli
 ---

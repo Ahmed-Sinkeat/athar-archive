@@ -1,6 +1,6 @@
 ---
 title: "جنوا جنوا البعثية لما طلبنا الحرية.... يلعن روحك أبو حافظ يا أبن الحرامية."
-status: draft
+status: published
 published_at: 2023-12-09
 person: abu-umair-imran-al-zubaidi
 ---

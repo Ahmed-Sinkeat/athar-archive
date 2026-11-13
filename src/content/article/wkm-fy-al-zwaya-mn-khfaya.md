@@ -1,6 +1,6 @@
 ---
 title: "وكم في الزوايا من خفايا"
-status: draft
+status: published
 published_at: 2022-02-04
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "اتق عثرات الشباب"
-status: draft
+status: published
 published_at: 2024-05-30
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من لطيف ما قال محمد البشير الابراهيمي وهو يحاور الغربيين في أمر الرق كما في آثار"
-status: draft
+status: published
 published_at: 2018-10-07
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

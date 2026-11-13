@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب مقتل الحسين لصاحبه لوط بن يحيى الأزدي"
-status: draft
+status: published
 published_at: 2018-04-03
 person: abu-jafar-al-khalifi
 ---

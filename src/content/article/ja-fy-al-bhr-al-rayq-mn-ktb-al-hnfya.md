@@ -1,6 +1,6 @@
 ---
 title: "جاء في البحر الرائق من كتب الحنفية"
-status: draft
+status: published
 published_at: 2017-06-19
 person: abu-jafar-al-khalifi
 ---

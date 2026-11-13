@@ -1,6 +1,6 @@
 ---
 title: "الطبري ينقل الإجماع على أنّ السلف كلهم بدون استثناء قد فسروا آية الهم (ولقد همت"
-status: draft
+status: published
 published_at: 2025-05-02
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

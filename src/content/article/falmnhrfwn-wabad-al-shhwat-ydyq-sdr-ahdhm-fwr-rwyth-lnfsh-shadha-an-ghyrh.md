@@ -1,6 +1,6 @@
 ---
 title: "فالمنحرِفون وعُبَّـاد الشَّهوات يضيق صدر أحدهم فور رؤيته لنفسِه شاذاً عن غيره"
-status: draft
+status: published
 published_at: 2025-03-05
 person: awwab-bin-muhammad
 topics: ["tahwid-al-ibada"]

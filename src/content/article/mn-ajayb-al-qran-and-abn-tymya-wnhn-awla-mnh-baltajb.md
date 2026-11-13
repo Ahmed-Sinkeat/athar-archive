@@ -1,6 +1,6 @@
 ---
 title: "من عجائب القرآن عند ابن تيمية ونحن أولى منه بالتعجب"
-status: draft
+status: published
 published_at: 2024-01-18
 person: abu-jafar-al-khalifi
 ---

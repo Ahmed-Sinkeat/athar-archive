@@ -1,6 +1,6 @@
 ---
 title: "يوما بعد يوم أتيقن من أنّ خلق الله تبارك وتعالى لجهنم من أعظم النعم للمؤمنين!"
-status: draft
+status: published
 published_at: 2024-12-09
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "آية تسليم الصحابة"
-status: draft
+status: published
 published_at: 2023-02-13
 person: abu-jafar-al-khalifi
 ---

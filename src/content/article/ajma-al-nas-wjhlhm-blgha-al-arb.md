@@ -1,6 +1,6 @@
 ---
 title: "عجمة الناس وجهلهم بلغة العرب"
-status: draft
+status: published
 published_at: 2023-06-19
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

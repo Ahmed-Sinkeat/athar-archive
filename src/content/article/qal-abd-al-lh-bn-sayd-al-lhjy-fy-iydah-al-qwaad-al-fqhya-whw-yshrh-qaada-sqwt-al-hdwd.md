@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الله بن سعيد اللحجي في إيضاح القواعد الفقهية وهو يشرح قاعدة سقوط الحدود"
-status: draft
+status: published
 published_at: 2017-11-07
 person: abu-jafar-al-khalifi
 ---

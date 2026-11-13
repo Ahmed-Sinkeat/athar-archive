@@ -1,6 +1,6 @@
 ---
 title: "مستفاد من صفحة الأخ طاهر البرجيسي"
-status: draft
+status: published
 published_at: 2018-10-12
 person: abu-jafar-al-khalifi
 ---

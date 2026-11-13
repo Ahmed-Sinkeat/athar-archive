@@ -1,6 +1,6 @@
 ---
 title: "الأكل من الشجرة وعقوبة حواء وآدم ..."
-status: draft
+status: published
 published_at: 2023-12-30
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

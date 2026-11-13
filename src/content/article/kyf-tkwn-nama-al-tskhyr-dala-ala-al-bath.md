@@ -1,6 +1,6 @@
 ---
 title: "كيف تكون نعمة التسخير دالة على البعث؟"
-status: draft
+status: published
 published_at: 2021-08-26
 person: abu-jafar-al-khalifi
 ---

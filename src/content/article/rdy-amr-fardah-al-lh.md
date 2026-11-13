@@ -1,6 +1,6 @@
 ---
 title: "رضي عمر فأرضاه الله."
-status: draft
+status: published
 published_at: 2024-05-09
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

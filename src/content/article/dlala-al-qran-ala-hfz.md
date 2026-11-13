@@ -1,6 +1,6 @@
 ---
 title: "دِلالة القرآن على حِفظ"
-status: draft
+status: published
 published_at: 2025-11-26
 person: awwab-bin-muhammad
 ---

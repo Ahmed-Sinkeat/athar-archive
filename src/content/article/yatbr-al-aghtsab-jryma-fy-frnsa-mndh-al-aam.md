@@ -1,6 +1,6 @@
 ---
 title: "(يعتبر الاغتصاب جريمة في فرنسا منذ العام 1980)"
-status: draft
+status: published
 published_at: 2018-02-09
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أتراه يمنعك مغفرته إن استغفرته ولا يزال يمدك من خزائنه ومَن منعَك منعه!"
-status: draft
+status: published
 published_at: 2022-03-29
 person: abu-jafar-al-khalifi
 ---

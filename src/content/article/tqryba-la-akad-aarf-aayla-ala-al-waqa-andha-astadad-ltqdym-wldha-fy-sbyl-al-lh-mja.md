@@ -1,6 +1,6 @@
 ---
 title: "تقريبا لا أكاد أعرف عائلة على الواقع عندها استعداد لتقديم ولدها في سبيل الله مجا"
-status: draft
+status: published
 published_at: 2026-01-27
 person: abu-umair-imran-al-zubaidi
 topics: ["tazkiyat-al-nafs"]

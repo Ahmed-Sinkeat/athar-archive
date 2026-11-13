@@ -1,6 +1,6 @@
 ---
 title: "من الأمور المشهورة عند الأصوليين والتي كنت أنا أستخدمها باستمرار ترتيب مقاصد الش"
-status: draft
+status: published
 published_at: 2019-09-11
 person: abu-jafar-al-khalifi
 ---

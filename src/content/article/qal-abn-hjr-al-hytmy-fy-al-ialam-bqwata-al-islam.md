@@ -1,6 +1,6 @@
 ---
 title: "قال ابن حجر الهيتمي في الإعلام بقواطع الإسلام"
-status: draft
+status: published
 published_at: 2018-12-03
 person: abu-jafar-al-khalifi
 ---

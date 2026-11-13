@@ -1,6 +1,6 @@
 ---
 title: "شيخ الفقهاء وشيخ المتكلمين يقبِّلان يد واعظ حنبلي.."
-status: draft
+status: published
 published_at: 2022-01-27
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

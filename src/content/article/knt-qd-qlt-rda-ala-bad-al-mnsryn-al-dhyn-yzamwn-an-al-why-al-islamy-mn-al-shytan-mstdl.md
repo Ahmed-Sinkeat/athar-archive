@@ -1,6 +1,6 @@
 ---
 title: "كنت قد قلت رداً على بعض المنصرين الذين يزعمون أن الوحي الإسلامي من الشيطان مستدل"
-status: draft
+status: published
 published_at: 2020-04-11
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "عابد البقر ينتقد زواج النبي ﷺ من أم المؤمنين"
-status: draft
+status: published
 published_at: 2022-06-10
 person: abu-jafar-al-khalifi
 ---

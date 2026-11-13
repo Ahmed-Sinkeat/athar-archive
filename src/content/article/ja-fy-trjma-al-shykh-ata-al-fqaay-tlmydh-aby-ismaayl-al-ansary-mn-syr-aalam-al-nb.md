@@ -1,6 +1,6 @@
 ---
 title: "جاء في ترجمة الشيخ عطاء الفقاعي _ تلميذ أبي إسماعيل الأنصاري _ من سير أعلام النب"
-status: draft
+status: published
 published_at: 2017-09-13
 person: abu-jafar-al-khalifi
 ---

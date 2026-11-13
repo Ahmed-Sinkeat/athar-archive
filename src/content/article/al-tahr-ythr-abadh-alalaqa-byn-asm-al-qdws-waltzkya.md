@@ -1,6 +1,6 @@
 ---
 title: "الطاهر يطهر عباده (العلاقة بين اسم القدوس والتزكية).."
-status: draft
+status: published
 published_at: 2022-02-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

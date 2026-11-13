@@ -1,6 +1,6 @@
 ---
 title: "الإمام أحمد عندهم تارة ناصبي وأخرى متشيع ثم هم المدافعون عن المذاهب الأربعة"
-status: draft
+status: published
 published_at: 2022-08-23
 person: abu-jafar-al-khalifi
 ---

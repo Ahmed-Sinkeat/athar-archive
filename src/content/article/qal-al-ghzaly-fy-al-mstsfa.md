@@ -1,6 +1,6 @@
 ---
 title: "قال الغزالي في المستصفى"
-status: draft
+status: published
 published_at: 2017-09-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "ولادة الشخص العربي في بعض بلدان العجم أو الفرس لا تنفي كونه عربياً خصوصاً إذا ول"
-status: draft
+status: published
 published_at: 2018-01-01
 person: abu-jafar-al-khalifi
 ---

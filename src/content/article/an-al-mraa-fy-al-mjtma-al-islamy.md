@@ -1,6 +1,6 @@
 ---
 title: "عن المرأة في المجتمع الإسلامي!"
-status: draft
+status: published
 published_at: 2017-10-18
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "قراءة الفاتحة والاخلاص والمعوذتين بعد صلاة الجمعة"
-status: draft
+status: published
 published_at: 2024-07-25
 person: abu-abdillah-firas-al-ramli
 ---

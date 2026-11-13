@@ -1,6 +1,6 @@
 ---
 title: "كتب شيخنا الحبيب عابد بن محمد الأثري"
-status: draft
+status: published
 published_at: 2023-09-16
 person: abu-abdillah-firas-al-ramli
 ---

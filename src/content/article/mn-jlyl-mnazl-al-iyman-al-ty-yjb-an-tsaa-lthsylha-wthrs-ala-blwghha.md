@@ -1,6 +1,6 @@
 ---
 title: "مِن جليل مَنازِل الإيمان التي يجِب أنْ تسعَى لتحصِيلها وتحرِص على بلوغها"
-status: draft
+status: published
 published_at: 2026-01-27
 person: awwab-bin-muhammad
 ---

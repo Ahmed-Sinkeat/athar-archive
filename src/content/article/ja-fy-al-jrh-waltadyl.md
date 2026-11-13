@@ -1,6 +1,6 @@
 ---
 title: "جاء في الجرح والتعديل"
-status: draft
+status: published
 published_at: 2018-01-10
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

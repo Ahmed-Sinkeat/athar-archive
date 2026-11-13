@@ -1,6 +1,6 @@
 ---
 title: "افتتح السلطان العثماني محمود عهده بالقضاء على الإنكشارية -القوة العسكرية الأساسي"
-status: draft
+status: published
 published_at: 2017-07-27
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

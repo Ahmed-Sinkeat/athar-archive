@@ -1,6 +1,6 @@
 ---
 title: "نشرُ المُسلِمة صوَرها بين العامَّة الأجانِب - وإنْ كانت مُنتقِبة - فيه اقتِفاء ل"
-status: draft
+status: published
 published_at: 2025-05-26
 person: awwab-bin-muhammad
 ---

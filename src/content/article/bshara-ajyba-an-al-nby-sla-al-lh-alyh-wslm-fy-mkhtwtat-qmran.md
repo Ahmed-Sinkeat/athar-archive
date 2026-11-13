@@ -1,6 +1,6 @@
 ---
 title: "بشارة عجيبة عن النبي صلى الله عليه وسلم في مخطوطات قمران."
-status: draft
+status: published
 published_at: 2020-09-12
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وعلى ما وعدنا في بيان شيء من مناقب السلف حملة الدين سعيد هذا الذي جلده الخليفة و"
-status: draft
+status: published
 published_at: 2019-11-09
 person: abu-jafar-al-khalifi
 ---

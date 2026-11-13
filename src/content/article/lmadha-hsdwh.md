@@ -1,6 +1,6 @@
 ---
 title: "لماذا حسدوه؟"
-status: draft
+status: published
 published_at: 2022-08-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

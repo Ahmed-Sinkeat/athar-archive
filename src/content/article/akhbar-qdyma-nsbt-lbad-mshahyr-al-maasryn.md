@@ -1,6 +1,6 @@
 ---
 title: "أخبار قديمة نسبت لبعض مشاهير المعاصرين"
-status: draft
+status: published
 published_at: 2020-04-05
 person: abu-jafar-al-khalifi
 ---

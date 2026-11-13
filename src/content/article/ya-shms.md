@@ -1,6 +1,6 @@
 ---
 title: "يا شمس"
-status: draft
+status: published
 published_at: 2025-07-10
 person: awwab-bin-muhammad
 topics: ["tahwid-al-ibada"]

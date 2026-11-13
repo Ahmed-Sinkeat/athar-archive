@@ -1,6 +1,6 @@
 ---
 title: "وهذه الفكرة المعتزلية التي مبناها على التعطيل فشت في أهل هذا العصر لما كان نظرهم"
-status: draft
+status: published
 published_at: 2020-07-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

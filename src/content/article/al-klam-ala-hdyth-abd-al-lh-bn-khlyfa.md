@@ -1,6 +1,6 @@
 ---
 title: "الكلام على حديث عبد الله بن خليفة"
-status: draft
+status: published
 published_at: 2024-05-22
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]

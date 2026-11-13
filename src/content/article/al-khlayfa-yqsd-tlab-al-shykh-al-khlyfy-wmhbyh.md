@@ -1,6 +1,6 @@
 ---
 title: "الخلايفة يقصد طلاب الشيخ الخليفي ومحبيه."
-status: draft
+status: published
 published_at: 2024-06-27
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

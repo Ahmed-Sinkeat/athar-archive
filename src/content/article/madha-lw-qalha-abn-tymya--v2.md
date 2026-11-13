@@ -1,6 +1,6 @@
 ---
 title: "ماذا لو قالها ابن تيمية؟"
-status: draft
+status: published
 published_at: 2021-08-31
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

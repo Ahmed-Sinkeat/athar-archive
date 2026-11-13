@@ -1,6 +1,6 @@
 ---
 title: "جاء في نصيحة الشيخ عبد الرحمن بن حسن آل الشيخ لفيصل بن تركي آل سعود"
-status: draft
+status: published
 published_at: 2019-05-31
 person: abu-jafar-al-khalifi
 ---

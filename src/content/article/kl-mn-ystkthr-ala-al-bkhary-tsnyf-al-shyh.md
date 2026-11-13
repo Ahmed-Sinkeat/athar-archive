@@ -1,6 +1,6 @@
 ---
 title: "كل من يستكثر على البخاري تصنيف الصحيح"
-status: draft
+status: published
 published_at: 2018-05-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

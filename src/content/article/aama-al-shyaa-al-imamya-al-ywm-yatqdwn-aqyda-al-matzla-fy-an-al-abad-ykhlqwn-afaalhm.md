@@ -1,6 +1,6 @@
 ---
 title: "عامة الشيعة الإمامية اليوم يعتقدون عقيدة المعتزلة في أن العباد يخلقون أفعالهم"
-status: draft
+status: published
 published_at: 2017-11-20
 person: abu-jafar-al-khalifi
 ---

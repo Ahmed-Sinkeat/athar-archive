@@ -1,6 +1,6 @@
 ---
 title: "الأحزاب والنفاق بين الأمس واليوم"
-status: draft
+status: published
 published_at: 2020-05-15
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

@@ -1,6 +1,6 @@
 ---
 title: "قال الشافعي في الأم (1/318)"
-status: draft
+status: published
 published_at: 2018-02-01
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

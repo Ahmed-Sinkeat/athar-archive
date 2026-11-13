@@ -1,6 +1,6 @@
 ---
 title: "قال الماوردي في الحاوي (11/433)"
-status: draft
+status: published
 published_at: 2018-03-25
 person: abu-jafar-al-khalifi
 ---

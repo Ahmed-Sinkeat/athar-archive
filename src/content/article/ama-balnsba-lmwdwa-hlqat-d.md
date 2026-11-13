@@ -1,6 +1,6 @@
 ---
 title: "أما بالنسبة لموضوع حلقات د"
-status: draft
+status: published
 published_at: 2021-01-31
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

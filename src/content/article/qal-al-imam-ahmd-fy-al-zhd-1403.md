@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام أحمد في الزهد (١٤٠٣)"
-status: draft
+status: published
 published_at: 2024-03-14
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

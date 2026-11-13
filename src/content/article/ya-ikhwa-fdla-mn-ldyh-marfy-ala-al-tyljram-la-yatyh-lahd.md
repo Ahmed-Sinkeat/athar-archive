@@ -1,6 +1,6 @@
 ---
 title: "يا إخوة فضلًا، من لديه معرّفي على التيلجرام لا يعطيه لأحد."
-status: draft
+status: published
 published_at: 2023-12-28
 person: abu-umair-imran-al-zubaidi
 ---

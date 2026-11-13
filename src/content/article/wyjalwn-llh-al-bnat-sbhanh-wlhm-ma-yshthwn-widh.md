@@ -1,6 +1,6 @@
 ---
 title: "وَيَجْعَلُونَ لِلَّهِ الْبَنَاتِ سُبْحَانَهُ وَلَهُمْ مَا يَشْتَهُونَ (57) وَإِذ"
-status: draft
+status: published
 published_at: 2025-06-12
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

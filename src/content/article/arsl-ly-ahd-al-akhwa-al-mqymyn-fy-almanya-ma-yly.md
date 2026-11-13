@@ -1,6 +1,6 @@
 ---
 title: "أرسل لي أحد الأخوة المقيمين في ألمانيا ما يلي"
-status: draft
+status: published
 published_at: 2018-08-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

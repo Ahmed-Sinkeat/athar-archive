@@ -1,6 +1,6 @@
 ---
 title: "مبارك لكم يا أمة الإسلام الله أكبر ولله الحمد على ما فتح به من بلاد الشام الحبيب"
-status: draft
+status: published
 published_at: 2024-12-08
 person: abu-abdillah-firas-al-ramli
 ---

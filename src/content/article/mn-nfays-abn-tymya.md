@@ -1,6 +1,6 @@
 ---
 title: "من نفائس ابن تيمية"
-status: draft
+status: published
 published_at: 2022-08-27
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

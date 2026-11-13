@@ -1,6 +1,6 @@
 ---
 title: "تأمل في كلام الإمام أحمد في مسألة نقض الوضوء بأكل لحوم الإبل."
-status: draft
+status: published
 published_at: 2023-03-09
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

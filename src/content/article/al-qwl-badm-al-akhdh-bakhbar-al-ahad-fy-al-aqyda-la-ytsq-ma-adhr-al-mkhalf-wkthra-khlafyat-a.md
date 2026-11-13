@@ -1,6 +1,6 @@
 ---
 title: "القول بعدم الأخذ بأخبار الآحاد في العقيدة لا يتسق مع عذر المخالف وكثرة خلافيات ا"
-status: draft
+status: published
 published_at: 2020-07-30
 person: abu-jafar-al-khalifi
 ---

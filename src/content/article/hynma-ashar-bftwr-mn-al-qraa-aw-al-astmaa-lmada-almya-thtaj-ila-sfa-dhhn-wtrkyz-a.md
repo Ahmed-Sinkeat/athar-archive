@@ -1,6 +1,6 @@
 ---
 title: "حينما أشعر بفتور من القراءة أو الاستماع لمادة علمية تحتاج إلى صفاء ذهن وتركيز؛ أ"
-status: draft
+status: published
 published_at: 2025-03-13
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

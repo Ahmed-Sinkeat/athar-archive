@@ -1,6 +1,6 @@
 ---
 title: "قال مسلم في صحيحه 83 - (2730) حَدَّثَنَا مُحَمَّدُ بْنُ الْمُثَنَّى"
-status: draft
+status: published
 published_at: 2017-08-06
 person: abu-jafar-al-khalifi
 ---

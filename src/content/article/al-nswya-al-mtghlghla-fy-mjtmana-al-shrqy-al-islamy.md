@@ -1,6 +1,6 @@
 ---
 title: "النسوية المتغلغلة في مجتمعنا الشرقي الإسلامي"
-status: draft
+status: published
 published_at: 2019-10-12
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

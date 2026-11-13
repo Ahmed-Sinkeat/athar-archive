@@ -1,6 +1,6 @@
 ---
 title: "هناك أمر أريد التنبيه إليه، ويجب على الإخوة الوقوف عنده."
-status: draft
+status: published
 published_at: 2024-05-22
 person: abu-umair-imran-al-zubaidi
 ---

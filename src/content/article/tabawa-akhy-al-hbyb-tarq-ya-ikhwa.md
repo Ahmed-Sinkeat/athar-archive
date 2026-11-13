@@ -1,6 +1,6 @@
 ---
 title: "تابعوا أخي الحبيب طارق يا إخوة"
-status: draft
+status: published
 published_at: 2024-01-27
 person: abu-umair-imran-al-zubaidi
 ---

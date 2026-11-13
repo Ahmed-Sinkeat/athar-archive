@@ -1,6 +1,6 @@
 ---
 title: "باب ما جاء في أن لكل أهل بلد رؤيتهم"
-status: draft
+status: published
 published_at: 2025-03-30
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

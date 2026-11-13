@@ -1,6 +1,6 @@
 ---
 title: "أفضل الدعاء يوم عرفة وخير ما قلت أنا والنبيون .."
-status: draft
+status: published
 published_at: 2023-06-26
 person: abu-abdillah-firas-al-ramli
 ---

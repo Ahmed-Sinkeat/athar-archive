@@ -1,6 +1,6 @@
 ---
 title: "الَّذِينَ إِن مَّكَّنَّاهُمْ فِي الْأَرْضِ .. ماذا؟! ما هو هدف التمكين يا رب؟"
-status: draft
+status: published
 published_at: 2023-03-28
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-sunnah-wal-bidah"]

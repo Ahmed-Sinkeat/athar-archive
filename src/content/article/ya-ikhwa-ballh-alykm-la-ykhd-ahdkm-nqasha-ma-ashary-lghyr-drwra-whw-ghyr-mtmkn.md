@@ -1,6 +1,6 @@
 ---
 title: "يا إخوة، بالله عليكم لا يخض أحدكم نقاشًا مع أشعري لغير ضرورة وهو غير متمكن!"
-status: draft
+status: published
 published_at: 2024-01-21
 person: abu-umair-imran-al-zubaidi
 ---

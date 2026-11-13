@@ -1,6 +1,6 @@
 ---
 title: "أين الله سبحانه وتعالى ؟"
-status: draft
+status: published
 published_at: 2023-07-13
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "روى أبو نصر السجزي في الإبانة (١٧٠/٢) حديثا طويلا في قصة هجرة المسلمين إلى الحبش"
-status: draft
+status: published
 published_at: 2026-04-15
 person: abu-abdillah-firas-al-ramli
 ---

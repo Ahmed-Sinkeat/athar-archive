@@ -1,6 +1,6 @@
 ---
 title: "قال الذهبي في «تاريخ الإسلام"
-status: draft
+status: published
 published_at: 2025-01-30
 person: abu-jafar-al-khalifi
 ---

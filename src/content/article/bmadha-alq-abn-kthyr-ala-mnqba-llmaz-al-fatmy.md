@@ -1,6 +1,6 @@
 ---
 title: "بماذا علق ابن كثير على منقبة للمعز الفاطمي..."
-status: draft
+status: published
 published_at: 2023-12-20
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

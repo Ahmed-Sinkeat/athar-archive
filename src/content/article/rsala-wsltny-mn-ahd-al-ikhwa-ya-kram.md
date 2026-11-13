@@ -1,6 +1,6 @@
 ---
 title: "رسالة وصلتني من أحد الإخوة يا كرام"
-status: draft
+status: published
 published_at: 2024-01-12
 person: abu-umair-imran-al-zubaidi
 topics: ["al-iman", "al-imamah-was-sahabah"]

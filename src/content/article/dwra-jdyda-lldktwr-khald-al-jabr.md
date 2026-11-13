@@ -1,6 +1,6 @@
 ---
 title: "دورة جديدة للدكتور خالد الجابر"
-status: draft
+status: published
 published_at: 2021-11-27
 person: abu-jafar-al-khalifi
 ---

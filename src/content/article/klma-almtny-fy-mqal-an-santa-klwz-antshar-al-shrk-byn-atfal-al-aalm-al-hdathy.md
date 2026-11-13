@@ -1,6 +1,6 @@
 ---
 title: "كلمة آلمتني في مقال عن سانتا كلوز (انتشار الشرك بين أطفال العالم الحداثي)"
-status: draft
+status: published
 published_at: 2022-12-23
 person: abu-jafar-al-khalifi
 ---

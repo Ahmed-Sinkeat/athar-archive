@@ -1,6 +1,6 @@
 ---
 title: "أصح تفاسير الإسلام وشرطه الجليل"
-status: draft
+status: published
 published_at: 2024-05-16
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

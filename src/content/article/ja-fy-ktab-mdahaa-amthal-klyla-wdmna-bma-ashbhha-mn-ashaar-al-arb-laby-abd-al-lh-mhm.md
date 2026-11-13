@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب مضاهاة أمثال كليلة ودمنة بما أشبهها من اشعار العرب لأبي عبد الله محم"
-status: draft
+status: published
 published_at: 2019-10-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-iman", "al-sunnah-wal-bidah"]

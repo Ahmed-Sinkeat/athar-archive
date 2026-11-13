@@ -1,6 +1,6 @@
 ---
 title: "وقال ابن أبي زمنين في «أصول السنة"
-status: draft
+status: published
 published_at: 2024-03-04
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "يَا أَيُّهَا النَّاسُ"
-status: draft
+status: published
 published_at: 2017-07-07
 person: abu-jafar-al-khalifi
 ---

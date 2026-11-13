@@ -1,6 +1,6 @@
 ---
 title: "لم أكن أعرف شيئا عن الدكتور ضياء العوضي الذي توفي قريبا وله نظام غذائي أسماه نظا"
-status: draft
+status: published
 published_at: 2026-05-01
 person: abu-jafar-al-khalifi
 ---

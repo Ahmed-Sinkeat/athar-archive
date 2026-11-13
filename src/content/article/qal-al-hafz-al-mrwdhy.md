@@ -1,6 +1,6 @@
 ---
 title: "قال الحافظ المروذي"
-status: draft
+status: published
 published_at: 2018-06-28
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "تأمل قوله تعالى ( إذا ما ابتلاه ربه فأكرمه ونعمه )"
-status: draft
+status: published
 published_at: 2018-10-07
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "حرمة الصلاة الباب الكاشف للفهم المغلوط للدين.."
-status: draft
+status: published
 published_at: 2022-01-29
 person: abu-jafar-al-khalifi
 ---

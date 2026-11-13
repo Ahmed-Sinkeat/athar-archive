@@ -1,6 +1,6 @@
 ---
 title: "الوصاية باسم (الارتقاء بالفن) أو باسم (العادات والتقاليد) أو باسم (صيانة سمعة ال"
-status: draft
+status: published
 published_at: 2024-04-08
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "شاهد خبر الاستغفار لمعلم الناس الخير في كتاب الله.."
-status: draft
+status: published
 published_at: 2021-05-07
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال أبو عُبيد في شواهِد القرآن"
-status: draft
+status: published
 published_at: 2025-10-12
 person: awwab-bin-muhammad
 ---

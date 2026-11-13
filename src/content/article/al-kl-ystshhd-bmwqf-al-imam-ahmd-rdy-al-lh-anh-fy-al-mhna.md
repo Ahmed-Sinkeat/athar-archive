@@ -1,6 +1,6 @@
 ---
 title: "الكل يستشهد بموقف الإمام أحمد رضي الله عنه في المحنة"
-status: draft
+status: published
 published_at: 2024-07-10
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

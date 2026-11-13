@@ -1,6 +1,6 @@
 ---
 title: "تقول الباحثة الأمريكية ناتانا دي لونج باس في بحثها دعوة الشيخ محمد بن عبد الوهاب"
-status: draft
+status: published
 published_at: 2017-10-08
 person: abu-jafar-al-khalifi
 ---

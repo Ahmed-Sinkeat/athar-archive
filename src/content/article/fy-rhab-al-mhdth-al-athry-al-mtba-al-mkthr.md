@@ -1,6 +1,6 @@
 ---
 title: "في رحاب المحدث الأثري المتبع المكثر"
-status: draft
+status: published
 published_at: 2019-12-24
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-sunnah-wal-bidah"]

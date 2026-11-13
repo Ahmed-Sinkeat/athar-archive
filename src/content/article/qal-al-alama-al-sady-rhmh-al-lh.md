@@ -1,6 +1,6 @@
 ---
 title: "قال العلامة السعدي رحمه الله"
-status: draft
+status: published
 published_at: 2024-06-29
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

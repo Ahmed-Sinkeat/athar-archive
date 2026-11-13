@@ -1,6 +1,6 @@
 ---
 title: "هل يحق لنا منع كتب الحنفية لهذا الغلو في التكفير؟"
-status: draft
+status: published
 published_at: 2025-01-19
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

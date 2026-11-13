@@ -1,6 +1,6 @@
 ---
 title: "هذا الأمر الذي حذرت منه في هذه القناة مرارا وتكرارا"
-status: draft
+status: published
 published_at: 2023-10-25
 person: abu-jafar-al-khalifi
 ---

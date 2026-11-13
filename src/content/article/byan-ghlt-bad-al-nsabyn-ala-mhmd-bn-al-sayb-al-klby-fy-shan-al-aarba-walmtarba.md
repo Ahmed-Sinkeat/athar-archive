@@ -1,6 +1,6 @@
 ---
 title: "بيان غلط بعض النسابين على محمد بن السائب الكلبي في شأن العاربة والمتعربة..."
-status: draft
+status: published
 published_at: 2024-02-23
 person: abu-jafar-al-khalifi
 ---

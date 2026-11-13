@@ -1,6 +1,6 @@
 ---
 title: "تعود الناس على أن يقول ( رضي الله عنهما ) إذا ذكروا ابن عباس أو الحسن بن علي باع"
-status: draft
+status: published
 published_at: 2018-01-04
 person: abu-jafar-al-khalifi
 ---

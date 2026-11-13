@@ -1,6 +1,6 @@
 ---
 title: "جَزَى الله هذا من فتى خيرا"
-status: draft
+status: published
 published_at: 2026-10-14
 person: abu-abdillah-firas-al-ramli
 ---

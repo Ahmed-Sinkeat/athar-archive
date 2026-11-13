@@ -1,6 +1,6 @@
 ---
 title: "وتابعه أبو حمزة محمد بن ميمون السكري"
-status: draft
+status: published
 published_at: 2017-09-30
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "من الجهل بمكان والغرق في الأوهام أن تلتمس قلبا محبا دائم الحب والعطاء لا يفتر ول"
-status: draft
+status: published
 published_at: 2025-06-14
 person: abu-umair-imran-al-zubaidi
 ---

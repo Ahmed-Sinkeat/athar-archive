@@ -1,6 +1,6 @@
 ---
 title: "أنا لا أفهم سبب التخوّف الّذي تراه عند البعض -أو الأغلب- حين يتحدث عن وصف الاحتر"
-status: draft
+status: published
 published_at: 2023-03-03
 person: abu-umair-imran-al-zubaidi
 ---

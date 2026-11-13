@@ -1,6 +1,6 @@
 ---
 title: "صحيح الإمام الليبرالي ومتلازمة أتاتورك.."
-status: draft
+status: published
 published_at: 2022-03-13
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

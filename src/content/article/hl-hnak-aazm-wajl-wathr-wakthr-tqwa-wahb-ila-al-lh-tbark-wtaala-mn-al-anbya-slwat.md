@@ -1,6 +1,6 @@
 ---
 title: "هل هناك أعظم وأجل وأطهر وأكثر تقوى وأحب إلى الله تبارك وتعالى من الأنبياء صلوات"
-status: draft
+status: published
 published_at: 2023-10-18
 person: abu-umair-imran-al-zubaidi
 ---

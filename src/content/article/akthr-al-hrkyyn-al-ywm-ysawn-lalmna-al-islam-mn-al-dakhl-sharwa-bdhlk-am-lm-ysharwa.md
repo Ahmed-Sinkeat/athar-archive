@@ -1,6 +1,6 @@
 ---
 title: "أكثر الحركيين اليوم يسعون لعلمنة الإسلام من الداخل شعروا بذلك أم لم يشعروا!"
-status: draft
+status: published
 published_at: 2024-10-07
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-sunnah-wal-bidah"]

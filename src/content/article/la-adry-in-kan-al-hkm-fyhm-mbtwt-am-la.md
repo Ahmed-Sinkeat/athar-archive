@@ -1,6 +1,6 @@
 ---
 title: "لا أدري إن كان الحكم فيهم مبتوت أم لا"
-status: draft
+status: published
 published_at: 2026-04-12
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

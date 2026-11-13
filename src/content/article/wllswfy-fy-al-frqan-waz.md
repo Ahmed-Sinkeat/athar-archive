@@ -1,6 +1,6 @@
 ---
 title: "وللصوفي في الفرقان وعظ!"
-status: draft
+status: published
 published_at: 2022-06-21
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]

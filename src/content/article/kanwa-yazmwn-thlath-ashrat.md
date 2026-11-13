@@ -1,6 +1,6 @@
 ---
 title: "كانوا يعظمون ثلاث عشرات"
-status: draft
+status: published
 published_at: 2024-03-29
 person: abu-abdillah-firas-al-ramli
 ---

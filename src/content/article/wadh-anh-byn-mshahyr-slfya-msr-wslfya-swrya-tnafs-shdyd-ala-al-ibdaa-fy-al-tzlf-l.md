@@ -1,6 +1,6 @@
 ---
 title: "واضح أنه بين \"مشاهير\" سلفية مصر وسلفية سوريا تنافس شديد على الإبداع في التزلّف ل"
-status: draft
+status: published
 published_at: 2026-06-15
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

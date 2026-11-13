@@ -1,6 +1,6 @@
 ---
 title: "دماء أهل السنة من أهل الشام لم تذهب سدىً؛ بل أحسب أنّ الله حفظ بها جناب التوحيد!"
-status: draft
+status: published
 published_at: 2024-09-24
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "العلاقة بين الوحي والمطر (عندما ذُكّر الصحابة بنعمة الله عز وجل عن طريق المطر)"
-status: draft
+status: published
 published_at: 2024-01-14
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

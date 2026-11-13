@@ -1,6 +1,6 @@
 ---
 title: "جامع الردود على أبي عمر الباحث"
-status: draft
+status: published
 published_at: 2024-04-05
 person: abu-umair-imran-al-zubaidi
 ---

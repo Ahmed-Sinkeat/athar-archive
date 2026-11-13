@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية كما في مجموع الفتاوى (8/431)"
-status: draft
+status: published
 published_at: 2020-07-06
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

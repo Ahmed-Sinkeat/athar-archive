@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام ابن القيم نقلًا عن شيخه شيخ الإسلام رضي الله عنهما"
-status: draft
+status: published
 published_at: 2024-05-07
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

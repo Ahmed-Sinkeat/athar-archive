@@ -1,6 +1,6 @@
 ---
 title: "رأي شيخ الإسلام ابن تيمية والكوثري في عقائد الأيوبيين."
-status: draft
+status: published
 published_at: 2023-10-13
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

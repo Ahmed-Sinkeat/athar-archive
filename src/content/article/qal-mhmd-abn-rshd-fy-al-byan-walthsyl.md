@@ -1,6 +1,6 @@
 ---
 title: "قال محمد ابن رشد في البيان والتحصيل"
-status: draft
+status: published
 published_at: 2017-07-02
 person: abu-jafar-al-khalifi
 ---

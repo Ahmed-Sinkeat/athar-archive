@@ -1,6 +1,6 @@
 ---
 title: "حمل أحمد الغماري بعض الأحاديث في الجهاد آخر الزمان على حرب مصر مع اليهود فرد علي"
-status: draft
+status: published
 published_at: 2017-07-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

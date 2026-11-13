@@ -1,6 +1,6 @@
 ---
 title: "۞ وَلَوْ بَسَطَ اللَّهُ الرِّزْقَ لِعِبَادِهِ لَبَغَوْا فِي الْأَرْضِ وَلَٰكِن ي"
-status: draft
+status: published
 published_at: 2022-12-20
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs", "al-qadr"]

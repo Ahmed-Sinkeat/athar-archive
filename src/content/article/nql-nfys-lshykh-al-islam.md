@@ -1,6 +1,6 @@
 ---
 title: "نقلٌ نفيس لشيخ الإسلام"
-status: draft
+status: published
 published_at: 2026-05-24
 person: awwab-bin-muhammad
 ---

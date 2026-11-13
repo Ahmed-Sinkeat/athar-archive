@@ -1,6 +1,6 @@
 ---
 title: "وجود الكفار تلك النعمة المخفية وغفلنا عن شكرها..."
-status: draft
+status: published
 published_at: 2024-03-09
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

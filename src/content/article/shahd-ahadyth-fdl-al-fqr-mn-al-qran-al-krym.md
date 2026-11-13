@@ -1,6 +1,6 @@
 ---
 title: "شاهد أحاديث فضل الفقر من القرآن الكريم..."
-status: draft
+status: published
 published_at: 2025-02-14
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

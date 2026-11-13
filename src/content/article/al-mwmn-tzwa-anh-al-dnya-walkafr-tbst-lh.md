@@ -1,6 +1,6 @@
 ---
 title: "المؤمن تُزوى عنه الدنيا والكافر تُبسط له!"
-status: draft
+status: published
 published_at: 2025-09-24
 person: abu-abdillah-firas-al-ramli
 ---

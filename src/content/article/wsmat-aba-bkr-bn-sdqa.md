@@ -1,6 +1,6 @@
 ---
 title: "253- وسمعت أبا بكر بن صدقة"
-status: draft
+status: published
 published_at: 2024-04-06
 person: abu-umair-imran-al-zubaidi
 ---

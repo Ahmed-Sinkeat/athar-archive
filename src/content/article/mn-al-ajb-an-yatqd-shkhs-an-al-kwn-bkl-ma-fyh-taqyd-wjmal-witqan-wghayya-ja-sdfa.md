@@ -1,6 +1,6 @@
 ---
 title: "من العجب أن يعتقد شخص أن الكون بكل ما فيه تعقيد وجمال وإتقان وغائية جاء صدفة"
-status: draft
+status: published
 published_at: 2017-11-09
 person: abu-jafar-al-khalifi
 ---

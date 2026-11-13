@@ -1,6 +1,6 @@
 ---
 title: "نزول القرآن على مدار ثلاث وعشرين سنة في حد ذاته أمر معجز لمن تأمل في ذلك."
-status: draft
+status: published
 published_at: 2025-05-28
 person: abu-umair-imran-al-zubaidi
 ---

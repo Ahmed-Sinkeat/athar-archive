@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال كتبته نسوية غربية اسمها آنا أكباري، وهي رائدة في مجال الأعمال الحرة."
-status: draft
+status: published
 published_at: 2025-11-05
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هو أنا بصراحة لي فترة طويلة لم أنشر في ملف المرأة إلا منشورات متفرقة هنا وهناك"
-status: draft
+status: published
 published_at: 2024-05-24
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

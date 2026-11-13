@@ -1,6 +1,6 @@
 ---
 title: "1- عدم الإقرار بأنّ الله تبارك وتعالى [بذاته] فوق سماواته"
-status: draft
+status: published
 published_at: 2022-11-01
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat", "al-sunnah-wal-bidah"]

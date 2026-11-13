@@ -1,6 +1,6 @@
 ---
 title: "يقشعر بدني تعظيمًا وإجلالًا لرب البرية جل في علاه حين أذكر أنّ هذه السماوات السب"
-status: draft
+status: published
 published_at: 2023-05-26
 person: abu-umair-imran-al-zubaidi
 ---

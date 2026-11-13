@@ -1,6 +1,6 @@
 ---
 title: "مِن جليل لُطف الله تعالى على عبدِه المُقصِّر وتأنيبه الخفيِّ وتأدِيبه له أنْ يُق"
-status: draft
+status: published
 published_at: 2025-04-17
 person: awwab-bin-muhammad
 ---

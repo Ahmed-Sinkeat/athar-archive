@@ -1,6 +1,6 @@
 ---
 title: "لا يهولنك قوله (عين التجسيم) فلفظ التجسيم عند هؤلاء يعني إثبات وجود حقيقي لله عز"
-status: draft
+status: published
 published_at: 2022-08-28
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "كنت أستمع لحوار أجراه دعدوش الجهمي يتحدث فيه عن المداخلة."
-status: draft
+status: published
 published_at: 2023-05-12
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

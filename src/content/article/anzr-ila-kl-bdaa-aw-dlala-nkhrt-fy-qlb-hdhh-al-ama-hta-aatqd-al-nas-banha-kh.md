@@ -1,6 +1,6 @@
 ---
 title: "أنظر إلى كُلّ بدعةٍ أو ضلالةٍ نخرت في قلب هذه الأمّة؛ حتّى اعتقد النّاس بأنّها خ"
-status: draft
+status: published
 published_at: 2022-11-04
 person: abu-umair-imran-al-zubaidi
 ---

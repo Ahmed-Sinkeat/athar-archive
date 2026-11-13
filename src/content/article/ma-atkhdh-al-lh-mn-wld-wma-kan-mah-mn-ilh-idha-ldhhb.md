@@ -1,6 +1,6 @@
 ---
 title: "مَا اتَّخَذَ اللَّهُ مِن وَلَدٍ وَمَا كَانَ مَعَهُ مِنْ إِلَٰهٍ ۚ إِذًا لَّذَهَب"
-status: draft
+status: published
 published_at: 2023-03-20
 person: abu-umair-imran-al-zubaidi
 ---

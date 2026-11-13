@@ -1,6 +1,6 @@
 ---
 title: "عجيبة من العجائب: أضرار زواج الأقارب سببها الاستعمار الأوروبي!"
-status: draft
+status: published
 published_at: 2026-05-28
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "جائحة كورونا والمشاريع الإصلاحية (خاطرة تقريبية)"
-status: draft
+status: published
 published_at: 2020-04-18
 person: abu-jafar-al-khalifi
 ---

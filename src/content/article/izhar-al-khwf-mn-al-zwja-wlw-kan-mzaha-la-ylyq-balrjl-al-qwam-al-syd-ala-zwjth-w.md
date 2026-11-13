@@ -1,6 +1,6 @@
 ---
 title: "إظهار الخوف مِن الزوجة ولو كان مُزاحًا لا يليق بالرجل القوّام السيّد على زوجته و"
-status: draft
+status: published
 published_at: 2023-01-01
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا قرار فيه تخفيف لشر عظيم"
-status: draft
+status: published
 published_at: 2026-03-17
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

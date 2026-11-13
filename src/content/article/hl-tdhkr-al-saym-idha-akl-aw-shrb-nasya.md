@@ -1,6 +1,6 @@
 ---
 title: "هل تذكر الصائم إذا أكل أو شرب ناسيا؟"
-status: draft
+status: published
 published_at: 2026-02-26
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

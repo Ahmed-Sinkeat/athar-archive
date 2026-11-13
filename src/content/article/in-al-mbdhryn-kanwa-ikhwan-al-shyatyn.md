@@ -1,6 +1,6 @@
 ---
 title: "{إن المبذرين كانوا إخوان الشياطين}."
-status: draft
+status: published
 published_at: 2024-02-26
 person: abu-jafar-al-khalifi
 ---

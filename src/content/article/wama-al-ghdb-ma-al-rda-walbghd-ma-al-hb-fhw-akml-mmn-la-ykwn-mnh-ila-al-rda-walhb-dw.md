@@ -1,6 +1,6 @@
 ---
 title: "\"وأما الغضب مع الرضاء والبغض مع الحب فهو أكمل ممن لا يكون منه إلا الرضى والحب دو"
-status: draft
+status: published
 published_at: 2024-02-27
 person: abu-umair-imran-al-zubaidi
 ---

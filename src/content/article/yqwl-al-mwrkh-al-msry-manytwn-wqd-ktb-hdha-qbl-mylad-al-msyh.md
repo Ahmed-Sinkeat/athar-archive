@@ -1,6 +1,6 @@
 ---
 title: "يقول المؤرخ المصري مانيتون وقد كتب هذا قبل ميلاد المسيح"
-status: draft
+status: published
 published_at: 2017-06-04
 person: abu-jafar-al-khalifi
 ---

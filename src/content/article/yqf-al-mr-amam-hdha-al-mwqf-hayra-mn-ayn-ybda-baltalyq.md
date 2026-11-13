@@ -1,6 +1,6 @@
 ---
 title: "يقف المرء أمام هذا الموقف حائرا من أين يبدأ بالتعليق"
-status: draft
+status: published
 published_at: 2018-05-24
 person: abu-jafar-al-khalifi
 ---

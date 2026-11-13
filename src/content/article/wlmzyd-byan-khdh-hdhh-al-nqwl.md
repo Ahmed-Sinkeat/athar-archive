@@ -1,6 +1,6 @@
 ---
 title: "ولمزيد بيان خذ هذه النقول"
-status: draft
+status: published
 published_at: 2020-01-21
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

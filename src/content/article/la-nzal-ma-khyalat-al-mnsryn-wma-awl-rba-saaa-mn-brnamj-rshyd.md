@@ -1,6 +1,6 @@
 ---
 title: "لا نزال مع خيالات المنصرين ومع أول ربع ساعة من برنامج رشيد."
-status: draft
+status: published
 published_at: 2018-05-25
 person: abu-jafar-al-khalifi
 ---

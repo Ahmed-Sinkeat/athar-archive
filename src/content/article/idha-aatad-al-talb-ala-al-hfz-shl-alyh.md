@@ -1,6 +1,6 @@
 ---
 title: "إذا اعتاد الطالب على الحفظ سهل عليه"
-status: draft
+status: published
 published_at: 2025-12-06
 person: abu-abdillah-firas-al-ramli
 ---

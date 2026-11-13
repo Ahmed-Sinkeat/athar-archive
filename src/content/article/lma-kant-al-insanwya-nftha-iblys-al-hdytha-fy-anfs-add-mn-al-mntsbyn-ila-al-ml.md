@@ -1,6 +1,6 @@
 ---
 title: "لمَّا كانت الإنسانوية نفثةَ إبليس الحديثة في أنفس عدد مِن المُنتسبين إلى المِلَّ"
-status: draft
+status: published
 published_at: 2025-10-12
 person: awwab-bin-muhammad
 topics: ["al-firaq-war-rudud"]

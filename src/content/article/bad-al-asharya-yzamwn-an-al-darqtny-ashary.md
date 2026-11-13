@@ -1,6 +1,6 @@
 ---
 title: "بعض الأشعرية يزعمون أن الدارقطني أشعري"
-status: draft
+status: published
 published_at: 2021-08-26
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

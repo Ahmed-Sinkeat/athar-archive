@@ -1,6 +1,6 @@
 ---
 title: "هذه الأطروحات تكررت الأيام الماضية بهذا الافتخار الذي لا يزيد حسناتك ولا يزيد أم"
-status: draft
+status: published
 published_at: 2024-08-09
 person: abu-jafar-al-khalifi
 ---

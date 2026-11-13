@@ -1,6 +1,6 @@
 ---
 title: "بمناسبة المسلسل الأخير أود التنبيه على أسطورة فاشية قبل المسلسل بكثير"
-status: draft
+status: published
 published_at: 2023-03-28
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "فكيف من ينقطع إلى مقبور ميت ؟!"
-status: draft
+status: published
 published_at: 2023-05-14
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

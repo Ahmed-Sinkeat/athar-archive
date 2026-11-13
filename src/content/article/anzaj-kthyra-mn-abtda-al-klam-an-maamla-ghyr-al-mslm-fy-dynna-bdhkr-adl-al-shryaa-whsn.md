@@ -1,6 +1,6 @@
 ---
 title: "أنزعج كثيرا من ابتداء الكلام عن معاملة غير المسلم في ديننا بذكر عدل الشريعة وحسن"
-status: draft
+status: published
 published_at: 2024-07-25
 person: abu-umair-imran-al-zubaidi
 ---

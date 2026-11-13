@@ -1,6 +1,6 @@
 ---
 title: "قال أبو نعيم في الحلية حَدَّثَنَا أَبُو بَكْرِ بْنُ مَالِكٍ"
-status: draft
+status: published
 published_at: 2017-12-19
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من الفروع الفقهية التي تبين مركزية الولاء والبراء في عقلية الفقهاء القدامى وأن ا"
-status: draft
+status: published
 published_at: 2018-01-17
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

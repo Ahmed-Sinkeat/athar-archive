@@ -1,6 +1,6 @@
 ---
 title: "ذكر ابن الأثير أن الأمير عماد الدين زنكي دخل جزيرة ابن عمر وكان الزمان شتاء فنزل"
-status: draft
+status: published
 published_at: 2017-07-22
 person: abu-jafar-al-khalifi
 ---

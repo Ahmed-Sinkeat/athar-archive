@@ -1,6 +1,6 @@
 ---
 title: "كنتُ أتحدّث منذ قليل مع صديقٍ لي عن انتفاضة الشعوب في وجه الظُلم والديكتاتوريّات"
-status: draft
+status: published
 published_at: 2022-09-13
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

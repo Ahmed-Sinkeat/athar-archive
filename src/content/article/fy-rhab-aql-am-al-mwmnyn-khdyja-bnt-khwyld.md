@@ -1,6 +1,6 @@
 ---
 title: "في رحاب عقل أم المؤمنين خديجة بنت خويلد"
-status: draft
+status: published
 published_at: 2019-09-27
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

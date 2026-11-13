@@ -1,6 +1,6 @@
 ---
 title: "قال أبو نُعيم في الحِلية"
-status: draft
+status: published
 published_at: 2026-04-04
 person: awwab-bin-muhammad
 ---

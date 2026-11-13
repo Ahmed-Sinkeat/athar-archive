@@ -1,6 +1,6 @@
 ---
 title: "| بسم الله والصلاة والسلام على رسول الله وعلى آله وصحبه ومن اتبعهم بإحسان إلى يو"
-status: draft
+status: published
 published_at: 2023-05-18
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "ربك الجليل سبحانه وتعالى ينزل في هذا الوقت إلى السماء الدنيا وينادي المستغفرين و"
-status: draft
+status: published
 published_at: 2023-12-06
 person: abu-umair-imran-al-zubaidi
 ---

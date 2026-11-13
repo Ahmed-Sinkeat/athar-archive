@@ -1,6 +1,6 @@
 ---
 title: "إذا كنت تعرف شخصا ممن يدعو إلى تنقية التراث أو نقد التراث تلك الدعوى التي يطلقها"
-status: draft
+status: published
 published_at: 2019-06-20
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

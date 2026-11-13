@@ -1,6 +1,6 @@
 ---
 title: "لماذا كانت فاطمة رضي الله عنها سيدة نساء الجنة؟"
-status: draft
+status: published
 published_at: 2022-08-23
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أنا لا أريد تناول شخصية أردوغان"
-status: draft
+status: published
 published_at: 2023-05-14
 person: abu-umair-imran-al-zubaidi
 ---

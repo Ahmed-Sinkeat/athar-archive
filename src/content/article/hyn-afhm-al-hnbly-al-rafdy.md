@@ -1,6 +1,6 @@
 ---
 title: "حين أفحم الحنبلي الرافضي.."
-status: draft
+status: published
 published_at: 2023-04-28
 person: abu-jafar-al-khalifi
 ---

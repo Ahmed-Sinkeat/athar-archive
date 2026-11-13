@@ -1,6 +1,6 @@
 ---
 title: "قال الزبير بن بكار في المزاح 61- وحدثني إبراهيم بن المنذر عن هشام بن سليمان عن ا"
-status: draft
+status: published
 published_at: 2017-08-22
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

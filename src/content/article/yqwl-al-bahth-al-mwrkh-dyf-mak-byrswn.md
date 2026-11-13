@@ -1,6 +1,6 @@
 ---
 title: "يقول الباحث المؤرخ (ديف ماك بيرسون)"
-status: draft
+status: published
 published_at: 2017-07-20
 person: abu-jafar-al-khalifi
 ---

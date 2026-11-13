@@ -1,6 +1,6 @@
 ---
 title: "هذه الكراهية لا تخلو من محبة!"
-status: draft
+status: published
 published_at: 2024-06-05
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

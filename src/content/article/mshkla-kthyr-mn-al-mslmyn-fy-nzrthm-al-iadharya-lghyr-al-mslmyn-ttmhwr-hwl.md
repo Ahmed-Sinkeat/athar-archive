@@ -1,6 +1,6 @@
 ---
 title: "مشكلة كثير من المسلمين في نظرتهم الإعذارية لغير المسلمين تتمحور حول"
-status: draft
+status: published
 published_at: 2024-09-04
 person: abu-umair-imran-al-zubaidi
 ---

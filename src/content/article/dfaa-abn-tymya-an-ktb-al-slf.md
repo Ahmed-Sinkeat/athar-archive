@@ -1,6 +1,6 @@
 ---
 title: "دفاع ابن تيمية عن كتب السلف..."
-status: draft
+status: published
 published_at: 2021-02-18
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

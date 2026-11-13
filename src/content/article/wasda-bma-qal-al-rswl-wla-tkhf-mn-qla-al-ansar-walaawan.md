@@ -1,6 +1,6 @@
 ---
 title: "واصدع بما قال الرسول ولا تخف *** من قلة الأنصار والأعوانِ"
-status: draft
+status: published
 published_at: 2024-06-28
 person: abu-umair-imran-al-zubaidi
 ---

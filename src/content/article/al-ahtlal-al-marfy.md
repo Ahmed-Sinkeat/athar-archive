@@ -1,6 +1,6 @@
 ---
 title: "الاحتلال المعرفي !"
-status: draft
+status: published
 published_at: 2020-08-13
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "تُريد زوجةً صالِحة؟"
-status: draft
+status: published
 published_at: 2025-03-12
 person: awwab-bin-muhammad
 ---

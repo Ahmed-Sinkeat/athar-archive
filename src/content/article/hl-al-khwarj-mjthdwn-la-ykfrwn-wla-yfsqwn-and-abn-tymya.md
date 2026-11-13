@@ -1,6 +1,6 @@
 ---
 title: "هل الخوارج مجتهدون لا يكفَّرون ولا يفسَّقون عند ابن تيمية؟"
-status: draft
+status: published
 published_at: 2023-08-12
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

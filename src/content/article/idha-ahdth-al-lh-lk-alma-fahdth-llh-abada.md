@@ -1,6 +1,6 @@
 ---
 title: "إذا أحدث الله لك علما فأحدث لله عبادة"
-status: draft
+status: published
 published_at: 2024-02-13
 person: abu-abdillah-firas-al-ramli
 ---

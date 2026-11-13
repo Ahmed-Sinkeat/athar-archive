@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب الفكر الأخلاقي المعاصر لجاكلين روس ما يلي"
-status: draft
+status: published
 published_at: 2020-03-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "في صحيح مسلم عن المغيرة بن شعبة"
-status: draft
+status: published
 published_at: 2019-08-30
 person: abu-jafar-al-khalifi
 ---

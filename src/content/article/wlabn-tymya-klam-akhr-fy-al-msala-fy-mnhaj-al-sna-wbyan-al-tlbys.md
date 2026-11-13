@@ -1,6 +1,6 @@
 ---
 title: "ولابن تيمية كلام آخر في المسألة في منهاج السنة وبيان التلبيس"
-status: draft
+status: published
 published_at: 2020-10-29
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "خرج الأستاذ حسن مصرًّا على الاستدلال بهذا الأمر على نفرة النووي من علم الكلام."
-status: draft
+status: published
 published_at: 2023-07-29
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

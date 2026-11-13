@@ -1,6 +1,6 @@
 ---
 title: "نظرية الإمامة وظلها الحركي..."
-status: draft
+status: published
 published_at: 2020-05-31
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

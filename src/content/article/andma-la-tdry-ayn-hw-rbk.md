@@ -1,6 +1,6 @@
 ---
 title: "عِندما لا تدري أين هو ربّك"
-status: draft
+status: published
 published_at: 2023-02-02
 person: abu-umair-imran-al-zubaidi
 ---

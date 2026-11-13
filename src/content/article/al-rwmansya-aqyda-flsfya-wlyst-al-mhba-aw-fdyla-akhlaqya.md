@@ -1,6 +1,6 @@
 ---
 title: "الرومانسية عقيدة فلسفية وليست المحبة أو فضيلة أخلاقية"
-status: draft
+status: published
 published_at: 2020-08-13
 person: abu-jafar-al-khalifi
 ---

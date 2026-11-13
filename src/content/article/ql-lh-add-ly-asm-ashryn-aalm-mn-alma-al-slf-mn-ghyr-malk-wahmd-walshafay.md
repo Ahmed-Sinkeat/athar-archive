@@ -1,6 +1,6 @@
 ---
 title: "قل له عدد لي اسم عشرين عالم من علماء السلف من غير مالك وأحمد والشافعي."
-status: draft
+status: published
 published_at: 2023-06-25
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

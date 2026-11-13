@@ -1,6 +1,6 @@
 ---
 title: "لا يتكلم صاحب باطل إلا وينقض على نفسه"
-status: draft
+status: published
 published_at: 2020-10-12
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

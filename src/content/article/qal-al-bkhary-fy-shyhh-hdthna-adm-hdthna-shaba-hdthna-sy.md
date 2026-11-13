@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري في صحيحه 1521 - حَدَّثَنَا آدَمُ حَدَّثَنَا شُعْبَةُ حَدَّثَنَا سَيّ"
-status: draft
+status: published
 published_at: 2017-08-04
 person: abu-jafar-al-khalifi
 ---

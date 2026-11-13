@@ -1,6 +1,6 @@
 ---
 title: "ثنائية الاجتماع والأمر بالمعروف والنهي عن المنكر.."
-status: draft
+status: published
 published_at: 2022-04-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-sunnah-wal-bidah"]

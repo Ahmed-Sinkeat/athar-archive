@@ -1,6 +1,6 @@
 ---
 title: "ما بين سيلفي العيد وسلَـف الأمَّـة"
-status: draft
+status: published
 published_at: 2025-03-30
 person: awwab-bin-muhammad
 topics: ["tazkiyat-al-nafs"]

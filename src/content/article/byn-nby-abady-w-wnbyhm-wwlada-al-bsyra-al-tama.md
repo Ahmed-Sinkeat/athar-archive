@@ -1,6 +1,6 @@
 ---
 title: "بين (نبئ عبادي) و (ونبئهم) وولادة البصيرة التامة"
-status: draft
+status: published
 published_at: 2020-05-08
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "كيف وصف المتقدمون اللاكتراثية العقدية والتمييع العقدي؟"
-status: draft
+status: published
 published_at: 2025-09-15
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال الخطيب في تاريخ بغداد أَخْبَرَنَا أحمد بن سليمان بن علي المقرئ"
-status: draft
+status: published
 published_at: 2017-12-15
 person: abu-jafar-al-khalifi
 ---

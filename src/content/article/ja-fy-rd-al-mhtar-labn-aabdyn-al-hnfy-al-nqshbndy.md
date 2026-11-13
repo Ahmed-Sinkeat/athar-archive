@@ -1,6 +1,6 @@
 ---
 title: "جاء في رد المحتار لابن عابدين الحنفي النقشبندي (9/78)"
-status: draft
+status: published
 published_at: 2017-11-27
 person: abu-jafar-al-khalifi
 ---

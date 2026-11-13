@@ -1,6 +1,6 @@
 ---
 title: "أنا بصراحة ما رأيت حالةً غريبة عجيبة في تعامل النّاس مع شيخٍ مِن المشايخ كما هو"
-status: draft
+status: published
 published_at: 2023-02-01
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

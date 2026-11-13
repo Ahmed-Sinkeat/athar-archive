@@ -1,6 +1,6 @@
 ---
 title: "تثبيت صحة حديث فضل عشر ذي الحجة"
-status: draft
+status: published
 published_at: 2020-07-23
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

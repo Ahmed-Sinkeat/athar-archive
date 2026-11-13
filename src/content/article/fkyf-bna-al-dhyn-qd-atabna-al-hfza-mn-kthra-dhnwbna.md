@@ -1,6 +1,6 @@
 ---
 title: "فكيف بنا الذين قد أتعبنا الحفظة من كثرة ذنوبنا؟"
-status: draft
+status: published
 published_at: 2023-12-19
 person: abu-abdillah-firas-al-ramli
 ---

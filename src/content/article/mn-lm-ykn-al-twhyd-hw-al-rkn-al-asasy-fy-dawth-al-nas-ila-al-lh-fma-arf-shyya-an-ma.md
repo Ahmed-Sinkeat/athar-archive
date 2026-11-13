@@ -1,6 +1,6 @@
 ---
 title: "مَن لم يكن التوحيد هو الركن الأساسي في دعوته الناس إلى الله؛ فما عرف شيئًا عن مع"
-status: draft
+status: published
 published_at: 2023-03-13
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

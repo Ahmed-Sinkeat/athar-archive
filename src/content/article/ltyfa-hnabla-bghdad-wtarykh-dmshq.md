@@ -1,6 +1,6 @@
 ---
 title: "لطيفة: حنابلة بغداد وتاريخ دمشق!"
-status: draft
+status: published
 published_at: 2022-06-24
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

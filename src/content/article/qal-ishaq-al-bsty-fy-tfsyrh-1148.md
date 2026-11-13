@@ -1,6 +1,6 @@
 ---
 title: "قال إسحاق البستي في تفسيره (١١٤٨)"
-status: draft
+status: published
 published_at: 2025-06-29
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

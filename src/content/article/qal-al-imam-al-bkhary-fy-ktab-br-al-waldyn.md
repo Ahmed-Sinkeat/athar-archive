@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام البخاري في كتاب بر الوالدين"
-status: draft
+status: published
 published_at: 2017-12-07
 person: abu-jafar-al-khalifi
 ---

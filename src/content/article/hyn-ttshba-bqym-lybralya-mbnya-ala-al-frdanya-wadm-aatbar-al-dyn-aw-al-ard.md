@@ -1,6 +1,6 @@
 ---
 title: "حين تتشبع بقيم ليبرالية مبنية على الفردانية وعدم اعتبار الدين أو العرض"
-status: draft
+status: published
 published_at: 2021-08-16
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

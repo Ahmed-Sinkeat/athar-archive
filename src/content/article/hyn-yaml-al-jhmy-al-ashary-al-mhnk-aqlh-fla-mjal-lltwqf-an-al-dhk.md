@@ -1,6 +1,6 @@
 ---
 title: "حين يُعمل الجهمي الأشعري المُحنك عقله؛ فلا مجال للتوقف عن الضحك 😅."
-status: draft
+status: published
 published_at: 2023-05-07
 person: abu-umair-imran-al-zubaidi
 ---

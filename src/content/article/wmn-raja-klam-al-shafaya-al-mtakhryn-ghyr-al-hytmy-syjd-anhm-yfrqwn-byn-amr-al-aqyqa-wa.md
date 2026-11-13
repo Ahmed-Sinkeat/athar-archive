@@ -1,6 +1,6 @@
 ---
 title: "ومن راجع كلام الشافعية المتأخرين غير الهيتمي سيجد أنهم يفرقون بين أمر العقيقة وأ"
-status: draft
+status: published
 published_at: 2022-08-12
 person: abu-jafar-al-khalifi
 ---

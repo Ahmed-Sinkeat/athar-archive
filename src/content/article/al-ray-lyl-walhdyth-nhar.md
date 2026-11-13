@@ -1,6 +1,6 @@
 ---
 title: "الرأي ليل والحديث نهار"
-status: draft
+status: published
 published_at: 2024-03-17
 person: abu-abdillah-firas-al-ramli
 ---

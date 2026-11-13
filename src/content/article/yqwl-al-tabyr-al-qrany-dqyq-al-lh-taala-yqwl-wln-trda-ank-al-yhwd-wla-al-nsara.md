@@ -1,6 +1,6 @@
 ---
 title: "يقول التعبير القرآني دقيق الله تعالى يقول : ولن ترضى عنك اليهود ولا النصارى ."
-status: draft
+status: published
 published_at: 2018-12-28
 person: abu-jafar-al-khalifi
 ---

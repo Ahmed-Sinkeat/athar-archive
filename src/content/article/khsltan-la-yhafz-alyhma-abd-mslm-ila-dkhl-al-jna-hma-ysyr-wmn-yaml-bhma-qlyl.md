@@ -1,6 +1,6 @@
 ---
 title: "خصلتان لا يحافظ عليهما عبد مسلم إلا دخل الجنة، هما يسير، ومن يعمل بهما قليل"
-status: draft
+status: published
 published_at: 2023-07-10
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الله سبحانه وتعالى أعدل وأحكم وأرحم وألطف من أن يجعل براهين الحق معقدة خفية عسير"
-status: draft
+status: published
 published_at: 2025-02-14
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

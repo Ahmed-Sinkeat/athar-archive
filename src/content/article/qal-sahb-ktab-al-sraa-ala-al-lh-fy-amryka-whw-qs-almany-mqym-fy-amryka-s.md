@@ -1,6 +1,6 @@
 ---
 title: "قال صاحب كتاب الصراع على الله في أمريكا _ وهو قس ألماني مقيم في أمريكا _ص21"
-status: draft
+status: published
 published_at: 2018-02-04
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

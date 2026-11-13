@@ -1,6 +1,6 @@
 ---
 title: "منذ أن أبعد الأهل أطفالهم عن الركض بين الأزِقّة"
-status: draft
+status: published
 published_at: 2023-08-16
 person: abu-umair-imran-al-zubaidi
 ---

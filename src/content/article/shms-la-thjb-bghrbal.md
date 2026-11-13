@@ -1,6 +1,6 @@
 ---
 title: "شمس لا تحجب بغربال"
-status: draft
+status: published
 published_at: 2022-10-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

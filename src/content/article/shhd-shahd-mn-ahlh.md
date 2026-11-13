@@ -1,6 +1,6 @@
 ---
 title: "شهد شاهد من ٱهله!"
-status: draft
+status: published
 published_at: 2026-10-14
 person: abu-umair-imran-al-zubaidi
 ---

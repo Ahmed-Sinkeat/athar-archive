@@ -1,6 +1,6 @@
 ---
 title: "تراه ليل نهار ينشر لك عن الطاعوت والحاكمية وأخبار المجا'**."
-status: draft
+status: published
 published_at: 2023-10-09
 person: abu-umair-imran-al-zubaidi
 ---

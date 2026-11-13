@@ -1,6 +1,6 @@
 ---
 title: "لن أقدم الحدّاد قربانًا!."
-status: draft
+status: published
 published_at: 2023-07-01
 person: abu-umair-imran-al-zubaidi
 ---

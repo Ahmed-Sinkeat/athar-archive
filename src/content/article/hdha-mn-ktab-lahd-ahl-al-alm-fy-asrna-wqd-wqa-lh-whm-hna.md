@@ -1,6 +1,6 @@
 ---
 title: "هذا من كتاب لأحد أهل العلم في عصرنا، وقد وقع له وهم هنا."
-status: draft
+status: published
 published_at: 2023-10-06
 person: abu-jafar-al-khalifi
 ---

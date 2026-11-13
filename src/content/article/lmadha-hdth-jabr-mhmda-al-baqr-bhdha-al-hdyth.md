@@ -1,6 +1,6 @@
 ---
 title: "لماذا حدث جابر محمداً الباقر بهذا الحديث؟"
-status: draft
+status: published
 published_at: 2026-01-01
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

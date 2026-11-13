@@ -1,6 +1,6 @@
 ---
 title: "دونباس: حينما هجا الإعلام الغربي نفسه.."
-status: draft
+status: published
 published_at: 2022-03-11
 person: abu-jafar-al-khalifi
 ---

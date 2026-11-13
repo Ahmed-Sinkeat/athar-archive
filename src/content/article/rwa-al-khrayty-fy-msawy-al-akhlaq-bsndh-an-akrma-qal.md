@@ -1,6 +1,6 @@
 ---
 title: "روى الخرائطي في مساوئ الأخلاق بسنده عن عكرمة قال"
-status: draft
+status: published
 published_at: 2022-08-03
 person: abu-jafar-al-khalifi
 ---

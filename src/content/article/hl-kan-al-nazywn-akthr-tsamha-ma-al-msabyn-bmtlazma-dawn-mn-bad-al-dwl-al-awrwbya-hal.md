@@ -1,6 +1,6 @@
 ---
 title: "هل كان النازيون أكثر تسامحا مع المصابين بمتلازمة داون من بعض الدول الأوروبية حال"
-status: draft
+status: published
 published_at: 2018-06-22
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

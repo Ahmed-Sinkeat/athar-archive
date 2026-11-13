@@ -1,6 +1,6 @@
 ---
 title: "قال نيل جاكسون وزميله في كتابهما أساسيات علم السياسة ص38"
-status: draft
+status: published
 published_at: 2017-11-08
 person: abu-jafar-al-khalifi
 ---

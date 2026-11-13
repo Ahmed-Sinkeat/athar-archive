@@ -1,6 +1,6 @@
 ---
 title: "طريق الحرية الذي غفل عنه طلابها في زمن الرأسمالية..."
-status: draft
+status: published
 published_at: 2025-07-23
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

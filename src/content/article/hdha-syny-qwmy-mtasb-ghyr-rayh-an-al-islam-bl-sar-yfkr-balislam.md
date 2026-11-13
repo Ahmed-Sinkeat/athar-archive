@@ -1,6 +1,6 @@
 ---
 title: "هذا صيني قومي متعصب، غير رأيه عن الإسلام، بل صار يفكر بالإسلام."
-status: draft
+status: published
 published_at: 2026-10-14
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

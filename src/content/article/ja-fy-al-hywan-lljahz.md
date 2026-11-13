@@ -1,6 +1,6 @@
 ---
 title: "جاء في الحيوان للجاحظ"
-status: draft
+status: published
 published_at: 2017-05-25
 person: abu-jafar-al-khalifi
 ---

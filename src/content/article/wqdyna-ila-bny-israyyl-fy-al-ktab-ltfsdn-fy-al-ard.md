@@ -1,6 +1,6 @@
 ---
 title: "وَقَضَيْنَا إِلَى بَنِي إِسْرَائِيلَ فِي الْكِتَابِ لَتُفْسِدُنَّ فِي الْأَرْضِ"
-status: draft
+status: published
 published_at: 2025-06-22
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

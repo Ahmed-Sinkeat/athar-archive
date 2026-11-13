@@ -1,6 +1,6 @@
 ---
 title: "لما أصيب عمر وهو يحتضر جاء له شاب يبشره ويذكره بخير"
-status: draft
+status: published
 published_at: 2023-10-29
 person: abu-abdillah-firas-al-ramli
 ---

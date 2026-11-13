@@ -1,6 +1,6 @@
 ---
 title: "ما أحوجنا لهذا عفا الله عنا وعافانا"
-status: draft
+status: published
 published_at: 2023-12-13
 person: abu-abdillah-firas-al-ramli
 ---

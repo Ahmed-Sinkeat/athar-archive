@@ -1,6 +1,6 @@
 ---
 title: "الجنس البشري مجرد حثالة كيميائية على كوكب متوسط الحجم إلى أن قال نحن غير مهمين ."
-status: draft
+status: published
 published_at: 2018-03-14
 person: abu-jafar-al-khalifi
 ---

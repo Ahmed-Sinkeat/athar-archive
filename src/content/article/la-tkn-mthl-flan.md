@@ -1,6 +1,6 @@
 ---
 title: "لا تكن مثل فلان ..."
-status: draft
+status: published
 published_at: 2023-06-21
 person: abu-abdillah-firas-al-ramli
 ---

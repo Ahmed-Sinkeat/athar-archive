@@ -1,6 +1,6 @@
 ---
 title: "قال تعالى ( من خشي الرحمن بالغيب وجاء بقلب منيب )"
-status: draft
+status: published
 published_at: 2017-06-24
 person: abu-jafar-al-khalifi
 ---

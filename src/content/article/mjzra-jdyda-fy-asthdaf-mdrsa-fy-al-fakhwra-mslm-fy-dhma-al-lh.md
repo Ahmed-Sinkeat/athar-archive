@@ -1,6 +1,6 @@
 ---
 title: "مجزرة جديدة في استهداف مدرسة في الفاخورة، 200 مسلم في ذمة الله."
-status: draft
+status: published
 published_at: 2023-11-18
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وأخيرا من الأئمة من دفع القول بجواز اخراجها نقدا بمأخذ دقيق من القياس"
-status: draft
+status: published
 published_at: 2018-06-08
 person: abu-jafar-al-khalifi
 ---

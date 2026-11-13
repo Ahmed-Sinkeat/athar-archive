@@ -1,6 +1,6 @@
 ---
 title: "أن يؤخذ من لحمك ودمك وأنت حي خير من أن تأكلك الأرض وأنت في قبرك"
-status: draft
+status: published
 published_at: 2023-10-22
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

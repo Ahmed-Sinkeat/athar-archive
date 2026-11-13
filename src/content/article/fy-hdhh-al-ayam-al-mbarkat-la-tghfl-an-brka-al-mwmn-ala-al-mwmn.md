@@ -1,6 +1,6 @@
 ---
 title: "في هذه الأيام المباركات لا تغفل عن بركة المؤمن على المؤمن..."
-status: draft
+status: published
 published_at: 2024-06-06
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

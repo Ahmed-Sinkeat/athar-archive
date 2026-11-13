@@ -1,6 +1,6 @@
 ---
 title: "قِلّة الأدب مع الله تبارك وتعالى تقهرني أكثر مما يجري هناك والله!"
-status: draft
+status: published
 published_at: 2023-10-23
 person: abu-umair-imran-al-zubaidi
 ---

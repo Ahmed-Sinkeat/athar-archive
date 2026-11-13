@@ -1,6 +1,6 @@
 ---
 title: "باب في أسماء النبي ﷺ"
-status: draft
+status: published
 published_at: 2023-06-18
 person: abu-umair-imran-al-zubaidi
 ---

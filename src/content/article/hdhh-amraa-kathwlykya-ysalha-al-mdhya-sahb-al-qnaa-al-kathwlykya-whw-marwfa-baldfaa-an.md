@@ -1,6 +1,6 @@
 ---
 title: "هذه امرأة كاثوليكية يسألها المذيع صاحب القناة الكاثوليكية (وهو معروفة بالدفاع عن"
-status: draft
+status: published
 published_at: 2022-09-16
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ذَٰلِكَ بِأَنَّهُمْ كَرِهُوا مَا أَنزَلَ اللَّهُ فَأَحْبَطَ أَعْمَالَهُمْ (9)"
-status: draft
+status: published
 published_at: 2024-03-23
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "كلفت صاحبي عمر مكي العبيدي المقيم في أمريكا أن يفيدني في أمر الأمراض الجنسية هنا"
-status: draft
+status: published
 published_at: 2018-05-05
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "سنُدِب الرعب في قلب كل جهمي زنديق أو منافق متستر يحاول العبث في صفات الباري سبحا"
-status: draft
+status: published
 published_at: 2023-10-04
 person: abu-umair-imran-al-zubaidi
 ---

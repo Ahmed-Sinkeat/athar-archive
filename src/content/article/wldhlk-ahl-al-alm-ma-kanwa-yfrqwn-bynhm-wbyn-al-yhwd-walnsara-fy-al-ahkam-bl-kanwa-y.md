@@ -1,6 +1,6 @@
 ---
 title: "ولذلك أهل العلم ما كانوا يفرقون بينهم وبين اليهود والنصارى في الأحكام بل كانوا ي"
-status: draft
+status: published
 published_at: 2025-06-13
 person: abu-abdillah-firas-al-ramli
 ---

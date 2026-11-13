@@ -1,6 +1,6 @@
 ---
 title: "واحدة من أسس الغلط في الردود عدم صحة التصور ابتداءاً ثم الإصرار على المواصلة في"
-status: draft
+status: published
 published_at: 2025-07-11
 person: awwab-bin-muhammad
 ---

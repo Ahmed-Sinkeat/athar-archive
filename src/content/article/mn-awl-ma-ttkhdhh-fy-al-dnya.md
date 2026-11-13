@@ -1,6 +1,6 @@
 ---
 title: "من أول ما تتخذه في الدنيا"
-status: draft
+status: published
 published_at: 2025-08-27
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لا تَرِقُّوا لهم في يوم عيدهم"
-status: draft
+status: published
 published_at: 2025-12-22
 person: abu-abdillah-firas-al-ramli
 ---

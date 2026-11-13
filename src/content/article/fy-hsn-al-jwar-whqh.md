@@ -1,6 +1,6 @@
 ---
 title: "في حُسن الجِوار وحقِّه"
-status: draft
+status: published
 published_at: 2025-10-18
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "تقاطع علم الأعصاب المعرفي مع علم علل الحديث (في رحاب عبقرية علماء العلل)"
-status: draft
+status: published
 published_at: 2022-07-12
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

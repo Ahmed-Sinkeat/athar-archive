@@ -1,6 +1,6 @@
 ---
 title: "حين دعا نبيّ الله هود ﷺ قومه فجحدوا ما جاء به وكذّبوه"
-status: draft
+status: published
 published_at: 2023-07-01
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

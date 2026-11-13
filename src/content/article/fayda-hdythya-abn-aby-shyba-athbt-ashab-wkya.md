@@ -1,6 +1,6 @@
 ---
 title: "فائدة حديثية: ابن أبي شيبة أثبت أصحاب وكيع"
-status: draft
+status: published
 published_at: 2024-03-15
 person: abu-abdillah-firas-al-ramli
 ---

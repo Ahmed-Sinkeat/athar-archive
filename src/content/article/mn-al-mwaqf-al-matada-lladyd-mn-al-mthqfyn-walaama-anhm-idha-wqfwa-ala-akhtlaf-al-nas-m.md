@@ -1,6 +1,6 @@
 ---
 title: "من المواقف المعتادة للعديد من المثقفين والعامة أنهم إذا وقفوا على اختلاف الناس م"
-status: draft
+status: published
 published_at: 2019-08-02
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

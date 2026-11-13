@@ -1,6 +1,6 @@
 ---
 title: "إذا كنت تخطط للانضمام إلى شركة تجارية أو شركة استيراد وتصدير أو الانخراط في الأع"
-status: draft
+status: published
 published_at: 2021-02-02
 person: abu-jafar-al-khalifi
 ---

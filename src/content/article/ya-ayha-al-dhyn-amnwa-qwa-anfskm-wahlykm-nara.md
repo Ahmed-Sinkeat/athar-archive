@@ -1,6 +1,6 @@
 ---
 title: "{يَا أَيُّهَا الَّذِينَ آمَنُوا قُوا أَنفُسَكُمْ وَأَهْلِيكُمْ نَارًا}"
-status: draft
+status: published
 published_at: 2024-11-17
 person: abu-umair-imran-al-zubaidi
 ---

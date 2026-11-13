@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري 1303 - حَدَّثَنَا الْحَسَنُ بْنُ عَبْدِ الْعَزِيزِ حَدَّثَنَا يَحْيَ"
-status: draft
+status: published
 published_at: 2018-04-13
 person: abu-jafar-al-khalifi
 ---

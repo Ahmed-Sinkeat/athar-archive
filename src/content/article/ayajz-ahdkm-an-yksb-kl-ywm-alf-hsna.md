@@ -1,6 +1,6 @@
 ---
 title: "أيعجز أحدكم أن يكسب كل يوم ألف حسنة؟"
-status: draft
+status: published
 published_at: 2023-10-20
 person: abu-abdillah-firas-al-ramli
 ---

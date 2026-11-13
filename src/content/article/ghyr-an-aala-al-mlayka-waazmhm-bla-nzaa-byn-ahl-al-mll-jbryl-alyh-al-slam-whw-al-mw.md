@@ -1,6 +1,6 @@
 ---
 title: "غير أنَّ أعلى الملائكة وأعظمهم بلا نزاع بين أهل الملل جبريل عليه السلام وهو المو"
-status: draft
+status: published
 published_at: 2019-09-25
 person: abu-jafar-al-khalifi
 ---

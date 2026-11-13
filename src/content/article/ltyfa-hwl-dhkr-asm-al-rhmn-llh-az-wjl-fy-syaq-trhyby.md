@@ -1,6 +1,6 @@
 ---
 title: "لطيفة حول ذكر اسم الرحمن لله عز وجل في سياق ترهيبي.."
-status: draft
+status: published
 published_at: 2021-10-11
 person: abu-jafar-al-khalifi
 ---

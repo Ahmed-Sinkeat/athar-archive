@@ -1,6 +1,6 @@
 ---
 title: "هذه الأخت أوجزت المشكلة وهذا أمر معلوم عند كل من يستمع للشبهات فكثيرا ما يأتيك إ"
-status: draft
+status: published
 published_at: 2020-08-09
 person: abu-jafar-al-khalifi
 ---

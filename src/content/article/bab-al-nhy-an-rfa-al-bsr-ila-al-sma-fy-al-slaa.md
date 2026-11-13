@@ -1,6 +1,6 @@
 ---
 title: "باب النهي عن رفع البصر إلى السماء في الصلاة"
-status: draft
+status: published
 published_at: 2025-08-25
 person: abu-abdillah-firas-al-ramli
 ---

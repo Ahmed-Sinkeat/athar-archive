@@ -1,6 +1,6 @@
 ---
 title: "الرِق ومُلك اليمين"
-status: draft
+status: published
 published_at: 2026-10-20
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

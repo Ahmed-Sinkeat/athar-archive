@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية كما في الفتاوى الكبرى (3/176)"
-status: draft
+status: published
 published_at: 2018-04-20
 person: abu-jafar-al-khalifi
 ---

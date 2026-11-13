@@ -1,6 +1,6 @@
 ---
 title: "في القرط على الكامل لأبي الوليد الوقشي المالكي"
-status: draft
+status: published
 published_at: 2019-11-27
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

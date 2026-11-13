@@ -1,6 +1,6 @@
 ---
 title: "شرح كتاب عمدة الفقه"
-status: draft
+status: published
 published_at: 2018-10-05
 person: abu-jafar-al-khalifi
 ---

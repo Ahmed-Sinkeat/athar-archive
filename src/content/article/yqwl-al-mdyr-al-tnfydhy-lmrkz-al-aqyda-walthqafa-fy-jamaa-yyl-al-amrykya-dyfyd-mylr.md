@@ -1,6 +1,6 @@
 ---
 title: "يقول المدير التنفيذي لمركز العقيدة والثقافة في جامعة ييل الأمريكية (ديفيد ميلر )"
-status: draft
+status: published
 published_at: 2017-10-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "قال الله تعالى ( رجال لا تلهيهم تجارة ولا بيع عن ذكر الله ) ..."
-status: draft
+status: published
 published_at: 2019-05-05
 person: abu-jafar-al-khalifi
 ---

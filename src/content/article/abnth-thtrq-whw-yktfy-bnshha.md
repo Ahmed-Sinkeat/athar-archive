@@ -1,6 +1,6 @@
 ---
 title: "ابنته تحترق وهو يكتفي بنصحها!"
-status: draft
+status: published
 published_at: 2024-08-11
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

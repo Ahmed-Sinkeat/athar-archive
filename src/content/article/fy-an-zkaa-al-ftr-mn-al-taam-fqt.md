@@ -1,6 +1,6 @@
 ---
 title: "في أن زكاة الفطر من الطعام فقط"
-status: draft
+status: published
 published_at: 2024-04-07
 person: abu-abdillah-firas-al-ramli
 ---

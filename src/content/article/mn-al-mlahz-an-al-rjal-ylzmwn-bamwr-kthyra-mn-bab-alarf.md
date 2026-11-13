@@ -1,6 +1,6 @@
 ---
 title: "من الملاحظ أن الرجال يُلزمون بأمور كثيرة من باب (العرف)"
-status: draft
+status: published
 published_at: 2025-11-27
 person: abu-jafar-al-khalifi
 ---

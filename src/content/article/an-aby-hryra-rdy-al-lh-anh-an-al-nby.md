@@ -1,6 +1,6 @@
 ---
 title: "◆ عن أبي هريرة رضي الله عنه أنَّ النبي ﷺ"
-status: draft
+status: published
 published_at: 2025-06-27
 person: awwab-bin-muhammad
 ---

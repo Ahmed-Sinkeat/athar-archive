@@ -1,6 +1,6 @@
 ---
 title: "باب فيمن فرح بشبَهِه بالنبي صلى الله عليه وسلم"
-status: draft
+status: published
 published_at: 2020-11-20
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

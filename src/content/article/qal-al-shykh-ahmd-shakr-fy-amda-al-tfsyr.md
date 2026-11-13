@@ -1,6 +1,6 @@
 ---
 title: "قال الشيخ أحمد شاكر في عمدة التفسير"
-status: draft
+status: published
 published_at: 2017-07-25
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

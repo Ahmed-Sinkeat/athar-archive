@@ -1,6 +1,6 @@
 ---
 title: "الصّلاة ثمّ الصّلاة ثمّ الصّلاة ..."
-status: draft
+status: published
 published_at: 2023-01-27
 person: abu-umair-imran-al-zubaidi
 ---

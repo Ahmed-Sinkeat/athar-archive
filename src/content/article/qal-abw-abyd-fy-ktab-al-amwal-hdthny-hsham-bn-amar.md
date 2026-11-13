@@ -1,6 +1,6 @@
 ---
 title: "قال أبو عبيد في كتاب الأموال 466 - (446) حَدَّثَنِي هِشَامُ بْنُ عَمَّارٍ"
-status: draft
+status: published
 published_at: 2017-06-25
 person: abu-jafar-al-khalifi
 ---

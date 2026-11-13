@@ -1,6 +1,6 @@
 ---
 title: "سنن النسائي الصغرى | باب ثواب من صلى مع الإمام حتى ينصرف"
-status: draft
+status: published
 published_at: 2024-03-23
 person: abu-abdillah-firas-al-ramli
 ---

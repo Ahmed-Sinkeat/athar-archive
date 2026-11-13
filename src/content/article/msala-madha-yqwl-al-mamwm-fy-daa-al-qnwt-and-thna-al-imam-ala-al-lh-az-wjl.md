@@ -1,6 +1,6 @@
 ---
 title: "مسألة: ماذا يقول المأموم في دعاء القنوت عند ثناء الإمام على الله عز وجل؟"
-status: draft
+status: published
 published_at: 2024-03-28
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال البيهقي في شعب الإيمان 2342- أَخبَرنا أَبُو عَبْدِ اللهِ الْحَافِظُ"
-status: draft
+status: published
 published_at: 2017-07-28
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

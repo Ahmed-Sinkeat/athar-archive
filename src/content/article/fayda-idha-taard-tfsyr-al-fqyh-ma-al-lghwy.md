@@ -1,6 +1,6 @@
 ---
 title: "فائدة: إذا تعارض تفسير الفقيه مع اللغوي؟"
-status: draft
+status: published
 published_at: 2024-01-13
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

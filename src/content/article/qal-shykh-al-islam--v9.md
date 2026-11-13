@@ -1,6 +1,6 @@
 ---
 title: "قال شيخ الإسلام"
-status: draft
+status: published
 published_at: 2019-11-28
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

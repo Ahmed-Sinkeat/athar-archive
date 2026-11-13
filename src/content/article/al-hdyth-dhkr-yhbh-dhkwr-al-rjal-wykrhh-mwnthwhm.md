@@ -1,6 +1,6 @@
 ---
 title: "الحديث ذكر يحبه ذكور الرجال ويكرهه مؤنثوهم"
-status: draft
+status: published
 published_at: 2024-05-18
 person: abu-abdillah-firas-al-ramli
 ---

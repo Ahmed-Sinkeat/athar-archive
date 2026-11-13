@@ -1,6 +1,6 @@
 ---
 title: "ابن الفتال النيسابوري يبطل التقليد الذي يقول به معظم الشيعة اليوم"
-status: draft
+status: published
 published_at: 2017-11-05
 person: abu-jafar-al-khalifi
 ---

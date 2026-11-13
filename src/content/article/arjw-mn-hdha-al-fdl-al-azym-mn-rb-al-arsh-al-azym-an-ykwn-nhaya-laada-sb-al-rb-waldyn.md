@@ -1,6 +1,6 @@
 ---
 title: "أرجو من هذا الفضل العظيم من رب العرش العظيم أن يكون نهايةً لعادة سب الرب والدين"
-status: draft
+status: published
 published_at: 2024-12-05
 person: abu-umair-imran-al-zubaidi
 ---

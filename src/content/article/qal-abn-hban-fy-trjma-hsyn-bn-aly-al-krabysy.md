@@ -1,6 +1,6 @@
 ---
 title: "قال ابن حبان في ترجمة حسين بن علي الكرابيسي"
-status: draft
+status: published
 published_at: 2023-10-10
 person: abu-abdillah-firas-al-ramli
 ---

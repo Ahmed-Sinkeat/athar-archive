@@ -1,6 +1,6 @@
 ---
 title: "الله يرضى عليك"
-status: draft
+status: published
 published_at: 2023-06-15
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

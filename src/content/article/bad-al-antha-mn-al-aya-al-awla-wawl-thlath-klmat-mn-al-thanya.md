@@ -1,6 +1,6 @@
 ---
 title: "بعد الانتهاء من الآية الأولى وأول ثلاث كلمات من الثانية"
-status: draft
+status: published
 published_at: 2023-05-13
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "في الأونة الأخيرة تكررت رؤيتي لأناسٍ يُعرّفون الإيمان بأنه التصديق دون دليل!."
-status: draft
+status: published
 published_at: 2023-04-28
 person: abu-umair-imran-al-zubaidi
 ---

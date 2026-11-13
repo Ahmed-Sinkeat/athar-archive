@@ -1,6 +1,6 @@
 ---
 title: "قال الجاحظ في كتاب الحيوان"
-status: draft
+status: published
 published_at: 2018-01-26
 person: abu-jafar-al-khalifi
 ---

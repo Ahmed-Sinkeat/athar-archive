@@ -1,6 +1,6 @@
 ---
 title: "يخطفون ولدك منك ثم يضعونه مع من لا يردعه دين أو خلق باسم الأب البديل!"
-status: draft
+status: published
 published_at: 2021-10-16
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
-title: "لا تنسوا إخوانكم المجاهدين في سوريا من [الدعاء](https"
-status: draft
+title: "لا تنسوا إخوانكم المجاهدين في سوريا من الدعاء"
+status: published
 published_at: 2025-03-06
 person: abu-abdillah-firas-al-ramli
 ---

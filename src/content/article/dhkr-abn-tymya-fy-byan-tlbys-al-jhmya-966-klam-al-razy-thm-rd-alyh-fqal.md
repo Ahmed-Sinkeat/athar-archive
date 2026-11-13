@@ -1,6 +1,6 @@
 ---
 title: "ذكر ابن تيمية في بيان تلبيس الجهمية (٩٦/٦) كلام الرازي ثم رد عليه فقال"
-status: draft
+status: published
 published_at: 2025-06-16
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "فن الممكن !"
-status: draft
+status: published
 published_at: 2019-06-21
 person: abu-jafar-al-khalifi
 ---

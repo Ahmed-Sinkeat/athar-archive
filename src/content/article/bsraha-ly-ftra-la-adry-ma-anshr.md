@@ -1,6 +1,6 @@
 ---
 title: "بصراحة لي فترة لا أدري ما أنشر."
-status: draft
+status: published
 published_at: 2026-02-22
 person: abu-umair-imran-al-zubaidi
 ---

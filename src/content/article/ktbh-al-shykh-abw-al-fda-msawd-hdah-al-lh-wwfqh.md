@@ -1,6 +1,6 @@
 ---
 title: "كتبه الشيخ أبو الفداء مسعود هداه الله ووفقه."
-status: draft
+status: published
 published_at: 2024-03-03
 person: abu-umair-imran-al-zubaidi
 ---

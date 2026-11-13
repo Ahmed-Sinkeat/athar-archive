@@ -1,6 +1,6 @@
 ---
 title: "المحافظة على الوضوء من أهم أسباب المحافظة على الصلاة بعد توفيق الله سبحانه وتعال"
-status: draft
+status: published
 published_at: 2024-08-26
 person: abu-umair-imran-al-zubaidi
 ---

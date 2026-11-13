@@ -1,6 +1,6 @@
 ---
 title: "85% من كل المنشورات المعادية للإسلام مصدرها الهند والولايات المتحدة والمملكة الم"
-status: draft
+status: published
 published_at: 2023-07-09
 person: abu-jafar-al-khalifi
 ---

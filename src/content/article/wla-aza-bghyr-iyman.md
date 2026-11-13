@@ -1,6 +1,6 @@
 ---
 title: "ولا عزاء بغير إيمان"
-status: draft
+status: published
 published_at: 2021-03-27
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

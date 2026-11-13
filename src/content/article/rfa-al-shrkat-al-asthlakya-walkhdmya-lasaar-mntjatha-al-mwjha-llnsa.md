@@ -1,6 +1,6 @@
 ---
 title: "رفع الشركات الاستهلاكية والخدمية لأسعار منتجاتها الموجهة للنساء"
-status: draft
+status: published
 published_at: 2025-01-27
 person: abu-umair-imran-al-zubaidi
 ---

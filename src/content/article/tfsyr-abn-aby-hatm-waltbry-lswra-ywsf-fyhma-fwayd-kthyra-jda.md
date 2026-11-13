@@ -1,6 +1,6 @@
 ---
 title: "تفسير ابن أبي حاتم والطبري لسورة يوسف فيهما فوائد كثيرة جدا."
-status: draft
+status: published
 published_at: 2025-05-01
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

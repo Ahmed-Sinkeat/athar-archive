@@ -1,6 +1,6 @@
 ---
 title: "\"وقال محمد بن يوسف"
-status: draft
+status: published
 published_at: 2021-05-28
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

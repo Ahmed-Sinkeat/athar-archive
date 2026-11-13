@@ -1,6 +1,6 @@
 ---
 title: "ومفضل بن يونس أبو شعبة ليس له إلا هذه الرواية وإذا كان التوثيق من الدولابي فلا ي"
-status: draft
+status: published
 published_at: 2019-11-13
 person: abu-jafar-al-khalifi
 ---

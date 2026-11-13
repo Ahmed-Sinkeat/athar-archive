@@ -1,6 +1,6 @@
 ---
 title: "في البسيط للواحدي"
-status: draft
+status: published
 published_at: 2017-05-18
 person: abu-jafar-al-khalifi
 ---

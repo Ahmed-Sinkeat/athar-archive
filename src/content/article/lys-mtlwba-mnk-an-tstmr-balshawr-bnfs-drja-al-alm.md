@@ -1,6 +1,6 @@
 ---
 title: "ليس مطلوبًا منك أن تستمر بالشعور بنفس درجة الألم"
-status: draft
+status: published
 published_at: 2023-10-22
 person: abu-umair-imran-al-zubaidi
 topics: ["al-wala-wal-bara"]

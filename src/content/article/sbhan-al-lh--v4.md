@@ -1,6 +1,6 @@
 ---
 title: "سبحان الله!."
-status: draft
+status: published
 published_at: 2023-07-15
 person: abu-umair-imran-al-zubaidi
 ---

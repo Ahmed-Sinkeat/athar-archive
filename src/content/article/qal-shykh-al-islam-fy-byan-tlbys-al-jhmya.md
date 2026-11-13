@@ -1,6 +1,6 @@
 ---
 title: "قال شيخ الإسلام في بيان تلبيس الجهمية (2/ 45)"
-status: draft
+status: published
 published_at: 2021-08-13
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

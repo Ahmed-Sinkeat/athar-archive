@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام يحيى بن معين رحمه الله وطيَّب ثراه"
-status: draft
+status: published
 published_at: 2026-04-08
 person: awwab-bin-muhammad
 ---

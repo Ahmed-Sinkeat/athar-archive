@@ -1,6 +1,6 @@
 ---
 title: "ولا يُعقَل أن يكون التقصير منهم والغرامة على الشريعة"
-status: draft
+status: published
 published_at: 2018-10-19
 person: abu-jafar-al-khalifi
 ---

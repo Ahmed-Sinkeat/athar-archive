@@ -1,6 +1,6 @@
 ---
 title: "هل كان عبد الله بن عمر، رضي الله عنهما، موسوسًا؟"
-status: draft
+status: published
 published_at: 2021-11-25
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

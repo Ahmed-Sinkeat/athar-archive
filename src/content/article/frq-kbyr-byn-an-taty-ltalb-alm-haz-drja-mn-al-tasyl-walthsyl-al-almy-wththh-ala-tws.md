@@ -1,6 +1,6 @@
 ---
 title: "فرق كبير بين أن تأتي لطالب علم حاز درجة من التأصيل والتحصيل العلمي وتحثه على توس"
-status: draft
+status: published
 published_at: 2018-06-06
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

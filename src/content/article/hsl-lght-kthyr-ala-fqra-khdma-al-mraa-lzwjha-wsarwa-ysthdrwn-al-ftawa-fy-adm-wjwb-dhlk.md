@@ -1,6 +1,6 @@
 ---
 title: "حصل لغط كثير على فقرة خدمة المرأة لزوجها وصاروا يستحضرون الفتاوى في عدم وجوب ذلك"
-status: draft
+status: published
 published_at: 2025-11-29
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "معيار التخلّف والتقدّم عند أتباع الأنبياء والرسل عبارة عن خطين متوازيين يبدآن في"
-status: draft
+status: published
 published_at: 2025-01-06
 person: abu-umair-imran-al-zubaidi
 ---

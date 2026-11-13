@@ -1,6 +1,6 @@
 ---
 title: "من نفائس شيخ الإسلام ابن تيمية في علة ذكر أبي لهب وزوجته"
-status: draft
+status: published
 published_at: 2019-07-07
 person: abu-jafar-al-khalifi
 ---

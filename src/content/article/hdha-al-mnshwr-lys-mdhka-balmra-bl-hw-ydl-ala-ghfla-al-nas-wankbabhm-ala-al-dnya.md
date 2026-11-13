@@ -1,6 +1,6 @@
 ---
 title: "هذا المنشور ليس مضحكًا بالمرة؛ بل هو يدل على غفلة الناس وانكبابهم على الدنيا!"
-status: draft
+status: published
 published_at: 2024-08-02
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

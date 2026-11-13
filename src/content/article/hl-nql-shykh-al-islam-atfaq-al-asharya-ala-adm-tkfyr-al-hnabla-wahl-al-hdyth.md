@@ -1,6 +1,6 @@
 ---
 title: "هل نقل شيخ الإسلام اتفاق الأشعرية على عدم تكفير الحنابلة وأهل الحديث؟"
-status: draft
+status: published
 published_at: 2021-07-29
 person: abu-jafar-al-khalifi
 ---

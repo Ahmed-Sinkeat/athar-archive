@@ -1,6 +1,6 @@
 ---
 title: "لاحظ هذه الازدواجية!"
-status: draft
+status: published
 published_at: 2024-12-23
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

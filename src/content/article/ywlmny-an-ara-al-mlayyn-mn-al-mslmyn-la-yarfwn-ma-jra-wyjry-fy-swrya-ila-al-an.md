@@ -1,6 +1,6 @@
 ---
 title: "يؤلمني أنّ أرى الملايين مِن المسلمين لا يعرفون ما جرى ويجري في سوريّا إلى الآن!."
-status: draft
+status: published
 published_at: 2022-09-21
 person: abu-umair-imran-al-zubaidi
 ---

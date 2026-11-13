@@ -1,6 +1,6 @@
 ---
 title: "كثيرون هم من يسخرون من فكرة الاشتراكية في إلغاء الملكية الفردية والتسوية بشكل مط"
-status: draft
+status: published
 published_at: 2018-04-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

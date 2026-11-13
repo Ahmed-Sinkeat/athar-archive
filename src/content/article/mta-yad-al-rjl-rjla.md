@@ -1,6 +1,6 @@
 ---
 title: "متى يعد الرجل رجلا ؟"
-status: draft
+status: published
 published_at: 2023-07-26
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "فلا تُذهِب نفسَك عليهم حسَرات: وقفتان للدَّاعي إلى الله تعالى"
-status: draft
+status: published
 published_at: 2025-04-26
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "40 يوما تقريبا على حلول شهر رمضان المبارك"
-status: draft
+status: published
 published_at: 2025-01-18
 person: abu-umair-imran-al-zubaidi
 ---

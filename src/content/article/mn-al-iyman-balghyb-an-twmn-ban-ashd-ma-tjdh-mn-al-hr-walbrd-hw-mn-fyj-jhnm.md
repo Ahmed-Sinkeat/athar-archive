@@ -1,6 +1,6 @@
 ---
 title: "من الإيمان بالغيب أن تؤمن بأنّ أشدّ ما تجده من الحر والبرد هو من فيج جهنم!"
-status: draft
+status: published
 published_at: 2024-06-03
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

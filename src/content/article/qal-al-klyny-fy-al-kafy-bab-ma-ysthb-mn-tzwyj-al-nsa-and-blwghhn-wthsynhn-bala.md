@@ -1,6 +1,6 @@
 ---
 title: "قال الكليني في الكافي (باب) * (ما يستحب من تزويج النساء عند بلوغهن وتحصينهن بالا"
-status: draft
+status: published
 published_at: 2018-04-30
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

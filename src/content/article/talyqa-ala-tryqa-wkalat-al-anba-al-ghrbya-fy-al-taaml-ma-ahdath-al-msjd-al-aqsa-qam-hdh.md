@@ -1,6 +1,6 @@
 ---
 title: "تعليقا على طريقة وكالات الأنباء الغربية في التعامل مع احداث المسجد الأقصى قام هذ"
-status: draft
+status: published
 published_at: 2021-05-10
 person: abu-jafar-al-khalifi
 ---

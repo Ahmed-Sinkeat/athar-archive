@@ -1,6 +1,6 @@
 ---
 title: "باب في استخدام قضايا المسلمين للدعوة للإسلام."
-status: draft
+status: published
 published_at: 2024-02-27
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

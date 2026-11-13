@@ -1,6 +1,6 @@
 ---
 title: "من أدعية القيام من المجلس"
-status: draft
+status: published
 published_at: 2025-04-17
 person: abu-abdillah-firas-al-ramli
 topics: ["al-iman"]

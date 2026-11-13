@@ -1,6 +1,6 @@
 ---
 title: "بين الرقائق الدينية والأخلاق النفعية"
-status: draft
+status: published
 published_at: 2019-11-17
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

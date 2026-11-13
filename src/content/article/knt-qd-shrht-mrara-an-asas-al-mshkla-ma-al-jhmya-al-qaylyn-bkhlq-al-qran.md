@@ -1,6 +1,6 @@
 ---
 title: "كنت قد شرحت مرارا أن أساس المشكلة مع الجهمية القائلين بخلق القرآن"
-status: draft
+status: published
 published_at: 2019-04-05
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هل المذهبية تساوي: لا إنكار في مسائل الخلاف؟"
-status: draft
+status: published
 published_at: 2021-09-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

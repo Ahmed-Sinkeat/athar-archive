@@ -1,6 +1,6 @@
 ---
 title: "إذا فهمت عقائد الناس وبنيتهم الاستدلالية فإنك ستستبعد عدداً من الاستدلالات والإل"
-status: draft
+status: published
 published_at: 2019-07-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

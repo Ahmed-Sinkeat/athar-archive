@@ -1,6 +1,6 @@
 ---
 title: "قال محمد بن عاصم في جزئه حدثنا شبابة حدثنا الفضيل بن مرزوق قال سمعت الحسن بن الح"
-status: draft
+status: published
 published_at: 2017-06-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

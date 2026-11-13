@@ -1,6 +1,6 @@
 ---
 title: "يقول (وليم فوكسويل) في كتابه (التوحيد وتطوره"
-status: draft
+status: published
 published_at: 2017-07-20
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

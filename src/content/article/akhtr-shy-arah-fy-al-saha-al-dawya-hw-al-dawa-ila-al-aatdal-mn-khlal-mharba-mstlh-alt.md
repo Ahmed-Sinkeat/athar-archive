@@ -1,6 +1,6 @@
 ---
 title: "أخطر شيء أراه في الساحة الدعوية هو الدعوة إلى الاعتدال من خلال محاربة مصطلح \"الت"
-status: draft
+status: published
 published_at: 2023-06-13
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

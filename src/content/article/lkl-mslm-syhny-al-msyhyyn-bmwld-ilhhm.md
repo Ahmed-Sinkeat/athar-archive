@@ -1,6 +1,6 @@
 ---
 title: "لكل مسلمٍ سيُهنِئ المسيحيين بمولد إلههم"
-status: draft
+status: published
 published_at: 2022-12-23
 person: abu-umair-imran-al-zubaidi
 ---

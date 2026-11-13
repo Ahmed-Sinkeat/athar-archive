@@ -1,6 +1,6 @@
 ---
 title: "الإعجاز في {إنا أعطيناك}..."
-status: draft
+status: published
 published_at: 2024-11-19
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

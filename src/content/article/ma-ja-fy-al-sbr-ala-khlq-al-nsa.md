@@ -1,6 +1,6 @@
 ---
 title: "ما جاء في الصبر على خلق النساء"
-status: draft
+status: published
 published_at: 2023-06-02
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

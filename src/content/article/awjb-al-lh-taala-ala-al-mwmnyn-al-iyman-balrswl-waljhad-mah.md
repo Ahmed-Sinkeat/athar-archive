@@ -1,6 +1,6 @@
 ---
 title: "أوجَبَ الله تعالى على المؤمنين الإيمان بالرسول ﷺ والجهاد معه"
-status: draft
+status: published
 published_at: 2026-07-04
 person: awwab-bin-muhammad
 topics: ["al-firaq-war-rudud", "al-asma-was-sifat", "al-sunnah-wal-bidah"]

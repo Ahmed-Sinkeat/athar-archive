@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية في بيان تلبيس الجهمية"
-status: draft
+status: published
 published_at: 2021-10-04
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

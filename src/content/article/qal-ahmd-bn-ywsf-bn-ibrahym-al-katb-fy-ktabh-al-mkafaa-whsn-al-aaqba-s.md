@@ -1,6 +1,6 @@
 ---
 title: "قال أحمد بن يوسف بن إبراهيم الكاتب في كتابه المكافأة وحسن العاقبة ص28"
-status: draft
+status: published
 published_at: 2019-03-05
 person: abu-jafar-al-khalifi
 ---

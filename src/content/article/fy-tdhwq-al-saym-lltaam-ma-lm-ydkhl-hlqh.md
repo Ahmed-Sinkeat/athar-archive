@@ -1,6 +1,6 @@
 ---
 title: "في تذوق الصائم للطعام ما لم يدخل حلقه"
-status: draft
+status: published
 published_at: 2024-03-17
 person: abu-abdillah-firas-al-ramli
 ---

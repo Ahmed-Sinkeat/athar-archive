@@ -1,6 +1,6 @@
 ---
 title: "هنا هذا الشيعي يزعم أن الإمام أحمد يقول في رواية عنه بكراهة المتعة فحسب"
-status: draft
+status: published
 published_at: 2026-03-28
 person: abu-jafar-al-khalifi
 ---

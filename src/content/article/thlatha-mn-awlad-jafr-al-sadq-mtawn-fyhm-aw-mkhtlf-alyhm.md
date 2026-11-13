@@ -1,6 +1,6 @@
 ---
 title: "ثلاثة من أولاد جعفر الصادق مطعون فيهم أو مختلف عليهم ..."
-status: draft
+status: published
 published_at: 2017-11-23
 person: abu-jafar-al-khalifi
 ---

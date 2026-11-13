@@ -1,6 +1,6 @@
 ---
 title: "هل تذكرون حين حدثتكم عن (دروع النسويات)؟"
-status: draft
+status: published
 published_at: 2026-09-28
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-iman"]

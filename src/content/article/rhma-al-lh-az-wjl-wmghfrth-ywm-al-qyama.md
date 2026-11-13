@@ -1,6 +1,6 @@
 ---
 title: "رحمة الله عز وجل ومغفرته يوم القيامة"
-status: draft
+status: published
 published_at: 2023-07-06
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

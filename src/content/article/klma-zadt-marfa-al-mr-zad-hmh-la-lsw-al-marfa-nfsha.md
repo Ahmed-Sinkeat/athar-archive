@@ -1,6 +1,6 @@
 ---
 title: "كلَّما زادتْ معرِفة المرء زاد همُّه لا لسوءِ المعرِفة نفسِها"
-status: draft
+status: published
 published_at: 2025-07-01
 person: awwab-bin-muhammad
 ---

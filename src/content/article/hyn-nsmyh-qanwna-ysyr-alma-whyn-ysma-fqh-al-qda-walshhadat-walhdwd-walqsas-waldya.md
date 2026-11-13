@@ -1,6 +1,6 @@
 ---
 title: "حين نسميه قانونا يصير علما وحين يسمى فقه القضاء والشهادات والحدود والقصاص والديا"
-status: draft
+status: published
 published_at: 2017-06-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "صياغة أخرى لهذا الكلام"
-status: draft
+status: published
 published_at: 2024-05-28
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

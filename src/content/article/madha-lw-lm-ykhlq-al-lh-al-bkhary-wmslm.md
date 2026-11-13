@@ -1,6 +1,6 @@
 ---
 title: "ماذا لو لم يخلق الله البخاريَّ ومسلم؟!"
-status: draft
+status: published
 published_at: 2025-05-06
 person: awwab-bin-muhammad
 ---

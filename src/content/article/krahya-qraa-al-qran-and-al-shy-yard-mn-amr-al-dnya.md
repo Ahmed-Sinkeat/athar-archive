@@ -1,6 +1,6 @@
 ---
 title: "كراهية قراءة القرآن عند الشيء يعرض من أمر الدنيا"
-status: draft
+status: published
 published_at: 2025-04-22
 person: abu-abdillah-firas-al-ramli
 ---

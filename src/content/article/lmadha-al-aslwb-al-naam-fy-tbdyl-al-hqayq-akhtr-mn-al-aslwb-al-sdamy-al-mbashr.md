@@ -1,6 +1,6 @@
 ---
 title: "لماذا الأسلوب الناعم في تبديل الحقائق أخطر من الأسلوب الصدامي المباشر؟"
-status: draft
+status: published
 published_at: 2025-10-17
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "al-wala-wal-bara"]

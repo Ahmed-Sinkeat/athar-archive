@@ -1,6 +1,6 @@
 ---
 title: "ليست قشورًا بل تذكير بالله واليوم الآخر"
-status: draft
+status: published
 published_at: 2022-10-14
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

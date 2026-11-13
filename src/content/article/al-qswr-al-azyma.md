@@ -1,6 +1,6 @@
 ---
 title: "القصور العظيمة"
-status: draft
+status: published
 published_at: 2023-03-31
 person: abu-umair-imran-al-zubaidi
 ---

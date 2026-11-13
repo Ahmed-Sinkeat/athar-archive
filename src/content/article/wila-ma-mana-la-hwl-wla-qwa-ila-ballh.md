@@ -1,6 +1,6 @@
 ---
 title: "وإلا ما معنى لا حول ولا قوة إلا بالله؟"
-status: draft
+status: published
 published_at: 2025-01-16
 person: abu-umair-imran-al-zubaidi
 ---

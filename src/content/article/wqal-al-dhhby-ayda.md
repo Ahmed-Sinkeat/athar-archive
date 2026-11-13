@@ -1,6 +1,6 @@
 ---
 title: "وقال الذهبي أيضاً"
-status: draft
+status: published
 published_at: 2018-02-19
 person: abu-jafar-al-khalifi
 ---

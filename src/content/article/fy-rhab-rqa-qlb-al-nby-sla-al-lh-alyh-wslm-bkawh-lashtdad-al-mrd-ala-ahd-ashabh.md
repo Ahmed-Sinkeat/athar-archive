@@ -1,6 +1,6 @@
 ---
 title: "في رحاب رقة قلب النبي صلى الله عليه وسلم (بكاؤه لاشتداد المرض على أحد أصحابه)"
-status: draft
+status: published
 published_at: 2022-07-17
 person: abu-jafar-al-khalifi
 ---

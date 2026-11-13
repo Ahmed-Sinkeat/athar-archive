@@ -1,6 +1,6 @@
 ---
 title: "قال القرطبي في الجامع لأحكام القرآن (8/ 73 - 74) وهو يتكلم عن الجزية"
-status: draft
+status: published
 published_at: 2017-06-12
 person: abu-jafar-al-khalifi
 ---

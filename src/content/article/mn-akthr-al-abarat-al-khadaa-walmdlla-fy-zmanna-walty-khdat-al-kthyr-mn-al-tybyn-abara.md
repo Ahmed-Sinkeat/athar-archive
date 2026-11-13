@@ -1,6 +1,6 @@
 ---
 title: "من أكثر العبارات الخادعة والمضللة في زماننا والتي خدعت الكثير من الطيبين عبارة ("
-status: draft
+status: published
 published_at: 2019-04-18
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

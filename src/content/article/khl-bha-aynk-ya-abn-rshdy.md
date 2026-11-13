@@ -1,6 +1,6 @@
 ---
 title: "كحل بها عينك يا ابن رشدي"
-status: draft
+status: published
 published_at: 2024-04-22
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

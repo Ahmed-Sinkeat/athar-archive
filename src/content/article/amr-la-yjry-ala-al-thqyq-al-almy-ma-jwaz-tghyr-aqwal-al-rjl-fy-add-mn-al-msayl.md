@@ -1,6 +1,6 @@
 ---
 title: "أمر لا يجري على التحقيق العلمي مع جواز تغير أقوال الرجل في عدد من المسائل"
-status: draft
+status: published
 published_at: 2019-09-29
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

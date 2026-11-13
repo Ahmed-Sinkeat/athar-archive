@@ -1,6 +1,6 @@
 ---
 title: "من أنفس الآثار التي وقفت عليها مؤخرا!"
-status: draft
+status: published
 published_at: 2026-07-24
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

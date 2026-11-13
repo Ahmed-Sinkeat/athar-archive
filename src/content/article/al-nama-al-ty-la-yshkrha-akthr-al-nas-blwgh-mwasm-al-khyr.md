@@ -1,6 +1,6 @@
 ---
 title: "النعمة التي لا يشكرها أكثر الناس: بلوغ مواسم الخير..."
-status: draft
+status: published
 published_at: 2026-02-17
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

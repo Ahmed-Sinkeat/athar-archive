@@ -1,6 +1,6 @@
 ---
 title: "هذا التعليق وجدته في منصة (x) تعليقاً على كلام لياسر الحبيب"
-status: draft
+status: published
 published_at: 2024-04-19
 person: abu-jafar-al-khalifi
 ---

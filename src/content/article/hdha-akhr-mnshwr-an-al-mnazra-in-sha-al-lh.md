@@ -1,6 +1,6 @@
 ---
 title: "هذا آخر منشور عن المناظرة إن شاء الله."
-status: draft
+status: published
 published_at: 2023-07-29
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

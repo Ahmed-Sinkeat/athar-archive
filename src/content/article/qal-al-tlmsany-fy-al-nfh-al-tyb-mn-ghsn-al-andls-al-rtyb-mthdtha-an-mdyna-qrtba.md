@@ -1,6 +1,6 @@
 ---
 title: "قال التلمساني في النفح الطيب من غصن الأندلس الرطيب متحدثاً عن مدينة قرطبة"
-status: draft
+status: published
 published_at: 2017-12-11
 person: abu-jafar-al-khalifi
 ---

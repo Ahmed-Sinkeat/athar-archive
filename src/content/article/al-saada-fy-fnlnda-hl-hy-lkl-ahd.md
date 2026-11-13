@@ -1,6 +1,6 @@
 ---
 title: "السعادة في فنلندا هل هي لكل أحد؟"
-status: draft
+status: published
 published_at: 2023-03-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

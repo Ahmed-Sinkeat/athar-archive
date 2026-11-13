@@ -1,6 +1,6 @@
 ---
 title: "أكتب هذا الكلام لبيان أن الخلاف السلفي الأشعري هو امتداد للخلاف الإسلامي الجهمي"
-status: draft
+status: published
 published_at: 2019-04-02
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

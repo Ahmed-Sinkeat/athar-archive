@@ -1,6 +1,6 @@
 ---
 title: "سلامة العقيدة تطييب للعيش ونجاة في الآخرة"
-status: draft
+status: published
 published_at: 2024-01-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

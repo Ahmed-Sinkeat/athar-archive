@@ -1,6 +1,6 @@
 ---
 title: "غالبكم رأى مقالي الذي كتبته تعقيبًا على فقرة واردة في كتاب الدكتور الفاضل هيثم ط"
-status: draft
+status: published
 published_at: 2023-08-30
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

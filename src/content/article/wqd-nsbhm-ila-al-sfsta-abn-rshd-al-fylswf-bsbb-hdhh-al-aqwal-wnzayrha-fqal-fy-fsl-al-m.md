@@ -1,6 +1,6 @@
 ---
 title: "وقد نسبهم إلى السفسطة ابن رشد الفيلسوف بسبب هذه الأقوال ونظائرها فقال في فصل الم"
-status: draft
+status: published
 published_at: 2020-03-31
 person: abu-jafar-al-khalifi
 ---

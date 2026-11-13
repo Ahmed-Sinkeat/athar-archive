@@ -1,6 +1,6 @@
 ---
 title: "بعض العوام غاية ما يهبدون فيه مسائل فقهية، ونحن نلوم عليهم ذلك."
-status: draft
+status: published
 published_at: 2024-07-07
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

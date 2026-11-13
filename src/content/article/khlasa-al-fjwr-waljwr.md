@@ -1,6 +1,6 @@
 ---
 title: "خلاصة الفجور والجور"
-status: draft
+status: published
 published_at: 2026-09-09
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

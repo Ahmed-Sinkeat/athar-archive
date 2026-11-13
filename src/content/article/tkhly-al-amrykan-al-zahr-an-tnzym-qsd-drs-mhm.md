@@ -1,6 +1,6 @@
 ---
 title: "تخلي الأمريكان الظاهر عن تنظيم قسد درس مهم."
-status: draft
+status: published
 published_at: 2026-01-18
 person: abu-umair-imran-al-zubaidi
 ---

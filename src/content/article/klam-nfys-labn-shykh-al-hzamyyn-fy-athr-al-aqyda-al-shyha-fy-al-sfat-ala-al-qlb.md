@@ -1,6 +1,6 @@
 ---
 title: "كلام نفيس لابن شيخ الحزاميين في أثر العقيدة الصحيحة في الصفات على القلب.."
-status: draft
+status: published
 published_at: 2021-05-26
 person: abu-jafar-al-khalifi
 ---

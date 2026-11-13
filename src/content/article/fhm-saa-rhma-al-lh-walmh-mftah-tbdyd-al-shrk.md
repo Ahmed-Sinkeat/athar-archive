@@ -1,6 +1,6 @@
 ---
 title: "فهم سعة رحمة الله وعلمه مفتاح تبديد الشرك."
-status: draft
+status: published
 published_at: 2023-05-05
 person: abu-jafar-al-khalifi
 ---

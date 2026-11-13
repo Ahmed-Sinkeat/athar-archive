@@ -1,6 +1,6 @@
 ---
 title: "أنزل كلام هذا الجهمي على ما يجري اليوم"
-status: draft
+status: published
 published_at: 2023-11-08
 person: abu-umair-imran-al-zubaidi
 ---

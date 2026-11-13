@@ -1,6 +1,6 @@
 ---
 title: "كيف وصلن إلى هذه المرحلة؟"
-status: draft
+status: published
 published_at: 2021-03-15
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-asma-was-sifat"]

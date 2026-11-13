@@ -1,6 +1,6 @@
 ---
 title: "أخبار متداولة عن اعتقال السلطات السعودية الشيخ بدر المشاري!."
-status: draft
+status: published
 published_at: 2023-07-18
 person: abu-umair-imran-al-zubaidi
 ---

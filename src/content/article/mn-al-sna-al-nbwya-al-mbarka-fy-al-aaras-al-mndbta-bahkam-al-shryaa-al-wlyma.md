@@ -1,6 +1,6 @@
 ---
 title: "مِن السُنّة النبويّة المباركة في الأعراس المنضبطة بأحكام الشريعة؛ الوليمة."
-status: draft
+status: published
 published_at: 2022-09-15
 person: abu-umair-imran-al-zubaidi
 ---

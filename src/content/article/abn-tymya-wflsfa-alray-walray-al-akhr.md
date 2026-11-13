@@ -1,6 +1,6 @@
 ---
 title: "ابن تيمية وفلسفة ”الرأي والرأي الآخر“.."
-status: draft
+status: published
 published_at: 2022-01-23
 person: abu-jafar-al-khalifi
 ---

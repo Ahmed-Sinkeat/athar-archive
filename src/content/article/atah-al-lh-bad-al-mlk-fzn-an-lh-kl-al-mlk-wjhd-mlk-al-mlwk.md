@@ -1,6 +1,6 @@
 ---
 title: "آتاه الله بعض الملك فظن أن له كل الملك وجحد ملك الملوك"
-status: draft
+status: published
 published_at: 2018-05-16
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

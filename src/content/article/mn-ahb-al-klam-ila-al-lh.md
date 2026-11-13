@@ -1,6 +1,6 @@
 ---
 title: "من أحب الكلام إلى الله"
-status: draft
+status: published
 published_at: 2026-03-28
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

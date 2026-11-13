@@ -1,6 +1,6 @@
 ---
 title: "بعيدا عن كونك عاهة لا تعرف الكتابة."
-status: draft
+status: published
 published_at: 2025-08-18
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

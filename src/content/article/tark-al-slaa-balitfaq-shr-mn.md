@@ -1,6 +1,6 @@
 ---
 title: "تارك الصلاة بالإتفاق شر من ..."
-status: draft
+status: published
 published_at: 2023-06-09
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا رجل يريد أن يساوي بين الحق والباطل"
-status: draft
+status: published
 published_at: 2026-04-08
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

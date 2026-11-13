@@ -1,6 +1,6 @@
 ---
 title: "عليك أن تدرك أمرًا"
-status: draft
+status: published
 published_at: 2023-09-16
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

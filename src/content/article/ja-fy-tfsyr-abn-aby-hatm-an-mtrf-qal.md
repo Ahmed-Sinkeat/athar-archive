@@ -1,6 +1,6 @@
 ---
 title: "جاء في تفسير ابن أبي حاتم 12815 - عَنْ مطرف قَالَ"
-status: draft
+status: published
 published_at: 2017-06-12
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

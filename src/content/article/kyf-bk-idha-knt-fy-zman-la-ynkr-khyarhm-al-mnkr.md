@@ -1,6 +1,6 @@
 ---
 title: "كيف بك إذا كنت في زمان لا ينكر خيارهم المنكر؟"
-status: draft
+status: published
 published_at: 2023-09-14
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "28353 - حدثنا عبيد اللَّه بن موسى قال"
-status: draft
+status: published
 published_at: 2023-08-16
 person: abu-umair-imran-al-zubaidi
 ---

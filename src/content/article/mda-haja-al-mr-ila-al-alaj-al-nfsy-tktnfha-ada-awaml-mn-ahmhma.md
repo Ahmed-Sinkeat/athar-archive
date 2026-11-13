@@ -1,6 +1,6 @@
 ---
 title: "مدى حاجةِ المرء إلى العلاجِ النَّفسي تكتنِفها عدة عوامِل مِن أهمهما"
-status: draft
+status: published
 published_at: 2025-11-16
 person: awwab-bin-muhammad
 ---

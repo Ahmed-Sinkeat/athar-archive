@@ -1,6 +1,6 @@
 ---
 title: "لقد سمعت كلام الدكتور كاملا بعيدا عن الاختزال"
-status: draft
+status: published
 published_at: 2026-10-09
 person: abu-jafar-al-khalifi
 ---

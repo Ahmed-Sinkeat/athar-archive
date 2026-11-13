@@ -1,6 +1,6 @@
 ---
 title: "تنبيهان حول هلاك الرسام السويدي..."
-status: draft
+status: published
 published_at: 2021-10-05
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "عجيبة من عجائب الإمامية في هذا الزمان"
-status: draft
+status: published
 published_at: 2019-06-25
 person: abu-jafar-al-khalifi
 ---

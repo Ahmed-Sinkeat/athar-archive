@@ -1,6 +1,6 @@
 ---
 title: "وقال ابن أبي العز الحنفي في رسالته الاتباع ردا على حنفي آخر في تفضيله لأبي حنيفة"
-status: draft
+status: published
 published_at: 2019-01-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

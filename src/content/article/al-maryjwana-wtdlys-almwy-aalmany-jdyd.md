@@ -1,6 +1,6 @@
 ---
 title: "الماريجوانا وتدليس علموي عالماني جديد"
-status: draft
+status: published
 published_at: 2021-01-06
 person: abu-jafar-al-khalifi
 ---

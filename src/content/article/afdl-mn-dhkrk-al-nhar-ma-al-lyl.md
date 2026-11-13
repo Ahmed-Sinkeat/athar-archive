@@ -1,6 +1,6 @@
 ---
 title: "أفضل من ذكرك النهار مع الليل"
-status: draft
+status: published
 published_at: 2024-11-15
 person: abu-abdillah-firas-al-ramli
 ---

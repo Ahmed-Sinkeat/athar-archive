@@ -1,6 +1,6 @@
 ---
 title: "نظرة السلف رضوان الله عليهم لمن يجالس أهل البدع ويتودد إليهم."
-status: draft
+status: published
 published_at: 2024-01-19
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "وقال ابن قدامة في المغني"
-status: draft
+status: published
 published_at: 2021-06-14
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "أفلا أرغب أن تدعو لي الملائكة!"
-status: draft
+status: published
 published_at: 2025-08-28
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أما من رجلٍ رشيد من المخالفين لنا، ولديه تواصل مع الأستاذ وليد فيناصحه؟!"
-status: draft
+status: published
 published_at: 2024-04-17
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

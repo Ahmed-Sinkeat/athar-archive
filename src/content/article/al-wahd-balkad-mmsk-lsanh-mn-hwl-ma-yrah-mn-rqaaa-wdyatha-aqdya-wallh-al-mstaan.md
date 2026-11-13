@@ -1,6 +1,6 @@
 ---
 title: "الواحد بالكاد ممسك لسانه من هول ما يراه من رقاعة ودياثة عقدية، والله المستعان."
-status: draft
+status: published
 published_at: 2025-06-17
 person: abu-umair-imran-al-zubaidi
 ---

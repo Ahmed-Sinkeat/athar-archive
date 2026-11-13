@@ -1,6 +1,6 @@
 ---
 title: "هذا موضوع تكلمت عنه مرارا في هذه القناة"
-status: draft
+status: published
 published_at: 2026-06-07
 person: abu-jafar-al-khalifi
 ---

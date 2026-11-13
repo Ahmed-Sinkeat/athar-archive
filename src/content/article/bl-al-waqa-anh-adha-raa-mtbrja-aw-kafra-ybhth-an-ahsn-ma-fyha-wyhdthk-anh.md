@@ -1,6 +1,6 @@
 ---
 title: "بل الواقع أنه اذا رأى متبرجة أو كافرة يبحث عن أحسن ما فيها ويحدثك عنه"
-status: draft
+status: published
 published_at: 2019-03-04
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

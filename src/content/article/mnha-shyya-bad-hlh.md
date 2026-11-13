@@ -1,6 +1,6 @@
 ---
 title: "مِنْهَا شَيْئًا بَعْدَ حِلِّهِ"
-status: draft
+status: published
 published_at: 2023-11-27
 person: abu-umair-imran-al-zubaidi
 topics: ["al-imamah-was-sahabah"]

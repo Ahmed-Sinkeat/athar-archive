@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال بعنوان [من داخل غابة الانتحار في اليابان]."
-status: draft
+status: published
 published_at: 2023-08-04
 person: abu-jafar-al-khalifi
 ---

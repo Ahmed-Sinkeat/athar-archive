@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال من وكالة رويترز الإخبارية من أيام فيروس كورونا"
-status: draft
+status: published
 published_at: 2022-11-20
 person: abu-jafar-al-khalifi
 ---

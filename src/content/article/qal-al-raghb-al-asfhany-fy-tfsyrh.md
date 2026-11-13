@@ -1,6 +1,6 @@
 ---
 title: "قال الراغب الأصفهاني في تفسيره"
-status: draft
+status: published
 published_at: 2017-06-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

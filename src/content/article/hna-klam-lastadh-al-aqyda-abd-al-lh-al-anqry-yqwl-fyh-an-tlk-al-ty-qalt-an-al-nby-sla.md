@@ -1,6 +1,6 @@
 ---
 title: "هنا كلام لأستاذ العقيدة عبد الله العنقري يقول فيه أن تلك التي قالت أن النبي صلى"
-status: draft
+status: published
 published_at: 2026-10-07
 person: abu-jafar-al-khalifi
 ---

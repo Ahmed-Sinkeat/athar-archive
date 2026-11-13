@@ -1,6 +1,6 @@
 ---
 title: "بل معركتنا مع كل دين لا يوحّد الله تبارك وتعالى!"
-status: draft
+status: published
 published_at: 2023-10-20
 person: abu-umair-imran-al-zubaidi
 ---

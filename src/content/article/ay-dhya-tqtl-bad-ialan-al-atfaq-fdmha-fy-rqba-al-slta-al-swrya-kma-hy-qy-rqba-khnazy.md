@@ -1,6 +1,6 @@
 ---
 title: "أي ضحية تقتل بعد إعلان الاتفاق فدمها في رقبة السلطة السورية كما هي قي رقبة خنازي"
-status: draft
+status: published
 published_at: 2026-01-18
 person: abu-umair-imran-al-zubaidi
 ---

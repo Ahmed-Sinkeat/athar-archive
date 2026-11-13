@@ -1,6 +1,6 @@
 ---
 title: "أهل الجنة يزدادون جمالا وحسنا كما يزدادون في الدنيا قباحة وهرما"
-status: draft
+status: published
 published_at: 2025-01-16
 person: abu-abdillah-firas-al-ramli
 ---

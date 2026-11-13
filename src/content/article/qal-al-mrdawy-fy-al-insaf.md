@@ -1,6 +1,6 @@
 ---
 title: "قال المرداوي في الإنصاف (2/ 55)"
-status: draft
+status: published
 published_at: 2023-03-09
 person: abu-jafar-al-khalifi
 ---

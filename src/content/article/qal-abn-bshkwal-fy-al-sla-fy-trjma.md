@@ -1,6 +1,6 @@
 ---
 title: "قال ابن بشكوال في الصلة في ترجمة"
-status: draft
+status: published
 published_at: 2019-03-19
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال المروذي في الورع خِضَابُ النِّسَاءِ وَمَا يُكْرَهُ مِنْ ذَلِكَ"
-status: draft
+status: published
 published_at: 2018-07-07
 person: abu-jafar-al-khalifi
 ---

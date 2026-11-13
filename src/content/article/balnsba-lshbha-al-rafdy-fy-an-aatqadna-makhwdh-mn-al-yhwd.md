@@ -1,6 +1,6 @@
 ---
 title: "بالنسبة لشبهة الرافضي في أنّ اعتقادنا مأخوذ من اليهود."
-status: draft
+status: published
 published_at: 2024-06-18
 person: abu-umair-imran-al-zubaidi
 ---

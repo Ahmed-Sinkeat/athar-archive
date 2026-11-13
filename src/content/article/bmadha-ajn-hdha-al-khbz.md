@@ -1,6 +1,6 @@
 ---
 title: "بماذا عجن هذا الخبز؟"
-status: draft
+status: published
 published_at: 2026-04-18
 person: abu-jafar-al-khalifi
 ---

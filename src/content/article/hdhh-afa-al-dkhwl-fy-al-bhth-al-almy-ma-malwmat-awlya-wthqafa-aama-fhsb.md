@@ -1,6 +1,6 @@
 ---
 title: "هذه آفة الدخول في البحث العلمي مع معلومات أولية وثقافة عامة فحسب"
-status: draft
+status: published
 published_at: 2023-03-18
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

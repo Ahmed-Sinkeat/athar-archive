@@ -1,6 +1,6 @@
 ---
 title: "أهل الشام سيف من سيوف الله عز وجل"
-status: draft
+status: published
 published_at: 2024-12-12
 person: abu-abdillah-firas-al-ramli
 ---

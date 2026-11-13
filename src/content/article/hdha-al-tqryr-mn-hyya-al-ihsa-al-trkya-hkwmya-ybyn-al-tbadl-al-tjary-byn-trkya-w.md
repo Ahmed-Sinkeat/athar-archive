@@ -1,6 +1,6 @@
 ---
 title: "هذا التقرير من هيئة الإحصاء التركية (حكومية) يُبيِّن التبادل التجاري بين تركيا و"
-status: draft
+status: published
 published_at: 2024-03-27
 person: abu-jafar-al-khalifi
 ---

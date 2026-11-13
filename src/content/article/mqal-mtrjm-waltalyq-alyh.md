@@ -1,6 +1,6 @@
 ---
 title: "مقال مترجم والتعليق عليه"
-status: draft
+status: published
 published_at: 2019-05-27
 person: abu-jafar-al-khalifi
 ---

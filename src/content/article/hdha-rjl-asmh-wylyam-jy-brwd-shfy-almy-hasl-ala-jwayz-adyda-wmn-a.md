@@ -1,6 +1,6 @@
 ---
 title: "هذا رجل اسمه ويليام جي برود William J Broad صحفي علمي حاصل على جوائز عديدة ومن ا"
-status: draft
+status: published
 published_at: 2022-02-04
 person: abu-jafar-al-khalifi
 ---

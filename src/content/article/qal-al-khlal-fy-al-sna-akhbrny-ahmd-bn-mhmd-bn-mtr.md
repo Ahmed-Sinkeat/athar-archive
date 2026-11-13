@@ -1,6 +1,6 @@
 ---
 title: "قال الخلال في السنة 657 - أخبرني أحمد بن محمد بن مطر"
-status: draft
+status: published
 published_at: 2020-01-18
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

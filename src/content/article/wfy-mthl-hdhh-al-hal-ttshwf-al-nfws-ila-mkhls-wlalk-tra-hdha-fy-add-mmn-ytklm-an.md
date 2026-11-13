@@ -1,6 +1,6 @@
 ---
 title: "وفي مثل هذه الحال تتشوف النفوس إلى (مخلِّص) ولعلك ترى هذا في عدد ممَّن يتكلم عن"
-status: draft
+status: published
 published_at: 2020-01-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

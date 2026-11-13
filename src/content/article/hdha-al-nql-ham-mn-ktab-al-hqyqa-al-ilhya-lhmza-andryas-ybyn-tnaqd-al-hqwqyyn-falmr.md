@@ -1,6 +1,6 @@
 ---
 title: "هذا النقل هام من كتاب الحقيقة الإلهية لحمزة أندرياس يُبين تناقض الحقوقيين فالمرء"
-status: draft
+status: published
 published_at: 2020-01-05
 person: abu-jafar-al-khalifi
 ---

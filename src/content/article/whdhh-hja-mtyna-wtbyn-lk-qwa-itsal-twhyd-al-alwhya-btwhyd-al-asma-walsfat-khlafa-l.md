@@ -1,6 +1,6 @@
 ---
 title: "وهذه حجة متينة وتبين لك قوة إتصال توحيد الألوهية بتوحيد الأسماء والصفات خلافاً ل"
-status: draft
+status: published
 published_at: 2021-02-20
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

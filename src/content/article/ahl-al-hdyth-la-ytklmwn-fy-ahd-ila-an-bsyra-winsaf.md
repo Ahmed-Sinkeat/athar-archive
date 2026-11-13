@@ -1,6 +1,6 @@
 ---
 title: "أهل الحديث لا يتكلمون في أحد إلا عن بصيرة وإنصاف"
-status: draft
+status: published
 published_at: 2023-11-10
 person: abu-abdillah-firas-al-ramli
 ---

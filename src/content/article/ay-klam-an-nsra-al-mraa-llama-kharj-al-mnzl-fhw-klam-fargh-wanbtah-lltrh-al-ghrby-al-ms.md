@@ -1,6 +1,6 @@
 ---
 title: "أي كلام عن نصرة المرأة للأمة خارج المنزل فهو كلام فارغ وانبطاح للطرح الغربي المس"
-status: draft
+status: published
 published_at: 2023-11-28
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا السؤال مبني على الظن الخاطئ بأنّ نصوص فضل العلم وطلب العلم تشمل جميع العلوم"
-status: draft
+status: published
 published_at: 2024-04-28
 person: abu-umair-imran-al-zubaidi
 ---

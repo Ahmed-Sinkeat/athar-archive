@@ -1,6 +1,6 @@
 ---
 title: "النهي عن الاستنجاء باليمين وتبديد أوهام منكري السنة والتقريبيين"
-status: draft
+status: published
 published_at: 2020-08-19
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

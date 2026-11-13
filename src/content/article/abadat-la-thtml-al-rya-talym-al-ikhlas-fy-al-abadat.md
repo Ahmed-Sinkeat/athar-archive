@@ -1,6 +1,6 @@
 ---
 title: "عبادات لا تحتمل الرياء (تعليم الإخلاص في العبادات)."
-status: draft
+status: published
 published_at: 2021-01-11
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الموت، الأمراض الخطيرة، الحروب، الحوادث، ونحو ذلك من أصناف البلاء."
-status: draft
+status: published
 published_at: 2025-07-02
 person: abu-umair-imran-al-zubaidi
 ---

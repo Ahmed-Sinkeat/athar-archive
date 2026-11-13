@@ -1,6 +1,6 @@
 ---
 title: "هناك أناس لا تعلم كيف يفكرون"
-status: draft
+status: published
 published_at: 2024-12-13
 person: abu-umair-imran-al-zubaidi
 ---

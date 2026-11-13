@@ -1,6 +1,6 @@
 ---
 title: "فكرة للآباء والأمهات.."
-status: draft
+status: published
 published_at: 2018-07-13
 person: abu-jafar-al-khalifi
 ---

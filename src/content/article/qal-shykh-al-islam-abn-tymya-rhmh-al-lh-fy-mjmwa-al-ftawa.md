@@ -1,6 +1,6 @@
 ---
 title: "قال شيخ الإسلام ابن تيمية رحمه الله في «مجموع الفتاوى"
-status: draft
+status: published
 published_at: 2025-11-04
 person: awwab-bin-muhammad
 ---

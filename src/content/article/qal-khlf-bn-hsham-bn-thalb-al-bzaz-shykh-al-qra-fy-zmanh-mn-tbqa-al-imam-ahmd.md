@@ -1,6 +1,6 @@
 ---
 title: "قال خَلَفُ بْنُ هِشَامٍ بن ثعلب البزاز شيخ القراء في زمانه ( من طبقة الإمام أحمد"
-status: draft
+status: published
 published_at: 2017-07-15
 person: abu-jafar-al-khalifi
 ---

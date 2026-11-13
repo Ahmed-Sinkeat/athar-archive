@@ -1,6 +1,6 @@
 ---
 title: "ورد عن علي بن أبي طالب في صحيح البخاري أنه ردى روعة بني جذيمة حين روعتهم خَيل خا"
-status: draft
+status: published
 published_at: 2017-11-23
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وقوله - عَزَّ وَجَلَّ"
-status: draft
+status: published
 published_at: 2017-06-10
 person: abu-jafar-al-khalifi
 ---

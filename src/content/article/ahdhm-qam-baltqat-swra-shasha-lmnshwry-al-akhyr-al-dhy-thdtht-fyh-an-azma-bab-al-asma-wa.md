@@ -1,6 +1,6 @@
 ---
 title: "أحدهم قام بالتقاط صورة شاشة لمنشوري الأخير الذي تحدثت فيه عن عظمة باب الأسماء وا"
-status: draft
+status: published
 published_at: 2023-08-06
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

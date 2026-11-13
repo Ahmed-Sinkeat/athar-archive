@@ -1,6 +1,6 @@
 ---
 title: "لو جئت بمسلمٍ قد اغتـ \" ـب امرأة، وبآخر ترك الصّلاة تهاونًا لأسبوع."
-status: draft
+status: published
 published_at: 2023-01-08
 person: abu-umair-imran-al-zubaidi
 ---

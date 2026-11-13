@@ -1,6 +1,6 @@
 ---
 title: "ستُستردُّ حديثاً كما استردَّت قديماً بإذن الله…"
-status: draft
+status: published
 published_at: 2024-12-01
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب علم الأحياء والأيدلوجيا لستيفن روز وآخرون ص42"
-status: draft
+status: published
 published_at: 2017-10-14
 person: abu-jafar-al-khalifi
 ---

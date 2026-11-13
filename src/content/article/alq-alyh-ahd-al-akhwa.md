@@ -1,6 +1,6 @@
 ---
 title: "علق عليه أحد الأخوة"
-status: draft
+status: published
 published_at: 2023-12-09
 person: abu-jafar-al-khalifi
 ---

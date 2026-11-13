@@ -1,6 +1,6 @@
 ---
 title: "يلاحظ أن النصرانيات في كثير من الأحيان يغطين رؤوسهن عند الصلاة في الكنيسة"
-status: draft
+status: published
 published_at: 2019-04-04
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي شيبة في المصنف [ 26323"
-status: draft
+status: published
 published_at: 2020-01-10
 person: abu-jafar-al-khalifi
 ---

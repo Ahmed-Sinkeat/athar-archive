@@ -1,6 +1,6 @@
 ---
 title: "قام أحد الصبية بمحاولة التشغيب على إلزامي القاطع بإجماع السلف على ذم أبي حنيفة"
-status: draft
+status: published
 published_at: 2024-04-06
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "أتحب أن ينظر الله إليك يوم القيامة؟"
-status: draft
+status: published
 published_at: 2025-10-17
 person: abu-abdillah-firas-al-ramli
 ---

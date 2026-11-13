@@ -1,6 +1,6 @@
 ---
 title: "هناك مشاركة رأيتها لبعض الشباب في أحد المنتديات المهتمة بالرد على الإلحاد يقول ف"
-status: draft
+status: published
 published_at: 2020-04-09
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

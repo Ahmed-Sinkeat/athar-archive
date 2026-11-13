@@ -1,6 +1,6 @@
 ---
 title: "سئل سفيان الثوري عن : إخراب العمران وقطع الشجر في بلاد العدو ؟"
-status: draft
+status: published
 published_at: 2017-11-28
 person: abu-jafar-al-khalifi
 ---

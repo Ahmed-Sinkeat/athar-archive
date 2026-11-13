@@ -1,6 +1,6 @@
 ---
 title: "(لن ينالَ اللهَ لحومها ولا دماؤها ولكن ينالهُ التقوى منكم) سورة الحج."
-status: draft
+status: published
 published_at: 2025-09-23
 person: abu-umair-imran-al-zubaidi
 ---

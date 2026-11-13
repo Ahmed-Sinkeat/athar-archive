@@ -1,6 +1,6 @@
 ---
 title: "مسألة في شعر علي بن أبي طالب رضي الله عنه"
-status: draft
+status: published
 published_at: 2020-05-30
 person: abu-jafar-al-khalifi
 ---

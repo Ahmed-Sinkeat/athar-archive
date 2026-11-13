@@ -1,6 +1,6 @@
 ---
 title: "الحقُّ ثابِت باقٍ أحببته أم لم تُحببه"
-status: draft
+status: published
 published_at: 2025-04-03
 person: awwab-bin-muhammad
 ---

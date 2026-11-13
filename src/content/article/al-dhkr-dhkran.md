@@ -1,6 +1,6 @@
 ---
 title: "الذكر ذكران ..."
-status: draft
+status: published
 published_at: 2023-06-02
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "al-iman"]

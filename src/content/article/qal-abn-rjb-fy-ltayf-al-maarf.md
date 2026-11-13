@@ -1,6 +1,6 @@
 ---
 title: "قال ابن رجب في لطائف المعارف"
-status: draft
+status: published
 published_at: 2017-10-20
 person: abu-jafar-al-khalifi
 ---

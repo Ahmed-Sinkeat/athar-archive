@@ -1,6 +1,6 @@
 ---
 title: "في واحد كان بده يحرق كتب العقيدة بعد القرن الثالث لأنها أبحاث غير مهمة وما منها"
-status: draft
+status: published
 published_at: 2023-08-27
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لا تفكر كثيرا"
-status: draft
+status: published
 published_at: 2024-09-08
 person: abu-umair-imran-al-zubaidi
 ---

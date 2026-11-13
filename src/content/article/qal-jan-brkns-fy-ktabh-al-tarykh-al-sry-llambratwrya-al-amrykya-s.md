@@ -1,6 +1,6 @@
 ---
 title: "قال جان بركنس في كتابه التاريخ السري للامبراطورية الامريكية ص18"
-status: draft
+status: published
 published_at: 2017-12-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

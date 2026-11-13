@@ -1,6 +1,6 @@
 ---
 title: "و) في صحيح البخاري عن أبي وائل قال جلستُ إلى شيبة في هذا المسجد"
-status: draft
+status: published
 published_at: 2021-02-19
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs", "al-imamah-was-sahabah", "al-sunnah-wal-bidah"]

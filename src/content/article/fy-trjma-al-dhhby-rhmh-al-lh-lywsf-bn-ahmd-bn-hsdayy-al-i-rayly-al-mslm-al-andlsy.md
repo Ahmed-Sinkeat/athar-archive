@@ -1,6 +1,6 @@
 ---
 title: "في ترجمة الذهبي -رحمه الله- ليوسف بن أحمد بن حسدائي الإ\" ـرا\"يلي المسلم الأندلسي"
-status: draft
+status: published
 published_at: 2023-01-28
 person: abu-umair-imran-al-zubaidi
 ---

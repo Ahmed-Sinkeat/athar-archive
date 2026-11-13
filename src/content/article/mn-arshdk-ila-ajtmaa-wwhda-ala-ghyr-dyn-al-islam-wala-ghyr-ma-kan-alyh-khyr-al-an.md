@@ -1,6 +1,6 @@
 ---
 title: "مَن أرشَدك إلى اجتِماع ووحدة على غير دينِ الإسلام وعلى غير ما كان عليه خيرُ الأن"
-status: draft
+status: published
 published_at: 2025-11-04
 person: awwab-bin-muhammad
 ---

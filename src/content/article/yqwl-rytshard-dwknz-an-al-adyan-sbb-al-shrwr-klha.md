@@ -1,6 +1,6 @@
 ---
 title: "يقول ريتشارد دوكنز أن الأديان سبب الشرور كلها"
-status: draft
+status: published
 published_at: 2017-09-20
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "فريدريك نيتشة فيلسوف ملحد والملاحدة في العادة يسوقون له لأنه يحارب الأديان"
-status: draft
+status: published
 published_at: 2018-01-31
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

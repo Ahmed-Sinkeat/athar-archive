@@ -1,6 +1,6 @@
 ---
 title: "هجران الأحمق"
-status: draft
+status: published
 published_at: 2023-12-03
 person: abu-abdillah-firas-al-ramli
 ---

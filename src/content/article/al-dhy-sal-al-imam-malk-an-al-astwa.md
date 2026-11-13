@@ -1,6 +1,6 @@
 ---
 title: "الذي سأل الإمام مالك عن الاستواء"
-status: draft
+status: published
 published_at: 2025-01-12
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-asma-was-sifat", "al-sunnah-wal-bidah"]

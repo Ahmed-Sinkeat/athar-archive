@@ -1,6 +1,6 @@
 ---
 title: "هذا التعليق في شأن الصحفية النصرانية التي قتلها الصهاينة."
-status: draft
+status: published
 published_at: 2022-05-11
 person: abu-jafar-al-khalifi
 ---

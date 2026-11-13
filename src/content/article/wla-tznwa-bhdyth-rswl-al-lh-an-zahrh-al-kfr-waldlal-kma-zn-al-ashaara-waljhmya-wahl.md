@@ -1,6 +1,6 @@
 ---
 title: "ولا تظنوا بحديث رسول الله ﷺ أن ظاهره الكفر والضلال كما ظن الأشاعرة والجهمية وأهل"
-status: draft
+status: published
 published_at: 2023-05-30
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "في المزامير المطبوعة ضمن العهد القديم"
-status: draft
+status: published
 published_at: 2019-03-07
 person: abu-jafar-al-khalifi
 ---

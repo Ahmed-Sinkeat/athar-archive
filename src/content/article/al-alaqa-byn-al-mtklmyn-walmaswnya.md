@@ -1,6 +1,6 @@
 ---
 title: "العلاقة بين المتكلمين والماسونية..."
-status: draft
+status: published
 published_at: 2024-10-24
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "الإحسان لا ينفع بغير إيمان {ثم كان من الذين آمنوا}..."
-status: draft
+status: published
 published_at: 2022-10-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

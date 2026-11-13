@@ -1,6 +1,6 @@
 ---
 title: "قال الفاكهي في أخبار مكة ذكر مَاذَا يفعل بالكسوة الْقَدِيمَة للكعبة"
-status: draft
+status: published
 published_at: 2017-12-29
 person: abu-jafar-al-khalifi
 ---

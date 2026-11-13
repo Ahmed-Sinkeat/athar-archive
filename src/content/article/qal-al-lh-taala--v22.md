@@ -1,6 +1,6 @@
 ---
 title: "قال الله تعالى"
-status: draft
+status: published
 published_at: 2019-05-27
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

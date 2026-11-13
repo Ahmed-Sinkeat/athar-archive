@@ -1,6 +1,6 @@
 ---
 title: "( الأصل في الأشياء الإباحة )."
-status: draft
+status: published
 published_at: 2019-09-01
 person: abu-jafar-al-khalifi
 ---

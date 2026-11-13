@@ -1,6 +1,6 @@
 ---
 title: "لفتاة من نيوجرسي ولدت طفلا في الحمام أثناء حفلة راقصة في المدرسة التي تدرس فيها"
-status: draft
+status: published
 published_at: 2017-08-01
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "على من كان ينكر الفركاح الفزاري تكفير الحنابلة؟"
-status: draft
+status: published
 published_at: 2023-08-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

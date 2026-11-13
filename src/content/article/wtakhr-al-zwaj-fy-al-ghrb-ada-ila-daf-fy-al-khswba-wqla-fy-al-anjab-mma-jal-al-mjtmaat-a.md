@@ -1,6 +1,6 @@
 ---
 title: "وتأخر الزواج في الغرب أدى إلى ضعف في الخصوبة وقلة في الانجاب مما جعل المجتمعات ا"
-status: draft
+status: published
 published_at: 2020-08-05
 person: abu-jafar-al-khalifi
 ---

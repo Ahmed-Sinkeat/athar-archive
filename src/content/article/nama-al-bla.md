@@ -1,6 +1,6 @@
 ---
 title: "نعمة البلاء"
-status: draft
+status: published
 published_at: 2023-10-18
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

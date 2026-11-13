@@ -1,6 +1,6 @@
 ---
 title: "حجية الصحابي"
-status: draft
+status: published
 published_at: 2024-02-21
 person: abu-abdillah-firas-al-ramli
 ---

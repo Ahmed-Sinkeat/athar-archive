@@ -1,6 +1,6 @@
 ---
 title: "في رحاب رحمة السلف الجامعة بين المصالح"
-status: draft
+status: published
 published_at: 2020-03-01
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

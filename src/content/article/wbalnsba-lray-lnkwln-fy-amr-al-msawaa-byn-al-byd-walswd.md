@@ -1,6 +1,6 @@
 ---
 title: "وبالنسبة لرأي لنكولن في أمر المساواة بين البيض والسود"
-status: draft
+status: published
 published_at: 2019-03-14
 person: abu-jafar-al-khalifi
 ---

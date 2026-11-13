@@ -1,6 +1,6 @@
 ---
 title: "الأمر أوضح من هذا التعقيد."
-status: draft
+status: published
 published_at: 2020-04-08
 person: abu-jafar-al-khalifi
 ---

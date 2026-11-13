@@ -1,6 +1,6 @@
 ---
 title: "قولهم أنت مع من أحببت وإن خالفته في العمل والقول!"
-status: draft
+status: published
 published_at: 2023-09-07
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

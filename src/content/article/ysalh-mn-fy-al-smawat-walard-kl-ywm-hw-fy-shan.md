@@ -1,6 +1,6 @@
 ---
 title: "يَسْأَلُهُ مَن فِي السَّمَاوَاتِ وَالْأَرْضِ ۚ كُلَّ يَوْمٍ هُوَ فِي شَأْن"
-status: draft
+status: published
 published_at: 2023-09-03
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

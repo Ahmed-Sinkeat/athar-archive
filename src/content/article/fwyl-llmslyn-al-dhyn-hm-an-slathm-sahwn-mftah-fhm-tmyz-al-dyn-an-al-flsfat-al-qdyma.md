@@ -1,6 +1,6 @@
 ---
 title: "فويل للمصلين الذين هم عن صلاتهم ساهون (مفتاح فهم تميز الدين عن الفلسفات القديمة"
-status: draft
+status: published
 published_at: 2022-11-10
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

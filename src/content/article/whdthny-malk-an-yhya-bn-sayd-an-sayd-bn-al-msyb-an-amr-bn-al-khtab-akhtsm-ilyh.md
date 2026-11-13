@@ -1,6 +1,6 @@
 ---
 title: "1400 - وحدثني مالك عن يحيى بن سعيد عن سعيد بن المسيب ان عمر بن الخطاب اختصم إليه"
-status: draft
+status: published
 published_at: 2017-05-13
 person: abu-jafar-al-khalifi
 ---

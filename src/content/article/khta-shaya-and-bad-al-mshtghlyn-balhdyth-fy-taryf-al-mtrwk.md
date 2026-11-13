@@ -1,6 +1,6 @@
 ---
 title: "خطأ شائع عند بعض المشتغلين بالحديث في تعريف المتروك"
-status: draft
+status: published
 published_at: 2019-11-01
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

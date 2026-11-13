@@ -1,6 +1,6 @@
 ---
 title: "أهل رحمة الله أهل الجماعة"
-status: draft
+status: published
 published_at: 2023-08-30
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

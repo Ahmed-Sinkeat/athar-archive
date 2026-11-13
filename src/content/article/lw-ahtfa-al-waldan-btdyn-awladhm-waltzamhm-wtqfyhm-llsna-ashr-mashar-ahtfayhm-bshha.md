@@ -1,6 +1,6 @@
 ---
 title: "لو احتفى الوالدان بتديّن أولادهم والتزامهم وتقفيهم للسنة عشر معشار احتفائهم بشها"
-status: draft
+status: published
 published_at: 2024-11-22
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

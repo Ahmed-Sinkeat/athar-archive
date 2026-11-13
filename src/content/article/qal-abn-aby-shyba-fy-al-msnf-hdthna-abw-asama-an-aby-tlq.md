@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي شيبة في المصنف 19616- حَدَّثَنَا أَبُو أُسَامَةَ , عَنْ أَبِي طَلْقٍ"
-status: draft
+status: published
 published_at: 2017-11-18
 person: abu-jafar-al-khalifi
 ---

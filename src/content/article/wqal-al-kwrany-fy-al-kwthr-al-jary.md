@@ -1,6 +1,6 @@
 ---
 title: "وقال الكوراني في الكوثر الجاري"
-status: draft
+status: published
 published_at: 2020-03-26
 person: abu-jafar-al-khalifi
 ---

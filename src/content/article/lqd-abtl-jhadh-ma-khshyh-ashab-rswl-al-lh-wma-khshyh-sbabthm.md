@@ -1,6 +1,6 @@
 ---
 title: "لقد أبطل جهاده (ما خشيه أصحاب رسول الله ﷺ وما خشيه سبابتهم)"
-status: draft
+status: published
 published_at: 2024-10-11
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-imamah-was-sahabah"]

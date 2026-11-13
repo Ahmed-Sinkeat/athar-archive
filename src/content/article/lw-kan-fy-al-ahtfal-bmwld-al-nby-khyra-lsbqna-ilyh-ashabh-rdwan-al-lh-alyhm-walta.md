@@ -1,6 +1,6 @@
 ---
 title: "لو كان في الاحتفال بمولد النبي ﷺ خيرًا لسبقنا إليه أصحابه رضوان الله عليهم والتا"
-status: draft
+status: published
 published_at: 2023-09-21
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

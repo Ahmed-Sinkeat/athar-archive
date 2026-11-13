@@ -1,6 +1,6 @@
 ---
 title: "ظهر في زمن الشيخ عبد الرحمن المعلمي رجل ملحد اسمه حسن الضالعي وشبهاته تشبه إلى و"
-status: draft
+status: published
 published_at: 2018-10-14
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

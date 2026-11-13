@@ -1,6 +1,6 @@
 ---
 title: "إخراج المسلم من قفص الاتهام.."
-status: draft
+status: published
 published_at: 2022-04-17
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

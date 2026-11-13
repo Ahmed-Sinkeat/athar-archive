@@ -1,6 +1,6 @@
 ---
 title: "علينا أن نتأدب مع الله سبحانه وتعالى حتى فيما يجول في خواطرنا"
-status: draft
+status: published
 published_at: 2024-01-31
 person: abu-umair-imran-al-zubaidi
 ---

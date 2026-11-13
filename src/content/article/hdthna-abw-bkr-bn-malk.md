@@ -1,6 +1,6 @@
 ---
 title: "حَدَّثَنَا أَبُو بَكْرِ بْنُ مَالِكٍ"
-status: draft
+status: published
 published_at: 2024-02-18
 person: abu-umair-imran-al-zubaidi
 ---

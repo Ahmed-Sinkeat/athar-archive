@@ -1,6 +1,6 @@
 ---
 title: "فضل الشاب التارك لشهوته"
-status: draft
+status: published
 published_at: 2023-09-17
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

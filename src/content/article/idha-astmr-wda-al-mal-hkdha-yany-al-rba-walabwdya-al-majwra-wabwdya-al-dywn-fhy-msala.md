@@ -1,6 +1,6 @@
 ---
 title: "إذا استمر وضع المال هكذا يعني الربا والعبودية المأجورة وعبودية الديون فهي مسألة"
-status: draft
+status: published
 published_at: 2020-08-04
 person: abu-jafar-al-khalifi
 ---

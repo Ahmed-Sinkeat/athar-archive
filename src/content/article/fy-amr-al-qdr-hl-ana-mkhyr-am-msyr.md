@@ -1,6 +1,6 @@
 ---
 title: "في أمر القدر ... هل أنا مخير أم مسير؟!"
-status: draft
+status: published
 published_at: 2025-10-24
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

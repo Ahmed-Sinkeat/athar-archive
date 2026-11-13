@@ -1,6 +1,6 @@
 ---
 title: "قبل أن تتفذلك وتحدثنا عن \"مصلحة الأمة\" عرف لنا مرادك بالأمة يا فقيه الواقع السفي"
-status: draft
+status: published
 published_at: 2026-03-01
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

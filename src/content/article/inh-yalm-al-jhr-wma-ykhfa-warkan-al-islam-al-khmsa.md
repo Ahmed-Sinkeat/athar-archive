@@ -1,6 +1,6 @@
 ---
 title: "{إنه يعلم الجهر وما يخفى} وأركان الإسلام الخمسة..."
-status: draft
+status: published
 published_at: 2024-04-16
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أثر الإيمان بالصفات الإلهية على رقة القلب.."
-status: draft
+status: published
 published_at: 2021-10-21
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat", "tazkiyat-al-nafs"]

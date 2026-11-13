@@ -1,6 +1,6 @@
 ---
 title: "فائدة جميلة من أخي آدم من خلال باب القدر."
-status: draft
+status: published
 published_at: 2024-08-15
 person: abu-umair-imran-al-zubaidi
 ---

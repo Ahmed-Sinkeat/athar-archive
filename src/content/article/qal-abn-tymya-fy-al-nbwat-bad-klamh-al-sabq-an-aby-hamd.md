@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية في النبوات بعد كلامه السابق عن أبي حامد"
-status: draft
+status: published
 published_at: 2019-11-29
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "فهنا أحمد اشتد جداً في المسألة ومثله الشافعي وسبب الاشتداد ما شرحت لك"
-status: draft
+status: published
 published_at: 2019-06-02
 person: abu-jafar-al-khalifi
 ---

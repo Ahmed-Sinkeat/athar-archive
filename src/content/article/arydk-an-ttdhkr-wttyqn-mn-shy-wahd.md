@@ -1,6 +1,6 @@
 ---
 title: "أريدك أن تتذكر وتتيقن من شيء واحد"
-status: draft
+status: published
 published_at: 2025-06-16
 person: abu-umair-imran-al-zubaidi
 ---

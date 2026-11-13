@@ -1,6 +1,6 @@
 ---
 title: "سبحان الله الفطرة غلابة"
-status: draft
+status: published
 published_at: 2020-07-09
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

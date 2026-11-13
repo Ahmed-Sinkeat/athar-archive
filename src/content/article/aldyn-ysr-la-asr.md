@@ -1,6 +1,6 @@
 ---
 title: "\"الدّين يُسر لا عُسر\"."
-status: draft
+status: published
 published_at: 2022-09-17
 person: abu-umair-imran-al-zubaidi
 ---

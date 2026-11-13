@@ -1,6 +1,6 @@
 ---
 title: "وأنا أقرأ هذا الكتاب الطبي عن مرض الحساسية لفتت نظري هذه المعلومة وهي أن نمط الح"
-status: draft
+status: published
 published_at: 2020-06-06
 person: abu-jafar-al-khalifi
 ---

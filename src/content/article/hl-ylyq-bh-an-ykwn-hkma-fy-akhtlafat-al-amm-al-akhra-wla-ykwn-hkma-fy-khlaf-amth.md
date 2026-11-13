@@ -1,6 +1,6 @@
 ---
 title: "هل يليق به أن يكون حكماً في اختلافات الأمم الأخرى ولا يكون حكماً في خلاف أمته؟"
-status: draft
+status: published
 published_at: 2023-04-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "من تكلم فاتقى الله خير ممن صمت واتقى الله"
-status: draft
+status: published
 published_at: 2024-07-27
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

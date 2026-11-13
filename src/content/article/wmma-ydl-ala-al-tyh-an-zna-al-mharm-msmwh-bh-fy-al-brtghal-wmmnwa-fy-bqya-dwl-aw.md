@@ -1,6 +1,6 @@
 ---
 title: "وَمِمَّا يدل على التيه أن زنا المحارم مسموح به في البرتغال وممنوع في بقية دول أو"
-status: draft
+status: published
 published_at: 2018-06-20
 person: abu-jafar-al-khalifi
 ---

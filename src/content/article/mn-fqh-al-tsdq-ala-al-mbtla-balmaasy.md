@@ -1,6 +1,6 @@
 ---
 title: "من فقه التصدق على المبتلى بالمعاصي"
-status: draft
+status: published
 published_at: 2024-01-08
 person: abu-abdillah-firas-al-ramli
 ---

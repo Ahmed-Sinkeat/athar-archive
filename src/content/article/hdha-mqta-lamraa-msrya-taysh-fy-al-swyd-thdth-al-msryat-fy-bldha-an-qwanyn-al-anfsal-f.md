@@ -1,6 +1,6 @@
 ---
 title: "هذا مقطع لامرأة مصرية تعيش في السويد تحدث المصريات في بلدها عن قوانين الانفصال ف"
-status: draft
+status: published
 published_at: 2026-04-16
 person: abu-jafar-al-khalifi
 ---

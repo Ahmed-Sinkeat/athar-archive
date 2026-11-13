@@ -1,6 +1,6 @@
 ---
 title: "تُعتبر بروناي من الدول المتقدّمة اقتصاديّاً"
-status: draft
+status: published
 published_at: 2018-10-31
 person: abu-jafar-al-khalifi
 ---

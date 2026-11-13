@@ -1,6 +1,6 @@
 ---
 title: "مثل الذي يعمل السيئات ثم يعمل الحسنات"
-status: draft
+status: published
 published_at: 2024-07-22
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "{۞ وَالْوَالِدَاتُ يُرْضِعْنَ أَوْلَادَهُنَّ حَوْلَيْنِ كَامِلَيْنِ}"
-status: draft
+status: published
 published_at: 2023-03-24
 person: abu-umair-imran-al-zubaidi
 ---

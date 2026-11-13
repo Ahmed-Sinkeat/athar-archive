@@ -1,6 +1,6 @@
 ---
 title: "حقائق قد تصدم بعض الأمازيغ !*"
-status: draft
+status: published
 published_at: 2019-01-15
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

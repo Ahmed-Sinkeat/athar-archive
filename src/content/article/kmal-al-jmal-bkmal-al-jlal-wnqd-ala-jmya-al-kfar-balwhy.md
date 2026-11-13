@@ -1,6 +1,6 @@
 ---
 title: "كمال الجمال بكمال الجلال ونقضٌ على جميع الكفار بالوحي…"
-status: draft
+status: published
 published_at: 2024-04-02
 person: abu-jafar-al-khalifi
 ---

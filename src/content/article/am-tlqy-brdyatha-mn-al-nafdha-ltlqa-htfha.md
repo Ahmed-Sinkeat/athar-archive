@@ -1,6 +1,6 @@
 ---
 title: "أم تلقي برضيعتها من النافذة لتلقى حتفها"
-status: draft
+status: published
 published_at: 2024-07-09
 person: abu-jafar-al-khalifi
 ---

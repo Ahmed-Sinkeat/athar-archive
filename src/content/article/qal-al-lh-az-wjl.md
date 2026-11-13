@@ -1,6 +1,6 @@
 ---
 title: "قال الله عز وجل"
-status: draft
+status: published
 published_at: 2024-01-02
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

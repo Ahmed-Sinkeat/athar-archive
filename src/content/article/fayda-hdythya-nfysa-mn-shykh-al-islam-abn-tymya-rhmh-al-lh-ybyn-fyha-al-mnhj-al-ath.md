@@ -1,6 +1,6 @@
 ---
 title: "◆ فائدة حديثية نفيسة من شيخ الإسلام ابن تيمية رحمه الله يُبيِّن فيها المنهج الأث"
-status: draft
+status: published
 published_at: 2025-08-14
 person: awwab-bin-muhammad
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "بلغني أن بعض الشباب من المائلين للتفويض كتب بحثا ينسب فيه كتاب الرد على الجهمية"
-status: draft
+status: published
 published_at: 2018-04-21
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

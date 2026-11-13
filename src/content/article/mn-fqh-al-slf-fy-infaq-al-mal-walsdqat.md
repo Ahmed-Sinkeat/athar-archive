@@ -1,6 +1,6 @@
 ---
 title: "من فقه السلف في إنفاق المال والصدقات"
-status: draft
+status: published
 published_at: 2025-02-19
 person: abu-abdillah-firas-al-ramli
 ---

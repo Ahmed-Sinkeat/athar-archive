@@ -1,6 +1,6 @@
 ---
 title: "ثم قال الكرابيسي"
-status: draft
+status: published
 published_at: 2022-03-22
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

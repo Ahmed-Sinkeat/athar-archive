@@ -1,6 +1,6 @@
 ---
 title: "دعوه فإنه كان يؤدي حق الجمعة"
-status: draft
+status: published
 published_at: 2024-08-30
 person: abu-abdillah-firas-al-ramli
 ---

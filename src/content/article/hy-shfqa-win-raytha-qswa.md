@@ -1,6 +1,6 @@
 ---
 title: "هي شفقة وإن رأيتها قسوة."
-status: draft
+status: published
 published_at: 2023-08-16
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

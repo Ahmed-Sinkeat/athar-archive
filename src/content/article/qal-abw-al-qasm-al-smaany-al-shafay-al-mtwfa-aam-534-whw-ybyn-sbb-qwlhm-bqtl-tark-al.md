@@ -1,6 +1,6 @@
 ---
 title: "قال أبو القاسم السمعاني الشافعي المتوفى عام ٥٣٤ وهو يُبين سبب قولهم بقتل تارك ال"
-status: draft
+status: published
 published_at: 2018-10-11
 person: abu-jafar-al-khalifi
 ---

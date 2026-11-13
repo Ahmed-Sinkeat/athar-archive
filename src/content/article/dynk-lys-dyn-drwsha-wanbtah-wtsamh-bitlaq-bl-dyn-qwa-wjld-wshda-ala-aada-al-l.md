@@ -1,6 +1,6 @@
 ---
 title: "دينك ليس دين دروشة وانبطاح وتسامح بإطلاق؛ بل دين قوّة وجَلَد وشدّة على أعداء الل"
-status: draft
+status: published
 published_at: 2022-12-31
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قد أنزل الله على الرحمة المهداة {يا أيها النبي جاهد الكفار والمنافقين واغلظ عليه"
-status: draft
+status: published
 published_at: 2026-04-30
 person: abu-jafar-al-khalifi
 ---

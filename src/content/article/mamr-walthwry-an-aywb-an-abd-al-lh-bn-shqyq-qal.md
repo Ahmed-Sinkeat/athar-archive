@@ -1,6 +1,6 @@
 ---
 title: "معمر والثوري عن أيوب عن عبد الله بن شقيق قال"
-status: draft
+status: published
 published_at: 2018-09-21
 person: abu-jafar-al-khalifi
 ---

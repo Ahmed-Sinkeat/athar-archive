@@ -1,6 +1,6 @@
 ---
 title: "علاج الكتاب والسنة للمثبطات عن الصدقة..."
-status: draft
+status: published
 published_at: 2021-11-09
 person: abu-jafar-al-khalifi
 ---

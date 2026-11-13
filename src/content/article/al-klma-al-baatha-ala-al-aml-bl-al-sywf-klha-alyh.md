@@ -1,6 +1,6 @@
 ---
 title: "الكلمة الباعثة على الأمل (بل السيوف كلها عليه)"
-status: draft
+status: published
 published_at: 2024-10-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "al-sunnah-wal-bidah"]

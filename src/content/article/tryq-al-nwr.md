@@ -1,6 +1,6 @@
 ---
 title: "طريق النور.."
-status: draft
+status: published
 published_at: 2022-01-24
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

@@ -1,6 +1,6 @@
 ---
 title: "من مشاكل الفكر الحديث أنك تجد مصطلحا مجملا فضفاضا يتعلق به مدح أو ذم"
-status: draft
+status: published
 published_at: 2018-08-06
 person: abu-jafar-al-khalifi
 ---

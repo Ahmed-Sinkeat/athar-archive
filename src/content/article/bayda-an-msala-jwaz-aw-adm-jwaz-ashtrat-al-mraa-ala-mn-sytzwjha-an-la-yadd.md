@@ -1,6 +1,6 @@
 ---
 title: "بعيدًا عن مسألة جواز أو عدم جواز اشتراط المرأة على من سيتزوجها أن لا يُعدد"
-status: draft
+status: published
 published_at: 2023-03-19
 person: abu-umair-imran-al-zubaidi
 ---

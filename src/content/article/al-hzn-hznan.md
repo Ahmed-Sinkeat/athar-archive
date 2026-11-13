@@ -1,6 +1,6 @@
 ---
 title: "الحزن حزنان"
-status: draft
+status: published
 published_at: 2024-04-12
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

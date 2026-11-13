@@ -1,6 +1,6 @@
 ---
 title: "قل خيرا تغنم وأصمت تسلم قبل أن تندم"
-status: draft
+status: published
 published_at: 2023-06-11
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

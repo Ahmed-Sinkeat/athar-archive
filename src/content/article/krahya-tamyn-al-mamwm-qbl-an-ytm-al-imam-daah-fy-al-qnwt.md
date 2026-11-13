@@ -1,6 +1,6 @@
 ---
 title: "كراهية تأمين المأموم قبل أن يُتم الإمام دعاءه في القنوت"
-status: draft
+status: published
 published_at: 2026-03-12
 person: abu-abdillah-firas-al-ramli
 ---

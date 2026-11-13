@@ -1,6 +1,6 @@
 ---
 title: "عِلم جدّتي الأمّيّة في الله تبارك وتعالى خيرٌ من عِلم جميع علماء الأشاعرة؛ بل وأ"
-status: draft
+status: published
 published_at: 2023-08-14
 person: abu-umair-imran-al-zubaidi
 ---

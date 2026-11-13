@@ -1,6 +1,6 @@
 ---
 title: "قال الطبري في تفسيره 12758 - حدثنا ابن المثنى قال"
-status: draft
+status: published
 published_at: 2017-06-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

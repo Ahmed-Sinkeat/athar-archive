@@ -1,6 +1,6 @@
 ---
 title: "هذا كلام لامرأة عندها محفل تربوي"
-status: draft
+status: published
 published_at: 2024-05-16
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat", "al-sunnah-wal-bidah"]

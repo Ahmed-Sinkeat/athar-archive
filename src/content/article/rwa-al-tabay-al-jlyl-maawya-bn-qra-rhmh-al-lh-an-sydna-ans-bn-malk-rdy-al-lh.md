@@ -1,6 +1,6 @@
 ---
 title: "روى التابعيّ الجليل معاوية بن قرة -رحمه الله- عن سيّدنا أنسِ بنِ مالكٍ رضي الله"
-status: draft
+status: published
 published_at: 2023-04-09
 person: abu-umair-imran-al-zubaidi
 ---

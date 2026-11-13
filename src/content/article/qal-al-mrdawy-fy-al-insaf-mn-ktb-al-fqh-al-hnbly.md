@@ -1,6 +1,6 @@
 ---
 title: "قال المرداوي في الإنصاف من كتب الفقه الحنبلي"
-status: draft
+status: published
 published_at: 2017-07-16
 person: abu-jafar-al-khalifi
 ---

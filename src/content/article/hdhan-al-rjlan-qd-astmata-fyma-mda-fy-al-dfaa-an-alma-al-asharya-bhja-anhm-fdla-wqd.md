@@ -1,6 +1,6 @@
 ---
 title: "هذان الرجلان قد استماتا فيما مضى في الدفاع عن علماء الأشعرية بحجة أنهم فضلاء وقد"
-status: draft
+status: published
 published_at: 2025-01-10
 person: abu-umair-imran-al-zubaidi
 ---

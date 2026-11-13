@@ -1,6 +1,6 @@
 ---
 title: "كتبه أخي الحبيب حسّان النجار."
-status: draft
+status: published
 published_at: 2024-01-09
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

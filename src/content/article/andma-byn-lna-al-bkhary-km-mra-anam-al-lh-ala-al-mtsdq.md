@@ -1,6 +1,6 @@
 ---
 title: "عندما بيَّن لنا البخاري كم مرة أنعم الله على المتصدق..."
-status: draft
+status: published
 published_at: 2025-05-14
 person: abu-jafar-al-khalifi
 ---

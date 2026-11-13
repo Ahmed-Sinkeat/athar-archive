@@ -1,6 +1,6 @@
 ---
 title: "قال محمد فريد وجدي في مقال له نشر في مجلة الرسالة بعنوان مشروعية الحرب في الإسلا"
-status: draft
+status: published
 published_at: 2018-02-21
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

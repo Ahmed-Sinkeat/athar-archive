@@ -1,6 +1,6 @@
 ---
 title: "حفظوا كلام الحسن فكيف بكلام نبيهم صلى الله عليه وسلم؟"
-status: draft
+status: published
 published_at: 2022-02-10
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

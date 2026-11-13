@@ -1,6 +1,6 @@
 ---
 title: "الأصل الثاني : حتمية العامل البيئي"
-status: draft
+status: published
 published_at: 2020-06-30
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

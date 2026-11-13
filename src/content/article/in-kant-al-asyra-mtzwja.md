@@ -1,6 +1,6 @@
 ---
 title: "8- إن كانت الأسيرة متزوّجة"
-status: draft
+status: published
 published_at: 2022-09-20
 person: abu-umair-imran-al-zubaidi
 ---

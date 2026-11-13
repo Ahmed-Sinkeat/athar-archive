@@ -1,6 +1,6 @@
 ---
 title: "من العجائب في واقع عوام الشيعة الإمامية خصوصا في العراق تعلقهم بالعباس بن علي بن"
-status: draft
+status: published
 published_at: 2018-04-11
 person: abu-jafar-al-khalifi
 ---

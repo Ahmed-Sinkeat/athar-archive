@@ -1,6 +1,6 @@
 ---
 title: "المقصود هنا المعاقون"
-status: draft
+status: published
 published_at: 2021-02-16
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

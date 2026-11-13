@@ -1,6 +1,6 @@
 ---
 title: "قطع الله دابر هذا الزنديق."
-status: draft
+status: published
 published_at: 2024-08-14
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من السنة أن لا تأكل حتى ترجع من صلاة عيد الأضحى"
-status: draft
+status: published
 published_at: 2024-06-16
 person: abu-abdillah-firas-al-ramli
 ---

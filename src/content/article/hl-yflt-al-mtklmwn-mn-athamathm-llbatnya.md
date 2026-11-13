@@ -1,6 +1,6 @@
 ---
 title: "هل يفلت المتكلمون من اتهاماتهم للباطنية؟"
-status: draft
+status: published
 published_at: 2023-03-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

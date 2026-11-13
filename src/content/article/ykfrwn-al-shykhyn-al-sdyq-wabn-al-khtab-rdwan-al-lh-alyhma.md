@@ -1,6 +1,6 @@
 ---
 title: "يكفّرون الشيخين الصديق وابن الخطاب رضوان الله عليهما"
-status: draft
+status: published
 published_at: 2024-08-05
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

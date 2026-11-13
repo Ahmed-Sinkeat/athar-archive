@@ -1,6 +1,6 @@
 ---
 title: "قال جلال الدين محمد بن منكلي المصري في كتابه أنس الملأ بوحش الفلا"
-status: draft
+status: published
 published_at: 2017-11-02
 person: abu-jafar-al-khalifi
 ---

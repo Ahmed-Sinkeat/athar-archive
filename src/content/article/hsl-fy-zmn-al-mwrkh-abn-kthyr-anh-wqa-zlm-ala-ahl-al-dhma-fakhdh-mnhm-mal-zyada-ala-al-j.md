@@ -1,6 +1,6 @@
 ---
 title: "حصل في زمن المؤرخ ابن كثير أنه وقع ظلم على أهل الذمة فأخذ منهم مال زيادة على الج"
-status: draft
+status: published
 published_at: 2017-06-12
 person: abu-jafar-al-khalifi
 ---

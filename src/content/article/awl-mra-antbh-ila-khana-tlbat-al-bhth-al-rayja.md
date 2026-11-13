@@ -1,6 +1,6 @@
 ---
 title: "أول مرة أنتبه إلى خانة طلبات البحث الرائجة"
-status: draft
+status: published
 published_at: 2023-12-23
 person: abu-umair-imran-al-zubaidi
 ---

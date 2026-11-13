@@ -1,6 +1,6 @@
 ---
 title: "اعرف عدوك"
-status: draft
+status: published
 published_at: 2018-06-22
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

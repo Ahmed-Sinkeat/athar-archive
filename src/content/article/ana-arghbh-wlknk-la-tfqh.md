@@ -1,6 +1,6 @@
 ---
 title: "أنا أُرَغِّبه ولكنك لا تفقه!"
-status: draft
+status: published
 published_at: 2020-12-28
 person: abu-jafar-al-khalifi
 ---

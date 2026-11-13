@@ -1,6 +1,6 @@
 ---
 title: "ليس من عادتي أَن أضع موادا يوتيوبية هنا في القناة ولكنني تذكرت قصة هذا الطبيب وأ"
-status: draft
+status: published
 published_at: 2020-03-25
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

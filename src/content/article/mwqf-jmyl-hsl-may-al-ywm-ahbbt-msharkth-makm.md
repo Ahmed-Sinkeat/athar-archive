@@ -1,6 +1,6 @@
 ---
 title: "موقف جميل حصل معي اليوم أحببت مشاركته معكم"
-status: draft
+status: published
 published_at: 2023-11-15
 person: abu-abdillah-firas-al-ramli
 ---

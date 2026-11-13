@@ -1,6 +1,6 @@
 ---
 title: "اعمل لله ثم لا تشاهد العمل شاهد كرم الله عز وجل..."
-status: draft
+status: published
 published_at: 2024-03-03
 person: abu-jafar-al-khalifi
 ---

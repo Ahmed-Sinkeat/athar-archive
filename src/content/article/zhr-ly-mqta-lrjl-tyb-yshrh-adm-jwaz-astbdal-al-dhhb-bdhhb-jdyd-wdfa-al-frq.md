@@ -1,6 +1,6 @@
 ---
 title: "ظهر لي مقطع لرجل طيب يشرح عدم جواز استبدال الذهب بذهب جديد ودفع الفرق"
-status: draft
+status: published
 published_at: 2026-03-14
 person: abu-umair-imran-al-zubaidi
 ---

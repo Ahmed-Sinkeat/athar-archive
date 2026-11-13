@@ -1,6 +1,6 @@
 ---
 title: "الدروي الإنجليزي قبل مدة جعل شعار المرحلة دعم الشواذ الذين يسمونهم مثليين وأدخلو"
-status: draft
+status: published
 published_at: 2019-12-15
 person: abu-jafar-al-khalifi
 ---

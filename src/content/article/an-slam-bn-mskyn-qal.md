@@ -1,6 +1,6 @@
 ---
 title: "عن سلام بن مسكين قال"
-status: draft
+status: published
 published_at: 2025-08-01
 person: awwab-bin-muhammad
 ---

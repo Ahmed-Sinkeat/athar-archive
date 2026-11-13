@@ -1,6 +1,6 @@
 ---
 title: "أما التكفير فليس ظاهراً في كلام الشافعي وأما غيره فواضح بل العمود الفقري لكتاب ا"
-status: draft
+status: published
 published_at: 2019-07-25
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs", "al-sunnah-wal-bidah"]

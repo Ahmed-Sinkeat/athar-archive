@@ -1,6 +1,6 @@
 ---
 title: "نبذ \"التصنيف\" من أغبى الأمور وأكثرها تناقضًا حقيقةً."
-status: draft
+status: published
 published_at: 2024-04-10
 person: abu-umair-imran-al-zubaidi
 ---

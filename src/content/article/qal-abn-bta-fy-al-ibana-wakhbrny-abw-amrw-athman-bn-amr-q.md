@@ -1,6 +1,6 @@
 ---
 title: "قال ابن بطة في الإبانة 451 - وَأَخْبَرَنِي أَبُو عَمْرٍو عُثْمَانُ بْنُ عُمَرَ ق"
-status: draft
+status: published
 published_at: 2017-06-21
 person: abu-jafar-al-khalifi
 ---

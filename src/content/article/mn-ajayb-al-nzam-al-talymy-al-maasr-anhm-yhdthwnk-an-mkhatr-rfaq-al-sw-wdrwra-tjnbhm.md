@@ -1,6 +1,6 @@
 ---
 title: "من عجائب النظام التعليمي المعاصر أنهم يحدثونك عن مخاطر رفاق السوء وضرورة تجنبهم."
-status: draft
+status: published
 published_at: 2025-09-04
 person: abu-umair-imran-al-zubaidi
 ---

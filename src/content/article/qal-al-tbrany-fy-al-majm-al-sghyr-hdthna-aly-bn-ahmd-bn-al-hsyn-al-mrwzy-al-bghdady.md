@@ -1,6 +1,6 @@
 ---
 title: "قال الطبراني في المعجم الصغير 573 - حدثنا علي بن أحمد بن الحسين المروزي البغدادي"
-status: draft
+status: published
 published_at: 2019-03-28
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

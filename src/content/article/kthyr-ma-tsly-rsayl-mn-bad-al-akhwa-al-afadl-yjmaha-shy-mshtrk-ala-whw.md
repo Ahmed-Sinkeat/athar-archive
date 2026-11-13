@@ -1,6 +1,6 @@
 ---
 title: "كثيرٌ ما تصلي رسائل من بعض الأخوة الأفاضل يجمعها شيء مشترك ألا وهو"
-status: draft
+status: published
 published_at: 2023-04-29
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

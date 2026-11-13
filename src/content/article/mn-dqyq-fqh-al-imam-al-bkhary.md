@@ -1,6 +1,6 @@
 ---
 title: "من دقيق فقه الإمام البخاري"
-status: draft
+status: published
 published_at: 2018-04-26
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

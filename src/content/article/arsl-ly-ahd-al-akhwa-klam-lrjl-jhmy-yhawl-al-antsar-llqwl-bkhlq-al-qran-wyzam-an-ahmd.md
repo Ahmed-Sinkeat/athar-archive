@@ -1,6 +1,6 @@
 ---
 title: "أرسل لي أحد الأخوة كلام لرجل جهمي يحاول الانتصار للقول بخلق القرآن ويزعم أن أحمد"
-status: draft
+status: published
 published_at: 2018-03-07
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

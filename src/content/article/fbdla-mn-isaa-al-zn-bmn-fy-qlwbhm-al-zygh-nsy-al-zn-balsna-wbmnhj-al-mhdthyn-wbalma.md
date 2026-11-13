@@ -1,6 +1,6 @@
 ---
 title: "فبدلاً من إساءة الظن بمن في قلوبهم الزيغ نسيء الظن بالسنة وبمنهج المحدثين وبعلما"
-status: draft
+status: published
 published_at: 2020-08-19
 person: abu-jafar-al-khalifi
 ---

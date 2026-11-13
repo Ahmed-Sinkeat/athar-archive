@@ -1,6 +1,6 @@
 ---
 title: "وإذا كنا سنستدل على أحوال الأئمة مما رواه أصحابهم في كتبنا فإن حبة العرني الذي ا"
-status: draft
+status: published
 published_at: 2020-01-09
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-imamah-was-sahabah"]

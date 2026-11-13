@@ -1,6 +1,6 @@
 ---
 title: "تسوية الصفوف وفقه الإسناد والاتباع..."
-status: draft
+status: published
 published_at: 2024-10-16
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

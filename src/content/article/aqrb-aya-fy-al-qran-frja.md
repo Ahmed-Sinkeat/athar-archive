@@ -1,6 +1,6 @@
 ---
 title: "أقرب آية في القرآن فرجا"
-status: draft
+status: published
 published_at: 2025-03-23
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "أصحاب السؤال السخيف ( لماذا لم يستشرني الله قبل أن يخلقني )"
-status: draft
+status: published
 published_at: 2019-01-10
 person: abu-jafar-al-khalifi
 ---

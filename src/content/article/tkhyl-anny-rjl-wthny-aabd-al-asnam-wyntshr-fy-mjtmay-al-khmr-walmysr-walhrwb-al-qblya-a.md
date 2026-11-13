@@ -1,6 +1,6 @@
 ---
 title: "تخيل أنني رجل وثني أعبد الأصنام وينتشر في مجتمعي الخمر والميسر والحروب القبلية ا"
-status: draft
+status: published
 published_at: 2018-05-03
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

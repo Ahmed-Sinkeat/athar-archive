@@ -1,6 +1,6 @@
 ---
 title: "العطاء والاستجابة قد يكون أحياناً بمنع الإجابة..."
-status: draft
+status: published
 published_at: 2026-04-04
 person: abu-jafar-al-khalifi
 ---

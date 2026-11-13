@@ -1,6 +1,6 @@
 ---
 title: "هل تُشرع زكاة الفطر عن الوالدين المتوفين منذ زمن؟"
-status: draft
+status: published
 published_at: 2023-04-18
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

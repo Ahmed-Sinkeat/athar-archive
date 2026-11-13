@@ -1,6 +1,6 @@
 ---
 title: "قال سبحانه وتعالى"
-status: draft
+status: published
 published_at: 2025-05-05
 person: awwab-bin-muhammad
 ---

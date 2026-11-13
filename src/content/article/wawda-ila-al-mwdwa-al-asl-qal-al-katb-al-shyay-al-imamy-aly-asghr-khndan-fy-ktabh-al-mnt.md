@@ -1,6 +1,6 @@
 ---
 title: "وعوداً إلى الموضوع الأصل قال الكاتب الشيعي الإمامي علي أصغر خندان في كتابه المنط"
-status: draft
+status: published
 published_at: 2019-11-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

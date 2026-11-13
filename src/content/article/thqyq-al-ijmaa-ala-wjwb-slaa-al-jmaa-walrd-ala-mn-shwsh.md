@@ -1,6 +1,6 @@
 ---
 title: "تحقيق الإجماع على وجوب صلاة الجمعة والرد على من شوش"
-status: draft
+status: published
 published_at: 2019-11-21
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

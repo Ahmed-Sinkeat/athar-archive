@@ -1,6 +1,6 @@
 ---
 title: "تساؤلات في العمق للإمامية ومن تأثر بهم ..."
-status: draft
+status: published
 published_at: 2020-07-05
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "al-imamah-was-sahabah"]

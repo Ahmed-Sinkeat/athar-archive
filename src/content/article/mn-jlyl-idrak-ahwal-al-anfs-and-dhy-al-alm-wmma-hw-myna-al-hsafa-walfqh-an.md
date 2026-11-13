@@ -1,6 +1,6 @@
 ---
 title: "مِن جليل إدراك أحوال الأنفس عند ذي العِلم ومما هو مئِنَّـة الحصَافة والفِقه أنْ"
-status: draft
+status: published
 published_at: 2025-04-21
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "\"فادعى المعارض أن الله لا ينزل بنفسه إنما ينزل أمره ورحمته"
-status: draft
+status: published
 published_at: 2024-02-23
 person: abu-umair-imran-al-zubaidi
 ---

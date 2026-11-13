@@ -1,6 +1,6 @@
 ---
 title: "أبحث هذه الأيام في موضوع (ملاحة النجوم)"
-status: draft
+status: published
 published_at: 2025-04-26
 person: abu-jafar-al-khalifi
 ---

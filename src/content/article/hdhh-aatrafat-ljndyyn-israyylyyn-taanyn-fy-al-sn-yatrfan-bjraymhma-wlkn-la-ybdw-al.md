@@ -1,6 +1,6 @@
 ---
 title: "هذه اعترافات لجنديين إسرائيليين طاعنين في السن يعترفان بجرائمهما ولكن لا يبدو عل"
-status: draft
+status: published
 published_at: 2023-10-08
 person: abu-jafar-al-khalifi
 ---

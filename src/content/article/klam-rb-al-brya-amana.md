@@ -1,6 +1,6 @@
 ---
 title: "كلام رب البرية أمانة"
-status: draft
+status: published
 published_at: 2026-02-19
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

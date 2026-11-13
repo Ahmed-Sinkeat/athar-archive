@@ -1,6 +1,6 @@
 ---
 title: "الموقف السابع"
-status: draft
+status: published
 published_at: 2022-01-20
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من عجائب الليبراليين والعلمانيين في بلادنا أنهم دائما يذمون العنف مطلقا ويتهمون"
-status: draft
+status: published
 published_at: 2018-04-29
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

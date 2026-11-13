@@ -1,6 +1,6 @@
 ---
 title: "وفي كتاب الخصال للصدوق( وليس بصدوق ) عن عباس بن يزيد"
-status: draft
+status: published
 published_at: 2019-07-12
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "هذا معلم ملتحي في مدرسة مصرية، زجر طالبة نصرانية فهددته."
-status: draft
+status: published
 published_at: 2026-09-27
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

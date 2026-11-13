@@ -1,6 +1,6 @@
 ---
 title: "هذا أمر مهم غاية لمن يفكر بالعيش هناك وقد رأيت فيديوهات لبعض الأكاديميين الملاحد"
-status: draft
+status: published
 published_at: 2019-02-10
 person: abu-jafar-al-khalifi
 ---

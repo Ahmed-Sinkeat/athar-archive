@@ -1,6 +1,6 @@
 ---
 title: "قال محمد الخضر حسين التونسي المتوفى عام 1377 كما في موسوعة الأعمال الكاملة له رد"
-status: draft
+status: published
 published_at: 2018-09-16
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

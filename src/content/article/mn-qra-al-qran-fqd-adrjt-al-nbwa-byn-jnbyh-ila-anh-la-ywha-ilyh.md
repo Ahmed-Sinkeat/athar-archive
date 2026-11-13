@@ -1,6 +1,6 @@
 ---
 title: "من قرأ القرآن فقد أُدرجت النبوة بين جنبيه إلا أنه لا يوحى إليه"
-status: draft
+status: published
 published_at: 2025-10-16
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

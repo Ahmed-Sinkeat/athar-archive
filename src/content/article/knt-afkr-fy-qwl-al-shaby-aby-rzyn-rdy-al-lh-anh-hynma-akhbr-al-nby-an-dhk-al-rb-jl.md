@@ -1,6 +1,6 @@
 ---
 title: "كنت أفكر في قول الصحابي أبي رزين رضي الله عنه حينما أخبر النبي ﷺ عن ضحك الرب جل"
-status: draft
+status: published
 published_at: 2025-05-25
 person: abu-umair-imran-al-zubaidi
 ---

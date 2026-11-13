@@ -1,6 +1,6 @@
 ---
 title: "مثل ابن آدم مثل رجل حضرته الوفاة"
-status: draft
+status: published
 published_at: 2025-11-29
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

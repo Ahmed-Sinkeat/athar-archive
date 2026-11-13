@@ -1,6 +1,6 @@
 ---
 title: "لماذا نُعِيد قِراءة الكِتاب؟"
-status: draft
+status: published
 published_at: 2025-05-23
 person: awwab-bin-muhammad
 ---

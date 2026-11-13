@@ -1,6 +1,6 @@
 ---
 title: "هذا احد المعلقين على خبر إصابة فتاة كل ثلاث دقائق بمرض الإيدز القاتل قال أن دول"
-status: draft
+status: published
 published_at: 2018-07-26
 person: abu-jafar-al-khalifi
 ---

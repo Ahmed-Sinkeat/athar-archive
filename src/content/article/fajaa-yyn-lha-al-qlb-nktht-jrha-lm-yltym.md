@@ -1,6 +1,6 @@
 ---
 title: "فاجعة يئنّ لها القلب نكثت جرحًا لم يلتئم."
-status: draft
+status: published
 published_at: 2023-09-09
 person: abu-umair-imran-al-zubaidi
 ---

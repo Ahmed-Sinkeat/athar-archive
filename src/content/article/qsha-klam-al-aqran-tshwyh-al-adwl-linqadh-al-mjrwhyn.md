@@ -1,6 +1,6 @@
 ---
 title: "قشة كلام الأقران (تشويه العدول لإنقاذ المجروحين).."
-status: draft
+status: published
 published_at: 2021-09-25
 person: abu-jafar-al-khalifi
 ---

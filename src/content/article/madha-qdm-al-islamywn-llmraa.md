@@ -1,6 +1,6 @@
 ---
 title: "ماذا قدم الإسلاميون للمرأة ؟"
-status: draft
+status: published
 published_at: 2017-09-11
 person: abu-jafar-al-khalifi
 ---

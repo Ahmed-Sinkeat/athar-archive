@@ -1,6 +1,6 @@
 ---
 title: "وأنا أيضًا لم أكمل دراستي الجامعية :)"
-status: draft
+status: published
 published_at: 2023-12-23
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

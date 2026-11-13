@@ -1,6 +1,6 @@
 ---
 title: "كلام طيب جدا من الإمام الطبري حول فواتح السور."
-status: draft
+status: published
 published_at: 2025-04-17
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "انتحار في مصنع آيفون الصيني يثير قلقًا بشأن ظروف العمل"
-status: draft
+status: published
 published_at: 2018-07-09
 person: abu-jafar-al-khalifi
 ---

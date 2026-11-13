@@ -1,6 +1,6 @@
 ---
 title: "مدى معرِفتك بالعقيدة الصَّحيحة واستِقرار أسسها في نفسِك بدِراستها ومُذاكَرتها وت"
-status: draft
+status: published
 published_at: 2025-05-29
 person: awwab-bin-muhammad
 topics: ["al-firaq-war-rudud"]

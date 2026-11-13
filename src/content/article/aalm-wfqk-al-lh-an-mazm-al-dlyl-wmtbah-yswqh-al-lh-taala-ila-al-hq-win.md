@@ -1,6 +1,6 @@
 ---
 title: "اعلم وفَّقك الله أنَّ مُعظِّم الدَّليل ومُتَّبعه يسوقه الله تعالى إلى الحقِّ وإن"
-status: draft
+status: published
 published_at: 2025-03-05
 person: awwab-bin-muhammad
 ---

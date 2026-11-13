@@ -1,6 +1,6 @@
 ---
 title: "فَأَمَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ فَهُمْ فِي رَوْضَةٍ يُحْبَرُ"
-status: draft
+status: published
 published_at: 2025-03-20
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

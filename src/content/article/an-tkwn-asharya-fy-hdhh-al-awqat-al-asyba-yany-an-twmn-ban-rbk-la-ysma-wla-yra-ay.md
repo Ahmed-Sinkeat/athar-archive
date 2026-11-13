@@ -1,6 +1,6 @@
 ---
 title: "أن تكون أشعريُا في هذه الأوقات العصيبة يعني أن تؤمن بأنّ ربك لا يسمع ولا يرى أي"
-status: draft
+status: published
 published_at: 2023-11-08
 person: abu-umair-imran-al-zubaidi
 ---

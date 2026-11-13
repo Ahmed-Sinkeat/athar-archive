@@ -1,6 +1,6 @@
 ---
 title: "استمعت للتو لحلقة للأستاذ محمد شاهين في قناة الدعوة الإسلامية على اليوتيوب عن ال"
-status: draft
+status: published
 published_at: 2018-04-18
 person: abu-jafar-al-khalifi
 ---

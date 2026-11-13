@@ -1,6 +1,6 @@
 ---
 title: "قال ابن الأزرق المالكي في بدائع السلك في طبائع الملك (1/209)"
-status: draft
+status: published
 published_at: 2017-12-21
 person: abu-jafar-al-khalifi
 ---

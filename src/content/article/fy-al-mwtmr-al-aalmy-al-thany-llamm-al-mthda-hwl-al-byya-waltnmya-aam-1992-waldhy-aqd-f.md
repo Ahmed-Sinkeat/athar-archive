@@ -1,6 +1,6 @@
 ---
 title: "في المؤتمر العالمي الثاني للأمم المتحدة حول البيئة والتنمية عام ١٩٩٢ والذي عقد ف"
-status: draft
+status: published
 published_at: 2018-01-01
 person: abu-jafar-al-khalifi
 ---

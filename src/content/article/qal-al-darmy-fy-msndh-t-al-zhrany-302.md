@@ -1,6 +1,6 @@
 ---
 title: "قال الدارمي في مسنده ت الزهراني (٣٠٢)"
-status: draft
+status: published
 published_at: 2024-01-26
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "إيّاك والضحك أو السخرية مِن إنسانٍ قال أمامك معلومةً خاطئة مهما كانت ساذجة أو بد"
-status: draft
+status: published
 published_at: 2022-11-25
 person: abu-umair-imran-al-zubaidi
 ---

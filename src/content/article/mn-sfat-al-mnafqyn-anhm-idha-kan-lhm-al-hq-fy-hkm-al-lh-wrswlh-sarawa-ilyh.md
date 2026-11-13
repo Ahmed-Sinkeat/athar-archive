@@ -1,6 +1,6 @@
 ---
 title: "من صفات المنافقين أنهم إذا كان لهم الحق في حكم الله ورسوله سارعوا إليه"
-status: draft
+status: published
 published_at: 2025-10-09
 person: abu-umair-imran-al-zubaidi
 ---

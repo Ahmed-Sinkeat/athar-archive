@@ -1,6 +1,6 @@
 ---
 title: "وقال ابن حجر العسقلاني في فتح الباري (١٣/ ٤٠٢) نقلًا عن القرطبي"
-status: draft
+status: published
 published_at: 2021-10-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-asma-was-sifat"]

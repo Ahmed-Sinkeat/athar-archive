@@ -1,6 +1,6 @@
 ---
 title: "هنا مثال على الانتقائية التي يتعامل بها إعلامنا في غالبه في ذكر أخبار الغرب والل"
-status: draft
+status: published
 published_at: 2018-12-07
 person: abu-jafar-al-khalifi
 ---

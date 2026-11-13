@@ -1,6 +1,6 @@
 ---
 title: "قام بعض إخوة التوحيد من الأعاجم التابعين للهيئة بحرق شجرة الميلاد الوثني النصران"
-status: draft
+status: published
 published_at: 2024-12-24
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

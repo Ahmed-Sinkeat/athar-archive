@@ -1,6 +1,6 @@
 ---
 title: "بمناسبة الحرب: تجديد العهد بنعمة الأمن (العسر الذي يشعرك بلذة اليسر)..."
-status: draft
+status: published
 published_at: 2025-06-24
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

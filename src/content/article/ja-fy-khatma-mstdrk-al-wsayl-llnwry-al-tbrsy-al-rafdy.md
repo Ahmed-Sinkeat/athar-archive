@@ -1,6 +1,6 @@
 ---
 title: "جاء في خاتمة مستدرك الوسائل للنوري الطبرسي الرافضي (5/17)"
-status: draft
+status: published
 published_at: 2017-10-30
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-imamah-was-sahabah"]

@@ -1,6 +1,6 @@
 ---
 title: "علق بعض المغردين بأن الأوقاف لما أقامت نشاطاً للحث على الحجاب خرجت بعض الليبرالي"
-status: draft
+status: published
 published_at: 2025-09-09
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

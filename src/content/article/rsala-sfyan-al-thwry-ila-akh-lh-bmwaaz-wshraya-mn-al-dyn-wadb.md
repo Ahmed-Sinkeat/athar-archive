@@ -1,6 +1,6 @@
 ---
 title: "رسالة سفيان الثوري إلى أخ له بمواعظ وشرائع من الدين وأدب"
-status: draft
+status: published
 published_at: 2024-04-01
 person: abu-abdillah-firas-al-ramli
 ---

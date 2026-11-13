@@ -1,6 +1,6 @@
 ---
 title: "وليس معنى هذا سلامة ابن كلاب والأشعري من الذم بالجملة"
-status: draft
+status: published
 published_at: 2022-03-20
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "في المقال السابق ناقشنا الرواية التي استدل بها الصبي باسم على فرض صحتها."
-status: draft
+status: published
 published_at: 2024-03-06
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

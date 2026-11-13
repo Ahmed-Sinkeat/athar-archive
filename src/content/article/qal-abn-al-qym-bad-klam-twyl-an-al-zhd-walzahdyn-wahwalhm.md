@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم [ بعد كلام طويل عن الزهد والزاهدين واحوالهم"
-status: draft
+status: published
 published_at: 2017-11-16
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

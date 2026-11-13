@@ -1,6 +1,6 @@
 ---
 title: "إن كنت لا تدري بعد"
-status: draft
+status: published
 published_at: 2023-05-19
 person: abu-umair-imran-al-zubaidi
 ---

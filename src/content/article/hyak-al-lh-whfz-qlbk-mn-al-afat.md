@@ -1,6 +1,6 @@
 ---
 title: "حيَّاكِ الله وحفِظ قلبكِ مِن الآفات"
-status: draft
+status: published
 published_at: 2025-04-17
 person: awwab-bin-muhammad
 ---

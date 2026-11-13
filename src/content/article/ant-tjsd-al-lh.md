@@ -1,6 +1,6 @@
 ---
 title: "أنت تجسّد الله!"
-status: draft
+status: published
 published_at: 2024-04-03
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

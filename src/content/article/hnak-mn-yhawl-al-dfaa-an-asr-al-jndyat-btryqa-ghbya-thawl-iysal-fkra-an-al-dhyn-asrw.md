@@ -1,6 +1,6 @@
 ---
 title: "هناك من يحاول الدفاع عن أسر الجنديات بطريقة غبية تحاول إيصال فكرة أنّ الذين أسرو"
-status: draft
+status: published
 published_at: 2023-10-08
 person: abu-umair-imran-al-zubaidi
 ---

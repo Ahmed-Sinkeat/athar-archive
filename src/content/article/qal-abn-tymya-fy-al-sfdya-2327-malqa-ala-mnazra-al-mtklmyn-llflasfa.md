@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية في الصفدية (٢/٣٢٧) معلقا على مناظرة المتكلمين للفلاسفة"
-status: draft
+status: published
 published_at: 2017-12-07
 person: abu-jafar-al-khalifi
 ---

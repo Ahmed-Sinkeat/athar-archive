@@ -1,6 +1,6 @@
 ---
 title: "لا تكن عوناً لفلانٍ الذي بال في بئر زمزم"
-status: draft
+status: published
 published_at: 2025-06-19
 person: awwab-bin-muhammad
 ---

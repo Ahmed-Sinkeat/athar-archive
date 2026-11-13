@@ -1,6 +1,6 @@
 ---
 title: "هذا شاب في الأردن عمره ١٧ عاما حاول اغتصاب طفلة ثم قتلها لو كان أكبر بشهور قليلة"
-status: draft
+status: published
 published_at: 2019-04-01
 person: abu-jafar-al-khalifi
 ---

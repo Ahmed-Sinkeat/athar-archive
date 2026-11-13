@@ -1,6 +1,6 @@
 ---
 title: "عجبت من رجلين"
-status: draft
+status: published
 published_at: 2025-12-01
 person: abu-abdillah-firas-al-ramli
 ---

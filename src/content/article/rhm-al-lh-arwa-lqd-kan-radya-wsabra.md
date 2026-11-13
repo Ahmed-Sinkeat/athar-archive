@@ -1,6 +1,6 @@
 ---
 title: "رحم الله عروة لقد كان راضيا وصابرا"
-status: draft
+status: published
 published_at: 2023-10-11
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "حين قرأت هذا الخبر تذكرت قوله تعالى"
-status: draft
+status: published
 published_at: 2025-06-29
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

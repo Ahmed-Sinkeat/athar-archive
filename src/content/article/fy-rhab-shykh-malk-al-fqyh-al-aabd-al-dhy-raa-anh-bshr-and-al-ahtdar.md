@@ -1,6 +1,6 @@
 ---
 title: "في رحاب شيخ مالك الفقيه العابد الذي رأى أنه بشِّر عند الاحتضار..."
-status: draft
+status: published
 published_at: 2025-11-19
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

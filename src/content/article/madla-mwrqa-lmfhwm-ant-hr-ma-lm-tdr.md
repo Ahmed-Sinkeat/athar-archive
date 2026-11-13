@@ -1,6 +1,6 @@
 ---
 title: "معضلة مؤرقة لمفهوم أنت حر ما لم تضر."
-status: draft
+status: published
 published_at: 2020-08-22
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "كنت قد رأيت هذا المنشور منذ أيام"
-status: draft
+status: published
 published_at: 2024-09-27
 person: abu-umair-imran-al-zubaidi
 ---

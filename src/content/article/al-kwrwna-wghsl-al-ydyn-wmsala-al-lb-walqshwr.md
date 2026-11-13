@@ -1,6 +1,6 @@
 ---
 title: "الكورونا وغسل اليدين ومسألة اللب والقشور"
-status: draft
+status: published
 published_at: 2020-03-19
 person: abu-jafar-al-khalifi
 ---

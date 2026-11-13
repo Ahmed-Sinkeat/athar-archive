@@ -1,6 +1,6 @@
 ---
 title: "ثم إن ابن تيمية ذكر بصراحة أن الإمام أحمد ذم أهل الرأي بالإرجاء؛ ومخالفة الحديث"
-status: draft
+status: published
 published_at: 2021-08-01
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

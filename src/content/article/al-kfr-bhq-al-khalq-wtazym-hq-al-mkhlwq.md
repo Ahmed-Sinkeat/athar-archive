@@ -1,6 +1,6 @@
 ---
 title: "الكفر بحق الخالق وتعظيم حق المخلوق!"
-status: draft
+status: published
 published_at: 2020-12-09
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

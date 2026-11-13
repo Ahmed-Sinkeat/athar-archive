@@ -1,6 +1,6 @@
 ---
 title: "مضيفة الطيران وربة المنزل."
-status: draft
+status: published
 published_at: 2024-10-29
 person: abu-umair-imran-al-zubaidi
 ---

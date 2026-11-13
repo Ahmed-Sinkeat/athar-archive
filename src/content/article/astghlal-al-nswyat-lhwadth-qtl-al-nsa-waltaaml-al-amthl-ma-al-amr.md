@@ -1,6 +1,6 @@
 ---
 title: "استغلال النسويات لحوادث قتل النساء، والتعامل الأمثل مع الأمر"
-status: draft
+status: published
 published_at: 2022-06-21
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

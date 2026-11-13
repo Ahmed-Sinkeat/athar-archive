@@ -1,6 +1,6 @@
 ---
 title: "نهاية مكابرة الفطرة!"
-status: draft
+status: published
 published_at: 2020-12-08
 person: abu-jafar-al-khalifi
 ---

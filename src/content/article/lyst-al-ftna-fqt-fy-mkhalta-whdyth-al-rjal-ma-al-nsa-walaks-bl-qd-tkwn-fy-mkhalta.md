@@ -1,6 +1,6 @@
 ---
 title: "ليستِ الفتنةُ فقط في مخالطة وحديث الرجال مع النساء والعكس؛ بل قد تكون في مُخالطة"
-status: draft
+status: published
 published_at: 2023-02-27
 person: abu-umair-imran-al-zubaidi
 ---

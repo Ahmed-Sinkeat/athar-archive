@@ -1,6 +1,6 @@
 ---
 title: "ما أقبح عرف القائمة في مصر!"
-status: draft
+status: published
 published_at: 2023-10-03
 person: abu-umair-imran-al-zubaidi
 ---

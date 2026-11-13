@@ -1,6 +1,6 @@
 ---
 title: "من عادة أصحاب الأنمي والمسلسلات والأفلام تبرير فعلهم بقول: أنا أشاهد ولا أتأثر."
-status: draft
+status: published
 published_at: 2025-10-26
 person: abu-umair-imran-al-zubaidi
 ---

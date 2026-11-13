@@ -1,6 +1,6 @@
 ---
 title: "الظريف في موضوع انقسام الموقف من ضرب إيران لقطر بالصواريخ هو تجاهل أنّ هذه الدول"
-status: draft
+status: published
 published_at: 2025-06-23
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "منظمة العفو الدولية تنتهك معايير الفيسبوك.."
-status: draft
+status: published
 published_at: 2021-05-12
 person: abu-jafar-al-khalifi
 ---

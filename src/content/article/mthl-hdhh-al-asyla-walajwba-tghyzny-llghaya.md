@@ -1,6 +1,6 @@
 ---
 title: "مثل هذه الأسئلة والأجوبة تغيظني للغاية!"
-status: draft
+status: published
 published_at: 2023-10-10
 person: abu-umair-imran-al-zubaidi
 ---

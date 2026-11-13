@@ -1,6 +1,6 @@
 ---
 title: "ضعيفات ولكنهن مكلفات…"
-status: draft
+status: published
 published_at: 2022-03-28
 person: abu-jafar-al-khalifi
 ---

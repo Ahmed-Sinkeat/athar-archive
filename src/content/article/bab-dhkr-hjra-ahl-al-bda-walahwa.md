@@ -1,6 +1,6 @@
 ---
 title: "باب ذكر هجرة أهل البدع والأهواء"
-status: draft
+status: published
 published_at: 2024-04-15
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

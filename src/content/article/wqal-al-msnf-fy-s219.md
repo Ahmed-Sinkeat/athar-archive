@@ -1,6 +1,6 @@
 ---
 title: "وقال المصنف في ص٢١٩"
-status: draft
+status: published
 published_at: 2024-01-08
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من خرج للصلاة جماعة فوجد الناس قد صلوا هل يكتب له ثواب الجماعة وإن فاتته ؟"
-status: draft
+status: published
 published_at: 2024-01-21
 person: abu-abdillah-firas-al-ramli
 ---

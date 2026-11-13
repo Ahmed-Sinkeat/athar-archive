@@ -1,6 +1,6 @@
 ---
 title: "ترحَّم على شاعر جاهلي مات كافرًا أشعارُه مشهورة بما لا يرتضيه صاحب مروءة ودين وي"
-status: draft
+status: published
 published_at: 2023-01-13
 person: abu-jafar-al-khalifi
 ---

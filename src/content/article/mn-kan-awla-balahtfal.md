@@ -1,6 +1,6 @@
 ---
 title: "من كان أولى بالاحتفال؟"
-status: draft
+status: published
 published_at: 2026-09-25
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

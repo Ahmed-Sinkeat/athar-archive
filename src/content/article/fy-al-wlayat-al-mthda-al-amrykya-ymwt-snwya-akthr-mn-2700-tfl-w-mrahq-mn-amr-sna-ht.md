@@ -1,6 +1,6 @@
 ---
 title: "في الولايات المتحدة الأمريكية يموت سنوياً أكثر من ٢٧٠٠ طفل و مراهق من عمر سنة حت"
-status: draft
+status: published
 published_at: 2018-10-23
 person: abu-jafar-al-khalifi
 ---

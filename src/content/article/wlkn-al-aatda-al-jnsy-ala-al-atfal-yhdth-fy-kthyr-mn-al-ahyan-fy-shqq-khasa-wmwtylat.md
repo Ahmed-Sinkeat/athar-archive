@@ -1,6 +1,6 @@
 ---
 title: "ولكن الاعتداء الجنسي على الأطفال يحدث في كثير من الأحيان في شقق خاصة وموتيلات"
-status: draft
+status: published
 published_at: 2019-01-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

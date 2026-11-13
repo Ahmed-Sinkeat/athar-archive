@@ -1,6 +1,6 @@
 ---
 title: "تساؤلات وطلب توثيق حول الطريقة البكتاشية"
-status: draft
+status: published
 published_at: 2020-09-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-imamah-was-sahabah"]

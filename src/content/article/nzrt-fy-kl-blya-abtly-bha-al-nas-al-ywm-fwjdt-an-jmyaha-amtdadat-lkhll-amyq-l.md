@@ -1,6 +1,6 @@
 ---
 title: "نظرتُ في كلّ بليةٍ ابتلي بها الناس اليوم؛ فوجدت أنّ جميعها امتدادات لخللٍ عميق ل"
-status: draft
+status: published
 published_at: 2023-05-12
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

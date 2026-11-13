@@ -1,6 +1,6 @@
 ---
 title: "نحن أولىٰ من الأصمعي بمراعاة هذا المعنى!"
-status: draft
+status: published
 published_at: 2021-02-22
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "adab-talab-al-ilm"]

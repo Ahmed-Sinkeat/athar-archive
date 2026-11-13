@@ -1,6 +1,6 @@
 ---
 title: "كتب الأخ أسامة لعايض"
-status: draft
+status: published
 published_at: 2025-12-28
 person: abu-jafar-al-khalifi
 ---

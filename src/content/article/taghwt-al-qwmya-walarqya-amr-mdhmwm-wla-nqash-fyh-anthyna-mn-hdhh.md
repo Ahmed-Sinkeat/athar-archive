@@ -1,6 +1,6 @@
 ---
 title: "طاغوت القوميّة والعرقيّة أمر مذموم ولا نقاش فيه، انتهينا مِن هذه."
-status: draft
+status: published
 published_at: 2023-04-26
 person: abu-umair-imran-al-zubaidi
 ---

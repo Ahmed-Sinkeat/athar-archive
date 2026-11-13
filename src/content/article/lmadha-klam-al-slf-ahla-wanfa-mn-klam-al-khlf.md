@@ -1,6 +1,6 @@
 ---
 title: "لماذا كلام السلف أحلى وأنفع من كلام الخلف؟"
-status: draft
+status: published
 published_at: 2023-05-13
 person: abu-abdillah-firas-al-ramli
 ---

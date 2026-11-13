@@ -1,6 +1,6 @@
 ---
 title: "العمل هو هو، والظرف هو هو، سواء كان صلاة أو صياما أو ذكرا أو تلاوة للقرآن."
-status: draft
+status: published
 published_at: 2025-09-08
 person: abu-umair-imran-al-zubaidi
 ---

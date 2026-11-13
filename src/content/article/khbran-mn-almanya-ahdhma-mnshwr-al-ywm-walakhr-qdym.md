@@ -1,6 +1,6 @@
 ---
 title: "خبران من ألمانيا أحدهما منشور اليوم والآخر قديم"
-status: draft
+status: published
 published_at: 2019-01-28
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

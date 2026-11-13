@@ -1,6 +1,6 @@
 ---
 title: "ما تصنع الخصومات بالناس!"
-status: draft
+status: published
 published_at: 2024-05-01
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

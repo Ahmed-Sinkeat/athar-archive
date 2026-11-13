@@ -1,6 +1,6 @@
 ---
 title: "هذا ضلال وسفه وقلة عقل؛ بل ومحادّة لله ومحاربة لشرعه!"
-status: draft
+status: published
 published_at: 2024-03-23
 person: abu-umair-imran-al-zubaidi
 ---

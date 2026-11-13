@@ -1,6 +1,6 @@
 ---
 title: "هنا كلمة أطلقها شيخ الإسلام في حق السكاكيني الرافضي"
-status: draft
+status: published
 published_at: 2018-09-20
 person: abu-jafar-al-khalifi
 ---

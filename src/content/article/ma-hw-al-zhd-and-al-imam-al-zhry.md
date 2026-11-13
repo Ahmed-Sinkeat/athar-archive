@@ -1,6 +1,6 @@
 ---
 title: "ما هو الزهد عند الإمام الزهري ؟"
-status: draft
+status: published
 published_at: 2023-09-04
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

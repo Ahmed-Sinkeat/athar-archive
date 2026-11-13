@@ -1,6 +1,6 @@
 ---
 title: "هذه دراسة رسمية أصدرتها الكاتبة التي ترى اسمها أمامك"
-status: draft
+status: published
 published_at: 2026-05-30
 person: abu-jafar-al-khalifi
 ---

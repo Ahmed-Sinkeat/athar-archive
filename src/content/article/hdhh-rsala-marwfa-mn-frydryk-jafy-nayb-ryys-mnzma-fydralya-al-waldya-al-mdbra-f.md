@@ -1,6 +1,6 @@
 ---
 title: "هذه رسالة معروفة من فريدريك جافي نائب رئيس منظمة \"فيدرالية الوالدية المُدَبّرة ف"
-status: draft
+status: published
 published_at: 2023-03-05
 person: abu-jafar-al-khalifi
 ---

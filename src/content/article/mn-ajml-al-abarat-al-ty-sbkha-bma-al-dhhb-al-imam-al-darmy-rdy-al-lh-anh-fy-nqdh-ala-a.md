@@ -1,6 +1,6 @@
 ---
 title: "من أجمل العبارات التي سبكها بماء الذهب الإمام الدارمي رضي الله عنه في نقضه على ا"
-status: draft
+status: published
 published_at: 2023-05-30
 person: abu-umair-imran-al-zubaidi
 ---

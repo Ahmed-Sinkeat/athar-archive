@@ -1,6 +1,6 @@
 ---
 title: "جعفر السبحاني يشهد أن عمر بن الخطاب قام مقام المعصوم..."
-status: draft
+status: published
 published_at: 2021-02-07
 person: abu-jafar-al-khalifi
 ---

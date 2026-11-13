@@ -1,6 +1,6 @@
 ---
 title: "قال ابن شبة في أخبار المدينة [3/ 813 - 814"
-status: draft
+status: published
 published_at: 2017-08-21
 person: abu-jafar-al-khalifi
 ---

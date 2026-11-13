@@ -1,6 +1,6 @@
 ---
 title: "اللهم أنت الواحد في السماء"
-status: draft
+status: published
 published_at: 2025-12-23
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

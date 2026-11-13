@@ -1,6 +1,6 @@
 ---
 title: "هل أحاديث تكفير الذنوب المتأخرة تؤدي إلى الاتكال ؟"
-status: draft
+status: published
 published_at: 2020-08-01
 person: abu-jafar-al-khalifi
 ---

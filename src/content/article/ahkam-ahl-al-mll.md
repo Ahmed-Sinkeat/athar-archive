@@ -1,6 +1,6 @@
 ---
 title: "\"أحكام أهل الملل\" 2/ 535 (1361)"
-status: draft
+status: published
 published_at: 2022-01-06
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

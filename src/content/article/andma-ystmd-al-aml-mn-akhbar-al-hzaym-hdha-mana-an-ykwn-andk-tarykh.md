@@ -1,6 +1,6 @@
 ---
 title: "عندما يُستمدُّ الأمل من أخبار الهزائم (هذا معنى أن يكون عندك تاريخ)"
-status: draft
+status: published
 published_at: 2023-12-02
 person: abu-jafar-al-khalifi
 ---

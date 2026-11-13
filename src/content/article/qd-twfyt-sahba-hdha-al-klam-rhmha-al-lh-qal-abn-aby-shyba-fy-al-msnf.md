@@ -1,6 +1,6 @@
 ---
 title: "قد توفيت صاحبة هذا الكلام رحمها الله قال ابن أبي شيبة في المصنف [ 36453"
-status: draft
+status: published
 published_at: 2019-10-18
 person: abu-jafar-al-khalifi
 ---

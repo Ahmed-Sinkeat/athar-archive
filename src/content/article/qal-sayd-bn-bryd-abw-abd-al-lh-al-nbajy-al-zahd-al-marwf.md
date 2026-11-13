@@ -1,6 +1,6 @@
 ---
 title: "قال سعيد بن بريد أبو عبد الله النباجي الزاهد المعروف"
-status: draft
+status: published
 published_at: 2018-08-17
 person: abu-jafar-al-khalifi
 ---

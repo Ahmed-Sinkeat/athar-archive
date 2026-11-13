@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام ابن خزيمة رحمه الله في التوحيد (١/&rlm;٢٥٤)"
-status: draft
+status: published
 published_at: 2023-07-13
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada"]

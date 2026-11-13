@@ -1,6 +1,6 @@
 ---
 title: "ما أنفس هذا الأثر الجليل، وما أعظم فقه السلف!"
-status: draft
+status: published
 published_at: 2024-09-20
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

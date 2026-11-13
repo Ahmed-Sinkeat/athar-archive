@@ -1,6 +1,6 @@
 ---
 title: "السجزي ليس على طريقتكم وخير لكم ألا تذكروا اسمه ..."
-status: draft
+status: published
 published_at: 2021-07-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "سبب حيرة الجويني ومفتاح دحر الوسواس ..."
-status: draft
+status: published
 published_at: 2021-07-31
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

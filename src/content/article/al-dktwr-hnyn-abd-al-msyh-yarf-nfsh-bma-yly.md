@@ -1,6 +1,6 @@
 ---
 title: "الدكتور حنين عبد المسيح يعرف نفسه بما يلي"
-status: draft
+status: published
 published_at: 2019-01-06
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

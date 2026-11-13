@@ -1,6 +1,6 @@
 ---
 title: "هذا تعليق لمؤثر مشهور جداً في العالم العربي."
-status: draft
+status: published
 published_at: 2026-11-02
 person: abu-jafar-al-khalifi
 ---

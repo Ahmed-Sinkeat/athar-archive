@@ -1,6 +1,6 @@
 ---
 title: "&rlm;في ألمانيا تفارق كل يوم امرأة الحياة على يد زوجها"
-status: draft
+status: published
 published_at: 2019-06-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

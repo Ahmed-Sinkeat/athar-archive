@@ -1,6 +1,6 @@
 ---
 title: "حين تقرأ في كتب الاعتقاد قول الأئمة في الصفات: \"تفسيرها تلاوتها\"."
-status: draft
+status: published
 published_at: 2023-08-18
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

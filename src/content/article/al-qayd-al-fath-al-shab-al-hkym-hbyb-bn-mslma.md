@@ -1,6 +1,6 @@
 ---
 title: "القائد الفاتح الشاب الحكيم حبيب بن مسلمة."
-status: draft
+status: published
 published_at: 2019-06-15
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

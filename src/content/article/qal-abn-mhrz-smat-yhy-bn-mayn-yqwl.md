@@ -1,6 +1,6 @@
 ---
 title: "قال ابن محرز سمعت يحي بن معين يقول"
-status: draft
+status: published
 published_at: 2018-03-10
 person: abu-jafar-al-khalifi
 ---

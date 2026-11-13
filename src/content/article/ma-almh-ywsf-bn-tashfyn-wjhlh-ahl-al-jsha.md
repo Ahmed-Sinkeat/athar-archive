@@ -1,6 +1,6 @@
 ---
 title: "ما علمه يوسف بن تاشفين وجهله أهل الجشع..."
-status: draft
+status: published
 published_at: 2024-05-25
 person: abu-jafar-al-khalifi
 ---

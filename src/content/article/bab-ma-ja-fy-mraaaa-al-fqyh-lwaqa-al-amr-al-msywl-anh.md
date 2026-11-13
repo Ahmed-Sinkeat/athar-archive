@@ -1,6 +1,6 @@
 ---
 title: "باب ما جاء في مراعاة الفقيه لواقع الأمر المسئول عنه.."
-status: draft
+status: published
 published_at: 2022-04-27
 person: abu-jafar-al-khalifi
 ---

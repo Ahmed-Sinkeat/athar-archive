@@ -1,6 +1,6 @@
 ---
 title: "هل كلمة (خارجي) أو (مرجيء) قسيم لكلمة (سني)؟"
-status: draft
+status: published
 published_at: 2023-09-05
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

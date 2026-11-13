@@ -1,6 +1,6 @@
 ---
 title: "أحدهم أرسل لي نصا فيه دلالة على حد الردة، فسألني هل هو صحيح؟"
-status: draft
+status: published
 published_at: 2024-09-18
 person: abu-umair-imran-al-zubaidi
 ---

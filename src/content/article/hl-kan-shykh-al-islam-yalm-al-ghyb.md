@@ -1,6 +1,6 @@
 ---
 title: "هل كان شيخ الإسلام يعلم الغيب؟"
-status: draft
+status: published
 published_at: 2021-03-04
 person: abu-jafar-al-khalifi
 ---

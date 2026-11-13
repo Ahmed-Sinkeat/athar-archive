@@ -1,6 +1,6 @@
 ---
 title: "رؤيا المَلِك في سورة يوسف ومواسم الخير..."
-status: draft
+status: published
 published_at: 2024-03-23
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

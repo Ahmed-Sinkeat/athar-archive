@@ -1,6 +1,6 @@
 ---
 title: "الفقيه الشافعي الذي سبق ابن تيمية في فتيا الطلاق."
-status: draft
+status: published
 published_at: 2022-08-06
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

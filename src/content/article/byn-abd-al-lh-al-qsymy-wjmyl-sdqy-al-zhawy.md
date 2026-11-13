@@ -1,6 +1,6 @@
 ---
 title: "بين عبد الله القصيمي وجميل صدقي الزهاوي ..."
-status: draft
+status: published
 published_at: 2021-06-17
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

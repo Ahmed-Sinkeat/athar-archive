@@ -1,6 +1,6 @@
 ---
 title: "كم لونًا من التجهم نجد في الأشعرية؟"
-status: draft
+status: published
 published_at: 2022-04-18
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

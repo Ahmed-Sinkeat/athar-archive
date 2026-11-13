@@ -1,6 +1,6 @@
 ---
 title: "من أحب مبتدعا فقد خانه ولم يكن حبه لله"
-status: draft
+status: published
 published_at: 2023-07-29
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs", "al-sunnah-wal-bidah"]

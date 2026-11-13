@@ -1,6 +1,6 @@
 ---
 title: "خلل منهجي لا بد من إصلاحه"
-status: draft
+status: published
 published_at: 2019-03-09
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

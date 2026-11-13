@@ -1,6 +1,6 @@
 ---
 title: "هل يحتفل اليهود بأعياد الميلاد في أميركا"
-status: draft
+status: published
 published_at: 2018-12-24
 person: abu-jafar-al-khalifi
 ---

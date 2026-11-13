@@ -1,6 +1,6 @@
 ---
 title: "يعنون بالابتزاز الجنسي نشر صور فتيات قمن بإرادتهن بالتعري أمام الكاميرا ثم يأخذ"
-status: draft
+status: published
 published_at: 2020-01-16
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ابن تيمية وبرامج عالم الحيوان."
-status: draft
+status: published
 published_at: 2026-04-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

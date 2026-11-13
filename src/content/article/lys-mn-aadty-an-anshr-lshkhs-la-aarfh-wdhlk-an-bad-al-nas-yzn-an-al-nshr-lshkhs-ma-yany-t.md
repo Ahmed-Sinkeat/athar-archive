@@ -1,6 +1,6 @@
 ---
 title: "ليس من عادتي أن أنشر لشخص لا أعرفه وذلك أن بعض الناس يظن أن النشر لشخص ما يعني ت"
-status: draft
+status: published
 published_at: 2018-08-07
 person: abu-jafar-al-khalifi
 ---

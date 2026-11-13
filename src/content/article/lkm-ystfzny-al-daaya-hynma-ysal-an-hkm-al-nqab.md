@@ -1,6 +1,6 @@
 ---
 title: "لكم يستفزني الداعية حينما يسأل عن حكم النقاب"
-status: draft
+status: published
 published_at: 2025-01-20
 person: abu-umair-imran-al-zubaidi
 ---

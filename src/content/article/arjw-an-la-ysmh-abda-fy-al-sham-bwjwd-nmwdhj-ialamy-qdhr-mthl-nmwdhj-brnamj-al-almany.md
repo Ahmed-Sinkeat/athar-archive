@@ -1,6 +1,6 @@
 ---
 title: "أرجو أن لا يُسمح أبدا في الشام بوجود نموذج إعلامي قذر مثل نموذج برنامج العلماني"
-status: draft
+status: published
 published_at: 2024-12-16
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

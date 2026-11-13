@@ -1,6 +1,6 @@
 ---
 title: "يأتوني يسألوني عن مناقب علي!"
-status: draft
+status: published
 published_at: 2025-06-21
 person: abu-abdillah-firas-al-ramli
 ---

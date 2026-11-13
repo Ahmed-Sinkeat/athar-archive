@@ -1,6 +1,6 @@
 ---
 title: "قال أحمد في مسنده"
-status: draft
+status: published
 published_at: 2018-11-22
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب إرث من الرماد لتيم واينر وهو كتاب في تاريخ السي آي أيه وهو من وثائق"
-status: draft
+status: published
 published_at: 2017-12-12
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

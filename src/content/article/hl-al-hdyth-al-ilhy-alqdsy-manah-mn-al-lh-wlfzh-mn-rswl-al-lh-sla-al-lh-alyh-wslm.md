@@ -1,6 +1,6 @@
 ---
 title: "هل الحديث الإلهي (القدسي) معناه من الله ولفظه من رسول الله صلى الله عليه وسلم؟"
-status: draft
+status: published
 published_at: 2023-06-21
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada"]

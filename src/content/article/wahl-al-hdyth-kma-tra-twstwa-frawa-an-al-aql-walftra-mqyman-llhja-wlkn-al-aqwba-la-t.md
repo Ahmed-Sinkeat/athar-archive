@@ -1,6 +1,6 @@
 ---
 title: "وأهل الحديث كما ترى توسطوا فرأوا أن العقل والفطرة مقيمان للحجة ولكن العقوبة لا ت"
-status: draft
+status: published
 published_at: 2018-12-07
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "يقول الشيخ متكلما عن الأشعرية كما في مجموع الفتاوى"
-status: draft
+status: published
 published_at: 2020-07-16
 person: abu-jafar-al-khalifi
 ---

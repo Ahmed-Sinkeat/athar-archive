@@ -1,6 +1,6 @@
 ---
 title: "مظنّة العبد أنّ الصلاح لا يكون إلا بدوام الحماس والشغف في أداء العبادات مهلكة تج"
-status: draft
+status: published
 published_at: 2023-07-03
 person: abu-umair-imran-al-zubaidi
 ---

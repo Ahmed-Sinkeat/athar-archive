@@ -1,6 +1,6 @@
 ---
 title: "الإنسانوية .."
-status: draft
+status: published
 published_at: 2024-12-13
 person: abu-umair-imran-al-zubaidi
 ---

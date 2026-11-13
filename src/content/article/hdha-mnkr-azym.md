@@ -1,6 +1,6 @@
 ---
 title: "هذا منكر عظيم."
-status: draft
+status: published
 published_at: 2026-04-12
 person: abu-umair-imran-al-zubaidi
 ---

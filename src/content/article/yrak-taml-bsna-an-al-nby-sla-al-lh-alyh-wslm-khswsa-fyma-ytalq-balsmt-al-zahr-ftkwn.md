@@ -1,6 +1,6 @@
 ---
 title: "يراك تعمل بسنة عن النبي صلى الله عليه وسلم خصوصاً فيما يتعلق بالسمت الظاهر فتكون"
-status: draft
+status: published
 published_at: 2018-12-24
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ومِن دعائه الطيب"
-status: draft
+status: published
 published_at: 2019-12-08
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

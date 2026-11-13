@@ -1,6 +1,6 @@
 ---
 title: "استخراج معنى حديث «العلماء ورثة الأنبياء» من القرآن الكريم..."
-status: draft
+status: published
 published_at: 2025-02-01
 person: abu-jafar-al-khalifi
 ---

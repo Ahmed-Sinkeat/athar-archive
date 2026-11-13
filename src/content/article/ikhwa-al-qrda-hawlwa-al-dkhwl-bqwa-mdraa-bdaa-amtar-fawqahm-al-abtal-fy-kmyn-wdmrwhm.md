@@ -1,6 +1,6 @@
 ---
 title: "إخوة القردة حاولوا الدخول بقوة مدرعة بضعة أمتار؛ فأوقعهم الأبطال في كمين ودمروهم"
-status: draft
+status: published
 published_at: 2023-10-22
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا مثال على الشاب الذي يقرأ شيئًا من كتب المخالفين ثم يظن أنه جاء بما لم يستطعه"
-status: draft
+status: published
 published_at: 2022-07-09
 person: abu-jafar-al-khalifi
 ---

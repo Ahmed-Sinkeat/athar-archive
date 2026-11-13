@@ -1,6 +1,6 @@
 ---
 title: "هذا التذمّر من الأجواء كريه!."
-status: draft
+status: published
 published_at: 2023-06-01
 person: abu-umair-imran-al-zubaidi
 ---

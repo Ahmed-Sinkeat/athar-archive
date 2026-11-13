@@ -1,6 +1,6 @@
 ---
 title: "قال محمد الخضر الحسين كما في موسوعة أعماله الكاملة"
-status: draft
+status: published
 published_at: 2018-09-20
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

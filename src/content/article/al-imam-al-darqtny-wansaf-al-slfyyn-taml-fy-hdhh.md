@@ -1,6 +1,6 @@
 ---
 title: "الإمام الدارقطني وأنصاف السلفيين (تأمل في هذه)!"
-status: draft
+status: published
 published_at: 2021-08-26
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

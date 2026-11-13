@@ -1,6 +1,6 @@
 ---
 title: "أعيد وأكرر لماذا نطالب بتقليد الغرب في كل شيء إلا في وجود يمين متطرف عندنا له كل"
-status: draft
+status: published
 published_at: 2019-03-15
 person: abu-jafar-al-khalifi
 ---

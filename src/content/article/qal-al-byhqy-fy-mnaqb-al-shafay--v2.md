@@ -1,6 +1,6 @@
 ---
 title: "قال البيهقي في مناقب الشافعي"
-status: draft
+status: published
 published_at: 2017-09-16
 person: abu-jafar-al-khalifi
 ---

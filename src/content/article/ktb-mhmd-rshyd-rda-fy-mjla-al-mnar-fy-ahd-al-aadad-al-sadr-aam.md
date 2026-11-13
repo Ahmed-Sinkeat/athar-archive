@@ -1,6 +1,6 @@
 ---
 title: "كتب محمد رشيد رضا في مجلة المنار في أحد الأعداد الصادر عام 1902"
-status: draft
+status: published
 published_at: 2018-08-12
 person: abu-jafar-al-khalifi
 ---

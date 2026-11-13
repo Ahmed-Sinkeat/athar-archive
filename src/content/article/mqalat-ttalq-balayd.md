@@ -1,6 +1,6 @@
 ---
 title: "مقالات تتعلق بالعيد"
-status: draft
+status: published
 published_at: 2017-06-24
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ولعلَّ في هذا كِفاية ولولا خشيةُ السَّآمة والمَلل لأطلتُ بعض النِّقاط بما يُوفيه"
-status: draft
+status: published
 published_at: 2025-03-28
 person: awwab-bin-muhammad
 ---

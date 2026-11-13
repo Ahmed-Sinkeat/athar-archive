@@ -1,6 +1,6 @@
 ---
 title: "فايز الكندري هذا أبغضه بغضًا شديدُا مذ عمل سلسلة الدفاع عن إمام أهل الرأي"
-status: draft
+status: published
 published_at: 2023-11-10
 person: abu-umair-imran-al-zubaidi
 ---

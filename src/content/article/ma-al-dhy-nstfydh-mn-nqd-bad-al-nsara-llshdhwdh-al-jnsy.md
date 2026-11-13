@@ -1,6 +1,6 @@
 ---
 title: "ما الذي نستفيده من نقد بعض النصارى للشذوذ الجنسي؟"
-status: draft
+status: published
 published_at: 2022-05-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

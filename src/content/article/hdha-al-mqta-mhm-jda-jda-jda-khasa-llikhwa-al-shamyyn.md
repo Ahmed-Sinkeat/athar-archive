@@ -1,6 +1,6 @@
 ---
 title: "هذا المقطع مهم جدا جدا جدا خاصة للإخوة الشاميين."
-status: draft
+status: published
 published_at: 2024-12-17
 person: abu-umair-imran-al-zubaidi
 ---

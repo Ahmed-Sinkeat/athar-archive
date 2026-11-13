@@ -1,6 +1,6 @@
 ---
 title: "أنا لا أحب التبرير، ولكن هناك من لا يُدرك الأمور كما يريد صاحبها."
-status: draft
+status: published
 published_at: 2024-01-19
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

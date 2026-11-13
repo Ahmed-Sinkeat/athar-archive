@@ -1,6 +1,6 @@
 ---
 title: "قال شعبة مولى ابن عباس رضي الله عنهما"
-status: draft
+status: published
 published_at: 2023-02-04
 person: abu-umair-imran-al-zubaidi
 ---

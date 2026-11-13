@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي زيد القيرواني في النوادر والزيادات رداً على بعض من كان لا يحب أن يعز"
-status: draft
+status: published
 published_at: 2017-12-12
 person: abu-jafar-al-khalifi
 ---

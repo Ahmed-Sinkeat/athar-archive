@@ -1,6 +1,6 @@
 ---
 title: "قد يرى بعض الناس مبالغة في كلام الكاتب ولكنني أرى أَن له وجهًا وقد يقول قائل ربم"
-status: draft
+status: published
 published_at: 2020-03-31
 person: abu-jafar-al-khalifi
 ---

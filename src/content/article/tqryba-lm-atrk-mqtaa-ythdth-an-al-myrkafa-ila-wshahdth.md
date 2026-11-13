@@ -1,6 +1,6 @@
 ---
 title: "تقريبُا لم أترك مقطعا يتحدث عن الميركافا إلا وشاهدته"
-status: draft
+status: published
 published_at: 2023-11-04
 person: abu-umair-imran-al-zubaidi
 ---

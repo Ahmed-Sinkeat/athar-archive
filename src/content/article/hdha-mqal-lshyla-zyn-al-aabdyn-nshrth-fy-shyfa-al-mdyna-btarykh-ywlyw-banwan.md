@@ -1,6 +1,6 @@
 ---
 title: "هذا مقال لسهيلة زين العابدين نشرته في صحيفة المدينة بتاريخ 19 يوليو 2023 بعنوان"
-status: draft
+status: published
 published_at: 2023-07-28
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "السماء تفتح لكل رجل مسلم ليلة زواجه"
-status: draft
+status: published
 published_at: 2024-04-30
 person: abu-abdillah-firas-al-ramli
 ---

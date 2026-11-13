@@ -1,6 +1,6 @@
 ---
 title: "في رحاب حكيم العرب الذي بقيت حكمته ونسي اسمه واختلف في صحبته"
-status: draft
+status: published
 published_at: 2020-01-30
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

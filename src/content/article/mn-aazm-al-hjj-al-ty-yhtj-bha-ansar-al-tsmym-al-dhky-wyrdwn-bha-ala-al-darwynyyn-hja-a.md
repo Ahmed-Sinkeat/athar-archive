@@ -1,6 +1,6 @@
 ---
 title: "من أعظم الحجج التي يحتج بها أنصار التصميم الذكي ويردون بها على الداروينيين حجة أ"
-status: draft
+status: published
 published_at: 2018-05-29
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

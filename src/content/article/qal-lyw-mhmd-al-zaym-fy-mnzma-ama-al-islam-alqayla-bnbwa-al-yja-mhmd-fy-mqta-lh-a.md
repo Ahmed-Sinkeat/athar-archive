@@ -1,6 +1,6 @@
 ---
 title: "قال ليو محمد الزعيم في منظمة أمة الإسلام (القائلة بنبوة اليجا محمد) في مقطع له ع"
-status: draft
+status: published
 published_at: 2018-11-17
 person: abu-jafar-al-khalifi
 ---

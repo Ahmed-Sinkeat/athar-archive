@@ -1,6 +1,6 @@
 ---
 title: "رجاء كفارة الذنوب من الأمراض والابتلاءات"
-status: draft
+status: published
 published_at: 2025-04-20
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

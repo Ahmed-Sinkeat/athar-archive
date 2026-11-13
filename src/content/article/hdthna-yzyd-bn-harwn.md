@@ -1,6 +1,6 @@
 ---
 title: "حَدَّثَنَا يَزِيدُ بْنُ هَارُونَ"
-status: draft
+status: published
 published_at: 2024-09-01
 person: abu-umair-imran-al-zubaidi
 ---

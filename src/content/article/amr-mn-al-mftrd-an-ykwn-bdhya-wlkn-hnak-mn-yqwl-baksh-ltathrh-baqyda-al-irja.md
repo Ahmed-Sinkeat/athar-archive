@@ -1,6 +1,6 @@
 ---
 title: "أمر من المفترض أن يكون بدهيًا، ولكن هناك من يقول بعكسه لتأثره بعقيدة الإرجاء."
-status: draft
+status: published
 published_at: 2023-11-16
 person: abu-umair-imran-al-zubaidi
 ---

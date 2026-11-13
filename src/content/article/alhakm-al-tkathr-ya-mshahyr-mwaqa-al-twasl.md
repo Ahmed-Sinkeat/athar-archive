@@ -1,6 +1,6 @@
 ---
 title: "ألهاكم التكاثر يا مشاهير مواقع التواصل."
-status: draft
+status: published
 published_at: 2022-12-05
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

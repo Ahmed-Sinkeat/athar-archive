@@ -1,6 +1,6 @@
 ---
 title: "هذا مقطع لصلاح الدين أبو عرفة يطالب فيه أهل الكويت بتعزير الدكتور عثمان الخميس ل"
-status: draft
+status: published
 published_at: 2023-02-04
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "أثقلٌ ما في الذنب ليس الذنب ذاته؛ بل ما يتبعه مِن جمود القلب وقسوته"
-status: draft
+status: published
 published_at: 2022-11-23
 person: abu-umair-imran-al-zubaidi
 ---

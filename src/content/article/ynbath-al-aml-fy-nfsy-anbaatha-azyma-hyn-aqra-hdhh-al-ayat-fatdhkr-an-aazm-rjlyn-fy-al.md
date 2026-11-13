@@ -1,6 +1,6 @@
 ---
 title: "ينبعث الأمل في نفسي انبعاثا عظيما حين أقرأ هذه الآيات فأتذكر أن أعظم رجلين في ال"
-status: draft
+status: published
 published_at: 2018-05-22
 person: abu-jafar-al-khalifi
 ---

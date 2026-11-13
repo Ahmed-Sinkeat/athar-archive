@@ -1,6 +1,6 @@
 ---
 title: "صف لي أبا بكر وعمر"
-status: draft
+status: published
 published_at: 2024-01-29
 person: abu-abdillah-firas-al-ramli
 ---

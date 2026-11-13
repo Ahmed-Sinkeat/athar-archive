@@ -1,6 +1,6 @@
 ---
 title: "ولهذا جاء تعليق ابن تيمية بقوله"
-status: draft
+status: published
 published_at: 2019-12-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

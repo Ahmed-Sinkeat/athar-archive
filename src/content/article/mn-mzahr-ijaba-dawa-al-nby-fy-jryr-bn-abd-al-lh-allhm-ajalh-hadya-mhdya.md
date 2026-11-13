@@ -1,6 +1,6 @@
 ---
 title: "من مظاهر إجابة دعوة النبي ﷺ في جرير بن عبد الله: «اللهم اجعله هادياً مهدياً»."
-status: draft
+status: published
 published_at: 2026-06-19
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

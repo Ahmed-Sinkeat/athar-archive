@@ -1,6 +1,6 @@
 ---
 title: "فلو لم يكن يثبت مجيئاً حقيقياً لما استدل به على إثبات الرؤية والروايات عنه في ذل"
-status: draft
+status: published
 published_at: 2017-12-18
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

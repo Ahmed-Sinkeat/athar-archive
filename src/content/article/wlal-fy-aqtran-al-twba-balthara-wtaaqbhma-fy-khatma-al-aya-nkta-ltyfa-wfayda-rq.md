@@ -1,6 +1,6 @@
 ---
 title: "ولعلَّ في اقتِران التوبة بالطهارة وتعاقبِهما في خاتمة الآية نكتة لطيفة وفائدة رق"
-status: draft
+status: published
 published_at: 2026-02-23
 person: awwab-bin-muhammad
 ---

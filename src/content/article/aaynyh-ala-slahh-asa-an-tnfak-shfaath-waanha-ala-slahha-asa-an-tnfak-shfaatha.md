@@ -1,6 +1,6 @@
 ---
 title: "”أعينيه على صلاحه عسى أن تنفعك شفاعته وأعنها على صلاحها عسى أن تنفعك شفاعتها“.."
-status: draft
+status: published
 published_at: 2021-06-02
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

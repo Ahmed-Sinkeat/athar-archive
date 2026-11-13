@@ -1,6 +1,6 @@
 ---
 title: "آخر ورقة صار يلعب بها التغريبيون في بلداننا بعدما تحطمت نظرية الكبت أمام احصائيا"
-status: draft
+status: published
 published_at: 2018-11-15
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

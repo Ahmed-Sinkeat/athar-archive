@@ -1,6 +1,6 @@
 ---
 title: "حمزة الكتاني كان لي به اتصال أيام ملتقى أهل الحديث قبل عشرين عاما"
-status: draft
+status: published
 published_at: 2026-08-31
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

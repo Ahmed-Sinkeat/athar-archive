@@ -1,6 +1,6 @@
 ---
 title: "قال الدكتور مأمون عبد السلام في مقال له بعنوان الخصيان"
-status: draft
+status: published
 published_at: 2018-02-02
 person: abu-jafar-al-khalifi
 ---

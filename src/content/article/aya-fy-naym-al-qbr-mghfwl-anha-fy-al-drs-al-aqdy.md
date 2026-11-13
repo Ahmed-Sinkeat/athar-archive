@@ -1,6 +1,6 @@
 ---
 title: "آية في نعيم القبر مغفول عنها في الدرس العقدي.."
-status: draft
+status: published
 published_at: 2022-04-23
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "الحفاظ على الأعراض حفاظ على العقيدة (القرآن يعطيك ما لا تجده في كتب الكلام والفل"
-status: draft
+status: published
 published_at: 2024-01-03
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "tazkiyat-al-nafs"]

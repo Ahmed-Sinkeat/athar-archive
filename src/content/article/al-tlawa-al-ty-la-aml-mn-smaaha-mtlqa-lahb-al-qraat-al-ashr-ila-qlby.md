@@ -1,6 +1,6 @@
 ---
 title: "التلاوة الّتي لا أملّ مِن سماعها مُطلقًا لأحَبّ القراءات العشر إلى قلبي💚."
-status: draft
+status: published
 published_at: 2022-12-13
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

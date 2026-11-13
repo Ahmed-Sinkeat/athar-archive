@@ -1,6 +1,6 @@
 ---
 title: "كيف نظر الإمام النسائي لتعدد زوجات النبي ﷺ؟"
-status: draft
+status: published
 published_at: 2023-03-12
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

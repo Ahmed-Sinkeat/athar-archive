@@ -1,6 +1,6 @@
 ---
 title: "قبل أحد عشر عاما قام أحد اللاعبين المصريين في بطولة كأس افريقيا بعد تسجيله لهدف"
-status: draft
+status: published
 published_at: 2019-09-29
 person: abu-jafar-al-khalifi
 ---

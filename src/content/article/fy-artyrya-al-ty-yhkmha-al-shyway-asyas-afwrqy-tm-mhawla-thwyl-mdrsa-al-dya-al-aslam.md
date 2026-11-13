@@ -1,6 +1,6 @@
 ---
 title: "في أرتيريا التي يحكمها الشيوعي أسياس أفورقي تم محاولة تحويل مدرسة الضياء الاسلام"
-status: draft
+status: published
 published_at: 2017-11-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

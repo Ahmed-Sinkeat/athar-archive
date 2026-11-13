@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الرزاق في مصنفه (١١٢٢٧)"
-status: draft
+status: published
 published_at: 2023-10-23
 person: abu-abdillah-firas-al-ramli
 ---

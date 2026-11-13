@@ -1,6 +1,6 @@
 ---
 title: "أتدرون ما هو أكثر شيء قد لفت انتباهي في الفترة الأخيرة؟!"
-status: draft
+status: published
 published_at: 2023-08-07
 person: abu-umair-imran-al-zubaidi
 ---

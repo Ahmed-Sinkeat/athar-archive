@@ -1,6 +1,6 @@
 ---
 title: "قال الهيتمي في تحفة المحتاج"
-status: draft
+status: published
 published_at: 2018-01-28
 person: abu-jafar-al-khalifi
 ---

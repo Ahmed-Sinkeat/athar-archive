@@ -1,6 +1,6 @@
 ---
 title: "ملاحظة: هذا ليس إعلان ممول ولا شيء."
-status: draft
+status: published
 published_at: 2024-05-05
 person: abu-umair-imran-al-zubaidi
 ---

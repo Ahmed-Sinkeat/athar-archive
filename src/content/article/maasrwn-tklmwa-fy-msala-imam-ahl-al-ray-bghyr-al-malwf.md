@@ -1,6 +1,6 @@
 ---
 title: "معاصرون تكلموا في مسألة إمام أهل الرأي بغير المألوف..."
-status: draft
+status: published
 published_at: 2021-02-07
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "جدال جديد تثيره وكالةُ أنباءٍ تابعة للأم المتحدة أثر تقرير أصدرته مؤخرا مفا"
-status: draft
+status: published
 published_at: 2021-05-29
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "\"الورع\" (٥٨٥)"
-status: draft
+status: published
 published_at: 2020-12-26
 person: abu-jafar-al-khalifi
 ---

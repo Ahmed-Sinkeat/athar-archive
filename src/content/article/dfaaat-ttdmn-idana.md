@@ -1,6 +1,6 @@
 ---
 title: "دفاعات تتضمن إدانة !"
-status: draft
+status: published
 published_at: 2020-08-25
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

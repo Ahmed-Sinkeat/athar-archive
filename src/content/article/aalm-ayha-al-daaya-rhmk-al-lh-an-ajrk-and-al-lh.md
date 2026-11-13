@@ -1,6 +1,6 @@
 ---
 title: "اعلم أيها الداعية -رحمك الله- أن أجرك عند الله"
-status: draft
+status: published
 published_at: 2018-07-01
 person: abu-jafar-al-khalifi
 ---

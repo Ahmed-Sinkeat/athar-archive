@@ -1,6 +1,6 @@
 ---
 title: "شهادة عزيزة بإنصاف مَن استبعد عذر منكر العلو"
-status: draft
+status: published
 published_at: 2021-03-27
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-asma-was-sifat"]

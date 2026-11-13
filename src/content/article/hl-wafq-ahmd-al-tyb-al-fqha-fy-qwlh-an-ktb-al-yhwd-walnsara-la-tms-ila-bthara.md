@@ -1,6 +1,6 @@
 ---
 title: "هل وافق أحمد الطيب الفقهاء في قوله أن كتب اليهود والنصارى لا تمس إلا بطهارة؟"
-status: draft
+status: published
 published_at: 2022-04-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

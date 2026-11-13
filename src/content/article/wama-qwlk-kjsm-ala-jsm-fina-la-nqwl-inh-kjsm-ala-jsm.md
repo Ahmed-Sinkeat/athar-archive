@@ -1,6 +1,6 @@
 ---
 title: "\"وأما قولك: كجسم على جسم، فإنا لا نقول: إنه كجسم على جسم."
-status: draft
+status: published
 published_at: 2024-02-26
 person: abu-umair-imran-al-zubaidi
 ---

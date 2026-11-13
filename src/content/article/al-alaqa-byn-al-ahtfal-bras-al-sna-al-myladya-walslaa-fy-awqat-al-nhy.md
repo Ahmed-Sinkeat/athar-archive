@@ -1,6 +1,6 @@
 ---
 title: "العلاقة بين الاحتفال برأس السنة الميلادية والصلاة في أوقات النهي"
-status: draft
+status: published
 published_at: 2022-12-26
 person: abu-jafar-al-khalifi
 ---

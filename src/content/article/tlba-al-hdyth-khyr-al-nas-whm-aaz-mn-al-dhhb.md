@@ -1,6 +1,6 @@
 ---
 title: "طلبة الحديث خير الناس وهم أعز من الذهب"
-status: draft
+status: published
 published_at: 2024-06-16
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "هناك أمر يجول في صدري منذ مدة"
-status: draft
+status: published
 published_at: 2023-12-08
 person: abu-umair-imran-al-zubaidi
 topics: ["adab-talab-al-ilm"]

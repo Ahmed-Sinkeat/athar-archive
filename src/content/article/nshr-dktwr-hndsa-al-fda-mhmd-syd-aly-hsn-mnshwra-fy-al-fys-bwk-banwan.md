@@ -1,6 +1,6 @@
 ---
 title: "نشر دكتور هندسة الفضاء محمد سيد علي حسن منشوراً في الفيس بوك بعنوان"
-status: draft
+status: published
 published_at: 2019-08-01
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

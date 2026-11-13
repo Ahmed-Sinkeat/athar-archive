@@ -1,6 +1,6 @@
 ---
 title: "الجزر ومنهج التفكير السليم ..."
-status: draft
+status: published
 published_at: 2021-06-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

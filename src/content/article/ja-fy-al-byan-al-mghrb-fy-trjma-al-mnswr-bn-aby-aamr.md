@@ -1,6 +1,6 @@
 ---
 title: "جاء في البيان المغرب في ترجمة المنصور بن أبي عامر"
-status: draft
+status: published
 published_at: 2018-02-21
 person: abu-jafar-al-khalifi
 ---

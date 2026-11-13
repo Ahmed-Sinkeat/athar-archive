@@ -1,6 +1,6 @@
 ---
 title: "بين الروائي أحمد خيري العمري ومتخصص الأحافير الألماني كونتر بيكلي(Counter Beckle"
-status: draft
+status: published
 published_at: 2021-04-10
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

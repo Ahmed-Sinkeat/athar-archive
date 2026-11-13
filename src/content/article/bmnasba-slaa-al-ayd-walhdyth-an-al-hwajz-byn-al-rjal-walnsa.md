@@ -1,6 +1,6 @@
 ---
 title: "بمناسبة صلاة العيد والحديث عن الحواجز بين الرجال والنساء"
-status: draft
+status: published
 published_at: 2019-06-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

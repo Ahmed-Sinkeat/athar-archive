@@ -1,6 +1,6 @@
 ---
 title: "يعلم الله هذه ليست أول رسالة تأتي من هذا النوع"
-status: draft
+status: published
 published_at: 2020-09-15
 person: abu-jafar-al-khalifi
 ---

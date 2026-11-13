@@ -1,6 +1,6 @@
 ---
 title: "قال الخلال في السنة [980"
-status: draft
+status: published
 published_at: 2018-10-28
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

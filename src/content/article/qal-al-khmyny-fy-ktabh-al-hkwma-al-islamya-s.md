@@ -1,6 +1,6 @@
 ---
 title: "قال الخميني في كتابه الحكومة الإسلامية ص30"
-status: draft
+status: published
 published_at: 2019-09-12
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

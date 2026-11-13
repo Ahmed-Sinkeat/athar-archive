@@ -1,6 +1,6 @@
 ---
 title: "لماذا تعطيل الصفات طعن في بلاغة القرآن؟"
-status: draft
+status: published
 published_at: 2020-06-17
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "العلاقة بين الصلاة والشفاعة في النصوص الشرعية..."
-status: draft
+status: published
 published_at: 2025-01-05
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

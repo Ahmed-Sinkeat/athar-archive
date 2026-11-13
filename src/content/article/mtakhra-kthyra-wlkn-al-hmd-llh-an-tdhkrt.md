@@ -1,6 +1,6 @@
 ---
 title: "متأخرة كثيرا، ولكن الحمد لله أن تذكرت."
-status: draft
+status: published
 published_at: 2025-07-24
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "في هذا الحديث الجليل فوائد عديدة"
-status: draft
+status: published
 published_at: 2023-05-10
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لو لم يكن هناك فائدة لمن يسمونهم \"حدادية\" إلا أن جعلوا المتصدرين من المنتسبين إل"
-status: draft
+status: published
 published_at: 2024-06-19
 person: abu-umair-imran-al-zubaidi
 ---

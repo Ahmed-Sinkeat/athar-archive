@@ -1,6 +1,6 @@
 ---
 title: "الحلّاق الذي يحلق اللحى آثم ومرتكب لمعصية؛ بل ومشارك في الإثم والعدوان على أمر ا"
-status: draft
+status: published
 published_at: 2025-02-11
 person: abu-umair-imran-al-zubaidi
 ---

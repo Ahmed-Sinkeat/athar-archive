@@ -1,6 +1,6 @@
 ---
 title: "تذكر الآخرة ميزان ضبط المشاعر في الفرح الشديد والحزن الشديد."
-status: draft
+status: published
 published_at: 2023-02-14
 person: abu-jafar-al-khalifi
 ---

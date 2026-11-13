@@ -1,6 +1,6 @@
 ---
 title: "هذا المشروع الذي انتفع به المسلمون قروناً ولا زالوا ينتفعون فما استطاع أن يزيل ث"
-status: draft
+status: published
 published_at: 2020-07-04
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

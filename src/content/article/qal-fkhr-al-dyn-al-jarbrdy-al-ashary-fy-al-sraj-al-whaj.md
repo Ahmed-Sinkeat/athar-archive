@@ -1,6 +1,6 @@
 ---
 title: "قال فخر الدين الجاربردي الأشعري في السراج الوهاج (2/751)"
-status: draft
+status: published
 published_at: 2017-09-24
 person: abu-jafar-al-khalifi
 ---

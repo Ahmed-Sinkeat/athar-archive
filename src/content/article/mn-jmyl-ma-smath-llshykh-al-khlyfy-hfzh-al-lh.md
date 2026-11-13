@@ -1,6 +1,6 @@
 ---
 title: "مِن جميل ما سمعته للشيخ الخليفي حفظه الله.."
-status: draft
+status: published
 published_at: 2022-12-28
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

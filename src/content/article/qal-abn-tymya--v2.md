@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية"
-status: draft
+status: published
 published_at: 2018-01-11
 person: abu-jafar-al-khalifi
 ---

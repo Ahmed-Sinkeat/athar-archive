@@ -1,6 +1,6 @@
 ---
 title: "يقول الكاتب الأمريكي المعارض جورج فايدال في كتابه حرب أبدية لسلام أبدي"
-status: draft
+status: published
 published_at: 2017-08-01
 person: abu-jafar-al-khalifi
 ---

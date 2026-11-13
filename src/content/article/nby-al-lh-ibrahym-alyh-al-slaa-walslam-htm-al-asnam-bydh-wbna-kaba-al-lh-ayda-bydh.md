@@ -1,6 +1,6 @@
 ---
 title: "نبي الله إبراهيم عليه الصلاة والسلام حطم الأصنام بيده وبنى كعبة الله أيضا بيده"
-status: draft
+status: published
 published_at: 2018-05-18
 person: abu-jafar-al-khalifi
 ---

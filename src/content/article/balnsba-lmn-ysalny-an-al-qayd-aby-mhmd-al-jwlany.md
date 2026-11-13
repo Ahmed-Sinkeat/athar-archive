@@ -1,6 +1,6 @@
 ---
 title: "بالنسبة لمن يسألني عن القائد أبي محمد الجولاني"
-status: draft
+status: published
 published_at: 2024-12-14
 person: abu-umair-imran-al-zubaidi
 ---

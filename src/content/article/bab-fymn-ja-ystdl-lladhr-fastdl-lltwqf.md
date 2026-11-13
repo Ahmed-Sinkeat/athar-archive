@@ -1,6 +1,6 @@
 ---
 title: "باب فيمن جاء يستدل للعذر فاستدل للتوقف.."
-status: draft
+status: published
 published_at: 2021-11-21
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

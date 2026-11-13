@@ -1,6 +1,6 @@
 ---
 title: "حديث من كذب علي متعمدا فليتبوأ مقعده من النار"
-status: draft
+status: published
 published_at: 2019-01-26
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ولكنني تذكرت أبا زرعة."
-status: draft
+status: published
 published_at: 2020-01-11
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

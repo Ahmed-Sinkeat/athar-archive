@@ -1,6 +1,6 @@
 ---
 title: "هل تغبطه أم تشفق عليه؟"
-status: draft
+status: published
 published_at: 2024-12-12
 person: abu-jafar-al-khalifi
 ---

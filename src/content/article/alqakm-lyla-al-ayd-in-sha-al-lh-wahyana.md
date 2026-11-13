@@ -1,6 +1,6 @@
 ---
 title: "ألقاكم ليلة العيد إن شاء الله وأحيانا."
-status: draft
+status: published
 published_at: 2023-04-09
 person: abu-umair-imran-al-zubaidi
 ---

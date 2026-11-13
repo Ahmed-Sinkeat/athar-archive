@@ -1,6 +1,6 @@
 ---
 title: "وجهلُ العبدِ بعقيدتِه وكلياتها التي تُناط بها صِحة مبذولاته وفسادُها"
-status: draft
+status: published
 published_at: 2026-04-20
 person: awwab-bin-muhammad
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "رحمة الله عليهم، وكان الله في عون ذويهم، ولا حول ولا قوة إلا بالله."
-status: draft
+status: published
 published_at: 2023-09-09
 person: abu-umair-imran-al-zubaidi
 ---

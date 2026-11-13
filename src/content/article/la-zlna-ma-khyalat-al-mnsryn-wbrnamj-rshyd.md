@@ -1,6 +1,6 @@
 ---
 title: "لا زلنا مع خيالات المنصرين وبرنامج رشيد"
-status: draft
+status: published
 published_at: 2018-05-27
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

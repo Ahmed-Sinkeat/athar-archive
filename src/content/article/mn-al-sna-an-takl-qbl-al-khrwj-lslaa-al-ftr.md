@@ -1,6 +1,6 @@
 ---
 title: "من السنة أن تأكل قبل الخروج لصلاة الفطر"
-status: draft
+status: published
 published_at: 2026-03-19
 person: abu-abdillah-firas-al-ramli
 ---

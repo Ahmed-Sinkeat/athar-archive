@@ -1,6 +1,6 @@
 ---
 title: "العرب لا يكونون أتباعًا لمنطق العجم كاليونانيين ونحوهم."
-status: draft
+status: published
 published_at: 2023-12-26
 person: abu-umair-imran-al-zubaidi
 ---

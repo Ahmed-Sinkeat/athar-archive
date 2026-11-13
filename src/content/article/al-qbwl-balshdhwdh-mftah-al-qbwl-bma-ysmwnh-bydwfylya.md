@@ -1,6 +1,6 @@
 ---
 title: "القبول بالشذوذ مفتاح القبول بما يسمونه بيدوفيليا"
-status: draft
+status: published
 published_at: 2020-06-06
 person: abu-jafar-al-khalifi
 ---

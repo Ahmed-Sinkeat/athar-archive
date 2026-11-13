@@ -1,6 +1,6 @@
 ---
 title: "فقه علي بن أبي طالب -رضي الله عنه- بين أدعياء المذهبية والسلفية المعاصرة.."
-status: draft
+status: published
 published_at: 2021-11-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "هل فعلا نعتبر التوحيد أعظم ما في ديننا وأجمله ؟"
-status: draft
+status: published
 published_at: 2018-05-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "يعني معيار الحق وصحة الاعتقاد يكون بمعاكسة الكفار صحيح؟ جميل!"
-status: draft
+status: published
 published_at: 2024-08-01
 person: abu-umair-imran-al-zubaidi
 ---

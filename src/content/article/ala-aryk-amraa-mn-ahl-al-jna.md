@@ -1,6 +1,6 @@
 ---
 title: "ألا أريك امرأة من أهل الجنة؟"
-status: draft
+status: published
 published_at: 2026-02-08
 person: abu-abdillah-firas-al-ramli
 ---

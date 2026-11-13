@@ -1,6 +1,6 @@
 ---
 title: "سبب اغترار الناس باهل البدع والكلام خاصة الأشعرية"
-status: draft
+status: published
 published_at: 2023-09-29
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

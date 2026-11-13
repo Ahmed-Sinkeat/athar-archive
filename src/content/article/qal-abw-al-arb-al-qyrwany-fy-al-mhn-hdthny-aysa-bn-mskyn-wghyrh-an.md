@@ -1,6 +1,6 @@
 ---
 title: "قال أبو العرب القيرواني في المحن حَدَّثَنِي عِيسَى بْنُ مِسْكِينٍ وَغَيْرُهُ عَن"
-status: draft
+status: published
 published_at: 2017-06-20
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

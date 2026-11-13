@@ -1,6 +1,6 @@
 ---
 title: "تيد كازينسكي العبقري القاتل!"
-status: draft
+status: published
 published_at: 2022-08-20
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

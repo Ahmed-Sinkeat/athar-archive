@@ -1,6 +1,6 @@
 ---
 title: "هذا تقرير لمنظمة الصحة العالمية عن الأمراض الجنسية منشور قبل ثلاثة أشهر بتاريخ ٢"
-status: draft
+status: published
 published_at: 2022-11-12
 person: abu-jafar-al-khalifi
 ---

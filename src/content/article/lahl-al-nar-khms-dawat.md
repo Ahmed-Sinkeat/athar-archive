@@ -1,6 +1,6 @@
 ---
 title: "لأهل النار خمس دعوات"
-status: draft
+status: published
 published_at: 2024-04-20
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

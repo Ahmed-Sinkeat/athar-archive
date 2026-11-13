@@ -1,6 +1,6 @@
 ---
 title: "البحث الذي لا يتقدم.."
-status: draft
+status: published
 published_at: 2021-12-05
 person: abu-jafar-al-khalifi
 ---

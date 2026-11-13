@@ -1,6 +1,6 @@
 ---
 title: "عوام الإمامية أفقه من السيستاني في هذه المسألة!"
-status: draft
+status: published
 published_at: 2020-12-28
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

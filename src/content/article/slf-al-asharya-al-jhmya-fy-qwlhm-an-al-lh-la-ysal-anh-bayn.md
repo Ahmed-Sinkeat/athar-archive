@@ -1,6 +1,6 @@
 ---
 title: "سلف الأشعرية الجهمية في قولهم أنّ الله لا يُسأل عنه بأين؟!"
-status: draft
+status: published
 published_at: 2024-02-26
 person: abu-umair-imran-al-zubaidi
 ---

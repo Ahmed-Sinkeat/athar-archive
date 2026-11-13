@@ -1,6 +1,6 @@
 ---
 title: "مستوى الانبطاح تجاه اللغة الإنجليزية مثير للاشمئزاز حقيقة."
-status: draft
+status: published
 published_at: 2025-08-09
 person: abu-umair-imran-al-zubaidi
 ---

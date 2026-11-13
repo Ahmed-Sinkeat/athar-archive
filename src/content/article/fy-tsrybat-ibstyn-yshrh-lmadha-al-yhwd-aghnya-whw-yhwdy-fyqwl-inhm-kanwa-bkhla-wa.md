@@ -1,6 +1,6 @@
 ---
 title: "في تسريبات إبستين يشرح لماذا اليهود أغنياء (وهو يهودي) فيقول إنهم كانوا بخلاء وا"
-status: draft
+status: published
 published_at: 2026-02-01
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "خمسة آثار نفيسة ثابتة في صفة الجنة لم يذكرها ابن القيم في «حادي الأرواح»…"
-status: draft
+status: published
 published_at: 2025-02-10
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

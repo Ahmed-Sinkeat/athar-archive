@@ -1,6 +1,6 @@
 ---
 title: "يزداد يقين المرء بربانية هذا الدين كلما نظر في حال الإنسانويين من المنتسبين للمل"
-status: draft
+status: published
 published_at: 2018-12-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-wala-wal-bara"]

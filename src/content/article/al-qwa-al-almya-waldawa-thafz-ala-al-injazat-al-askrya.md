@@ -1,6 +1,6 @@
 ---
 title: "القوة العلمية والدعوة تحافظ على الإنجازات العسكرية."
-status: draft
+status: published
 published_at: 2024-05-30
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

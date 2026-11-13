@@ -1,6 +1,6 @@
 ---
 title: "كلُّ قولٍ أو فعلٍ أو منهجٍ خالَف ما كان عليه السَّلف رحمهم الله تعالى فهو باطِل"
-status: draft
+status: published
 published_at: 2025-07-03
 person: awwab-bin-muhammad
 ---

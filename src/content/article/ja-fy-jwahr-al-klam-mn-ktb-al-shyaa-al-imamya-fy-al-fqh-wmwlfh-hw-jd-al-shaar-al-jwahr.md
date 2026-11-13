@@ -1,6 +1,6 @@
 ---
 title: "جاء في جواهر الكلام من كتب الشيعة الإمامية في الفقه (ومؤلفه هو جد الشاعر الجواهر"
-status: draft
+status: published
 published_at: 2021-01-05
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "بعض المعلومات التي لا يعرفها معظم المسلمين عن السنة النبوية مع شدة أهميتها"
-status: draft
+status: published
 published_at: 2017-06-24
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

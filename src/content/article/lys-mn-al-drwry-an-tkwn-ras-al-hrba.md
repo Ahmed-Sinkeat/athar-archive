@@ -1,6 +1,6 @@
 ---
 title: "ليس من الضروري أَن تكون (رأس الحربة)!"
-status: draft
+status: published
 published_at: 2020-04-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

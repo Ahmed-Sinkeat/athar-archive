@@ -1,6 +1,6 @@
 ---
 title: "إذا رأيت الرجل الذي له مال كثير وسلطة سياسية عظيمة يبتلى بفضيحة في أسرته أو أهل"
-status: draft
+status: published
 published_at: 2019-07-02
 person: abu-jafar-al-khalifi
 ---

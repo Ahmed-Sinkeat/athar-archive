@@ -1,6 +1,6 @@
 ---
 title: "الهجوا بالدعاء يا إخوة."
-status: draft
+status: published
 published_at: 2023-10-27
 person: abu-umair-imran-al-zubaidi
 ---

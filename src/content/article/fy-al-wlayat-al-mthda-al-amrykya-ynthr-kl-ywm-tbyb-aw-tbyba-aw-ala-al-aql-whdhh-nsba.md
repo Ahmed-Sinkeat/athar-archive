@@ -1,6 +1,6 @@
 ---
 title: "في الولايات المتحدة الأمريكية ينتحر كل يوم طبيب أو طبيبة أو على الأقل وهذه نسبة"
-status: draft
+status: published
 published_at: 2018-05-31
 person: abu-jafar-al-khalifi
 ---

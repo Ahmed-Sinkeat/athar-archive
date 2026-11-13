@@ -1,6 +1,6 @@
 ---
 title: "أما عبارة \"لا يحيط به المكان والزمان\""
-status: draft
+status: published
 published_at: 2024-01-26
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

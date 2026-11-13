@@ -1,6 +1,6 @@
 ---
 title: "الحديث يعارض القرآن والعقل؟!"
-status: draft
+status: published
 published_at: 2023-06-11
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

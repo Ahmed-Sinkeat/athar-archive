@@ -1,6 +1,6 @@
 ---
 title: "قال ابن هبيرة كما في ذيل طبقات الحنابلة"
-status: draft
+status: published
 published_at: 2017-12-22
 person: abu-jafar-al-khalifi
 ---

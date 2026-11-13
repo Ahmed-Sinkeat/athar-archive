@@ -1,6 +1,6 @@
 ---
 title: "قال البخاري في صحيحه (٢٨٠٢)"
-status: draft
+status: published
 published_at: 2023-10-11
 person: abu-abdillah-firas-al-ramli
 ---

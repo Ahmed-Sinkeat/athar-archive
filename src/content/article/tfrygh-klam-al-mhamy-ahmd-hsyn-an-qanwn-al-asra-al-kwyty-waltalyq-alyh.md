@@ -1,6 +1,6 @@
 ---
 title: "تفريغ كلام المحامي أحمد حسين عن قانون الأسرة الكويتي والتعليق عليه."
-status: draft
+status: published
 published_at: 2021-04-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

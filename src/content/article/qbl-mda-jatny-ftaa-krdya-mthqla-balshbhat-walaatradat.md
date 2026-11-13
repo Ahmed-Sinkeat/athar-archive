@@ -1,6 +1,6 @@
 ---
 title: "قبل مدة جاءتني فتاة كردية مثقلة بالشبهات والاعتراضات.."
-status: draft
+status: published
 published_at: 2019-09-10
 person: abu-jafar-al-khalifi
 ---

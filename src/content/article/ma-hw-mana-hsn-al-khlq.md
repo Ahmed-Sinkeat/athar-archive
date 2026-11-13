@@ -1,6 +1,6 @@
 ---
 title: "ما هو معنى حسن الخلق ؟"
-status: draft
+status: published
 published_at: 2023-05-28
 person: abu-abdillah-firas-al-ramli
 ---

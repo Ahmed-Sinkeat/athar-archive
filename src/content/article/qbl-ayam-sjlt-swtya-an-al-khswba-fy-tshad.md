@@ -1,6 +1,6 @@
 ---
 title: "قبل أيام سجلت صوتية عن الخصوبة في تشاد"
-status: draft
+status: published
 published_at: 2026-09-05
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

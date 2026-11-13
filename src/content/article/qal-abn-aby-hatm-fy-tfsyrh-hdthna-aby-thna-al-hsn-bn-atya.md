@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي حاتم في تفسيره 10206 - حَدَّثَنَا أَبِي ثنا الْحَسَنُ بْنُ عَطِيَّةَ"
-status: draft
+status: published
 published_at: 2017-05-24
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

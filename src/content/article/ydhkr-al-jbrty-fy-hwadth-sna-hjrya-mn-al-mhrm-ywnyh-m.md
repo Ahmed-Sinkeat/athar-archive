@@ -1,6 +1,6 @@
 ---
 title: "يذكر الجبرتي في حوادث سنة 1216 هجرية (20 من المحرم = يونيه 1801 م)"
-status: draft
+status: published
 published_at: 2017-07-04
 person: abu-jafar-al-khalifi
 ---

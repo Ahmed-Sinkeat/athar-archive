@@ -1,6 +1,6 @@
 ---
 title: "هذه القصة يبدو أنها حقيقية وقد رأيتها منتشرة."
-status: draft
+status: published
 published_at: 2026-09-07
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

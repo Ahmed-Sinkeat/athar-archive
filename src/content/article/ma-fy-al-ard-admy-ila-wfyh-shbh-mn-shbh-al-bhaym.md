@@ -1,6 +1,6 @@
 ---
 title: "ما في الأرض آدمي إلا وفيه شبه من شبه البهائم"
-status: draft
+status: published
 published_at: 2026-10-01
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

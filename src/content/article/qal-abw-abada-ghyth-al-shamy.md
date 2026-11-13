@@ -1,6 +1,6 @@
 ---
 title: "قال أبو عبادة غيث الشامي"
-status: draft
+status: published
 published_at: 2026-10-16
 person: awwab-bin-muhammad
 ---

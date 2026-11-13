@@ -1,6 +1,6 @@
 ---
 title: "يستفزني الأمر حينما يُسأل أحد المشاهير في الدعوة عن: هل الإسلام ظلم المرأة؟"
-status: draft
+status: published
 published_at: 2025-05-29
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "يكفي للرد على هذا السفه والعته أن تتصوّر قبح المقالة!"
-status: draft
+status: published
 published_at: 2024-09-13
 person: abu-umair-imran-al-zubaidi
 ---

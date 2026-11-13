@@ -1,6 +1,6 @@
 ---
 title: "يا أواب، بم تنصحني على وسائل التواصل الاجتماعي؟"
-status: draft
+status: published
 published_at: 2025-07-07
 person: awwab-bin-muhammad
 ---

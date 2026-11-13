@@ -1,6 +1,6 @@
 ---
 title: "بين جدري القردة والزواج المبكر.."
-status: draft
+status: published
 published_at: 2022-05-19
 person: abu-jafar-al-khalifi
 ---

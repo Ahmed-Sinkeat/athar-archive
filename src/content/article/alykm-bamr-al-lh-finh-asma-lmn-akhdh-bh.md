@@ -1,6 +1,6 @@
 ---
 title: "عليكم بأمر الله فإنه عصمة لمن أخذ به"
-status: draft
+status: published
 published_at: 2025-08-30
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

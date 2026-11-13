@@ -1,6 +1,6 @@
 ---
 title: "من دلائل حفظ السنة والسيرة."
-status: draft
+status: published
 published_at: 2019-05-01
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "سكينة بنت الحسين هي ضرة عائشة بنت طلحة عند مصعب بن الزبير."
-status: draft
+status: published
 published_at: 2026-07-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-iman", "al-imamah-was-sahabah"]

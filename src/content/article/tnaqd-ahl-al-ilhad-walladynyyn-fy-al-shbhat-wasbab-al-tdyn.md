@@ -1,6 +1,6 @@
 ---
 title: "تناقض أهل الإلحاد واللادينيين في الشبهات وأسباب التدين..."
-status: draft
+status: published
 published_at: 2024-08-16
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "كنت قد عزمت ألا أكتب شيئاً في مسألة التسلسل ولكنني صدمت فعلاً بأن عدداً من الأخو"
-status: draft
+status: published
 published_at: 2018-03-23
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

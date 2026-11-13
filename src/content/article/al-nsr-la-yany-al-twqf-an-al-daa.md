@@ -1,6 +1,6 @@
 ---
 title: "النصر لا يعني التوقف عن الدعاء!"
-status: draft
+status: published
 published_at: 2024-12-10
 person: abu-umair-imran-al-zubaidi
 ---

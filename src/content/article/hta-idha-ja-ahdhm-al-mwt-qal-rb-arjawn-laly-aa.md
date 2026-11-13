@@ -1,6 +1,6 @@
 ---
 title: "حَتَّى إِذَا جَاءَ أَحَدَهُمُ الْمَوْتُ قَالَ رَبِّ ارْجِعُونِ (99) لَعَلِّي أَع"
-status: draft
+status: published
 published_at: 2025-09-29
 person: abu-umair-imran-al-zubaidi
 ---

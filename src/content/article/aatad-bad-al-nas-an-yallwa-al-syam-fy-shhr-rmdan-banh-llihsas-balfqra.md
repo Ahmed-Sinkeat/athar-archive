@@ -1,6 +1,6 @@
 ---
 title: "اعتاد بعض الناس أن يعللوا الصيام في شهر رمضان بأنه للإحساس بالفقراء"
-status: draft
+status: published
 published_at: 2018-05-15
 person: abu-jafar-al-khalifi
 ---

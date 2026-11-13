@@ -1,6 +1,6 @@
 ---
 title: "هذا المنشور فيه كذب وتلبيس"
-status: draft
+status: published
 published_at: 2022-04-07
 person: abu-jafar-al-khalifi
 ---

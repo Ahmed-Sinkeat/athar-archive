@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب المحاسن للبرقي _ وهو من كتب الرافضة _ 101 - عنه"
-status: draft
+status: published
 published_at: 2017-12-12
 person: abu-jafar-al-khalifi
 ---

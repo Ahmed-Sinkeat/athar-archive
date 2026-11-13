@@ -1,6 +1,6 @@
 ---
 title: "مراجعة المحفوظ من المصحف أمر مهم ومفيد جدا."
-status: draft
+status: published
 published_at: 2025-04-24
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وكذلك رأيت منشورات لمختار جمعة وزير الأوقاف المصري السابق ينكر دعاء غير الله"
-status: draft
+status: published
 published_at: 2025-10-19
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "إيضاح التقاطع بين المتكلمين والحداثيين (أرجو القراءة إلى آخر الكلام فإن الكلام ف"
-status: draft
+status: published
 published_at: 2019-12-03
 person: abu-jafar-al-khalifi
 ---

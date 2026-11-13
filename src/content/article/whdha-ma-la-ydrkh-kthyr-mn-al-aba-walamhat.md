@@ -1,6 +1,6 @@
 ---
 title: "وهذا ما لا يدركه كثير من الآباء والأمهات."
-status: draft
+status: published
 published_at: 2026-03-11
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "بالنسبة للّذين ينشرون حِكمَ وقصائد جلال الدين الرومي."
-status: draft
+status: published
 published_at: 2022-11-28
 person: abu-umair-imran-al-zubaidi
 ---

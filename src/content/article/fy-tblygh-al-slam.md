@@ -1,6 +1,6 @@
 ---
 title: "في تبليغ السلام"
-status: draft
+status: published
 published_at: 2024-03-08
 person: abu-abdillah-firas-al-ramli
 ---

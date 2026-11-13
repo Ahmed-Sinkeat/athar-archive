@@ -1,6 +1,6 @@
 ---
 title: "قال ابن عبد الهادي في تنقيح التحقيق"
-status: draft
+status: published
 published_at: 2021-01-03
 person: abu-jafar-al-khalifi
 ---

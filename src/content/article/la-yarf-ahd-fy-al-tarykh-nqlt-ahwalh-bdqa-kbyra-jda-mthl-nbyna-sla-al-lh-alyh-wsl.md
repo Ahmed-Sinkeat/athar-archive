@@ -1,6 +1,6 @@
 ---
 title: "لا يُعرف أحد في التاريخ نُقلت أحواله بدقة كبيرة جداً مثل نبينا صلى الله عليه وسل"
-status: draft
+status: published
 published_at: 2018-03-10
 person: abu-jafar-al-khalifi
 ---

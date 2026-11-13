@@ -1,6 +1,6 @@
 ---
 title: "وخذ هذه الحقيقة جعفر بن محمد الشهير بالصادق له عشرة أحاديث في صحيح مسلم ( بعضهم"
-status: draft
+status: published
 published_at: 2020-06-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

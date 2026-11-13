@@ -1,6 +1,6 @@
 ---
 title: "مسألة في تلاعب ومراوغة الجهمية الأشعرية في إنكار العلو."
-status: draft
+status: published
 published_at: 2023-08-23
 person: abu-umair-imran-al-zubaidi
 ---

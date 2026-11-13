@@ -1,6 +1,6 @@
 ---
 title: "قال ابن كثير في البداية والنهاية"
-status: draft
+status: published
 published_at: 2017-10-01
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "مقال كتبه أخي الحبيب عثمان لباش وفقه الله ورضي عنه."
-status: draft
+status: published
 published_at: 2023-11-22
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

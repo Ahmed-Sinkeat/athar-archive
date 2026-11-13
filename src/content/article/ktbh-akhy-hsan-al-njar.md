@@ -1,6 +1,6 @@
 ---
 title: "كتبه أخي حسان النجار"
-status: draft
+status: published
 published_at: 2023-12-05
 person: abu-umair-imran-al-zubaidi
 ---

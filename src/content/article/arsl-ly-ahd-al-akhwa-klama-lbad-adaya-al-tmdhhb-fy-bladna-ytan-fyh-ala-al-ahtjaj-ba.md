@@ -1,6 +1,6 @@
 ---
 title: "أرسل لي أحد الأخوة كلاماً لبعض أدعياء التمذهب في بلادنا يطعن فيه على الاحتجاج بآ"
-status: draft
+status: published
 published_at: 2018-12-22
 person: abu-jafar-al-khalifi
 ---

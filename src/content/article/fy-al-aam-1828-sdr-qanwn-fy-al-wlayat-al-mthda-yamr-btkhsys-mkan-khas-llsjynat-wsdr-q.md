@@ -1,6 +1,6 @@
 ---
 title: "في العام ١٨٢٨ صدر قانون في الولايات المتحدة يأمر بتخصيص مكان خاص للسجينات وصدر ق"
-status: draft
+status: published
 published_at: 2017-08-09
 person: abu-jafar-al-khalifi
 ---

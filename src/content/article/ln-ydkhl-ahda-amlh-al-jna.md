@@ -1,6 +1,6 @@
 ---
 title: "لَنْ يُدْخِلَ أحَدًا عَمَلُهُ الجَنَّةَ"
-status: draft
+status: published
 published_at: 2024-10-16
 person: abu-umair-imran-al-zubaidi
 ---

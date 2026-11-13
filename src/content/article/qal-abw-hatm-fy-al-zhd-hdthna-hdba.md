@@ -1,6 +1,6 @@
 ---
 title: "قال أبو حاتم في الزهد 68 - حدثنا هدبة"
-status: draft
+status: published
 published_at: 2017-06-27
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

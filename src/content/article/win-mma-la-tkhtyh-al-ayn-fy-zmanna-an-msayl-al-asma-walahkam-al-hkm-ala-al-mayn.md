@@ -1,6 +1,6 @@
 ---
 title: "وإن مما لا تخطئه العين في زماننا أن مسائل الأسماء والأحكام ( الحكم على المعين )"
-status: draft
+status: published
 published_at: 2019-12-23
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]

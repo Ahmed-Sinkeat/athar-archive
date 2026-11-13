@@ -1,6 +1,6 @@
 ---
 title: "في بعض الأحيان يهمس في أذني الشيطان الرجيم أمنية أن أرى الرافضة يمسكون بأهل وأحب"
-status: draft
+status: published
 published_at: 2024-08-05
 person: abu-umair-imran-al-zubaidi
 ---

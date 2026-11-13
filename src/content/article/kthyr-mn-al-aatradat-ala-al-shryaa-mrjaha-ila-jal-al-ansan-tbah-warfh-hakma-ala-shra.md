@@ -1,6 +1,6 @@
 ---
 title: "كثير من الاعتراضات على الشريعة مرجعها إلى جعل الانسان طبعه وعرفه حاكماً على شرع"
-status: draft
+status: published
 published_at: 2018-06-05
 person: abu-jafar-al-khalifi
 ---

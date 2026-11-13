@@ -1,6 +1,6 @@
 ---
 title: "لا تخص في السلام واجعله عاما"
-status: draft
+status: published
 published_at: 2024-04-16
 person: abu-abdillah-firas-al-ramli
 ---

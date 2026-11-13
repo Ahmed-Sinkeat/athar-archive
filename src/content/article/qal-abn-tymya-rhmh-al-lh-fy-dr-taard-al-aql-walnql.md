@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية - رحمه الله - في درء تعارض العقل والنقل (8/491)"
-status: draft
+status: published
 published_at: 2018-12-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "tahwid-al-ibada"]

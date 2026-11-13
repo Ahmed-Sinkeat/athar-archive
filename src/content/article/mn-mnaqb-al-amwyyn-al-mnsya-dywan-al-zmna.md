@@ -1,6 +1,6 @@
 ---
 title: "من مناقب الأمويين المنسية: ديوان الزمنى."
-status: draft
+status: published
 published_at: 2023-09-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

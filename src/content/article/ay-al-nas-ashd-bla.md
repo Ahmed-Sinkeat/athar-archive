@@ -1,6 +1,6 @@
 ---
 title: "أي الناس أشد بلاء؟"
-status: draft
+status: published
 published_at: 2024-06-27
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

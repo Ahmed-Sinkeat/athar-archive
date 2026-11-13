@@ -1,6 +1,6 @@
 ---
 title: "أما أن أهل الحديث أولى بهذا المدح."
-status: draft
+status: published
 published_at: 2020-07-07
 person: abu-jafar-al-khalifi
 ---

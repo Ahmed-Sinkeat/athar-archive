@@ -1,6 +1,6 @@
 ---
 title: "في رحاب الأمير التركي الحنبلي السني المنسي..."
-status: draft
+status: published
 published_at: 2024-04-10
 person: abu-jafar-al-khalifi
 ---

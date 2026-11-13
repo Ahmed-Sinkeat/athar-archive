@@ -1,6 +1,6 @@
 ---
 title: "قال طَاهِرُ بنُ الحُسَيْنِ بنِ مُصْعَبِ بنِ رُزَيْقٍ الخُزَاعِيُّ في وصيته لابنه"
-status: draft
+status: published
 published_at: 2018-09-22
 person: abu-jafar-al-khalifi
 ---

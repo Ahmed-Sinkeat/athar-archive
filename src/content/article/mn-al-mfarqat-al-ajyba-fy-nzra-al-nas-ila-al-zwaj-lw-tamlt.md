@@ -1,6 +1,6 @@
 ---
 title: "من المفارقات العجيبة في نظرة الناس إلى الزواج لو تأملت"
-status: draft
+status: published
 published_at: 2024-10-02
 person: abu-umair-imran-al-zubaidi
 ---

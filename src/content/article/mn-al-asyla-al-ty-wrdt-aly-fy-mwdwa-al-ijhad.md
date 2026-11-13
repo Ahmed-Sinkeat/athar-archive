@@ -1,6 +1,6 @@
 ---
 title: "من الأسئلة التي وردت عليَّ في موضوع الإجهاض"
-status: draft
+status: published
 published_at: 2020-12-21
 person: abu-jafar-al-khalifi
 ---

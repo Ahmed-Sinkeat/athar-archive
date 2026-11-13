@@ -1,6 +1,6 @@
 ---
 title: "كل يدعي التنزيه!"
-status: draft
+status: published
 published_at: 2026-09-20
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat", "al-imamah-was-sahabah"]

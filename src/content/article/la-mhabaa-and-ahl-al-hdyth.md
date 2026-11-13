@@ -1,6 +1,6 @@
 ---
 title: "لا محاباة عند أهل الحديث ...."
-status: draft
+status: published
 published_at: 2023-06-03
 person: abu-umair-imran-al-zubaidi
 ---

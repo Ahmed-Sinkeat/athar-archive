@@ -1,6 +1,6 @@
 ---
 title: "هناك شبهة غبية -وإن كنت لا أستجيز تسميتها بالشبهة- تردد كثيرا في الأونة الأخيرة"
-status: draft
+status: published
 published_at: 2025-08-15
 person: abu-umair-imran-al-zubaidi
 ---

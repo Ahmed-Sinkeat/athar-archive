@@ -1,6 +1,6 @@
 ---
 title: "قال أبو زرعة"
-status: draft
+status: published
 published_at: 2026-07-25
 person: awwab-bin-muhammad
 ---

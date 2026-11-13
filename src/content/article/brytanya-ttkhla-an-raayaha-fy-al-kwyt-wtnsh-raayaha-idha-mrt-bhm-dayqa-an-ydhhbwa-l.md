@@ -1,6 +1,6 @@
 ---
 title: "بريطانيا تتخلى عن رعاياها في الكويت وتنصح رعاياها إذا مرت بهم ضائقة أَن يذهبوا ل"
-status: draft
+status: published
 published_at: 2020-03-19
 person: abu-jafar-al-khalifi
 ---

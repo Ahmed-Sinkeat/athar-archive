@@ -1,6 +1,6 @@
 ---
 title: "يوم الجمُـعة"
-status: draft
+status: published
 published_at: 2025-05-30
 person: awwab-bin-muhammad
 ---

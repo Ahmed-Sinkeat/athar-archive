@@ -1,6 +1,6 @@
 ---
 title: "وختم مقاله قائلا: التنمية ثم التنمية إذاً أولاً وأخيراً. وطوبى للتنمويين الجدد!"
-status: draft
+status: published
 published_at: 2025-02-08
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

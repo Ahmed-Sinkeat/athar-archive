@@ -1,6 +1,6 @@
 ---
 title: "عقدة قديمة ... وعقدة حديثة ..."
-status: draft
+status: published
 published_at: 2020-06-08
 person: abu-jafar-al-khalifi
 ---

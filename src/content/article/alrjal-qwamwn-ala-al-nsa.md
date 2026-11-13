@@ -1,6 +1,6 @@
 ---
 title: "{الرِّجَالُ قَوَّامُونَ عَلَى النِّسَاءِ}."
-status: draft
+status: published
 published_at: 2022-10-31
 person: abu-umair-imran-al-zubaidi
 ---

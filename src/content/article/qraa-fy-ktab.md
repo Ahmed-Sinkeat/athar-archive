@@ -1,6 +1,6 @@
 ---
 title: "قراءة في كتاب"
-status: draft
+status: published
 published_at: 2018-01-12
 person: abu-jafar-al-khalifi
 ---

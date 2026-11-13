@@ -1,6 +1,6 @@
 ---
 title: "التسامح الديني أم بذور الحداثة"
-status: draft
+status: published
 published_at: 2021-01-27
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-wala-wal-bara"]

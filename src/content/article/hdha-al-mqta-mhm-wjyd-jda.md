@@ -1,6 +1,6 @@
 ---
 title: "هذا المقطع مهم وجيد جدا"
-status: draft
+status: published
 published_at: 2025-07-03
 person: abu-abdillah-firas-al-ramli
 ---

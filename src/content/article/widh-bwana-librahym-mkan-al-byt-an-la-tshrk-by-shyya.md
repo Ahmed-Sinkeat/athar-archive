@@ -1,6 +1,6 @@
 ---
 title: "وَإِذْ بَوَّأْنَا لِإِبْرَاهِيمَ مَكَانَ الْبَيْتِ أَنْ لَا تُشْرِكْ بِي شَيْئًا"
-status: draft
+status: published
 published_at: 2025-09-09
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

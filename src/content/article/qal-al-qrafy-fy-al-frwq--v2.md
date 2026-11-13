@@ -1,6 +1,6 @@
 ---
 title: "قال القرافي في الفروق"
-status: draft
+status: published
 published_at: 2017-08-25
 person: abu-jafar-al-khalifi
 ---

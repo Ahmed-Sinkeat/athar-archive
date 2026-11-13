@@ -1,6 +1,6 @@
 ---
 title: "من فِقه الإمام أحمد في تثبيت أديان العامة"
-status: draft
+status: published
 published_at: 2020-03-12
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "الكلام على حديث: (اللهم إني أعوذ بك من جار السوء ومن زوج تُشيِّبني قبل المشيب)"
-status: draft
+status: published
 published_at: 2024-05-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

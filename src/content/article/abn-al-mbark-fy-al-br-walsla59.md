@@ -1,6 +1,6 @@
 ---
 title: "ابن المبارك في البر والصلة٥٩"
-status: draft
+status: published
 published_at: 2018-09-26
 person: abu-jafar-al-khalifi
 ---

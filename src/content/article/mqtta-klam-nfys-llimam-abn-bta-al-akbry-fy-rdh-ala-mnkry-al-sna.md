@@ -1,6 +1,6 @@
 ---
 title: "مُقتَطع كلامٍ نفيس للإمام ابن بطة العكبري في رده على مُنكِري السنة"
-status: draft
+status: published
 published_at: 2025-06-20
 person: awwab-bin-muhammad
 ---

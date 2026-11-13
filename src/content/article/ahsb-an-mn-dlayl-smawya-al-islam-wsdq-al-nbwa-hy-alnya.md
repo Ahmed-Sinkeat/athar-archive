@@ -1,6 +1,6 @@
 ---
 title: "أحسب أنّ من دلائل سماوية الإسلام وصدق النبوة هي \"النية\"!"
-status: draft
+status: published
 published_at: 2026-02-12
 person: abu-umair-imran-al-zubaidi
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "قرابة الألف شهيد منذ قليل إثر قصف مستشفى في غزة في ضربة واحدة!"
-status: draft
+status: published
 published_at: 2023-10-17
 person: abu-umair-imran-al-zubaidi
 ---

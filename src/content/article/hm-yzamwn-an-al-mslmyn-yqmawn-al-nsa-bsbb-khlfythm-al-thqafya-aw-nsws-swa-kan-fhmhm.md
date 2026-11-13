@@ -1,6 +1,6 @@
 ---
 title: "هم يزعمون أن المسلمين يقمعون النساء بسبب خلفيتهم الثقافية أو نصوص سواء كان فهمهم"
-status: draft
+status: published
 published_at: 2022-10-23
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

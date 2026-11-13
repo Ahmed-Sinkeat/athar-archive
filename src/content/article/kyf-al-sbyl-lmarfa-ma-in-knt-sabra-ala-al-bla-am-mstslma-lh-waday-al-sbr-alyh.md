@@ -1,6 +1,6 @@
 ---
 title: "كيف السبيل لمعرفة ما إن كُنتُ صابرًا على البلاء أم مستسلمًا له وأدًعي الصبر عليه"
-status: draft
+status: published
 published_at: 2022-12-04
 person: abu-umair-imran-al-zubaidi
 ---

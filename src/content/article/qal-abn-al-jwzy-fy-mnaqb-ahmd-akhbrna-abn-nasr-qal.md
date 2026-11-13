@@ -1,6 +1,6 @@
 ---
 title: "قال ابن الجوزي في مناقب أحمد أخبرنا ابن ناصر, قال"
-status: draft
+status: published
 published_at: 2017-07-04
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

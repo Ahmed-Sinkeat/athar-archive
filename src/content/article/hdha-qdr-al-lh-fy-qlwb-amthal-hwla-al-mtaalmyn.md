@@ -1,6 +1,6 @@
 ---
 title: "هذا قدر الله في قلوب أمثال هؤلاء المتعالمين!"
-status: draft
+status: published
 published_at: 2024-03-10
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

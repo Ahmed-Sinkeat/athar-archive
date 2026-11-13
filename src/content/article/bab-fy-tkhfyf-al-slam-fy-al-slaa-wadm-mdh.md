@@ -1,6 +1,6 @@
 ---
 title: "باب في تخفيف السلام في الصلاة وعدم مده"
-status: draft
+status: published
 published_at: 2025-01-08
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

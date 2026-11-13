@@ -1,6 +1,6 @@
 ---
 title: "قال الخطابي في العزلة حَدَّثَنَا ابْنُ الْأَعْرَابِيِّ"
-status: draft
+status: published
 published_at: 2017-06-23
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "شراء بنطال إلى ما تحت الركبة إلى منتصف الساق"
-status: draft
+status: published
 published_at: 2025-08-02
 person: abu-umair-imran-al-zubaidi
 ---

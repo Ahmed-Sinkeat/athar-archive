@@ -1,6 +1,6 @@
 ---
 title: "بعض الأزواج -ذكوراً وإناثاً- عند حصول مشكلة له مع شريك حياته"
-status: draft
+status: published
 published_at: 2018-07-16
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الحديث أصل الدين بعد القرآن"
-status: draft
+status: published
 published_at: 2023-05-23
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ويفصل القرافي في شرحه للبر والعدل المأمور به في معاملة غير المسلمين"
-status: draft
+status: published
 published_at: 2017-06-12
 person: abu-jafar-al-khalifi
 ---

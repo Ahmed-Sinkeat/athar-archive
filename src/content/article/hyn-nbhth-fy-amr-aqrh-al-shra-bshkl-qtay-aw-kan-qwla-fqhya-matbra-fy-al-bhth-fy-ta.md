@@ -1,6 +1,6 @@
 ---
 title: "حين نبحث في أمر أقرّه الشرع بشكل قطعي أو كان قولاً فقهياً معتبراً في البحث في تع"
-status: draft
+status: published
 published_at: 2019-03-06
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

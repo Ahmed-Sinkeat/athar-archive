@@ -1,6 +1,6 @@
 ---
 title: "كَانَ التابعي العَلاَءُ بْنُ زِيَادٍ يُذَكِّرُ النَّارَ .."
-status: draft
+status: published
 published_at: 2018-06-03
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "آية في كتاب الله تعلمك كيف تجعل حياتك كلها عبادة..."
-status: draft
+status: published
 published_at: 2025-12-22
 person: abu-jafar-al-khalifi
 ---

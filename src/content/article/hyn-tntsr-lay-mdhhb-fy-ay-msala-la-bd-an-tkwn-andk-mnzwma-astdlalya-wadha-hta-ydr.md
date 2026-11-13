@@ -1,6 +1,6 @@
 ---
 title: "حين تنتصر لأي مذهب في أي مسألة لا بد أن تكون عندك منظومة استدلالية واضحة حتى يدر"
-status: draft
+status: published
 published_at: 2019-06-18
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

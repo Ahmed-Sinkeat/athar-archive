@@ -1,6 +1,6 @@
 ---
 title: "احذروا فتنة النساء فهي الآن في أوجها والله المستعان"
-status: draft
+status: published
 published_at: 2023-06-28
 person: abu-abdillah-firas-al-ramli
 ---

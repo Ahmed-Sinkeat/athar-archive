@@ -1,6 +1,6 @@
 ---
 title: "جاء في البداية والنهاية لابن كثير"
-status: draft
+status: published
 published_at: 2017-09-04
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

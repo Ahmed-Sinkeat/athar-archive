@@ -1,6 +1,6 @@
 ---
 title: "فحين تتعامل مع البشر في وطنك أو خارج وطنك؛ فلِزامٌ عليك أن تُعاملهم بما حكم به م"
-status: draft
+status: published
 published_at: 2023-04-30
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي الدنيا في حسن الظن بالله 78 - حَدَّثَنَا مُحَمَّدُ بْنُ بَشِيرٍ"
-status: draft
+status: published
 published_at: 2017-08-30
 person: abu-jafar-al-khalifi
 ---

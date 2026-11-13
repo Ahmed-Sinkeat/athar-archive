@@ -1,6 +1,6 @@
 ---
 title: "لا أدري إن كان هذا الكلام صحيحًا، ولكن لا أستبعد ذلك البتة."
-status: draft
+status: published
 published_at: 2021-02-26
 person: abu-jafar-al-khalifi
 ---

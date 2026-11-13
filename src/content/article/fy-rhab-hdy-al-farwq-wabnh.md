@@ -1,6 +1,6 @@
 ---
 title: "في رحاب هدي الفاروق وابنه…"
-status: draft
+status: published
 published_at: 2020-07-12
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs", "adab-talab-al-ilm"]

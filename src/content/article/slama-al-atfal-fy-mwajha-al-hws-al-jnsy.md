@@ -1,6 +1,6 @@
 ---
 title: "سلامة الأطفال في مواجهة الهوس الجنسي..."
-status: draft
+status: published
 published_at: 2020-12-16
 person: abu-jafar-al-khalifi
 ---

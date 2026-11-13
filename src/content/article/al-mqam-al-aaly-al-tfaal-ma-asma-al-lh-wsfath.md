@@ -1,6 +1,6 @@
 ---
 title: "المقام العالي: التَّفاعُل مع أسماءِ الله وصِفاته"
-status: draft
+status: published
 published_at: 2025-05-19
 person: awwab-bin-muhammad
 topics: ["al-asma-was-sifat"]

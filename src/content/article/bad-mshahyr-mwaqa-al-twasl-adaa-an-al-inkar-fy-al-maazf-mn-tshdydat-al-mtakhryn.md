@@ -1,6 +1,6 @@
 ---
 title: "بعض مشاهير مواقع التواصل ادعى أن الإنكار في المعازف من تشديدات المتأخرين"
-status: draft
+status: published
 published_at: 2019-01-27
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

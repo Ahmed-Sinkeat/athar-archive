@@ -1,6 +1,6 @@
 ---
 title: "شهرة الأطفال في مواقع التواصل، الخطر المغفول عنه.."
-status: draft
+status: published
 published_at: 2021-11-27
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

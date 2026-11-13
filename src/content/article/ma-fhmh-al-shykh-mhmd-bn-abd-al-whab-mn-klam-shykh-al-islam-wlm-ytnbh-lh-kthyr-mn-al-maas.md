@@ -1,6 +1,6 @@
 ---
 title: "ما فهمه الشيخ محمد بن عبد الوهاب من كلام شيخ الإسلام ولم يتنبه له كثير من المعاص"
-status: draft
+status: published
 published_at: 2023-01-25
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

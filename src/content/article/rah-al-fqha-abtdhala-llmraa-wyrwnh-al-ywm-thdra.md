@@ -1,6 +1,6 @@
 ---
 title: "رآه الفقهاء ابتذالًا للمرأة ويرونه اليوم تحضُّرًا..."
-status: draft
+status: published
 published_at: 2021-01-05
 person: abu-jafar-al-khalifi
 ---

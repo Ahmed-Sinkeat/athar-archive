@@ -1,6 +1,6 @@
 ---
 title: "ولا يعطي الإيمان إلا من يحب"
-status: draft
+status: published
 published_at: 2025-04-14
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "طريقة مختصرة في إثبات الإجماع القطعي على قبول أحاديث أبي هريرة وتناقض الطاعنين ف"
-status: draft
+status: published
 published_at: 2019-03-22
 person: abu-jafar-al-khalifi
 ---

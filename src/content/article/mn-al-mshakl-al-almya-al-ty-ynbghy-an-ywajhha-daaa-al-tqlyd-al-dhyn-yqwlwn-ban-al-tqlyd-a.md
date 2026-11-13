@@ -1,6 +1,6 @@
 ---
 title: "من المشاكل العلمية التي ينبغي أن يواجهها دعاة التقليد الذين يقولون بأن التقليد ا"
-status: draft
+status: published
 published_at: 2019-03-21
 person: abu-jafar-al-khalifi
 ---

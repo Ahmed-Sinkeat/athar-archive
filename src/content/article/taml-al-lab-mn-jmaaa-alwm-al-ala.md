@@ -1,6 +1,6 @@
 ---
 title: "تأمل اللعب من جماعة علوم الآلة"
-status: draft
+status: published
 published_at: 2025-12-31
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال الحسن البصري"
-status: draft
+status: published
 published_at: 2017-08-13
 person: abu-jafar-al-khalifi
 ---

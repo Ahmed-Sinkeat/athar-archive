@@ -1,6 +1,6 @@
 ---
 title: "موقف مفسري الرافضة من الاستدلال بآيات نقص الأصنام على إثبات الصفات لله عز وجل."
-status: draft
+status: published
 published_at: 2024-06-27
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

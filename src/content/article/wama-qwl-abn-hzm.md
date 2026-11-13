@@ -1,6 +1,6 @@
 ---
 title: "وأما قول ابن حزم"
-status: draft
+status: published
 published_at: 2021-03-24
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

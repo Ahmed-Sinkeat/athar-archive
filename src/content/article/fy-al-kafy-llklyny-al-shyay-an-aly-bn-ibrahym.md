@@ -1,6 +1,6 @@
 ---
 title: "في الكافي للكليني الشيعي عن علي بن إبراهيم"
-status: draft
+status: published
 published_at: 2019-05-24
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

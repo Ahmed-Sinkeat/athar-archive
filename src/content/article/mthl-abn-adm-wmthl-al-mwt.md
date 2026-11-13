@@ -1,6 +1,6 @@
 ---
 title: "مثل ابن آدم ومثل الموت"
-status: draft
+status: published
 published_at: 2023-09-23
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

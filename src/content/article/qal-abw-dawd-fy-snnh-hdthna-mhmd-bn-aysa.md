@@ -1,6 +1,6 @@
 ---
 title: "قال أبو داود في سننه 1533 - حدَّثنا محمدُ بنُ عيسى"
-status: draft
+status: published
 published_at: 2018-03-16
 person: abu-jafar-al-khalifi
 ---

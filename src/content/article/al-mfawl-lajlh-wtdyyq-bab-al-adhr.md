@@ -1,6 +1,6 @@
 ---
 title: "المفعول لأجله وتضييق باب العذر"
-status: draft
+status: published
 published_at: 2026-08-19
 person: abu-jafar-al-khalifi
 ---

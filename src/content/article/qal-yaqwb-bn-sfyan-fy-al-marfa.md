@@ -1,6 +1,6 @@
 ---
 title: "قال يعقوب بن سفيان في المعرفة [ 2 / 810"
-status: draft
+status: published
 published_at: 2017-11-21
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا الكلام لشيخ الإسلام ينشره بعض المدلسين زاعمين أن ابن تيمية يؤصل لمراعاة مشاع"
-status: draft
+status: published
 published_at: 2019-04-16
 person: abu-jafar-al-khalifi
 ---

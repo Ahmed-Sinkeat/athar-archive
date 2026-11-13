@@ -1,6 +1,6 @@
 ---
 title: "إذا رأيت أحدهم ممن يتخيل فردوسا أرضيا في البلدان الغربية"
-status: draft
+status: published
 published_at: 2019-07-23
 person: abu-jafar-al-khalifi
 ---

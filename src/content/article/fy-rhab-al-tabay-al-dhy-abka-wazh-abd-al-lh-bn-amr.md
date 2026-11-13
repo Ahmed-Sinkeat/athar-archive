@@ -1,6 +1,6 @@
 ---
 title: "في رحاب التابعي الذي أبكى وعظه عبد الله بن عمر."
-status: draft
+status: published
 published_at: 2020-01-07
 person: abu-jafar-al-khalifi
 ---

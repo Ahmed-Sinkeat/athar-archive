@@ -1,6 +1,6 @@
 ---
 title: "تتعب أمَّهاتُنا وأخواتُنا وزوجاتنا رعاهنَّ الله في إعداد الطَّعام مع صِيامهن"
-status: draft
+status: published
 published_at: 2026-02-20
 person: awwab-bin-muhammad
 ---

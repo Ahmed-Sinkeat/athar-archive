@@ -1,6 +1,6 @@
 ---
 title: "يبدو أن مرشد الرافضة إلى جهنم خامنئي قد فطس."
-status: draft
+status: published
 published_at: 2026-02-28
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "يلاحظ البعض كوّن الملاحدة يركزون على الإسلام والقيم الإسلامية أكثر من أي شيء آخر"
-status: draft
+status: published
 published_at: 2018-07-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

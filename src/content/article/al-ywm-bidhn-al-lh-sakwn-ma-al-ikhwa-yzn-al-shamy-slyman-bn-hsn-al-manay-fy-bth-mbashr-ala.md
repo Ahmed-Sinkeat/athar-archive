@@ -1,6 +1,6 @@
 ---
 title: "اليوم بإذن الله سأكون مع الإخوة يزن الشامي سليمان بن حسن المانعي في بث مباشر على"
-status: draft
+status: published
 published_at: 2024-05-03
 person: abu-umair-imran-al-zubaidi
 ---

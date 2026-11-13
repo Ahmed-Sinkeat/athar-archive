@@ -1,6 +1,6 @@
 ---
 title: "حينما يُعجب الجاهل بكلام الزنادقة وهو لا يعقل مآلات ولوازم قولهم!"
-status: draft
+status: published
 published_at: 2024-02-21
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

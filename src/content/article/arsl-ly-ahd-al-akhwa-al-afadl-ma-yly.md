@@ -1,6 +1,6 @@
 ---
 title: "أرسل لي أحد الأخوة الأفاضل ما يلي"
-status: draft
+status: published
 published_at: 2019-09-04
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara", "al-sunnah-wal-bidah"]

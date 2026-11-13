@@ -1,6 +1,6 @@
 ---
 title: "وَمَثَلُ الَّذِينَ يُنفِقُونَ أَمْوَالَهُمُ ابْتِغَاءَ مَرْضَاتِ اللَّهِ وَتَثْب"
-status: draft
+status: published
 published_at: 2024-01-29
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

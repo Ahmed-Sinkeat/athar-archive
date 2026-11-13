@@ -1,6 +1,6 @@
 ---
 title: "غنيٌّ عن العالمين وليس غنيًّا عن العدم!"
-status: draft
+status: published
 published_at: 2020-12-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

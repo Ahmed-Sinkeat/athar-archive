@@ -1,6 +1,6 @@
 ---
 title: "في واحد من الشباب بيقول لي"
-status: draft
+status: published
 published_at: 2023-11-02
 person: abu-umair-imran-al-zubaidi
 ---

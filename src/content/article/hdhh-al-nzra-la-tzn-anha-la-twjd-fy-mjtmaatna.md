@@ -1,6 +1,6 @@
 ---
 title: "هذه النظرة لا تظن أنها لا توجد في مجتمعاتنا"
-status: draft
+status: published
 published_at: 2021-06-21
 person: abu-jafar-al-khalifi
 ---

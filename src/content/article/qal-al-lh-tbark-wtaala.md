@@ -1,6 +1,6 @@
 ---
 title: "قال الله تبارك وتعالى"
-status: draft
+status: published
 published_at: 2024-05-19
 person: abu-umair-imran-al-zubaidi
 ---

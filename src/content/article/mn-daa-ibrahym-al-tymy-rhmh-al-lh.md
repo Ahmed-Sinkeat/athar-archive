@@ -1,6 +1,6 @@
 ---
 title: "من دعاء إبراهيم التيمي رحمه الله"
-status: draft
+status: published
 published_at: 2026-02-02
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "يتكرر الاستشهاد بعبارة ( من كان منكم بلا خطيئة فليرمها بحجر ) إذا كان الحديث عن"
-status: draft
+status: published
 published_at: 2019-02-21
 person: abu-jafar-al-khalifi
 ---

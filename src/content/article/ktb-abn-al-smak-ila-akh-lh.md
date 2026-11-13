@@ -1,6 +1,6 @@
 ---
 title: "كتب ابن السَّماك إلى أخ له"
-status: draft
+status: published
 published_at: 2023-07-27
 person: abu-abdillah-firas-al-ramli
 ---

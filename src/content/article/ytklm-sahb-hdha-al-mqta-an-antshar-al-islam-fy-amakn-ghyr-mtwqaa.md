@@ -1,6 +1,6 @@
 ---
 title: "يتكلم صاحب هذا المقطع عن انتشار الإسلام في أماكن غير متوقعة"
-status: draft
+status: published
 published_at: 2022-12-20
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

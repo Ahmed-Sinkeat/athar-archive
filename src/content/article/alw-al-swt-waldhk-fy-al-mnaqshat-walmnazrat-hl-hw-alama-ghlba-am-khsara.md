@@ -1,6 +1,6 @@
 ---
 title: "علو الصوت والضحك في المناقشات والمناظرات هل هو علامة غلبة أم خسارة ؟"
-status: draft
+status: published
 published_at: 2024-01-26
 person: abu-abdillah-firas-al-ramli
 ---

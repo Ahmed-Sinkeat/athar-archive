@@ -1,6 +1,6 @@
 ---
 title: "بين «لا تجعلوا قبري عيداً» و(اجعلوا مولدي عيداً)..."
-status: draft
+status: published
 published_at: 2025-09-06
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

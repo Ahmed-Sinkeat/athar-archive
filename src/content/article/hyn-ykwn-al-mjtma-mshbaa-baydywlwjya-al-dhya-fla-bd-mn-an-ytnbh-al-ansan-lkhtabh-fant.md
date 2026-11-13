@@ -1,6 +1,6 @@
 ---
 title: "حين يكون المجتمع مشبعا بأيديولوجيا الضحية فلا بد من أن يتنبه الانسان لخطابه فأنت"
-status: draft
+status: published
 published_at: 2019-09-04
 person: abu-jafar-al-khalifi
 ---

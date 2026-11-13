@@ -1,6 +1,6 @@
 ---
 title: "قال ابن عطية الأندلسي في تفسيره المحرر الوجيز"
-status: draft
+status: published
 published_at: 2017-08-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

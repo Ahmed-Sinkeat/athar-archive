@@ -1,6 +1,6 @@
 ---
 title: "سجدة لا تعتد بها قد تكون سبباً في دخولك الجنة."
-status: draft
+status: published
 published_at: 2026-04-21
 person: abu-jafar-al-khalifi
 ---

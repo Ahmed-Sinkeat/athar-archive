@@ -1,6 +1,6 @@
 ---
 title: "مشاعرك وأحاسيسك وعواطفك تجاه الأنثى هي أمورٌ خآصّة عليك أن تخبئها لزوجك"
-status: draft
+status: published
 published_at: 2023-01-09
 person: abu-umair-imran-al-zubaidi
 ---

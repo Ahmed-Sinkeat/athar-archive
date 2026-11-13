@@ -1,6 +1,6 @@
 ---
 title: "معاناة صانعي الفيديوهات (اليوتيوبرز)!"
-status: draft
+status: published
 published_at: 2021-09-02
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال السمعاني في قواطع الأدلة"
-status: draft
+status: published
 published_at: 2017-08-19
 person: abu-jafar-al-khalifi
 ---

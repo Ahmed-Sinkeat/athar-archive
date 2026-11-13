@@ -1,6 +1,6 @@
 ---
 title: "علي جمعة خارج على قناة العربية ويريد أن يستدل على دخول الكفار الجنة"
-status: draft
+status: published
 published_at: 2025-07-28
 person: abu-jafar-al-khalifi
 ---

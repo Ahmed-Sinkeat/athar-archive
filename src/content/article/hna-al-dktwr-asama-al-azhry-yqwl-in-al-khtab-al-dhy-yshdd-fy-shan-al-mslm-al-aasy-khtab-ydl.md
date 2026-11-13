@@ -1,6 +1,6 @@
 ---
 title: "هنا الدكتور أسامة الأزهري يقول إن الخطاب الذي يشدد في شأن المسلم العاصي خطاب يدل"
-status: draft
+status: published
 published_at: 2026-08-23
 person: abu-jafar-al-khalifi
 topics: ["al-iman", "al-sunnah-wal-bidah"]

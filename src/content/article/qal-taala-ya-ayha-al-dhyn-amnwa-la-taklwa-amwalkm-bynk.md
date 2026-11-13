@@ -1,6 +1,6 @@
 ---
 title: "قال تعالى ( يَا أَيُّهَا الَّذِينَ آمَنُوا لَا تَأْكُلُوا أَمْوَالَكُمْ بَيْنَكُ"
-status: draft
+status: published
 published_at: 2017-06-15
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

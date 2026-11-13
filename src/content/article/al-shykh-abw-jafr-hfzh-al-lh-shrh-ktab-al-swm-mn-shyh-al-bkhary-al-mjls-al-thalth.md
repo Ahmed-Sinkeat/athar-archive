@@ -1,6 +1,6 @@
 ---
 title: "الشيخ أبو جعفر حفظه الله/ شرح كتاب الصوم من صحيح البخاري/ المجلس الثالث"
-status: draft
+status: published
 published_at: 2025-02-14
 person: abu-umair-imran-al-zubaidi
 ---

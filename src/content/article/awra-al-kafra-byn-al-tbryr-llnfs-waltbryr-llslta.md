@@ -1,6 +1,6 @@
 ---
 title: "عورة الكافرة بين التبرير للنفس والتبرير للسلطة"
-status: draft
+status: published
 published_at: 2019-11-13
 person: abu-jafar-al-khalifi
 ---

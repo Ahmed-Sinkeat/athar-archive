@@ -1,6 +1,6 @@
 ---
 title: "تواضع النبي ﷺ وزهده في الدنيا"
-status: draft
+status: published
 published_at: 2024-01-24
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "في وقت نزول الرب سبحانه وتعالى إلى السماء الدنيا تحقق النصر."
-status: draft
+status: published
 published_at: 2024-12-08
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "(منع الطلاق بشتى الوسائل) إلا للضرورة"
-status: draft
+status: published
 published_at: 2023-07-18
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

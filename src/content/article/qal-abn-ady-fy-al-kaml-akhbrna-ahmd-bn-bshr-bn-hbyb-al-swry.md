@@ -1,6 +1,6 @@
 ---
 title: "قال ابن عدي في الكامل أخبرنا أحمد بن بشر بن حبيب الصوري"
-status: draft
+status: published
 published_at: 2018-11-18
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

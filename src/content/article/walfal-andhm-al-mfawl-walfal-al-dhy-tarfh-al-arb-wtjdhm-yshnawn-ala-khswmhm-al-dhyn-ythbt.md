@@ -1,6 +1,6 @@
 ---
 title: "والفعل عندهم المفعول والفعل الذي تعرفه العرب وتجدهم يشنعون على خصومهم الذين يثبت"
-status: draft
+status: published
 published_at: 2022-02-21
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

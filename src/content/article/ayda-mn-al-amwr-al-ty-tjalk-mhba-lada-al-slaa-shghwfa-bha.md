@@ -1,6 +1,6 @@
 ---
 title: "أيضًا من الأمور التي تجعلك محبّا لأداء الصلاة شغوفا بها"
-status: draft
+status: published
 published_at: 2024-08-26
 person: abu-umair-imran-al-zubaidi
 ---

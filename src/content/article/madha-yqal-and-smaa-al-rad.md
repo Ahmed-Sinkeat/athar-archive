@@ -1,6 +1,6 @@
 ---
 title: "ماذا يقال عند سماع الرعد؟"
-status: draft
+status: published
 published_at: 2023-11-14
 person: abu-abdillah-firas-al-ramli
 ---

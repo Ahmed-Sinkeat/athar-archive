@@ -1,6 +1,6 @@
 ---
 title: "خلاصة هذا التقرير أنه في &rlm;قارة إفريقيا وجدوا أن المناطق ذات الأغلبية المسلمة"
-status: draft
+status: published
 published_at: 2019-11-13
 person: abu-jafar-al-khalifi
 ---

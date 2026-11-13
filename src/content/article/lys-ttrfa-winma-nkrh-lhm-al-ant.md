@@ -1,6 +1,6 @@
 ---
 title: "ليس تطرفًا وإنما نكره لهم العنت"
-status: draft
+status: published
 published_at: 2022-11-25
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

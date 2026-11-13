@@ -1,6 +1,6 @@
 ---
 title: "مخالفة منتشرة في عقود المسيار"
-status: draft
+status: published
 published_at: 2020-01-28
 person: abu-jafar-al-khalifi
 ---

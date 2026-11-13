@@ -1,6 +1,6 @@
 ---
 title: "من المفارقات أنك تجد أحدهم اذا تكلمت عن حرمة الخلوة ومشاكل الاختلاط والتبرج يتهم"
-status: draft
+status: published
 published_at: 2018-12-18
 person: abu-jafar-al-khalifi
 ---

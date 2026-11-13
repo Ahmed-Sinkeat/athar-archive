@@ -1,6 +1,6 @@
 ---
 title: "الحقيقُ بالمسلم إنْ رأى من أخيه سعياً نحو شيء من الاستقامة والتعبُّد قد تخلَّله"
-status: draft
+status: published
 published_at: 2026-11-08
 person: awwab-bin-muhammad
 ---

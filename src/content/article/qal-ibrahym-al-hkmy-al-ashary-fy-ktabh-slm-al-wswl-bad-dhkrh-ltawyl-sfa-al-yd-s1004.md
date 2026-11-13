@@ -1,6 +1,6 @@
 ---
 title: "قال إبراهيم الحكمي الأشعري في كتابه سلم الوصول بعد ذكره لتأويل صفة اليد ص١٠٠٤"
-status: draft
+status: published
 published_at: 2017-08-16
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "حاخام يهودي معروف يهزأ بالرافضة على مقطع الرافضي المستغيث بعلي في الطائرة"
-status: draft
+status: published
 published_at: 2026-09-18
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

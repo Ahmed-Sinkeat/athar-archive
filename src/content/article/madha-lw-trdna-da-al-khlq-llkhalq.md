@@ -1,6 +1,6 @@
 ---
 title: "ماذا لو طردنا ( دع الخلق للخالق ) ؟"
-status: draft
+status: published
 published_at: 2020-05-17
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "فصلٌ في الرد على الجَهْمِيِّةِ المعطِّلةِ القائلينَ بأنَّه ليسَ على العرش إلـٰهٌ"
-status: draft
+status: published
 published_at: 2024-05-14
 person: abu-umair-imran-al-zubaidi
 ---

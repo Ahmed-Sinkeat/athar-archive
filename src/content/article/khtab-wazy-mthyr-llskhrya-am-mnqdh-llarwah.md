@@ -1,6 +1,6 @@
 ---
 title: "خطاب وعظي مثير للسخرية أم منقذ للأرواح!"
-status: draft
+status: published
 published_at: 2026-10-21
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

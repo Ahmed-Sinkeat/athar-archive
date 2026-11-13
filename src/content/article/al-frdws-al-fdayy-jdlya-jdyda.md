@@ -1,6 +1,6 @@
 ---
 title: "الفردوس الفضائي (جدلية جديدة)."
-status: draft
+status: published
 published_at: 2021-02-11
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "نقد شيخ الإسلام للأصل الذي بُنِيت عليه ما بعد الحداثة.."
-status: draft
+status: published
 published_at: 2021-09-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

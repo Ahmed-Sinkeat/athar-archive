@@ -1,6 +1,6 @@
 ---
 title: "هداه الله يا أخ عمرو ووفقك لكل خير"
-status: draft
+status: published
 published_at: 2025-03-07
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

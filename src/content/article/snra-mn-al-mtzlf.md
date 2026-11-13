@@ -1,6 +1,6 @@
 ---
 title: "سنرى من المتزلف؟"
-status: draft
+status: published
 published_at: 2025-08-12
 person: abu-jafar-al-khalifi
 ---

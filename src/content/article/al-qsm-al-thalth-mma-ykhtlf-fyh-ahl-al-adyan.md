@@ -1,6 +1,6 @@
 ---
 title: "القسم الثالث مما يختلف فيه أهل الأديان"
-status: draft
+status: published
 published_at: 2020-04-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

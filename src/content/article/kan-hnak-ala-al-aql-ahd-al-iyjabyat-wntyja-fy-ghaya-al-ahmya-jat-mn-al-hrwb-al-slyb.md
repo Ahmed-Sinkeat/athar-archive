@@ -1,6 +1,6 @@
 ---
 title: "\" كان هناك على الأقل أحد الإيجابيات ونتيجة في غاية الأهمية جاءت من الحروب الصليب"
-status: draft
+status: published
 published_at: 2017-06-26
 person: abu-jafar-al-khalifi
 ---

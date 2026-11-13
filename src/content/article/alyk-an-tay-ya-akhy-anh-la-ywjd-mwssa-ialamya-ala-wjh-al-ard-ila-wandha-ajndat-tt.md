@@ -1,6 +1,6 @@
 ---
 title: "عليك أن تعي يا أخي أنّه لا يوجد مؤسسة إعلامية على وجه الأرض إلا وعندها أجندات تت"
-status: draft
+status: published
 published_at: 2024-01-28
 person: abu-umair-imran-al-zubaidi
 ---

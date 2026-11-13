@@ -1,6 +1,6 @@
 ---
 title: "هذا الشاب كان ملحدًا شاذا ثم هداه الله للإسلام كتب ( ثريدا ) طويلًا في الدفاع عن"
-status: draft
+status: published
 published_at: 2019-11-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

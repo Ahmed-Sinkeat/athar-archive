@@ -1,6 +1,6 @@
 ---
 title: "لا ألفين أحدكم جيفة ليل قطرب نهار"
-status: draft
+status: published
 published_at: 2025-09-08
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

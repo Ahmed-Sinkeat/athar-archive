@@ -1,6 +1,6 @@
 ---
 title: "عندي تحفّظ شديد على مصطلح \"المقاومة\"!"
-status: draft
+status: published
 published_at: 2024-11-17
 person: abu-umair-imran-al-zubaidi
 ---

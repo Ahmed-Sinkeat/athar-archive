@@ -1,6 +1,6 @@
 ---
 title: "هل العقيدة السليمة في الصفات تحمي الناس من الإلحاد؟"
-status: draft
+status: published
 published_at: 2021-10-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "حين يُطرح موضوع التعدّد دومًا ما تلجأ المعترضات عليه أو الّذين يحاولون مجاملة ال"
-status: draft
+status: published
 published_at: 2023-04-26
 person: abu-umair-imran-al-zubaidi
 ---

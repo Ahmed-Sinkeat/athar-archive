@@ -1,6 +1,6 @@
 ---
 title: "الحديث عن أثرياء العالم دون مراعاة حقيقة أنّ هذه الثروات قد جُمِعت بكل سبيل حرمه"
-status: draft
+status: published
 published_at: 2023-11-10
 person: abu-umair-imran-al-zubaidi
 ---

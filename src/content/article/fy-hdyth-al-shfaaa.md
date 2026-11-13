@@ -1,6 +1,6 @@
 ---
 title: "في حديث الشفاعة"
-status: draft
+status: published
 published_at: 2025-10-03
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "والد النبي ﷺ من الرضاع ومزايدات أدعياء المحبة."
-status: draft
+status: published
 published_at: 2024-09-27
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "شاهدت مقطعا للأستاذ معاذ عليان وفقه الله يعرض فيه كلاما لأحد رهبان النصارى؛ إذ ي"
-status: draft
+status: published
 published_at: 2025-10-23
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

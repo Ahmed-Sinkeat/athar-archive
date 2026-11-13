@@ -1,6 +1,6 @@
 ---
 title: "تنبيه دقيق للإمام الترمذي في مسألة من مسائل الإخلاص.."
-status: draft
+status: published
 published_at: 2022-01-15
 person: abu-jafar-al-khalifi
 ---

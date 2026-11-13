@@ -1,6 +1,6 @@
 ---
 title: "قال البيهقي في السنن الكبرى 8232"
-status: draft
+status: published
 published_at: 2018-07-21
 person: abu-jafar-al-khalifi
 topics: ["adab-talab-al-ilm"]

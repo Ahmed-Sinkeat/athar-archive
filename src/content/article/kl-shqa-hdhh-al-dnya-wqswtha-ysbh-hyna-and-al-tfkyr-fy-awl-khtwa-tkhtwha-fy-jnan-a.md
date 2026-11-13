@@ -1,6 +1,6 @@
 ---
 title: "كلّ شقاء هذه الدنيا وقسوتها يصبح هينًا عند التفكير في أول خطوةِ تخطوها في جنان ا"
-status: draft
+status: published
 published_at: 2023-09-20
 person: abu-umair-imran-al-zubaidi
 ---

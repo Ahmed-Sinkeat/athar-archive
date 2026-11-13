@@ -1,6 +1,6 @@
 ---
 title: "الإمام أحمد رحمه الله وهو يتكلم عن وقت الأخذ من الشارب :\")"
-status: draft
+status: published
 published_at: 2024-05-02
 person: abu-abdillah-firas-al-ramli
 ---

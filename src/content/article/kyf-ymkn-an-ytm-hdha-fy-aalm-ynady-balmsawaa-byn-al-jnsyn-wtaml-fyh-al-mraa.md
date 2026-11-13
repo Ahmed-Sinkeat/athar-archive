@@ -1,6 +1,6 @@
 ---
 title: "كيف يمكن أن يتم هذا في عالم ينادي بالمساواة بين الجنسين وتعمل فيه المرأة"
-status: draft
+status: published
 published_at: 2024-01-22
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

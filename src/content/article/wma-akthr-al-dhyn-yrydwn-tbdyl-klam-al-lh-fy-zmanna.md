@@ -1,6 +1,6 @@
 ---
 title: "وما أكثر الذين يريدون تبديل كلام الله في زماننا!"
-status: draft
+status: published
 published_at: 2026-07-21
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

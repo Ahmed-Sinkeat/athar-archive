@@ -1,6 +1,6 @@
 ---
 title: "فوائد متفرقة من التفاسير"
-status: draft
+status: published
 published_at: 2019-02-21
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

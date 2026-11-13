@@ -1,6 +1,6 @@
 ---
 title: "تعقيب على الشيخ مصطفى العدوي في إعلاله لحديث فقأ موسى لعين ملك الموت."
-status: draft
+status: published
 published_at: 2023-07-31
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

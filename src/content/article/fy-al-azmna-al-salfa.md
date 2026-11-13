@@ -1,6 +1,6 @@
 ---
 title: "في الأزمنة السالفة"
-status: draft
+status: published
 published_at: 2023-02-07
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith"]

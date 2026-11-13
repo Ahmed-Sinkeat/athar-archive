@@ -1,6 +1,6 @@
 ---
 title: "الشرك يسري في عروقهم، لا يستطيع أن يجلس دون أن يدعو غير الله!"
-status: draft
+status: published
 published_at: 2025-02-08
 person: abu-umair-imran-al-zubaidi
 ---

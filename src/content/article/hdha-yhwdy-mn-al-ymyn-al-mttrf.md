@@ -1,6 +1,6 @@
 ---
 title: "هذا يهودي من اليمين المتطرف"
-status: draft
+status: published
 published_at: 2026-08-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

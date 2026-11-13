@@ -1,6 +1,6 @@
 ---
 title: "يا رجل أنت مصر على إثبات دياثتك العقدية؟!"
-status: draft
+status: published
 published_at: 2024-09-18
 person: abu-umair-imran-al-zubaidi
 ---

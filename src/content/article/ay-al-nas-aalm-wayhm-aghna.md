@@ -1,6 +1,6 @@
 ---
 title: "أي الناس أعلم وأيهم أغنى ؟"
-status: draft
+status: published
 published_at: 2024-05-19
 person: abu-abdillah-firas-al-ramli
 ---

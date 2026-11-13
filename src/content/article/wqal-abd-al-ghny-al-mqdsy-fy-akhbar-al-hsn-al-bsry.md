@@ -1,6 +1,6 @@
 ---
 title: "وقال عبد الغني المقدسي في أخبار الحسن البصري"
-status: draft
+status: published
 published_at: 2017-06-21
 person: abu-jafar-al-khalifi
 ---

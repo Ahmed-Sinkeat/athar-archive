@@ -1,6 +1,6 @@
 ---
 title: "قال محمد الخضر الحسين في نقده لكتاب أصول الحكم"
-status: draft
+status: published
 published_at: 2018-09-30
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

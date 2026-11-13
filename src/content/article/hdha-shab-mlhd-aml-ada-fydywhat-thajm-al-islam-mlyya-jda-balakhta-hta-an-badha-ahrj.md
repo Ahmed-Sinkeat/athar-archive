@@ -1,6 +1,6 @@
 ---
 title: "هذا شاب ملحد عمل عدة فيديوهات تهاجم الإسلام مليئة جدا بالأخطاء حتى أن بعضها أحرج"
-status: draft
+status: published
 published_at: 2019-02-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "قال ابن قتيبة"
-status: draft
+status: published
 published_at: 2018-02-05
 person: abu-jafar-al-khalifi
 ---

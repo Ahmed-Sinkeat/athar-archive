@@ -1,6 +1,6 @@
 ---
 title: "{عَٰلِمُ ٱلۡغَيۡبِ وَٱلشَّهَٰدَةِ ٱلۡكَبِيرُ ٱلۡمُتَعَالِ * سَوَآءٞ مِّنكُم مَّ"
-status: draft
+status: published
 published_at: 2023-07-28
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

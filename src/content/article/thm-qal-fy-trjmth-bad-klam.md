@@ -1,6 +1,6 @@
 ---
 title: "ثم قال في ترجمته بعد كلام"
-status: draft
+status: published
 published_at: 2022-01-26
 person: abu-jafar-al-khalifi
 ---

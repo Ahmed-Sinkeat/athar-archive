@@ -1,6 +1,6 @@
 ---
 title: "دفاعنا عن أحاديث النبي ﷺ واعتقاد أهل السنة في وجوب طاعة أئمة الجور بالمعروف والص"
-status: draft
+status: published
 published_at: 2024-01-06
 person: abu-umair-imran-al-zubaidi
 ---

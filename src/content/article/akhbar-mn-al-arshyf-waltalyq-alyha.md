@@ -1,6 +1,6 @@
 ---
 title: "أخبار من الأرشيف والتعليق عليها"
-status: draft
+status: published
 published_at: 2019-01-28
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

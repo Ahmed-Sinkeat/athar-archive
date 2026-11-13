@@ -1,6 +1,6 @@
 ---
 title: "خادمهم وهي العروس"
-status: draft
+status: published
 published_at: 2024-02-29
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

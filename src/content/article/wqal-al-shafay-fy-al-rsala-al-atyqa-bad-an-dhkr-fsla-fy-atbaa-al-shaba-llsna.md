@@ -1,6 +1,6 @@
 ---
 title: "وقال الشافعي في الرسالة العتيقة بعد أن ذكر فصلا في اتباع الصحابة للسنة"
-status: draft
+status: published
 published_at: 2017-09-11
 person: abu-jafar-al-khalifi
 ---

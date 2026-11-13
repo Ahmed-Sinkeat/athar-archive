@@ -1,6 +1,6 @@
 ---
 title: "يا إلهي!."
-status: draft
+status: published
 published_at: 2023-02-12
 person: abu-umair-imran-al-zubaidi
 ---

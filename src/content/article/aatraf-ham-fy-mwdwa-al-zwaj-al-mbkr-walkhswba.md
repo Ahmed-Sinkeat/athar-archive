@@ -1,6 +1,6 @@
 ---
 title: "اعتراف هام في موضوع الزواج المبكر والخصوبة"
-status: draft
+status: published
 published_at: 2020-10-21
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

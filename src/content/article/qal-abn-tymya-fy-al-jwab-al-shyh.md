@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية في الجواب الصحيح (4/ 432)"
-status: draft
+status: published
 published_at: 2021-09-21
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

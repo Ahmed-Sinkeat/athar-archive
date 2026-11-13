@@ -1,6 +1,6 @@
 ---
 title: "وقد قال ابن حزم وهو يتكلم عن مسألة الرؤية في الفصل لما أورد عليه المعتزلة بعض ال"
-status: draft
+status: published
 published_at: 2021-10-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

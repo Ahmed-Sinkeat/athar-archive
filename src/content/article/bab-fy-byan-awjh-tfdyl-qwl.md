@@ -1,6 +1,6 @@
 ---
 title: "باب في بيان أوجه تفضيل قول"
-status: draft
+status: published
 published_at: 2025-11-22
 person: abu-abdillah-firas-al-ramli
 ---

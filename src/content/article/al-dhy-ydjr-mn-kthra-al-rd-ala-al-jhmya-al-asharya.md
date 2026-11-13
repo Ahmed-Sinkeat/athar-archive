@@ -1,6 +1,6 @@
 ---
 title: "الذي يضجر من كثرة الرد على الجهمية الأشعرية"
-status: draft
+status: published
 published_at: 2024-03-10
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا المكان المبارك"
-status: draft
+status: published
 published_at: 2026-05-24
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

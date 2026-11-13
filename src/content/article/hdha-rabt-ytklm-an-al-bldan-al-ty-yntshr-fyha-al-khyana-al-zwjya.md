@@ -1,6 +1,6 @@
 ---
 title: "هذا رابط يتكلم عن البلدان التي ينتشر فيها الخيانة الزوجية"
-status: draft
+status: published
 published_at: 2019-08-22
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا الكلام من كتاب [الفقه على المذاهب الأربعة] لعبد الرحمن الجزيري في كتاب النكا"
-status: draft
+status: published
 published_at: 2022-09-12
 person: abu-jafar-al-khalifi
 ---

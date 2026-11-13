@@ -1,6 +1,6 @@
 ---
 title: "وهذا هو الحال في أمر أهل الرأي وأهل الحديث ومنهج أهل الرأي لا زال حاضراً بكل ما"
-status: draft
+status: published
 published_at: 2020-03-11
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

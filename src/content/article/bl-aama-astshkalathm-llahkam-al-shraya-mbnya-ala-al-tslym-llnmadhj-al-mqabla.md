@@ -1,6 +1,6 @@
 ---
 title: "بل عامة استشكالاتهم للأحكام الشرعية مبنيَّة على التسليم للنماذج المقابلة"
-status: draft
+status: published
 published_at: 2020-09-11
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "السبيل لنيل المرأة الصالحة في هذا الزمان"
-status: draft
+status: published
 published_at: 2023-06-26
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

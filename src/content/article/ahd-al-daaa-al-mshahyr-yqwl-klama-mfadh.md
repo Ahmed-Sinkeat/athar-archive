@@ -1,6 +1,6 @@
 ---
 title: "أحد الدعاة المشاهير يقول كلاما مفاده"
-status: draft
+status: published
 published_at: 2024-07-07
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ما يسمى اليوم بالضرائب هو المكوس في الشرع."
-status: draft
+status: published
 published_at: 2022-12-15
 person: abu-jafar-al-khalifi
 ---

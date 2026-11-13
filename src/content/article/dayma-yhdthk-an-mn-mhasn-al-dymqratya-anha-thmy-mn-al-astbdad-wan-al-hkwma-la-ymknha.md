@@ -1,6 +1,6 @@
 ---
 title: "دائما يحدثك أن من محاسن الديمقراطية أنها تحمي من الاستبداد وأن الحكومة لا يمكنها"
-status: draft
+status: published
 published_at: 2017-09-10
 person: abu-jafar-al-khalifi
 ---

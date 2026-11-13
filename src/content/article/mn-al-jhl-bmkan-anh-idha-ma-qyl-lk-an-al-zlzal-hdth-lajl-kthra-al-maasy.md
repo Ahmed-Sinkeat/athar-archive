@@ -1,6 +1,6 @@
 ---
 title: "من الجهل بمكان أنه إذا ما قيل لك أنّ الزلزال حدث لأجل كثرة المعاصي"
-status: draft
+status: published
 published_at: 2026-08-05
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "شدة اتباع الصحابة رضي الله عنهم لأثر النبي ﷺ"
-status: draft
+status: published
 published_at: 2026-01-29
 person: abu-abdillah-firas-al-ramli
 ---

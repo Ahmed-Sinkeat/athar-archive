@@ -1,6 +1,6 @@
 ---
 title: "باب فيمن اقتدى بمكارم جده في الثبات على الدين."
-status: draft
+status: published
 published_at: 2020-09-18
 person: abu-jafar-al-khalifi
 ---

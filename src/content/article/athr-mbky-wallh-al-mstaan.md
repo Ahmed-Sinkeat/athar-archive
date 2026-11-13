@@ -1,6 +1,6 @@
 ---
 title: "أثر مبكي والله المستعان..."
-status: draft
+status: published
 published_at: 2023-07-12
 person: abu-abdillah-firas-al-ramli
 ---

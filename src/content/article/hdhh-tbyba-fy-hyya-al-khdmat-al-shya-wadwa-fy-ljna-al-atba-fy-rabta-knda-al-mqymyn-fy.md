@@ -1,6 +1,6 @@
 ---
 title: "هذه طبيبة في هيئة الخدمات الصحية وعضوة في لجنة الأطباء في رابطة كندا المقيمين في"
-status: draft
+status: published
 published_at: 2026-02-13
 person: abu-jafar-al-khalifi
 ---

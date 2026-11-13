@@ -1,6 +1,6 @@
 ---
 title: "\"رأينا فيما سلف أن الضريبة التي كان العرب يسمونها الجزية كانت دينارين على كل رجل"
-status: draft
+status: published
 published_at: 2018-08-25
 person: abu-jafar-al-khalifi
 ---

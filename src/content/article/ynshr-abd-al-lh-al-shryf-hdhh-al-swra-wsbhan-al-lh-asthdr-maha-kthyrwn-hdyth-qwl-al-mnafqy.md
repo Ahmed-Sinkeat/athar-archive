@@ -1,6 +1,6 @@
 ---
 title: "ينشر عبد الله الشريف هذه الصورة وسبحان الله استحضر معها كثيرون حديث قول المنافقي"
-status: draft
+status: published
 published_at: 2026-05-09
 person: abu-jafar-al-khalifi
 ---

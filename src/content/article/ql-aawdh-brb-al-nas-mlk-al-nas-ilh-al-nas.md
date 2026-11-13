@@ -1,6 +1,6 @@
 ---
 title: "(قل أعوذ برب الناس * ملك الناس * إله الناس)"
-status: draft
+status: published
 published_at: 2025-01-24
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

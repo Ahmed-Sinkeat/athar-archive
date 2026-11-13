@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم في الجواب الكافي"
-status: draft
+status: published
 published_at: 2018-09-14
 person: abu-jafar-al-khalifi
 ---

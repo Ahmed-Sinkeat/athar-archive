@@ -1,6 +1,6 @@
 ---
 title: "قال المعلمي في رسالة في التعقيب"
-status: draft
+status: published
 published_at: 2018-10-14
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

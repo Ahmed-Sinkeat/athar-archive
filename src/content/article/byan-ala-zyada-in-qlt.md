@@ -1,6 +1,6 @@
 ---
 title: "بيان علة زيادة «إن قلت"
-status: draft
+status: published
 published_at: 2021-02-23
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

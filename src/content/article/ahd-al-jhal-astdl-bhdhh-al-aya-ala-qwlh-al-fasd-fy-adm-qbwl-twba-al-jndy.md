@@ -1,6 +1,6 @@
 ---
 title: "أحد الجهال استدل بهذه الآية على قوله الفاسد في عدم قبول توبة الجندي"
-status: draft
+status: published
 published_at: 2024-01-31
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

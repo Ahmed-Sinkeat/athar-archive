@@ -1,6 +1,6 @@
 ---
 title: "بلغني والحمد لله خروج كتاب"
-status: draft
+status: published
 published_at: 2026-01-30
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وقال ابن الجوزي في المنتظم في ترجمة إمام أهل الرأي"
-status: draft
+status: published
 published_at: 2021-09-25
 person: abu-jafar-al-khalifi
 ---

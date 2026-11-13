@@ -1,6 +1,6 @@
 ---
 title: "كثرة الأثاث"
-status: draft
+status: published
 published_at: 2024-03-05
 person: abu-abdillah-firas-al-ramli
 ---

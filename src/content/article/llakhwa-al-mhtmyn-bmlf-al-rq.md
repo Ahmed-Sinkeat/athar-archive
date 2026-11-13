@@ -1,6 +1,6 @@
 ---
 title: "للأخوة المهتمين بملف الرق."
-status: draft
+status: published
 published_at: 2018-01-06
 person: abu-jafar-al-khalifi
 ---

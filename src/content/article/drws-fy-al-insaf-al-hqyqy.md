@@ -1,6 +1,6 @@
 ---
 title: "دروس في الإنصاف الحقيقي"
-status: draft
+status: published
 published_at: 2019-01-20
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

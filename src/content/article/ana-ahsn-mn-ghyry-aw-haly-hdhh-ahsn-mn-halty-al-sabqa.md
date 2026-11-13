@@ -1,6 +1,6 @@
 ---
 title: "أنا أحسن من غيري أو حالي هذه أحسن من حالتي السابقة .."
-status: draft
+status: published
 published_at: 2020-07-29
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

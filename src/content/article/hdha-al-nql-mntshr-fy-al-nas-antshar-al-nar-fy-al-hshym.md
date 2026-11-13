@@ -1,6 +1,6 @@
 ---
 title: "هذا النقل منتشر في الناس انتشار النار في الهشيم."
-status: draft
+status: published
 published_at: 2024-05-17
 person: abu-jafar-al-khalifi
 ---

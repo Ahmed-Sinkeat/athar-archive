@@ -1,6 +1,6 @@
 ---
 title: "التنصير بالحب"
-status: draft
+status: published
 published_at: 2019-04-30
 person: abu-jafar-al-khalifi
 ---

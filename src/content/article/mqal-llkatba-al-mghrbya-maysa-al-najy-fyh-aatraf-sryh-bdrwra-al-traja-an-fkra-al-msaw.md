@@ -1,6 +1,6 @@
 ---
 title: "مقال للكاتبة المغربية مايسة الناجي فيه اعتراف صريح بضرورة التراجع عن فكرة المساو"
-status: draft
+status: published
 published_at: 2017-10-14
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "آصف الأعجوبة الذي تغلَّب على المرض الشديد والإعاقة"
-status: draft
+status: published
 published_at: 2018-02-12
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "فلما نظروا إلى المسائل الفقهية وجدوا أن الخلاف في كثير منها هين ولا يمكن حسمه با"
-status: draft
+status: published
 published_at: 2020-07-16
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

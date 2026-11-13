@@ -1,6 +1,6 @@
 ---
 title: "بين {وما النصر إلا من عند الله} و«إلا أن يتغمدني الله برحمته»..."
-status: draft
+status: published
 published_at: 2024-03-14
 person: abu-jafar-al-khalifi
 ---

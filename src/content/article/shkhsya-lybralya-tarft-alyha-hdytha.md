@@ -1,6 +1,6 @@
 ---
 title: "شخصية ليبرالية تعرفت عليها حديثًا"
-status: draft
+status: published
 published_at: 2020-02-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

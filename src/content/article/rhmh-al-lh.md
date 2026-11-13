@@ -1,6 +1,6 @@
 ---
 title: "رحمه الله؛"
-status: draft
+status: published
 published_at: 2022-09-27
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

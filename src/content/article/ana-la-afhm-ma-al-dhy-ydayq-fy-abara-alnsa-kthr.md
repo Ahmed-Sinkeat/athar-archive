@@ -1,6 +1,6 @@
 ---
 title: "أنا لا أفهم، ما الّذي يُضايق في عبارة \"النساء كُثُر\"؟! 😅."
-status: draft
+status: published
 published_at: 2023-03-19
 person: abu-umair-imran-al-zubaidi
 ---

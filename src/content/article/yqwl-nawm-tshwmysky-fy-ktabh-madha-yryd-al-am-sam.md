@@ -1,6 +1,6 @@
 ---
 title: "يقول نعوم تشوميسكي في كتابه ماذا يريد العم سام"
-status: draft
+status: published
 published_at: 2017-08-10
 person: abu-jafar-al-khalifi
 ---

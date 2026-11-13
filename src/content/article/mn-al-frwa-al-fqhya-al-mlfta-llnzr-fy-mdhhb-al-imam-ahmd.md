@@ -1,6 +1,6 @@
 ---
 title: "من الفروع الفقهية الملفتة للنظر في مذهب الإمام أحمد"
-status: draft
+status: published
 published_at: 2018-09-04
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

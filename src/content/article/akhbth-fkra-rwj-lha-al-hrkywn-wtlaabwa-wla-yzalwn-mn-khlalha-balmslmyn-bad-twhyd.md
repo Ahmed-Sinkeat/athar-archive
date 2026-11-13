@@ -1,6 +1,6 @@
 ---
 title: "أخبث فكرة روّج لها الحركيّون وتلاعبوا -ولا يزالون- من خلالها بالمسلمين بعد توحيد"
-status: draft
+status: published
 published_at: 2024-10-25
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

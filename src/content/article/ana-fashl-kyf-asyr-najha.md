@@ -1,6 +1,6 @@
 ---
 title: "أنا فاشل! كيف أصير ناجحًا؟!"
-status: draft
+status: published
 published_at: 2023-07-23
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

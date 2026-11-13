@@ -1,6 +1,6 @@
 ---
 title: "ولو قال لك إنسان ( لله بصر لا كبصر المخلوق ) ثم قال ( ولكن البصر هذا ليس هو ما ي"
-status: draft
+status: published
 published_at: 2020-02-23
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

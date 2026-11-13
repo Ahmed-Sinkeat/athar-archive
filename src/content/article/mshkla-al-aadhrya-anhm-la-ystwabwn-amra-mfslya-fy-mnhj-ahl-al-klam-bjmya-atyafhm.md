@@ -1,6 +1,6 @@
 ---
 title: "مشكلة العاذرية أنهم لا يستوعبون أمرًا مفصليًا في منهج أهل الكلام بجميع أطيافهم"
-status: draft
+status: published
 published_at: 2023-05-25
 person: abu-umair-imran-al-zubaidi
 ---

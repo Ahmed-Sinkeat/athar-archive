@@ -1,6 +1,6 @@
 ---
 title: "قال القفال في (محاسن الشريعة)"
-status: draft
+status: published
 published_at: 2018-07-03
 person: abu-jafar-al-khalifi
 ---

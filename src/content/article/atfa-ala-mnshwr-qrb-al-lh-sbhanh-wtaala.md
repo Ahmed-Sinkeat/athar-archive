@@ -1,6 +1,6 @@
 ---
 title: "عطفًا على منشور قرب الله سبحانه وتعالى."
-status: draft
+status: published
 published_at: 2023-10-01
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

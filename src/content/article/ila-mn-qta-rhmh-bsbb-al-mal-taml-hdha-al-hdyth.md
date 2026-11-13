@@ -1,6 +1,6 @@
 ---
 title: "إلى من قطع رحمه بسبب المال تأمَّل هذا الحديث…"
-status: draft
+status: published
 published_at: 2025-01-29
 person: abu-jafar-al-khalifi
 ---

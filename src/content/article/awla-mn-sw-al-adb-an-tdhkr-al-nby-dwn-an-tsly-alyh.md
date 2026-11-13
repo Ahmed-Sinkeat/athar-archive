@@ -1,6 +1,6 @@
 ---
 title: "أولا، من سوء الأدب أن تذكر النبي ﷺ دون أن تصلي عليه."
-status: draft
+status: published
 published_at: 2025-09-22
 person: abu-umair-imran-al-zubaidi
 ---

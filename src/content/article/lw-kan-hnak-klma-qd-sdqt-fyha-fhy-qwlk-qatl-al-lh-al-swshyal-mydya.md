@@ -1,6 +1,6 @@
 ---
 title: "لو كان هناك كلمة قد صدقت فيها فهي قولك: قاتل الله السوشيال ميديا!"
-status: draft
+status: published
 published_at: 2024-06-20
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

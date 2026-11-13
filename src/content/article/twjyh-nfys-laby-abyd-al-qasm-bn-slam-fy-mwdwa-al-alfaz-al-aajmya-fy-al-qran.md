@@ -1,6 +1,6 @@
 ---
 title: "توجيه نفيس لأبي عبيد القاسم بن سلام في موضوع الألفاظ الأعجمية في القرآن..."
-status: draft
+status: published
 published_at: 2021-01-01
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

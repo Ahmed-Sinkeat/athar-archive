@@ -1,6 +1,6 @@
 ---
 title: "من إدخالات الشيعة في كتب اللغة."
-status: draft
+status: published
 published_at: 2021-05-07
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

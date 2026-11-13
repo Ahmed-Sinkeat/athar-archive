@@ -1,6 +1,6 @@
 ---
 title: "قال عمر بن عبد العزيز رحمه الله"
-status: draft
+status: published
 published_at: 2023-05-10
 person: abu-abdillah-firas-al-ramli
 ---

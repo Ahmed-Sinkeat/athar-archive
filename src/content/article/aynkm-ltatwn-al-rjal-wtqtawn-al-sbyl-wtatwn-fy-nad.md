@@ -1,6 +1,6 @@
 ---
 title: "أَئِنَّكُمْ لَتَأْتُونَ الرِّجَالَ وَتَقْطَعُونَ السَّبِيلَ وَتَأْتُونَ فِي نَاد"
-status: draft
+status: published
 published_at: 2025-12-05
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

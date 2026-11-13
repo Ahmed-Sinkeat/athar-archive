@@ -1,6 +1,6 @@
 ---
 title: "كتبت المراسلة في موقع ديفيكس ستيفاني بيزلي مراسلة والمختصة بالعمل الخيري العالمي"
-status: draft
+status: published
 published_at: 2025-10-02
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

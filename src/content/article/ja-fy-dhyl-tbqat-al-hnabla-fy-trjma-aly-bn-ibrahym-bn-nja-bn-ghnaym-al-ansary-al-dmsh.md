@@ -1,6 +1,6 @@
 ---
 title: "جاء في ذيل طبقات الحنابلة في ترجمة علي بن إبراهيم بن نجا بن غنائم الأنصاري الدمش"
-status: draft
+status: published
 published_at: 2017-07-02
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

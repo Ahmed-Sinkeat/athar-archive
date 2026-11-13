@@ -1,6 +1,6 @@
 ---
 title: "قال الخطيب في تاريخ بغداد"
-status: draft
+status: published
 published_at: 2017-11-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

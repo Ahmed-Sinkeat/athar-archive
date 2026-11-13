@@ -1,6 +1,6 @@
 ---
 title: "في أيام النازية كانوا يعتبرونها جريمة قتل جماعي."
-status: draft
+status: published
 published_at: 2020-10-22
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

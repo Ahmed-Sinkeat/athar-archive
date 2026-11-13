@@ -1,6 +1,6 @@
 ---
 title: "قال النيسابوري في تفسيره الغرائب"
-status: draft
+status: published
 published_at: 2018-01-13
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

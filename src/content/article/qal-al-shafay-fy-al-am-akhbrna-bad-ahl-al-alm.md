@@ -1,6 +1,6 @@
 ---
 title: "قال الشافعي في الأم أَخْبَرَنَا بَعْضُ أَهْلِ الْعِلْمِ"
-status: draft
+status: published
 published_at: 2018-05-12
 person: abu-jafar-al-khalifi
 ---

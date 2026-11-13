@@ -1,6 +1,6 @@
 ---
 title: "قال الأنبا شنودة رأس الكنيسة المصرية السابق في كتابه تأملات في سفر النبي يونان"
-status: draft
+status: published
 published_at: 2018-03-28
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

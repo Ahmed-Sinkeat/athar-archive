@@ -1,6 +1,6 @@
 ---
 title: "ذاك علي بن أبي طالب يا لكع!"
-status: draft
+status: published
 published_at: 2025-07-11
 person: abu-abdillah-firas-al-ramli
 ---

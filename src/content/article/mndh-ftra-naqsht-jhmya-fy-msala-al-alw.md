@@ -1,6 +1,6 @@
 ---
 title: "منذ فترة ناقشت جهميًا في مسألة العلو"
-status: draft
+status: published
 published_at: 2023-09-30
 person: abu-umair-imran-al-zubaidi
 ---

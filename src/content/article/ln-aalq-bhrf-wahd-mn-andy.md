@@ -1,6 +1,6 @@
 ---
 title: "لن أعلق بحرفٍ واحد من عندي"
-status: draft
+status: published
 published_at: 2024-06-19
 person: abu-umair-imran-al-zubaidi
 topics: ["tazkiyat-al-nafs"]

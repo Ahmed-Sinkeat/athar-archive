@@ -1,6 +1,6 @@
 ---
 title: "بين نشوز النساء اليوم والبارحة!"
-status: draft
+status: published
 published_at: 2025-01-08
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

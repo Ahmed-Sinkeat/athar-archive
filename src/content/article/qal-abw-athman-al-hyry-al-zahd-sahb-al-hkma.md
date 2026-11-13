@@ -1,6 +1,6 @@
 ---
 title: "قال أبو عثمان الحيري الزاهد صاحب الحكمة"
-status: draft
+status: published
 published_at: 2018-10-18
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

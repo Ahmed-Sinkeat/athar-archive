@@ -1,6 +1,6 @@
 ---
 title: "وقبل أن أشرح"
-status: draft
+status: published
 published_at: 2020-10-14
 person: abu-jafar-al-khalifi
 ---

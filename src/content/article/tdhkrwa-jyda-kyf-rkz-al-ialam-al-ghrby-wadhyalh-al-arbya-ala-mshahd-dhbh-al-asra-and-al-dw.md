@@ -1,6 +1,6 @@
 ---
 title: "تذكروا جيدا كيف ركز الإعلام الغربي وأذياله العربية على مشاهد ذبح الاسرى عند الدو"
-status: draft
+status: published
 published_at: 2017-09-04
 person: abu-jafar-al-khalifi
 ---

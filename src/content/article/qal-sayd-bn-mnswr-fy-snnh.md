@@ -1,6 +1,6 @@
 ---
 title: "قال سعيد بن منصور في سننه 661"
-status: draft
+status: published
 published_at: 2018-01-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "من اليقين ..."
-status: draft
+status: published
 published_at: 2023-12-05
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

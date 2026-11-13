@@ -1,6 +1,6 @@
 ---
 title: "تواضع الصديق في الملبس الدال على أفضليته !"
-status: draft
+status: published
 published_at: 2020-08-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

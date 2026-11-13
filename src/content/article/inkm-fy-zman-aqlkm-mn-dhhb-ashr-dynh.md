@@ -1,6 +1,6 @@
 ---
 title: "إنكم في زمان أقلكم من ذهب عشر دينه"
-status: draft
+status: published
 published_at: 2025-06-16
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

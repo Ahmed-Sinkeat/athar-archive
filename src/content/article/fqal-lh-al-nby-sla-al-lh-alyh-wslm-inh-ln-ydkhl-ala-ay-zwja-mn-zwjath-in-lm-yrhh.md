@@ -1,6 +1,6 @@
 ---
 title: "فقال له النبي صلى الله عليه وسلم إنه لن يدخل على أي زوجة من زوجاته إن لم يُرِحه"
-status: draft
+status: published
 published_at: 2021-01-07
 person: abu-jafar-al-khalifi
 ---

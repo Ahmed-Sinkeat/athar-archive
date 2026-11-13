@@ -1,6 +1,6 @@
 ---
 title: "نصيحة، من يتابع أو يعرف من يتابع تميم البرغوثي فلينهه عن ذلك."
-status: draft
+status: published
 published_at: 2023-07-12
 person: abu-umair-imran-al-zubaidi
 ---

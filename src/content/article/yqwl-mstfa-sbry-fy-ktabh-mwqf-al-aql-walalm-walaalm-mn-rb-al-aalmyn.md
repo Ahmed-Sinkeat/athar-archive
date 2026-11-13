@@ -1,6 +1,6 @@
 ---
 title: "يقول مصطفى صبري في كتابه موقف العقل والعلم والعالم من رب العالمين"
-status: draft
+status: published
 published_at: 2017-09-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

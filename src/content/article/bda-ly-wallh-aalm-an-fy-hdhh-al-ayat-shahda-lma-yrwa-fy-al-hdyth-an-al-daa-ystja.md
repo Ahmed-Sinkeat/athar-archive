@@ -1,6 +1,6 @@
 ---
 title: "بدا لي _ والله أعلم _ أن في هذه الآيات شاهداً لما يروى في الحديث أن الدعاء يستجا"
-status: draft
+status: published
 published_at: 2018-12-13
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال أبو بكر الطرطوشي من المالكية"
-status: draft
+status: published
 published_at: 2020-04-11
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

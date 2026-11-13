@@ -1,6 +1,6 @@
 ---
 title: "يا حسان تدري ما السنة المباركة ؟"
-status: draft
+status: published
 published_at: 2023-07-18
 person: abu-abdillah-firas-al-ramli
 ---

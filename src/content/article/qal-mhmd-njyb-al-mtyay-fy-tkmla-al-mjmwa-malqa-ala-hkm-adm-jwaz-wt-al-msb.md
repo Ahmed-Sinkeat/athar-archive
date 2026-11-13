@@ -1,6 +1,6 @@
 ---
 title: "قال محمد نجيب المطيعي في تكملة المجموع (20/55) معلقاً على حكم عدم جواز وطء المسب"
-status: draft
+status: published
 published_at: 2018-02-08
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

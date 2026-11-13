@@ -1,6 +1,6 @@
 ---
 title: "لو نظرت في تراث المسلمين المتوافر على مدى ثلاثة عشر قرنا مضت قبل الاستعمار"
-status: draft
+status: published
 published_at: 2017-05-12
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

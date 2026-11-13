@@ -1,6 +1,6 @@
 ---
 title: "أكبر خطأٍ يرتكبه الكثيرون في الحديث عن التعدّد هو تصويره على أنّه حكمٌ شرعيٌّ يص"
-status: draft
+status: published
 published_at: 2023-01-10
 person: abu-umair-imran-al-zubaidi
 ---

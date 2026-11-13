@@ -1,6 +1,6 @@
 ---
 title: "يوم يفرح أقرب الناس لك أن لهم حقا عليك"
-status: draft
+status: published
 published_at: 2023-08-04
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

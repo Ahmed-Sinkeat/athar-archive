@@ -1,6 +1,6 @@
 ---
 title: "هذا مقطع لشيخ الصوفية الأردني عون القدومي"
-status: draft
+status: published
 published_at: 2022-08-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

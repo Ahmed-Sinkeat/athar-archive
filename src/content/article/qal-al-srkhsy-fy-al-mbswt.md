@@ -1,6 +1,6 @@
 ---
 title: "قال السرخسي في المبسوط (6/207 )"
-status: draft
+status: published
 published_at: 2017-12-02
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-asma-was-sifat"]

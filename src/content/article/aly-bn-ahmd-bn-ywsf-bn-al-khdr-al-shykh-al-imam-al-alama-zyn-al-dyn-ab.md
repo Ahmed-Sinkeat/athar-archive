@@ -1,6 +1,6 @@
 ---
 title: "عَليّ بن أَحْمد بن يُوسُف بن الْخضر الشَّيْخ الإِمَام الْعَلامَة زين الدّين أَبُ"
-status: draft
+status: published
 published_at: 2017-07-08
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال ناصر الدين النشاشيبي وهو أحد كتاب الناصرية في كتابه اليمن ذلك المعلوم ص٢٤٩"
-status: draft
+status: published
 published_at: 2017-10-24
 person: abu-jafar-al-khalifi
 ---

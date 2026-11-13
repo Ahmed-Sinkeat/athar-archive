@@ -1,6 +1,6 @@
 ---
 title: "ما يُقال عند دخول الشَّهر الجديد أو السّنة الجديدة؟!"
-status: draft
+status: published
 published_at: 2025-06-26
 person: awwab-bin-muhammad
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "لنشكر الله على نجاتهم بالإحسان إليهم."
-status: draft
+status: published
 published_at: 2025-10-09
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

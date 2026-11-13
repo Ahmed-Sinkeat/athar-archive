@@ -1,6 +1,6 @@
 ---
 title: "حتى تعلم أنّ المرأة في زماننا مجرد سلعة يتجار بها لتحقيق مكاسب اقتصادية وسياسية."
-status: draft
+status: published
 published_at: 2026-01-28
 person: abu-umair-imran-al-zubaidi
 ---

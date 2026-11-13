@@ -1,6 +1,6 @@
 ---
 title: "لا أكاد أشاهد مقطعا عن قضية تهجير إخواننا المستضعفين إلا ويقترن ذلك بعبارة"
-status: draft
+status: published
 published_at: 2025-09-20
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

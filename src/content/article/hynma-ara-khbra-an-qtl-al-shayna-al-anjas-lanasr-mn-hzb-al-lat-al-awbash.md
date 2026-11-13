@@ -1,6 +1,6 @@
 ---
 title: "حينما أرى خبرًا عن قتل الصهاينة الأنجاس لعناصر من حزب اللات الأوباش"
-status: draft
+status: published
 published_at: 2023-11-20
 person: abu-umair-imran-al-zubaidi
 ---

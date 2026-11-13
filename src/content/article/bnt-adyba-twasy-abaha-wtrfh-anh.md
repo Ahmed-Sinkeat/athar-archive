@@ -1,6 +1,6 @@
 ---
 title: "بنت أديبة تواسي أباها وترفه عنه .."
-status: draft
+status: published
 published_at: 2018-10-09
 person: abu-jafar-al-khalifi
 ---

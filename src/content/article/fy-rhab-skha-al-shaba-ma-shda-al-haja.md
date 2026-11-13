@@ -1,6 +1,6 @@
 ---
 title: "في رحاب سخاء الصحابة مع شدة الحاجة"
-status: draft
+status: published
 published_at: 2020-01-23
 person: abu-jafar-al-khalifi
 ---

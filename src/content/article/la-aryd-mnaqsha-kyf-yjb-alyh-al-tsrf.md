@@ -1,6 +1,6 @@
 ---
 title: "لا أريد مناقشة كيف يجب عليه التصرف"
-status: draft
+status: published
 published_at: 2023-12-15
 person: abu-umair-imran-al-zubaidi
 ---

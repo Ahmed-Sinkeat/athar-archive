@@ -1,6 +1,6 @@
 ---
 title: "تابعت حلقة الدحيح التي تحدث فيها عن الحكاية الكاملة للصراع."
-status: draft
+status: published
 published_at: 2023-11-17
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وهم الطمأنينة ومكر إبليس"
-status: draft
+status: published
 published_at: 2025-05-10
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran"]

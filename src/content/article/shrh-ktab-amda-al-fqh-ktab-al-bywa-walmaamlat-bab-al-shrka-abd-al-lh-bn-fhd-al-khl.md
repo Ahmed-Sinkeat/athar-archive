@@ -1,6 +1,6 @@
 ---
 title: "شرح كتاب عمدة الفقه / كتاب البيوع والمعاملات / باب الشركة / عبد الله بن فهد الخل"
-status: draft
+status: published
 published_at: 2018-08-31
 person: abu-jafar-al-khalifi
 ---

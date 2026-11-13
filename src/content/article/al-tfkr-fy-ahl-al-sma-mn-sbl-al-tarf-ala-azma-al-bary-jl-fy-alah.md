@@ -1,6 +1,6 @@
 ---
 title: "التفكر في أهل السماء من سبل التعرف على عظمة الباري جل في علاه"
-status: draft
+status: published
 published_at: 2025-01-24
 person: abu-umair-imran-al-zubaidi
 ---

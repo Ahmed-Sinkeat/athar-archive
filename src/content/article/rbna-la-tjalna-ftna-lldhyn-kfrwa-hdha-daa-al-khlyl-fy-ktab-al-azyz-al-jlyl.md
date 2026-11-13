@@ -1,6 +1,6 @@
 ---
 title: "{ربنا لا تجعلنا فتنة للذين كفروا} هذا دعاء الخليل في كتاب العزيز الجليل"
-status: draft
+status: published
 published_at: 2018-06-11
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

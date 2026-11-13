@@ -1,6 +1,6 @@
 ---
 title: "ولا زلن يُفتن ولا حول ولا قوة إلا بالله."
-status: draft
+status: published
 published_at: 2020-06-24
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

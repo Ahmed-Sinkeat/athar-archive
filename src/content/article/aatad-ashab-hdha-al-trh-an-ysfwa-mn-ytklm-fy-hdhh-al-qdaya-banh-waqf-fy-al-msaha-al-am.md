@@ -1,6 +1,6 @@
 ---
 title: "اعتاد أصحاب هذا الطرح أن يصفوا من يتكلم في هذه القضايا بأنه واقف في المساحة الآم"
-status: draft
+status: published
 published_at: 2026-03-22
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

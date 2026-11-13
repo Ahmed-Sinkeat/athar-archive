@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب مسائل أجاب عنها ابن حجر العسقلاني ص16"
-status: draft
+status: published
 published_at: 2026-09-09
 person: abu-jafar-al-khalifi
 ---

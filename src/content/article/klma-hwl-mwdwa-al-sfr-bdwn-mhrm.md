@@ -1,6 +1,6 @@
 ---
 title: "كلمة حول موضوع السفر بدون محرم"
-status: draft
+status: published
 published_at: 2019-08-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "قال تعالى وهو يصف عباده المؤمنين: {وَإِذَا مَا غَضِبُوا هُمْ يَغْفِرُونَ}."
-status: draft
+status: published
 published_at: 2018-05-05
 person: abu-jafar-al-khalifi
 ---

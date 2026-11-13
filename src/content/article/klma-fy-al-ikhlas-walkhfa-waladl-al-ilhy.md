@@ -1,6 +1,6 @@
 ---
 title: "كلمة في الإخلاص والخفاء والعدل الإلهي..."
-status: draft
+status: published
 published_at: 2026-01-26
 person: abu-jafar-al-khalifi
 ---

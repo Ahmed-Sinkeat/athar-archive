@@ -1,6 +1,6 @@
 ---
 title: "هذا من موقع يدعو للهجرة إلى كندا يذكر بكل صراحة سبب قبولهم للهجرات وهو أنهم عنده"
-status: draft
+status: published
 published_at: 2020-07-28
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

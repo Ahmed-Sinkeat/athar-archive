@@ -1,6 +1,6 @@
 ---
 title: "باب المسلم مرآة أخيه"
-status: draft
+status: published
 published_at: 2023-12-29
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "رأيت محمد بن عبد الواحد ينقل هذا النقل"
-status: draft
+status: published
 published_at: 2024-03-16
 person: abu-jafar-al-khalifi
 ---

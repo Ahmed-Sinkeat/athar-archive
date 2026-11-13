@@ -1,6 +1,6 @@
 ---
 title: "حين قرأت هذه الآية تذكرت قول أم المؤمنين عائشة"
-status: draft
+status: published
 published_at: 2019-12-05
 person: abu-jafar-al-khalifi
 ---

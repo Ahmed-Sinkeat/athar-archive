@@ -1,6 +1,6 @@
 ---
 title: "القول بأن رأس نبي الله يحيى بن زكريا -عليهما الصلاة والسلام- موجود في الجامع الأ"
-status: draft
+status: published
 published_at: 2024-12-15
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

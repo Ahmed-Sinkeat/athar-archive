@@ -1,6 +1,6 @@
 ---
 title: "الشعراني: عبادة الأصنام جاءت من تعطيل الصفات..."
-status: draft
+status: published
 published_at: 2025-01-16
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "قال ابن حجي [ ت 816 ] في تاريخه"
-status: draft
+status: published
 published_at: 2018-12-27
 person: abu-jafar-al-khalifi
 ---

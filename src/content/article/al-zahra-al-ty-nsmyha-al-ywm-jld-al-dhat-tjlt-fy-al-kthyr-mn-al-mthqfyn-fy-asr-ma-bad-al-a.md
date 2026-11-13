@@ -1,6 +1,6 @@
 ---
 title: "الظاهرة التي نسميها اليوم جلد الذات تجلت في الكثير من المثقفين في عصر ما بعد الا"
-status: draft
+status: published
 published_at: 2018-08-02
 person: abu-jafar-al-khalifi
 ---

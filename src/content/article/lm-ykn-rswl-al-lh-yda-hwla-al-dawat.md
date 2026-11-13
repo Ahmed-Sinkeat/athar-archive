@@ -1,6 +1,6 @@
 ---
 title: "لم يكن رسول الله ﷺ يدع هؤلاء الدعوات"
-status: draft
+status: published
 published_at: 2023-06-15
 person: abu-abdillah-firas-al-ramli
 ---

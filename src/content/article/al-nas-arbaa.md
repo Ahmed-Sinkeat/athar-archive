@@ -1,6 +1,6 @@
 ---
 title: "الناس أربعة"
-status: draft
+status: published
 published_at: 2025-07-01
 person: abu-abdillah-firas-al-ramli
 ---

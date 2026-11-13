@@ -1,6 +1,6 @@
 ---
 title: "الحل الإرجائي للخلافيات العقدية (الفزع الشديد من الخلاف الذي يزيده ولا يحله)"
-status: draft
+status: published
 published_at: 2021-09-10
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أكثر الأسئلة التي وردتني حين نشرت رابط صراحة كانت"
-status: draft
+status: published
 published_at: 2024-01-04
 person: abu-umair-imran-al-zubaidi
 topics: ["al-wala-wal-bara", "al-sunnah-wal-bidah"]

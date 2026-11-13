@@ -1,6 +1,6 @@
 ---
 title: "منذ سنوات وإسرائيل تضرب مواقع عسكرية للنظام المجرم وإيران وأذرعها في سوريا"
-status: draft
+status: published
 published_at: 2024-12-03
 person: abu-umair-imran-al-zubaidi
 ---

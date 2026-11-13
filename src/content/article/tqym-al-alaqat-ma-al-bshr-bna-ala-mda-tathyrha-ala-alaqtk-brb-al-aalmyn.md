@@ -1,6 +1,6 @@
 ---
 title: "تُقيّم العِلاقات مع البشر بناءً على مدى تأثيرها على علاقتك بربّ العالمين."
-status: draft
+status: published
 published_at: 2022-11-30
 person: abu-umair-imran-al-zubaidi
 ---

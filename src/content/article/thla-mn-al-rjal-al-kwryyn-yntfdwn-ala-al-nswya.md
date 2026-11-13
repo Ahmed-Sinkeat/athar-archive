@@ -1,6 +1,6 @@
 ---
 title: "ثلة من الرجال الكوريين ينتفضون على النسوية!"
-status: draft
+status: published
 published_at: 2021-07-06
 person: abu-jafar-al-khalifi
 ---

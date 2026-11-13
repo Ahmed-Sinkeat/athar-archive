@@ -1,6 +1,6 @@
 ---
 title: "الفرق بين (القدر المشترك) و(الاشتراك اللفظي)..."
-status: draft
+status: published
 published_at: 2024-07-08
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "إما أن تُقر أنّ ثنائهم ليس بحجة؛ لأنّ جرح السلف مقدم ولا ريب على تعديل الخلف"
-status: draft
+status: published
 published_at: 2024-02-15
 person: abu-umair-imran-al-zubaidi
 ---

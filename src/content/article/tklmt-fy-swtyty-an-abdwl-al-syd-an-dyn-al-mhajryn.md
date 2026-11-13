@@ -1,6 +1,6 @@
 ---
 title: "تكلمت في صوتيتي عن عبدول السيد عن دين المهاجرين."
-status: draft
+status: published
 published_at: 2026-11-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

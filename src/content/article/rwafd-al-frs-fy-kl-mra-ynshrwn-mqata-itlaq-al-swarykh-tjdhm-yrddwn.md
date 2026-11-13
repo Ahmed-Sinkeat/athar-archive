@@ -1,6 +1,6 @@
 ---
 title: "روافض الفرس في كل مرة ينشرون مقاطع إطلاق الصواريخ تجدهم يرددون"
-status: draft
+status: published
 published_at: 2026-03-22
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

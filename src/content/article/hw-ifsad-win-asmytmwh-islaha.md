@@ -1,6 +1,6 @@
 ---
 title: "هو إفساد وإن أسميتموه إصلاحًا.."
-status: draft
+status: published
 published_at: 2021-10-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-wala-wal-bara"]

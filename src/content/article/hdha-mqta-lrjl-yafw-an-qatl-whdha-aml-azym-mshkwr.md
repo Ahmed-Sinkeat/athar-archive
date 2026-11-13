@@ -1,6 +1,6 @@
 ---
 title: "هذا مقطع لرجل يعفو عن قاتل، وهذا عمل عظيم مشكور."
-status: draft
+status: published
 published_at: 2026-06-17
 person: abu-jafar-al-khalifi
 ---

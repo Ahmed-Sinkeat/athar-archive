@@ -1,6 +1,6 @@
 ---
 title: "يعدُّونه شبهة وهو برهان من براهين النبوة."
-status: draft
+status: published
 published_at: 2021-03-21
 person: abu-jafar-al-khalifi
 ---

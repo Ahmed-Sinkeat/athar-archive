@@ -1,6 +1,6 @@
 ---
 title: "المشكلة في الليبرالي أو العلماني أو (المسلم الكيوت) ليست في جهله بعلم من علوم ال"
-status: draft
+status: published
 published_at: 2017-08-18
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

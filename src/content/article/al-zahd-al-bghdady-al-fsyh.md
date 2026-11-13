@@ -1,6 +1,6 @@
 ---
 title: "الزاهد البغدادي الفصيح"
-status: draft
+status: published
 published_at: 2019-12-08
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

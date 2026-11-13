@@ -1,6 +1,6 @@
 ---
 title: "ما أحوجنا إلى آباء مثل عمر بن الخطاب رضي الله عنه.."
-status: draft
+status: published
 published_at: 2021-06-23
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

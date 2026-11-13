@@ -1,6 +1,6 @@
 ---
 title: "رأيت كلامًا في تويتر عن نشر أحد أعضاء فرقة بي تي إس أغنية فيها إساءة للإسلام."
-status: draft
+status: published
 published_at: 2023-08-17
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-wala-wal-bara"]

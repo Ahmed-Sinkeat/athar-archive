@@ -1,6 +1,6 @@
 ---
 title: "أتعجبون من هذا ؟!"
-status: draft
+status: published
 published_at: 2023-08-13
 person: abu-abdillah-firas-al-ramli
 ---

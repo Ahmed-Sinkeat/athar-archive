@@ -1,6 +1,6 @@
 ---
 title: "هلا سخرت من فاطمة بنت النبي محمد صلى الله عليه وسلم يا عدنان !"
-status: draft
+status: published
 published_at: 2017-05-27
 person: abu-jafar-al-khalifi
 ---

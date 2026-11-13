@@ -1,6 +1,6 @@
 ---
 title: "وبالمناسبة، إثبات العلو لا يلزم منه أنك على اعتقاد أهل السنة والجماعة!"
-status: draft
+status: published
 published_at: 2023-12-15
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat", "al-sunnah-wal-bidah"]

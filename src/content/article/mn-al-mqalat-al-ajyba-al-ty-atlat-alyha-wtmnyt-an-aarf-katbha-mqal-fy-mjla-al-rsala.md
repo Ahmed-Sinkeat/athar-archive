@@ -1,6 +1,6 @@
 ---
 title: "من المقالات العجيبة التي اطلعت عليها وتمنيت أن أعرف كاتبها مقال في مجلة الرسالة"
-status: draft
+status: published
 published_at: 2018-02-27
 person: abu-jafar-al-khalifi
 ---

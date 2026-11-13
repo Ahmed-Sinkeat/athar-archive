@@ -1,6 +1,6 @@
 ---
 title: "فوائد وعبر من قصة بدر المطيري..."
-status: draft
+status: published
 published_at: 2024-05-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

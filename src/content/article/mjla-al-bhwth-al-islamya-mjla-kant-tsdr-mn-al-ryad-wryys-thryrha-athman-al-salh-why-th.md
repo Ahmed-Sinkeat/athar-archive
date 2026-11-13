@@ -1,6 +1,6 @@
 ---
 title: "مجلة البحوث الإسلامية مجلة كانت تصدر من الرياض ورئيس تحريرها عثمان الصالح وهي تح"
-status: draft
+status: published
 published_at: 2018-11-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

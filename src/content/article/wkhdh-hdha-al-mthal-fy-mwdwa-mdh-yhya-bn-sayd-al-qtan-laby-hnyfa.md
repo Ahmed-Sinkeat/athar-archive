@@ -1,6 +1,6 @@
 ---
 title: "وخذ هذا المثال في موضوع مدح يحيى بن سعيد القطان لأبي حنيفة"
-status: draft
+status: published
 published_at: 2021-12-05
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "ذروة اللذة في السجود حين تستحضر أنّك ساجد والله تبارك وتعالى من فوقك جالسٌ على ا"
-status: draft
+status: published
 published_at: 2023-07-12
 person: abu-umair-imran-al-zubaidi
 ---

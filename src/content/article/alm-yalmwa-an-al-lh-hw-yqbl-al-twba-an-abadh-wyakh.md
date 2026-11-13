@@ -1,6 +1,6 @@
 ---
 title: "أَلَمْ يَعْلَمُوا أَنَّ اللَّهَ هُوَ يَقْبَلُ التَّوْبَةَ عَنْ عِبَادِهِ وَيَأْخ"
-status: draft
+status: published
 published_at: 2023-04-17
 person: abu-umair-imran-al-zubaidi
 ---

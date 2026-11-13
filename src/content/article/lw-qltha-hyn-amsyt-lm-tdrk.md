@@ -1,6 +1,6 @@
 ---
 title: "لو قلتها حين أمسيت لم تضرك"
-status: draft
+status: published
 published_at: 2025-03-28
 person: abu-abdillah-firas-al-ramli
 ---

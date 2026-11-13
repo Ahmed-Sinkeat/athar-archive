@@ -1,6 +1,6 @@
 ---
 title: "مختصر عدد من الدعوات التنويرية: دعوى نبوة كاذبة ومغتلمة!"
-status: draft
+status: published
 published_at: 2019-04-28
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

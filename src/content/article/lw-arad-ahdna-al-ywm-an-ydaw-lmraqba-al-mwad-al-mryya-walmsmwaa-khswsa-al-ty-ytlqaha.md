@@ -1,6 +1,6 @@
 ---
 title: "لو أراد أحدنا اليوم أن يدعو لمراقبة المواد المرئية والمسموعة خصوصًا التي يتلقاها"
-status: draft
+status: published
 published_at: 2021-09-07
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "مفارقة ابن الزاغوني وعلماء الأشاعرة ما زالت قائمة!"
-status: draft
+status: published
 published_at: 2024-11-30
 person: abu-jafar-al-khalifi
 ---

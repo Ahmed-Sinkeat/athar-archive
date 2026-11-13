@@ -1,6 +1,6 @@
 ---
 title: "في الحقيقة، الرجل لا يتغير بين فترتي الخطوبة والزواج كما تظن النساء."
-status: draft
+status: published
 published_at: 2025-06-11
 person: abu-umair-imran-al-zubaidi
 ---

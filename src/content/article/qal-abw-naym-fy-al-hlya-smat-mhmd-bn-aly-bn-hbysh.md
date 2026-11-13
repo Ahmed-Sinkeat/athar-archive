@@ -1,6 +1,6 @@
 ---
 title: "قال أبو نعيم في الحلية سَمِعْتُ مُحَمَّدَ بْنَ عَلِيِّ بْنِ حُبَيْشٍ"
-status: draft
+status: published
 published_at: 2017-06-19
 person: abu-jafar-al-khalifi
 ---

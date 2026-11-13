@@ -1,6 +1,6 @@
 ---
 title: "من الأمور التي أنكرها ربنا على المشركين وقرعهم عليها هي وصفهم الملائكة بأنهم إنا"
-status: draft
+status: published
 published_at: 2026-08-08
 person: abu-umair-imran-al-zubaidi
 ---

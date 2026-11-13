@@ -1,6 +1,6 @@
 ---
 title: "إِنَّ الَّذِينَ كَذَّبُوا بِآيَاتِنَا وَاسْتَكْبَرُوا عَنْهَا لَا تُفَتَّحُ لَهُ"
-status: draft
+status: published
 published_at: 2023-03-31
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

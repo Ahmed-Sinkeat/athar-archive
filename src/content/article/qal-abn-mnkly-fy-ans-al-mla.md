@@ -1,6 +1,6 @@
 ---
 title: "قال ابن منكلي في أنس الملأ"
-status: draft
+status: published
 published_at: 2017-06-19
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

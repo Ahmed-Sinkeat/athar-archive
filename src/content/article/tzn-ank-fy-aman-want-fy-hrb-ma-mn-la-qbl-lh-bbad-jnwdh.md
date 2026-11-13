@@ -1,6 +1,6 @@
 ---
 title: "تظن أنك في أمان وأنت في حرب مع من لا قبل له ببعض جنوده."
-status: draft
+status: published
 published_at: 2020-08-26
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

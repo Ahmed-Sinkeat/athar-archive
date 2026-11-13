@@ -1,6 +1,6 @@
 ---
 title: "في طور الاستبسال في الدفاع عن موضوع الاحتفال بالمولد النبوي"
-status: draft
+status: published
 published_at: 2017-11-27
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "قال ابن المنذر في الإجماع (٧٢٠): وأجمعوا على أن من سب النبي ﷺ أن له القـتل."
-status: draft
+status: published
 published_at: 2023-06-17
 person: abu-abdillah-firas-al-ramli
 ---

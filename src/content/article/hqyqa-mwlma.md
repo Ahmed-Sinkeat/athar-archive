@@ -1,6 +1,6 @@
 ---
 title: "حقيقة مؤلمة!"
-status: draft
+status: published
 published_at: 2023-08-10
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "صدق ربنا سبحانه إذ قال: أومن يُنشأ في الحلية وهو في الخصام غير مبين."
-status: draft
+status: published
 published_at: 2026-02-10
 person: abu-umair-imran-al-zubaidi
 ---

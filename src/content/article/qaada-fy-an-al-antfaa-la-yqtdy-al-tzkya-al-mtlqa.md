@@ -1,6 +1,6 @@
 ---
 title: "قاعدة في أن الانتفاع لا يقتضي التزكية المطلقة..."
-status: draft
+status: published
 published_at: 2021-08-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada", "al-wala-wal-bara"]

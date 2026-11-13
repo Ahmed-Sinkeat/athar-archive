@@ -1,6 +1,6 @@
 ---
 title: "تفضلوا، هذا مثال من مئات الأمثلة عن ضريبة تعظيم أئمة الجهمية الأشعرية!"
-status: draft
+status: published
 published_at: 2023-08-19
 person: abu-umair-imran-al-zubaidi
 ---

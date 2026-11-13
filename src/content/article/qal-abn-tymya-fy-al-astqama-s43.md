@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية في الاستقامة ص٤٣"
-status: draft
+status: published
 published_at: 2017-09-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-iman", "al-sunnah-wal-bidah"]

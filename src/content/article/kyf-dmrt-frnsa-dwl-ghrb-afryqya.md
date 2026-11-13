@@ -1,6 +1,6 @@
 ---
 title: "كيف دمرت فرنسا دول غرب افريقيا؟"
-status: draft
+status: published
 published_at: 2023-08-09
 person: abu-jafar-al-khalifi
 ---

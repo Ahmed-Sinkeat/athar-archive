@@ -1,6 +1,6 @@
 ---
 title: "ولكن محمداً (صلى الله عليه وسلم) أحيا آلاف الألوف.."
-status: draft
+status: published
 published_at: 2020-01-27
 person: abu-jafar-al-khalifi
 ---

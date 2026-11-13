@@ -1,6 +1,6 @@
 ---
 title: "تسعة مساجد يُهجَم عليها شهرياً في الولايات المتحدة الأمريكية في عام ٢٠١٧."
-status: draft
+status: published
 published_at: 2019-01-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

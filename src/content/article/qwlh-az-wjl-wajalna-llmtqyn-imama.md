@@ -1,6 +1,6 @@
 ---
 title: "قوله عز وجل: ﴿واجعلنا للمتقين إماما﴾"
-status: draft
+status: published
 published_at: 2025-09-04
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

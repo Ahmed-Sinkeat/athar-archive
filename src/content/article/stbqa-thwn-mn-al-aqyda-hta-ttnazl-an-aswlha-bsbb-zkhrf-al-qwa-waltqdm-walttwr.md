@@ -1,6 +1,6 @@
 ---
 title: "ستبقى تهوّن مِن العقيدة حتّى تتنازل عن أصولها بسبب زخرف القوّة والتقدّم والتطوًر"
-status: draft
+status: published
 published_at: 2022-10-08
 person: abu-umair-imran-al-zubaidi
 ---

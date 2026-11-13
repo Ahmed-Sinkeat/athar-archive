@@ -1,6 +1,6 @@
 ---
 title: "حين قال بعض الصحابة للنبي الكريم والرحمة المهداة ﷺ عن الخمر أنه يصنعها للدواء قا"
-status: draft
+status: published
 published_at: 2024-01-25
 person: abu-jafar-al-khalifi
 ---

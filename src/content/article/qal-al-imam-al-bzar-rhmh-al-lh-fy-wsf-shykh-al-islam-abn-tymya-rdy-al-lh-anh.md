@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام البزّار -رحمه الله- في وصف شيخ الإسلام ابن تيميّة رضي الله عنه"
-status: draft
+status: published
 published_at: 2023-01-27
 person: abu-umair-imran-al-zubaidi
 ---

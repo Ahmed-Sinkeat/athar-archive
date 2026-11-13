@@ -1,6 +1,6 @@
 ---
 title: "أعجبني هذا التلاعب على الألفاظ للدعوة للاختلاط بحجة عدم الفصل بين الأفراد لتعزيز"
-status: draft
+status: published
 published_at: 2018-05-04
 person: abu-jafar-al-khalifi
 ---

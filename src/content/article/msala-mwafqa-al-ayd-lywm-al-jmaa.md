@@ -1,6 +1,6 @@
 ---
 title: "مسألة موافقة العيد ليوم الجمعة"
-status: draft
+status: published
 published_at: 2025-06-05
 person: abu-abdillah-firas-al-ramli
 ---

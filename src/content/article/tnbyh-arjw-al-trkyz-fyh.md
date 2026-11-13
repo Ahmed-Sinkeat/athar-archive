@@ -1,6 +1,6 @@
 ---
 title: "تنبيه أرجو التركيز فيه..."
-status: draft
+status: published
 published_at: 2020-11-29
 person: abu-jafar-al-khalifi
 ---

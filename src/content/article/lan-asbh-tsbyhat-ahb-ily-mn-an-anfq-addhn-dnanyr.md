@@ -1,6 +1,6 @@
 ---
 title: "لأن أسبح تسبيحات أحب إلي من أن أنفق عددهن دنانير"
-status: draft
+status: published
 published_at: 2025-01-21
 person: abu-abdillah-firas-al-ramli
 ---

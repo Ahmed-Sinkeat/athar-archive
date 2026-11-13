@@ -1,6 +1,6 @@
 ---
 title: "قال الشيخ عبد الله بن محمد بن الوهاب كما في الدرر السنية حاكياً دخولهم إلى مكة"
-status: draft
+status: published
 published_at: 2018-01-16
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

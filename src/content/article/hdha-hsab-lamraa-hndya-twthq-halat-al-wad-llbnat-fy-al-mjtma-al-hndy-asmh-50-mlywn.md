@@ -1,6 +1,6 @@
 ---
 title: "هذا حساب لامرأة هندية توثِّق حالات الوأد للبنات في المجتمع الهندي اسمه (٥٠ مليون"
-status: draft
+status: published
 published_at: 2024-03-19
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "منذ أربعة أيام توفي رجل فاضل شيشاني كان يسكن موسكو اسمه يوسف الشيشاني"
-status: draft
+status: published
 published_at: 2018-08-06
 person: abu-jafar-al-khalifi
 ---

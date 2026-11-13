@@ -1,6 +1,6 @@
 ---
 title: "في رحاب السخي المنسي."
-status: draft
+status: published
 published_at: 2020-03-18
 person: abu-jafar-al-khalifi
 ---

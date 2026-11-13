@@ -1,6 +1,6 @@
 ---
 title: "وإن تستروا بأنها تقصف القواعد الأمريكية فقط"
-status: draft
+status: published
 published_at: 2026-03-09
 person: abu-umair-imran-al-zubaidi
 ---

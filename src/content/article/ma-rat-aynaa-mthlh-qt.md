@@ -1,6 +1,6 @@
 ---
 title: "ما رأت عيناى مثله قط"
-status: draft
+status: published
 published_at: 2024-03-04
 person: abu-umair-imran-al-zubaidi
 ---

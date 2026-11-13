@@ -1,6 +1,6 @@
 ---
 title: "فائدة في التعقيب على فائدة مشتهرة عند متأخري الحنابلة عند البرق..."
-status: draft
+status: published
 published_at: 2024-10-31
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

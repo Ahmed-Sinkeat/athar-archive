@@ -1,6 +1,6 @@
 ---
 title: "تعلموا العلم واكظموا عليه"
-status: draft
+status: published
 published_at: 2024-10-22
 person: abu-abdillah-firas-al-ramli
 ---

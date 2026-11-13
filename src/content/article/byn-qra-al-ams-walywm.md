@@ -1,6 +1,6 @@
 ---
 title: "بين قُراء الأمس واليوم !"
-status: draft
+status: published
 published_at: 2023-09-03
 person: abu-abdillah-firas-al-ramli
 ---

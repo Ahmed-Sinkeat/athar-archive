@@ -1,6 +1,6 @@
 ---
 title: "بعض الناس يستغرب من الفضل العظيم لبعض الأذكار كذاك الذي ورد ( من قال إذا أصبح ما"
-status: draft
+status: published
 published_at: 2018-09-07
 person: abu-jafar-al-khalifi
 ---

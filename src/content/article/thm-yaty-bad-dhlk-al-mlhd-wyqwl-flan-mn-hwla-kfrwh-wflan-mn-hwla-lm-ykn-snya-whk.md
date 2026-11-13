@@ -1,6 +1,6 @@
 ---
 title: "ثم يأتي بعد ذلك الملحد ويقول فلان من هؤلاء كفروه وفلان من هؤلاء لم يكن سنياً وهك"
-status: draft
+status: published
 published_at: 2019-07-05
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "تثبيت مطالب العقيدة وتحصين القلب من قيم الحداثة في آية"
-status: draft
+status: published
 published_at: 2020-05-04
 person: abu-jafar-al-khalifi
 ---

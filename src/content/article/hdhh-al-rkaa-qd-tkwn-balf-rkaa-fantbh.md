@@ -1,6 +1,6 @@
 ---
 title: "هذه الركعة قد تكون بألف ركعة فانتبه!"
-status: draft
+status: published
 published_at: 2023-04-11
 person: abu-jafar-al-khalifi
 ---

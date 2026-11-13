@@ -1,6 +1,6 @@
 ---
 title: "لماذا لا توجد هذه الإساءات لأهل البيت إلا في تواريخ الشيعة وكتبهم؟"
-status: draft
+status: published
 published_at: 2024-05-23
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

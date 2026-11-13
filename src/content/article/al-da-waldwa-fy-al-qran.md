@@ -1,6 +1,6 @@
 ---
 title: "الداء والدواء في القرآن"
-status: draft
+status: published
 published_at: 2024-02-19
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ترى كثيرين يقولون"
-status: draft
+status: published
 published_at: 2026-02-14
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

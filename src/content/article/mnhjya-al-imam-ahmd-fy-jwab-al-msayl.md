@@ -1,6 +1,6 @@
 ---
 title: "منهجية الإمام أحمد في جواب المسائل"
-status: draft
+status: published
 published_at: 2023-11-06
 person: abu-abdillah-firas-al-ramli
 ---

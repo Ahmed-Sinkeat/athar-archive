@@ -1,6 +1,6 @@
 ---
 title: "باب في فضل المشائين في الليل إلى المساجد"
-status: draft
+status: published
 published_at: 2024-11-09
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada", "tazkiyat-al-nafs"]

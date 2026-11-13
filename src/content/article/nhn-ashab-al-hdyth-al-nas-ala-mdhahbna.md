@@ -1,6 +1,6 @@
 ---
 title: "نحن أصحاب الحديث، الناس على مذاهبنا.."
-status: draft
+status: published
 published_at: 2022-01-12
 person: abu-jafar-al-khalifi
 ---

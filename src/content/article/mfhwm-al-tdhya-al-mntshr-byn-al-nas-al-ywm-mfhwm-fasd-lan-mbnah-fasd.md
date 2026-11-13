@@ -1,6 +1,6 @@
 ---
 title: "مفهوم التضحية المنتشر بين الناس اليوم مفهوم فاسد لأنّ مبناه فاسد!"
-status: draft
+status: published
 published_at: 2024-09-24
 person: abu-umair-imran-al-zubaidi
 ---

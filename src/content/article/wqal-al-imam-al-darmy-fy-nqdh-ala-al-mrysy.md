@@ -1,6 +1,6 @@
 ---
 title: "وقال الإمام الدارمي في نقضه على المريسي"
-status: draft
+status: published
 published_at: 2024-04-18
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "والله لا يستهين بعمل المرأة في منزلها إلّا جاهل؛ بل إنّ عملها في منزلها هو أشقّ"
-status: draft
+status: published
 published_at: 2022-11-27
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

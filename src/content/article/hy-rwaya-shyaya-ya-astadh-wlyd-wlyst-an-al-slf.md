@@ -1,6 +1,6 @@
 ---
 title: "هي رواية شيعية يا أستاذ وليد وليست عن السلف..."
-status: draft
+status: published
 published_at: 2024-06-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

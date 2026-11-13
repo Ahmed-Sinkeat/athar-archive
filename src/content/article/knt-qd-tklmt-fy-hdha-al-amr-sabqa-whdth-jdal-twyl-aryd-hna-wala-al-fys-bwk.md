@@ -1,6 +1,6 @@
 ---
 title: "كنت قد تكلمت في هذا الأمر سابقًا، وحدث جدال طويل عريض هنا وعلى الفيس بوك."
-status: draft
+status: published
 published_at: 2023-12-29
 person: abu-umair-imran-al-zubaidi
 ---

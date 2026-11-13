@@ -1,6 +1,6 @@
 ---
 title: "\"فى مراسم تنصيب تشارلز"
-status: draft
+status: published
 published_at: 2022-09-11
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

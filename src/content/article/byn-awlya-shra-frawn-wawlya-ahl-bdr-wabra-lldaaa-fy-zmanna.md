@@ -1,6 +1,6 @@
 ---
 title: "بين أولية سحرة فرعون وأولية أهل بدر وعبرة للدعاة في زماننا..."
-status: draft
+status: published
 published_at: 2024-03-30
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

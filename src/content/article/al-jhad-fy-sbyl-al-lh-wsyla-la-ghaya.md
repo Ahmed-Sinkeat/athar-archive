@@ -1,6 +1,6 @@
 ---
 title: "الجهاد في سبيل الله وسيلة لا غاية!"
-status: draft
+status: published
 published_at: 2023-11-15
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

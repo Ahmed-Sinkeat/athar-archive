@@ -1,6 +1,6 @@
 ---
 title: "وقال يعقوب الفسوي في المعرفة والتاريخ قال إبراهيم بن المنذر"
-status: draft
+status: published
 published_at: 2019-11-01
 person: abu-jafar-al-khalifi
 ---

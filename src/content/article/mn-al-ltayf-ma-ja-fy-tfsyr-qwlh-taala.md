@@ -1,6 +1,6 @@
 ---
 title: "من اللطائف ما جاء في تفسير قوله تعالى"
-status: draft
+status: published
 published_at: 2024-09-17
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

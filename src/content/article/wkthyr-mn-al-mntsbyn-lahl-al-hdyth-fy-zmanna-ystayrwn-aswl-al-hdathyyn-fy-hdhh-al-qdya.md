@@ -1,6 +1,6 @@
 ---
 title: "وكثير من المنتسبين لأهل الحديث في زماننا يستعيرون أصول الحداثيين في هذه القضية"
-status: draft
+status: published
 published_at: 2021-08-21
 person: abu-jafar-al-khalifi
 ---

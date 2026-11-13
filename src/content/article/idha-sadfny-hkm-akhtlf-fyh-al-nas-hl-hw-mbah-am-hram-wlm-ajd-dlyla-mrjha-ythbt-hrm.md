@@ -1,6 +1,6 @@
 ---
 title: "إذا صادفني حكم اختلف فيه الناس هل هو مباح أم حرام ولم أجد دليلاً مرجحاً يثبت حرم"
-status: draft
+status: published
 published_at: 2018-02-10
 person: abu-jafar-al-khalifi
 ---

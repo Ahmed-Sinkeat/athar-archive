@@ -1,6 +1,6 @@
 ---
 title: "روى ابن أبي شيبة في المصنف [32796]عن علي"
-status: draft
+status: published
 published_at: 2021-06-19
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

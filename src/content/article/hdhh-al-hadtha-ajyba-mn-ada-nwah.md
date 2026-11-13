@@ -1,6 +1,6 @@
 ---
 title: "هذه الحادثة عجيبة من عدة نواحٍ."
-status: draft
+status: published
 published_at: 2022-07-18
 person: abu-jafar-al-khalifi
 ---

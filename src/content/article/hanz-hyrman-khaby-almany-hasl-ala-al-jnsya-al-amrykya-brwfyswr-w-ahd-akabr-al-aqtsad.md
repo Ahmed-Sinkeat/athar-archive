@@ -1,6 +1,6 @@
 ---
 title: "هانز هيرمان خابي ألماني حاصل على الجنسية الأمريكية بروفيسور و أحد أكابر الاقتصاد"
-status: draft
+status: published
 published_at: 2018-12-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

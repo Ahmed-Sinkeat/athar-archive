@@ -1,6 +1,6 @@
 ---
 title: "عن أهميّة العقيدة السليمة في حياة المسلم."
-status: draft
+status: published
 published_at: 2022-10-12
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

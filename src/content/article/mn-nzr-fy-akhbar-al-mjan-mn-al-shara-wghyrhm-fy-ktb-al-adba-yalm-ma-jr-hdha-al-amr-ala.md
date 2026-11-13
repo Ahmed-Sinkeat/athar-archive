@@ -1,6 +1,6 @@
 ---
 title: "من نظر في أخبار المجان من الشعراء وغيرهم في كتب الأدباء يعلم ما جر هذا الأمر على"
-status: draft
+status: published
 published_at: 2020-03-12
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "يعني كيف ستضبط قلب وعقل وشهوة رجلٍ وامرأة لمدة ستة أشهر -أقل فترات الخطوبة العصر"
-status: draft
+status: published
 published_at: 2023-04-25
 person: abu-umair-imran-al-zubaidi
 ---

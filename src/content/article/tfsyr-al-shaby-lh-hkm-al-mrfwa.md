@@ -1,6 +1,6 @@
 ---
 title: "تفسير الصحابي له حكم المرفوع"
-status: draft
+status: published
 published_at: 2023-10-25
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

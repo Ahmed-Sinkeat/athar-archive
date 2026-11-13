@@ -1,6 +1,6 @@
 ---
 title: "لماذا كثير من الدول فقيرة ؟"
-status: draft
+status: published
 published_at: 2020-08-05
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

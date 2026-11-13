@@ -1,6 +1,6 @@
 ---
 title: "كتب الأستاذ حسام بن عبد العزيز ما يلي ( وعذراً على كونه مكتوباً بالعامية ولكن هذ"
-status: draft
+status: published
 published_at: 2020-02-02
 person: abu-jafar-al-khalifi
 ---

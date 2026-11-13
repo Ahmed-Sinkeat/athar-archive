@@ -1,6 +1,6 @@
 ---
 title: "هل تحول الرسوم الكرتونية التي تحتوي على عنف الأطفال إلى عدوانيين؟"
-status: draft
+status: published
 published_at: 2018-09-01
 person: abu-jafar-al-khalifi
 ---

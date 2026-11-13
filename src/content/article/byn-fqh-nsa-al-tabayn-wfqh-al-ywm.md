@@ -1,6 +1,6 @@
 ---
 title: "بين فِقه نِساء التابعين وفِقه اليوم"
-status: draft
+status: published
 published_at: 2026-01-11
 person: awwab-bin-muhammad
 ---

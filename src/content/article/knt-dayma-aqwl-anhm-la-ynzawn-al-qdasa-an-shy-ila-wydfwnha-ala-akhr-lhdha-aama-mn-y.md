@@ -1,6 +1,6 @@
 ---
 title: "كنت دائما أقول أنهم لا ينزعون القداسة عن شيء إلا ويضفونها على آخر لهذا عامة من ي"
-status: draft
+status: published
 published_at: 2020-01-12
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "مِن أسفه شُبهات الملا حد ة هي قولهم"
-status: draft
+status: published
 published_at: 2023-03-22
 person: abu-umair-imran-al-zubaidi
 ---

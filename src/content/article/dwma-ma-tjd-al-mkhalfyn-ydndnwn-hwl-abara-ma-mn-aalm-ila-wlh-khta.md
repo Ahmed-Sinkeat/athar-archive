@@ -1,6 +1,6 @@
 ---
 title: "دومًا ما تجد المخالفين يدندنون حول عبارة: ما من عالم إلا وله خطأ."
-status: draft
+status: published
 published_at: 2024-04-08
 person: abu-umair-imran-al-zubaidi
 ---

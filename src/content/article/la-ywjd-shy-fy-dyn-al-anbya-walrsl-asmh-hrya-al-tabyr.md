@@ -1,6 +1,6 @@
 ---
 title: "لا يوجد شيء في دين الأنبياء والرسل اسمه \"حرية التعبير\"!"
-status: draft
+status: published
 published_at: 2024-08-16
 person: abu-umair-imran-al-zubaidi
 ---

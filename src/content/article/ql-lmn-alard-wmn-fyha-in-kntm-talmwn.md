@@ -1,6 +1,6 @@
 ---
 title: "قُل لِّمَنِ ٱلۡأَرۡضُ وَمَن فِيهَآ إِن كُنتُمۡ تَعۡلَمُونَ (84)"
-status: draft
+status: published
 published_at: 2024-11-19
 person: abu-umair-imran-al-zubaidi
 ---

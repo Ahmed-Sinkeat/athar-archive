@@ -1,6 +1,6 @@
 ---
 title: "كيف يستقيم عند امرئ يؤمن بالله ورسوله أن يكون عمر رضي الله عنه الذي فتح بيت المق"
-status: draft
+status: published
 published_at: 2026-04-06
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "( ويحسبون أنهم مهتدون )."
-status: draft
+status: published
 published_at: 2019-01-18
 person: abu-jafar-al-khalifi
 ---

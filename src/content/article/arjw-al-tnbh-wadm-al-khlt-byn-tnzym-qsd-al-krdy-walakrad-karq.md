@@ -1,6 +1,6 @@
 ---
 title: "أرجو التنبه وعدم الخلط بين تنظيم قسد الكردي والأكراد كعرق."
-status: draft
+status: published
 published_at: 2024-12-18
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

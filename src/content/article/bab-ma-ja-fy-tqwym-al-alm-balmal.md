@@ -1,6 +1,6 @@
 ---
 title: "باب ما جاء في تقويم العلم بالمال..."
-status: draft
+status: published
 published_at: 2023-12-12
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "ورواه عبد الله بن أحمد بلفظ"
-status: draft
+status: published
 published_at: 2024-05-24
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "هذا الشاب انتحر قبل يوم أو يومين وترك هذه الرسالة"
-status: draft
+status: published
 published_at: 2025-05-17
 person: abu-jafar-al-khalifi
 ---

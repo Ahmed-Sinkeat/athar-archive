@@ -1,6 +1,6 @@
 ---
 title: "يقول الربّ جَلّ في عُلاه"
-status: draft
+status: published
 published_at: 2022-10-07
 person: abu-umair-imran-al-zubaidi
 ---

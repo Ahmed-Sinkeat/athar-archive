@@ -1,6 +1,6 @@
 ---
 title: "رب قائم مشكور له، ورب نائم مغفور له"
-status: draft
+status: published
 published_at: 2023-10-14
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "ذلك مقتضى الامتحان فلا تجزع"
-status: draft
+status: published
 published_at: 2023-06-09
 person: abu-jafar-al-khalifi
 ---

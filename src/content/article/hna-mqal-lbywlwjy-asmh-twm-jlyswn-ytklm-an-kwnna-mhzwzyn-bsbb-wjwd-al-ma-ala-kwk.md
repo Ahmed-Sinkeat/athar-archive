@@ -1,6 +1,6 @@
 ---
 title: "هنا مقال لبيولوجي اسمه توم جليسون يتكلم عن كوننا محظوظين بسبب وجود الماء على كوك"
-status: draft
+status: published
 published_at: 2018-04-05
 person: abu-jafar-al-khalifi
 ---

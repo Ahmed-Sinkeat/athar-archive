@@ -1,6 +1,6 @@
 ---
 title: "باب ذكر بعض الأخبار الدالة على أن الوتر ليس بفرض"
-status: draft
+status: published
 published_at: 2025-05-11
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وكان عبد الله ابن الإمام أحمد لا يكتب -أحيانًا- ما يأخذه عن أبيه حال المذاكرة؛ ف"
-status: draft
+status: published
 published_at: 2021-08-30
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

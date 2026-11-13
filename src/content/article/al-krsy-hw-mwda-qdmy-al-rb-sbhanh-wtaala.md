@@ -1,6 +1,6 @@
 ---
 title: "الكرسيّ هو موضع قدمي الربّ سبحانه وتعالى."
-status: draft
+status: published
 published_at: 2022-12-26
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

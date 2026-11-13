@@ -1,6 +1,6 @@
 ---
 title: "يا إخوة تحدّثت قليلًا وكثيرًا عن الجهميّة الأشعريّة"
-status: draft
+status: published
 published_at: 2023-04-29
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "المرء يتصدق إن أغناه الله، والحج والعمرة من أسباب الغنى."
-status: draft
+status: published
 published_at: 2026-01-29
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

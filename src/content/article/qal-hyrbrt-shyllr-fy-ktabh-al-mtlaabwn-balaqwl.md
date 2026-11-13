@@ -1,6 +1,6 @@
 ---
 title: "قال هيربرت شيللر في كتابه المتلاعبون بالعقول"
-status: draft
+status: published
 published_at: 2017-09-05
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

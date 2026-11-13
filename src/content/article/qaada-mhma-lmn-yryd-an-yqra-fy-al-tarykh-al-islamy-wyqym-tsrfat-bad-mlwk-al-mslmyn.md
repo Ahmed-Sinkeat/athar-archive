@@ -1,6 +1,6 @@
 ---
 title: "قاعدة مهمة لمن يريد أن يقرأ في التاريخ الإسلامي ويقيم تصرفات بعض ملوك المسلمين"
-status: draft
+status: published
 published_at: 2017-06-23
 person: abu-jafar-al-khalifi
 ---

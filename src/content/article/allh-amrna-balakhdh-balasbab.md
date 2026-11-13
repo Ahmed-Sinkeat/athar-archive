@@ -1,6 +1,6 @@
 ---
 title: "\"الله أمرنا بالأخذ بالأسباب\"."
-status: draft
+status: published
 published_at: 2023-12-27
 person: abu-umair-imran-al-zubaidi
 ---

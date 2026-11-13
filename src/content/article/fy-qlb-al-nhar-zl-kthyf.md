@@ -1,6 +1,6 @@
 ---
 title: "في قلب النَّهار ظلٌّ كثيف"
-status: draft
+status: published
 published_at: 2025-08-03
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran"]

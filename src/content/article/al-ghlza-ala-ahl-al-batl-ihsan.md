@@ -1,6 +1,6 @@
 ---
 title: "الغلظة على أهل الباطل إحسان..."
-status: draft
+status: published
 published_at: 2025-08-21
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قَال عَبد اللَّهِ بْن أَحْمَد بْن حنبل فِي \"كتاب صفين\""
-status: draft
+status: published
 published_at: 2018-04-22
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

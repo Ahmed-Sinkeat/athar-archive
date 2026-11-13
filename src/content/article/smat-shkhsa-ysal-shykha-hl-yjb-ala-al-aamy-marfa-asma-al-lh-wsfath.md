@@ -1,6 +1,6 @@
 ---
 title: "سمعت شخصا يسأل شيخا: هل يجب على العامي معرفة أسماء الله وصفاته؟"
-status: draft
+status: published
 published_at: 2025-06-15
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

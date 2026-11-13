@@ -1,6 +1,6 @@
 ---
 title: "ابن تيمية والإيمان الوراثي !"
-status: draft
+status: published
 published_at: 2020-06-30
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

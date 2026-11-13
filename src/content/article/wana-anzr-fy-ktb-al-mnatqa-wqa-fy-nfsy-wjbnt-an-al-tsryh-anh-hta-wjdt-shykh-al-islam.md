@@ -1,6 +1,6 @@
 ---
 title: "وأنا أنظر في كتب المناطقة وقع في نفسي وجبنت عن التصريح عنه حتى وجدت شيخ الإسلام"
-status: draft
+status: published
 published_at: 2018-10-10
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

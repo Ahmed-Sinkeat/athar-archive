@@ -1,6 +1,6 @@
 ---
 title: "الفرح إنما كان بالعقيدة ولا يتم إلا بالعقيدة..."
-status: draft
+status: published
 published_at: 2025-06-06
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

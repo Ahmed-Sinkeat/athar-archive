@@ -1,6 +1,6 @@
 ---
 title: "آية في سورة الكهف تنقض بنيان عامة أهل البدع"
-status: draft
+status: published
 published_at: 2017-11-03
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "6- الطريق السريع"
-status: draft
+status: published
 published_at: 2022-06-18
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

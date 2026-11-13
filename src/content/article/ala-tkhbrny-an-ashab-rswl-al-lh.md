@@ -1,6 +1,6 @@
 ---
 title: "ألا تخبرني عن أصحاب رسول الله ﷺ؟"
-status: draft
+status: published
 published_at: 2025-06-12
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

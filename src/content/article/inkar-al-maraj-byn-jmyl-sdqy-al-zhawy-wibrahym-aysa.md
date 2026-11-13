@@ -1,6 +1,6 @@
 ---
 title: "إنكار المعراج بين جميل صدقي الزهاوي وإبراهيم عيسى.."
-status: draft
+status: published
 published_at: 2022-02-20
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

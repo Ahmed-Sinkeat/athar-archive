@@ -1,6 +1,6 @@
 ---
 title: "مظلومية المتكلمين (غلاة أو مظلومون؟)"
-status: draft
+status: published
 published_at: 2021-04-03
 person: abu-jafar-al-khalifi
 ---

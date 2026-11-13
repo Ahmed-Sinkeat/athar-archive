@@ -1,6 +1,6 @@
 ---
 title: "ونحن نتساءل كما تساءل الغزالي (كيف استدل الحنابلة على ذم إمامهم للأشعرية)؟"
-status: draft
+status: published
 published_at: 2021-10-15
 person: abu-jafar-al-khalifi
 ---

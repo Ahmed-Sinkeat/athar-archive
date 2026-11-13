@@ -1,6 +1,6 @@
 ---
 title: "وأنت ومن يوافقك أضل من حمار أهلك يا ابن رشدي"
-status: draft
+status: published
 published_at: 2024-04-22
 person: abu-abdillah-firas-al-ramli
 ---

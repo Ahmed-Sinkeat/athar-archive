@@ -1,6 +1,6 @@
 ---
 title: "أخي الحبيب غيث له مقالات ومقاطع ومشاركات واسعة في مجال نقد العلموية وتأليه العلم"
-status: draft
+status: published
 published_at: 2026-01-23
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

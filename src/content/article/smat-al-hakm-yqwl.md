@@ -1,6 +1,6 @@
 ---
 title: "سمعت الحاكم يقول"
-status: draft
+status: published
 published_at: 2023-06-04
 person: abu-umair-imran-al-zubaidi
 ---

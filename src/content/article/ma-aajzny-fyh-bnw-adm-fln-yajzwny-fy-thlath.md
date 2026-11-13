@@ -1,6 +1,6 @@
 ---
 title: "ما أعجزني فيه بنو آدم فلن يعجزوني في ثلاث"
-status: draft
+status: published
 published_at: 2025-10-10
 person: abu-abdillah-firas-al-ramli
 ---

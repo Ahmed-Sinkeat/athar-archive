@@ -1,6 +1,6 @@
 ---
 title: "هؤلاء ملاحدة وهم يتحدثون عن ملحد مصري شهير هذه الفتاة التي تسبه هي زوجته السابقة"
-status: draft
+status: published
 published_at: 2019-05-18
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

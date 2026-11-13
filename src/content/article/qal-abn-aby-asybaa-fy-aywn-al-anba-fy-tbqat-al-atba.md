@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي أصيبعة في عيون الأنباء في طبقات الأطباء"
-status: draft
+status: published
 published_at: 2017-06-02
 person: abu-jafar-al-khalifi
 ---

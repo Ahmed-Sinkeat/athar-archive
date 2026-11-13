@@ -1,6 +1,6 @@
 ---
 title: "التقوي على الطاعة بذكر آثار السلف"
-status: draft
+status: published
 published_at: 2024-04-04
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "إذا كان قتل خمسين شخصا مع الدعوة لإبادة كل المسلمين في الغرب يشترى بأن تضع مسئول"
-status: draft
+status: published
 published_at: 2019-03-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

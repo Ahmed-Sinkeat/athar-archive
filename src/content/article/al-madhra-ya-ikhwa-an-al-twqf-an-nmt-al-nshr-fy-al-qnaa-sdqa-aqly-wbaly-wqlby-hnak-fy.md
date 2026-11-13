@@ -1,6 +1,6 @@
 ---
 title: "المعذرة يا إخوة عن التوقف عن نمط النشر في القناة؛ صدقا عقلي وبالي وقلبي هناك في"
-status: draft
+status: published
 published_at: 2024-12-05
 person: abu-umair-imran-al-zubaidi
 ---

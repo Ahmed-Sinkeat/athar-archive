@@ -1,6 +1,6 @@
 ---
 title: "تأمَّل النقاش حول (المجسم) و(المجسمة)"
-status: draft
+status: published
 published_at: 2024-06-08
 person: abu-jafar-al-khalifi
 ---

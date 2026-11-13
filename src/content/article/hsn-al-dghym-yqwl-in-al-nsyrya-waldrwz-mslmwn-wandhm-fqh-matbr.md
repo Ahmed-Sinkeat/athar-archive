@@ -1,6 +1,6 @@
 ---
 title: "حسن الدغيم يقول إن النصيرية والدروز مسلمون وعندهم فقه معتبر."
-status: draft
+status: published
 published_at: 2025-03-19
 person: abu-jafar-al-khalifi
 ---

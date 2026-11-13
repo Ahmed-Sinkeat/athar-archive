@@ -1,6 +1,6 @@
 ---
 title: "علق الأخوة في صفحة دحض أباطيل الملحدين على هذه الصورة بقولهم"
-status: draft
+status: published
 published_at: 2020-02-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

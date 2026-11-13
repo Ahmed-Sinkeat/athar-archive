@@ -1,6 +1,6 @@
 ---
 title: "أخبرني بعض الأخوة أنه صار من الاستدلالات الدارجة عند أدعياء التنوير لتجويز العمل"
-status: draft
+status: published
 published_at: 2018-12-19
 person: abu-jafar-al-khalifi
 ---

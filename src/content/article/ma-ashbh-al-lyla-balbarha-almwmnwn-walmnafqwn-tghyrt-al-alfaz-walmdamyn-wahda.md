@@ -1,6 +1,6 @@
 ---
 title: "ما أشبه الليلة بالبارحة (المؤمنون والمنافقون، تغيَّرت الألفاظ والمضامين واحدة)."
-status: draft
+status: published
 published_at: 2021-03-01
 person: abu-jafar-al-khalifi
 ---

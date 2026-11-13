@@ -1,6 +1,6 @@
 ---
 title: "ابن القيم: انتشار الفلسفة والمنطق هو سبب ذهاب الأندلس..."
-status: draft
+status: published
 published_at: 2025-09-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada", "al-iman"]

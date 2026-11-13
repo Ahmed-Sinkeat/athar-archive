@@ -1,6 +1,6 @@
 ---
 title: "وأما السند الثاني ففيه محمد بن إبراهيم بن حمش متهم بالكذب"
-status: draft
+status: published
 published_at: 2021-02-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "غير أن القوم يتعلقون بقشة أمام هذه البينات الواضحات"
-status: draft
+status: published
 published_at: 2019-12-24
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

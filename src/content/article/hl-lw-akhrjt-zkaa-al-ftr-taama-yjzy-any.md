@@ -1,6 +1,6 @@
 ---
 title: "هل لو أخرجت زكاة الفطر طعاما يجزئ عني؟"
-status: draft
+status: published
 published_at: 2026-03-13
 person: abu-umair-imran-al-zubaidi
 ---

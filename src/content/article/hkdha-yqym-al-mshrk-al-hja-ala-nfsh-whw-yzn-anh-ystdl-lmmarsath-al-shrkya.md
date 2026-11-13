@@ -1,6 +1,6 @@
 ---
 title: "هكذا يقيم المشرك الحجة على نفسه وهو يظن أنه يستدل لممارساته الشركية."
-status: draft
+status: published
 published_at: 2021-08-08
 person: abu-jafar-al-khalifi
 ---

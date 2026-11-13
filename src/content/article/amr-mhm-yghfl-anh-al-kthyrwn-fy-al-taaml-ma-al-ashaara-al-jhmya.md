@@ -1,6 +1,6 @@
 ---
 title: "أمر مهم يغفل عنه الكثيرون في التعامل مع الأشاعرة الجهمية."
-status: draft
+status: published
 published_at: 2024-01-29
 person: abu-umair-imran-al-zubaidi
 ---

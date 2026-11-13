@@ -1,6 +1,6 @@
 ---
 title: "قال ابن إسحاق في السيرة حدثني عبد الرحمن بن الحارث عن عبد العزيز بن عبد الله عن"
-status: draft
+status: published
 published_at: 2017-08-28
 person: abu-jafar-al-khalifi
 ---

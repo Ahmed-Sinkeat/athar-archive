@@ -1,6 +1,6 @@
 ---
 title: "ماذا قال عمر لما خرجت امرأة متزينة؟"
-status: draft
+status: published
 published_at: 2023-12-23
 person: abu-abdillah-firas-al-ramli
 topics: ["al-iman"]

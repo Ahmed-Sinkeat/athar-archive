@@ -1,6 +1,6 @@
 ---
 title: "كالعادة الأشعرية تبع لأسلافهم الجهمية"
-status: draft
+status: published
 published_at: 2026-08-31
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "وهنا عدة أسئلة"
-status: draft
+status: published
 published_at: 2018-04-19
 person: abu-jafar-al-khalifi
 ---

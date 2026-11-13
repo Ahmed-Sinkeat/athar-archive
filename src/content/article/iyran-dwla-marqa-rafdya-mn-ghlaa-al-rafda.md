@@ -1,6 +1,6 @@
 ---
 title: "إيران دولة مارقة رافضية من غلاة الرافضة"
-status: draft
+status: published
 published_at: 2026-02-28
 person: abu-umair-imran-al-zubaidi
 ---

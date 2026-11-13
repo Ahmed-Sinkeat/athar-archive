@@ -1,6 +1,6 @@
 ---
 title: "مجمعين 25 واحد نصهم عقيدتهم مضروبة وعلى رأسهم الددو الضال ويقولك"
-status: draft
+status: published
 published_at: 2026-03-02
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

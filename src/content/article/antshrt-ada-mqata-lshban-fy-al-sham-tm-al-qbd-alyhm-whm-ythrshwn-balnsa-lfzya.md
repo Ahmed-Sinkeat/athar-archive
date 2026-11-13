@@ -1,6 +1,6 @@
 ---
 title: "انتشرت عدة مقاطع لشبّان في الشام تم القبض عليهم وهم يتحرشون بالنساء \"لفظيا\""
-status: draft
+status: published
 published_at: 2024-12-31
 person: abu-umair-imran-al-zubaidi
 ---

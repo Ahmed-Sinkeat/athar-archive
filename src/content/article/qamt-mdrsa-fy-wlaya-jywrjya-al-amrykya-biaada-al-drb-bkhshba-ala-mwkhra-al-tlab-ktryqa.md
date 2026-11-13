@@ -1,6 +1,6 @@
 ---
 title: "قامت مدرسة في ولاية جيورجيا الأمريكية بإعادة الضرب بخشبة على مؤخرة الطلاب كطريقة"
-status: draft
+status: published
 published_at: 2018-09-16
 person: abu-jafar-al-khalifi
 ---

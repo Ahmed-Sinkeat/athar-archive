@@ -1,6 +1,6 @@
 ---
 title: "من أحسن القواعد التي تعلمناها من الشيوخ"
-status: draft
+status: published
 published_at: 2019-05-07
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

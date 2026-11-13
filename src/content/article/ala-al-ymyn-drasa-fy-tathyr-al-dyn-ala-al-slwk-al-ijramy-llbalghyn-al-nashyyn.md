@@ -1,6 +1,6 @@
 ---
 title: "على اليمين دراسة في تأثير الدين على السلوك الإجرامي للبالغين الناشئين"
-status: draft
+status: published
 published_at: 2024-10-27
 person: abu-jafar-al-khalifi
 ---

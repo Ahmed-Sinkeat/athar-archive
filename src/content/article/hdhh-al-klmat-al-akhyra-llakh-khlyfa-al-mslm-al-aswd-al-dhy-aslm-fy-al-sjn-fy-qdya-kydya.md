@@ -1,6 +1,6 @@
 ---
 title: "هذه الكلمات الأخيرة للأخ خليفة المسلم الأسود الذي أسلم في السجن في قضية كيدية"
-status: draft
+status: published
 published_at: 2024-09-25
 person: abu-jafar-al-khalifi
 ---

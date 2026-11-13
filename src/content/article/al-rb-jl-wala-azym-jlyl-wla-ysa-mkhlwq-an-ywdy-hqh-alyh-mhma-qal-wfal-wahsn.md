@@ -1,6 +1,6 @@
 ---
 title: "الرب جل وعلا عظيم جليل ولا يسع مخلوق أن يؤدي حقه عليه مهما قال وفعل وأحسن."
-status: draft
+status: published
 published_at: 2025-10-11
 person: abu-umair-imran-al-zubaidi
 ---

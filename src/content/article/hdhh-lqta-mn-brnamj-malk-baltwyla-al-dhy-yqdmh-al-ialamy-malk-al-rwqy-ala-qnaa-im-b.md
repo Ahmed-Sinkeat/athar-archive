@@ -1,6 +1,6 @@
 ---
 title: "هذه لقطة من برنامج (مالك بالطويلة) الذي يقدمه الإعلامي مالك الروقي على قناة إم ب"
-status: draft
+status: published
 published_at: 2022-04-24
 person: abu-jafar-al-khalifi
 ---

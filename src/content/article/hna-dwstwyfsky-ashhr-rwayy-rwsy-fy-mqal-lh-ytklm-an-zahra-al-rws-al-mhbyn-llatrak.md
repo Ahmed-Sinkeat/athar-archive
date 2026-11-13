@@ -1,6 +1,6 @@
 ---
 title: "هنا دوستويفسكي أشهر روائي روسي في مقال له يتكلم عن ظاهرة الروس المحبين للأتراك ("
-status: draft
+status: published
 published_at: 2026-06-14
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

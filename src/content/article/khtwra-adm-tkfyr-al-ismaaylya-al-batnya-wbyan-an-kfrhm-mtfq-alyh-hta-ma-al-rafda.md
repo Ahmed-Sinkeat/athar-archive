@@ -1,6 +1,6 @@
 ---
 title: "خطورة عدم تكفير الإسماعيلية الباطنية وبيان أن كفرهم متفق عليه حتى مع الرافضة"
-status: draft
+status: published
 published_at: 2017-06-05
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

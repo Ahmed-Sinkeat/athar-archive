@@ -1,6 +1,6 @@
 ---
 title: "الشيوخ المنسيون"
-status: draft
+status: published
 published_at: 2020-02-27
 person: abu-jafar-al-khalifi
 ---

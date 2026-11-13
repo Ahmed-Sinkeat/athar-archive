@@ -1,6 +1,6 @@
 ---
 title: "كيف كان العلماء فيما مضى من الزمان ؟"
-status: draft
+status: published
 published_at: 2024-11-20
 person: abu-abdillah-firas-al-ramli
 ---

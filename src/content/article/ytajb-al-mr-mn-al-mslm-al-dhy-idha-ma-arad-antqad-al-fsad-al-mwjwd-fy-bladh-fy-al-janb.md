@@ -1,6 +1,6 @@
 ---
 title: "يتعجب المرء من المسلم الذي إذا ما أراد انتقاد الفساد الموجود في بلاده في الجانب"
-status: draft
+status: published
 published_at: 2025-02-02
 person: abu-umair-imran-al-zubaidi
 ---

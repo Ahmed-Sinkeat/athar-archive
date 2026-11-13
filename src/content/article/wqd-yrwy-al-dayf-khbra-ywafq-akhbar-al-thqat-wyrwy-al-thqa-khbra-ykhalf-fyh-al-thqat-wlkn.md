@@ -1,6 +1,6 @@
 ---
 title: "وقد يروي الضعيف خبراً يوافق أخبار الثقات ويروي الثقة خبراً يخالف فيه الثقات ولكن"
-status: draft
+status: published
 published_at: 2021-05-15
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم في إعلام الموقعين"
-status: draft
+status: published
 published_at: 2017-08-06
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "قال البيهقي في الشعب 8365 - أَخْبَرَنَا أَبُو عَبْدِ اللهِ الْحَافِظُ"
-status: draft
+status: published
 published_at: 2018-07-25
 person: abu-jafar-al-khalifi
 ---

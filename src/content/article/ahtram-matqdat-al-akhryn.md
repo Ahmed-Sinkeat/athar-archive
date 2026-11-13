@@ -1,6 +1,6 @@
 ---
 title: "احترام معتقدات الآخرين"
-status: draft
+status: published
 published_at: 2020-02-10
 person: abu-jafar-al-khalifi
 ---

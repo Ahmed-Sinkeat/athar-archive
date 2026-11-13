@@ -1,6 +1,6 @@
 ---
 title: "حملة في ايرلندا يدعمون فيها طلب الاذن قبل حضن ابنائك"
-status: draft
+status: published
 published_at: 2026-10-22
 person: abu-jafar-al-khalifi
 ---

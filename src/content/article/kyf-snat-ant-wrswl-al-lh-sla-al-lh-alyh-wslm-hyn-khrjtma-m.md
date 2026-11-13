@@ -1,6 +1,6 @@
 ---
 title: "كيفَ صَنَعْتَ أنْتَ ورَسولُ اللَّهِ صَلَّى اللهُ عليه وسلَّمَ حِينَ خَرَجْتُما م"
-status: draft
+status: published
 published_at: 2023-04-03
 person: abu-umair-imran-al-zubaidi
 ---

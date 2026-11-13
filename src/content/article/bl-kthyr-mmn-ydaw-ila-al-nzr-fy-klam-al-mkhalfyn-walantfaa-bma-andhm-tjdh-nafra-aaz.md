@@ -1,6 +1,6 @@
 ---
 title: "بل كثير ممن يدعو إلى النظر في كلام المخالفين والانتفاع بما عندهم تجده نافراً أعظ"
-status: draft
+status: published
 published_at: 2017-12-27
 person: abu-jafar-al-khalifi
 ---

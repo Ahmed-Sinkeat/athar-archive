@@ -1,6 +1,6 @@
 ---
 title: "قال الأنبا شنودة في كتابه خبرات من الحياة"
-status: draft
+status: published
 published_at: 2017-12-09
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

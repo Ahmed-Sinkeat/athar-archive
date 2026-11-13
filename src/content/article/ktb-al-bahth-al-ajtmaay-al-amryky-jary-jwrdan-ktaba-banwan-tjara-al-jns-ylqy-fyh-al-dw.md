@@ -1,6 +1,6 @@
 ---
 title: "كتب الباحث الاجتماعي الأمريكي جاري جوردان كتابا بعنوان تجارة الجنس يلقي فيه الضو"
-status: draft
+status: published
 published_at: 2017-10-30
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ليس جلدا بل ذكرى للذاكرين!"
-status: draft
+status: published
 published_at: 2025-07-28
 person: abu-umair-imran-al-zubaidi
 ---

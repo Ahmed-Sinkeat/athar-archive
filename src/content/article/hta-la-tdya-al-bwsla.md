@@ -1,6 +1,6 @@
 ---
 title: "حتى لا تضيع البوصلة"
-status: draft
+status: published
 published_at: 2024-12-07
 person: abu-umair-imran-al-zubaidi
 ---

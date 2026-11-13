@@ -1,6 +1,6 @@
 ---
 title: "&rlm;خبر يعد بمنزلة فضيحة في هذه الصحيفة الفرنسية أكثر من ألف فتاة شابة بين 12 و"
-status: draft
+status: published
 published_at: 2019-10-22
 person: abu-jafar-al-khalifi
 ---

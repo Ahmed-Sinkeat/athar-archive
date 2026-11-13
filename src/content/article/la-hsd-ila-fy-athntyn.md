@@ -1,6 +1,6 @@
 ---
 title: "لا حسد إلا في اثنتين"
-status: draft
+status: published
 published_at: 2024-11-14
 person: abu-abdillah-firas-al-ramli
 ---

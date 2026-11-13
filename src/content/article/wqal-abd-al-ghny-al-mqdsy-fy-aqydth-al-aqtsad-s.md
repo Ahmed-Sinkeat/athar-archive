@@ -1,6 +1,6 @@
 ---
 title: "وقال عبد الغني المقدسي في عقيدته_ الاقتصاد_ ص121"
-status: draft
+status: published
 published_at: 2017-12-23
 person: abu-jafar-al-khalifi
 ---

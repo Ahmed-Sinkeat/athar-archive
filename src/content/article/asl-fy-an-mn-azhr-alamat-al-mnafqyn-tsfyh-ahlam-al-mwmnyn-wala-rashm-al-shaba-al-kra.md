@@ -1,6 +1,6 @@
 ---
 title: "أصل في أن من أظهر علامات المنافقين تسفيه أحلام المؤمنين وعلى رأسهم الصحابة الكرا"
-status: draft
+status: published
 published_at: 2018-05-15
 person: abu-jafar-al-khalifi
 ---

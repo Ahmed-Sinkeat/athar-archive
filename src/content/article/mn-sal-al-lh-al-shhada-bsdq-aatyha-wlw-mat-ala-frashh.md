@@ -1,6 +1,6 @@
 ---
 title: "من سأل الله الشهادة بصدق أعطيها ولو مات على فراشه"
-status: draft
+status: published
 published_at: 2023-11-11
 person: abu-abdillah-firas-al-ramli
 ---

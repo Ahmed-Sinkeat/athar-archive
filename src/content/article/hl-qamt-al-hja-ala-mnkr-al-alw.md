@@ -1,6 +1,6 @@
 ---
 title: "هل قامت الحجة على منكر العلو ؟"
-status: draft
+status: published
 published_at: 2023-07-27
 person: abu-abdillah-firas-al-ramli
 ---

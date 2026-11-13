@@ -1,6 +1,6 @@
 ---
 title: "القول بنفي المعارف القبلية يلزم منه تصويب قول من قال أنه لا يصح إيمان أحد حتى يس"
-status: draft
+status: published
 published_at: 2018-01-11
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "في تعليق الشيخ محمد وفقه الله على وفاة زغلول النجار ذكر من أمثلة الإعجاز العلمي"
-status: draft
+status: published
 published_at: 2025-11-11
 person: abu-umair-imran-al-zubaidi
 ---

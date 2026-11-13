@@ -1,6 +1,6 @@
 ---
 title: "قبل أن يتوصل ماكوي إلى اختراعه هذا في بدايات سبعينيات القرن التاسع عشر"
-status: draft
+status: published
 published_at: 2017-11-06
 person: abu-jafar-al-khalifi
 ---

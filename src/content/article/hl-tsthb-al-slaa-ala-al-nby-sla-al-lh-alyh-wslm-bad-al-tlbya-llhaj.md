@@ -1,6 +1,6 @@
 ---
 title: "هل تُستحب الصلاة على النبي صلى الله عليه وسلم بعد التلبية للحاج"
-status: draft
+status: published
 published_at: 2023-06-16
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

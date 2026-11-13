@@ -1,6 +1,6 @@
 ---
 title: "حين ترى تسلّط دول الغرب وتدخلهم لفرض رؤاهم الممسوخة على الشام؛ تدرك شيئا من حِكم"
-status: draft
+status: published
 published_at: 2025-01-03
 person: abu-umair-imran-al-zubaidi
 ---

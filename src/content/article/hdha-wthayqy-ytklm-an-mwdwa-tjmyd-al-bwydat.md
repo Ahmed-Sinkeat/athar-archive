@@ -1,6 +1,6 @@
 ---
 title: "هذا وثائقي يتكلم عن موضوع تجميد البويضات"
-status: draft
+status: published
 published_at: 2025-03-16
 person: abu-jafar-al-khalifi
 ---

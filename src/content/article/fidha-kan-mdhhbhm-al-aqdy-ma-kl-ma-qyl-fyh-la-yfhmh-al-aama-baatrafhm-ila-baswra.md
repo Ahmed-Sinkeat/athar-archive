@@ -1,6 +1,6 @@
 ---
 title: "فإذا كان مذهبهم العقدي مع كل ما قيل فيه لا يفهمه العامة باعترافهم إلا بعسورة"
-status: draft
+status: published
 published_at: 2021-02-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

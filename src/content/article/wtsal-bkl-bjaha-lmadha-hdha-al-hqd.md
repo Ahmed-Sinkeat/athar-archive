@@ -1,6 +1,6 @@
 ---
 title: "وتسأل بكل بجاحة لماذا هذا الحقد؟"
-status: draft
+status: published
 published_at: 2026-03-04
 person: abu-umair-imran-al-zubaidi
 ---

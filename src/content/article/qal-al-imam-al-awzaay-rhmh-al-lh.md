@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام الأوزاعي رحمه الله"
-status: draft
+status: published
 published_at: 2023-10-22
 person: abu-abdillah-firas-al-ramli
 topics: ["al-iman"]

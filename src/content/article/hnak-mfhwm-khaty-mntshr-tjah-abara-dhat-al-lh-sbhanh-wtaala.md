@@ -1,6 +1,6 @@
 ---
 title: "هناك مفهوم خاطئ منتشر تجاه عبارة \"ذات الله سبحانه وتعالى\"."
-status: draft
+status: published
 published_at: 2024-02-21
 person: abu-umair-imran-al-zubaidi
 ---

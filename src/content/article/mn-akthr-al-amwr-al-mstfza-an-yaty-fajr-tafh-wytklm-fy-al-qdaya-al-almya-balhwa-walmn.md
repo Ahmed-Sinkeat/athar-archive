@@ -1,6 +1,6 @@
 ---
 title: "من أكثر الأمور المستفزة أن يأتي فاجر تافه ويتكلم في القضايا العلمية بالهوى والمن"
-status: draft
+status: published
 published_at: 2026-05-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

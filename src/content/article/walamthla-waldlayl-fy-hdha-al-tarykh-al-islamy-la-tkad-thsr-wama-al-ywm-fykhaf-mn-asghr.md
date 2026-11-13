@@ -1,6 +1,6 @@
 ---
 title: "والأمثلة والدلائل في هذا التاريخ الإسلامي لا تكاد تحصر وأما اليوم فيخاف من أصغر"
-status: draft
+status: published
 published_at: 2017-06-17
 person: abu-jafar-al-khalifi
 ---

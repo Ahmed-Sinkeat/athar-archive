@@ -1,6 +1,6 @@
 ---
 title: "لطيفة : شهادة المؤرخ الشيعي المعتزلي للخليفة السني المتهم بالنصب !"
-status: draft
+status: published
 published_at: 2020-06-04
 person: abu-jafar-al-khalifi
 ---

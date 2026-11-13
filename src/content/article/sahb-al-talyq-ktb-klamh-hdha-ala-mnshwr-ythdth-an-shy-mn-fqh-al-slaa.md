@@ -1,6 +1,6 @@
 ---
 title: "صاحب التعليق كتب كلامه هذا على منشور يتحدث عن شيء من فقه الصلاة."
-status: draft
+status: published
 published_at: 2023-10-16
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا كلام مسجل لعميد كلية الشريعة في دمشق منذ عدة أشهر، محمد حسان عوض."
-status: draft
+status: published
 published_at: 2024-12-07
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

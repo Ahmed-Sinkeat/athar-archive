@@ -1,6 +1,6 @@
 ---
 title: "الرواية بهذا اللفظ لا أصل لها في كتب الشيعة والسنة"
-status: draft
+status: published
 published_at: 2025-03-01
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

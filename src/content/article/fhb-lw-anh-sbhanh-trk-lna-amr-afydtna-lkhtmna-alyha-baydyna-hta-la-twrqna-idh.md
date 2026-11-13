@@ -1,6 +1,6 @@
 ---
 title: "فهب لو أنّه سبحانه ترك لنا أمر أفئدتنا؛ لختمنا عليها بأيدينا حتّى لا تؤرّقنا إذ"
-status: draft
+status: published
 published_at: 2023-01-14
 person: abu-umair-imran-al-zubaidi
 ---

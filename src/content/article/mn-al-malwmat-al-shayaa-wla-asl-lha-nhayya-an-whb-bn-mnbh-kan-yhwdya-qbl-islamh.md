@@ -1,6 +1,6 @@
 ---
 title: "من المعلومات الشائعة ولا أصل لها نهائياً أن وهب بن منبه كان يهودياً قبل إسلامه"
-status: draft
+status: published
 published_at: 2018-10-05
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

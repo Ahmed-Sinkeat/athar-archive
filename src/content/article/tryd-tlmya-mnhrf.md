@@ -1,6 +1,6 @@
 ---
 title: "تريد تلميع مُنحرِف"
-status: draft
+status: published
 published_at: 2026-02-21
 person: awwab-bin-muhammad
 ---

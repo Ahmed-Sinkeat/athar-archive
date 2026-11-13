@@ -1,6 +1,6 @@
 ---
 title: "أعيذ بالله إخواني من أهل السنة في سوريا والعراق من أن يدخل إلى قلوبهم مثقال ذرة"
-status: draft
+status: published
 published_at: 2024-10-07
 person: abu-umair-imran-al-zubaidi
 ---

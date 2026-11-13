@@ -1,6 +1,6 @@
 ---
 title: "هذه الكاتبة تقصد قصة لندسي كلانسي."
-status: draft
+status: published
 published_at: 2026-09-13
 person: abu-jafar-al-khalifi
 ---

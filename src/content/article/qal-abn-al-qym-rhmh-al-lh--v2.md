@@ -1,6 +1,6 @@
 ---
 title: "قال ابن القيم رحمه الله"
-status: draft
+status: published
 published_at: 2018-04-08
 person: abu-jafar-al-khalifi
 ---

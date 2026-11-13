@@ -1,6 +1,6 @@
 ---
 title: "تفقدوا والديكم وإخوانكم وأصحابكم في كيفية صلاتهم"
-status: draft
+status: published
 published_at: 2025-04-04
 person: abu-umair-imran-al-zubaidi
 ---

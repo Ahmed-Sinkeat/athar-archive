@@ -1,6 +1,6 @@
 ---
 title: "من المعضلات التي تواجهنا في السياقات الدعوية قلة السواعد الشبابية من الرجال تحدي"
-status: draft
+status: published
 published_at: 2019-09-05
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا كلام نفيس للشيخ تميم القاضي"
-status: draft
+status: published
 published_at: 2020-06-28
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

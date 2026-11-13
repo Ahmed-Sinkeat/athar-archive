@@ -1,6 +1,6 @@
 ---
 title: "قال بشير بن الخصاصية رضي الله عنه"
-status: draft
+status: published
 published_at: 2017-08-13
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

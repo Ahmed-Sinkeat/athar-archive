@@ -1,6 +1,6 @@
 ---
 title: "المجدد المنسي..."
-status: draft
+status: published
 published_at: 2024-09-07
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

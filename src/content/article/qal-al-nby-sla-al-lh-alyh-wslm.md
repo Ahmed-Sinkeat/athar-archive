@@ -1,6 +1,6 @@
 ---
 title: "قَالَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ"
-status: draft
+status: published
 published_at: 2023-12-22
 person: abu-umair-imran-al-zubaidi
 ---

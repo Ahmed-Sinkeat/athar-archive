@@ -1,6 +1,6 @@
 ---
 title: "هذا دكتور يبدو عليه الوسامة نشر إعلاناً لعيادته ووضع صورته."
-status: draft
+status: published
 published_at: 2025-12-02
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

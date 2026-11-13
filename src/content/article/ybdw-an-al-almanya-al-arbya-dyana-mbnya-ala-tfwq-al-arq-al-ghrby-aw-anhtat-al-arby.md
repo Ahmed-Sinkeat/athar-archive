@@ -1,6 +1,6 @@
 ---
 title: "يبدو أن العلمانية العربية ديانة مبنية على تفوق العرق الغربي أو انحطاط العربي."
-status: draft
+status: published
 published_at: 2026-02-03
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

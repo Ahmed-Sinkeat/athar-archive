@@ -1,6 +1,6 @@
 ---
 title: "سورة الإخلاص التي يحفظها عامة المسلمين فيها باب عجيب من أبواب الأسماء والصفات"
-status: draft
+status: published
 published_at: 2019-11-10
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذه المكالمة تُبيِّن لك أن المعركة ليست عسكرية فحسب"
-status: draft
+status: published
 published_at: 2023-11-28
 person: abu-jafar-al-khalifi
 ---

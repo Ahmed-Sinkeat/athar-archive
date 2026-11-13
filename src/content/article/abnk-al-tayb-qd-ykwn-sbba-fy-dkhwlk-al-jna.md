@@ -1,6 +1,6 @@
 ---
 title: "ابنك التائب قد يكون سببًا في دخولك الجنة.."
-status: draft
+status: published
 published_at: 2022-04-26
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

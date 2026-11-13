@@ -1,6 +1,6 @@
 ---
 title: "أحيانا تأتيني أسئلة دينية من دكاترة وأطباء ومهندسين."
-status: draft
+status: published
 published_at: 2025-03-21
 person: abu-umair-imran-al-zubaidi
 ---

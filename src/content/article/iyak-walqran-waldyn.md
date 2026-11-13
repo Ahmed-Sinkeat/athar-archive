@@ -1,6 +1,6 @@
 ---
 title: "إياك والقرآن والدين.."
-status: draft
+status: published
 published_at: 2022-07-10
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هناك أمر ألاحظه في فهم معنى \"النساء فتنة\"!."
-status: draft
+status: published
 published_at: 2023-01-19
 person: abu-umair-imran-al-zubaidi
 ---

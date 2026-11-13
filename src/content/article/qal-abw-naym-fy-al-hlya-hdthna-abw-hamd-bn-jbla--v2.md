@@ -1,6 +1,6 @@
 ---
 title: "قال أبو نعيم في الحلية حدثنا أبو حامد بن جبلة"
-status: draft
+status: published
 published_at: 2020-03-18
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

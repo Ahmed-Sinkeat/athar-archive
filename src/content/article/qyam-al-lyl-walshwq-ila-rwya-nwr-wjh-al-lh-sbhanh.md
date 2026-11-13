@@ -1,6 +1,6 @@
 ---
 title: "قيام الليل والشوق إلى رؤية نور وجه الله سبحانه"
-status: draft
+status: published
 published_at: 2021-05-04
 person: abu-jafar-al-khalifi
 ---

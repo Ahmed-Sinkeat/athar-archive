@@ -1,6 +1,6 @@
 ---
 title: "بعيدًا عن هبد المدجنة وهجومهم علينا"
-status: draft
+status: published
 published_at: 2023-07-11
 person: abu-umair-imran-al-zubaidi
 ---

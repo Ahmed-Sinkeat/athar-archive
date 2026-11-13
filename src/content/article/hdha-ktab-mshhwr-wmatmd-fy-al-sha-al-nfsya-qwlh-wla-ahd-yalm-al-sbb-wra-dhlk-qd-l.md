@@ -1,6 +1,6 @@
 ---
 title: "هذا كتاب مشهور ومعتمد في الصحة النفسية قوله ( ولا أحد يعلم السبب وراء ذلك ) قد ل"
-status: draft
+status: published
 published_at: 2020-04-22
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

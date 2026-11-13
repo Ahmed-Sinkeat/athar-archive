@@ -1,6 +1,6 @@
 ---
 title: "سعادة الفقراء والمساكين في بناء الجوامع والحديث عن عذاب القبر.."
-status: draft
+status: published
 published_at: 2022-04-29
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "كيف تجرؤ يا ضال أن تتكلم عن نبي من أنبياء الله بهذه الطريقة الوقحة"
-status: draft
+status: published
 published_at: 2024-03-20
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

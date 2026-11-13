@@ -1,6 +1,6 @@
 ---
 title: "أهل الشام رجال، إي وربي رجال."
-status: draft
+status: published
 published_at: 2025-11-28
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "شاهدت مقطعًا متداولًا بين الإخوة المصريين لشاب يتلو القرآن بعد أن تاب من الغناء"
-status: draft
+status: published
 published_at: 2024-04-26
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ليس عندي أي حساب على مواقع التواصل الاجتماعي إلا هذه القناة التي تقرأ منشوري من"
-status: draft
+status: published
 published_at: 2024-05-14
 person: abu-umair-imran-al-zubaidi
 ---

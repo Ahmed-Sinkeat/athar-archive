@@ -1,6 +1,6 @@
 ---
 title: "ما تجهله العلموية المؤمنة."
-status: draft
+status: published
 published_at: 2019-09-20
 person: abu-jafar-al-khalifi
 ---

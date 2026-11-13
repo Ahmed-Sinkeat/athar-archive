@@ -1,6 +1,6 @@
 ---
 title: "وخلاف المنتسبين للإسلام لا يحل بالعواطف ولا الطوباوية وإنما بمواجهة الخلاف وتقسي"
-status: draft
+status: published
 published_at: 2019-08-02
 person: abu-jafar-al-khalifi
 ---

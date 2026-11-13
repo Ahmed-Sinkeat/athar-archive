@@ -1,6 +1,6 @@
 ---
 title: "قال الجبرتي في تاريخه في حوادث سنة (1252 هـ)"
-status: draft
+status: published
 published_at: 2017-07-28
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من تصبح بسبع تمرات عجوة لم يضره سم ولا سحر"
-status: draft
+status: published
 published_at: 2026-08-11
 person: abu-abdillah-firas-al-ramli
 ---

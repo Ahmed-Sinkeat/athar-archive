@@ -1,6 +1,6 @@
 ---
 title: "الروح الرياضية في البحث العقائدي."
-status: draft
+status: published
 published_at: 2019-05-03
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

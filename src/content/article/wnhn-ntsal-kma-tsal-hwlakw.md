@@ -1,6 +1,6 @@
 ---
 title: "ونحن نتساءل كما تساءل هولاكو !"
-status: draft
+status: published
 published_at: 2019-06-20
 person: abu-jafar-al-khalifi
 ---

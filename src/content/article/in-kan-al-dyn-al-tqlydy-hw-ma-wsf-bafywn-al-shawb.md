@@ -1,6 +1,6 @@
 ---
 title: "\"إن كان الدين التقليدي هو ما وُصف بأفيون الشعوب"
-status: draft
+status: published
 published_at: 2021-02-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

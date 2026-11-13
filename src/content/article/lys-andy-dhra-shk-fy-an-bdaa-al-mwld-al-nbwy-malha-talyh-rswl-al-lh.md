@@ -1,6 +1,6 @@
 ---
 title: "ليس عندي ذرة شك في أنّ بدعة المولد النبوي مآلها تأليه رسول الله ﷺ"
-status: draft
+status: published
 published_at: 2025-08-29
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

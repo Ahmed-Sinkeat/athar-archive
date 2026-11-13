@@ -1,6 +1,6 @@
 ---
 title: "أرجو من الله أن تكون قد فهمت شيئُا يسيرًا من حِكم تشريع \"ج الطلب\"!"
-status: draft
+status: published
 published_at: 2023-10-18
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

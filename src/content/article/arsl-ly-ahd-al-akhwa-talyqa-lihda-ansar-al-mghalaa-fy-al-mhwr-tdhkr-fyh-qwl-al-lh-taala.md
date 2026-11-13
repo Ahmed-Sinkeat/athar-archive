@@ -1,6 +1,6 @@
 ---
 title: "أرسل لي أحد الأخوة تعليقا لإحدى أنصار المغالاة في المهور تذكر فيه قول الله تعالى"
-status: draft
+status: published
 published_at: 2018-08-06
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

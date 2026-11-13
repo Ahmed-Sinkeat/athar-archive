@@ -1,6 +1,6 @@
 ---
 title: "في هذا العصر الّذي صارت فيه أخصّ الخصوصيّات تُعرض على الناس حتّى غُرف النوم!."
-status: draft
+status: published
 published_at: 2023-01-17
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "وهذا خبر ثابت النسبة إلى عثمان أمير المؤمنين يقول لا تكلفوا الجواري الكسب ( يعني"
-status: draft
+status: published
 published_at: 2019-04-19
 person: abu-jafar-al-khalifi
 ---

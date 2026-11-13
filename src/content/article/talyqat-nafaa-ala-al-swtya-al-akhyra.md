@@ -1,6 +1,6 @@
 ---
 title: "تعليقات نافعة على الصوتية الأخيرة.."
-status: draft
+status: published
 published_at: 2022-05-12
 person: abu-jafar-al-khalifi
 ---

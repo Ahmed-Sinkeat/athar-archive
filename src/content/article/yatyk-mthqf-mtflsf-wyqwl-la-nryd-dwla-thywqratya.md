@@ -1,6 +1,6 @@
 ---
 title: "يأتيك مثقف متفلسف ويقول : لا نريد دولة ثيوقراطية !"
-status: draft
+status: published
 published_at: 2019-03-15
 person: abu-jafar-al-khalifi
 ---

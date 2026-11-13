@@ -1,6 +1,6 @@
 ---
 title: "سألني أحد أصحابي عن صحة الحديث المشتهر بين العامة"
-status: draft
+status: published
 published_at: 2024-05-23
 person: abu-abdillah-firas-al-ramli
 ---

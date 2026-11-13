@@ -1,6 +1,6 @@
 ---
 title: "وكل جريمة مهما بلغت بشاعتها وشناعتها فهي دون الكفر والشرك بالله."
-status: draft
+status: published
 published_at: 2026-02-03
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

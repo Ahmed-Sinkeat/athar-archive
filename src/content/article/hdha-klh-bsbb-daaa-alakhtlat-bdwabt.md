@@ -1,6 +1,6 @@
 ---
 title: "هذا كله بسبب دعاة \"الاختلاط بضوابط\"."
-status: draft
+status: published
 published_at: 2024-01-02
 person: abu-umair-imran-al-zubaidi
 ---

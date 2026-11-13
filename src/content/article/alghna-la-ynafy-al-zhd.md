@@ -1,6 +1,6 @@
 ---
 title: "(الغنى لا ينافي الزهد)."
-status: draft
+status: published
 published_at: 2023-07-02
 person: abu-umair-imran-al-zubaidi
 topics: ["tazkiyat-al-nafs"]

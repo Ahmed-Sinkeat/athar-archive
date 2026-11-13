@@ -1,6 +1,6 @@
 ---
 title: "إذا وضعت هذا العنوان في محرك البحث سيظهر لك هذا الخبر والذي ترجمته بالعربية"
-status: draft
+status: published
 published_at: 2020-01-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

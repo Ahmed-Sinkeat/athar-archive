@@ -1,6 +1,6 @@
 ---
 title: "سألني سائل عن صحة ما روي عن الإمام الشافعي أنه قال"
-status: draft
+status: published
 published_at: 2025-11-16
 person: abu-abdillah-firas-al-ramli
 ---

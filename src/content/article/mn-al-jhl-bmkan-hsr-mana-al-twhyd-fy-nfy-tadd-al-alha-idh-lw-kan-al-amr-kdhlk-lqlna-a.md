@@ -1,6 +1,6 @@
 ---
 title: "من الجهل بمكان حصر معنى التوحيد في نفي تعدد الآلهة؛ إذ لو كان الأمر كذلك لقلنا أ"
-status: draft
+status: published
 published_at: 2023-09-02
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

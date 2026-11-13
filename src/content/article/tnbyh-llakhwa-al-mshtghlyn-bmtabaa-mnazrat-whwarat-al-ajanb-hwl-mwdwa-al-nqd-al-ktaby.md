@@ -1,6 +1,6 @@
 ---
 title: "تنبيه للأخوة المشتغلين بمتابعة مناظرات وحوارات الأجانب حول موضوع النقد الكتابي ("
-status: draft
+status: published
 published_at: 2018-05-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

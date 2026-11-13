@@ -1,6 +1,6 @@
 ---
 title: "هذا مغرد أمريكي محافظ يقول"
-status: draft
+status: published
 published_at: 2024-12-16
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

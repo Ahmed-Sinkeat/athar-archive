@@ -1,6 +1,6 @@
 ---
 title: "عذرا على كثرة حديثي في مسألة التسلسل وهذا آخر منشور إن شاء الله وسأتكلم في آخره"
-status: draft
+status: published
 published_at: 2018-03-20
 person: abu-jafar-al-khalifi
 ---

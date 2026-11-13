@@ -1,6 +1,6 @@
 ---
 title: "عقول الصحابة أم عقولهم"
-status: draft
+status: published
 published_at: 2018-12-01
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-asma-was-sifat"]

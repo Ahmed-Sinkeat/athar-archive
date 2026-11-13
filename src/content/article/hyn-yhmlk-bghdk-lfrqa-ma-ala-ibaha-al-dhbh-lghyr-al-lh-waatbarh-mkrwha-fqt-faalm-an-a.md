@@ -1,6 +1,6 @@
 ---
 title: "حين يحملك بغضك لفرقة ما على إباحة الذبح لغير الله واعتباره مكروها فقط فاعلم أن ا"
-status: draft
+status: published
 published_at: 2018-08-19
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

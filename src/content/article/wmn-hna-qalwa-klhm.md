@@ -1,6 +1,6 @@
 ---
 title: "ومن هنا قالوا كلهم"
-status: draft
+status: published
 published_at: 2018-11-13
 person: abu-jafar-al-khalifi
 ---

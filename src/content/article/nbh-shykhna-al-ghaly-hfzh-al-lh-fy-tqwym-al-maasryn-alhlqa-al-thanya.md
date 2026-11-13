@@ -1,6 +1,6 @@
 ---
 title: "نبه شيخنا الغالي حفظه الله في تقويم المعاصرين (الحلقة الثانية)"
-status: draft
+status: published
 published_at: 2024-02-12
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

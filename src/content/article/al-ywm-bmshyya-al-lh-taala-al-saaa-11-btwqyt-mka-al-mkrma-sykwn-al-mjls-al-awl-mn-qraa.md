@@ -1,6 +1,6 @@
 ---
 title: "اليوم بمشيئة الله تعالى الساعة ١١ بتوقيت مكة المكرمة سيكون المجلس الأول من قراءة"
-status: draft
+status: published
 published_at: 2023-06-28
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

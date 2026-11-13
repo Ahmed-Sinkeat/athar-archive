@@ -1,6 +1,6 @@
 ---
 title: "جاء في الإقناع في حل ألفاظ أبي شجاع من كتب الشافعية"
-status: draft
+status: published
 published_at: 2018-07-04
 person: abu-jafar-al-khalifi
 ---

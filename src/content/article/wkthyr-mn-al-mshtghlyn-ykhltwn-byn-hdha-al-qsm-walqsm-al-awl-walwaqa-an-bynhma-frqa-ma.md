@@ -1,6 +1,6 @@
 ---
 title: "وكثير من المشتغلين يخلطون بين هذا القسم والقسم الأول والواقع أن بينهما فرقاً مع"
-status: draft
+status: published
 published_at: 2019-12-13
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

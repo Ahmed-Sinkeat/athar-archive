@@ -1,6 +1,6 @@
 ---
 title: "هل يئس الذين كفروا من دين المتشبهين بهم والمحتفلين بأعيادهم المعظِّمين لثقافتهم؟"
-status: draft
+status: published
 published_at: 2024-08-14
 person: abu-jafar-al-khalifi
 ---

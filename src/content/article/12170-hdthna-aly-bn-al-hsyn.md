@@ -1,6 +1,6 @@
 ---
 title: "١٢١٧٠ - حدثنا علي بن الحسين"
-status: draft
+status: published
 published_at: 2025-05-15
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

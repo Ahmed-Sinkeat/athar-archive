@@ -1,6 +1,6 @@
 ---
 title: "هذه الصحفية أرادت أذية موظف الأمن عن طريق تصويره وهو يقرأ القرآن ونشر ذلك في موا"
-status: draft
+status: published
 published_at: 2018-08-08
 person: abu-jafar-al-khalifi
 ---

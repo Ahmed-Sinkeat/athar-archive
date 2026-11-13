@@ -1,6 +1,6 @@
 ---
 title: "يقول أحمد داود أوغلو في كتابه العمق الاستراتيجي ص٥٦"
-status: draft
+status: published
 published_at: 2017-08-13
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

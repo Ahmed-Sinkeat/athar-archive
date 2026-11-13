@@ -1,6 +1,6 @@
 ---
 title: "كما بررت الإلحاد برر التشدد (ماذا لو عكسنا الأمر)."
-status: draft
+status: published
 published_at: 2026-09-29
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

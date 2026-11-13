@@ -1,6 +1,6 @@
 ---
 title: "هذا وزير الأوقاف المغربي أحمد التوفيق"
-status: draft
+status: published
 published_at: 2025-11-01
 person: abu-jafar-al-khalifi
 ---

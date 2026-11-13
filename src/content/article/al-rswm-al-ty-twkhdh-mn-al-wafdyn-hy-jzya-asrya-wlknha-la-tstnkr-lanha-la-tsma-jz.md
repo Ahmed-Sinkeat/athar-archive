@@ -1,6 +1,6 @@
 ---
 title: "الرسوم التي تؤخذ من الوافدين هي ( جزية عصرية ) ولكنها لا تستنكر لأنها لا تسمى جز"
-status: draft
+status: published
 published_at: 2018-04-27
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-wala-wal-bara"]

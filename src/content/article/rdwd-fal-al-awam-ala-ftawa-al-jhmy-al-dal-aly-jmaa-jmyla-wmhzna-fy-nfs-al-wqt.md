@@ -1,6 +1,6 @@
 ---
 title: "ردود فعل العوام على فتاوى الجهمي الضال علي جمعة جميلة ومحزنة في نفس الوقت!"
-status: draft
+status: published
 published_at: 2024-03-14
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "تقرب إلى الله عز وجل ولو ببيضة ولا تفرط"
-status: draft
+status: published
 published_at: 2023-06-30
 person: abu-abdillah-firas-al-ramli
 ---

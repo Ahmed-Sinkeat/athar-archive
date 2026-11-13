@@ -1,6 +1,6 @@
 ---
 title: "قال التابعيُّ الجليل الإمام مالك بن دينار -رضي الله عنه"
-status: draft
+status: published
 published_at: 2022-10-06
 person: abu-umair-imran-al-zubaidi
 ---

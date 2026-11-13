@@ -1,6 +1,6 @@
 ---
 title: "قول القائل أن المستغيث بغير الله لا يكون مشركاً إلا إذا اعتقد الاستقلال بالتأثير"
-status: draft
+status: published
 published_at: 2017-12-28
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

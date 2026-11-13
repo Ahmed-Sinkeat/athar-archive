@@ -1,6 +1,6 @@
 ---
 title: "هذا لمن يسأل كيف وصل المذهب الحنفي وتم الثناء على أبي حنيفة بعد القرون الأربعة ا"
-status: draft
+status: published
 published_at: 2024-02-26
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذه أحسن وصية وقفت عليها منذ بداية الأزمة على أنه لا ينبغي أَن ننظر للأذكار على"
-status: draft
+status: published
 published_at: 2020-04-16
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

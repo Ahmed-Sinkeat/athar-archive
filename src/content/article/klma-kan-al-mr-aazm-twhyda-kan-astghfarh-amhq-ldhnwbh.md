@@ -1,6 +1,6 @@
 ---
 title: "كلما كان المرء أعظم توحيداً كان استغفاره أمحق لذنوبه."
-status: draft
+status: published
 published_at: 2023-12-05
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-wala-wal-bara"]

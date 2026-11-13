@@ -1,6 +1,6 @@
 ---
 title: "يحدّثونك عن القوة الاقتصادية لبلاد الكفر"
-status: draft
+status: published
 published_at: 2024-05-28
 person: abu-umair-imran-al-zubaidi
 ---

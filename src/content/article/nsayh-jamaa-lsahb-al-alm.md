@@ -1,6 +1,6 @@
 ---
 title: "نصائح جامعة لصاحب العلم"
-status: draft
+status: published
 published_at: 2023-12-11
 person: abu-abdillah-firas-al-ramli
 ---

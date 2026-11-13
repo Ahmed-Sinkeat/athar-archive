@@ -1,6 +1,6 @@
 ---
 title: "ما جرأ النساء على مثل هذا إلا المياعة في التعامل مع كلامهن القبيح في التعدد وعدم"
-status: draft
+status: published
 published_at: 2024-03-23
 person: abu-umair-imran-al-zubaidi
 ---

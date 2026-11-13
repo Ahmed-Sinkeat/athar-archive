@@ -1,6 +1,6 @@
 ---
 title: "فأما من أوتي كتابه بيمينه * فسوف يحاسب حسابا يسيرا * وينقلب إلى أهله مسرورا [سور"
-status: draft
+status: published
 published_at: 2026-10-07
 person: abu-umair-imran-al-zubaidi
 ---

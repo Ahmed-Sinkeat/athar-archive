@@ -1,6 +1,6 @@
 ---
 title: "والذي استوى على العرش وجلس عليه ستبقى جهميًا عندنا حتى تحذف كل مقطع علمت به التج"
-status: draft
+status: published
 published_at: 2024-06-15
 person: abu-umair-imran-al-zubaidi
 ---

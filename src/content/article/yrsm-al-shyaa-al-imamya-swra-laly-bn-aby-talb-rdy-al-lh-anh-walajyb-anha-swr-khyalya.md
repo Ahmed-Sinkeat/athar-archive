@@ -1,6 +1,6 @@
 ---
 title: "يرسم الشيعة الإمامية صوراً لعلي بن أبي طالب رضي الله عنه والعجيب أنها صور خيالية"
-status: draft
+status: published
 published_at: 2018-12-14
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

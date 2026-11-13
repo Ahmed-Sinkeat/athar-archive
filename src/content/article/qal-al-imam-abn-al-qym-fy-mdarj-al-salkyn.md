@@ -1,6 +1,6 @@
 ---
 title: "قال الإمام ابن القيم في مدارج السالكين"
-status: draft
+status: published
 published_at: 2018-09-09
 person: abu-jafar-al-khalifi
 ---

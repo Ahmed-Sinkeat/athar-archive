@@ -1,6 +1,6 @@
 ---
 title: "إن كنتم لا بد مقتدين فاقتدوا بالميت"
-status: draft
+status: published
 published_at: 2024-09-23
 person: abu-abdillah-firas-al-ramli
 ---

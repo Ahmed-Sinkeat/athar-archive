@@ -1,6 +1,6 @@
 ---
 title: "والخلاصة التي أريد بيانها أن الإنجازات العلمية والعملية المشتركة بين أفراد الأمة"
-status: draft
+status: published
 published_at: 2019-10-31
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

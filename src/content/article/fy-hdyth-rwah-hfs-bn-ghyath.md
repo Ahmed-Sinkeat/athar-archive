@@ -1,6 +1,6 @@
 ---
 title: "في حديثٍ رواهُ حفصُ بن غَيَّاث"
-status: draft
+status: published
 published_at: 2025-11-04
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أهل السنّة والجماعة مجمعون على جواز رؤية الله سبحانه وتعالى في المنام"
-status: draft
+status: published
 published_at: 2023-06-10
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "حين ترى طبيبا برادئه الأبيض والسكينة التي تحيط به ( فيما يخيَّل لنا ) يساوِم مري"
-status: draft
+status: published
 published_at: 2018-07-10
 person: abu-jafar-al-khalifi
 ---

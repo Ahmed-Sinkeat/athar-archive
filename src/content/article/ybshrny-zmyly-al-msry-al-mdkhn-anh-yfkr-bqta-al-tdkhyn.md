@@ -1,6 +1,6 @@
 ---
 title: "يبشرني زميلي المصري المدخن أنه يفكر بقطع التدخين"
-status: draft
+status: published
 published_at: 2018-10-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

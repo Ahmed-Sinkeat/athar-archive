@@ -1,6 +1,6 @@
 ---
 title: "من مناقب عمار بن ياسر رضي الله عنه"
-status: draft
+status: published
 published_at: 2024-02-25
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "قام رجل من الأعاجم النصارى في الأندلس يدعى ابن غرسية بكتابة رسالة عاتب فيها أمير"
-status: draft
+status: published
 published_at: 2018-01-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

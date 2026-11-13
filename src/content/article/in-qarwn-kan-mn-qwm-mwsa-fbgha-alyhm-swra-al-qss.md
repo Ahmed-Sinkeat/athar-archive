@@ -1,6 +1,6 @@
 ---
 title: "{إِنَّ قَارُونَ كَانَ مِن قَوْمِ مُوسَىٰ فَبَغَىٰ عَلَيْهِمْ} سورة القصص."
-status: draft
+status: published
 published_at: 2024-11-21
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

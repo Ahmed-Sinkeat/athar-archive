@@ -1,6 +1,6 @@
 ---
 title: "من الحوادث التاريخية العظيمة والتي لا ينبغي أن تنسى وقعة المنصورة."
-status: draft
+status: published
 published_at: 2018-01-28
 person: abu-jafar-al-khalifi
 ---

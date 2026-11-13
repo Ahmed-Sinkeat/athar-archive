@@ -1,6 +1,6 @@
 ---
 title: "ثم ذكر إبراهيم الحربي وأثنى على كتابه ومحمد بن القاسم الأنباري وأبا عمر اللغوي ص"
-status: draft
+status: published
 published_at: 2021-07-31
 person: abu-jafar-al-khalifi
 ---

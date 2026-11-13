@@ -1,6 +1,6 @@
 ---
 title: "السودانيون من أطيب الناس الذين عرفتهم في حياتي دون مبالغة أو مجاملة."
-status: draft
+status: published
 published_at: 2023-12-19
 person: abu-umair-imran-al-zubaidi
 ---

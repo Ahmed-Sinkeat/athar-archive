@@ -1,6 +1,6 @@
 ---
 title: "رفع الأيدي في دعاء الخطبة يوم الجمعة بدعة"
-status: draft
+status: published
 published_at: 2023-07-21
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

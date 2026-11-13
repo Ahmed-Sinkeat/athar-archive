@@ -1,6 +1,6 @@
 ---
 title: "رضي الله عن شيخ الإسلام."
-status: draft
+status: published
 published_at: 2024-04-01
 person: abu-umair-imran-al-zubaidi
 ---

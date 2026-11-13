@@ -1,6 +1,6 @@
 ---
 title: "ثم يقولون الرّق انتهى"
-status: draft
+status: published
 published_at: 2018-06-25
 person: abu-jafar-al-khalifi
 ---

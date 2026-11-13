@@ -1,6 +1,6 @@
 ---
 title: "وإن أضيف إليه كلمات مثل"
-status: draft
+status: published
 published_at: 2023-05-02
 person: abu-umair-imran-al-zubaidi
 ---

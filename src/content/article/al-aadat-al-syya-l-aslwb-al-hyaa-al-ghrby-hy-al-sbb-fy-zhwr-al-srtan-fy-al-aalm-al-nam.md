@@ -1,6 +1,6 @@
 ---
 title: "العادات السيئة لـ \"أسلوب الحياة الغربي\" هي السبب في ظهور السرطان في العالم النام"
-status: draft
+status: published
 published_at: 2019-08-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

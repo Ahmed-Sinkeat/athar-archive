@@ -1,6 +1,6 @@
 ---
 title: "جاء في صحيح مسلم"
-status: draft
+status: published
 published_at: 2017-07-16
 person: abu-jafar-al-khalifi
 ---

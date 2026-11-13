@@ -1,6 +1,6 @@
 ---
 title: "باب في لزوم النساء الشابات بيوتهن في هذا الزمان الفاسد وعدم خروجهن لصلاة العيد"
-status: draft
+status: published
 published_at: 2024-04-09
 person: abu-abdillah-firas-al-ramli
 ---

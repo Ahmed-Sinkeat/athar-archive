@@ -1,6 +1,6 @@
 ---
 title: "قال الطبري في تفسيره وَحَدَّثَنِي الْحَارِثُ"
-status: draft
+status: published
 published_at: 2017-06-25
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

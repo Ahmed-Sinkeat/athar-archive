@@ -1,6 +1,6 @@
 ---
 title: "أرادوا أن يقولوا ( مطلوب جارية ) ولكن ظروف العصر تقتضي التلاعب بالألفاظ والإبقاء"
-status: draft
+status: published
 published_at: 2018-07-20
 person: abu-jafar-al-khalifi
 ---

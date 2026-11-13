@@ -1,6 +1,6 @@
 ---
 title: "يا أهل المعاصي لا تغتروا"
-status: draft
+status: published
 published_at: 2026-06-15
 person: abu-abdillah-firas-al-ramli
 ---

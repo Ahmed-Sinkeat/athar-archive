@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب جامع زبد العقائد التوحيدية لولد عدلان السوداني الأشعري"
-status: draft
+status: published
 published_at: 2018-11-29
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

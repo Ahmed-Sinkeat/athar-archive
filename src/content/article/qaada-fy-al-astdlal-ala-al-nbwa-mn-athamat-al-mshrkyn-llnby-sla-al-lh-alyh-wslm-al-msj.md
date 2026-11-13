@@ -1,6 +1,6 @@
 ---
 title: "قاعدة في الاستدلال على النبوة من اتهامات المشركين للنبي صلى الله عليه وسلم المسج"
-status: draft
+status: published
 published_at: 2018-03-30
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

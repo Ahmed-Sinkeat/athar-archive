@@ -1,6 +1,6 @@
 ---
 title: "صلى الله على نبينا محمد كلما ذكره الذاكرون وغفل عن ذكره الغافلون"
-status: draft
+status: published
 published_at: 2025-10-31
 person: abu-abdillah-firas-al-ramli
 ---

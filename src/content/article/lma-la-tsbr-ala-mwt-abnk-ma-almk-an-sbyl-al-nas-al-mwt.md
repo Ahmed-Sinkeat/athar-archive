@@ -1,6 +1,6 @@
 ---
 title: "لما لا تصبر على موت ابنك مع علمك أن سبيل الناس الموت؟"
-status: draft
+status: published
 published_at: 2023-10-20
 person: abu-abdillah-firas-al-ramli
 ---

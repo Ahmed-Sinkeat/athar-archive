@@ -1,6 +1,6 @@
 ---
 title: "من الرجال ..."
-status: draft
+status: published
 published_at: 2024-01-09
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا مثال جيد على ضيق عطن دعاة التمذهب بصورته المتأخرة من المتصوفة"
-status: draft
+status: published
 published_at: 2023-06-11
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

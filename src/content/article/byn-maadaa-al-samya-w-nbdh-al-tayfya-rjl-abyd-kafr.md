@@ -1,6 +1,6 @@
 ---
 title: "بين \"معاداة السامية\" و \"نبذ الطائفية\" رجل أبيض كافر"
-status: draft
+status: published
 published_at: 2024-12-15
 person: abu-umair-imran-al-zubaidi
 ---

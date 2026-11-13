@@ -1,6 +1,6 @@
 ---
 title: "هذه فقرة من مقال في الغارديان بعنوان: \"أوروبا تفقد بوصلتها الأخلاقية\"."
-status: draft
+status: published
 published_at: 2021-08-04
 person: abu-jafar-al-khalifi
 ---

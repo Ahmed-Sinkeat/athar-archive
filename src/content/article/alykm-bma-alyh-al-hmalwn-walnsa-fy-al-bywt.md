@@ -1,6 +1,6 @@
 ---
 title: "عليكم بما عليه الحمالون والنساء في البيوت"
-status: draft
+status: published
 published_at: 2023-07-04
 person: abu-abdillah-firas-al-ramli
 topics: ["al-iman", "al-sunnah-wal-bidah"]

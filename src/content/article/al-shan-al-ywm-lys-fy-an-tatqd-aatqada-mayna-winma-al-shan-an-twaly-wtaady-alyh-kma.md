@@ -1,6 +1,6 @@
 ---
 title: "الشأن اليوم ليس في أن تعتقد اعتقادًا معينًا وإنما الشأن أن توالي وتعادي عليه كما"
-status: draft
+status: published
 published_at: 2022-10-07
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

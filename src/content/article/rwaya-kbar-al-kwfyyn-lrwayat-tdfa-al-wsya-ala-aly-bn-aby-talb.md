@@ -1,6 +1,6 @@
 ---
 title: "رواية كبار الكوفيين لروايات تدفع الوصية على علي بن أبي طالب."
-status: draft
+status: published
 published_at: 2026-04-11
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

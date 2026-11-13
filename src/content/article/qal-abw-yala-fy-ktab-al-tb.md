@@ -1,6 +1,6 @@
 ---
 title: "قال أبو يعلى في كتاب الطب"
-status: draft
+status: published
 published_at: 2018-06-30
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

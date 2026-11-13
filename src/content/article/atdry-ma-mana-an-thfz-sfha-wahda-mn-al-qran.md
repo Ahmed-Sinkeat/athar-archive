@@ -1,6 +1,6 @@
 ---
 title: "أتدري ما معنى أن تحفظ صفحةً واحدةً من القرآن؟!."
-status: draft
+status: published
 published_at: 2023-03-01
 person: abu-umair-imran-al-zubaidi
 ---

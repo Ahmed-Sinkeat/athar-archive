@@ -1,6 +1,6 @@
 ---
 title: "حواديت التطور! : القردة في أمريكا الجنوبية"
-status: draft
+status: published
 published_at: 2018-04-09
 person: abu-jafar-al-khalifi
 ---

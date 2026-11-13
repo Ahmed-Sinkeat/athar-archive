@@ -1,6 +1,6 @@
 ---
 title: "دراسة تُظهر أن المعتقدات الدينية القوية ترتبط بمستويات أعلى من الرضا الجنسي."
-status: draft
+status: published
 published_at: 2024-08-18
 person: abu-jafar-al-khalifi
 ---

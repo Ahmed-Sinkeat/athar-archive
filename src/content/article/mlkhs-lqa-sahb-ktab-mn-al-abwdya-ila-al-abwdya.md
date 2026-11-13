@@ -1,6 +1,6 @@
 ---
 title: "ملخص لقاء صاحب كتاب من العبودية إلى العبودية."
-status: draft
+status: published
 published_at: 2020-08-04
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

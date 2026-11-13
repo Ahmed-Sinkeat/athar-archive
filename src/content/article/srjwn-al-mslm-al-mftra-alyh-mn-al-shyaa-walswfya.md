@@ -1,6 +1,6 @@
 ---
 title: "سرجون المسلم المفترى عليه من الشيعة والصوفية!"
-status: draft
+status: published
 published_at: 2020-06-13
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

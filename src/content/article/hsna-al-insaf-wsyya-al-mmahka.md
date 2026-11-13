@@ -1,6 +1,6 @@
 ---
 title: "حسنة الإنصاف وسيئة المماحكة"
-status: draft
+status: published
 published_at: 2020-10-29
 person: abu-jafar-al-khalifi
 ---

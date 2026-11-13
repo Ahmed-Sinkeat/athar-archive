@@ -1,6 +1,6 @@
 ---
 title: "متسلق ماكر!"
-status: draft
+status: published
 published_at: 2025-11-28
 person: abu-umair-imran-al-zubaidi
 ---

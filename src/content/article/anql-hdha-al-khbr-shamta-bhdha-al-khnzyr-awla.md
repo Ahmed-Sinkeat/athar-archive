@@ -1,6 +1,6 @@
 ---
 title: "أنقل هذا الخبر شامتا بهذا الخنزير أولا"
-status: draft
+status: published
 published_at: 2022-10-09
 person: abu-jafar-al-khalifi
 ---

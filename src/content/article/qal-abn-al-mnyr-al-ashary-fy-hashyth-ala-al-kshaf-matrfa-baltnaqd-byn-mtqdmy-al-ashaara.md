@@ -1,6 +1,6 @@
 ---
 title: "قال ابن المنير الأشعري في حاشيته على الكشاف معترفاً بالتناقض بين متقدمي الأشاعرة"
-status: draft
+status: published
 published_at: 2018-01-26
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

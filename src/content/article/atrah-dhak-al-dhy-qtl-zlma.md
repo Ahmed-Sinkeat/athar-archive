@@ -1,6 +1,6 @@
 ---
 title: "أتراه ذاك الّذي قُتِل ظُلمًا"
-status: draft
+status: published
 published_at: 2023-02-09
 person: abu-umair-imran-al-zubaidi
 ---

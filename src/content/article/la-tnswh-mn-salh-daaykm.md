@@ -1,6 +1,6 @@
 ---
 title: "لا تنسوه من صالح دعائكم"
-status: draft
+status: published
 published_at: 2025-11-02
 person: awwab-bin-muhammad
 ---

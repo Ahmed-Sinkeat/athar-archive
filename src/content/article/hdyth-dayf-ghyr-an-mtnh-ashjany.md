@@ -1,6 +1,6 @@
 ---
 title: "حديث ضعيف غير أن متنه أشجاني."
-status: draft
+status: published
 published_at: 2019-06-09
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-wala-wal-bara"]

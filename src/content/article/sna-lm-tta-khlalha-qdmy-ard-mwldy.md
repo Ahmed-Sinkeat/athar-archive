@@ -1,6 +1,6 @@
 ---
 title: "14 سنة لم تطأ خلالها قدمي أرض مولدي."
-status: draft
+status: published
 published_at: 2023-05-09
 person: abu-umair-imran-al-zubaidi
 ---

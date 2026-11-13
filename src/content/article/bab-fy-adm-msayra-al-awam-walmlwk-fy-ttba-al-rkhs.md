@@ -1,6 +1,6 @@
 ---
 title: "باب في عدم مسايرة العوام والملوك في تتبع الرخص..."
-status: draft
+status: published
 published_at: 2021-10-10
 person: abu-jafar-al-khalifi
 ---

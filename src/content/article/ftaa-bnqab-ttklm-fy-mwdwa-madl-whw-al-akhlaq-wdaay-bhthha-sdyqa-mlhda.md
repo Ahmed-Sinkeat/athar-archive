@@ -1,6 +1,6 @@
 ---
 title: "فتاة بنقاب تتكلم في موضوع معضل وهو الأخلاق، وداعي بحثها صديقة ملحدة!"
-status: draft
+status: published
 published_at: 2024-06-29
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

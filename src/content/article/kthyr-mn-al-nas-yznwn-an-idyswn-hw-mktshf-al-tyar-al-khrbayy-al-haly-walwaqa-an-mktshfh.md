@@ -1,6 +1,6 @@
 ---
 title: "كثير من الناس يظنون أن إديسون هو مكتشف التيار الكهربائي الحالي والواقع أن مكتشفه"
-status: draft
+status: published
 published_at: 2018-01-14
 person: abu-jafar-al-khalifi
 ---

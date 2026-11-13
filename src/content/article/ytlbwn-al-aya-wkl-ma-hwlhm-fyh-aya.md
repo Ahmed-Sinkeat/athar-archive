@@ -1,6 +1,6 @@
 ---
 title: "يطلبون الآية وكل ما حولهم فيه آية"
-status: draft
+status: published
 published_at: 2023-11-26
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

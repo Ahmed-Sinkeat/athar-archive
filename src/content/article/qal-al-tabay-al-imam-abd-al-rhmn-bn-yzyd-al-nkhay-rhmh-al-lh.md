@@ -1,6 +1,6 @@
 ---
 title: "قال التابعيّ الإمام عبد الرحمن بن يزيد النخعي رحمه الله"
-status: draft
+status: published
 published_at: 2023-01-31
 person: abu-umair-imran-al-zubaidi
 ---

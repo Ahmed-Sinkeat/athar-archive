@@ -1,6 +1,6 @@
 ---
 title: "في هذا الحر الشديد نذكركم بأن نار جهنم أشد حرا بأضعاف مضاعفة"
-status: draft
+status: published
 published_at: 2023-07-17
 person: abu-abdillah-firas-al-ramli
 ---

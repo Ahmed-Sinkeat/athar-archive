@@ -1,6 +1,6 @@
 ---
 title: "مشاهير مواقع التواصل وإيهام المتابعين"
-status: draft
+status: published
 published_at: 2018-10-29
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

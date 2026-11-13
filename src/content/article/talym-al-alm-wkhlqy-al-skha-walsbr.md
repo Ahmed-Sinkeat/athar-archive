@@ -1,6 +1,6 @@
 ---
 title: "تعليم العلم وخلقي السخاء والصبر.."
-status: draft
+status: published
 published_at: 2022-07-10
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

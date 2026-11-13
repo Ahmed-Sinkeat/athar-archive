@@ -1,6 +1,6 @@
 ---
 title: "هل اختلفت الرواية عن الإمام مالك في القائل بخلق القرآن؟"
-status: draft
+status: published
 published_at: 2022-01-06
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

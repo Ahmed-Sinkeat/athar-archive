@@ -1,6 +1,6 @@
 ---
 title: "تَبَغى ابْنُ كُوز وَالسَّفَاهَةُ كَاسْمِهَا"
-status: draft
+status: published
 published_at: 2019-06-30
 person: abu-jafar-al-khalifi
 ---

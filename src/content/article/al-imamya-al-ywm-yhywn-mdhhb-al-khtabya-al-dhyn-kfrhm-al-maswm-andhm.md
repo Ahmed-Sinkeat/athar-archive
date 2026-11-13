@@ -1,6 +1,6 @@
 ---
 title: "الإمامية اليوم يحيون مذهب الخطابية الذين كفرهم المعصوم عندهم."
-status: draft
+status: published
 published_at: 2019-05-09
 person: abu-jafar-al-khalifi
 ---

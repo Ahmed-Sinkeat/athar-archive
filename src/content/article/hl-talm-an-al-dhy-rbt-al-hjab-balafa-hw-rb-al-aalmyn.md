@@ -1,6 +1,6 @@
 ---
 title: "هل تعلم أن الذي ربط الحجاب بالعفة هو رب العالمين"
-status: draft
+status: published
 published_at: 2024-02-19
 person: abu-jafar-al-khalifi
 ---

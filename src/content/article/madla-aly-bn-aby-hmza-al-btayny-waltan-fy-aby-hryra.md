@@ -1,6 +1,6 @@
 ---
 title: "معضلة علي بن أبي حمزة البطائني والطعن في أبي هريرة"
-status: draft
+status: published
 published_at: 2019-05-22
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "أنشد الحافظ شرف الدين الدمياطي"
-status: draft
+status: published
 published_at: 2023-05-10
 person: abu-abdillah-firas-al-ramli
 ---

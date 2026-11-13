@@ -1,6 +1,6 @@
 ---
 title: "قال أبو المطرف القنازعي الأندلسي"
-status: draft
+status: published
 published_at: 2019-02-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-iman"]

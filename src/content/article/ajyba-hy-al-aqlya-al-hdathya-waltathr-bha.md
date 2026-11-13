@@ -1,6 +1,6 @@
 ---
 title: "عجيبة هي العقلية الحداثية والتأثر بها"
-status: draft
+status: published
 published_at: 2025-08-16
 person: awwab-bin-muhammad
 topics: ["al-firaq-war-rudud"]

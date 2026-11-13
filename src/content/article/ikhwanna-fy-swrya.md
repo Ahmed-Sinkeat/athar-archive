@@ -1,6 +1,6 @@
 ---
 title: "إخواننا في سوريا."
-status: draft
+status: published
 published_at: 2025-11-15
 person: abu-umair-imran-al-zubaidi
 ---

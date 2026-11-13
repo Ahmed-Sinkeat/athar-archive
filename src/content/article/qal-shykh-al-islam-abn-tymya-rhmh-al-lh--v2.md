@@ -1,6 +1,6 @@
 ---
 title: "قال شيخ الإسلام ابن تيمية رحمه الله"
-status: draft
+status: published
 published_at: 2025-08-03
 person: awwab-bin-muhammad
 ---

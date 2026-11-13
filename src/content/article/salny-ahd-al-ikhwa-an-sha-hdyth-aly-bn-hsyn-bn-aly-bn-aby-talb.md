@@ -1,6 +1,6 @@
 ---
 title: "سألني أحد الإخوة عن صحة حديث علي بن حسين بن علي بن أبي طالب"
-status: draft
+status: published
 published_at: 2024-01-13
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

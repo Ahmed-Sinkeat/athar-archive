@@ -1,6 +1,6 @@
 ---
 title: "في بيانِ فَسادِ التعبُّد المَصلحِيِّ"
-status: draft
+status: published
 published_at: 2025-05-31
 person: awwab-bin-muhammad
 ---

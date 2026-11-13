@@ -1,6 +1,6 @@
 ---
 title: "مظاهر الرحمة والمغفرة تحيط بك على طول الخط في الفقه."
-status: draft
+status: published
 published_at: 2023-04-01
 person: abu-jafar-al-khalifi
 ---

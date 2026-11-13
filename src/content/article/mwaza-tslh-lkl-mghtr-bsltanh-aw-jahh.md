@@ -1,6 +1,6 @@
 ---
 title: "موعظة تصلح لكل مغتر بسلطانه أو جاهه"
-status: draft
+status: published
 published_at: 2020-04-04
 person: abu-jafar-al-khalifi
 ---

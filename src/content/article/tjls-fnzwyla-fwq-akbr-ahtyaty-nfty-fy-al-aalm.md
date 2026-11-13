@@ -1,6 +1,6 @@
 ---
 title: "تجلس فنزويلا فوق أكبر احتياطي نفطي في العالم"
-status: draft
+status: published
 published_at: 2018-09-28
 person: abu-jafar-al-khalifi
 ---

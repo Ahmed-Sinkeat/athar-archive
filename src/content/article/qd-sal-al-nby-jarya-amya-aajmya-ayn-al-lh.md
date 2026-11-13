@@ -1,6 +1,6 @@
 ---
 title: "قد سأل النبيُّ ﷺ جاريةً أميَّةً أعجميةً: «أين الله؟"
-status: draft
+status: published
 published_at: 2024-03-19
 person: abu-jafar-al-khalifi
 ---

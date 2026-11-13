@@ -1,6 +1,6 @@
 ---
 title: "لم أكن أعلم بخاصية تحديد نوع التفاعلات على التيلجرام"
-status: draft
+status: published
 published_at: 2023-05-16
 person: abu-umair-imran-al-zubaidi
 ---

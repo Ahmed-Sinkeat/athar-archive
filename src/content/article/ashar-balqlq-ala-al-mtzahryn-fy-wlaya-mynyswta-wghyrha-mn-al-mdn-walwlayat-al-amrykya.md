@@ -1,6 +1,6 @@
 ---
 title: "أشعر بالقلق على المتظاهرين في ولاية مينيسوتا وغيرها من المدن والولايات الأمريكية"
-status: draft
+status: published
 published_at: 2026-01-25
 person: abu-umair-imran-al-zubaidi
 ---

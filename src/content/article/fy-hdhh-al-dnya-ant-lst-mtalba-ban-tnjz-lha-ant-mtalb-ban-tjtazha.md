@@ -1,6 +1,6 @@
 ---
 title: "في هذه الدّنيا، أنتَ لستَ مُطالبًا بأن تُنجز لها، أنتَ مُطالبٌ بأن تجتازها."
-status: draft
+status: published
 published_at: 2023-01-17
 person: abu-umair-imran-al-zubaidi
 ---

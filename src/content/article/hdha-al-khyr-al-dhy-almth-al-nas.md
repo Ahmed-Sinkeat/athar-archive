@@ -1,6 +1,6 @@
 ---
 title: "هذا الخير الذي علمته الناس"
-status: draft
+status: published
 published_at: 2024-09-04
 person: abu-abdillah-firas-al-ramli
 ---

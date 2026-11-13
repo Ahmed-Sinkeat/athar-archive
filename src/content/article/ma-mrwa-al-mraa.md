@@ -1,6 +1,6 @@
 ---
 title: "ما مروءة المرأة؟"
-status: draft
+status: published
 published_at: 2023-12-20
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من مشاكل أدعياء الثقافة عندنا أنهم مدمنون للبحث من المنتصف إذ أنهم في العادة ينط"
-status: draft
+status: published
 published_at: 2019-10-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "هذا هو المحامي عبد الوهاب السلامة"
-status: draft
+status: published
 published_at: 2023-06-07
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "أحدهم حاول تفجير نفسه في كنيسة أو مكان احتفال النصارى في حلب."
-status: draft
+status: published
 published_at: 2025-12-31
 person: abu-umair-imran-al-zubaidi
 ---

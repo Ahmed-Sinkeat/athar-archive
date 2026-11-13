@@ -1,6 +1,6 @@
 ---
 title: "صحيح البخاري | علامات النبوة في الإسلام (٤)"
-status: draft
+status: published
 published_at: 2025-07-07
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "فعلا يعجز اللسان عن التعبير لما يجد أمثالكم من المحسوبين على كبر العمر والعقل وا"
-status: draft
+status: published
 published_at: 2023-07-27
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

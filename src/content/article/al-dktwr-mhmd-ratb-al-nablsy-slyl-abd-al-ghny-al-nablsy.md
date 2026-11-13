@@ -1,6 +1,6 @@
 ---
 title: "الدكتور محمد راتب النابلسي سليل عبد الغني النابلسي"
-status: draft
+status: published
 published_at: 2025-05-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

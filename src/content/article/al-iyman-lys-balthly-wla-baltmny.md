@@ -1,6 +1,6 @@
 ---
 title: "الإيمان ليس بالتحلي ولا بالتمني"
-status: draft
+status: published
 published_at: 2025-06-19
 person: abu-abdillah-firas-al-ramli
 ---

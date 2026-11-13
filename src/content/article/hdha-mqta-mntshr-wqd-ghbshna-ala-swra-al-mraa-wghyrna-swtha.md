@@ -1,6 +1,6 @@
 ---
 title: "هذا مقطع منتشر، وقد غبشنا على صورة المرأة وغيرنا صوتها."
-status: draft
+status: published
 published_at: 2024-11-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

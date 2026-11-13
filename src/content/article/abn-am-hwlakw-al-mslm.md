@@ -1,6 +1,6 @@
 ---
 title: "ابن عم هولاكو المسلم !"
-status: draft
+status: published
 published_at: 2017-08-29
 person: abu-jafar-al-khalifi
 ---

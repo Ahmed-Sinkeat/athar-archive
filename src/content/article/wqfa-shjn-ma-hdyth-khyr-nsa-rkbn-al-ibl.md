@@ -1,6 +1,6 @@
 ---
 title: "وقفة شجن مع حديث خير نساء ركبن الإبل"
-status: draft
+status: published
 published_at: 2026-09-16
 person: abu-jafar-al-khalifi
 ---

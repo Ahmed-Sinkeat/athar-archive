@@ -1,6 +1,6 @@
 ---
 title: "قال مسلم في صحيحه 4761- [23-1830] حَدَّثَنَا شَيْبَانُ بْنُ فَرُّوخَ"
-status: draft
+status: published
 published_at: 2017-10-08
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

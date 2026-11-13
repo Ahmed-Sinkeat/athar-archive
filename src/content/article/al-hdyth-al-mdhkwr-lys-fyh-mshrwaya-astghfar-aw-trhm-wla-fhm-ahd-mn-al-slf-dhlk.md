@@ -1,6 +1,6 @@
 ---
 title: "الحديث المذكور ليس فيه مشروعية استغفار أو ترحم ولا فهم أحد من السلف ذلك"
-status: draft
+status: published
 published_at: 2022-05-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

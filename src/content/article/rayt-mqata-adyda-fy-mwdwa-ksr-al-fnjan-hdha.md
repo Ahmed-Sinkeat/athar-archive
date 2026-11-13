@@ -1,6 +1,6 @@
 ---
 title: "رأيت مقاطع عديدة في موضوع كسر الفنجان هذا"
-status: draft
+status: published
 published_at: 2026-05-17
 person: abu-jafar-al-khalifi
 ---

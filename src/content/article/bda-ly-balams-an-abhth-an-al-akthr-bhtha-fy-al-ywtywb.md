@@ -1,6 +1,6 @@
 ---
 title: "بدا لي بالأمس أن أبحث عن الأكثر بحثاً في اليوتيوب"
-status: draft
+status: published
 published_at: 2025-05-18
 person: abu-jafar-al-khalifi
 ---

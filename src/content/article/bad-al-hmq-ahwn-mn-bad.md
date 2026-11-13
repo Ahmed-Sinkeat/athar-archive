@@ -1,6 +1,6 @@
 ---
 title: "بعض الحمق أهون من بعض"
-status: draft
+status: published
 published_at: 2024-01-30
 person: abu-abdillah-firas-al-ramli
 ---

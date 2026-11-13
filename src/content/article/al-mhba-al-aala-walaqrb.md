@@ -1,6 +1,6 @@
 ---
 title: "المحبة الأعلى والأقرب"
-status: draft
+status: published
 published_at: 2022-12-24
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا التعليق ذكرني بواحدة علقت عند الكيالي تطالبه بعمل حلقة عن عدم وجوب الحجاب!"
-status: draft
+status: published
 published_at: 2025-09-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

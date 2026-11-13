@@ -1,6 +1,6 @@
 ---
 title: "هذه صورة أرسلها لي بعض الشباب لبعض الناس ممن يحاول جاهداً أن يثبت أمراً محرماً ب"
-status: draft
+status: published
 published_at: 2022-12-12
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "تنبيه شيخ الإسلام إلى علاقة مبحث الحقيقة والمجاز بالمثالية أو الإله الأفلاطوني.."
-status: draft
+status: published
 published_at: 2021-10-31
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

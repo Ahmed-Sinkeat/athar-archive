@@ -1,6 +1,6 @@
 ---
 title: "مؤخراً سنت ولاية \"أوهيو\" الأمريكية قانونا يمنع الإجهاض إذا ما تجاوز عمر الجنين ٦"
-status: draft
+status: published
 published_at: 2018-11-24
 person: abu-jafar-al-khalifi
 ---

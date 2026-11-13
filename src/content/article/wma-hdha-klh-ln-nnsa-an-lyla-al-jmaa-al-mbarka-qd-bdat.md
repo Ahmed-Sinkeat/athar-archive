@@ -1,6 +1,6 @@
 ---
 title: "ومع هذا كله لن ننسى أنّ ليلة الجمعة المباركة قد بدأت."
-status: draft
+status: published
 published_at: 2024-06-27
 person: abu-umair-imran-al-zubaidi
 ---

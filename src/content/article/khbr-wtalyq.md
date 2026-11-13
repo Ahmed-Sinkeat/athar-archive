@@ -1,6 +1,6 @@
 ---
 title: "خبر وتعليق ؛"
-status: draft
+status: published
 published_at: 2019-04-10
 person: abu-jafar-al-khalifi
 ---

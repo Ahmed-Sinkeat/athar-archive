@@ -1,6 +1,6 @@
 ---
 title: "انتظار المرء للحظة صفاء وهدوء وزوال لمشاكله حتى يبادر إلى التوبة من أخبث مكائد ا"
-status: draft
+status: published
 published_at: 2023-07-09
 person: abu-umair-imran-al-zubaidi
 ---

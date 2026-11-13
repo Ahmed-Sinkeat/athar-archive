@@ -1,6 +1,6 @@
 ---
 title: "لا تنتظر الهمّة العالية والعزيمة في أداء العبادات -بعد توفيق الله وعونه- إذا ما"
-status: draft
+status: published
 published_at: 2024-03-11
 person: abu-umair-imran-al-zubaidi
 ---

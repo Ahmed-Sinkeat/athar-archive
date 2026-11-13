@@ -1,6 +1,6 @@
 ---
 title: "قال عبد الرزاق في المصنف 5061 - عن معمر"
-status: draft
+status: published
 published_at: 2019-11-13
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

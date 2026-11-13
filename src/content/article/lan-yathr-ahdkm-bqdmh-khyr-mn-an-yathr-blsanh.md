@@ -1,6 +1,6 @@
 ---
 title: "لأن يعثر أحدكم بقدمه خير من أن يعثر بلسانه"
-status: draft
+status: published
 published_at: 2025-12-29
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من آخر ما بلغني عن أحد الذين لا أحب أن ينقل لي شيء عنهم وقد تحدثت عنه مراراً وأن"
-status: draft
+status: published
 published_at: 2018-01-02
 person: abu-jafar-al-khalifi
 ---

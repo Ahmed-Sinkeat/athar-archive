@@ -1,6 +1,6 @@
 ---
 title: "الأطباء المدخنون وكشف الانحياز !"
-status: draft
+status: published
 published_at: 2018-11-21
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

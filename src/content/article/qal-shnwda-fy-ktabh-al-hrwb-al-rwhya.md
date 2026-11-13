@@ -1,6 +1,6 @@
 ---
 title: "قال شنودة في كتابه الحروب الروحية"
-status: draft
+status: published
 published_at: 2017-11-19
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

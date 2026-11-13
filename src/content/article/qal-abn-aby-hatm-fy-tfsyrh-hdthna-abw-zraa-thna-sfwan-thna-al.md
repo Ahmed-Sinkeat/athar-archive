@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي حاتم في تفسيره 9040 - حَدَّثَنَا أَبُو زُرْعَةَ ثنا صَفْوَانُ ثنا ال"
-status: draft
+status: published
 published_at: 2017-07-15
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

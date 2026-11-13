@@ -1,6 +1,6 @@
 ---
 title: "المفارقة بين استرضاء الزوج بالمشتبهات واسترضاء الزوج بالمستحبات..."
-status: draft
+status: published
 published_at: 2021-08-22
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال أبو نعيم"
-status: draft
+status: published
 published_at: 2018-06-09
 person: abu-jafar-al-khalifi
 ---

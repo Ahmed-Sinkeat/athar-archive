@@ -1,6 +1,6 @@
 ---
 title: "هذا الموضوع بالنسبة لي خط أحمر بعد التوحيد والعقيدة."
-status: draft
+status: published
 published_at: 2025-10-08
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada", "al-wala-wal-bara"]

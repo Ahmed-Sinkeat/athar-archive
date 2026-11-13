@@ -1,6 +1,6 @@
 ---
 title: "كان للخليفة العباسي القائم بأمر الله مستشار تركي اسمه أرسلان مشهور بالبساسيري ثم"
-status: draft
+status: published
 published_at: 2018-01-17
 person: abu-jafar-al-khalifi
 ---

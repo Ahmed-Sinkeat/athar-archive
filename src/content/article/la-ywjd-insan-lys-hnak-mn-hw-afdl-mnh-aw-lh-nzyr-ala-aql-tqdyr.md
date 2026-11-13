@@ -1,6 +1,6 @@
 ---
 title: "لا يوجد إنسان ليس هناك من هو أفضل منه، أو له نظير على أقل تقدير."
-status: draft
+status: published
 published_at: 2023-09-13
 person: abu-umair-imran-al-zubaidi
 ---

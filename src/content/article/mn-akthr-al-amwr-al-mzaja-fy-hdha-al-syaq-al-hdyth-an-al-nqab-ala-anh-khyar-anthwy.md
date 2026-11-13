@@ -1,6 +1,6 @@
 ---
 title: "من أكثر الأمور المزعجة في هذا السياق الحديث عن النقاب على أنه (خيار أنثوي)"
-status: draft
+status: published
 published_at: 2025-12-16
 person: abu-jafar-al-khalifi
 ---

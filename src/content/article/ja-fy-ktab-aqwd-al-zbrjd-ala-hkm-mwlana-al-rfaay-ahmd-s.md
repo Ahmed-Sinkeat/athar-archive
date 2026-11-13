@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب عقود الزبرجد على حكم مولانا الرفاعي أحمد ص203"
-status: draft
+status: published
 published_at: 2018-10-29
 person: abu-jafar-al-khalifi
 ---

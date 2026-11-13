@@ -1,6 +1,6 @@
 ---
 title: "المئات من الشباب المتحولين جنسيا يطلبون المساعدة للعودة إلى جنسهم الأصلي."
-status: draft
+status: published
 published_at: 2021-05-01
 person: abu-jafar-al-khalifi
 ---

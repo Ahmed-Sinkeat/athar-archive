@@ -1,6 +1,6 @@
 ---
 title: "قال ابن عساكر في تاريخ دمشق 9329 - حولا بنت بهلول المتعبدة أخت مؤمنة كانت صوفية"
-status: draft
+status: published
 published_at: 2017-08-20
 person: abu-jafar-al-khalifi
 ---

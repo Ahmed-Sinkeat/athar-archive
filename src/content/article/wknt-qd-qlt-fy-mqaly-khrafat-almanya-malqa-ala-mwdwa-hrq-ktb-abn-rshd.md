@@ -1,6 +1,6 @@
 ---
 title: "وكنت قد قلت في مقالي (خرافات علمانية) معلِّقًا على موضوع حرق كتب ابن رشد"
-status: draft
+status: published
 published_at: 2020-09-29
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

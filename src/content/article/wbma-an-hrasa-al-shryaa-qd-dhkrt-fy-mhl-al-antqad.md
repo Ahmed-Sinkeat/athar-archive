@@ -1,6 +1,6 @@
 ---
 title: "وبما أنَّ «حراسة الشريعة» قد ذُكِرت في محل الانتقاد"
-status: draft
+status: published
 published_at: 2026-10-11
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هي لها ظروف خاصة في الإمارات فرضيت بالتعدد"
-status: draft
+status: published
 published_at: 2022-04-16
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "مشكلة الأشاعرة المعاصرين أن فيهم ضعفاً علمياً مع انتفاخ يوحي لهم به بعض شيوخهم"
-status: draft
+status: published
 published_at: 2026-08-04
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

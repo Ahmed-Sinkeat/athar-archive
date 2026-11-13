@@ -1,6 +1,6 @@
 ---
 title: "جعل الله سبحانه وتعالى وقوف المرأة بين يديه في صلاتها في بيتها خيرٌ من وقوفها في"
-status: draft
+status: published
 published_at: 2024-01-03
 person: abu-umair-imran-al-zubaidi
 ---

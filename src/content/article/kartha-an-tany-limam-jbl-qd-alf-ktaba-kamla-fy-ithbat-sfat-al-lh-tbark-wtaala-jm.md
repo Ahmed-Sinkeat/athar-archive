@@ -1,6 +1,6 @@
 ---
 title: "كارثة أن تأني لإمام جبل قد ألّف كتابًا كاملًا في إثبات صفات الله تبارك وتعالى جم"
-status: draft
+status: published
 published_at: 2023-07-26
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

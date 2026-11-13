@@ -1,6 +1,6 @@
 ---
 title: "صار عندي نفرة شديدة من كل كلامٍ أقرأه أو أسمعه في الغزل"
-status: draft
+status: published
 published_at: 2023-11-07
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "لا تخسَر رمضانَك"
-status: draft
+status: published
 published_at: 2026-02-20
 person: awwab-bin-muhammad
 ---

@@ -1,6 +1,6 @@
 ---
 title: "عطفاً على الصوتية: هذا موقع يعنى بالعلاج من الحالات الإدمانية (الكحول والتدخين)."
-status: draft
+status: published
 published_at: 2024-01-24
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

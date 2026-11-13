@@ -1,6 +1,6 @@
 ---
 title: "لا تُذهب أجر عطشك في الصيام أو تُضْعفه بالبدع أو إعانة الظالمين…"
-status: draft
+status: published
 published_at: 2024-03-17
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

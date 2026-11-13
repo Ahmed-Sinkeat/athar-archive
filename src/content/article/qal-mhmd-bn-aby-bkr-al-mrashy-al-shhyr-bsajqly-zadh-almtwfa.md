@@ -1,6 +1,6 @@
 ---
 title: "قال محمد بن أبي بكر المرعشي الشهير بساجقلي زاده (المتوفى"
-status: draft
+status: published
 published_at: 2018-01-12
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "وقد كفر الحجاج كثيرون وأما ابن سيرين فلم يكفره وطاووس سمى من لم يكفره إخواننا"
-status: draft
+status: published
 published_at: 2021-07-01
 person: abu-jafar-al-khalifi
 ---

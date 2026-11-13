@@ -1,6 +1,6 @@
 ---
 title: "ما ينبغي أن نفهمه من تقويم ابن تيمية لردود المتكلمين على الفلاسفة"
-status: draft
+status: published
 published_at: 2020-03-05
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-sunnah-wal-bidah"]

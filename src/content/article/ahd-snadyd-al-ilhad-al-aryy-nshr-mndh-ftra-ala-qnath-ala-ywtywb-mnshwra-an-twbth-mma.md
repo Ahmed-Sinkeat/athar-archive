@@ -1,6 +1,6 @@
 ---
 title: "أحد صناديد الإلحاد العريي نشر منذ فترة على قناته على يوتيوب منشورا عن توبته مما"
-status: draft
+status: published
 published_at: 2023-11-14
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

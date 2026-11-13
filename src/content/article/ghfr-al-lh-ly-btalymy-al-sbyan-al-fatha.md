@@ -1,6 +1,6 @@
 ---
 title: "غفر الله لي بتعليمي الصبيان الفاتحة"
-status: draft
+status: published
 published_at: 2022-05-29
 person: abu-jafar-al-khalifi
 ---

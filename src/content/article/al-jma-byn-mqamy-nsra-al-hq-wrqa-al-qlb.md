@@ -1,6 +1,6 @@
 ---
 title: "الجمع بين مقامي نصرة الحق ورقة القلب."
-status: draft
+status: published
 published_at: 2023-02-23
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "tazkiyat-al-nafs", "al-sunnah-wal-bidah"]

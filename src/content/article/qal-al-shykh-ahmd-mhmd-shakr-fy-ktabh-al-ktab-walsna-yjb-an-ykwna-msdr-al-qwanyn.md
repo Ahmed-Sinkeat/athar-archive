@@ -1,6 +1,6 @@
 ---
 title: "قال الشيخ أحمد محمد شاكر في كتابه (23) الكتاب والسنة يجب أن يكونا مصدر القوانين"
-status: draft
+status: published
 published_at: 2019-04-12
 person: abu-jafar-al-khalifi
 ---

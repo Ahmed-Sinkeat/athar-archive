@@ -1,6 +1,6 @@
 ---
 title: "هذا رد مبارك طيب مفصل لأخي الغالي والحبيب أبي عبد الله فراس في دفاعه عن الإمام ا"
-status: draft
+status: published
 published_at: 2025-01-18
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "قرار طيب دمج القنوات هذا."
-status: draft
+status: published
 published_at: 2025-01-20
 person: abu-umair-imran-al-zubaidi
 ---

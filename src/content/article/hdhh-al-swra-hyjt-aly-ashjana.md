@@ -1,6 +1,6 @@
 ---
 title: "هذه الصورة هيجت علي أشجاناً"
-status: draft
+status: published
 published_at: 2025-10-08
 person: abu-jafar-al-khalifi
 topics: ["adab-talab-al-ilm"]

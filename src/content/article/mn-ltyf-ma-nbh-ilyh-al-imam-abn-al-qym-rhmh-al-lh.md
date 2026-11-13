@@ -1,6 +1,6 @@
 ---
 title: "من لطيف ما نبه إليه الإمام ابن القيم رحمه الله."
-status: draft
+status: published
 published_at: 2024-05-09
 person: abu-umair-imran-al-zubaidi
 ---

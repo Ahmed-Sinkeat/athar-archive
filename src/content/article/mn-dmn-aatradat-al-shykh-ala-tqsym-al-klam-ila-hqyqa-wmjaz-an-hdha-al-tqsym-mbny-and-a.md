@@ -1,6 +1,6 @@
 ---
 title: "من ضمن اعتراضات الشيخ على تقسيم الكلام إلى حقيقة ومجاز أن هذا التقسيم مبني عند ع"
-status: draft
+status: published
 published_at: 2021-10-31
 person: abu-jafar-al-khalifi
 ---

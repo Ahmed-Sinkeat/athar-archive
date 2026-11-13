@@ -1,6 +1,6 @@
 ---
 title: "قال الخطيب في تاريخه [ ترجمة سعيد بن عثمان أبو عثمان الحيري الواعظ"
-status: draft
+status: published
 published_at: 2019-06-01
 person: abu-jafar-al-khalifi
 ---

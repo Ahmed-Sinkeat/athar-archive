@@ -1,6 +1,6 @@
 ---
 title: "المكوّعون يناقضون أنفسهم من حيث لا يعلمون!"
-status: draft
+status: published
 published_at: 2024-12-31
 person: abu-umair-imran-al-zubaidi
 ---

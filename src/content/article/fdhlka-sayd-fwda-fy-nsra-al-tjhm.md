@@ -1,6 +1,6 @@
 ---
 title: "فذلكة سعيد فودة في نصرة التجهم"
-status: draft
+status: published
 published_at: 2021-09-12
 person: abu-jafar-al-khalifi
 ---

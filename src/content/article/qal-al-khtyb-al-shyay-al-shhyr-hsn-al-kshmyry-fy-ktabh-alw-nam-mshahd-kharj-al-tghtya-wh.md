@@ -1,6 +1,6 @@
 ---
 title: "قال الخطيب الشيعي الشهير حسن الكشميري في كتابه ( ألو نعم مشاهد خارج التغطية ) وه"
-status: draft
+status: published
 published_at: 2020-04-08
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

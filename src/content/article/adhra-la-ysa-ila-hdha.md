@@ -1,6 +1,6 @@
 ---
 title: "عذرًا لا يسع إلا هذا..."
-status: draft
+status: published
 published_at: 2021-02-08
 person: abu-jafar-al-khalifi
 ---

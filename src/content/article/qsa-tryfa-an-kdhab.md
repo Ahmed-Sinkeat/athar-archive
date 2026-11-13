@@ -1,6 +1,6 @@
 ---
 title: "قصة طريفة عن كذاب"
-status: draft
+status: published
 published_at: 2024-03-27
 person: abu-abdillah-firas-al-ramli
 ---

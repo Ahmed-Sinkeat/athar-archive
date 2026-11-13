@@ -1,6 +1,6 @@
 ---
 title: "باب فيمن جمع بين الدفاع عن النفس والموعظة"
-status: draft
+status: published
 published_at: 2020-03-05
 person: abu-jafar-al-khalifi
 ---

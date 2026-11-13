@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية كما في جامع المسائل (1/284)"
-status: draft
+status: published
 published_at: 2018-03-21
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

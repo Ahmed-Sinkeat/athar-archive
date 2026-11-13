@@ -1,6 +1,6 @@
 ---
 title: "الولاء والبراء ضرورة عقلية مستغنية عن الإطناب في الإستدلال"
-status: draft
+status: published
 published_at: 2019-07-11
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

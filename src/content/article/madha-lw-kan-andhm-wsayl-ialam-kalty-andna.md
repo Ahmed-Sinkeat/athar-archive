@@ -1,6 +1,6 @@
 ---
 title: "ماذا لو كان عندهم وسائل إعلام كالتي عندنا؟"
-status: draft
+status: published
 published_at: 2023-05-25
 person: abu-jafar-al-khalifi
 ---

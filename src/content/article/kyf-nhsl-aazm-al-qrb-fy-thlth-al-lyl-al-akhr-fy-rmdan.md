@@ -1,6 +1,6 @@
 ---
 title: "كيف نحصِّل أعظم القرب في ثلث الليل الآخر في رمضان؟"
-status: draft
+status: published
 published_at: 2025-03-03
 person: abu-jafar-al-khalifi
 ---

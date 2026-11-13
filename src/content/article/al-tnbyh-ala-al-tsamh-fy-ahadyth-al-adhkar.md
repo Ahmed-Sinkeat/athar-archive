@@ -1,6 +1,6 @@
 ---
 title: "التنبيه على التسامح في أحاديث الأذكار"
-status: draft
+status: published
 published_at: 2020-04-25
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال ابن عقيل في الفنون"
-status: draft
+status: published
 published_at: 2018-06-08
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "نفض الخطايا ..."
-status: draft
+status: published
 published_at: 2023-10-31
 person: abu-abdillah-firas-al-ramli
 ---

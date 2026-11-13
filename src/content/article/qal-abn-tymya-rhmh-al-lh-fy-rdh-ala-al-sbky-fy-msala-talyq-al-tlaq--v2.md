@@ -1,6 +1,6 @@
 ---
 title: "قال ابن تيمية -رحمه الله- في رده على السبكي في مسألة تعليق الطلاق (2/837)"
-status: draft
+status: published
 published_at: 2021-12-04
 person: abu-jafar-al-khalifi
 ---

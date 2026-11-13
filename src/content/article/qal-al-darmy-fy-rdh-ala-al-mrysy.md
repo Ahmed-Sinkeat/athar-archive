@@ -1,6 +1,6 @@
 ---
 title: "قال الدارمي في رده على المريسي"
-status: draft
+status: published
 published_at: 2023-08-01
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "tahwid-al-ibada", "al-sunnah-wal-bidah"]

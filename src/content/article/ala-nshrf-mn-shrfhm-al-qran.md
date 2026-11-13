@@ -1,6 +1,6 @@
 ---
 title: "ألا نشرِّف من شرَّفهم القرآن…"
-status: draft
+status: published
 published_at: 2019-05-22
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

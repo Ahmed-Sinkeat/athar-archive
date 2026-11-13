@@ -1,6 +1,6 @@
 ---
 title: "في سنة 381 هـ ضُرب رجل بمصر وطيف به في المدينة"
-status: draft
+status: published
 published_at: 2017-07-25
 person: abu-jafar-al-khalifi
 ---

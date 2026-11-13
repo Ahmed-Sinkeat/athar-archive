@@ -1,6 +1,6 @@
 ---
 title: "ولعلَّ مِن أهمِّ أسباب حيدتكَ عن طريق الهِداية والفلاح وتأخُّرِك عن اللَّحاقِ بر"
-status: draft
+status: published
 published_at: 2026-05-05
 person: awwab-bin-muhammad
 ---

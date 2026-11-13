@@ -1,6 +1,6 @@
 ---
 title: "الطعن في عدالة الصحابة مفتاح الطعن في القرآن عند من طعن فيه من الإمامية"
-status: draft
+status: published
 published_at: 2020-03-06
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

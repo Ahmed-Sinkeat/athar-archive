@@ -1,6 +1,6 @@
 ---
 title: "إلى الآن لا أستطيع تذكر ما السبب الذي كان يقوله البعض حين ينكرون على الناس الحلف"
-status: draft
+status: published
 published_at: 2024-08-07
 person: abu-umair-imran-al-zubaidi
 ---

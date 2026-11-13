@@ -1,6 +1,6 @@
 ---
 title: "ما رأي امرئ في أمر بلغه عن رسول الله ﷺ إلا اتباعه"
-status: draft
+status: published
 published_at: 2026-03-23
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

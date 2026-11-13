@@ -1,6 +1,6 @@
 ---
 title: "شيخ الإسلام ابن تيمية يكشف سبب التعاسة عند ضحايا ثقافة الاستهلاك"
-status: draft
+status: published
 published_at: 2018-11-05
 person: abu-jafar-al-khalifi
 ---

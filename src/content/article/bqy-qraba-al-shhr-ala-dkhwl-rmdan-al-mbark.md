@@ -1,6 +1,6 @@
 ---
 title: "بقيَ قرابة الشهر على دخول رمضان المبارك"
-status: draft
+status: published
 published_at: 2023-02-19
 person: abu-umair-imran-al-zubaidi
 ---

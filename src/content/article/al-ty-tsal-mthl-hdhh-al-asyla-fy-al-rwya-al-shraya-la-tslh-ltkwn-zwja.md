@@ -1,6 +1,6 @@
 ---
 title: "التي تسأل مثل هذه الأسئلة في الرؤية الشرعية لا تصلح لتكون زوجة!"
-status: draft
+status: published
 published_at: 2023-11-12
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

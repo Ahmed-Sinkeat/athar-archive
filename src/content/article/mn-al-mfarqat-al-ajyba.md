@@ -1,6 +1,6 @@
 ---
 title: "مِن المفارقات العجيبة ...."
-status: draft
+status: published
 published_at: 2022-09-02
 person: abu-umair-imran-al-zubaidi
 ---

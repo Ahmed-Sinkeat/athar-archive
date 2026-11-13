@@ -1,6 +1,6 @@
 ---
 title: "”الوعظ لا ينفع مدمن الإباحية والعادة السرية“ وقفة مع جبرية النفسانيين..."
-status: draft
+status: published
 published_at: 2026-02-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

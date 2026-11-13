@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي حاتم في آداب الشافعي ومناقبه حَدَّثَنِي أَبُو بِشْرِ بْنُ َأَحْمَدَ"
-status: draft
+status: published
 published_at: 2018-09-03
 person: abu-jafar-al-khalifi
 ---

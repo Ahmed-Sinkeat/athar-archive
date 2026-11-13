@@ -1,6 +1,6 @@
 ---
 title: "الإشارة إلى علو الله عز وجل في فقه غسل الميت."
-status: draft
+status: published
 published_at: 2026-05-22
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

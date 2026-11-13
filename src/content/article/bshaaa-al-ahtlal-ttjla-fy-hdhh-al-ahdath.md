@@ -1,6 +1,6 @@
 ---
 title: "&rlm;بشاعة الاحتلال تتجلّى في هذه الأحداث"
-status: draft
+status: published
 published_at: 2021-09-09
 person: abu-jafar-al-khalifi
 ---

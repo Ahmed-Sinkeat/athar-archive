@@ -1,6 +1,6 @@
 ---
 title: "يومًا بعد يوم يزداد يقيني بأنّ مستويات الغباء عند التلحود تفوق كُلّ التوقّعات!."
-status: draft
+status: published
 published_at: 2022-09-26
 person: abu-umair-imran-al-zubaidi
 ---

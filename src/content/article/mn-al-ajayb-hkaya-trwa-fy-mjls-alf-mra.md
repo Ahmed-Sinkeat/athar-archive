@@ -1,6 +1,6 @@
 ---
 title: "من العجائب حكاية تروى في مجلس ألف مرة"
-status: draft
+status: published
 published_at: 2024-03-17
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada"]

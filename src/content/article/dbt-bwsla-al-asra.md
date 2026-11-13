@@ -1,6 +1,6 @@
 ---
 title: "ضبطُ بوصلةِ الأسرة 1"
-status: draft
+status: published
 published_at: 2025-03-09
 person: awwab-bin-muhammad
 topics: ["tafsir-al-quran", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "في رحاب من كانوا يظنون أنه لا يحسن أن يعصي الله"
-status: draft
+status: published
 published_at: 2019-12-26
 person: abu-jafar-al-khalifi
 ---

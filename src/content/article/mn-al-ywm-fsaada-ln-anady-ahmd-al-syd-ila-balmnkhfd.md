@@ -1,6 +1,6 @@
 ---
 title: "من اليوم فصاعدًا لن أنادي أحمد السيد إلا بالمنخفض."
-status: draft
+status: published
 published_at: 2024-01-14
 person: abu-umair-imran-al-zubaidi
 ---

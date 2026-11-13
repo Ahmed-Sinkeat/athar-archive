@@ -1,6 +1,6 @@
 ---
 title: "وقال الدارمي أيضًا"
-status: draft
+status: published
 published_at: 2021-08-21
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

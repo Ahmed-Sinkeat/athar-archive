@@ -1,6 +1,6 @@
 ---
 title: "ما علاقة الطهر من الحيض بالتوبة؟"
-status: draft
+status: published
 published_at: 2022-04-04
 person: abu-jafar-al-khalifi
 ---

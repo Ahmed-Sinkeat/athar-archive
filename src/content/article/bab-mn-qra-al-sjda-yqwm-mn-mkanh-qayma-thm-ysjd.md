@@ -1,6 +1,6 @@
 ---
 title: "باب من قرأ السجدة؛ يقوم من مكانه قائما ثم يسجد"
-status: draft
+status: published
 published_at: 2025-11-19
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "al-sunnah-wal-bidah"]

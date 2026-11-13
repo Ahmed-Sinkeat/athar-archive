@@ -1,6 +1,6 @@
 ---
 title: "قال محمود شاكر كما في مجموع مقالاته"
-status: draft
+status: published
 published_at: 2018-10-22
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

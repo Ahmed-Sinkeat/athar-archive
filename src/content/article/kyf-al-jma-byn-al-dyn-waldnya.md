@@ -1,6 +1,6 @@
 ---
 title: "\"كيف الجمع بين الدين والدنيا؟\"."
-status: draft
+status: published
 published_at: 2024-07-12
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "الباطل إن كثر طرقه على المسامع صار مستساغًا."
-status: draft
+status: published
 published_at: 2024-03-29
 person: abu-umair-imran-al-zubaidi
 topics: ["al-sunnah-wal-bidah"]

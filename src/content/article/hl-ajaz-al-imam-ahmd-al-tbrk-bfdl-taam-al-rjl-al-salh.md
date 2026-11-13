@@ -1,6 +1,6 @@
 ---
 title: "هل أجاز الإمام أحمد التبرك بفضل طعام الرجل الصالح ؟"
-status: draft
+status: published
 published_at: 2020-07-30
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

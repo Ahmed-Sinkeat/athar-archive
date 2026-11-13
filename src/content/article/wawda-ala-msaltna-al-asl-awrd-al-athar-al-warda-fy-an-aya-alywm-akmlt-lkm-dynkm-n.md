@@ -1,6 +1,6 @@
 ---
 title: "وعوداً على مسألتنا الأصل أورد الآثار الواردة في أن آية {اليوم أكملت لكم دينكم} ن"
-status: draft
+status: published
 published_at: 2022-07-08
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

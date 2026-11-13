@@ -1,6 +1,6 @@
 ---
 title: "هاجس فناء البشر ودمار الأرض لا يجوز لمسلم أن يعتقد به أو يفكر فيه كاحتمال وارد ح"
-status: draft
+status: published
 published_at: 2024-09-12
 person: abu-umair-imran-al-zubaidi
 ---

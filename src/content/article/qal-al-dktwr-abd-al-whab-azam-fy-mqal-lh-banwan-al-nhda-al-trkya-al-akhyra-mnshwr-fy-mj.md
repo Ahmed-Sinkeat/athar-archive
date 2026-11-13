@@ -1,6 +1,6 @@
 ---
 title: "قال الدكتور عبد الوهاب عزام في مقال له بعنوان النهضة التركية الأخيرة منشور في مج"
-status: draft
+status: published
 published_at: 2018-02-09
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

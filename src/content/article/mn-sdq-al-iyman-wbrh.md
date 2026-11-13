@@ -1,6 +1,6 @@
 ---
 title: "من صدق الإيمان وبره"
-status: draft
+status: published
 published_at: 2024-12-26
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "اتقوا الله وكونوا مع محمد ﷺ وأصحابه"
-status: draft
+status: published
 published_at: 2026-03-29
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

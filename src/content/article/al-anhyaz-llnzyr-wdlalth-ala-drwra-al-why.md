@@ -1,6 +1,6 @@
 ---
 title: "الانحياز للنظير ودلالته على ضرورة الوحي."
-status: draft
+status: published
 published_at: 2019-01-16
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tazkiyat-al-nafs"]

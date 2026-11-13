@@ -1,6 +1,6 @@
 ---
 title: "ليس له مكان في أمريكا ولكن له مكان في غزة حيث تدعم أمريكا دولة الكيان الصهيوني ا"
-status: draft
+status: published
 published_at: 2023-10-16
 person: abu-jafar-al-khalifi
 ---

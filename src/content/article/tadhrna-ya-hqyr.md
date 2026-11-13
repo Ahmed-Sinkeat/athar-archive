@@ -1,6 +1,6 @@
 ---
 title: "تعذرنا يا حقير"
-status: draft
+status: published
 published_at: 2024-09-28
 person: abu-umair-imran-al-zubaidi
 ---

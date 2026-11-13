@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب \"الحرب عبر التاريخ\" للقائد العسكري المشهور المارشال \"مونتغمري\" ما يل"
-status: draft
+status: published
 published_at: 2017-10-09
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "قال ابن خلكان في وفيات الأعيان"
-status: draft
+status: published
 published_at: 2018-08-04
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

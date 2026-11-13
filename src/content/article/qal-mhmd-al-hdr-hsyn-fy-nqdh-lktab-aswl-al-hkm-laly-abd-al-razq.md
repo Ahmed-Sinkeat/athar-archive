@@ -1,6 +1,6 @@
 ---
 title: "قال محمد الحضر حسين في نقده لكتاب أصول الحكم لعلي عبد الرازق"
-status: draft
+status: published
 published_at: 2018-10-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

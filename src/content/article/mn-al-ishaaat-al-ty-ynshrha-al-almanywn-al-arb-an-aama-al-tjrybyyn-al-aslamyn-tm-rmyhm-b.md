@@ -1,6 +1,6 @@
 ---
 title: "من الإشاعات التي ينشرها العلمانيون العرب أن عامة التجريبيين الاسلامين تم رميهم ب"
-status: draft
+status: published
 published_at: 2018-04-23
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

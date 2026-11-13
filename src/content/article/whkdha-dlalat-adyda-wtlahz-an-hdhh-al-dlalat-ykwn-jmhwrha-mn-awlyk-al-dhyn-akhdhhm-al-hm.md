@@ -1,6 +1,6 @@
 ---
 title: "وهكذا ضلالات عديدة وتلاحظ أن هذه الضلالات يكون جمهورها من أولئك الذين أخذهم الحم"
-status: draft
+status: published
 published_at: 2019-12-19
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

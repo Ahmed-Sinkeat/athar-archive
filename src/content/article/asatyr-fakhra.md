@@ -1,6 +1,6 @@
 ---
 title: "أساطير فاخرة"
-status: draft
+status: published
 published_at: 2020-01-21
 person: abu-jafar-al-khalifi
 ---

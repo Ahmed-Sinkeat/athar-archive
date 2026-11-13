@@ -1,6 +1,6 @@
 ---
 title: "ترحيل السوريين أمن قومي مصري"
-status: draft
+status: published
 published_at: 2026-02-15
 person: abu-umair-imran-al-zubaidi
 ---

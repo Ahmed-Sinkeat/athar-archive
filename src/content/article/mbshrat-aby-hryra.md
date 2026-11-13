@@ -1,6 +1,6 @@
 ---
 title: "مبشرات أبي هريرة."
-status: draft
+status: published
 published_at: 2023-12-17
 person: abu-jafar-al-khalifi
 ---

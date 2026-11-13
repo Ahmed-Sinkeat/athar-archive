@@ -1,6 +1,6 @@
 ---
 title: "طوق النجاة (الأشاعرة جهمية ولكن ليسوا غلاة)..."
-status: draft
+status: published
 published_at: 2024-07-10
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

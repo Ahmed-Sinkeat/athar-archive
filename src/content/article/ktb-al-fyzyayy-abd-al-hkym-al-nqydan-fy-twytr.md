@@ -1,6 +1,6 @@
 ---
 title: "كتب الفيزيائي عبد الحكيم النقيدان في تويتر"
-status: draft
+status: published
 published_at: 2019-02-21
 person: abu-jafar-al-khalifi
 ---

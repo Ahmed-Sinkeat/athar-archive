@@ -1,6 +1,6 @@
 ---
 title: "ومَا مِن شيءٍ تأخذُ بهِ المرأةُ مجامعَ قلبِ زوجها وعقله كطَاعِتها له وانقيادها إ"
-status: draft
+status: published
 published_at: 2022-10-31
 person: abu-umair-imran-al-zubaidi
 ---

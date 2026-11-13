@@ -1,6 +1,6 @@
 ---
 title: "معاوية بن أبي سفيان -رضي الله عنهما- ونقض مفهوم الدولة المستحيلة..."
-status: draft
+status: published
 published_at: 2025-03-23
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada", "al-sunnah-wal-bidah"]

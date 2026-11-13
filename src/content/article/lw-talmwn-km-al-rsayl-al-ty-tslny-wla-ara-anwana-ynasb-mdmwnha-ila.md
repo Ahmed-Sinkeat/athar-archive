@@ -1,6 +1,6 @@
 ---
 title: "لو تعلمون كمّ الرسائل الّتي تصلني ولا أرى عنوانًا يناسب مضمونها إلّا"
-status: draft
+status: published
 published_at: 2023-01-16
 person: abu-umair-imran-al-zubaidi
 ---

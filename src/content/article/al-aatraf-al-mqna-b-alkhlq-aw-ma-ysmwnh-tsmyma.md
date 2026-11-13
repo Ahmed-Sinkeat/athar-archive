@@ -1,6 +1,6 @@
 ---
 title: "الاعتراف المقنَّع بـ (الخلق) أو ما يسمونه (تصميمًا)"
-status: draft
+status: published
 published_at: 2020-10-07
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

@@ -1,6 +1,6 @@
 ---
 title: "أدعية مقتبسة من أدعية النبي ﷺ التي أهلكت أهل الكفر وأخزتهم بفضل الله ﷻ"
-status: draft
+status: published
 published_at: 2023-10-13
 person: abu-abdillah-firas-al-ramli
 ---

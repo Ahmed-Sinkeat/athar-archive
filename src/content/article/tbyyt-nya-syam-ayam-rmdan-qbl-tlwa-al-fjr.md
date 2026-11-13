@@ -1,6 +1,6 @@
 ---
 title: "تبييت نية صيام أيام رمضان قبل طلوع الفجر"
-status: draft
+status: published
 published_at: 2024-03-11
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

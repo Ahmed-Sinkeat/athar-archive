@@ -1,6 +1,6 @@
 ---
 title: "أين الله عما يجري؟"
-status: draft
+status: published
 published_at: 2025-04-14
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

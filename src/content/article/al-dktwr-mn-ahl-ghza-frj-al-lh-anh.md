@@ -1,6 +1,6 @@
 ---
 title: "الدكتور من أهل غزة فرج الله عنه."
-status: draft
+status: published
 published_at: 2025-07-22
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

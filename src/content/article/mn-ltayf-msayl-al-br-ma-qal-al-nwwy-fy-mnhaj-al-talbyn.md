@@ -1,6 +1,6 @@
 ---
 title: "من لطائف مسائل البر ما قال النووي في منهاج الطالبين"
-status: draft
+status: published
 published_at: 2018-04-19
 person: abu-jafar-al-khalifi
 ---

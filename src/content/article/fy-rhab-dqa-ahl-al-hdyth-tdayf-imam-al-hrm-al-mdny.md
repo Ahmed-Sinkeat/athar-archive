@@ -1,6 +1,6 @@
 ---
 title: "في رحاب دقة أهل الحديث: تضعيف إمام الحرم المدني!"
-status: draft
+status: published
 published_at: 2022-04-03
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud"]

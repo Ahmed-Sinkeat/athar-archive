@@ -1,6 +1,6 @@
 ---
 title: "رأيت تعليقًا لفتاة لم أجد وصفًا يعطيها حقّها مِن فطنتها ورجاحة عقلها وأدبها!."
-status: draft
+status: published
 published_at: 2023-01-14
 person: abu-umair-imran-al-zubaidi
 ---

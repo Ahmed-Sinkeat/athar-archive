@@ -1,6 +1,6 @@
 ---
 title: "كلام الآلوسي حول استغلال الملاحدة لكلام الرازي.."
-status: draft
+status: published
 published_at: 2021-09-05
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran", "al-firaq-war-rudud"]

@@ -1,6 +1,6 @@
 ---
 title: "هذا المنشور تسبب بغيظ فئة لا بأس بها من النساء، وقد قرأت بعض تعليقاتهنّ عليه."
-status: draft
+status: published
 published_at: 2024-05-23
 person: abu-umair-imran-al-zubaidi
 ---

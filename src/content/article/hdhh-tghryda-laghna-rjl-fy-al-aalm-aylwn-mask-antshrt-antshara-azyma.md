@@ -1,6 +1,6 @@
 ---
 title: "هذه تغريدة لأغنى رجل في العالم أيلون ماسك انتشرت انتشاراً عظيماً"
-status: draft
+status: published
 published_at: 2026-02-06
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

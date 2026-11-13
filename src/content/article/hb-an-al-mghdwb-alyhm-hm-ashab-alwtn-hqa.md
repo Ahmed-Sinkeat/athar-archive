@@ -1,6 +1,6 @@
 ---
 title: "هب أنّ المغضوب عليهم هم أصحاب (الوطن) حقا"
-status: draft
+status: published
 published_at: 2024-10-20
 person: abu-umair-imran-al-zubaidi
 ---

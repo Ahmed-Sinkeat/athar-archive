@@ -1,6 +1,6 @@
 ---
 title: "كلنا نعرف جرائم فرنسا في دول المغرب مثلاً ولكن يخفى علينا جرائم فرنسا في دول افر"
-status: draft
+status: published
 published_at: 2019-02-08
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

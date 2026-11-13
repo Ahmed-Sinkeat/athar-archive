@@ -1,6 +1,6 @@
 ---
 title: "أوصيك بحب الشيخين"
-status: draft
+status: published
 published_at: 2024-09-01
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada"]

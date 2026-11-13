@@ -1,6 +1,6 @@
 ---
 title: "صنمُ الحِياد وإعادة تشكيل العقائد"
-status: draft
+status: published
 published_at: 2025-03-09
 person: awwab-bin-muhammad
 ---

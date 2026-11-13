@@ -1,6 +1,6 @@
 ---
 title: "حتمية إمكانية الفساد الإداري في النظام الرأسمالي.."
-status: draft
+status: published
 published_at: 2020-09-25
 person: abu-jafar-al-khalifi
 ---

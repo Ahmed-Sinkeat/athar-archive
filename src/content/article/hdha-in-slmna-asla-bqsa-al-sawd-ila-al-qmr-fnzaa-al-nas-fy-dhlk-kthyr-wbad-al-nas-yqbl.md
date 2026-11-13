@@ -1,6 +1,6 @@
 ---
 title: "هذا إن سلمنا أصلا بقصة الصعود إلى القمر فنزاع الناس في ذلك كثير وبعض الناس يقبل"
-status: draft
+status: published
 published_at: 2019-05-26
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "باب فيمن ترك الجمعة بلا عذر"
-status: draft
+status: published
 published_at: 2023-06-16
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

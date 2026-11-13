@@ -1,6 +1,6 @@
 ---
 title: "إنما مثل عمل أحدكم كمثل الوعاء"
-status: draft
+status: published
 published_at: 2025-12-19
 person: abu-abdillah-firas-al-ramli
 ---

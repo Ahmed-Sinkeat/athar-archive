@@ -1,6 +1,6 @@
 ---
 title: "قال ابن قتيبة في عيون الأخبار"
-status: draft
+status: published
 published_at: 2017-08-20
 person: abu-jafar-al-khalifi
 ---

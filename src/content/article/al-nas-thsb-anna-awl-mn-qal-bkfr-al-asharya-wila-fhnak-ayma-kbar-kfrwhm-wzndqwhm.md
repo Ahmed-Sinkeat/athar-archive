@@ -1,6 +1,6 @@
 ---
 title: "الناس تحسب أننا أول من قال بكفر الأشعرية، وإلا فهناك أئمة كبار كفروهم وزندقوهم."
-status: draft
+status: published
 published_at: 2024-01-20
 person: abu-umair-imran-al-zubaidi
 ---

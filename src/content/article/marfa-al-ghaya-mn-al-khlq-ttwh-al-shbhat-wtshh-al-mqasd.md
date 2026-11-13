@@ -1,6 +1,6 @@
 ---
 title: "معرفة الغاية من الخلق تطوح الشبهات وتصحِّح المقاصد"
-status: draft
+status: published
 published_at: 2020-10-03
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هذا طرح من ضمن طرح دروع النسويات."
-status: draft
+status: published
 published_at: 2026-10-01
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "إن عمر كان رشيد الأمر"
-status: draft
+status: published
 published_at: 2024-06-08
 person: abu-abdillah-firas-al-ramli
 ---

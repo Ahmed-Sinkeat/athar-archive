@@ -1,6 +1,6 @@
 ---
 title: "كتب الأستاذ أحمد دعدوش"
-status: draft
+status: published
 published_at: 2018-12-04
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ما نراه أصابها إلا بالدعاء.."
-status: draft
+status: published
 published_at: 2022-01-21
 person: abu-jafar-al-khalifi
 ---

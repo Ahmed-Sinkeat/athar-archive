@@ -1,6 +1,6 @@
 ---
 title: "جاء في البداية والنهاية لابن كثير في ترجمة نور الدين زنكي"
-status: draft
+status: published
 published_at: 2017-10-17
 person: abu-jafar-al-khalifi
 ---

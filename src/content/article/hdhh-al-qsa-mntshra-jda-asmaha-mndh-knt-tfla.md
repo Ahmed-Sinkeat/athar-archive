@@ -1,6 +1,6 @@
 ---
 title: "هذه القصة منتشرة جداً، أسمعها منذ كنت طفلاً."
-status: draft
+status: published
 published_at: 2025-05-21
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

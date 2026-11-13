@@ -1,6 +1,6 @@
 ---
 title: "عليكم بأصحاب الحديث الممزقين لأهل البدع"
-status: draft
+status: published
 published_at: 2023-07-04
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

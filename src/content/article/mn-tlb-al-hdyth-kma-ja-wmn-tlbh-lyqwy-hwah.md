@@ -1,6 +1,6 @@
 ---
 title: "من طلب الحديث كما جاء ومن طلبه ليقوي هواه"
-status: draft
+status: published
 published_at: 2024-07-15
 person: abu-abdillah-firas-al-ramli
 topics: ["al-sunnah-wal-bidah"]

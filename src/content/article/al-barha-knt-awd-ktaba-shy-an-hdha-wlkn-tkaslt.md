@@ -1,6 +1,6 @@
 ---
 title: "البارحة كنت أود كتابة شيء عن هذا، ولكن تكاسلت."
-status: draft
+status: published
 published_at: 2025-12-27
 person: abu-umair-imran-al-zubaidi
 ---

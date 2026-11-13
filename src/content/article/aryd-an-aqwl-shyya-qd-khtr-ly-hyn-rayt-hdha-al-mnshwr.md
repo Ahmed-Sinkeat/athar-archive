@@ -1,6 +1,6 @@
 ---
 title: "أريد أن أقول شيئًا قد خطر لي حين رأيت هذا المنشور."
-status: draft
+status: published
 published_at: 2023-08-17
 person: abu-umair-imran-al-zubaidi
 ---

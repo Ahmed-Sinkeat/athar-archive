@@ -1,6 +1,6 @@
 ---
 title: "رقية لمن اشتكى شيئا أو اشتكاه أخ له"
-status: draft
+status: published
 published_at: 2026-05-06
 person: abu-abdillah-firas-al-ramli
 topics: ["al-asma-was-sifat"]

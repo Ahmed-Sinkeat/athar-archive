@@ -1,6 +1,6 @@
 ---
 title: "من دقيق فقه السلف في تحقيق التدين والبعد عن تتبع الرخص..."
-status: draft
+status: published
 published_at: 2021-08-25
 person: abu-jafar-al-khalifi
 ---

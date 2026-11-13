@@ -1,6 +1,6 @@
 ---
 title: "ابن تيمية وأثقال موسى المحسوبة."
-status: draft
+status: published
 published_at: 2026-03-30
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

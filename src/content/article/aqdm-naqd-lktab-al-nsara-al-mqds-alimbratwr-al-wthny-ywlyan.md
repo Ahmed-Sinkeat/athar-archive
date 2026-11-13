@@ -1,6 +1,6 @@
 ---
 title: "أقدم ناقد لكتاب النصارى المقدس (الإمبراطور الوثني يوليان)…"
-status: draft
+status: published
 published_at: 2024-07-11
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

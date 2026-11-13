@@ -1,6 +1,6 @@
 ---
 title: "إني أحسب أنّ عدم انتشار سب الله تبارك وتعالى والدين في بلاد الخليج هو من أسباب ف"
-status: draft
+status: published
 published_at: 2025-04-01
 person: abu-umair-imran-al-zubaidi
 ---

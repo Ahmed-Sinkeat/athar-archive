@@ -1,6 +1,6 @@
 ---
 title: "ولا شك أن أمة عمرها قرون وتمتد في بلدان كثيرة وساشعة ومر عليها شتى أصناف الملوك"
-status: draft
+status: published
 published_at: 2019-03-22
 person: abu-jafar-al-khalifi
 ---

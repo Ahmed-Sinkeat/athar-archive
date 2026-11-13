@@ -1,6 +1,6 @@
 ---
 title: "لو سألتني: أعطني فائدة واحدة من فتنة النووي."
-status: draft
+status: published
 published_at: 2024-02-26
 person: abu-umair-imran-al-zubaidi
 ---

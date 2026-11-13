@@ -1,6 +1,6 @@
 ---
 title: "هذه الآية فيها رد على هذا الهراء"
-status: draft
+status: published
 published_at: 2022-04-23
 person: abu-jafar-al-khalifi
 ---

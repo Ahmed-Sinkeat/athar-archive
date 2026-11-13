@@ -1,6 +1,6 @@
 ---
 title: "قال الذهبي في سير أعلام النبلاء (20/418)"
-status: draft
+status: published
 published_at: 2018-02-20
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "هل صح عن الإمام أحمد أنه أجاز الحلف بالنبي ﷺ أو حكم بانعقاده؟"
-status: draft
+status: published
 published_at: 2019-06-23
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

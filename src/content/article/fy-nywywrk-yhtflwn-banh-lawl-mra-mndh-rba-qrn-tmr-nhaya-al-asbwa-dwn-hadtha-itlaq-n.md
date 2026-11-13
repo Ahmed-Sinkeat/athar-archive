@@ -1,6 +1,6 @@
 ---
 title: "في نيويورك يحتفلون بأنه لأول مرة منذ ربع قرن تمر نهاية الأسبوع دون حادثة إطلاق ن"
-status: draft
+status: published
 published_at: 2018-10-18
 person: abu-jafar-al-khalifi
 ---

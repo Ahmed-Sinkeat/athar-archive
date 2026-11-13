@@ -1,6 +1,6 @@
 ---
 title: "يؤتى بثلاثة نفر يوم القيامة"
-status: draft
+status: published
 published_at: 2026-01-14
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

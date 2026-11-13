@@ -1,6 +1,6 @@
 ---
 title: "على سيرة الجهود والفضل وما تُقدّمه كإنسان للأمّة الإسلاميّة ..."
-status: draft
+status: published
 published_at: 2022-10-06
 person: abu-umair-imran-al-zubaidi
 ---

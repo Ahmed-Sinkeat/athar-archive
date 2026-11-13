@@ -1,6 +1,6 @@
 ---
 title: "مِن الخطأ العظيم تثبيط النّاس عن إقبالهم على الله تعالى والقرآن ومجالس العلم وال"
-status: draft
+status: published
 published_at: 2023-03-31
 person: abu-umair-imran-al-zubaidi
 ---

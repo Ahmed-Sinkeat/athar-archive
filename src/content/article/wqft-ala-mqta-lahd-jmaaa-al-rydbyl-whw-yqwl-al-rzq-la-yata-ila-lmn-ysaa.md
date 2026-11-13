@@ -1,6 +1,6 @@
 ---
 title: "وقفت على مقطع لأحد جماعة الريدبيل وهو يقول: الرزق لا يعطى إلا لمن يسعى."
-status: draft
+status: published
 published_at: 2025-05-26
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

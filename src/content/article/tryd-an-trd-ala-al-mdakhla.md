@@ -1,6 +1,6 @@
 ---
 title: "تريد أن ترد على المداخلة"
-status: draft
+status: published
 published_at: 2023-06-08
 person: abu-umair-imran-al-zubaidi
 ---

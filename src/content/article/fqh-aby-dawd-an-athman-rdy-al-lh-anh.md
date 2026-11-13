@@ -1,6 +1,6 @@
 ---
 title: "فقه أبي داود عن عثمان رضي الله عنه"
-status: draft
+status: published
 published_at: 2021-02-28
 person: abu-jafar-al-khalifi
 ---

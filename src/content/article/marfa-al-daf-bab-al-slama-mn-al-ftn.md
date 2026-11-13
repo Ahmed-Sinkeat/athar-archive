@@ -1,6 +1,6 @@
 ---
 title: "معرفة الضعف باب السلامة من الفتن..."
-status: draft
+status: published
 published_at: 2021-04-17
 person: abu-jafar-al-khalifi
 ---

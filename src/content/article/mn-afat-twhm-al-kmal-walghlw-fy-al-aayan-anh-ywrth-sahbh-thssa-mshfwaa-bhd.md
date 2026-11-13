@@ -1,6 +1,6 @@
 ---
 title: "مِن آفات توهُّم الكمال والغلوِّ في الأعيان أنه يُورِث صاحبه تحسُّساً مشفوعاً بحد"
-status: draft
+status: published
 published_at: 2026-07-17
 person: awwab-bin-muhammad
 ---

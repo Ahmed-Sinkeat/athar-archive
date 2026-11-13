@@ -1,6 +1,6 @@
 ---
 title: "قال الآجري في أخلاق العلماء (١/&rlm;٧٢)"
-status: draft
+status: published
 published_at: 2023-10-04
 person: abu-abdillah-firas-al-ramli
 ---

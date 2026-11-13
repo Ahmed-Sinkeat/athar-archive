@@ -1,6 +1,6 @@
 ---
 title: "ما بال التثليث أو اللادينية بعد التوحيد؟"
-status: draft
+status: published
 published_at: 2023-12-28
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "من صلى البردين دخل الجنة ولن يدخل النار"
-status: draft
+status: published
 published_at: 2023-08-04
 person: abu-abdillah-firas-al-ramli
 ---

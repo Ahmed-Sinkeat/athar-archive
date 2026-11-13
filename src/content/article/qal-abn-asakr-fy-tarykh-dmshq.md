@@ -1,6 +1,6 @@
 ---
 title: "قال ابن عساكر في تاريخ دمشق (1/322)"
-status: draft
+status: published
 published_at: 2017-07-17
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

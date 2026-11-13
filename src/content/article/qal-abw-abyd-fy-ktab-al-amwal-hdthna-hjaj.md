@@ -1,6 +1,6 @@
 ---
 title: "قال أبو عبيد في كتاب الأموال 125 - حَدَّثَنَا حَجَّاجٌ"
-status: draft
+status: published
 published_at: 2017-07-11
 person: abu-jafar-al-khalifi
 ---

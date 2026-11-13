@@ -1,6 +1,6 @@
 ---
 title: "روى البخاري بسنده عن عُبَادَة بْنُ الصَّامِتِ أَنَّ رَسُولَ اللَّهِ خَرَجَ يُخْب"
-status: draft
+status: published
 published_at: 2018-05-06
 person: abu-jafar-al-khalifi
 ---

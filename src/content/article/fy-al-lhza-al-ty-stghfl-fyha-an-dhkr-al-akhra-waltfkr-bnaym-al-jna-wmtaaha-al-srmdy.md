@@ -1,6 +1,6 @@
 ---
 title: "في اللحظة التي ستغفل فيها عن ذِكر الآخرة والتفكّر بنعيم الجنّة ومتاعها السرمدي"
-status: draft
+status: published
 published_at: 2023-07-25
 person: abu-umair-imran-al-zubaidi
 ---

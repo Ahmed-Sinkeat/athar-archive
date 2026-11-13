@@ -1,6 +1,6 @@
 ---
 title: "قصة النبي صلى الله عليه وسلم وبلال مع التاجر المشرك."
-status: draft
+status: published
 published_at: 2021-01-07
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

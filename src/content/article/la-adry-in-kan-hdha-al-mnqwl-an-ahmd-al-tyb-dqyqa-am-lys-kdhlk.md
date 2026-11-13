@@ -1,6 +1,6 @@
 ---
 title: "لا أدري إن كان هذا المنقول عن أحمد الطيب دقيقًا أم ليس كذلك."
-status: draft
+status: published
 published_at: 2021-02-09
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

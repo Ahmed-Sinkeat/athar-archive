@@ -1,6 +1,6 @@
 ---
 title: "هل قال ابن العربي المالكي بأن من قال أن والدي النبي صلى الله عليه وسلم في النار"
-status: draft
+status: published
 published_at: 2021-02-18
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

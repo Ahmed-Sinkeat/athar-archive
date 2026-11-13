@@ -1,6 +1,6 @@
 ---
 title: "هذا فيديو جديد للدكتور المثير للجدل دكتور بيرج"
-status: draft
+status: published
 published_at: 2021-12-23
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

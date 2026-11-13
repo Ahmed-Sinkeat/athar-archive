@@ -1,6 +1,6 @@
 ---
 title: "ومن مقاماته العلية ما ذكره خادمه الغياني لما دعوه لعقد متأخري الأشعرية وأجلبوا ع"
-status: draft
+status: published
 published_at: 2019-01-21
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "قبل أن نجيب على التساؤلات حول صلاحية الشريعة الإسلامية لكل زمان ومكان"
-status: draft
+status: published
 published_at: 2019-04-10
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-asma-was-sifat"]

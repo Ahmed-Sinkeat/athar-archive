@@ -1,6 +1,6 @@
 ---
 title: "في هذه الأيام وقعت عاصفة ترابية مهولة في بلادنا"
-status: draft
+status: published
 published_at: 2025-05-06
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "حين بُلزم المؤمنُ الملحدَ بقوله"
-status: draft
+status: published
 published_at: 2024-02-24
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud", "al-asma-was-sifat"]

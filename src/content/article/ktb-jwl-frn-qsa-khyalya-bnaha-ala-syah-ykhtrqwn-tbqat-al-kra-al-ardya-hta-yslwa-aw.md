@@ -1,6 +1,6 @@
 ---
 title: "كتب \"جول فرن\" قصة خيالية بناها على سياح يخترقون طبقات الكرة الأرضية حتى يصلوا أو"
-status: draft
+status: published
 published_at: 2018-09-24
 person: abu-jafar-al-khalifi
 ---

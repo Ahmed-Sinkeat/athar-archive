@@ -1,6 +1,6 @@
 ---
 title: "قال الشيخ قِوام الدين عبد الله بن حامد الشافعي في رسالته التي يتحدث فيها عن شيخ"
-status: draft
+status: published
 published_at: 2017-06-20
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ما أدري إيش الفائدة من الرد على أبي عمر بعد اليوم حقيقة!"
-status: draft
+status: published
 published_at: 2024-05-11
 person: abu-umair-imran-al-zubaidi
 ---

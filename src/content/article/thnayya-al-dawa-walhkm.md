@@ -1,6 +1,6 @@
 ---
 title: "ثنائية الدعوة والحكم!"
-status: draft
+status: published
 published_at: 2020-11-27
 person: abu-jafar-al-khalifi
 ---

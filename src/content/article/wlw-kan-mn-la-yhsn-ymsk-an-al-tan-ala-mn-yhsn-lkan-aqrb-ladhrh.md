@@ -1,6 +1,6 @@
 ---
 title: "ولو كان من لا يحسن يمسك عن الطعن على من يحسن لكان أقرب لعذره"
-status: draft
+status: published
 published_at: 2024-08-29
 person: abu-abdillah-firas-al-ramli
 ---

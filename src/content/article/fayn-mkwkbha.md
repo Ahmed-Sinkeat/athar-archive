@@ -1,6 +1,6 @@
 ---
 title: "فأين مكوكبها ؟"
-status: draft
+status: published
 published_at: 2024-01-15
 person: abu-abdillah-firas-al-ramli
 ---

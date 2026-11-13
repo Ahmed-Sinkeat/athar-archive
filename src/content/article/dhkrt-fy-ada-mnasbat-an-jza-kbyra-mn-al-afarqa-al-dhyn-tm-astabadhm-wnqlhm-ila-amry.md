@@ -1,6 +1,6 @@
 ---
 title: "ذكرت في عدة مناسبات أن جزءا كبيرا من الأفارقة الذين تم استعبادهم ونقلهم إلى أمري"
-status: draft
+status: published
 published_at: 2019-06-17
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

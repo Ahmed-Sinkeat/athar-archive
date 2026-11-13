@@ -1,6 +1,6 @@
 ---
 title: "موجبتان ومضعفتان ومثلا بمثل"
-status: draft
+status: published
 published_at: 2026-03-31
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada"]

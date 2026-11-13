@@ -1,6 +1,6 @@
 ---
 title: "إن قلت إخراج أهل الكتاب من دينهم فيقال أهل الكتاب في هذا الدين مخيرون بين الجزية"
-status: draft
+status: published
 published_at: 2018-05-25
 person: abu-jafar-al-khalifi
 ---

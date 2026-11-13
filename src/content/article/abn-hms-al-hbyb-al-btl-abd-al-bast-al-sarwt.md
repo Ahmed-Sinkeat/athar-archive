@@ -1,6 +1,6 @@
 ---
 title: "ابن حمص الحبيب البطل عبد الباسط الساروت."
-status: draft
+status: published
 published_at: 2024-12-06
 person: abu-umair-imran-al-zubaidi
 ---

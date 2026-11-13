@@ -1,6 +1,6 @@
 ---
 title: "مقال طلب العلم بطريقة أثرية هذا لمن عنده شيء من العلم يا كرام، وليس للمبتدئين."
-status: draft
+status: published
 published_at: 2024-01-10
 person: abu-umair-imran-al-zubaidi
 ---

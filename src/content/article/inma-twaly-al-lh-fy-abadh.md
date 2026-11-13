@@ -1,6 +1,6 @@
 ---
 title: "إنما توالي الله في عباده !"
-status: draft
+status: published
 published_at: 2020-04-29
 person: abu-jafar-al-khalifi
 topics: ["al-wala-wal-bara"]

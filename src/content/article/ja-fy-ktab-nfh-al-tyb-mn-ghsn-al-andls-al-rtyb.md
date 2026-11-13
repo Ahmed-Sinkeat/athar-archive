@@ -1,6 +1,6 @@
 ---
 title: "جاء في كتاب نفح الطيب من غصن الأندلس الرطيب"
-status: draft
+status: published
 published_at: 2018-10-05
 person: abu-jafar-al-khalifi
 ---

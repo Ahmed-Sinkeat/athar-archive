@@ -1,6 +1,6 @@
 ---
 title: "هذا الرجل شهادتي فيه مجروحة حقيقة."
-status: draft
+status: published
 published_at: 2025-03-21
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

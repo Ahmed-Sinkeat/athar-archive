@@ -1,6 +1,6 @@
 ---
 title: "قال ابن كثير في تفسيره"
-status: draft
+status: published
 published_at: 2017-07-11
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

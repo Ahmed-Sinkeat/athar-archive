@@ -1,6 +1,6 @@
 ---
 title: "من الأدعية الجميلة التي تقال للميت"
-status: draft
+status: published
 published_at: 2025-08-12
 person: abu-abdillah-firas-al-ramli
 ---

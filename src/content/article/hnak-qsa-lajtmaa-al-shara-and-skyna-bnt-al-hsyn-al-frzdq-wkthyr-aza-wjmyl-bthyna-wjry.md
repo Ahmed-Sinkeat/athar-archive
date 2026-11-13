@@ -1,6 +1,6 @@
 ---
 title: "هناك قصة لاجتماع الشعراء عند سكينة بنت الحسين الفرزدق وكثير عزة وجميل بثينة وجري"
-status: draft
+status: published
 published_at: 2018-08-30
 person: abu-jafar-al-khalifi
 ---

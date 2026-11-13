@@ -1,6 +1,6 @@
 ---
 title: "يستفزني وصف المستغيثين بغير الله دعاة الأموات بأنهم \"بسطاء مساكين\" حتى يدفع عنهم"
-status: draft
+status: published
 published_at: 2025-10-19
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "نحن بحاجة إلى إدخال الناس في دورات تعلمهم كيف يتأدبون مع الله سبحانه وتعالى"
-status: draft
+status: published
 published_at: 2024-01-31
 person: abu-umair-imran-al-zubaidi
 ---

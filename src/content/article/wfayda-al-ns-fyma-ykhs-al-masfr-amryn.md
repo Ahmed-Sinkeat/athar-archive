@@ -1,6 +1,6 @@
 ---
 title: "وفائدة النص فيما يخص المعصفر أمرين"
-status: draft
+status: published
 published_at: 2021-02-25
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-imamah-was-sahabah"]

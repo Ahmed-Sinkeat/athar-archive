@@ -1,6 +1,6 @@
 ---
 title: "قال الحافظ أبو حفص الفلاس رحمه الله"
-status: draft
+status: published
 published_at: 2018-10-11
 person: abu-jafar-al-khalifi
 ---

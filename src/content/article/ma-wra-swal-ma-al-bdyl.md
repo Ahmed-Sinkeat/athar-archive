@@ -1,6 +1,6 @@
 ---
 title: "ما وراء سؤال ( ما البديل ) ؟ً"
-status: draft
+status: published
 published_at: 2019-07-23
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "خسر الدنيا والآخرة"
-status: draft
+status: published
 published_at: 2020-09-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

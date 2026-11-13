@@ -1,6 +1,6 @@
 ---
 title: "مقامات كسر العجب"
-status: draft
+status: published
 published_at: 2026-01-28
 person: awwab-bin-muhammad
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

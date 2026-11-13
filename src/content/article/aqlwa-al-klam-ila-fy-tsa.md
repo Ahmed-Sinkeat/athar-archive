@@ -1,6 +1,6 @@
 ---
 title: "أقلوا الكلام إلا في تسع"
-status: draft
+status: published
 published_at: 2026-01-31
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

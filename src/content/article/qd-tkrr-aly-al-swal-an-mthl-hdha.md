@@ -1,6 +1,6 @@
 ---
 title: "قد تكرر عليّ السؤال عن مثل هذا"
-status: draft
+status: published
 published_at: 2024-03-24
 person: abu-umair-imran-al-zubaidi
 ---

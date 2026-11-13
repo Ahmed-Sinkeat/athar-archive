@@ -1,6 +1,6 @@
 ---
 title: "قال محمد السيد جليند في كتابه الاستشراق والتبشير"
-status: draft
+status: published
 published_at: 2017-07-15
 person: abu-jafar-al-khalifi
 ---

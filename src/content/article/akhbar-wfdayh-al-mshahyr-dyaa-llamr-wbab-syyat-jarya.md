@@ -1,6 +1,6 @@
 ---
 title: "أخبار وفضائح المشاهير ضياع للعمر وباب سيئات جارية..."
-status: draft
+status: published
 published_at: 2024-04-28
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

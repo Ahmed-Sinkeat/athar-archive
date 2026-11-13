@@ -1,6 +1,6 @@
 ---
 title: "ما رأيت شيئًا يستخفّ بعقول الأولاد -ذكورًا وإناثًا- ويُدمّر غريزة حُبّ طلب العلم"
-status: draft
+status: published
 published_at: 2023-03-09
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

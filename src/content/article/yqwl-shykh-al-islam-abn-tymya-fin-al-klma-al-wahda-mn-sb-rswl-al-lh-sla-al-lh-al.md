@@ -1,6 +1,6 @@
 ---
 title: "يقول شيخ الإِسلام ابن تيمية (فإن الكلمة الواحدة من سب رسول اللَّه -صلى اللَّه عل"
-status: draft
+status: published
 published_at: 2017-07-26
 person: abu-jafar-al-khalifi
 ---

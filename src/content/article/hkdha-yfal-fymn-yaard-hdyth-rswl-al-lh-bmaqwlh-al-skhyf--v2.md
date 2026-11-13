@@ -1,6 +1,6 @@
 ---
 title: "هكذا يُفعل فيمن يعارض حديث رسول الله ﷺ بمعقوله السخيف!"
-status: draft
+status: published
 published_at: 2024-01-12
 person: abu-abdillah-firas-al-ramli
 ---

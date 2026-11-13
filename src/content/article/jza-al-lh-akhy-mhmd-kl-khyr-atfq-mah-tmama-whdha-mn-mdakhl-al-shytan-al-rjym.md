@@ -1,6 +1,6 @@
 ---
 title: "جزى الله أخي محمد كل خير، أتفق معه تمامًا، وهذا من مداخل الشيطان الرجيم."
-status: draft
+status: published
 published_at: 2024-01-01
 person: abu-umair-imran-al-zubaidi
 ---

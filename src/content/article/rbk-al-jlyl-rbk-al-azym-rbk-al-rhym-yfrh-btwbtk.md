@@ -1,6 +1,6 @@
 ---
 title: "ربّك الجليل، ربّك العظيم، ربّك الرحيم يفرح بتوبتك!."
-status: draft
+status: published
 published_at: 2023-06-03
 person: abu-umair-imran-al-zubaidi
 ---

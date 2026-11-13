@@ -1,6 +1,6 @@
 ---
 title: "يا من يرى ما في الضمير ويسمعُ ... أنتَ المُعِدُّ لكل ما يُتوقّعُ"
-status: draft
+status: published
 published_at: 2023-02-22
 person: abu-umair-imran-al-zubaidi
 ---

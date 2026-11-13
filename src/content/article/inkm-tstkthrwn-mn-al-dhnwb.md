@@ -1,6 +1,6 @@
 ---
 title: "إنكم تستكثرون من الذنوب"
-status: draft
+status: published
 published_at: 2024-03-11
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

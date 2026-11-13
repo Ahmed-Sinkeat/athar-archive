@@ -1,6 +1,6 @@
 ---
 title: "قال أبو نعيم في الحلية حَدَّثَنَا مُحَمَّدُ بْنُ عَلِيٍّ"
-status: draft
+status: published
 published_at: 2017-12-01
 person: abu-jafar-al-khalifi
 ---

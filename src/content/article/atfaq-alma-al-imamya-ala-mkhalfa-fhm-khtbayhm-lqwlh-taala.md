@@ -1,6 +1,6 @@
 ---
 title: "اتفاق علماء الإمامية على مخالفة فهم خطبائهم لقوله تعالى"
-status: draft
+status: published
 published_at: 2026-06-24
 person: abu-jafar-al-khalifi
 ---

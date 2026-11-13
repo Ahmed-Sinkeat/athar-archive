@@ -1,6 +1,6 @@
 ---
 title: "مصيبة المصائب حقاً أنك تصحح هذه الرواية عن أحمد وفي سندها (أبو الحسين عمر بن الح"
-status: draft
+status: published
 published_at: 2025-08-07
 person: abu-jafar-al-khalifi
 ---

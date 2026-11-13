@@ -1,6 +1,6 @@
 ---
 title: "كن في الدنيا كأنك غريب أو عابر سبيل"
-status: draft
+status: published
 published_at: 2024-04-05
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

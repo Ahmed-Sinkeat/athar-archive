@@ -1,6 +1,6 @@
 ---
 title: "ما لا تستوعبه النساء كما ينبغي هو أنّ كلّ ما فيهنّ فتنة للرجال دون مبالغة!."
-status: draft
+status: published
 published_at: 2023-06-03
 person: abu-umair-imran-al-zubaidi
 ---

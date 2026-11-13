@@ -1,6 +1,6 @@
 ---
 title: "نشر أخبار كاذبة ومقارنات سخيفة حوادث الاعتداء على المسلمين في ألمانيا سجلت رقما"
-status: draft
+status: published
 published_at: 2018-07-23
 person: abu-jafar-al-khalifi
 ---

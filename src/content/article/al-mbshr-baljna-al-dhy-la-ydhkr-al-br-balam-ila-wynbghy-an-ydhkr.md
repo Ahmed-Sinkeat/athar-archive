@@ -1,6 +1,6 @@
 ---
 title: "المبشر بالجنة الذي لا يُذكر البر بالأم إلا وينبغي أن يُذكر..."
-status: draft
+status: published
 published_at: 2024-03-15
 person: abu-jafar-al-khalifi
 topics: ["al-imamah-was-sahabah"]

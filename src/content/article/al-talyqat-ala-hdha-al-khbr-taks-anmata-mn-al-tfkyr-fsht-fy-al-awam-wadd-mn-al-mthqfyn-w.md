@@ -1,6 +1,6 @@
 ---
 title: "التعليقات على هذا الخبر تعكس أنماطًا من التفكير فشت في العوام وعدد من المثقفين و"
-status: draft
+status: published
 published_at: 2023-08-26
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "al-wala-wal-bara"]

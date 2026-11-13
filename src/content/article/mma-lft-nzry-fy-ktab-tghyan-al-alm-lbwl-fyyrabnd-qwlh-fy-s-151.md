@@ -1,6 +1,6 @@
 ---
 title: "مما لفت نظري في كتاب طغيان العلم لبول فييرابند قوله في ص ١٥١"
-status: draft
+status: published
 published_at: 2018-10-10
 person: abu-jafar-al-khalifi
 ---

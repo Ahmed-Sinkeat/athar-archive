@@ -1,6 +1,6 @@
 ---
 title: "كتبت العالمانية المصرية أميرة طاهر"
-status: draft
+status: published
 published_at: 2018-12-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

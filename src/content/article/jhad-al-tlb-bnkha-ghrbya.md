@@ -1,6 +1,6 @@
 ---
 title: "جهاد الطلب بنكهة غربية !"
-status: draft
+status: published
 published_at: 2020-07-04
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

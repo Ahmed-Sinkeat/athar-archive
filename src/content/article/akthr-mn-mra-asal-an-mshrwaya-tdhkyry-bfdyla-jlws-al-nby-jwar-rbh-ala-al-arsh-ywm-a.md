@@ -1,6 +1,6 @@
 ---
 title: "أكثر من مرة أُسأل عن مشروعية تذكيري بفضيلة جلوس النبي ﷺ جوار ربه على العرش يوم ا"
-status: draft
+status: published
 published_at: 2025-02-14
 person: abu-umair-imran-al-zubaidi
 ---

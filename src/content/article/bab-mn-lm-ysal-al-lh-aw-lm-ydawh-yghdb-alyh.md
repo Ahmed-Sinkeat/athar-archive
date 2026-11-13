@@ -1,6 +1,6 @@
 ---
 title: "باب من لم يسأل الله أو لم يدعوه يغضب عليه"
-status: draft
+status: published
 published_at: 2023-05-22
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

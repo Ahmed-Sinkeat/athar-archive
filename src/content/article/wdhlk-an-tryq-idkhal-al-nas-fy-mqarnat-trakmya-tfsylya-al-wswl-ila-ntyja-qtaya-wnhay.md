@@ -1,6 +1,6 @@
 ---
 title: "وذلك عن طريق إدخال الناس في مقارنات تراكمية تفصيلية الوصول إلى نتيجة قطعية ونهائ"
-status: draft
+status: published
 published_at: 2019-10-11
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

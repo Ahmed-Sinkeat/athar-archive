@@ -1,6 +1,6 @@
 ---
 title: "من أعظم واجبات الحاكم المسلم: سد باب الفساد الأخلاقي من جهة النساء"
-status: draft
+status: published
 published_at: 2023-10-02
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

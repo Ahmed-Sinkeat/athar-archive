@@ -1,6 +1,6 @@
 ---
 title: "مسألة هامة فيما يتعلق بالضيافة"
-status: draft
+status: published
 published_at: 2024-02-26
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "جاء في الذخيرة للقرافي (8/75)"
-status: draft
+status: published
 published_at: 2017-12-20
 person: abu-jafar-al-khalifi
 ---

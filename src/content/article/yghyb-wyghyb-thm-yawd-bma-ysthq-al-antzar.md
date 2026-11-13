@@ -1,6 +1,6 @@
 ---
 title: "يغيب ويغيب، ثم يعود بما يستحق الانتظار!"
-status: draft
+status: published
 published_at: 2024-01-28
 person: abu-umair-imran-al-zubaidi
 ---

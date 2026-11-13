@@ -1,6 +1,6 @@
 ---
 title: "فكرة لا أدري كيف تسللت إلى الذهن حول موضوع رؤية أفق الثقب الأسود والجدل السنوي ح"
-status: draft
+status: published
 published_at: 2019-04-14
 person: abu-jafar-al-khalifi
 ---

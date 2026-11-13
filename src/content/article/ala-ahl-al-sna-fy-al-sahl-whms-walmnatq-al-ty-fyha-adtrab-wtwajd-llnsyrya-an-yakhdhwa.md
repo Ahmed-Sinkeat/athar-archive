@@ -1,6 +1,6 @@
 ---
 title: "على أهل السنة في الساحل وحمص والمناطق التي فيها اضطراب وتواجد للنصيرية أن يأخذوا"
-status: draft
+status: published
 published_at: 2025-03-23
 person: abu-umair-imran-al-zubaidi
 ---

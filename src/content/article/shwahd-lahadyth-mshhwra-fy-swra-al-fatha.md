@@ -1,6 +1,6 @@
 ---
 title: "شواهد لأحاديث مشهورة في سورة الفاتحة…"
-status: draft
+status: published
 published_at: 2024-01-06
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "حين يضع لك ملحد أو عالماني صور علماء تجريبيين إلى جانب علماء شريعة ويقارن بينهم."
-status: draft
+status: published
 published_at: 2018-09-11
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

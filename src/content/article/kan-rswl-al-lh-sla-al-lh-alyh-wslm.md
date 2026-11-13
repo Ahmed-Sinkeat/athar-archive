@@ -1,6 +1,6 @@
 ---
 title: "كانَ رَسولُ اللهِ صَلَّى اللَّهُ عليه وسلَّمَ"
-status: draft
+status: published
 published_at: 2023-02-28
 person: abu-umair-imran-al-zubaidi
 ---

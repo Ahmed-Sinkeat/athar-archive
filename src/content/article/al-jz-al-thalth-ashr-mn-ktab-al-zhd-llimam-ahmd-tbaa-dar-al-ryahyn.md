@@ -1,6 +1,6 @@
 ---
 title: "الجزء الثالث عشر من كتاب الزهد للإمام أحمد طبعة دار الرياحين"
-status: draft
+status: published
 published_at: 2026-01-23
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

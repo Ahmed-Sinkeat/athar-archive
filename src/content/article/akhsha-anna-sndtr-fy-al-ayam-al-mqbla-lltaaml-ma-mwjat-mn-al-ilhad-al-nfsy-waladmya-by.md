@@ -1,6 +1,6 @@
 ---
 title: "أخشى أننا سنضطر في الأيام المقبلة للتعامل مع موجات من الإلحاد النفسي والعدمية بي"
-status: draft
+status: published
 published_at: 2018-06-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

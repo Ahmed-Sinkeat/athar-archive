@@ -1,6 +1,6 @@
 ---
 title: "هذا في كتاب رحلات بوكهارت إلى بلاد النوبة والسودان"
-status: draft
+status: published
 published_at: 2020-09-17
 person: abu-jafar-al-khalifi
 ---

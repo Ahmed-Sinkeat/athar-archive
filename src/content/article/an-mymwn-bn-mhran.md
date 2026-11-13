@@ -1,6 +1,6 @@
 ---
 title: "عن ميمون بن مهران"
-status: draft
+status: published
 published_at: 2023-06-04
 person: abu-abdillah-firas-al-ramli
 ---

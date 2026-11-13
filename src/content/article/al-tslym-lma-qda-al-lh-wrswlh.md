@@ -1,6 +1,6 @@
 ---
 title: "التسليم لما قضى الله ورسوله"
-status: draft
+status: published
 published_at: 2025-08-17
 person: abu-abdillah-firas-al-ramli
 ---

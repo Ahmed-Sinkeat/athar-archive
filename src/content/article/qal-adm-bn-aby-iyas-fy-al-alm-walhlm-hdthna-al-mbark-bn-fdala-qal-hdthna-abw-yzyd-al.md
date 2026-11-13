@@ -1,6 +1,6 @@
 ---
 title: "قال آدم بن أبي إياس في العلم والحلم حدثنا المبارك بن فضالة قال حدثنا أبو يزيد ال"
-status: draft
+status: published
 published_at: 2017-07-14
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "أحق الناس بالإجابة يوم عرفة أولاهم بالشفاعة يوم القيامة..."
-status: draft
+status: published
 published_at: 2024-06-15
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

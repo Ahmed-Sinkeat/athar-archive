@@ -1,6 +1,6 @@
 ---
 title: "الاستدلال برؤية الأطفال على جواز رؤية الرجال!"
-status: draft
+status: published
 published_at: 2021-02-25
 person: abu-jafar-al-khalifi
 ---

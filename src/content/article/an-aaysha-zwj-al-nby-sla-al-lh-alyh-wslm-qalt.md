@@ -1,6 +1,6 @@
 ---
 title: "عن عائشة زوج النبي صلى الله عليه وسلم قالت"
-status: draft
+status: published
 published_at: 2023-07-09
 person: abu-abdillah-firas-al-ramli
 ---

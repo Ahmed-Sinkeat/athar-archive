@@ -1,6 +1,6 @@
 ---
 title: "هذا الاستفتاء كاشف وفاضح ويدل على أن القوم ليس عندهم معايير متزنة."
-status: draft
+status: published
 published_at: 2021-03-08
 person: abu-jafar-al-khalifi
 ---

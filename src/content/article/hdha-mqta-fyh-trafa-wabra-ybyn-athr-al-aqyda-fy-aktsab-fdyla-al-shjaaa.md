@@ -1,6 +1,6 @@
 ---
 title: "هذا مقطع فيه طرافة وعبرة، يُبين أثر العقيدة في اكتساب فضيلة الشجاعة."
-status: draft
+status: published
 published_at: 2026-03-20
 person: abu-jafar-al-khalifi
 ---

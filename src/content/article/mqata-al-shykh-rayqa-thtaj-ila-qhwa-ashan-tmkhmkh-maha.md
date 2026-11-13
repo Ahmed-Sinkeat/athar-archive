@@ -1,6 +1,6 @@
 ---
 title: "مقاطع الشيخ رايقة تحتاج إلى قهوة عشان تمخمخ معها"
-status: draft
+status: published
 published_at: 2023-12-10
 person: abu-umair-imran-al-zubaidi
 ---

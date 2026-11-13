@@ -1,6 +1,6 @@
 ---
 title: "{الرِق، مُلك اليمين، الجواري، الإماء والعبيد}."
-status: draft
+status: published
 published_at: 2022-09-20
 person: abu-umair-imran-al-zubaidi
 topics: ["tahwid-al-ibada"]

@@ -1,6 +1,6 @@
 ---
 title: "رافضة الفرس عينوا إمام جهنمي لهم، وهو مجتبى خامنئي."
-status: draft
+status: published
 published_at: 2026-03-08
 person: abu-umair-imran-al-zubaidi
 ---

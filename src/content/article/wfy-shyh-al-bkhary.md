@@ -1,6 +1,6 @@
 ---
 title: "وفي صحيح البخاري"
-status: draft
+status: published
 published_at: 2025-03-15
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

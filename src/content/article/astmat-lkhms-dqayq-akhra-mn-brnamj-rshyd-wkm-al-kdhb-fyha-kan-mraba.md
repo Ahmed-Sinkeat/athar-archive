@@ -1,6 +1,6 @@
 ---
 title: "استمعت لخمس دقائق أخرى من برنامج رشيد وكم الكذب فيها كان مرعبا"
-status: draft
+status: published
 published_at: 2018-05-28
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

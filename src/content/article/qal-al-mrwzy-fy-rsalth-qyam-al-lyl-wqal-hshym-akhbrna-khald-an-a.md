@@ -1,6 +1,6 @@
 ---
 title: "قال المروزي في رسالته قيام الليل وَقَالَ هُشَيْمٌ , أَخْبَرَنَا خَالِدٌ , عَنْ أ"
-status: draft
+status: published
 published_at: 2017-09-20
 person: abu-jafar-al-khalifi
 ---

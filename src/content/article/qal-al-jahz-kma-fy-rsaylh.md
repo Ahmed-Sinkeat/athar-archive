@@ -1,6 +1,6 @@
 ---
 title: "قال الجاحظ كما في رسائله"
-status: draft
+status: published
 published_at: 2019-01-26
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

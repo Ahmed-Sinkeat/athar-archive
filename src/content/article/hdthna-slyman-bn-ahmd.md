@@ -1,6 +1,6 @@
 ---
 title: "حَدَّثَنَا سُلَيْمَانُ بْنُ أَحْمَدَ"
-status: draft
+status: published
 published_at: 2023-12-13
 person: abu-umair-imran-al-zubaidi
 ---

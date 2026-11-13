@@ -1,6 +1,6 @@
 ---
 title: "اتهموا رأيكم"
-status: draft
+status: published
 published_at: 2023-05-21
 person: abu-abdillah-firas-al-ramli
 ---

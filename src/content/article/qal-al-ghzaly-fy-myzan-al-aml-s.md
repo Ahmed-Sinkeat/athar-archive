@@ -1,6 +1,6 @@
 ---
 title: "قال الغزالي في «ميزان العمل» ص405"
-status: draft
+status: published
 published_at: 2025-07-31
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

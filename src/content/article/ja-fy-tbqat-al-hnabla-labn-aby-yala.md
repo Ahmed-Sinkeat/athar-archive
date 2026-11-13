@@ -1,6 +1,6 @@
 ---
 title: "جاء في طبقات الحنابلة لابن أبي يعلى"
-status: draft
+status: published
 published_at: 2022-02-13
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

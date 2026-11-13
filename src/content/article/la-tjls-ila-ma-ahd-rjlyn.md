@@ -1,6 +1,6 @@
 ---
 title: "لا تجلس إلا مع أحد رجلين"
-status: draft
+status: published
 published_at: 2026-07-24
 person: abu-abdillah-firas-al-ramli
 ---

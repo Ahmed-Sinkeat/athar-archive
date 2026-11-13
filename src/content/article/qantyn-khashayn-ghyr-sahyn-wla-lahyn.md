@@ -1,6 +1,6 @@
 ---
 title: "قانتين خاشعين غير ساهين ولا لاهين"
-status: draft
+status: published
 published_at: 2025-10-11
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "الثواب والعقاب في الإسلام من دلائل النبوة"
-status: draft
+status: published
 published_at: 2026-04-29
 person: abu-jafar-al-khalifi
 ---

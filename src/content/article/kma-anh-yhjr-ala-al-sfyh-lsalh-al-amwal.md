@@ -1,6 +1,6 @@
 ---
 title: "كما أنَّه يُحجَر على السَّفيه لصالح الأموال"
-status: draft
+status: published
 published_at: 2025-06-26
 person: awwab-bin-muhammad
 ---

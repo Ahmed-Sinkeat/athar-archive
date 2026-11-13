@@ -1,6 +1,6 @@
 ---
 title: "تكرر معي موقف أن يأتي أحد الأخوة بشبهة قد قرأها في أحد تفاسير أهل التجهم والضلال"
-status: draft
+status: published
 published_at: 2024-06-19
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

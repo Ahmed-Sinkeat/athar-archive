@@ -1,6 +1,6 @@
 ---
 title: "بعد موقعة السحرة قال موسى ﷺ لقومه: قال موسى لقومه استعينوا بالله واصبروا."
-status: draft
+status: published
 published_at: 2026-09-04
 person: abu-umair-imran-al-zubaidi
 topics: ["al-firaq-war-rudud"]

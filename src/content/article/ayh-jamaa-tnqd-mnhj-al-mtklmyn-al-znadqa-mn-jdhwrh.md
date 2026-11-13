@@ -1,6 +1,6 @@
 ---
 title: "آيه جامعة تنقض منهج المتكلمين الزنادقة من جذوره"
-status: draft
+status: published
 published_at: 2024-04-01
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran", "al-asma-was-sifat"]

@@ -1,6 +1,6 @@
 ---
 title: "من يفعل هذا اليوم ؟"
-status: draft
+status: published
 published_at: 2024-02-15
 person: abu-abdillah-firas-al-ramli
 ---

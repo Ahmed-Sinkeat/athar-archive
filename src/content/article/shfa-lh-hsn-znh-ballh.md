@@ -1,6 +1,6 @@
 ---
 title: "شفع له حسن ظنه بالله…"
-status: draft
+status: published
 published_at: 2024-08-05
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

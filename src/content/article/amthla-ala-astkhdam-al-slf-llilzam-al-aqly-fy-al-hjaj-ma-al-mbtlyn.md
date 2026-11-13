@@ -1,6 +1,6 @@
 ---
 title: "أمثلة على استخدام السلف للإلزام العقلي في الحجاج مع المبطلين"
-status: draft
+status: published
 published_at: 2018-05-07
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

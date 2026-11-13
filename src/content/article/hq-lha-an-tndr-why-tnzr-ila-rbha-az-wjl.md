@@ -1,6 +1,6 @@
 ---
 title: "حق لها أن تنضر وهي تنظر إلى ربها عز وجل"
-status: draft
+status: published
 published_at: 2026-03-08
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

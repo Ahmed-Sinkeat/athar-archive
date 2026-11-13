@@ -1,6 +1,6 @@
 ---
 title: "إذا رأيتم الرجل بالموت فبشروه وإذا كان حيا فخوفوه"
-status: draft
+status: published
 published_at: 2024-08-13
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

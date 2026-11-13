@@ -1,6 +1,6 @@
 ---
 title: "فأبيت إلا أن تشرك!"
-status: draft
+status: published
 published_at: 2025-04-23
 person: abu-abdillah-firas-al-ramli
 topics: ["tahwid-al-ibada"]

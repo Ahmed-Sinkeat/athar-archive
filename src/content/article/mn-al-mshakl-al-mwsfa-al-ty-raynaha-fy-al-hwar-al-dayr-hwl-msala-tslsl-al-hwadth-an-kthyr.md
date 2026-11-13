@@ -1,6 +1,6 @@
 ---
 title: "من المشاكل المؤسفة التي رأيناها في الحوار الدائر حول مسألة تسلسل الحوادث أن كثير"
-status: draft
+status: published
 published_at: 2018-03-19
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

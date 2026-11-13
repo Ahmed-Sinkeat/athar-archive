@@ -1,6 +1,6 @@
 ---
 title: "لولا أنّ رد السلام واجب لما أجبت والله"
-status: draft
+status: published
 published_at: 2023-11-17
 person: abu-umair-imran-al-zubaidi
 topics: ["al-imamah-was-sahabah", "adab-talab-al-ilm"]

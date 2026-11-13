@@ -1,6 +1,6 @@
 ---
 title: "في رحاب شيخ مالك الذي علمه الورع"
-status: draft
+status: published
 published_at: 2022-10-11
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tazkiyat-al-nafs", "al-sunnah-wal-bidah"]

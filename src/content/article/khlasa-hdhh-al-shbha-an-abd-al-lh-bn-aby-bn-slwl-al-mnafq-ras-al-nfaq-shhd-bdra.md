@@ -1,6 +1,6 @@
 ---
 title: "خلاصة هذه الشبهة أن عبد الله بن أبي بن سلول المنافق (رأس النفاق) شهد بدراً"
-status: draft
+status: published
 published_at: 2024-12-13
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

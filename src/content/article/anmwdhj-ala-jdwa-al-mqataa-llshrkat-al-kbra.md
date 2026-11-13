@@ -1,6 +1,6 @@
 ---
 title: "أنموذج على جدوى المقاطعة للشركات الكبرى"
-status: draft
+status: published
 published_at: 2020-11-07
 person: abu-jafar-al-khalifi
 ---

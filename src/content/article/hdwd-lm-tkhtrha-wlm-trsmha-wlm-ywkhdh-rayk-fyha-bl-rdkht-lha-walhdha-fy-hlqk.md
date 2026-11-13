@@ -1,6 +1,6 @@
 ---
 title: "حدود لم تخترها، ولم ترسمها، ولم يؤخذ رأيك فيها؛ بل رضخت لها والحذاء في حلقك."
-status: draft
+status: published
 published_at: 2023-10-24
 person: abu-umair-imran-al-zubaidi
 ---

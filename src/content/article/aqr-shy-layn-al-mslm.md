@@ -1,6 +1,6 @@
 ---
 title: "أقر شيء لعين المسلم"
-status: draft
+status: published
 published_at: 2026-04-29
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

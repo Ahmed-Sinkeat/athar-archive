@@ -1,6 +1,6 @@
 ---
 title: "وقال أيضاً 377 - سمعت أبي رحمه الله"
-status: draft
+status: published
 published_at: 2019-11-03
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

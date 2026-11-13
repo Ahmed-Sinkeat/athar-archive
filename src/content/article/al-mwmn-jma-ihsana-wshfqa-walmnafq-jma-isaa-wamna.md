@@ -1,6 +1,6 @@
 ---
 title: "المؤمن جمع إحسانا وشفقة والمنافق جمع إساءة وأمنا"
-status: draft
+status: published
 published_at: 2025-03-25
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran", "tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "بين الخروج من الخلاف والاحتجاج بالخلاف"
-status: draft
+status: published
 published_at: 2020-05-21
 person: abu-jafar-al-khalifi
 ---

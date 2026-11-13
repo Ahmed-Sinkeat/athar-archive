@@ -1,6 +1,6 @@
 ---
 title: "بل لو قبلنا المناقب وتشككنا في المثالب لكان لذلك وجه"
-status: draft
+status: published
 published_at: 2021-10-28
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

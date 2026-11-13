@@ -1,6 +1,6 @@
 ---
 title: "ذكر بعد القيام من الركوع يتسابق عليه الملائكة"
-status: draft
+status: published
 published_at: 2025-09-11
 person: abu-abdillah-firas-al-ramli
 ---

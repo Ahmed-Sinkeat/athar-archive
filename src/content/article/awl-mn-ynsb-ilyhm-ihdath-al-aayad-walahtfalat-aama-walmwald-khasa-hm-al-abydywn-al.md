@@ -1,6 +1,6 @@
 ---
 title: "أول من ينسب إليهم إحداث الأعياد والاحتفالات عامة والموالد خاصة هم العبيديون ( ال"
-status: draft
+status: published
 published_at: 2025-03-05
 person: awwab-bin-muhammad
 topics: ["al-firaq-war-rudud", "al-iman", "al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "ما هي الكلمات التي تلقاها آدم من ربه ؟"
-status: draft
+status: published
 published_at: 2025-08-14
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

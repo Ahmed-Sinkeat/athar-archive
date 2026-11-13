@@ -1,6 +1,6 @@
 ---
 title: "رجاء الفضل والخير حتى للحمل في بطن أمه"
-status: draft
+status: published
 published_at: 2023-06-27
 person: abu-abdillah-firas-al-ramli
 topics: ["mustalah-al-hadith"]

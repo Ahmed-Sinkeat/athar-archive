@@ -1,6 +1,6 @@
 ---
 title: "صبي بعمر ١٥ عاماً اعتدى على طفلة حتى ماتت"
-status: draft
+status: published
 published_at: 2025-11-26
 person: abu-jafar-al-khalifi
 ---

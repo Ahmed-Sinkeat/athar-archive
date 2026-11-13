@@ -1,6 +1,6 @@
 ---
 title: "أحمد البحيري بين التدين المزاجي والسذاجة الحركية."
-status: draft
+status: published
 published_at: 2020-07-09
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "al-firaq-war-rudud", "tahwid-al-ibada"]

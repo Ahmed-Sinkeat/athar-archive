@@ -1,6 +1,6 @@
 ---
 title: "تَضَعْضَعوا لعقوبة الله بارك الله فيكم"
-status: draft
+status: published
 published_at: 2026-09-04
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

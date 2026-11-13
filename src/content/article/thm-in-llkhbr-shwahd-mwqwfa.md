@@ -1,6 +1,6 @@
 ---
 title: "ثم إن للخبر شواهد موقوفة"
-status: draft
+status: published
 published_at: 2021-11-22
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "قال المحامي اليهودي والنائب لوزير الدفاع الأمريكي دونالد رامزفيلد في كتابه الحرب"
-status: draft
+status: published
 published_at: 2017-12-04
 person: abu-jafar-al-khalifi
 ---

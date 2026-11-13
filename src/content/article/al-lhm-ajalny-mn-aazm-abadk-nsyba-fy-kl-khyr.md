@@ -1,6 +1,6 @@
 ---
 title: "اللهم اجعلني من أعظم عبادك نصيبا في كل خير"
-status: draft
+status: published
 published_at: 2024-07-05
 person: abu-abdillah-firas-al-ramli
 ---

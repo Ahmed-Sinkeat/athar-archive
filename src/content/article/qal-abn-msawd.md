@@ -1,6 +1,6 @@
 ---
 title: "قال ابن مسعود"
-status: draft
+status: published
 published_at: 2019-01-17
 person: abu-jafar-al-khalifi
 ---

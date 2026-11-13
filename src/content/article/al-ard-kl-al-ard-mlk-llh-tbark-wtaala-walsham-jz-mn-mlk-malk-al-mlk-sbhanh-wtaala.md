@@ -1,6 +1,6 @@
 ---
 title: "الأرض كل الأرض ملك لله تبارك وتعالى، والشام جزء من ملك مالك الملك سبحانه وتعالى."
-status: draft
+status: published
 published_at: 2024-12-12
 person: abu-umair-imran-al-zubaidi
 ---

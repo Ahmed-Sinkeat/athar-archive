@@ -1,6 +1,6 @@
 ---
 title: "تبدَّت مُؤخَّراً بعض الأخبار والأحداث التي هي مِن قبيل الطريف التالد في الساحة ا"
-status: draft
+status: published
 published_at: 2026-07-21
 person: awwab-bin-muhammad
 topics: ["adab-talab-al-ilm"]

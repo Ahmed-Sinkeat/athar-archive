@@ -1,6 +1,6 @@
 ---
 title: "تغريدة لفتاة تصور فتاة بحالة هستيرية"
-status: draft
+status: published
 published_at: 2025-01-25
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud", "tahwid-al-ibada"]

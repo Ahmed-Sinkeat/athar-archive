@@ -1,6 +1,6 @@
 ---
 title: "هذا المقال يشرح واقع الكارثة الاقتصادية التي تمر بها دول الكيان الصهيوني بسبب هذ"
-status: draft
+status: published
 published_at: 2023-11-02
 person: abu-jafar-al-khalifi
 ---

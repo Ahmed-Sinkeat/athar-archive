@@ -1,6 +1,6 @@
 ---
 title: "تعامل المهديون من هذه الأمة مع نصوص وعد الله للصحابة الكرام بالحسنى وثنائه عليهم"
-status: draft
+status: published
 published_at: 2017-11-09
 person: abu-jafar-al-khalifi
 ---

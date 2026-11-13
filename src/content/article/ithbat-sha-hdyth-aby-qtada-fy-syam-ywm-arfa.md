@@ -1,6 +1,6 @@
 ---
 title: "إثبات صحة حديث أبي قتادة في صيام يوم عرفة"
-status: draft
+status: published
 published_at: 2018-08-20
 person: abu-jafar-al-khalifi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "من أسوء الخِصال أن لا تتقبّل حقيقة وجود أناسٍ هم أصغر منك سنًا وأكثر منك علمًا؛"
-status: draft
+status: published
 published_at: 2023-06-12
 person: abu-umair-imran-al-zubaidi
 ---

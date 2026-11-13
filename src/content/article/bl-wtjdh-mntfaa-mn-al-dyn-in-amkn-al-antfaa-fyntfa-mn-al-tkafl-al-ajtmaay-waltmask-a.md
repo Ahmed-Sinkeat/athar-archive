@@ -1,6 +1,6 @@
 ---
 title: "بل وتجده منتفعا من الدين إن أمكن الانتفاع فينتفع من التكافل الاجتماعي والتماسك ا"
-status: draft
+status: published
 published_at: 2019-06-17
 person: abu-jafar-al-khalifi
 ---

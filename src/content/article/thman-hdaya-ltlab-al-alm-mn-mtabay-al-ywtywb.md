@@ -1,6 +1,6 @@
 ---
 title: "ثمان هدايا لطلاب العلم من متابعي اليوتيوب."
-status: draft
+status: published
 published_at: 2026-07-21
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith", "tafsir-al-quran"]

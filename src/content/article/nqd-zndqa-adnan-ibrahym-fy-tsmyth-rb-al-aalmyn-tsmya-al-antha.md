@@ -1,6 +1,6 @@
 ---
 title: "نقض زندقة عدنان إبراهيم في تسميته رب العالمين تسمية الأنثى"
-status: draft
+status: published
 published_at: 2017-05-28
 person: abu-jafar-al-khalifi
 ---

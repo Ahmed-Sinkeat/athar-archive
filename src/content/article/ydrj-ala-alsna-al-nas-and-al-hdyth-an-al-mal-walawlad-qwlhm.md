@@ -1,6 +1,6 @@
 ---
 title: "يدرج على ألسنة الناس عند الحديث عن المال والأولاد قولهم"
-status: draft
+status: published
 published_at: 2024-08-21
 person: abu-umair-imran-al-zubaidi
 topics: ["tafsir-al-quran"]

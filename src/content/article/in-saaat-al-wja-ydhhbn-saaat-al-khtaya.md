@@ -1,6 +1,6 @@
 ---
 title: "إن ساعات الوجع يذهبن ساعات الخطايا"
-status: draft
+status: published
 published_at: 2024-06-19
 person: abu-abdillah-firas-al-ramli
 topics: ["tazkiyat-al-nafs"]

@@ -1,6 +1,6 @@
 ---
 title: "الإجابة على شبهة الفتوحات الإسلامية وحد الردة بجملة واحدة.."
-status: draft
+status: published
 published_at: 2021-12-15
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

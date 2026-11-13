@@ -1,6 +1,6 @@
 ---
 title: "هل هو مستعد أن يكون عبداً لله؟"
-status: draft
+status: published
 published_at: 2025-05-07
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

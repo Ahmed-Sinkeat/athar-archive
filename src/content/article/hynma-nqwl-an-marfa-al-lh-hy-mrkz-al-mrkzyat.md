@@ -1,6 +1,6 @@
 ---
 title: "حينما نقول أنّ معرفة الله هي مركز المركزيات"
-status: draft
+status: published
 published_at: 2024-01-29
 person: abu-umair-imran-al-zubaidi
 topics: ["al-asma-was-sifat"]

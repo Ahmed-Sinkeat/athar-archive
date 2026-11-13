@@ -1,6 +1,6 @@
 ---
 title: "قال ابن أبي حاتم في تفسيره 5728 - كَتَبَ إِلَيَّ مُحَمَّدُ بْنُ حَمَالٍ الْقُهَن"
-status: draft
+status: published
 published_at: 2017-06-13
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran"]

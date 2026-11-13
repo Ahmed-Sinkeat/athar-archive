@@ -1,6 +1,6 @@
 ---
 title: "إنما يرزقهم الله بك كما رزقك بغيرك..."
-status: draft
+status: published
 published_at: 2025-07-27
 person: abu-jafar-al-khalifi
 topics: ["tazkiyat-al-nafs"]

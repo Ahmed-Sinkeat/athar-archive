@@ -1,6 +1,6 @@
 ---
 title: "فتنزيل اعتراضات ابن تيمية على من جعلوا العقل والفطرة فقط هما الأصل ثم القول بقول"
-status: draft
+status: published
 published_at: 2020-07-28
 person: abu-jafar-al-khalifi
 topics: ["al-iman"]

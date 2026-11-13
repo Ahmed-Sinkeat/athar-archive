@@ -1,6 +1,6 @@
 ---
 title: "قال فارس الخوري _وهو قانوني نصراني_"
-status: draft
+status: published
 published_at: 2018-02-28
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

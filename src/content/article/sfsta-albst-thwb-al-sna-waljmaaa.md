@@ -1,6 +1,6 @@
 ---
 title: "سفسطة أُلبست ثوب السنة والجماعة !"
-status: draft
+status: published
 published_at: 2020-09-02
 person: abu-jafar-al-khalifi
 ---

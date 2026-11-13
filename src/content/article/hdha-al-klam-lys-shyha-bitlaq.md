@@ -1,6 +1,6 @@
 ---
 title: "هذا الكلام ليس صحيحًا بإطلاق"
-status: draft
+status: published
 published_at: 2024-01-30
 person: abu-umair-imran-al-zubaidi
 ---

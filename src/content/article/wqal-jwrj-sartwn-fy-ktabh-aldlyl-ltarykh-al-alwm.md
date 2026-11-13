@@ -1,6 +1,6 @@
 ---
 title: "وقال جورج سارتون في كتابه \"الدليل لتاريخ العلوم\""
-status: draft
+status: published
 published_at: 2018-03-12
 person: abu-jafar-al-khalifi
 ---

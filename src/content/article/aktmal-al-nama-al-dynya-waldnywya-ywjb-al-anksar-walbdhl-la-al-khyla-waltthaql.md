@@ -1,6 +1,6 @@
 ---
 title: "اكتمال النعمة الدينية والدنيوية يوجب الانكسار والبذل لا الخيلاء والتثاقل..."
-status: draft
+status: published
 published_at: 2024-08-21
 person: abu-jafar-al-khalifi
 topics: ["tahwid-al-ibada"]

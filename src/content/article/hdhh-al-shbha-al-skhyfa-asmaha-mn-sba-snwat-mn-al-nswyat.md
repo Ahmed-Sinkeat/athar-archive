@@ -1,6 +1,6 @@
 ---
 title: "هذه الشبهة السخيفة أسمعها من سبع سنوات من النسويات."
-status: draft
+status: published
 published_at: 2026-08-09
 person: abu-jafar-al-khalifi
 ---

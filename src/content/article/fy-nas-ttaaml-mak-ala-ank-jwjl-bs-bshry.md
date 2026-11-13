@@ -1,6 +1,6 @@
 ---
 title: "في ناس تتعامل معك على أنك \"جوجل\" بس بشري!"
-status: draft
+status: published
 published_at: 2023-10-22
 person: abu-umair-imran-al-zubaidi
 ---

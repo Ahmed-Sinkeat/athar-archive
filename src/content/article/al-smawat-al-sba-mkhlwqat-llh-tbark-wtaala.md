@@ -1,6 +1,6 @@
 ---
 title: "السماوات السبع مخلوقات لله تبارك وتعالى"
-status: draft
+status: published
 published_at: 2025-03-11
 person: abu-umair-imran-al-zubaidi
 ---

@@ -1,6 +1,6 @@
 ---
 title: "بين (يشهده من شاء) و(أشهد على هذا غيري)."
-status: draft
+status: published
 published_at: 2021-12-31
 person: abu-jafar-al-khalifi
 ---

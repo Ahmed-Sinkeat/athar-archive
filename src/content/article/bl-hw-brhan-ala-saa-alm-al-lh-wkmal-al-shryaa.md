@@ -1,6 +1,6 @@
 ---
 title: "بل هو برهان على سعة علم الله وكمال الشريعة !"
-status: draft
+status: published
 published_at: 2020-04-30
 person: abu-jafar-al-khalifi
 ---

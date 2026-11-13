@@ -1,6 +1,6 @@
 ---
 title: "العبودية الحديثة في ألمانيا"
-status: draft
+status: published
 published_at: 2019-03-02
 person: abu-jafar-al-khalifi
 ---

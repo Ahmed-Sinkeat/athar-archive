@@ -1,6 +1,6 @@
 ---
 title: "الطبيب الأندلسي عبد الملك بن زهر المتوفى عام ٥٥٧ له عدة مبتكرات طبية من أهمها وص"
-status: draft
+status: published
 published_at: 2017-10-13
 person: abu-jafar-al-khalifi
 ---

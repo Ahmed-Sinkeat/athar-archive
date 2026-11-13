@@ -1,6 +1,6 @@
 ---
 title: "عندي إخوة صغار ولدوا خارج سوريا."
-status: draft
+status: published
 published_at: 2024-12-08
 person: abu-umair-imran-al-zubaidi
 ---

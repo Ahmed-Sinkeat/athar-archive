@@ -1,6 +1,6 @@
 ---
 title: "لو أنَّ الأمة التزمت تطبيق تشريع ربها في حدِّ التارك دِينه المُفارق جماعة المسلم"
-status: draft
+status: published
 published_at: 2026-07-16
 person: awwab-bin-muhammad
 ---

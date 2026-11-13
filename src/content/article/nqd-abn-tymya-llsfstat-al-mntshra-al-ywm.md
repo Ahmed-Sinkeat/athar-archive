@@ -1,6 +1,6 @@
 ---
 title: "نقد ابن تيمية للسفسطات المنتشرة اليوم !"
-status: draft
+status: published
 published_at: 2020-06-16
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud"]

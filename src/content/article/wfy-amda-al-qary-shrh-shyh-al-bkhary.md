@@ -1,6 +1,6 @@
 ---
 title: "وفي عمدة القاري شرح صحيح البخاري"
-status: draft
+status: published
 published_at: 2019-03-08
 person: abu-jafar-al-khalifi
 ---

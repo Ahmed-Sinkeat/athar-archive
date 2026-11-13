@@ -1,6 +1,6 @@
 ---
 title: "شهر رمضان على ما فيه مِن فضل ورحمة وكرم مِن الربّ سبحانه وتعالى؛ إلّا أنّه حُجّة"
-status: draft
+status: published
 published_at: 2023-04-21
 person: abu-umair-imran-al-zubaidi
 ---

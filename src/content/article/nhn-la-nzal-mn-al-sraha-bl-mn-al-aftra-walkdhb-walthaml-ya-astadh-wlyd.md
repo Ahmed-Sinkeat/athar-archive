@@ -1,6 +1,6 @@
 ---
 title: "نحن لا نزعل من الصراحة؛ بل من الافتراء والكذب والتحامل يا أستاذ وليد!"
-status: draft
+status: published
 published_at: 2024-06-21
 person: abu-umair-imran-al-zubaidi
 topics: ["al-imamah-was-sahabah", "al-sunnah-wal-bidah"]

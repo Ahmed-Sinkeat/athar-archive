@@ -1,6 +1,6 @@
 ---
 title: "سنين طوال وهم ينفرون من حكم الشريعة في السارق والزاني المحصن"
-status: draft
+status: published
 published_at: 2018-09-02
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

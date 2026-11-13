@@ -1,6 +1,6 @@
 ---
 title: "فيما مضى كنت أشعر بالحزن جدُا لما قدره الباري سبحانه وتعالى عليّ من ضعفٍ حاد في"
-status: draft
+status: published
 published_at: 2023-11-01
 person: abu-umair-imran-al-zubaidi
 ---

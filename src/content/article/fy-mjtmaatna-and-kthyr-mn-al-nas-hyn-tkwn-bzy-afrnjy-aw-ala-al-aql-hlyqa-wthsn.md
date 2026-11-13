@@ -1,6 +1,6 @@
 ---
 title: "في مجتمعاتنا _ عند كثير من الناس _ حين تكون بزي افرنجي أو على الأقل حليقاً وتحسن"
-status: draft
+status: published
 published_at: 2018-04-06
 person: abu-jafar-al-khalifi
 topics: ["tafsir-al-quran", "al-firaq-war-rudud", "tahwid-al-ibada"]

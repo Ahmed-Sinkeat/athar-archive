@@ -1,6 +1,6 @@
 ---
 title: "قال ابن شبة في تاريخ المدينة حَدَّثَنَا يَزِيدُ بْنُ هَارُونَ"
-status: draft
+status: published
 published_at: 2018-05-29
 person: abu-jafar-al-khalifi
 ---

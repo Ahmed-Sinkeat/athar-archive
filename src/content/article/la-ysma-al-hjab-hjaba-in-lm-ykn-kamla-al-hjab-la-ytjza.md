@@ -1,6 +1,6 @@
 ---
 title: "لا يُسمّى الحجاب حجابًا إن لم يكن كاملًا، الحجاب لا يتجزأ!."
-status: draft
+status: published
 published_at: 2023-07-12
 person: abu-umair-imran-al-zubaidi
 ---

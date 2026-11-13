@@ -1,6 +1,6 @@
 ---
 title: "{وأوحينا إلى أم موسى أن أرضعيه فإذا خفت عليه فألقيه في اليم ولا تخافي ولا تحزني"
-status: draft
+status: published
 published_at: 2025-12-04
 person: abu-umair-imran-al-zubaidi
 topics: ["mustalah-al-hadith", "tahwid-al-ibada"]

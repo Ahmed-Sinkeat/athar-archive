@@ -1,6 +1,6 @@
 ---
 title: "وجاء في سير أعلام النبلاء"
-status: draft
+status: published
 published_at: 2017-06-24
 person: abu-jafar-al-khalifi
 ---

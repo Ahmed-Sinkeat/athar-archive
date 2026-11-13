@@ -1,6 +1,6 @@
 ---
 title: "حديث رسول الله ﷺ"
-status: draft
+status: published
 published_at: 2023-12-17
 person: abu-abdillah-firas-al-ramli
 ---

@@ -1,6 +1,6 @@
 ---
 title: "كنت قد كتبت آنفاً أن قول ابن تيمية ( قديم النوع حادث الآحاد ) هو باعترافه معنى ق"
-status: draft
+status: published
 published_at: 2019-02-09
 person: abu-jafar-al-khalifi
 topics: ["al-asma-was-sifat"]

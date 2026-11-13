@@ -1,6 +1,6 @@
 ---
 title: "(أفَلا تَرضَوْنَ يا مَعشَرَ الأنْصارِ"
-status: draft
+status: published
 published_at: 2024-10-23
 person: abu-umair-imran-al-zubaidi
 ---

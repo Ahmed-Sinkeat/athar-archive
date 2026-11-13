@@ -1,6 +1,6 @@
 ---
 title: "الوسواس في أمر الرزق.."
-status: draft
+status: published
 published_at: 2022-07-04
 person: abu-jafar-al-khalifi
 ---

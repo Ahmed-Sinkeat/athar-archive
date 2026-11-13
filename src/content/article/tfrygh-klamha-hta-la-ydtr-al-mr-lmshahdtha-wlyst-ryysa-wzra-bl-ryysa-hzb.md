@@ -1,6 +1,6 @@
 ---
 title: "تفريغ كلامها حتى لا يضطر المرء لمشاهدتها ( وليست رئيسة وزراء بل رئيسة حزب )"
-status: draft
+status: published
 published_at: 2022-10-01
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

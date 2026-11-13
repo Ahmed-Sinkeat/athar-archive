@@ -1,6 +1,6 @@
 ---
 title: "وأيضا إذا تكلمْتَ عن فرقة منقرضة بتضليل أو تكفير مثل الكرامية والنواصب فإن ذلك ي"
-status: draft
+status: published
 published_at: 2020-09-16
 person: abu-jafar-al-khalifi
 topics: ["al-firaq-war-rudud"]

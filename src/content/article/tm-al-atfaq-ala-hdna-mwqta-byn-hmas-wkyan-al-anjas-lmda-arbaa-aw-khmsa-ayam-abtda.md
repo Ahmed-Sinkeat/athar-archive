@@ -1,6 +1,6 @@
 ---
 title: "تم الاتفاق على هدنة مؤقتة بين حماس وكيان الأنجاس لمدة أربعة أو خمسة أيام ابتداء"
-status: draft
+status: published
 published_at: 2023-11-22
 person: abu-umair-imran-al-zubaidi
 ---

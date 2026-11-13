@@ -1,6 +1,6 @@
 ---
 title: "مصطفى حسني ينكر علو الله فوق السماوات السبع في مقطع له يتحدث عن معراج النبي ﷺ."
-status: draft
+status: published
 published_at: 2023-10-04
 person: abu-umair-imran-al-zubaidi
 ---

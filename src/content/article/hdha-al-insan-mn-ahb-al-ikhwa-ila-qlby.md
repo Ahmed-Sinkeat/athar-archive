@@ -1,6 +1,6 @@
 ---
 title: "هذا الإنسان من أحب الإخوة إلى قلبي"
-status: draft
+status: published
 published_at: 2023-12-20
 person: abu-umair-imran-al-zubaidi
 ---

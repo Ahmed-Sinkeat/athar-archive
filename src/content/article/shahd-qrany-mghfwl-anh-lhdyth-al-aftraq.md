@@ -1,6 +1,6 @@
 ---
 title: "شاهد قرآني مغفول عنه لحديث الافتراق…"
-status: draft
+status: published
 published_at: 2025-10-24
 person: abu-jafar-al-khalifi
 topics: ["al-sunnah-wal-bidah"]

@@ -1,6 +1,6 @@
 ---
 title: "واللطيف في الأمر أن أبا إسحاق كان شيعياً كوفياً والإسناد إليه عراقي"
-status: draft
+status: published
 published_at: 2018-09-26
 person: abu-jafar-al-khalifi
 topics: ["mustalah-al-hadith"]

@@ -1,6 +1,6 @@
 ---
 title: "قال ربنا عز وجل"
-status: draft
+status: published
 published_at: 2023-07-15
 person: abu-abdillah-firas-al-ramli
 topics: ["tafsir-al-quran"]

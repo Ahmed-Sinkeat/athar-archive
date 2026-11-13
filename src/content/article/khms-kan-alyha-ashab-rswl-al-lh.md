@@ -1,6 +1,6 @@
 ---
 title: "خمس كان عليها أصحاب رسول الله ﷺ"
-status: draft
+status: published
 published_at: 2026-01-07
 person: abu-abdillah-firas-al-ramli
 ---

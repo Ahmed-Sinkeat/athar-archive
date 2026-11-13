@@ -1,6 +1,6 @@
 ---
 title: "قال المعلمي في رسالة الاستبصار في نقد الأخبار"
-status: draft
+status: published
 published_at: 2018-10-20
 person: abu-jafar-al-khalifi
 ---

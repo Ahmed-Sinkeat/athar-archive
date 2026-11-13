@@ -1,6 +1,6 @@
 ---
 title: "اعلم حفِظك الله وبارك فيك وعصَمك مِن ضَلال المسعَى وتوهُّم الهِداية أنَّ تعظِيم"
-status: draft
+status: published
 published_at: 2025-03-05
 person: awwab-bin-muhammad
 topics: ["al-iman"]
