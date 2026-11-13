@@ -52,6 +52,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -206,9 +207,14 @@ fun PoemReaderScreen(
     val hintWords = remember(matchHint) { matchHint?.let { ArNormalize.normalize(it).split(' ', '\n', '…').filterTo(HashSet()) { w -> w.length >= 2 } }.orEmpty() }
     val matchVerse = remember(state.verses, matchWords) { findVerse(state.verses, matchWords, initialOrdinal, hintWords) }
     var restored by remember { mutableStateOf(false) }
+    // A verse that takes this long (a slow link) is jumped to when it comes; the poem shows meanwhile.
+    var showAnyway by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) { kotlinx.coroutines.delay(3_000); showAnyway = true }
     LaunchedEffect(state.verses, state.readingPositionReady, state.bodyLoaded, matchVerse) {
         if (restored) return@LaunchedEffect
-        if (matchWords.isNotEmpty() && matchVerse == null && !state.bodyLoaded) return@LaunchedEffect // its verse may not be loaded yet
+        // Its verse may not be loaded yet; and with no located verse to start from, the best match by the
+        // snippet is only known once the whole poem is in (it settled on a weaker one in the first frame).
+        if (matchWords.isNotEmpty() && (matchVerse == null || initialOrdinal == null) && !state.bodyLoaded) return@LaunchedEffect
         state.restoreIndex(matchVerse?.ordinal ?: initialOrdinal ?: state.readingOrdinal)?.let { index ->
             if (matchVerse != null) listState.centreOn(index) else listState.scrollToItem(index)
             restored = true
@@ -297,7 +303,9 @@ fun PoemReaderScreen(
                     val haptics = androidx.compose.ui.platform.LocalHapticFeedback.current
                     LazyColumn(
                         state = listState,
-                        modifier = Modifier.fillMaxSize().nestedScroll(bars.connection).atharBackdrop(haze)
+                        // Hidden until it stands on its verse (as the book reader is): it showed verse 1, then leapt.
+                        modifier = Modifier.fillMaxSize().alpha(if (restored || showAnyway || state.verses.isEmpty()) 1f else 0f)
+                            .nestedScroll(bars.connection).atharBackdrop(haze)
                             .onSizeChanged { listHeight = it.height }
                             .verseSelectionGestures(
                                 active = selRange != null,

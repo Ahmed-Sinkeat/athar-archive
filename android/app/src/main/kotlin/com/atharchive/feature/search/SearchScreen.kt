@@ -266,7 +266,8 @@ fun SearchScreen(
             item(key = "scope") {
                 ScopeLine(state, searching, searchResultsReadyTag(state.query), horizontalPadding)
             }
-            if (!searching && state.topAuthors.size > 1) item(key = "top-authors") {
+            // Kept while the next search runs: hidden then, it pulled the list up on every keystroke and pushed it back down.
+            if (state.topAuthors.size > 1) item(key = "top-authors") {
                 TopAuthors(state.topAuthors, filters.authors, horizontalPadding) { name ->
                     changeFilters(filters.copy(authors = if (name in filters.authors) filters.authors - name else filters.authors + name))
                 }

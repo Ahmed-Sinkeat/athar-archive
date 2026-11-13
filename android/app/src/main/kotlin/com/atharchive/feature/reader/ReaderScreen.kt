@@ -366,13 +366,31 @@ fun ReaderScreen(
             toast = null
         }
     }
+    /**
+     * Brings [target]'s match into view: its block first, then the match's own line a quarter of the
+     * way down. The block's top alone left a match deep in a long paragraph below the screen, and
+     * the first line under the bar.
+     */
+    suspend fun reveal(displayIndex: Int, target: ReaderSearchTarget?) {
+        listState.scrollToItem(displayIndex.coerceIn(0, (state.blockCount - 1).coerceAtLeast(0)) + 1)
+        if (target == null) return
+        repeat(10) {
+            androidx.compose.runtime.withFrameNanos { }
+            val geometry = textPositions[target.ordinal] ?: return@repeat
+            val layout = geometry.layout
+            val line = layout.getLineForOffset(geometry.value.displayOffset(target.matchStart).coerceIn(0, layout.layoutInput.text.length))
+            listState.scrollBy(geometry.top() + layout.getLineTop(line) - viewportTop - listState.layoutInfo.viewportSize.height / 4f)
+            return
+        }
+    }
+
     LaunchedEffect(initialSearchTarget, restored) {
         if (!restored) return@LaunchedEffect
         val target = initialSearchTarget ?: return@LaunchedEffect
         searchTarget = target
         val displayIndex = if (window != null) target.ordinal else
             state.blocks.indexOfFirst { it.ordinal == target.ordinal }.takeIf { it >= 0 } ?: target.ordinal
-        listState.scrollToItem(displayIndex.coerceIn(0, (state.blockCount - 1).coerceAtLeast(0)) + 1)
+        reveal(displayIndex, target)
         kotlinx.coroutines.delay(2200)
         searchTarget = null
     }
@@ -383,9 +401,7 @@ fun ReaderScreen(
         jumpedTo = index
         searchTarget = target
         returnTo = listState.firstVisibleItemIndex to listState.firstVisibleItemScrollOffset
-        scope.launch {
-            listState.scrollToItem(index.coerceIn(0, (state.blockCount - 1).coerceAtLeast(0)) + 1)
-        }
+        scope.launch { reveal(index, target) }
     }
 
     fun showFootnotes(ids: List<String>, at: androidx.compose.ui.geometry.Rect) {
