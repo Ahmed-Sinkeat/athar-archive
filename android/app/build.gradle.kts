@@ -54,8 +54,8 @@ android {
     defaultConfig {
         applicationId = "com.atharchive"
         testApplicationId = "com.atharchive.instrumentation"
-        versionCode = 10
-        versionName = "1.2.4"
+        versionCode = 11
+        versionName = "1.2.5"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "ATHAR_CONTENT_BASE_URL", "".asBuildConfigString())
         buildConfigField("String", "ATHAR_CONTENT_SIGNING_KEY_ID", "".asBuildConfigString())
