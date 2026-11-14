@@ -474,10 +474,11 @@ fun AtharApp(
             backStack.add(if (poem) PoemReaderRoute(hit.entityId, hit.ordinal, query) else ReaderRoute(hit.entityId, hit.ordinal, hit.sourceMatchStart, hit.sourceMatchEnd))
             return
         }
-        // A book passage the index placed opens at once on its first block; the reader places the match.
-        val pgFirst = hit.pg?.substringBefore('-')?.toIntOrNull()
-        if (!poem && pgFirst != null) {
-            backStack.add(ReaderRoute(hit.entityId, pgFirst, locate = OnlineLocate(hit.url, query, hit.excerpt, hit.pg)))
+        // A book or article opens at once and the reader places the match (on the passage's first block
+        // when the index placed it, else walking its chapter): the search screen waited ~3 s behind
+        // «جارٍ فتح الموضع…», which also covered the results under it.
+        if (!poem) {
+            backStack.add(ReaderRoute(hit.entityId, hit.pg?.substringBefore('-')?.toIntOrNull() ?: 0, locate = OnlineLocate(hit.url, query, hit.excerpt, hit.pg)))
             return
         }
         val from = backStack.lastOrNull()

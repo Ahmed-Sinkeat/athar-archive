@@ -28,6 +28,7 @@ import androidx.navigation3.runtime.EntryProviderScope
 
 /** How long a just-opened online hit waits to be placed before its passage shows unplaced. */
 private const val LocateWaitMs = 6_000L
+private const val LocateWalkWaitMs = 12_000L
 
 /** The readers: a book and a poem, each full-screen. */
 internal fun EntryProviderScope<NavKey>.readerEntries(app: AppNav) = with(app) {
@@ -48,10 +49,12 @@ internal fun EntryProviderScope<NavKey>.readerEntries(app: AppNav) = with(app) {
             // fetches anyway (openLocks share them), instead of before the book opened.
             val located by androidx.compose.runtime.produceState<Pair<ReaderSearchTarget?, Boolean>>(null to (route.locate == null), route) {
                 val locate = route.locate?.takeIf { firstVisit } ?: return@produceState
-                val (ordinal, start, end) = kotlinx.coroutines.withTimeoutOrNull(LocateWaitMs) {
-                    contentViewModel.locateOnline(route.bookId, locate.url, locate.query, locate.snippet, locate.pg, walk = false)
+                // Without the index's place the chapter is walked: more frames, a longer wait.
+                val (ordinal, start, end) = kotlinx.coroutines.withTimeoutOrNull(if (locate.pg == null) LocateWalkWaitMs else LocateWaitMs) {
+                    contentViewModel.locateOnline(route.bookId, locate.url, locate.query, locate.snippet, locate.pg, walk = locate.pg == null)
                 } ?: Triple(null, 0, 0)
-                value = (if (ordinal != null && end > start) ReaderSearchTarget(ordinal, start, end) else null) to true
+                // No match found: the chapter's start (the walk's answer), not the book's.
+                value = ordinal?.let { ReaderSearchTarget(it, start, maxOf(start, end)) } to true
             }
             LaunchedEffect(route.bookId, route.targetOrdinal) {
                 // Any path that opens a poem as a book (links, meanings, lists) lands in the poem reader instead.

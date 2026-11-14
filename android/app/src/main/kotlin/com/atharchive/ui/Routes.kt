@@ -41,7 +41,7 @@ internal data class ReaderRoute(
 ) : NavKey
 
 @Serializable
-internal data class OnlineLocate(val url: String?, val query: String, val snippet: String, val pg: String)
+internal data class OnlineLocate(val url: String?, val query: String, val snippet: String, val pg: String?)
 
 @Serializable
 internal data class SubSectionRoute(val section: String) : NavKey
